@@ -34,6 +34,6 @@
 [submodule "vim/vimfiles/bundle/vimerl"]
 	path = vim/vimfiles/bundle/vimerl
 	url = git://github.com/jimenezrick/vimerl.git
-[submodule "vimfiles/bundle/slimv.vim"]
-	path = vimfiles/bundle/slimv.vim
+[submodule "vim/vimfiles/bundle/slimv.vim"]
+	path = vim/vimfiles/bundle/slimv.vim
 	url = git://github.com/vim-scripts/slimv.vim.git
