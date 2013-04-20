@@ -1,0 +1,36 @@
+[submodule "vim/vimfiles/bundle/snipmate.vim"]
+	path = vim/vimfiles/bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "vim/vimfiles/bundle/nerdtree"]
+	path = vim/vimfiles/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/vimfiles/bundle/minibufexpl.vim"]
+	path = vim/vimfiles/bundle/minibufexpl.vim
+	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule "vim/vimfiles/bundle/jedi-vim"]
+	path = vim/vimfiles/bundle/jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
+[submodule "vim/vimfiles/bundle/delimitMate"]
+	path = vim/vimfiles/bundle/delimitMate
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "vim/vimfiles/bundle/Command-T"]
+	path = vim/vimfiles/bundle/Command-T
+	url = git://github.com/wincent/Command-T.git
+[submodule "vim/vimfiles/bundle/syntastic"]
+	path = vim/vimfiles/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/vimfiles/bundle/tagbar"]
+	path = vim/vimfiles/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
+[submodule "vim/vimfiles/bundle/vim-colors-solarized"]
+	path = vim/vimfiles/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/vimfiles/bundle/vim-fugitive"]
+	path = vim/vimfiles/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/vimfiles/bundle/vim-virtualenv"]
+	path = vim/vimfiles/bundle/vim-virtualenv
+	url = git://github.com/jmcantrell/vim-virtualenv.git
+[submodule "vim/vimfiles/bundle/vimerl"]
+	path = vim/vimfiles/bundle/vimerl
+	url = git://github.com/jimenezrick/vimerl.git
