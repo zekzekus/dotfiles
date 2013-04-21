@@ -8,4 +8,4 @@ must be installed.
 
 TMUX Configuration
 ------------------
-Coming soon...
+Very basic conf mainly uses powerline
