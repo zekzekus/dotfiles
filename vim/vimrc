@@ -28,6 +28,7 @@ set wildmode=list:longest
 set visualbell
 
 set cursorline
+set cursorcolumn
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -225,7 +226,11 @@ imap <leader>l <ESC>:TagbarToggle<cr>i
 syntax on
 
 " i can paste from system clipboard
-set clipboard=unnamed
+" with unnamed, vim in tmux session does not yank.
+" this is the workaround
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 
 " swap files will be saved to this folder
 set dir=~/tmp
@@ -289,3 +294,5 @@ nnoremap <leader>V :VirtualEnvActivate
 
 " i wanna used to use jj keys to return normal mode
 inoremap <esc> <nop>
+
+" to highlight 
