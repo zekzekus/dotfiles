@@ -308,3 +308,6 @@ let g:ctrlp_max_height = 30
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>y :CtrlPBufTag<CR>
+
+autocmd FileType python set ft=python.django " For SnipMate
+autocmd FileType html set ft=htmldjango.html " For SnipMate
