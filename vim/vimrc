@@ -153,6 +153,7 @@ set wildignore+=*.luac "Lua byte code"
 "set wildignore+=migrations "Django migrations"
 set wildignore+=*.pyc "Python Object codes"
 set wildignore+=*.orig "Merge resolution files"
+set wildignore+=*.beam
 
 " Make Sure that Vim returns to the same line when we reopen a file"
 augroup line_return
@@ -204,7 +205,7 @@ autocmd bufwritepost .vimrc source ~/.vimrc
 
 " Mapping to NERDTree
 nnoremap <C-n> :NERDTreeToggle<cr>
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.beam$']
 
 " Mini Buffer some settigns."
 let g:miniBufExplMapWindowNavVim = 1
@@ -295,4 +296,12 @@ nnoremap <leader>V :VirtualEnvActivate
 " i wanna used to use jj keys to return normal mode
 inoremap <esc> <nop>
 
-" to highlight 
+" command-t list tags
+" disable command-t for testing CtrlP plugin
+let g:command_t_loaded = 1
+if !hasmapto(':CommandTTag<CR>')
+  silent! nnoremap <unique> <silent> <Leader>y :CommandTTag<CR>
+endif
+
+" ctrl-p plugin options
+let g:ctrlp_max_height = 30
