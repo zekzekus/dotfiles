@@ -305,3 +305,6 @@ endif
 
 " ctrl-p plugin options
 let g:ctrlp_max_height = 30
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>y :CtrlPBufTag<CR>
