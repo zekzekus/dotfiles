@@ -13,15 +13,9 @@
 [submodule "vim/vimfiles/bundle/delimitMate"]
 	path = vim/vimfiles/bundle/delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "vim/vimfiles/bundle/Command-T"]
-	path = vim/vimfiles/bundle/Command-T
-	url = git://github.com/wincent/Command-T.git
 [submodule "vim/vimfiles/bundle/syntastic"]
 	path = vim/vimfiles/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/vimfiles/bundle/tagbar"]
-	path = vim/vimfiles/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
 [submodule "vim/vimfiles/bundle/vim-colors-solarized"]
 	path = vim/vimfiles/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
