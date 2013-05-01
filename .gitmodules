@@ -37,3 +37,6 @@
 [submodule "vim/vimfiles/bundle/snipmate_for_django"]
 	path = vim/vimfiles/bundle/snipmate_for_django
 	url = git://github.com/robhudson/snipmate_for_django.git
+[submodule "vim/vimfiles/bundle/tagbar"]
+	path = vim/vimfiles/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
