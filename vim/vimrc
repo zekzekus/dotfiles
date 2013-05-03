@@ -24,7 +24,7 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
+set wildmode=full
 set visualbell
 
 set cursorline
@@ -139,7 +139,7 @@ au VimResized * :wincmd =
 
 " Wildmenu completion "
 set wildmenu
-set wildmode=list:longest
+set wildmode=full
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
@@ -298,3 +298,6 @@ autocmd FileType html set ft=htmldjango " For SnipMate
 
 " an easy way to save files
 nnoremap <leader>w :w<CR>
+
+" file extensions for file jump
+set suffixesadd+=.html
