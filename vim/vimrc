@@ -38,8 +38,8 @@ set laststatus=2
 set number
 set norelativenumber
 
-"set undofile
-set shell=/bin/bash
+set undofile
+set shell=/bin/zsh
 set lazyredraw
 set matchtime=3
 
@@ -302,3 +302,4 @@ set suffixesadd+=.html
 
 " gundo settings
 nnoremap <leader>G :GundoToggle<CR>
+set undodir=/tmp
