@@ -40,3 +40,6 @@
 [submodule "vim/vimfiles/bundle/tagbar"]
 	path = vim/vimfiles/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
+[submodule "vim/vimfiles/bundle/vim-surround"]
+	path = vim/vimfiles/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
