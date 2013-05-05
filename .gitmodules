@@ -50,10 +50,6 @@
 	path = vim/vimfiles/bundle/snipmate_for_django
 	url = git://github.com/robhudson/snipmate_for_django.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/tagbar"]
-	path = vim/vimfiles/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-surround"]
 	path = vim/vimfiles/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
