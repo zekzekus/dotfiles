@@ -307,3 +307,8 @@ set undodir=/tmp
 " enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" lets use supertab for completion
+au FileType python set omnifunc=jedi#complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
