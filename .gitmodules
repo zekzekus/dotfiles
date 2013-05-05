@@ -49,6 +49,3 @@
 [submodule "vim/vimfiles/bundle/gundo.vim"]
 	path = vim/vimfiles/bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
-[submodule "vim/vimfiles/bundle/supertab"]
-	path = vim/vimfiles/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
