@@ -303,3 +303,7 @@ set suffixesadd+=.html
 " gundo settings
 nnoremap <leader>G :GundoToggle<CR>
 set undodir=/tmp
+
+" enable folding
+set foldmethod=indent
+set foldlevel=99
