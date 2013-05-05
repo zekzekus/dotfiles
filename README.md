@@ -9,3 +9,7 @@ must be installed.
 TMUX Configuration
 ------------------
 Very basic conf mainly uses powerline
+
+ZSH Configuration
+-----------------
+Based on oh-my-zsh
