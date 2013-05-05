@@ -62,3 +62,6 @@
 	path = vim/vimfiles/bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/tagbar-vim"]
+	path = vim/vimfiles/bundle/tagbar-vim
+	url = git://github.com/majutsushi/tagbar.git
