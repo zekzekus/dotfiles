@@ -6,10 +6,6 @@
 	path = vim/vimfiles/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/minibufexpl.vim"]
-	path = vim/vimfiles/bundle/minibufexpl.vim
-	url = git://github.com/fholgado/minibufexpl.vim.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/jedi-vim"]
 	path = vim/vimfiles/bundle/jedi-vim
 	url = git://github.com/davidhalter/jedi-vim.git

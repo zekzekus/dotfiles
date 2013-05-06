@@ -205,11 +205,11 @@ autocmd bufwritepost .vimrc source ~/.vimrc
 nnoremap <C-n> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.beam$']
 
-" Mini Buffer some settigns."
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+" easier window navigation
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 " Tagbar key bindings."
 nmap <leader>l <ESC>:TagbarToggle<cr>
