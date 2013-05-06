@@ -213,7 +213,7 @@ nnoremap <C-k> <C-w>k
 
 " Tagbar key bindings."
 nmap <leader>l <ESC>:TagbarToggle<cr>
-imap <leader>l <ESC>:TagbarToggle<cr>i
+imap <leader>l jj:TagbarToggle<cr>i
 
 
 " =========== END Plugin Settings =========="
