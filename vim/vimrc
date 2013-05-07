@@ -289,7 +289,7 @@ nnoremap <leader>V :VirtualEnvActivate
 inoremap <esc> <nop>
 
 " ctrl-p plugin options
-let g:ctrlp_max_height = 20
+let g:ctrlp_max_height = 40
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>y :CtrlPBufTag<CR>
