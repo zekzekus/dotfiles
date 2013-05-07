@@ -222,9 +222,12 @@ syntax on
 " i can paste from system clipboard
 " with unnamed, vim in tmux session does not yank.
 " this is the workaround
-if $TMUX == ''
-    set clipboard+=unnamed
-endif
+" now i use reattach-to-user-namespace with conjuction
+" of tmux conf i can copy and paste from/to system clipboard
+"if $TMUX == ''
+    "set clipboard+=unnamed
+"endif
+set clipboard=unnamed
 
 " swap files will be saved to this folder
 set dir=~/tmp
