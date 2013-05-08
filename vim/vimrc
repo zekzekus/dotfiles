@@ -241,25 +241,25 @@ set nobackup
 set noswapfile
 
 " patched inconsolate font for proper powerline look and feel
-"set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Inconsolata\ for\ Powerline:h15
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
 
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%{virtualenv#statusline()}
-set statusline+=%{fugitive#statusline()}
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+" set statusline=%t       "tail of the filename
+" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+" set statusline+=%{&ff}] "file format
+" set statusline+=%{virtualenv#statusline()}
+" set statusline+=%{fugitive#statusline()}
+" set statusline+=%h      "help file flag
+" set statusline+=%m      "modified flag
+" set statusline+=%r      "read only flag
+" set statusline+=%y      "filetype
+" set statusline+=%=      "left/right separator
+" set statusline+=%c,     "cursor column
+" set statusline+=%l/%L   "cursor line/total lines
+" set statusline+=\ %P    "percent through file
 
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
@@ -272,10 +272,10 @@ function! ToggleBg()
 endfunc
 
 " load powerline
-"set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " i use powerline, so i do not need to see mode
-"set noshowmode
+set noshowmode
 
 " sytastic checks on file open 
 let g:syntastic_check_on_open=1
