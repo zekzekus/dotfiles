@@ -61,6 +61,8 @@
 [submodule "vim/vimfiles/bundle/tagbar-vim"]
 	path = vim/vimfiles/bundle/tagbar-vim
 	url = git://github.com/majutsushi/tagbar.git
+    ignore = dirty
 [submodule "vim/vimfiles/bundle/vitality.vim"]
 	path = vim/vimfiles/bundle/vitality.vim
 	url = https://github.com/sjl/vitality.vim.git
+    ignore = dirty
