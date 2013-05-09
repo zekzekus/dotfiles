@@ -287,7 +287,7 @@ let g:jedi#show_function_definition = "0"
 let g:jedi#use_tabs_not_buffers = 0
 
 " after this command i type the name of virtualenv
-nnoremap <leader>V :VirtualEnvActivate
+nnoremap <leader>V :VirtualEnvActivate 
 
 " i wanna used to use jj keys to return normal mode
 inoremap <esc> <nop>
@@ -329,3 +329,6 @@ set completeopt=menuone,longest,preview
 " vim-statline settings
 let g:statline_filename_relative=1
 let g:statline_fugitive=1
+let g:statline_trailing_space = 0
+let g:statline_virtualenv = 1
+
