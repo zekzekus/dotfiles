@@ -235,7 +235,7 @@ set dir=~/tmp
 " company preferene for python syntax checker
 let g:syntastic_python_checkers=['flake8']
 
-" get rid of silly backup and swap files. 
+" get rid of silly backup and swap files.
 " i wish i do not regret for this statement
 set nobackup
 set noswapfile
@@ -247,19 +247,20 @@ set noswapfile
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
 
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%{virtualenv#statusline()}
-set statusline+=%{fugitive#statusline()}
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+" set statusline=             " clear statusline for reloading vimrc
+" set statusline+=%-.20F       "truncated full file path
+" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+" set statusline+=%{&ff}] "file format
+" set statusline+=%{virtualenv#statusline()}
+" set statusline+=%{fugitive#statusline()}
+" set statusline+=%h      "help file flag
+" set statusline+=%m      "modified flag
+" set statusline+=%r      "read only flag
+" set statusline+=%y      "filetype
+" set statusline+=%=      "left/right separator
+" set statusline+=%c,     "cursor column
+" set statusline+=%l/%L   "cursor line/total lines
+" set statusline+=\ %P    "percent through file
 
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
@@ -277,7 +278,7 @@ endfunc
 " i use powerline, so i do not need to see mode
 " set noshowmode
 
-" sytastic checks on file open 
+" sytastic checks on file open
 let g:syntastic_check_on_open=1
 
 " sometimes i like auto completion but not everytime
@@ -286,7 +287,7 @@ let g:jedi#show_function_definition = "0"
 let g:jedi#use_tabs_not_buffers = 0
 
 " after this command i type the name of virtualenv
-nnoremap <leader>V :VirtualEnvActivate 
+nnoremap <leader>V :VirtualEnvActivate
 
 " i wanna used to use jj keys to return normal mode
 inoremap <esc> <nop>
@@ -324,3 +325,7 @@ set completeopt=menuone,longest,preview
   "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "endif
+
+" vim-statline settings
+let g:statline_filename_relative=1
+let g:statline_fugitive=1

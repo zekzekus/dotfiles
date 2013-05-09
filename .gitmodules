@@ -66,3 +66,6 @@
 	path = vim/vimfiles/bundle/vitality.vim
 	url = https://github.com/sjl/vitality.vim.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-statline.git"]
+	path = vim/vimfiles/bundle/vim-statline.git
+	url = https://github.com/millermedeiros/vim-statline.git
