@@ -332,3 +332,6 @@ let g:statline_fugitive=1
 let g:statline_trailing_space = 0
 let g:statline_virtualenv = 1
 
+" map only command to an easy leader shortcut
+nnoremap <leader>o :only<CR>
+inoremap <leader>o <ESC>:only<CR>
