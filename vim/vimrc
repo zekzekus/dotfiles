@@ -241,7 +241,7 @@ set nobackup
 set noswapfile
 
 " patched inconsolate font for proper powerline look and feel
-" set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Monaco:h14
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
