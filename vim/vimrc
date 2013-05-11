@@ -335,3 +335,7 @@ let g:statline_virtualenv = 1
 " map only command to an easy leader shortcut
 nnoremap <leader>o :only<CR>
 inoremap <leader>o <ESC>:only<CR>
+
+" enable file jump for django template files
+set path+=templates " for django versions < 1.4
+set path+=*/templates " for django versions 1.4 and higher
