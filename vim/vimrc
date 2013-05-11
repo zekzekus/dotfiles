@@ -339,3 +339,5 @@ inoremap <leader>o <ESC>:only<CR>
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
 set path+=*/templates " for django versions 1.4 and higher
+set path+=static " static files directory for old django
+set path+=*/static " static files directory for 1.4 and higher django
