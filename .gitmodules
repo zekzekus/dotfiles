@@ -69,6 +69,12 @@
 [submodule "vim/vimfiles/bundle/vim-statline"]
 	path = vim/vimfiles/bundle/vim-statline
 	url = git@github.com:zekzekus/vim-statline.git
+    ignore = dirty
 [submodule "vim/vimfiles/bundle/ack.vim"]
 	path = vim/vimfiles/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+    ignore = dirty
+[submodule "vim/vimfiles/bundle/CoVim"]
+	path = vim/vimfiles/bundle/CoVim
+	url = git@github.com:FredKSchott/CoVim.git
+    ignore = dirty
