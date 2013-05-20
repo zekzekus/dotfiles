@@ -74,7 +74,3 @@
 	path = vim/vimfiles/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/CoVim"]
-	path = vim/vimfiles/bundle/CoVim
-	url = git@github.com:FredKSchott/CoVim.git
-    ignore = dirty
