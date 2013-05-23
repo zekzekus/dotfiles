@@ -344,3 +344,6 @@ set path+=static " static files directory for old django
 set path+=*/static " static files directory for 1.4 and higher django
 set path+=*/*/*/templates " specific for polar project structure
 set path+=*/*/templates
+
+" easy switch to last edited buffer (alternate buffer)
+nnoremap <leader>, :b#<CR>
