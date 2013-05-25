@@ -347,3 +347,6 @@ set path+=*/*/templates
 
 " easy switch to last edited buffer (alternate buffer)
 nnoremap <leader>, :b#<CR>
+
+" enable matchit plugin
+runtime macros/matchit.vim
