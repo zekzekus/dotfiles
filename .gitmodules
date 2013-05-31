@@ -74,3 +74,6 @@
 	path = vim/vimfiles/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-colorschemes"]
+	path = vim/vimfiles/bundle/vim-colorschemes
+	url = git@github.com:flazz/vim-colorschemes.git
