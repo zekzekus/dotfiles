@@ -175,7 +175,7 @@ if has("gui_running")
     set guioptions+=a
     set guioptions-=m
     set background=dark
-    colorscheme wombat
+    colorscheme solarized
     set listchars=tab:▸\ ,eol:¬         " Invisibles using the Textmate style
 endif
 
@@ -183,7 +183,7 @@ endif
 if !has("gui_running")
     set t_Co=256
     set background=dark
-    colorscheme wombat256
+    colorscheme solarized
 endif
 
 " Source the vimrc file after saving it
