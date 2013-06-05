@@ -56,3 +56,8 @@ export LC_ALL=en_US.UTF-8
 export PATH=/usr/local/share/npm/bin:$PATH
 
 unsetopt correct_all
+
+alias mux=tmuxinator
+
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
