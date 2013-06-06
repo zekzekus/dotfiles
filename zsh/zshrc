@@ -59,5 +59,38 @@ unsetopt correct_all
 
 alias mux=tmuxinator
 
+function zle-keymap-select zle-line-init
+{
+    if [ "$TMUX" = "" ]; then
+        # change cursor shape in iTerm2
+        case $KEYMAP in
+            vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+            viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+        esac
+    else
+        # change cursor shape in iTerm2 and in tmux
+        case $KEYMAP in
+            vicmd)      print -n -- "\EPtmux;\E\E]50;CursorShape=0\C-G\E\\";;  # block cursor
+            viins|main) print -n -- "\EPtmux;\E\E]50;CursorShape=1\C-G\E\\";;  # line cursor
+        esac
+    fi
+
+    zle reset-prompt
+    zle -R
+}
+
+function zle-line-finish
+{
+    if [ "$TMUX" = "" ]; then
+        print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+    else
+        print -n -- "\EPtmux;\E\E]50;CursorShape=0\C-G\E\\"  # block cursor
+    fi
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
+bindkey -v
