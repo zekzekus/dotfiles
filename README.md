@@ -8,7 +8,7 @@ must be installed.
 
 TMUX Configuration
 ------------------
-Very basic conf mainly uses powerline
+Very basic conf
 
 ZSH Configuration
 -----------------
