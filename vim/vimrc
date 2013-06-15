@@ -93,6 +93,10 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
@@ -174,17 +178,15 @@ if has("gui_running")
     set guioptions-=L
     set guioptions+=a
     set guioptions-=m
-    set background=dark
-    colorscheme solarized
-    set listchars=tab:▸\ ,eol:¬         " Invisibles using the Textmate style
 endif
 
 " Special Settings for Consoles
 if !has("gui_running")
     set t_Co=256
-    set background=dark
-    colorscheme solarized
 endif
+
+set background=dark
+colorscheme solarized
 
 " Source the vimrc file after saving it
 autocmd bufwritepost .vimrc source ~/.vimrc
@@ -233,27 +235,12 @@ let g:syntastic_python_checkers=['flake8']
 set nobackup
 set noswapfile
 
-" patched inconsolate font for proper powerline look and feel
+" my new favorite monospace font for coding
 set guifont=Monaco:h15
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
-
-" set statusline=             " clear statusline for reloading vimrc
-" set statusline+=%-.20F       "truncated full file path
-" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-" set statusline+=%{&ff}] "file format
-" set statusline+=%{virtualenv#statusline()}
-" set statusline+=%{fugitive#statusline()}
-" set statusline+=%h      "help file flag
-" set statusline+=%m      "modified flag
-" set statusline+=%r      "read only flag
-" set statusline+=%y      "filetype
-" set statusline+=%=      "left/right separator
-" set statusline+=%c,     "cursor column
-" set statusline+=%l/%L   "cursor line/total lines
-" set statusline+=\ %P    "percent through file
 
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
@@ -264,12 +251,6 @@ function! ToggleBg()
         set bg=dark
     endif
 endfunc
-
-" load powerline
-" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
-
-" i use powerline, so i do not need to see mode
-" set noshowmode
 
 " sytastic checks on file open
 let g:syntastic_check_on_open=1

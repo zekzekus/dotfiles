@@ -1,7 +1,3 @@
-[submodule "vim/vimfiles/bundle/snipmate.vim"]
-	path = vim/vimfiles/bundle/snipmate.vim
-	url = git://github.com/msanders/snipmate.vim.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/nerdtree"]
 	path = vim/vimfiles/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
@@ -77,3 +73,15 @@
 [submodule "vim/vimfiles/bundle/vim-elixir"]
 	path = vim/vimfiles/bundle/vim-elixir
 	url = git@github.com:elixir-lang/vim-elixir.git
+[submodule "vim/vimfiles/bundle/supertab"]
+	path = vim/vimfiles/bundle/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule "vim/vimfiles/bundle/vim-snipmate"]
+	path = vim/vimfiles/bundle/vim-snipmate
+	url = git@github.com:garbas/vim-snipmate.git
+[submodule "vim/vimfiles/bundle/tlib_vim"]
+	path = vim/vimfiles/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/vimfiles/bundle/vim-addon-mw-utils"]
+	path = vim/vimfiles/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
