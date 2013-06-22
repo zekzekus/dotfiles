@@ -16,11 +16,11 @@ Installation steps for who loves risky stuff.
 - clone the repo 
 - make a symbolic link of REPO__PATH/vim/vimfiles to ~/.vim
 - make a symbolic link of REPO__PATH/vim/vimrc ~/.vimrc
-- follow installation process for excellent [pathogen]() plugin
+- follow installation process for excellent [pathogen](https://github.com/tpope/vim-pathogen) plugin
 - install necessary external programs. as i remember:
--- jedi from pip. `pip install jedi`
--- flake8 for syntax checks. `pip install flake8`
--- ctags for tagbar and ctrlp plugin. You can use your OS package manager to
+    -- jedi from pip. `pip install jedi`
+    -- flake8 for syntax checks. `pip install flake8`
+    -- ctags for tagbar and ctrlp plugin. You can use your OS package manager to
 install
 
 Yeah these should be enough to use my VIM configuration on your system. If
