@@ -324,4 +324,4 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 " numbers.vim toggle key binding
-nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersToggle<CR>
