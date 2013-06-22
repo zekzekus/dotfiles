@@ -18,8 +18,9 @@ Installation steps for who loves risky stuff.
 - make a symbolic link of REPO__PATH/vim/vimrc ~/.vimrc
 - follow installation process for excellent [pathogen](https://github.com/tpope/vim-pathogen) plugin
 - install necessary external programs. as i remember:
-    - jedi from pip. `pip install jedi`
-    - flake8 for syntax checks. `pip install flake8`
+    - jedi from pip. `pip install jedi` this is a python tool. autocompletion,
+      go to definition, rename refactoring etc.
+    - flake8 for syntax checks. `pip install flake8` used by sytastic plugin. 
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
 install
 
