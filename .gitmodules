@@ -94,3 +94,6 @@
 [submodule "vim/vimfiles/bundle/vim-snippets"]
 	path = vim/vimfiles/bundle/vim-snippets
 	url = git@github.com:honza/vim-snippets.git
+[submodule "vim/vimfiles/bundle/supertab"]
+	path = vim/vimfiles/bundle/supertab
+	url = git@github.com:ervandew/supertab.git
