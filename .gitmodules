@@ -66,9 +66,6 @@
 	path = vim/vimfiles/bundle/vim-colorschemes
 	url = git@github.com:flazz/vim-colorschemes.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/vim-elixir"]
-	path = vim/vimfiles/bundle/vim-elixir
-	url = git@github.com:elixir-lang/vim-elixir.git
 [submodule "vim/vimfiles/bundle/vim-snipmate"]
 	path = vim/vimfiles/bundle/vim-snipmate
 	url = git@github.com:garbas/vim-snipmate.git
