@@ -34,10 +34,6 @@
 	path = vim/vimfiles/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/snipmate_for_django"]
-	path = vim/vimfiles/bundle/snipmate_for_django
-	url = git://github.com/robhudson/snipmate_for_django.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-surround"]
 	path = vim/vimfiles/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
