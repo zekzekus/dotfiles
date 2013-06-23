@@ -73,9 +73,6 @@
 [submodule "vim/vimfiles/bundle/vim-elixir"]
 	path = vim/vimfiles/bundle/vim-elixir
 	url = git@github.com:elixir-lang/vim-elixir.git
-[submodule "vim/vimfiles/bundle/supertab"]
-	path = vim/vimfiles/bundle/supertab
-	url = git@github.com:ervandew/supertab.git
 [submodule "vim/vimfiles/bundle/vim-snipmate"]
 	path = vim/vimfiles/bundle/vim-snipmate
 	url = git@github.com:garbas/vim-snipmate.git
