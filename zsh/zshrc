@@ -36,7 +36,7 @@ plugins=(git brew fabric git-extras git-flow osx pip sublime vagrant tmux tmuxin
 
 source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
-export PATH=/Users/zekus/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
+export PATH=/Users/zekus/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
 
 fpath=($HOME/.zsh/func $fpath)
 typeset -U fpath
