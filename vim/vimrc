@@ -303,6 +303,7 @@ inoremap <leader>o <ESC>:only<CR>
 
 " easy save file
 nnoremap <leader>w :w<CR>
+inoremap <leader>w <ESC>:w<CR>
 
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
