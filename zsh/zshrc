@@ -47,6 +47,7 @@ source /usr/local/share/python/virtualenvwrapper.sh
 export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:$PATH
 
 alias vi=/usr/local/bin/vim
+alias vim=/usr/local/bin/vim
 
 alias ruby=/usr/local/bin/ruby
 
