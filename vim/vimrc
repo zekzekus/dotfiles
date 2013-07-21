@@ -130,7 +130,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " jj For Qicker Escaping between normal and editing mode.
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 
 " Working with split screen nicely
