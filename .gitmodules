@@ -94,3 +94,9 @@
 [submodule "vim/vimfiles/bundle/vim-easymotion"]
 	path = vim/vimfiles/bundle/vim-easymotion
 	url = git@github.com:Lokaltog/vim-easymotion.git
+[submodule "vim/vimfiles/bundle/vim-golang"]
+	path = vim/vimfiles/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "vim/vimfiles/bundle/vim-gocode"]
+	path = vim/vimfiles/bundle/vim-gocode
+	url = https://github.com/Blackrush/vim-gocode.git

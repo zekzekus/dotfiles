@@ -98,3 +98,6 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 #bindkey -v
+#
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
