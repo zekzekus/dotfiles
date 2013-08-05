@@ -4,8 +4,7 @@ set -x PATH /usr/local/opt/ruby/bin $PATH
 
 set -x EDITOR /usr/local/bin/vim
 
-. $CONFIGDIR/bundle/virtualfish/virtual.fish
-
+# no greeting
 set fish_greeting
 
 # Fish git prompt
@@ -21,15 +20,5 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '↑'
 set __fish_git_prompt_char_upstream_behind '↓'
 
-
-function fish_prompt
-  set last_status $status
-
-  set_color $fish_color_cwd
-  printf '%s' (prompt_pwd)
-  set_color normal
-
-  printf '%s ' (__fish_git_prompt)
-
-  set_color normal
-end
+# load external submodules
+. $CONFIGDIR/bundle/virtualfish/virtual.fish
