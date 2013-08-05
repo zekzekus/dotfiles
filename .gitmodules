@@ -100,3 +100,6 @@
 [submodule "vim/vimfiles/bundle/vim-gocode"]
 	path = vim/vimfiles/bundle/vim-gocode
 	url = https://github.com/Blackrush/vim-gocode.git
+[submodule "config/fish/bundle/virtualfish"]
+	path = config/fish/bundle/virtualfish
+	url = https://github.com/adambrenecki/virtualfish.git

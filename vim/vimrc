@@ -37,7 +37,7 @@ set number
 set norelativenumber
 
 set undofile
-set shell=/bin/zsh
+set shell=/bin/fish
 set lazyredraw
 set matchtime=3
 
