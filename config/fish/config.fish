@@ -22,3 +22,5 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 # load external submodules
 . $CONFIGDIR/bundle/virtualfish/virtual.fish
+
+fortune computers
