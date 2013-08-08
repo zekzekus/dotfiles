@@ -2,8 +2,8 @@
 
 " Pathogen settings.
 filetype off
-call pathogen#helptags()
-call pathogen#incubate()
+execute pathogen#infect()
+execute pathogen#helptags()
 filetype plugin indent on
 
 " Make vim incompatbile to vi.

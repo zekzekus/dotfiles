@@ -103,3 +103,7 @@
 [submodule "config/fish/bundle/virtualfish"]
 	path = config/fish/bundle/virtualfish
 	url = https://github.com/adambrenecki/virtualfish.git
+[submodule "vim/vimfiles/bundle/slimv.vim"]
+	path = vim/vimfiles/bundle/slimv.vim
+	url = https://github.com/vim-scripts/slimv.vim.git
+    ignore = dirty
