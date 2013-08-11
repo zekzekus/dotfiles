@@ -34,3 +34,7 @@ Very basic conf
 ZSH Configuration
 -----------------
 Based on oh-my-zsh
+
+FISH Configuration
+------------------
+For now i am using fish shell
