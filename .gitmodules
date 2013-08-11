@@ -88,9 +88,6 @@
 [submodule "vim/vimfiles/bundle/supertab"]
 	path = vim/vimfiles/bundle/supertab
 	url = git@github.com:ervandew/supertab.git
-[submodule "vim/vimfiles/bundle/zencoding-vim"]
-	path = vim/vimfiles/bundle/zencoding-vim
-	url = http://github.com/mattn/zencoding-vim.git
 [submodule "vim/vimfiles/bundle/vim-easymotion"]
 	path = vim/vimfiles/bundle/vim-easymotion
 	url = git@github.com:Lokaltog/vim-easymotion.git
@@ -107,3 +104,6 @@
 	path = vim/vimfiles/bundle/slimv.vim
 	url = https://github.com/vim-scripts/slimv.vim.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/emmet-vim"]
+	path = vim/vimfiles/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
