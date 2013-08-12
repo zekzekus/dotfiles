@@ -110,3 +110,6 @@
 [submodule "vim/vimfiles/bundle/vim-repeat"]
 	path = vim/vimfiles/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/vimfiles/bundle/linediff.vim"]
+	path = vim/vimfiles/bundle/linediff.vim
+	url = https://github.com/AndrewRadev/linediff.vim.git
