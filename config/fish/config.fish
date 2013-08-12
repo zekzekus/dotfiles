@@ -2,6 +2,9 @@ set CONFIGDIR (dirname (status -f))
 set -x PATH /usr/local/bin $PATH
 set -x PATH /usr/local/opt/ruby/bin $PATH
 
+set -x GOPATH $HOME/go
+set -x PATH $GOPATH/bin $PATH
+
 set -x EDITOR /usr/local/bin/vim
 
 # no greeting
