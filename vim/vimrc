@@ -34,7 +34,7 @@ set laststatus=2
 
 "set relativenumber
 set number
-set norelativenumber
+set relativenumber
 
 set undofile
 "set shell=/usr/local/bin/fish
