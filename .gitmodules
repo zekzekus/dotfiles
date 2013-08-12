@@ -113,3 +113,4 @@
 [submodule "vim/vimfiles/bundle/linediff.vim"]
 	path = vim/vimfiles/bundle/linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim.git
+    ignore = dirty
