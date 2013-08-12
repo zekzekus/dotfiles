@@ -107,3 +107,6 @@
 [submodule "vim/vimfiles/bundle/emmet-vim"]
 	path = vim/vimfiles/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/vimfiles/bundle/vim-repeat"]
+	path = vim/vimfiles/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
