@@ -337,4 +337,6 @@ augroup programming_au
     autocmd BufEnter *.rss,*.atom,*.odrl setf xml
     autocmd BufEnter *.go setl noet ts=4 sts=4 sw=4
     autocmd BufEnter volofile setf javascript
-  augroup END
+augroup END
+
+set omnifunc=syntaxcomplete#Complete
