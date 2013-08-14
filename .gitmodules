@@ -105,3 +105,6 @@
 	path = vim/vimfiles/bundle/linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-golang"]
+	path = vim/vimfiles/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
