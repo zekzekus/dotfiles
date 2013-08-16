@@ -313,10 +313,12 @@ inoremap <leader>w <ESC>:w<CR>
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
 set path+=*/templates " for django versions 1.4 and higher
-set path+=static " static files directory for old django
-set path+=*/static " static files directory for 1.4 and higher django
-set path+=*/*/*/templates " specific for polar project structure
 set path+=*/*/templates
+set path+=*/*/*/templates " specific for polar project structure
+set path+=assets " for django versions < 1.4
+set path+=*/assets " for django versions 1.4 and higher
+set path+=*/*/assets
+set path+=*/*/*/assets " specific for polar project structure
 
 " easy switch to last edited buffer (alternate buffer)
 nnoremap <leader>, :b#<CR>
