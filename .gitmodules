@@ -109,3 +109,6 @@
 	path = vim/vimfiles/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-easymotion"]
+	path = vim/vimfiles/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
