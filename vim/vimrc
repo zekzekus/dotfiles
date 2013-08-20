@@ -20,7 +20,7 @@ set expandtab
 set encoding=utf-8
 set scrolloff=3
 set autoindent
-set showmode
+set noshowmode
 set showcmd
 set hidden
 set visualbell
@@ -343,3 +343,4 @@ augroup programming_au
 augroup END
 
 set omnifunc=syntaxcomplete#Complete
+let g:airline_powerline_fonts=1
