@@ -142,7 +142,7 @@ au VimResized * :wincmd =
 
 " Wildmenu completion "
 set wildmenu
-set wildmode=list:longest
+set wildmode=full "list:longest
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
