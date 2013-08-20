@@ -343,4 +343,3 @@ augroup programming_au
 augroup END
 
 set omnifunc=syntaxcomplete#Complete
-let g:airline_powerline_fonts=1
