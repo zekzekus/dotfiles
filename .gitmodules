@@ -115,3 +115,4 @@
 [submodule "vim/vimfiles/bundle/vim-airline"]
 	path = vim/vimfiles/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+    ignore = dirty
