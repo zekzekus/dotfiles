@@ -116,3 +116,7 @@
 	path = vim/vimfiles/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-bufferline"]
+	path = vim/vimfiles/bundle/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git
+    ignore = dirty
