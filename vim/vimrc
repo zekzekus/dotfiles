@@ -344,3 +344,6 @@ augroup END
 
 set omnifunc=syntaxcomplete#Complete
 let g:bufferline_solo_highlight = 1
+
+au InsertEnter * set nocursorcolumn
+au InsertLeave * set cursorcolumn
