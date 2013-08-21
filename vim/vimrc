@@ -20,7 +20,7 @@ set expandtab
 set encoding=utf-8
 set scrolloff=3
 set autoindent
-set noshowmode
+set showmode
 set showcmd
 set hidden
 set visualbell
