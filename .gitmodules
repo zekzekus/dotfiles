@@ -112,10 +112,6 @@
 [submodule "vim/vimfiles/bundle/vim-easymotion"]
 	path = vim/vimfiles/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
-[submodule "vim/vimfiles/bundle/vim-airline"]
-	path = vim/vimfiles/bundle/vim-airline
-	url = https://github.com/bling/vim-airline
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-bufferline"]
 	path = vim/vimfiles/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
