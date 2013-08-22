@@ -42,7 +42,7 @@ fpath=($HOME/.zsh/func $fpath)
 typeset -U fpath
 
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/devel/projects
+#export PROJECT_HOME=$HOME/devel/projects
 source /usr/local/bin/virtualenvwrapper.sh
 export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:$PATH
 
