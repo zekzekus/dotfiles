@@ -111,7 +111,13 @@ nnoremap ; :
 vnoremap ; :
 
 " Set vim to save the file on focus out.
-au FocusLost * :wa
+augroup file_operation
+  autocmd!
+  autocmd FocusLost * :wa
+  autocmd VimResized * :wincmd =
+  " Source the vimrc file after saving it
+  autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
 
 " Adding More Shorcuts keys using leader kye.
 " Leader Kye provide separate namespace for specific commands.
@@ -134,12 +140,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " jj For Qicker Escaping between normal and editing mode.
 inoremap jj <ESC>
 
-
-" Working with split screen nicely
-" Resize Split When the window is resized"
-au VimResized * :wincmd =
-
-
 " Wildmenu completion "
 set wildmenu
 set wildmode=full "list:longest
@@ -159,8 +159,8 @@ set wildignore+=build
 
 " Make Sure that Vim returns to the same line when we reopen a file"
 augroup line_return
-    au!
-    au BufReadPost *
+    autocmd!
+    autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \ execute 'normal! g`"zvzz' |
         \ endif
@@ -191,8 +191,6 @@ endif
 set background=dark
 colorscheme solarized
 
-" Source the vimrc file after saving it
-autocmd bufwritepost .vimrc source ~/.vimrc
 
 " ========== END Gvim Settings ==========
 
@@ -277,9 +275,6 @@ nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>y :CtrlPBufTag<CR>
 
-autocmd FileType python set ft=python.django " For SnipMate
-autocmd FileType html set ft=htmldjango " For SnipMate
-
 " file extensions for file jump
 set suffixesadd+=.html
 
@@ -292,7 +287,6 @@ set foldmethod=indent
 set foldlevel=99
 
 " lets use supertab for completion
-au FileType python set omnifunc=jedi#complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
@@ -340,10 +334,18 @@ augroup programming_au
     autocmd BufEnter *.rss,*.atom,*.odrl setf xml
     autocmd BufEnter *.go setl noet ts=4 sts=4 sw=4
     autocmd BufEnter volofile setf javascript
+    autocmd FileType python set ft=python.django " For SnipMate
+    autocmd FileType python set omnifunc=jedi#complete
+    autocmd FileType html set ft=htmldjango " For SnipMate
+    autocmd InsertEnter * set nocursorcolumn
+    autocmd InsertLeave * set cursorcolumn
 augroup END
 
 set omnifunc=syntaxcomplete#Complete
 let g:bufferline_solo_highlight = 1
 
-au InsertEnter * set nocursorcolumn
-au InsertLeave * set cursorcolumn
+
+" make word uppercase and continue editing
+inoremap <c-u> <esc>gUiw`]a
+" make word under the cursor uppercase
+nnoremap <c-u> gUiw
