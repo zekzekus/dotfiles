@@ -142,7 +142,7 @@ inoremap jj <ESC>
 
 " Wildmenu completion "
 set wildmenu
-set wildmode=full "list:longest
+set wildmode=list:longest
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
