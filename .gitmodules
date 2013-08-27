@@ -115,3 +115,6 @@
 [submodule "zek-airline"]
 	path = vim/vimfiles/bundle/vim-airline
 	url = git@github.com:zekzekus/vim-airline.git
+[submodule "vim/vimfiles/bundle/vim-bufferline"]
+	path = vim/vimfiles/bundle/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git
