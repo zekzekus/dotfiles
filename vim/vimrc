@@ -238,7 +238,7 @@ set nobackup
 set noswapfile
 
 " my new favorite monospace font for coding
-set guifont=Monaco:h15
+set guifont=Literation\ Mono\ Powerline:h16
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
