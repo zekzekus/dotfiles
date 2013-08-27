@@ -20,7 +20,7 @@ set expandtab
 set encoding=utf-8
 set scrolloff=3
 set autoindent
-set showmode
+set noshowmode
 set showcmd
 set hidden
 set visualbell
@@ -324,7 +324,6 @@ runtime macros/matchit.vim
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-let g:airline_theme='simple'
 
 augroup programming_au
     autocmd!
@@ -349,3 +348,7 @@ let g:bufferline_solo_highlight = 1
 inoremap <c-u> <esc>gUiw`]a
 " make word under the cursor uppercase
 nnoremap <c-u> gUiw
+
+" airline configuration
+let g:airline_powerline_fonts=1
+let g:airline#extensions#virtualenv#enabled = 1
