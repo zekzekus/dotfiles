@@ -13,13 +13,13 @@ due to your very personal taste of preferences.
 
 Installation steps for who loves risky stuff.
 
-- clone the repo 
-- make a symbolic link of REPO__PATH/vim/vimfiles to ~/.vim
-- make a symbolic link of REPO__PATH/vim/vimrc ~/.vimrc
+- clone the repo.
+- run `git submodule update --init --recursive` command to fetch and update all submodules.
+- make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
+- make a symbolic link of REPO_PATH/vim/vimrc ~/.vimrc
 - follow installation process for excellent [pathogen](https://github.com/tpope/vim-pathogen) plugin
 - install necessary external programs. as i remember:
-    - jedi from pip. `pip install jedi` this is a python tool. autocompletion,
-      go to definition, rename refactoring etc.
+    - there is no need to install jedi python library if you update git submodules recursively. This will fetch jedi library. 
     - flake8 for syntax checks. `pip install flake8` used by sytastic plugin. 
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
 install
@@ -38,3 +38,5 @@ Based on oh-my-zsh
 FISH Configuration
 ------------------
 For now i am using fish shell
+
+All conf files are meant to be symlinked to proper place. 
