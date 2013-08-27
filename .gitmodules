@@ -112,3 +112,6 @@
 [submodule "vim/vimfiles/bundle/vim-easymotion"]
 	path = vim/vimfiles/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "zek-airline"]
+	path = vim/vimfiles/bundle/vim-airline
+	url = git@github.com:zekzekus/vim-airline.git
