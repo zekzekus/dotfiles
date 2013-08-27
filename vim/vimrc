@@ -352,3 +352,4 @@ nnoremap <c-u> gUiw
 " airline configuration
 let g:airline_powerline_fonts=1
 let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
