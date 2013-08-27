@@ -342,7 +342,7 @@ augroup END
 
 set omnifunc=syntaxcomplete#Complete
 let g:bufferline_solo_highlight = 1
-
+let g:bufferline_echo = 0
 
 " make word uppercase and continue editing
 inoremap <c-u> <esc>gUiw`]a
