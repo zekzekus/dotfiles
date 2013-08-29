@@ -56,7 +56,7 @@
     ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-statline"]
 	path = vim/vimfiles/bundle/vim-statline
-	url = git@github.com:zekzekus/vim-statline.git
+	url = https://github.com/zekzekus/vim-statline.git
     ignore = dirty
 [submodule "vim/vimfiles/bundle/ack.vim"]
 	path = vim/vimfiles/bundle/ack.vim
@@ -64,11 +64,11 @@
     ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-colorschemes"]
 	path = vim/vimfiles/bundle/vim-colorschemes
-	url = git@github.com:flazz/vim-colorschemes.git
+	url = https://github.com/flazz/vim-colorschemes.git
     ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-snipmate"]
 	path = vim/vimfiles/bundle/vim-snipmate
-	url = git@github.com:garbas/vim-snipmate.git
+	url = https://github.com/garbas/vim-snipmate.git
 [submodule "vim/vimfiles/bundle/tlib_vim"]
 	path = vim/vimfiles/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
@@ -81,10 +81,10 @@
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/vimfiles/bundle/vim-unimpaired"]
 	path = vim/vimfiles/bundle/vim-unimpaired
-	url = git@github.com:tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/vimfiles/bundle/vim-snippets"]
 	path = vim/vimfiles/bundle/vim-snippets
-	url = git@github.com:honza/vim-snippets.git
+	url = https://github.com/honza/vim-snippets.git
 [submodule "vim/vimfiles/bundle/supertab"]
 	path = vim/vimfiles/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -114,7 +114,7 @@
 	url = https://github.com/Lokaltog/vim-easymotion.git
 [submodule "zek-airline"]
 	path = vim/vimfiles/bundle/vim-airline
-	url = git@github.com:zekzekus/vim-airline.git
+	url = https://github.com/zekzekus/vim-airline.git
 [submodule "vim/vimfiles/bundle/vim-bufferline"]
 	path = vim/vimfiles/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
