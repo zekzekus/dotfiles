@@ -119,3 +119,12 @@
 	path = vim/vimfiles/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-orgmode"]
+	path = vim/vimfiles/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+[submodule "vim/vimfiles/bundle/vim-speeddating"]
+	path = vim/vimfiles/bundle/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "vim/vimfiles/bundle/calendar-vim"]
+	path = vim/vimfiles/bundle/calendar-vim
+	url = https://github.com/mattn/calendar-vim.git
