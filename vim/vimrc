@@ -353,3 +353,6 @@ nnoremap <c-u> gUiw
 let g:airline_powerline_fonts=1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
+
+" org-mode settings
+let g:org_agenda_files=["~/devel/projects/personal/todos/*/*/main.org"]
