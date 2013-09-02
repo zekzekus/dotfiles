@@ -356,3 +356,22 @@ let g:airline#extensions#tagbar#enabled = 0
 
 " org-mode settings
 let g:org_agenda_files=["~/devel/projects/personal/todos/*/*/main.org"]
+
+" signify settings
+let g:signify_sign_add               = '+'
+let g:signify_sign_change            = '!'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_cursorhold_normal = 1
+let g:signify_cursorhold_insert = 1
+" highlight lines in Sy and vimdiff etc.)
+
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+
+" highlight signs in Sy
+
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227

@@ -128,3 +128,6 @@
 [submodule "vim/vimfiles/bundle/calendar-vim"]
 	path = vim/vimfiles/bundle/calendar-vim
 	url = https://github.com/mattn/calendar-vim.git
+[submodule "vim/vimfiles/bundle/vim-signify"]
+	path = vim/vimfiles/bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
