@@ -358,6 +358,7 @@ let g:airline#extensions#tagbar#enabled = 0
 let g:org_agenda_files=["~/devel/projects/personal/todos/*/*/main.org"]
 
 " signify settings
+let g:signify_disable_by_default = 1
 let g:signify_sign_add               = '+'
 let g:signify_sign_change            = '!'
 let g:signify_sign_delete            = '_'
