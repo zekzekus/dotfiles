@@ -334,7 +334,7 @@ augroup programming_au
     autocmd BufEnter *.go setl noet ts=4 sts=4 sw=4
     autocmd BufEnter volofile setf javascript
     autocmd FileType python set ft=python.django " For SnipMate
-    autocmd FileType python set omnifunc=jedi#complete
+    "autocmd FileType python set omnifunc=jedi#complete
     autocmd FileType html set ft=htmldjango " For SnipMate
     autocmd InsertEnter * set nocursorcolumn
     autocmd InsertLeave * set cursorcolumn
