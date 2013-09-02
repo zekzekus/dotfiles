@@ -238,7 +238,7 @@ set nobackup
 set noswapfile
 
 " my new favorite monospace font for coding
-set guifont=Literation\ Mono\ Powerline:h16
+set guifont=Monaco:h15
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
@@ -350,9 +350,16 @@ inoremap <c-u> <esc>gUiw`]a
 nnoremap <c-u> gUiw
 
 " airline configuration
-let g:airline_powerline_fonts=1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
+" unicode symbols
+let g:airline_symbols = {}
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " org-mode settings
 let g:org_agenda_files=["~/devel/projects/personal/todos/*/*/main.org"]
