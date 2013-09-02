@@ -62,10 +62,6 @@
 	path = vim/vimfiles/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/vim-colorschemes"]
-	path = vim/vimfiles/bundle/vim-colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-snipmate"]
 	path = vim/vimfiles/bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate.git
@@ -91,10 +87,6 @@
 [submodule "config/fish/bundle/virtualfish"]
 	path = config/fish/bundle/virtualfish
 	url = https://github.com/adambrenecki/virtualfish.git
-[submodule "vim/vimfiles/bundle/slimv.vim"]
-	path = vim/vimfiles/bundle/slimv.vim
-	url = https://github.com/vim-scripts/slimv.vim.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/emmet-vim"]
 	path = vim/vimfiles/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
@@ -119,15 +111,3 @@
 	path = vim/vimfiles/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/vim-orgmode"]
-	path = vim/vimfiles/bundle/vim-orgmode
-	url = https://github.com/jceb/vim-orgmode.git
-[submodule "vim/vimfiles/bundle/vim-speeddating"]
-	path = vim/vimfiles/bundle/vim-speeddating
-	url = https://github.com/tpope/vim-speeddating.git
-[submodule "vim/vimfiles/bundle/calendar-vim"]
-	path = vim/vimfiles/bundle/calendar-vim
-	url = https://github.com/mattn/calendar-vim.git
-[submodule "vim/vimfiles/bundle/vim-signify"]
-	path = vim/vimfiles/bundle/vim-signify
-	url = https://github.com/mhinz/vim-signify.git
