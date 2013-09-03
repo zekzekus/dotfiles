@@ -104,6 +104,7 @@
 [submodule "zek-airline"]
 	path = vim/vimfiles/bundle/vim-airline
 	url = https://github.com/zekzekus/vim-airline.git
+    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-bufferline"]
 	path = vim/vimfiles/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
@@ -111,3 +112,4 @@
 [submodule "zek-snippets"]
 	path = vim/vimfiles/bundle/vim-snippets
 	url = git@github.com:zekzekus/vim-snippets.git
+    ignore = dirty
