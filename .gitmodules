@@ -78,9 +78,6 @@
 [submodule "vim/vimfiles/bundle/vim-unimpaired"]
 	path = vim/vimfiles/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/vimfiles/bundle/vim-snippets"]
-	path = vim/vimfiles/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "vim/vimfiles/bundle/supertab"]
 	path = vim/vimfiles/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
