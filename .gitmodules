@@ -108,3 +108,6 @@
 	path = vim/vimfiles/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
     ignore = dirty
+[submodule "zek-snippets"]
+	path = vim/vimfiles/bundle/vim-snippets
+	url = git@github.com:zekzekus/vim-snippets.git
