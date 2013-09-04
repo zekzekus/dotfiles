@@ -3,24 +3,23 @@ My Personal Configuration Files
 
 VIM Configuration
 -----------------
-Based on instructions [here](http://haridas.in/vim-as-your-ide.html). Pathogen
-must be installed.
+Based on instructions [here](http://haridas.in/vim-as-your-ide.html).
 
 My first and most useful suggestion is this: BUILD YOUR OWN SET OF VIM
 CONFIGURATION!! I strongly recommend [this](http://mislav.uniqpath.com/2011/12/vim-revisited/) article to start with a minimum
 set of configuration options. Than build your editing environment inrementally
-due to your very personal taste of preferences. 
+due to your very personal taste of preferences.
 
 Installation steps for who loves risky stuff.
 
 - clone the repo.
 - run `git submodule update --init --recursive` command to fetch and update all submodules.
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
-- make a symbolic link of REPO_PATH/vim/vimrc ~/.vimrc
-- follow installation process for excellent [pathogen](https://github.com/tpope/vim-pathogen) plugin
+- make a symbolic link of REPO_PATH/vim/vimrc to ~/.vimrc
+- follow installation process of [pathogen](https://github.com/tpope/vim-pathogen) plugin
 - install necessary external programs. as i remember:
-    - there is no need to install jedi python library if you update git submodules recursively. This will fetch jedi library. 
-    - flake8 for syntax checks. `pip install flake8` used by sytastic plugin. 
+    - there is no need to install jedi python library if you update git submodules recursively. This will fetch jedi library.
+    - flake8 for syntax checks. `pip install flake8` used by sytastic plugin.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
 install
 
@@ -29,14 +28,25 @@ these are not sufficient, please warn me.
 
 TMUX Configuration
 ------------------
-Very basic conf
+Very basic conf.
+- For Mac OS X --> `brew install reattach-to-user-namespace`
+- For Ubuntu/Linux --> `sudo aptitude install xsel`
+- Symbolic link tmux/tmux.conf or tmux/tmux.ubuntu.conf to ~/.tmux.conf based on your
+  platform choice.
+- Check and modify shell command based preference. Default is zsh for now.
 
 ZSH Configuration
 -----------------
-Based on oh-my-zsh
+Based on oh-my-zsh.
+- Install zsh `brew install zsh` or `sudo aptitude install zsh` based on your platform.
+- Install [Oh My Zsh!](https://github.com/robbyrussell/oh-my-zsh).
+- Rename ~/.zshrc to ~/.zshrc_backup
+- Symbolic link zsh/zshrc to ~/.zshrc
+- Default theme is my own customization to norm theme. If you want to use it,
+  you must make a symbolic link zsh/oh-my-zsh/themes/normz.zsh-theme to
+  ~/.oh-my-zsh/themes directory.
 
 FISH Configuration
 ------------------
-For now i am using fish shell
 
-All conf files are meant to be symlinked to proper place. 
+All conf files are meant to be symlinked to proper places.
