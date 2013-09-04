@@ -332,6 +332,8 @@ augroup programming_au
     autocmd FileType snippet,snippets setlocal noexpandtab
     autocmd BufEnter *.rss,*.atom,*.odrl setf xml
     autocmd BufEnter *.go setl noet ts=4 sts=4 sw=4
+    autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
+    autocmd BufEnter plsql setl ts=2 sts=2 sw=2
     autocmd BufEnter volofile setf javascript
     autocmd FileType python set ft=python.django " For SnipMate
     "autocmd FileType python set omnifunc=jedi#complete
