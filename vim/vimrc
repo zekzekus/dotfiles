@@ -202,10 +202,10 @@ nnoremap <C-n> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
 
 " easier window navigation
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
 
 " Tagbar key bindings."
 nmap <leader>l <ESC>:TagbarToggle<cr>
@@ -362,3 +362,6 @@ let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" vitality
+let g:vitality_fix_focus=0

@@ -113,3 +113,6 @@
 	path = vim/vimfiles/bundle/vim-snippets
 	url = git@github.com:zekzekus/vim-snippets.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-tmux-navigator"]
+	path = vim/vimfiles/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
