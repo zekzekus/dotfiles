@@ -113,7 +113,7 @@ vnoremap ; :
 " Set vim to save the file on focus out.
 augroup file_operation
   autocmd!
-  autocmd FocusLost * :wa
+  "autocmd FocusLost * :wa
   autocmd VimResized * :wincmd =
   " Source the vimrc file after saving it
   autocmd bufwritepost .vimrc source ~/.vimrc
