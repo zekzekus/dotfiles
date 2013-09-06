@@ -102,3 +102,4 @@ bindkey '^Xe' edit-command-line
 #
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+. /usr/local/etc/profile.d/z.sh
