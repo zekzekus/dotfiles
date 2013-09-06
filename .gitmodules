@@ -30,10 +30,6 @@
 	path = vim/vimfiles/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/nerdcommenter"]
-	path = vim/vimfiles/bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/gundo.vim"]
 	path = vim/vimfiles/bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
