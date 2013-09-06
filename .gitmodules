@@ -107,3 +107,6 @@
 [submodule "vim/vimfiles/bundle/vim-golang"]
 	path = vim/vimfiles/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "vim/vimfiles/bundle/vim-cimmnetary"]
+	path = vim/vimfiles/bundle/vim-cimmnetary
+	url = https://github.com/tpope/vim-commentary.git
