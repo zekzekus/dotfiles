@@ -26,10 +26,6 @@
 	path = vim/vimfiles/bundle/vim-virtualenv
 	url = git://github.com/jmcantrell/vim-virtualenv.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/vimerl"]
-	path = vim/vimfiles/bundle/vimerl
-	url = git://github.com/jimenezrick/vimerl.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/ctrlp.vim"]
 	path = vim/vimfiles/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
@@ -93,10 +89,6 @@
 [submodule "vim/vimfiles/bundle/linediff.vim"]
 	path = vim/vimfiles/bundle/linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim.git
-    ignore = dirty
-[submodule "vim/vimfiles/bundle/vim-golang"]
-	path = vim/vimfiles/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang.git
     ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-easymotion"]
 	path = vim/vimfiles/bundle/vim-easymotion
