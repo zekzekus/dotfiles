@@ -106,3 +106,6 @@
 [submodule "vim/vimfiles/bundle/vim-cimmnetary"]
 	path = vim/vimfiles/bundle/vim-cimmnetary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/vimfiles/bundle/vimerl"]
+	path = vim/vimfiles/bundle/vimerl
+	url = https://github.com/jimenezrick/vimerl.git
