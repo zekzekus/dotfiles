@@ -159,8 +159,8 @@ set wildignore+=build
 
 " Make Sure that Vim returns to the same line when we reopen a file"
 augroup line_return
-    autocmd!
-    autocmd BufReadPost *
+  autocmd!
+  autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \ execute 'normal! g`"zvzz' |
         \ endif
@@ -175,20 +175,20 @@ nnoremap g; g;zz
 
 " Removing scrollbars
 if has("gui_running")
-    set guitablabel=%-0.12t%M
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions+=a
-    set guioptions-=m
+  set guitablabel=%-0.12t%M
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions+=a
+  set guioptions-=m
 endif
 
 " Special Settings for Consoles
 if !has("gui_running")
-    set t_Co=256
+  set t_Co=256
+  set background=dark
 endif
 
-set background=dark
 colorscheme solarized
 
 
@@ -221,7 +221,7 @@ syntax on
 " now i use reattach-to-user-namespace with conjuction
 " of tmux conf i can copy and paste from/to system clipboard
 "if $TMUX == ''
-    "set clipboard+=unnamed
+"set clipboard+=unnamed
 "endif
 set clipboard=unnamed
 
@@ -247,11 +247,11 @@ let g:virtualenv_stl_format = '[%n]'
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
 function! ToggleBg()
-    if &background == 'dark'
-        set bg=light
-    else
-        set bg=dark
-    endif
+  if &background == 'dark'
+    set bg=light
+  else
+    set bg=dark
+  endif
 endfunc
 
 " sytastic checks on file open
@@ -326,20 +326,20 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 augroup programming_au
-    autocmd!
-    autocmd FileType ruby,vim,jade,stylus,javascript setl ts=2 sts=2 sw=2
-    autocmd FileType html setl nowrap
-    autocmd FileType snippet,snippets setlocal noexpandtab
-    autocmd BufEnter *.rss,*.atom,*.odrl setf xml
-    autocmd BufEnter *.go setl noet ts=4 sts=4 sw=4
-    autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
-    autocmd BufEnter plsql setl ts=2 sts=2 sw=2
-    autocmd BufEnter volofile setf javascript
-    autocmd FileType python set ft=python.django " For SnipMate
-    "autocmd FileType python set omnifunc=jedi#complete
-    autocmd FileType html set ft=htmldjango " For SnipMate
-    autocmd InsertEnter * set nocursorcolumn
-    autocmd InsertLeave * set cursorcolumn
+  autocmd!
+  autocmd FileType ruby,vim,jade,stylus,javascript setl ts=2 sts=2 sw=2
+  autocmd FileType html setl nowrap
+  autocmd FileType snippet,snippets setlocal noexpandtab
+  autocmd BufEnter *.rss,*.atom,*.odrl setf xml
+  autocmd BufEnter *.go setl noet ts=4 sts=4 sw=4
+  autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
+  autocmd BufEnter plsql setl ts=2 sts=2 sw=2
+  autocmd BufEnter volofile setf javascript
+  autocmd FileType python set ft=python.django " For SnipMate
+  "autocmd FileType python set omnifunc=jedi#complete
+  autocmd FileType html set ft=htmldjango " For SnipMate
+  autocmd InsertEnter * set nocursorcolumn
+  autocmd InsertLeave * set cursorcolumn
 augroup END
 
 "set omnifunc=syntaxcomplete#Complete

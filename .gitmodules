@@ -109,3 +109,6 @@
 [submodule "vim/vimfiles/bundle/vimerl"]
 	path = vim/vimfiles/bundle/vimerl
 	url = https://github.com/jimenezrick/vimerl.git
+[submodule "vim/vimfiles/bundle/vim-colorschemes"]
+	path = vim/vimfiles/bundle/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
