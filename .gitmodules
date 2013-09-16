@@ -95,7 +95,7 @@
     ignore = dirty
 [submodule "zek-snippets"]
 	path = vim/vimfiles/bundle/vim-snippets
-	url = git@github.com:zekzekus/vim-snippets.git
+	url = https://github.com/zekzekus/vim-snippets.git
     ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-tmux-navigator"]
 	path = vim/vimfiles/bundle/vim-tmux-navigator
