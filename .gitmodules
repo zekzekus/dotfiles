@@ -112,9 +112,6 @@
 [submodule "vim/vimfiles/bundle/vim-colorschemes"]
 	path = vim/vimfiles/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "vim/vimfiles/bundle/bufexplorer"]
-	path = vim/vimfiles/bundle/bufexplorer
-	url = https://github.com/corntrace/bufexplorer.git
 [submodule "vim/vimfiles/bundle/nerdtree"]
 	path = vim/vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
