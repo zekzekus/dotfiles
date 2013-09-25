@@ -118,3 +118,6 @@
 [submodule "zsh/oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vim/vimfiles/bundle/base16-vim"]
+	path = vim/vimfiles/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
