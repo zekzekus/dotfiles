@@ -26,7 +26,6 @@ set hidden
 set visualbell
 
 set cursorline
-set cursorcolumn
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -186,10 +185,10 @@ endif
 " Special Settings for Consoles
 if !has("gui_running")
   set t_Co=256
-  set background=dark
 endif
 
 colorscheme solarized
+set background=dark
 
 
 " ========== END Gvim Settings ==========
@@ -338,8 +337,6 @@ augroup programming_au
   autocmd FileType python set ft=python.django " For SnipMate
   "autocmd FileType python set omnifunc=jedi#complete
   autocmd FileType html set ft=htmldjango " For SnipMate
-  autocmd InsertEnter * set nocursorcolumn
-  autocmd InsertLeave * set cursorcolumn
 augroup END
 
 "set omnifunc=syntaxcomplete#Complete
