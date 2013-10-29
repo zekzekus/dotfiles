@@ -127,6 +127,7 @@
 [submodule "vim/vimfiles/bundle/vim-clojure-static"]
 	path = vim/vimfiles/bundle/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
+    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-fireplace"]
 	path = vim/vimfiles/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
@@ -139,3 +140,6 @@
 [submodule "vim/vimfiles/bundle/vimproc.vim"]
 	path = vim/vimfiles/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "vim/vimfiles/bundle/ghcmod-vim"]
+	path = vim/vimfiles/bundle/ghcmod-vim
+	url = https://github.com/eagletmt/ghcmod-vim.git
