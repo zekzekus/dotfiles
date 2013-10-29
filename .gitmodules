@@ -124,3 +124,9 @@
 [submodule "vim/vimfiles/bundle/ag.vim"]
 	path = vim/vimfiles/bundle/ag.vim
 	url = https://github.com/rking/ag.vim.git
+[submodule "vim/vimfiles/bundle/vim-clojure-static"]
+	path = vim/vimfiles/bundle/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static.git
+[submodule "vim/vimfiles/bundle/vim-fireplace"]
+	path = vim/vimfiles/bundle/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace.git
