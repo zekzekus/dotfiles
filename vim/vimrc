@@ -106,8 +106,8 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 " Map : to ; also in command mode.
-nnoremap ; :
-vnoremap ; :
+" nnoremap ; :
+" vnoremap ; :
 
 " Set vim to save the file on focus out.
 augroup file_operation
