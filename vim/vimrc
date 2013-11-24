@@ -85,18 +85,18 @@ set listchars=tab:▸\ ,eol:¬
 
 " Naviagations using keys up/down/left/right
 " Disabling default keys to learn the hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-vnoremap <left> <nop>
-vnoremap <right> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+" vnoremap <up> <nop>
+" vnoremap <down> <nop>
+" vnoremap <left> <nop>
+" vnoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
@@ -266,7 +266,7 @@ let g:jedi#use_tabs_not_buffers = 0
 nnoremap <leader>V :VirtualEnvActivate 
 
 " i wanna used to use jj keys to return normal mode
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 
 " ctrl-p plugin options
 let g:ctrlp_max_height = 30
