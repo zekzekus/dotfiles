@@ -339,6 +339,7 @@ augroup programming_au
   autocmd FileType python set ft=python.django " For SnipMate
   "autocmd FileType python set omnifunc=jedi#complete
   autocmd FileType html set ft=htmldjango " For SnipMate
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
 "set omnifunc=syntaxcomplete#Complete
