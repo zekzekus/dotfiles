@@ -345,6 +345,8 @@ augroup END
 "set omnifunc=syntaxcomplete#Complete
 let g:bufferline_solo_highlight = 1
 let g:bufferline_echo = 0
+let g:bufferline_rotate = 1
+let g:bufferline_fixed_index = -1 "always last
 
 " make word uppercase and continue editing
 inoremap <c-u> <esc>gUiw`]a
