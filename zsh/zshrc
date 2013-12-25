@@ -61,6 +61,7 @@ unsetopt correct_all
 
 alias mux=tmuxinator
 
+bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^r' history-incremental-search-backward
 bindkey '^p' up-line-or-history
