@@ -62,13 +62,13 @@ unsetopt correct_all
 alias mux=tmuxinator
 
 # bindkey -v
-# bindkey -M viins 'jj' vi-cmd-mode
-# bindkey '^r' history-incremental-search-backward
-# bindkey '^p' up-line-or-history
-# bindkey '^n' down-line-or-history
-# autoload edit-command-line
-# zle -N edit-command-line
-# bindkey '^Xe' edit-command-line
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey '^r' history-incremental-search-backward
+bindkey '^p' up-line-or-history
+bindkey '^n' down-line-or-history
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
 #
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
