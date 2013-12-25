@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew git-extras osx pip sublime vagrant tmux tmuxinator node npm web-search docker zsh-syntax-highlighting lein)
+plugins=(autopep8 bower brew cabal celery coffee fabric gem git git-extras lein node npm osx pep8 python redis-cli rvm sbt tmux tmuxinator vagrant vi-mode virtualenvwrapper zsh-syntax-highlghting)
 
 source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
@@ -61,14 +61,14 @@ unsetopt correct_all
 
 alias mux=tmuxinator
 
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey '^r' history-incremental-search-backward
-bindkey '^p' up-line-or-history
-bindkey '^n' down-line-or-history
-autoload edit-command-line
-zle -N edit-command-line
-bindkey '^Xe' edit-command-line
+# bindkey -v
+# bindkey -M viins 'jj' vi-cmd-mode
+# bindkey '^r' history-incremental-search-backward
+# bindkey '^p' up-line-or-history
+# bindkey '^n' down-line-or-history
+# autoload edit-command-line
+# zle -N edit-command-line
+# bindkey '^Xe' edit-command-line
 #
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
