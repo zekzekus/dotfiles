@@ -139,3 +139,6 @@
 [submodule "vim/vimfiles/bundle/neco-ghc"]
 	path = vim/vimfiles/bundle/neco-ghc
 	url = https://github.com/eagletmt/neco-ghc.git
+[submodule "vim/vimfiles/bundle/vim-signify"]
+	path = vim/vimfiles/bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
