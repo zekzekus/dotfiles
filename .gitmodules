@@ -104,9 +104,6 @@
 [submodule "vim/vimfiles/bundle/vim-colorschemes"]
 	path = vim/vimfiles/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "vim/vimfiles/bundle/nerdtree"]
-	path = vim/vimfiles/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "zsh/oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
