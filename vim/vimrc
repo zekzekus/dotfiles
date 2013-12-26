@@ -198,8 +198,8 @@ set background=dark
 " ========== Plugin Settings =========="
 
 " Mapping to NERDTree
-nnoremap <C-n> :NERDTreeToggle<cr>
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
+" nnoremap <C-n> :NERDTreeToggle<cr>
+" let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
 
 " easier window navigation
 "nnoremap <C-l> <C-w>l
