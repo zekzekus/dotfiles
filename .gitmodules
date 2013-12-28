@@ -142,3 +142,6 @@
 [submodule "vim/vimfiles/bundle/vim-vinegar"]
 	path = vim/vimfiles/bundle/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule "vim/vimfiles/bundle/vim-gocode"]
+	path = vim/vimfiles/bundle/vim-gocode
+	url = https://github.com/Blackrush/vim-gocode
