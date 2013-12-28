@@ -139,9 +139,9 @@
 [submodule "vim/vimfiles/bundle/vim-signify"]
 	path = vim/vimfiles/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
-[submodule "vim/vimfiles/bundle/vim-vinegar"]
-	path = vim/vimfiles/bundle/vim-vinegar
-	url = https://github.com/tpope/vim-vinegar.git
 [submodule "vim/vimfiles/bundle/vim-gocode"]
 	path = vim/vimfiles/bundle/vim-gocode
 	url = https://github.com/Blackrush/vim-gocode
+[submodule "vim/vimfiles/bundle/nerdtree"]
+	path = vim/vimfiles/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
