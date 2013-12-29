@@ -151,3 +151,6 @@
 [submodule "vim/vimfiles/bundle/elixir-snippets"]
 	path = vim/vimfiles/bundle/elixir-snippets
 	url = https://github.com/carlosgaldino/elixir-snippets.git
+[submodule "vim/vimfiles/bundle/vim-lfe"]
+	path = vim/vimfiles/bundle/vim-lfe
+	url = https://github.com/lfe/vim-lfe.git
