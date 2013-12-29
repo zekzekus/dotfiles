@@ -145,3 +145,9 @@
 [submodule "vim/vimfiles/bundle/nerdtree"]
 	path = vim/vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/vimfiles/bundle/vim-elixir"]
+	path = vim/vimfiles/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "vim/vimfiles/bundle/elixir-snippets"]
+	path = vim/vimfiles/bundle/elixir-snippets
+	url = https://github.com/carlosgaldino/elixir-snippets.git
