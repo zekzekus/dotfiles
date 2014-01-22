@@ -142,6 +142,7 @@
 [submodule "vim/vimfiles/bundle/vim-gocode"]
 	path = vim/vimfiles/bundle/vim-gocode
 	url = https://github.com/Blackrush/vim-gocode
+    ignore = dirty
 [submodule "vim/vimfiles/bundle/nerdtree"]
 	path = vim/vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
