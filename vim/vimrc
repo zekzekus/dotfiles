@@ -137,7 +137,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " jj For Qicker Escaping between normal and editing mode.
-inoremap jj <ESC>
+" inoremap jj <ESC>
 
 " Wildmenu completion "
 set wildmenu
@@ -209,7 +209,7 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
 
 " Tagbar key bindings."
 nmap <leader>l <ESC>:TagbarToggle<cr>
-imap <leader>l jj:TagbarToggle<cr>i
+imap <leader>l <ESC>:TagbarToggle<cr>i
 
 
 " =========== END Plugin Settings =========="
@@ -264,9 +264,6 @@ let g:jedi#use_tabs_not_buffers = 0
 
 " after this command i type the name of virtualenv
 nnoremap <leader>V :VirtualEnvActivate 
-
-" i wanna used to use jj keys to return normal mode
-" inoremap <esc> <nop>
 
 " ctrl-p plugin options
 let g:ctrlp_max_height = 30
