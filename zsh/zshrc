@@ -75,3 +75,5 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/texlive/2013/bin/universal-darwin
+
+eval "$(rbenv init -)"
