@@ -50,8 +50,6 @@ export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:$PATH
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/vim
 
-alias ruby=/usr/local/bin/ruby
-
 export EDITOR=/usr/local/bin/vim
 export DEFAULT_USER=zekus
 export LC_ALL=en_US.UTF-8
