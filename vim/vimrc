@@ -156,6 +156,7 @@ set wildignore+=*.orig "Merge resolution files"
 set wildignore+=*.beam
 set wildignore+=build
 set wildignore+=static
+set wildignore+=tmp
 
 " Make Sure that Vim returns to the same line when we reopen a file"
 augroup line_return
