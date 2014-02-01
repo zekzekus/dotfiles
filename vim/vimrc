@@ -58,7 +58,7 @@ set pastetoggle=<F3>
 set backupskip=/tmp/*,/private/tmp/*"
 
 " Enable Mouse
-set mouse=a
+" set mouse=a
 
 "Settings for Searching and Moving
 nnoremap / /\v
