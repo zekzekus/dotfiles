@@ -31,12 +31,10 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 
-"set relativenumber
 set number
 set relativenumber
 
 set undofile
-"set shell=/usr/local/bin/fish
 set shell=/bin/bash
 set lazyredraw
 set matchtime=3
@@ -47,9 +45,6 @@ let localleader = "\\"
 
 " Set title to window
 set title
-
-" Dictionary path, from which the words are being looked up.
-set dictionary=/usr/share/dict/words
 
 " Make pasting done without any indentation break."
 set pastetoggle=<F3>
@@ -80,61 +75,23 @@ set formatoptions=qrn1
 set colorcolumn=79
 
 " To  show special characters in Vim
-"set list
 set listchars=tab:▸\ ,eol:¬
 
-" Naviagations using keys up/down/left/right
-" Disabling default keys to learn the hjkl
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-" vnoremap <up> <nop>
-" vnoremap <down> <nop>
-" vnoremap <left> <nop>
-" vnoremap <right> <nop>
+" vim handles long lines nicely with these
 nnoremap j gj
 nnoremap k gk
-
-" Get Rid of stupid Goddamned help keys
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
-" Map : to ; also in command mode.
-" nnoremap ; :
-" vnoremap ; :
 
 " Set vim to save the file on focus out.
 augroup file_operation
   autocmd!
-  "autocmd FocusLost * :wa
   autocmd VimResized * :wincmd =
-  " Source the vimrc file after saving it
-  autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
 
-" Adding More Shorcuts keys using leader kye.
-" Leader Kye provide separate namespace for specific commands.
 ",W Command to remove white space from a file.
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" ,ft Fold tag, helpful for HTML editing.
-nnoremap <leader>ft vatzf
-
-" ,q Re-hardwrap Paragraph
-nnoremap <leader>q gqip
-
 " ,v Select just pasted text.
 nnoremap <leader>v V`]
-
-" ,ev Shortcut to edit .vimrc file on the fly on a vertical window.
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " jj For Qicker Escaping between normal and editing mode.
 inoremap jj <ESC>
@@ -167,13 +124,6 @@ augroup line_return
         \ endif
 augroup END
 
-nnoremap g; g;zz
-
-" =========== END Basic Vim Settings ===========
-
-
-" =========== Gvim Settings =============
-
 " Removing scrollbars
 if has("gui_running")
   set guitablabel=%-0.12t%M
@@ -192,51 +142,29 @@ endif
 colorscheme solarized
 set background=dark
 
-
-" ========== END Gvim Settings ==========
-
-
 " ========== Plugin Settings =========="
-
 " Mapping to NERDTree
 nnoremap <C-n> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
-
-" easier window navigation
-"nnoremap <C-l> <C-w>l
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
 
 " Tagbar key bindings."
 nmap <leader>l <ESC>:TagbarToggle<cr>
 imap <leader>l <ESC>:TagbarToggle<cr>i
 
-
-" =========== END Plugin Settings =========="
 syntax on
 
-" i can paste from system clipboard
-" with unnamed, vim in tmux session does not yank.
-" this is the workaround
-" now i use reattach-to-user-namespace with conjuction
-" of tmux conf i can copy and paste from/to system clipboard
-"if $TMUX == ''
-"set clipboard+=unnamed
-"endif
 set clipboard=unnamed
 
 " swap files will be saved to this folder
 set dir=~/tmp
+set nobackup
+set noswapfile
 
-" company preferene for python syntax checker
+" syntastic
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_go_checkers=['gofmt']
 let g:syntastic_javascript_checkers=['jsl']
-" get rid of silly backup and swap files.
-" i wish i do not regret for this statement
-set nobackup
-set noswapfile
+let g:syntastic_check_on_open=1
 
 " my new favorite monospace font for coding
 set guifont=Monaco:h14
@@ -254,9 +182,6 @@ function! ToggleBg()
     set bg=dark
   endif
 endfunc
-
-" sytastic checks on file open
-let g:syntastic_check_on_open=1
 
 " sometimes i like auto completion but not everytime
 let g:jedi#popup_on_dot = 0
@@ -297,11 +222,9 @@ let g:statline_virtualenv = 1
 
 " map only command to an easy leader shortcut
 nnoremap <leader>o :only<CR>
-inoremap <leader>o <ESC>:only<CR>
 
 " easy save file
 nnoremap <leader>w :w<CR>
-inoremap <leader>w <ESC>:w<CR>
 
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
