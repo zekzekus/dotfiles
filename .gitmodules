@@ -92,9 +92,6 @@
 [submodule "vim/vimfiles/bundle/vim-tmux-navigator"]
 	path = vim/vimfiles/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "vim/vimfiles/bundle/vim-golang"]
-	path = vim/vimfiles/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang.git
 [submodule "vim/vimfiles/bundle/vim-cimmnetary"]
 	path = vim/vimfiles/bundle/vim-cimmnetary
 	url = https://github.com/tpope/vim-commentary.git
@@ -110,19 +107,6 @@
 [submodule "vim/vimfiles/bundle/ag.vim"]
 	path = vim/vimfiles/bundle/ag.vim
 	url = https://github.com/rking/ag.vim.git
-[submodule "vim/vimfiles/bundle/vim-clojure-static"]
-	path = vim/vimfiles/bundle/vim-clojure-static
-	url = https://github.com/guns/vim-clojure-static.git
-    ignore = dirty
-[submodule "vim/vimfiles/bundle/vim-fireplace"]
-	path = vim/vimfiles/bundle/vim-fireplace
-	url = https://github.com/tpope/vim-fireplace.git
-[submodule "vim/vimfiles/bundle/vim-classpath"]
-	path = vim/vimfiles/bundle/vim-classpath
-	url = https://github.com/tpope/vim-classpath.git
-[submodule "vim/vimfiles/bundle/vim-coffee-script"]
-	path = vim/vimfiles/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/vimfiles/bundle/vimproc.vim"]
 	path = vim/vimfiles/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
@@ -130,28 +114,12 @@
 	path = vim/vimfiles/bundle/vim-python-pep8-indent
 	url = https://github.com/hynek/vim-python-pep8-indent.git
     ignore = dirty
-[submodule "vim/vimfiles/bundle/neco-ghc"]
-	path = vim/vimfiles/bundle/neco-ghc
-	url = https://github.com/eagletmt/neco-ghc.git
 [submodule "vim/vimfiles/bundle/vim-signify"]
 	path = vim/vimfiles/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
-[submodule "vim/vimfiles/bundle/vim-gocode"]
-	path = vim/vimfiles/bundle/vim-gocode
-	url = https://github.com/Blackrush/vim-gocode
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/nerdtree"]
 	path = vim/vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/vimfiles/bundle/vim-elixir"]
-	path = vim/vimfiles/bundle/vim-elixir
-	url = https://github.com/elixir-lang/vim-elixir.git
-[submodule "vim/vimfiles/bundle/elixir-snippets"]
-	path = vim/vimfiles/bundle/elixir-snippets
-	url = https://github.com/carlosgaldino/elixir-snippets.git
-[submodule "vim/vimfiles/bundle/vim-lfe"]
-	path = vim/vimfiles/bundle/vim-lfe
-	url = https://github.com/lfe/vim-lfe.git
 [submodule "vim/vimfiles/bundle/vim-markdown"]
 	path = vim/vimfiles/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
