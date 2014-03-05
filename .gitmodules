@@ -126,9 +126,6 @@
 [submodule "vim/vimfiles/bundle/vimproc.vim"]
 	path = vim/vimfiles/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "vim/vimfiles/bundle/ghcmod-vim"]
-	path = vim/vimfiles/bundle/ghcmod-vim
-	url = https://github.com/eagletmt/ghcmod-vim.git
 [submodule "vim/vimfiles/bundle/vim-python-pep8-indent"]
 	path = vim/vimfiles/bundle/vim-python-pep8-indent
 	url = https://github.com/hynek/vim-python-pep8-indent.git
@@ -161,3 +158,4 @@
 [submodule "vim/vimfiles/bundle/SyntaxRange"]
 	path = vim/vimfiles/bundle/SyntaxRange
 	url = https://github.com/vim-scripts/SyntaxRange.git
+    ignore = dirty
