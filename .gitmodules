@@ -155,3 +155,9 @@
 [submodule "vim/vimfiles/bundle/vim-lfe"]
 	path = vim/vimfiles/bundle/vim-lfe
 	url = https://github.com/lfe/vim-lfe.git
+[submodule "vim/vimfiles/bundle/vim-markdown"]
+	path = vim/vimfiles/bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
+[submodule "vim/vimfiles/bundle/SyntaxRange"]
+	path = vim/vimfiles/bundle/SyntaxRange
+	url = https://github.com/vim-scripts/SyntaxRange.git
