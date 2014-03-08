@@ -156,9 +156,7 @@ syntax on
 set clipboard=unnamed
 
 " swap files will be saved to this folder
-set dir=~/tmp
-set nobackup
-set noswapfile
+set dir=~/.vimtmp
 
 " syntastic
 let g:syntastic_python_checkers=['flake8']
@@ -204,7 +202,7 @@ set suffixesadd+=.html
 
 " gundo settings
 nnoremap <leader>G :GundoToggle<CR>
-set undodir=/tmp
+set undodir=~/.vimtmp
 
 " enable folding
 set foldmethod=indent

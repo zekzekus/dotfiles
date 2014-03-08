@@ -7,7 +7,7 @@ Based on instructions [here](http://haridas.in/vim-as-your-ide.html).
 
 My first and most useful suggestion is this: BUILD YOUR OWN SET OF VIM
 CONFIGURATION!! I strongly recommend [this](http://mislav.uniqpath.com/2011/12/vim-revisited/) article to start with a minimum
-set of configuration options. Than build your editing environment inrementally
+set of configuration options. Than build your editing environment incrementally
 due to your very personal taste of preferences.
 
 Installation steps for who loves risky stuff.
@@ -16,6 +16,7 @@ Installation steps for who loves risky stuff.
 - run `git submodule update --init --recursive` command to fetch and update all submodules.
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
 - make a symbolic link of REPO_PATH/vim/vimrc to ~/.vimrc
+- create a directory for persistent undo history `mkdir ~/.vimtmp`
 - follow installation process of [pathogen](https://github.com/tpope/vim-pathogen) plugin
 - install necessary external programs. as i remember:
     - there is no need to install jedi python library if you update git submodules recursively. This will fetch jedi library.
