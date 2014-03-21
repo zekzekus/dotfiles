@@ -296,3 +296,7 @@ let g:signify_line_highlight = 1
 " silver searcher options
 let g:agprg="ag --column --smart-case --follow --skip-vcs-ignores"
 let g:aghighlight=1
+
+" dash.vim cinfiguration
+:nmap <silent> <leader>S <Plug>DashGlobalSearch
+:nmap <silent> <leader>s <Plug>DashSearch
