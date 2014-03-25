@@ -127,3 +127,9 @@
 	path = vim/vimfiles/bundle/SyntaxRange
 	url = https://github.com/vim-scripts/SyntaxRange.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-golang"]
+	path = vim/vimfiles/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "vim/vimfiles/bundle/vim-gocode"]
+	path = vim/vimfiles/bundle/vim-gocode
+	url = https://github.com/Blackrush/vim-gocode
