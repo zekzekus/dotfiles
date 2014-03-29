@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git-flow vagrant fabric vi-mode virtualenvwrapper zsh-syntax-highlighting)
+plugins=(git-flow vagrant fabric vi-mode virtualenvwrapper zsh-syntax-highlighting brew)
 
 source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
@@ -73,5 +73,3 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/texlive/2013/bin/universal-darwin
-
-eval "$(rbenv init -)"
