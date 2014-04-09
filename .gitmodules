@@ -136,3 +136,6 @@
 [submodule "vim/vimfiles/bundle/dash.vim"]
 	path = vim/vimfiles/bundle/dash.vim
 	url = https://github.com/rizzatti/dash.vim.git
+[submodule "vim/vimfiles/bundle/funcoo.vim"]
+	path = vim/vimfiles/bundle/funcoo.vim
+	url = https://github.com/rizzatti/funcoo.vim.git
