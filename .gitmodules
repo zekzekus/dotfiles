@@ -58,9 +58,6 @@
 [submodule "vim/vimfiles/bundle/vim-unimpaired"]
 	path = vim/vimfiles/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/vimfiles/bundle/supertab"]
-	path = vim/vimfiles/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "config/fish/bundle/virtualfish"]
 	path = config/fish/bundle/virtualfish
 	url = https://github.com/adambrenecki/virtualfish.git
@@ -104,9 +101,6 @@
 [submodule "zsh/oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "vim/vimfiles/bundle/ag.vim"]
-	path = vim/vimfiles/bundle/ag.vim
-	url = https://github.com/rking/ag.vim.git
 [submodule "vim/vimfiles/bundle/vimproc.vim"]
 	path = vim/vimfiles/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
@@ -123,10 +117,6 @@
 [submodule "vim/vimfiles/bundle/vim-markdown"]
 	path = vim/vimfiles/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule "vim/vimfiles/bundle/SyntaxRange"]
-	path = vim/vimfiles/bundle/SyntaxRange
-	url = https://github.com/vim-scripts/SyntaxRange.git
-    ignore = dirty
 [submodule "vim/vimfiles/bundle/vim-golang"]
 	path = vim/vimfiles/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
