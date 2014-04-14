@@ -117,13 +117,6 @@
 [submodule "vim/vimfiles/bundle/vim-markdown"]
 	path = vim/vimfiles/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule "vim/vimfiles/bundle/vim-golang"]
-	path = vim/vimfiles/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang.git
-    ignore = dirty
-[submodule "vim/vimfiles/bundle/vim-gocode"]
-	path = vim/vimfiles/bundle/vim-gocode
-	url = https://github.com/Blackrush/vim-gocode
 [submodule "vim/vimfiles/bundle/dash.vim"]
 	path = vim/vimfiles/bundle/dash.vim
 	url = https://github.com/rizzatti/dash.vim.git
@@ -134,3 +127,6 @@
 	path = vim/vimfiles/bundle/greper.vim
 	url = https://github.com/rizzatti/greper.vim.git
     ignore = dirty
+[submodule "vim/vimfiles/bundle/vim-go"]
+	path = vim/vimfiles/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
