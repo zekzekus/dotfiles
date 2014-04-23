@@ -1,13 +1,54 @@
 " ========== Vim Basic Settings ============="
 
-" Pathogen settings.
-filetype off
-execute pathogen#infect()
-execute pathogen#helptags()
-filetype plugin indent on
-
 " Make vim incompatbile to vi.
 set nocompatible
+
+" Pathogen settings.
+filetype off
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" bundles bundles
+Bundle 'gmarik/vundle'
+
+Bundle  'kien/ctrlp.vim.git'
+Bundle  'rizzatti/dash.vim.git'
+Bundle  'Raimondi/delimitMate.git'
+Bundle  'mattn/emmet-vim.git'
+Bundle  'rizzatti/funcoo.vim.git'
+Bundle  'rizzatti/greper.vim.git'
+Bundle  'sjl/gundo.vim.git'
+Bundle  'davidhalter/jedi-vim.git'
+Bundle  'AndrewRadev/linediff.vim.git'
+Bundle  'scrooloose/nerdtree.git'
+Bundle  'scrooloose/syntastic.git'
+Bundle  'majutsushi/tagbar.git'
+Bundle  'tomtom/tlib_vim.git'
+Bundle  'MarcWeber/vim-addon-mw-utils.git'
+Bundle  'zekzekus/vim-airline.git'
+Bundle  'bling/vim-bufferline.git'
+Bundle  'tpope/vim-commentary.git'
+Bundle  'altercation/vim-colors-solarized.git'
+Bundle  'flazz/vim-colorschemes.git'
+Bundle  'Lokaltog/vim-easymotion.git'
+Bundle  'tpope/vim-fugitive.git'
+Bundle  'fatih/vim-go.git'
+Bundle  'pangloss/vim-javascript.git'
+Bundle  'tpope/vim-markdown.git'
+Bundle  'hynek/vim-python-pep8-indent.git'
+Bundle  'tpope/vim-repeat.git'
+Bundle  'mhinz/vim-signify.git'
+Bundle  'garbas/vim-snipmate.git'
+Bundle  'zekzekus/vim-snippets.git'
+Bundle  'tpope/vim-surround.git'
+Bundle  'christoomey/vim-tmux-navigator.git'
+Bundle  'jmcantrell/vim-virtualenv.git'
+Bundle  'jimenezrick/vimerl.git'
+Bundle  'Shougo/vimproc.vim.git'
+Bundle  'sjl/vitality.vim.git'
+
+filetype plugin indent on
+
 set modelines=0
 
 "TAB settings.

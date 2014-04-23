@@ -1,3 +1,4 @@
+vim/vimfiles/bundle/**
 autoload
 .netrwhist
 config/fish/fish_history
