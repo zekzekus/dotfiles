@@ -46,7 +46,6 @@ Bundle 'jmcantrell/vim-virtualenv.git'
 Bundle 'jimenezrick/vimerl.git'
 Bundle 'Shougo/vimproc.vim.git'
 Bundle 'sjl/vitality.vim.git'
-Bundle 'Valloric/YouCompleteMe'
 
 filetype plugin indent on
 set modelines=0
