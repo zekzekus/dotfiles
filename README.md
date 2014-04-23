@@ -15,8 +15,7 @@ due to your very personal taste of preferences.
 Installation steps for who loves risky stuff.
 
 - clone the repo.
-- clone [Vundle](https://github.com/gmarik/Vundle.vim) to
-  vim/vimfiles/bundle/vundle
+- execute `git submodule update --init --recursive`
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
 - make a symbolic link of REPO_PATH/vim/vimrc to ~/.vimrc
 - create a directory for persistent undo history `mkdir ~/.vimtmp`
