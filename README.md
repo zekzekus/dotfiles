@@ -3,6 +3,8 @@ My Personal Configuration Files
 
 VIM Configuration
 -----------------
+Now i am using [Vundle](https://github.com/gmarik/Vundle.vim) to manage my VIM plugins.
+
 Based on instructions [here](http://haridas.in/vim-as-your-ide.html).
 
 My first and most useful suggestion is this: BUILD YOUR OWN SET OF VIM
@@ -13,16 +15,16 @@ due to your very personal taste of preferences.
 Installation steps for who loves risky stuff.
 
 - clone the repo.
-- run `git submodule update --init --recursive` command to fetch and update all submodules.
+- clone [Vundle](https://github.com/gmarik/Vundle.vim) to
+  vim/vimfiles/bundle/vundle
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
 - make a symbolic link of REPO_PATH/vim/vimrc to ~/.vimrc
 - create a directory for persistent undo history `mkdir ~/.vimtmp`
-- follow installation process of [pathogen](https://github.com/tpope/vim-pathogen) plugin
 - install necessary external programs. as i remember:
-    - there is no need to install jedi python library if you update git submodules recursively. This will fetch jedi library.
     - flake8 for syntax checks. `pip install flake8` used by sytastic plugin.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
 install
+- execute `vim +PluginInstall +qall`
 
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.
