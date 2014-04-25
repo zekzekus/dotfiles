@@ -351,3 +351,7 @@ augroup END
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" snipmate trigger key modified because conflicts with youcompleteme
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
