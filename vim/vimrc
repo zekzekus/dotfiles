@@ -355,3 +355,6 @@ nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" go-vim plugin
+  let g:go_disable_autoinstall = 1
