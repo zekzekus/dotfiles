@@ -24,6 +24,8 @@ Installation steps for who loves risky stuff.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
 install
 - execute `vim +PluginInstall +qall`
+- cd into `~/.vim/bundle/YouCompleteMe` then `./install.sh`
+- if you develop golang then you must install related tools from [here](https://github.com/fatih/vim-go)
 
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.
