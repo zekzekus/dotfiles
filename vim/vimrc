@@ -351,6 +351,18 @@ augroup END
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_filetype_blacklist = {
+        \ 'tagbar' : 1,
+        \ 'qf' : 1,
+        \ 'notes' : 1,
+        \ 'markdown' : 1,
+        \ 'unite' : 1,
+        \ 'text' : 1,
+        \ 'vimwiki' : 1,
+        \ 'pandoc' : 1,
+        \ 'mail' : 1,
+        \ 'gitcommit': 1
+        \}
 
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
