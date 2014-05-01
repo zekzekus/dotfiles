@@ -51,12 +51,13 @@ these are not sufficient, please warn me.
 - `<C-u>` convert the word uppercase (both NORMAL and INSERT)
 - `<leader>s` triggers [Dash](http://kapeli.com/dash) search based on active buffer's filetype
 - `<leader>S` triggers global [Dash](http://kapeli.com/dash) search
-- `<leader>d` tries to Go to definition of identifier under cursor. Works with
+- `<leader>d` tries to go to definition of identifier under cursor. Works with
   python and Go files out of the box.
 - `K` show godoc of the identifier under cursor for go source files
 - `<C-j>` expand snippet (INSERT)
 - `<C-b>` jump next edit point within the snippet (INSERT)
 - `<C-z>` jump previous edit point within the snippet (INSERT)
+- `<C-space>` trigger [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin. (INSERT)
 
 ## TMUX Configuration
 
