@@ -37,20 +37,20 @@ these are not sufficient, please warn me.
 - `<leader>W` to remove trailing whitespace from whole buffer
 - `<leader>v` to select just pasted text
 - `jj` to `<ESC>`
-- `<C-n>` toggle NerdTree
-- `<leader>l` toggle Tagbar
+- `<C-n>` toggle [NerdTree](https://github.com/scrooloose/nerdtree)
+- `<leader>l` toggle [Tagbar](https://github.com/majutsushi/tagbar)
 - `F5` key toggle background color
 - `<leader>V` activate specified python virtualenv
-- `<leader>t` activate default CtrlP plugin
-- `<leader>b` activate CtrlP buffer list
-- `<leader>y` activate CtrlP buffer tags list
-- `<leader>G` toggle Gundo plugin
+- `<leader>t` activate default [CtrlP](http://kien.github.io/ctrlp.vim/) plugin
+- `<leader>b` activate [CtrlP](http://kien.github.io/ctrlp.vim/) buffer list
+- `<leader>y` activate [CtrlP](http://kien.github.io/ctrlp.vim/) buffer tags list
+- `<leader>G` toggle [Gundo](https://github.com/sjl/gundo.vim) plugin
 - `<leader>o` executes `:only` command. Makes active buffer full screen
 - `<leader>w` bound to `:w` command. Saved the buffer
 - `<leader>,` switch to last edited buffer
 - `<C-u>` convert the word uppercase (both NORMAL and INSERT)
-- `<leader>s` triggers Dash search based on active buffer's filetype
-- `<leader>S` triggers global Dash search
+- `<leader>s` triggers [Dash](http://kapeli.com/dash) search based on active buffer's filetype
+- `<leader>S` triggers global [Dash](http://kapeli.com/dash) search
 - `<leader>d` tries to Go to definition of identifier under cursor. Works with
   python and Go files out of the box.
 - `K` show godoc of the identifier under cursor for go source files
