@@ -1,8 +1,7 @@
-My Personal Configuration Files
-===============================
+# My Personal Configuration Files
 
-VIM Configuration
------------------
+## VIM Configuration
+
 Now i am using [Vundle](https://github.com/gmarik/Vundle.vim) to manage my VIM plugins.
 
 Based on instructions [here](http://haridas.in/vim-as-your-ide.html).
@@ -25,13 +24,42 @@ Installation steps for who loves risky stuff.
 install
 - execute `vim +PluginInstall +qall`
 - cd into `~/.vim/bundle/YouCompleteMe` then `./install.sh`
-- if you develop golang then you must install related tools from [here](https://github.com/fatih/vim-go)
+- if you develop golang then you must install related tools for [this](https://github.com/fatih/vim-go) plugin manually.
 
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.
 
-TMUX Configuration
-------------------
+### Most notable commands, shortcuts etc. (mode indicator inside parantheses)
+
+- leader key is `,`
+- `F3` key to toggle vim Paste mode
+- `<leader>space` for removing highlights (`:noh`)
+- `<leader>W` to remove trailing whitespace from whole buffer
+- `<leader>v` to select just pasted text
+- `jj` to `<ESC>`
+- `<C-n>` toggle NerdTree
+- `<leader>l` toggle Tagbar
+- `F5` key toggle background color
+- `<leader>V` activate specified python virtualenv
+- `<leader>t` activate default CtrlP plugin
+- `<leader>b` activate CtrlP buffer list
+- `<leader>y` activate CtrlP buffer tags list
+- `<leader>G` toggle Gundo plugin
+- `<leader>o` executes `:only` command. Makes active buffer full screen
+- `<leader>w` bound to `:w` command. Saved the buffer
+- `<leader>,` switch to last edited buffer
+- `<C-u>` convert the word uppercase (both NORMAL and INSERT)
+- `<leader>s` triggers Dash search based on active buffer's filetype
+- `<leader>S` triggers global Dash search
+- `<leader>d` tries to Go to definition of identifier under cursor. Works with
+  python and Go files out of the box.
+- `K` show godoc of the identifier under cursor for go source files
+- `<C-j>` expand snippet (INSERT)
+- `<C-b>` jump next edit point within the snippet (INSERT)
+- `<C-z>` jump previous edit point within the snippet (INSERT)
+
+## TMUX Configuration
+
 Very basic conf.
 - For Mac OS X --> `brew install reattach-to-user-namespace`
 - For Ubuntu/Linux --> `sudo aptitude install xsel`
@@ -39,8 +67,8 @@ Very basic conf.
   platform choice.
 - Check and modify shell command based preference. Default is zsh for now.
 
-ZSH Configuration
------------------
+## ZSH Configuration
+
 Based on oh-my-zsh.
 - Install zsh `brew install zsh` or `sudo aptitude install zsh` based on your platform.
 - Install [Oh My Zsh!](https://github.com/robbyrussell/oh-my-zsh).
@@ -50,7 +78,6 @@ Based on oh-my-zsh.
   you must make a symbolic link zsh/oh-my-zsh/themes/normz.zsh-theme to
   ~/.oh-my-zsh/themes directory.
 
-FISH Configuration
-------------------
+## FISH Configuration
 
 All conf files are meant to be symlinked to proper places.
