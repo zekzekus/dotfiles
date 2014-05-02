@@ -183,11 +183,6 @@ function! ToggleBg()
   endif
 endfunc
 
-" sometimes i like auto completion but not everytime
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = "0"
-let g:jedi#use_tabs_not_buffers = 0
-
 " after this command i type the name of virtualenv
 nnoremap <leader>V :VirtualEnvActivate 
 
@@ -211,14 +206,7 @@ set foldmethod=indent
 set foldlevel=99
 
 " lets use supertab for completion
-let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
-
-" vim-statline settings
-let g:statline_filename_relative=1
-let g:statline_fugitive=1
-let g:statline_trailing_space = 0
-let g:statline_virtualenv = 1
 
 " map only command to an easy leader shortcut
 nnoremap <leader>o :only<CR>
