@@ -300,6 +300,8 @@ augroup END
 " YouCompleteMe settings
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
+let g:ycm_complete_in_strings = 0
+let g:ycm_auto_trigger = 0
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
@@ -320,4 +322,4 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " go-vim plugin
-  let g:go_disable_autoinstall = 1
+let g:go_disable_autoinstall = 1
