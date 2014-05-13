@@ -301,7 +301,7 @@ augroup END
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_complete_in_strings = 0
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
