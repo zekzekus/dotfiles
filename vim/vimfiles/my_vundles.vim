@@ -38,5 +38,8 @@ Plugin 'sjl/vitality.vim.git'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'zekzekus/vim-snippets'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+
 call vundle#end() 
 
