@@ -4,3 +4,6 @@
 [submodule "vim/vimfiles/bundle/vundle"]
 	path = vim/vimfiles/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+[submodule "config/fish/plugins/virtualfish.git"]
+	path = config/fish/plugins/virtualfish.git
+	url = https://github.com/adambrenecki/virtualfish.git
