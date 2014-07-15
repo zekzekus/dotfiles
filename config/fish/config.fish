@@ -10,8 +10,3 @@ set -U EDITOR vim
 set -g VIRTUALFISH_COMPAT_ALIASES
 . ~/.config/fish/plugins/virtualfish.git/virtual.fish
 
-# color codes for prompt functions
-set -g fish_color_user magenta
-set -g fish_color_host yellow
-set -g fish_prompt_git_status_git_dir '⚒'
-set -g fish_prompt_git_remote_space ' '
