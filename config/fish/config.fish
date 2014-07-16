@@ -1,4 +1,5 @@
 # PATH modifications. last item has the highest priority
+set --export PATH (brew --prefix)/sbin $PATH
 set --export PATH (brew --prefix)/bin $PATH
 set --export PATH /usr/local/share/npm/bin $PATH
 set --export PATH $HOME/bin $PATH
