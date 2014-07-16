@@ -1,0 +1,2 @@
+# my favorite text editor
+set -U EDITOR vim
