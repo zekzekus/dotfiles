@@ -81,4 +81,5 @@ Based on oh-my-zsh.
 
 ## FISH Configuration
 
-All conf files are meant to be symlinked to proper places.
+Based on oh-my-fish
+- TODO: document this
