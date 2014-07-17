@@ -13,6 +13,12 @@ function _virtualenv
   end
 end
 
+function _ssh_status
+  if set -q SSH_CLIENT
+    echo "{"(hostname -s)"}"
+  end
+end
+
 function fish_prompt
   set -l last_status $status
   set -l cyan (set_color -o cyan)
@@ -39,6 +45,6 @@ function fish_prompt
     end
   end
 
-  echo -n -s $normal (_virtualenv) $arrow $cwd $git_info $normal ' '
+  echo -n -s $red (_ssh_status) $normal (_virtualenv) $arrow $cwd $git_info $normal ' '
 end
 
