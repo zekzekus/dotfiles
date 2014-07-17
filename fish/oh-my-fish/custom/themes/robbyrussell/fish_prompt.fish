@@ -9,7 +9,7 @@ end
 
 function _virtualenv
   if set -q VIRTUAL_ENV
-    echo "("(basename "$VIRTUAL_ENV")") s"
+    echo "("(basename "$VIRTUAL_ENV")") "
   end
 end
 
