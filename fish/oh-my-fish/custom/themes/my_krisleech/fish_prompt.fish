@@ -14,11 +14,11 @@ function _virtualenv
 end
 
 function fish_prompt
-  set -l cyan (set_color -o cyan)
-  set -l yellow (set_color -o yellow)
-  set -l red (set_color -o red)
-  set -l blue (set_color -o blue)
-  set -l green (set_color -o green)
+  set -l cyan (set_color cyan)
+  set -l yellow (set_color yellow)
+  set -l red (set_color red)
+  set -l blue (set_color blue)
+  set -l green (set_color green)
   set -l normal (set_color normal)
 
   set -l cwd $cyan(basename (prompt_pwd))
@@ -33,5 +33,5 @@ function fish_prompt
     end
   end
 
-  echo -n -s $cyan (_virtualenv) $cwd $red '|' $git_info $normal ⇒ ' ' $normal
+  echo -n -s $green (_virtualenv) $cwd $red '|' $git_info $normal ⇒ ' ' $normal
 end
