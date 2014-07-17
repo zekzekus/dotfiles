@@ -82,4 +82,9 @@ Based on oh-my-zsh.
 ## FISH Configuration
 
 Based on oh-my-fish
-- TODO: document this
+- Install fish shell `brew install zsh` or `sudo aptitude install fish` based
+  on your platform.
+- Install [Oh My Fish]().
+- Create a symbolic link fish/config.fish to ~/.config/fish/config.fish
+- Create a symbolic link fish/oh-my-fish/custom to ~/.oh-my-fish/custom
+- Check and modify your TMUX conf to use fish instead of zsh.
