@@ -84,7 +84,7 @@ Based on oh-my-zsh.
 Based on oh-my-fish
 - Install fish shell `brew install zsh` or `sudo aptitude install fish` based
   on your platform.
-- Install [Oh My Fish]().
+- Install [Oh My Fish](https://github.com/bpinto/oh-my-fish).
 - Create a symbolic link fish/config.fish to ~/.config/fish/config.fish
 - Create a symbolic link fish/oh-my-fish/custom to ~/.oh-my-fish/custom
 - Check and modify your TMUX conf to use fish instead of zsh.
