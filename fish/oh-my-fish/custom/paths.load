@@ -1,4 +1,6 @@
 # PATH modifications. last item has the highest priority
+set --export GOPATH $HOME/devel/projects/go
+set --export PATH $GOPATH/bin $PATH
 set --export PATH /usr/local/sbin $PATH
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/share/npm/bin $PATH
