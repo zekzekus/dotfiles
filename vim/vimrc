@@ -41,22 +41,6 @@ set shell=/bin/bash
 set lazyredraw
 set matchtime=3
 
-"Changing Leader Key
-let mapleader = ","
-let localleader = "\\"
-
-" Set title to window
-set title
-
-" Make pasting done without any indentation break."
-set pastetoggle=<F3>
-
-" Make Vim able to edit corntab fiels again.
-set backupskip=/tmp/*,/private/tmp/*"
-
-" Enable Mouse
-" set mouse=a
-
 "Settings for Searching and Moving
 nnoremap / /\v
 vnoremap / /\v
@@ -65,10 +49,6 @@ set smartcase
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
-
 
 " Make Vim to handle long lines nicely.
 set wrap
@@ -83,11 +63,26 @@ set listchars=tab:▸\ ,eol:¬
 nnoremap j gj
 nnoremap k gk
 
-" Set vim to save the file on focus out.
-augroup file_operation
-  autocmd!
-  autocmd VimResized * :wincmd =
-augroup END
+" enable folding
+set foldmethod=indent
+set foldlevel=99
+
+"Changing Leader Key
+let mapleader = ","
+let localleader = "\\"
+
+" Set title to window
+set title
+
+" Make pasting done without any indentation break."
+set pastetoggle=<F3>
+
+" Make Vim able to edit crontab files again.
+set backupskip=/tmp/*,/private/tmp/*"
+
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
 
 ",W Command to remove white space from a file.
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -97,6 +92,20 @@ nnoremap <leader>v V`]
 
 " jj For Qicker Escaping between normal and editing mode.
 inoremap jj <ESC>
+
+" map only command to an easy leader shortcut
+nnoremap <leader>o :only<CR>
+
+" easy save file
+nnoremap <leader>w :w<CR>
+
+" easy switch to last edited buffer (alternate buffer)
+nnoremap <leader>, :b#<CR>
+
+" make word uppercase and continue editing
+inoremap <c-u> <esc>gUiw`]a
+" make word under the cursor uppercase
+nnoremap <c-u> gUiw
 
 " Wildmenu completion "
 set wildmenu
@@ -117,14 +126,20 @@ set wildignore+=build
 set wildignore+=static
 set wildignore+=tmp
 
-" Make Sure that Vim returns to the same line when we reopen a file"
-augroup line_return
-  autocmd!
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \ execute 'normal! g`"zvzz' |
-        \ endif
-augroup END
+" enable file jump for django template files
+set path+=templates " for django versions < 1.4
+set path+=*/templates " for django versions 1.4 and higher
+set path+=*/*/templates
+set path+=*/*/*/templates " specific for polar project structure
+set path+=assets " for django versions < 1.4
+set path+=*/assets " for django versions 1.4 and higher
+set path+=*/*/assets
+set path+=*/*/*/assets " specific for polar project structure
+
+set dir=~/.vimtmp
+set undodir=~/.vimtmp
+set clipboard=unnamed
+set suffixesadd+=.html
 
 " Removing scrollbars
 if has("gui_running")
@@ -134,6 +149,7 @@ if has("gui_running")
   set guioptions-=L
   set guioptions+=a
   set guioptions-=m
+  set guifont=Monaco:h14
 endif
 
 " Special Settings for Consoles
@@ -144,34 +160,7 @@ endif
 colorscheme solarized
 set background=dark
 
-" ========== Plugin Settings =========="
-" Mapping to NERDTree
-nnoremap <C-n> :NERDTreeToggle<cr>
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
-
-" Tagbar key bindings."
-nmap <leader>l <ESC>:TagbarToggle<cr>
-imap <leader>l <ESC>:TagbarToggle<cr>i
-
 syntax on
-
-set clipboard=unnamed
-
-" swap files will be saved to this folder
-set dir=~/.vimtmp
-
-" syntastic
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_go_checkers=['gofmt']
-let g:syntastic_javascript_checkers=['jsl']
-let g:syntastic_check_on_open=1
-
-" my new favorite monospace font for coding
-set guifont=Monaco:h14
-
-" vim-virtualenv plugin settings
-let g:virtualenv_auto_activate = 1
-let g:virtualenv_stl_format = '[%n]'
 
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
@@ -183,57 +172,20 @@ function! ToggleBg()
   endif
 endfunc
 
-" after this command i type the name of virtualenv
-nnoremap <leader>V :VirtualEnvActivate 
+" Set vim to save the file on focus out.
+augroup file_operation
+  autocmd!
+  autocmd VimResized * :wincmd =
+augroup END
 
-" ctrl-p plugin options
-let g:ctrlp_max_height = 30
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_working_path_mode = 'rw'
-nnoremap <leader>t :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>y :CtrlPBufTag<CR>
-
-" file extensions for file jump
-set suffixesadd+=.html
-
-" gundo settings
-nnoremap <leader>G :GundoToggle<CR>
-set undodir=~/.vimtmp
-
-" enable folding
-set foldmethod=indent
-set foldlevel=99
-
-" lets use supertab for completion
-set completeopt=menuone,longest,preview
-
-" map only command to an easy leader shortcut
-nnoremap <leader>o :only<CR>
-
-" easy save file
-nnoremap <leader>w :w<CR>
-
-" enable file jump for django template files
-set path+=templates " for django versions < 1.4
-set path+=*/templates " for django versions 1.4 and higher
-set path+=*/*/templates
-set path+=*/*/*/templates " specific for polar project structure
-set path+=assets " for django versions < 1.4
-set path+=*/assets " for django versions 1.4 and higher
-set path+=*/*/assets
-set path+=*/*/*/assets " specific for polar project structure
-
-" easy switch to last edited buffer (alternate buffer)
-nnoremap <leader>, :b#<CR>
-
-" enable matchit plugin
-runtime macros/matchit.vim
-
-" vim-javascript configuration
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+" Make Sure that Vim returns to the same line when we reopen a file"
+augroup line_return
+  autocmd!
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \ execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
 augroup programming_au
   autocmd!
@@ -248,19 +200,55 @@ augroup programming_au
   autocmd FileType python set ft=python.django " For SnipMate
   "autocmd FileType python set omnifunc=jedi#complete
   autocmd FileType html set ft=htmldjango " For SnipMate
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+  autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
 augroup END
 
-"set omnifunc=syntaxcomplete#Complete
+" ========== Plugin Settings =========="
+" Mapping to NERDTree
+nnoremap <C-n> :NERDTreeToggle<cr>
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
+
+" Tagbar key bindings."
+nmap <leader>l <ESC>:TagbarToggle<cr>
+imap <leader>l <ESC>:TagbarToggle<cr>i
+
+" syntastic
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_go_checkers=['gofmt']
+let g:syntastic_javascript_checkers=['jsl']
+let g:syntastic_check_on_open=1
+
+" vim-virtualenv plugin settings
+let g:virtualenv_auto_activate = 1
+let g:virtualenv_stl_format = '[%n]'
+
+" after this command i type the name of virtualenv
+nnoremap <leader>V :VirtualEnvActivate 
+
+" ctrl-p plugin options
+let g:ctrlp_max_height = 30
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_working_path_mode = 'rw'
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>y :CtrlPBufTag<CR>
+
+" gundo settings
+nnoremap <leader>G :GundoToggle<CR>
+
+" enable matchit plugin
+runtime macros/matchit.vim
+
+" vim-javascript configuration
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+
+" bufferline
 let g:bufferline_solo_highlight = 1
 let g:bufferline_echo = 0
 let g:bufferline_rotate = 1
 let g:bufferline_fixed_index = -1 "always last
-
-" make word uppercase and continue editing
-inoremap <c-u> <esc>gUiw`]a
-" make word under the cursor uppercase
-nnoremap <c-u> gUiw
 
 " airline configuration
 let g:airline#extensions#virtualenv#enabled = 1
@@ -293,7 +281,6 @@ let g:aghighlight=1
 
 augroup go_au
   autocmd!
-  autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
   autocmd FileType go nmap K <Plug>(go-doc)
   autocmd FileType go nmap <leader>d <Plug>(go-def)
 augroup END
