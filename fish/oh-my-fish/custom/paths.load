@@ -5,3 +5,4 @@ set --export PATH /usr/local/sbin $PATH
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/share/npm/bin $PATH
 set --export PATH $HOME/bin $PATH
+set --export PATH $HOME/Library/Haskell/bin $PATH
