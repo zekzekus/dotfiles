@@ -284,6 +284,7 @@ augroup go_au
   autocmd!
   autocmd FileType go nmap K <Plug>(go-doc)
   autocmd FileType go nmap <leader>d <Plug>(go-def)
+  autocmd FileType haskell set omnifunc=necoghc#omnifunc
 augroup END
 
 " YouCompleteMe settings
@@ -313,3 +314,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " go-vim plugin
 let g:go_disable_autoinstall = 1
+
+" haskell
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
