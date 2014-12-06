@@ -42,5 +42,7 @@ Plugin 'tpope/vim-unimpaired.git'
 Plugin 'zekzekus/vim-airline.git'
 Plugin 'zekzekus/vim-snippets'
 
+Plugin 'kovisoft/slimv'
+
 call vundle#end() 
 
