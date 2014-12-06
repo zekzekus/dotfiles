@@ -39,7 +39,6 @@ Plugin 'tpope/vim-markdown.git'
 Plugin 'tpope/vim-repeat.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'tpope/vim-unimpaired.git'
-Plugin 'vim-scripts/paredit.vim'
 Plugin 'zekzekus/vim-airline.git'
 Plugin 'zekzekus/vim-snippets'
 

@@ -126,6 +126,7 @@ set wildignore+=build
 set wildignore+=static
 set wildignore+=tmp
 set wildignore+=node_modules
+set wildignore+=*.class
 
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
