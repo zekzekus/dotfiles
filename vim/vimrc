@@ -193,7 +193,7 @@ augroup programming_au
   autocmd!
   autocmd FileType ruby,vim,jade,stylus setl ts=2 sts=2 sw=2
   autocmd FileType javascript setl ts=2 sts=2 sw=2
-  autocmd FileType html setl nowrap
+  autocmd FileType html setl nowrap ts=2 sts=2 sw=2
   autocmd FileType snippet,snippets setlocal noexpandtab
   autocmd BufEnter *.rss,*.atom,*.odrl setf xml
   autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
