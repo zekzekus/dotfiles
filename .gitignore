@@ -1,5 +1,6 @@
-vim/vimfiles/bundle/**
-~vim/vimfiles/bundle/vundle
+vim/vimfiles/bundle/*
+!vim/vimfiles/bundle/custom
+!vim/vimfiles/bundle/vundle
 autoload
 .netrwhist
 config/fish/fish_history

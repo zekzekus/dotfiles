@@ -36,6 +36,8 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'tpope/vim-unimpaired.git'
 Plugin 'zekzekus/vim-airline.git'
 Plugin 'zekzekus/vim-snippets'
+Plugin 'kana/vim-textobj-user'
+Plugin 'mjbrownie/django-template-textobjects'
 
 call vundle#end() 
 
