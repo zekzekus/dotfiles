@@ -38,6 +38,9 @@ Plugin 'zekzekus/vim-airline.git'
 Plugin 'zekzekus/vim-snippets'
 Plugin 'kana/vim-textobj-user'
 Plugin 'mjbrownie/django-template-textobjects'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'vim-scripts/paredit.vim'
 
 call vundle#end() 
 
