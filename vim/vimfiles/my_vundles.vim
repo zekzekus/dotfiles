@@ -4,43 +4,62 @@ call vundle#begin()
 " bundles bundles
 Plugin 'gmarik/vundle'
 
-Plugin 'AndrewRadev/linediff.vim.git'
-Plugin 'Lokaltog/vim-easymotion.git'
-Plugin 'Raimondi/delimitMate.git'
-Plugin 'Shougo/vimproc.vim.git'
+" programming
+Plugin 'vim-scripts/paredit.vim'
 Plugin 'SirVer/ultisnips'
+Plugin 'zekzekus/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'bling/vim-bufferline.git'
-Plugin 'christoomey/vim-tmux-navigator.git'
-Plugin 'hynek/vim-python-pep8-indent.git'
-Plugin 'jmcantrell/vim-virtualenv.git'
-Plugin 'kien/ctrlp.vim.git'
-Plugin 'flazz/vim-colorschemes.git'
-Plugin 'majutsushi/tagbar.git'
-Plugin 'mattn/emmet-vim.git'
 Plugin 'mhinz/vim-signify.git'
-Plugin 'miyakogi/conoline.vim'
-Plugin 'pangloss/vim-javascript.git'
-Plugin 'rizzatti/dash.vim.git'
-Plugin 'rizzatti/funcoo.vim.git'
-Plugin 'rizzatti/greper.vim.git'
-Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'sjl/gundo.vim.git'
-Plugin 'sjl/vitality.vim.git'
-Plugin 'tpope/vim-commentary.git'
 Plugin 'tpope/vim-fugitive.git'
-Plugin 'tpope/vim-markdown.git'
+
+" editing
+Plugin 'Raimondi/delimitMate.git'
+Plugin 'sjl/gundo.vim.git'
+Plugin 'tpope/vim-commentary.git'
 Plugin 'tpope/vim-repeat.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'tpope/vim-unimpaired.git'
+
+" navigating
+Plugin 'AndrewRadev/linediff.vim.git'
+Plugin 'Lokaltog/vim-easymotion.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'majutsushi/tagbar.git'
+Plugin 'rizzatti/greper.vim.git'
+Plugin 'scrooloose/nerdtree.git'
+
+" vim interface
+Plugin 'bling/vim-bufferline.git'
+Plugin 'flazz/vim-colorschemes.git'
+Plugin 'miyakogi/conoline.vim'
 Plugin 'zekzekus/vim-airline.git'
-Plugin 'zekzekus/vim-snippets'
-Plugin 'kana/vim-textobj-user'
+
+" python
+Plugin 'hynek/vim-python-pep8-indent.git'
+Plugin 'jmcantrell/vim-virtualenv.git'
+
+" javascript
+Plugin 'pangloss/vim-javascript.git'
+
+" html
+Plugin 'mattn/emmet-vim.git'
+
+" django
 Plugin 'mjbrownie/django-template-textobjects'
+
+" clojure
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
-Plugin 'vim-scripts/paredit.vim'
+
+" misc
+Plugin 'christoomey/vim-tmux-navigator.git'
+Plugin 'Shougo/vimproc.vim.git'
+Plugin 'rizzatti/dash.vim.git'
+Plugin 'rizzatti/funcoo.vim.git'
+Plugin 'sjl/vitality.vim.git'
+Plugin 'tpope/vim-markdown.git'
+Plugin 'kana/vim-textobj-user'
 
 call vundle#end() 
 
