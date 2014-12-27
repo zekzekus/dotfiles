@@ -41,6 +41,7 @@ Plugin 'jmcantrell/vim-virtualenv.git'
 
 " javascript
 Plugin 'pangloss/vim-javascript.git'
+Plugin 'marijnh/tern_for_vim'
 
 " html
 Plugin 'mattn/emmet-vim.git'
