@@ -273,6 +273,21 @@ let g:signify_disable_by_default = 1
 let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 1
 
+nnoremap <leader>gt :SignifyToggle<CR>
+nnoremap <leader>gh :SignifyToggleHighlight<CR>
+nnoremap <leader>gr :SignifyRefresh<CR>
+nnoremap <leader>gd :SignifyDebug<CR>
+
+" hunk jumping
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+
+" hunk text object
+omap ic <plug>(signify-motion-inner-pending)
+xmap ic <plug>(signify-motion-inner-visual)
+omap ac <plug>(signify-motion-outer-pending)
+xmap ac <plug>(signify-motion-outer-visual)
+
 " silver searcher options
 let g:agprg="ag --column --smart-case --follow --skip-vcs-ignores"
 let g:aghighlight=1
