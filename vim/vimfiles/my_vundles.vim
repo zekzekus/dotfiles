@@ -32,7 +32,6 @@ Plugin 'scrooloose/nerdtree.git'
 " vim interface
 Plugin 'bling/vim-bufferline.git'
 Plugin 'flazz/vim-colorschemes.git'
-Plugin 'miyakogi/conoline.vim'
 Plugin 'zekzekus/vim-airline.git'
 
 " python
