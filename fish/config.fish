@@ -14,3 +14,6 @@ set fish_plugins localhost
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
+
+status --is-interactive; and . (pyenv init -|psub)
+status --is-interactive; and . (pyenv virtualenv-init -|psub)

@@ -82,7 +82,8 @@ Based on oh-my-zsh.
 ## FISH Configuration
 
 Based on oh-my-fish
-- Install fish shell `brew install zsh` or `sudo aptitude install fish` based
+- I am experimenting with pyenv. so `brew install pyenv pyenv-virtualenv`
+- Install fish shell `brew install fish` or `sudo aptitude install fish` based
   on your platform.
 - Install [Oh My Fish](https://github.com/bpinto/oh-my-fish).
 - Create a symbolic link fish/config.fish to ~/.config/fish/config.fish
