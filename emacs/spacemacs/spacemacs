@@ -21,6 +21,7 @@
                                      javascript
                                      markdown
                                      restclient
+                                     slime
                                      )
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
@@ -111,7 +112,7 @@
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
  startup."
-  )
+)
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
