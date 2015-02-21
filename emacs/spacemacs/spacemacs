@@ -22,6 +22,8 @@
                                      markdown
                                      restclient
                                      slime
+                                     erlang-elixir
+                                     haskell
                                      )
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
@@ -112,11 +114,13 @@
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
  startup."
+  (setq spacemacs-erlang-elixir-use-edts t)
 )
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
+  (setq nrepl-hide-special-buffers t)
 )
 
 ;; Custom variables
