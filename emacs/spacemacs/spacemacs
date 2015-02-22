@@ -120,7 +120,11 @@
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
+
+  ;; clojure
   (setq nrepl-hide-special-buffers t)
+
+  ;; python
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 )
 
