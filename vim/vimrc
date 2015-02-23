@@ -68,7 +68,7 @@ set foldmethod=indent
 set foldlevel=99
 
 "Changing Leader Key
-let mapleader = "\<Space>"
+let mapleader = ","
 let localleader = "\\"
 
 " Set title to window
