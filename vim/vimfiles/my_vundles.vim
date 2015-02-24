@@ -49,8 +49,9 @@ Plugin 'mattn/emmet-vim.git'
 Plugin 'mjbrownie/django-template-textobjects'
 
 " clojure
-Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
+Plugin 'venantius/vim-eastwood'
+Plugin 'venantius/vim-cljfmt'
 
 " misc
 Plugin 'christoomey/vim-tmux-navigator.git'
