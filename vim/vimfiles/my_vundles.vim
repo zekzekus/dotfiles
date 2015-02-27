@@ -50,11 +50,10 @@ Plugin 'mjbrownie/django-template-textobjects'
 
 " clojure
 Plugin 'tpope/vim-fireplace'
-Plugin 'venantius/vim-eastwood'
-Plugin 'venantius/vim-cljfmt'
 
 " misc
 Plugin 'christoomey/vim-tmux-navigator.git'
+Plugin 'sjl/tslime.vim'
 Plugin 'Shougo/vimproc.vim.git'
 Plugin 'rizzatti/dash.vim.git'
 Plugin 'rizzatti/funcoo.vim.git'
