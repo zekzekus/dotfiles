@@ -207,7 +207,7 @@ augroup END
 
 " ========== Plugin Settings =========="
 " Mapping to NERDTree
-nnoremap <C-n> :NERDTreeToggle<cr>
+nnoremap <C-s> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
 
 " Tagbar key bindings."
@@ -334,3 +334,10 @@ let g:go_disable_autoinstall = 1
 
 " haskell
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+" multiple cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'

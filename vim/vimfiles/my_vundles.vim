@@ -20,6 +20,7 @@ Plugin 'tpope/vim-commentary.git'
 Plugin 'tpope/vim-repeat.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'tpope/vim-unimpaired.git'
+Plugin 'terryma/vim-multiple-cursors'
 
 " navigating
 Plugin 'AndrewRadev/linediff.vim.git'
