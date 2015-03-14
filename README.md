@@ -21,6 +21,7 @@ Installation steps for who loves risky stuff.
 - install necessary external programs. as i remember:
     - flake8 for syntax checks. `pip install flake8` used by sytastic plugin.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
+    - install ag aka the silver searcher
 install
 - execute `vim +PluginInstall +qall`
 - cd into `~/.vim/bundle/YouCompleteMe` then `./install.sh`
@@ -31,19 +32,33 @@ these are not sufficient, please warn me.
 
 ### Most notable commands, shortcuts etc. (mode indicator inside parantheses)
 
-- leader key is `,`
+- leader key is `space`
 - `F3` key to toggle vim Paste mode
-- `<leader>space` for removing highlights (`:noh`)
+- `<leader>n` for removing highlights (`:noh`)
 - `<leader>W` to remove trailing whitespace from whole buffer
 - `<leader>v` to select just pasted text
 - `jj` to `<ESC>`
-- `<C-n>` toggle [NerdTree](https://github.com/scrooloose/nerdtree)
-- `<leader>l` toggle [Tagbar](https://github.com/majutsushi/tagbar)
+- `<C-s>` toggle [NerdTree](https://github.com/scrooloose/nerdtree)
+- `<leader>t` toggle [Tagbar](https://github.com/majutsushi/tagbar)
 - `F5` key toggle background color
 - `<leader>V` activate specified python virtualenv
-- `<leader>t` activate default [CtrlP](http://kien.github.io/ctrlp.vim/) plugin
-- `<leader>b` activate [CtrlP](http://kien.github.io/ctrlp.vim/) buffer list
-- `<leader>y` activate [CtrlP](http://kien.github.io/ctrlp.vim/) buffer tags list
+- `<leader>f` activate [Unite](https://github.com/Shougo/unite.vim) source
+  for files (recursive)
+- `<leader>g` activate [Unite](https://github.com/Shougo/unite.vim) git source
+- `<leader>b` activate [Unite](http://kien.github.io/ctrlp.vim/) buffer list
+  with quick selection
+- `<leader>B` activate [Unite](https://github.com/Shougo/unite.vim) buffer list
+- `<leader>y` activate [Unite](https://github.com/Shougo/unite.vim) buffer outline
+- `<leader>e` activate [Unite](https://github.com/Shougo/unite.vim) recent files
+- `<leader>h` activate [Unite](https://github.com/Shougo/unite.vim) history/yank
+  list
+- `<leader>l` activate [Unite](https://github.com/Shougo/unite.vim) lines of
+  current file
+- `<leader>/` activate [Unite](https://github.com/Shougo/unite.vim) grep
+- `<leader>H` activate [Unite](https://github.com/Shougo/unite.vim) for vim help
+  content
+- `<leader>j` activate [Unite](https://github.com/Shougo/unite.vim) for [junkfile](https://github.com/Shougo/junkfile.vim) plugin
+  plugin
 - `<leader>G` toggle [Gundo](https://github.com/sjl/gundo.vim) plugin
 - `<leader>o` executes `:only` command. Makes active buffer full screen
 - `<leader>w` bound to `:w` command. Saved the buffer
@@ -58,6 +73,7 @@ these are not sufficient, please warn me.
 - `<C-b>` jump next edit point within the snippet (INSERT)
 - `<C-z>` jump previous edit point within the snippet (INSERT)
 - `<C-space>` trigger [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin. (INSERT)
+- `<C-n>` to invoke multiple cursors plugin [info](https://github.com/terryma/vim-multiple-cursors)
 
 ## TMUX Configuration
 
@@ -66,7 +82,7 @@ Very basic conf.
 - For Ubuntu/Linux --> `sudo aptitude install xsel`
 - Symbolic link tmux/tmux.conf or tmux/tmux.ubuntu.conf to ~/.tmux.conf based on your
   platform choice.
-- Check and modify shell command based preference. Default is zsh for now.
+- Check and modify shell command based preference. Default is fish for now.
 
 ## ZSH Configuration
 
@@ -88,4 +104,4 @@ Based on oh-my-fish
 - Install [Oh My Fish](https://github.com/bpinto/oh-my-fish).
 - Create a symbolic link fish/config.fish to ~/.config/fish/config.fish
 - Create a symbolic link fish/oh-my-fish/custom to ~/.oh-my-fish/custom
-- Check and modify your TMUX conf to use fish instead of zsh.
+- Check and modify your TMUX conf to use fish.

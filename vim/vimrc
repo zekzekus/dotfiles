@@ -68,7 +68,8 @@ set foldmethod=indent
 set foldlevel=99
 
 "Changing Leader Key
-let mapleader = ","
+nnoremap <Space> <nop>
+let mapleader = "\<Space>"
 let localleader = "\\"
 
 " Set title to window
@@ -80,7 +81,7 @@ set pastetoggle=<F3>
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
 
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader>n :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -211,8 +212,7 @@ nnoremap <C-s> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
 
 " Tagbar key bindings."
-nmap <leader>l <ESC>:TagbarToggle<cr>
-imap <leader>l <ESC>:TagbarToggle<cr>i
+nmap <leader>t <ESC>:TagbarToggle<cr>
 
 " syntastic
 let g:syntastic_python_checkers=['flake8']
@@ -231,9 +231,9 @@ nnoremap <leader>V :VirtualEnvActivate
 let g:ctrlp_max_height = 30
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_working_path_mode = 'rw'
-nnoremap <leader>t :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>y :CtrlPBufTag<CR>
+" nnoremap <leader>t :CtrlP<CR>
+" nnoremap <leader>b :CtrlPBuffer<CR>
+" nnoremap <leader>y :CtrlPBufTag<CR>
 
 " gundo settings
 nnoremap <leader>G :GundoToggle<CR>
@@ -377,27 +377,18 @@ function! s:unite_settings()
 endfunction
 autocmd FileType unite call s:unite_settings()
 
-nmap <space> [unite]
-nnoremap [unite] <nop>
+nnoremap <silent> <leader>f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
+nnoremap <silent> <leader>g :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
 
-nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async:! buffer file_mru bookmark<cr><c-u>
-nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
-nnoremap <silent> [unite]g :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
+nnoremap <silent> <leader>e :<C-u>Unite -buffer-name=recent file_mru<cr>
+nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer<cr>
+nnoremap <silent> <leader>B :<C-u>Unite -auto-resize -buffer-name=buffers buffer file_mru<cr>
+nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
 
-
-nnoremap <silent> [unite]e :<C-u>Unite -buffer-name=recent file_mru<cr>
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer file_mru<cr>
-nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
-
-nnoremap <silent> [unite]a :<C-u>Unite -winheight=10 -auto-preview -buffer-name=airline_themes airline_themes<cr>
-nnoremap <silent> [unite]c :<C-u>Unite -winheight=10 -auto-preview -buffer-name=colorschemes colorscheme<cr>
-nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
-nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-nnoremap <silent> [unite]h :<C-u>Unite -auto-resize -buffer-name=help help<cr>
+nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
+nnoremap <silent> <leader>H :<C-u>Unite -auto-resize -buffer-name=help help<cr>
 
 let g:junkfile#directory=s:get_cache_dir('junk')
-nnoremap <silent> [unite]j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+nnoremap <silent> <leader>j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
