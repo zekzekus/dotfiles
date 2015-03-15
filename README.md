@@ -13,6 +13,12 @@ due to your very personal taste of preferences.
 
 Installation steps for who loves risky stuff.
 
+IMPORTANT NOTE: now my setup heavily uses [Unite](https://github.com/Shougo/unite.vim) plugin for various type of
+listings. Current MacVim does have a problem with garbage collecting causes
+freezing of vim after selection from any unite buffer. This problem is fixed
+with regular Vim source code. So i strongly recommend using latest official Vim
+distribution until MacVim includes the patch about this bug.
+
 - clone the repo.
 - execute `git submodule update --init --recursive`
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
