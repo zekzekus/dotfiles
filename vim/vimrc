@@ -382,6 +382,7 @@ nnoremap <silent> <leader>g :<C-u>Unite -toggle -auto-resize -buffer-name=gitfil
 
 nnoremap <silent> <leader>e :<C-u>Unite -buffer-name=recent file_mru<cr>
 nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
 nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
 nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer<cr>
 nnoremap <silent> <leader>B :<C-u>Unite -auto-resize -buffer-name=buffers buffer file_mru<cr>
