@@ -253,6 +253,7 @@ let g:bufferline_rotate = 1
 let g:bufferline_fixed_index = -1 "always last
 
 " airline configuration
+let g:airline_theme="simple"
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
 " unicode symbols
@@ -364,6 +365,7 @@ call unite#custom#profile('default', 'context', {
 let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
 let g:unite_cursor_line_highlight = 'TabLineSel'
+let g:unite_split_rule = "botright"
 
 if executable('ag')
   let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden --ignore ".git" --ignore "bundle" -g ""'
