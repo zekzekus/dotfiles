@@ -253,7 +253,7 @@ let g:bufferline_rotate = 1
 let g:bufferline_fixed_index = -1 "always last
 
 " airline configuration
-let g:airline_theme="simple"
+let g:airline_theme="tomorrow"
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
 " unicode symbols
