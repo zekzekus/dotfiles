@@ -364,7 +364,7 @@ call unite#custom#profile('default', 'context', {
 
 let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
-let g:unite_cursor_line_highlight = 'TabLineSel'
+" let g:unite_cursor_line_highlight = 'TabLineSel'
 let g:unite_split_rule = "botright"
 
 if executable('ag')
@@ -396,8 +396,8 @@ nnoremap <silent> <leader>e :<C-u>Unite -prompt=>\  -buffer-name=recent file_mru
 nnoremap <silent> <leader>h :<C-u>Unite -prompt=>\  -buffer-name=yanks history/yank<cr>
 nnoremap <silent> <leader>r :<C-u>Unite -prompt=>\  -buffer-name=registers register<cr>
 nnoremap <silent> <leader>l :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=line line<cr>
-nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer<cr>
-nnoremap <silent> <leader>B :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> <leader>B :<C-u>Unite -quick-match buffer<cr>
+nnoremap <silent> <leader>b :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=buffers buffer<cr>
 nnoremap <silent> <leader>/ :<C-u>Unite -prompt=>\  -no-quit -buffer-name=search grep:.<cr>
 
 nnoremap <silent> <leader>y :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=outline outline<cr>
