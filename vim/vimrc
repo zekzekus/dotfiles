@@ -351,7 +351,7 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
-      \ 'short_source_names': 1
+      \ 'short_source_names': 1,
       \ })
 
 let g:unite_data_directory=s:get_cache_dir('unite')
