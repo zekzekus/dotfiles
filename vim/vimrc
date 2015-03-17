@@ -356,6 +356,8 @@ call unite#custom#profile('default', 'context', {
 
 let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
+let g:unite_split_rule = "botright"
+let g:unite_cursor_line_highlight = 'TabLineSel'
 
 if executable('ag')
   let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden --ignore ".git" --ignore "bundle" -g ""'
@@ -374,6 +376,8 @@ function! s:unite_settings()
   imap <buffer> <esc> <plug>(unite_exit)
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
 endfunction
 autocmd FileType unite call s:unite_settings()
 
