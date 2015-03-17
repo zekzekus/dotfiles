@@ -33,9 +33,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'osyo-manga/unite-airline_themes'
 Plugin 'ujihisa/unite-colorscheme'
-Plugin 'tsukkee/unite-tag'
 Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/unite-help'
 Plugin 'Shougo/junkfile.vim'
 
 " vim interface
@@ -62,7 +60,6 @@ Plugin 'tpope/vim-fireplace'
 
 " misc
 Plugin 'christoomey/vim-tmux-navigator.git'
-Plugin 'sjl/tslime.vim'
 Plugin 'Shougo/vimproc.vim.git'
 Plugin 'rizzatti/dash.vim.git'
 Plugin 'rizzatti/funcoo.vim.git'
