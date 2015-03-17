@@ -401,7 +401,7 @@ nnoremap <silent> <leader>/ :<C-u>Unite -prompt=>\  -no-quit -buffer-name=search
 nnoremap <silent> <leader>y :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=outline outline<cr>
 nnoremap <silent> <leader>H :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=help help<cr>
 nnoremap <silent> <leader>a :<C-u>Unite -auto-preview -no-start-insert -buffer-name=airline airline_themes<cr>
-nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-name=colorschemes airline_themes<cr>
+nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-name=colorschemes colorscheme<cr>
 
 let g:junkfile#directory=s:get_cache_dir('junk')
 nnoremap <silent> <leader>j :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
