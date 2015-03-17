@@ -397,7 +397,7 @@ nnoremap <silent> <leader>h :<C-u>Unite -prompt=>\  -buffer-name=yanks history/y
 nnoremap <silent> <leader>r :<C-u>Unite -prompt=>\  -buffer-name=registers register<cr>
 nnoremap <silent> <leader>l :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=line line<cr>
 nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer<cr>
-nnoremap <silent> <leader>B :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=buffers buffer file_mru<cr>
+nnoremap <silent> <leader>B :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=buffers buffer<cr>
 nnoremap <silent> <leader>/ :<C-u>Unite -prompt=>\  -no-quit -buffer-name=search grep:.<cr>
 
 nnoremap <silent> <leader>y :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=outline outline<cr>
