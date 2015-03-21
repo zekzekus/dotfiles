@@ -31,6 +31,7 @@ distribution until MacVim includes the patch about this bug.
 install
 - execute `vim +PluginInstall +qall`
 - cd into `~/.vim/bundle/YouCompleteMe` then `./install.sh`
+- cd into `~/.vim/bundle/vimproc.vim` then `make`
 - if you develop golang then you must install related tools for [this](https://github.com/fatih/vim-go) plugin manually.
 
 Yeah these should be enough to use my VIM configuration on your system. If
