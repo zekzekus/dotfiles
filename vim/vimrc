@@ -7,7 +7,7 @@ set nocompatible
 filetype off
 
 " load vundle settings file
-source ~/.vim/my_vundles.vim
+source ~/.vim/neobundles.vim
 
 filetype plugin indent on
 set modelines=0
