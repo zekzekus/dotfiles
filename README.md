@@ -19,6 +19,14 @@ freezing of vim after selection from any unite buffer. This problem is fixed
 with regular Vim source code. So i strongly recommend using latest official Vim
 distribution until MacVim includes the patch about this bug.
 
+IMPORTANT NOTE (2015-03-26): i started to use [neobundle](https://github.com/Shougo/neobundle.vim) for vim plugin
+management. Besides, i am using [neocomplete](https://github.com/Shougo/neocomplete.vim) for auto completion and removed
+youcompleteme from my stack. I migrated my package manager from Vundle to
+NeoBundle with these commands under `vim/vimfiles/bundle` directory; `ls | grep
+-v neobundle.vim | xargs rm -rf` then `vim +NeoBundleInstall +qall` command.
+With neobundle some of the compilation commands i mentioned below are
+deprecated because these NeoBundle can execute them.
+
 - clone the repo.
 - execute `git submodule update --init --recursive`
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
@@ -29,10 +37,7 @@ distribution until MacVim includes the patch about this bug.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
     - install ag aka the silver searcher
 install
-- execute `vim +PluginInstall +qall`
-- cd into `~/.vim/bundle/YouCompleteMe` then `./install.sh`
-- cd into `~/.vim/bundle/vimproc.vim` then `make`
-- if you develop golang then you must install related tools for [this](https://github.com/fatih/vim-go) plugin manually.
+- execute `vim +NeoBundleInstall +qall`
 
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.
@@ -79,7 +84,6 @@ these are not sufficient, please warn me.
 - `<C-j>` expand snippet (INSERT)
 - `<C-b>` jump next edit point within the snippet (INSERT)
 - `<C-z>` jump previous edit point within the snippet (INSERT)
-- `<C-space>` trigger [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) plugin. (INSERT)
 - `<C-n>` to invoke multiple cursors plugin [info](https://github.com/terryma/vim-multiple-cursors)
 
 ## TMUX Configuration
