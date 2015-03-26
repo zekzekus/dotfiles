@@ -20,6 +20,8 @@ NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'Shougo/neocomplete.vim'
 
 " navigating
 NeoBundle 'AndrewRadev/linediff.vim.git'

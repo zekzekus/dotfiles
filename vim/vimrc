@@ -163,7 +163,7 @@ endif
 colorscheme solarized
 set background=dark
 
-syntax on
+syntax enable
 
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
@@ -201,7 +201,6 @@ augroup programming_au
   autocmd BufEnter plsql setl ts=2 sts=2 sw=2
   autocmd BufEnter volofile setf javascript
   autocmd FileType python set ft=python.django " For SnipMate
-  "autocmd FileType python set omnifunc=jedi#complete
   autocmd FileType html set ft=htmldjango " For SnipMate
   autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
 augroup END
@@ -406,3 +405,42 @@ nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-n
 
 let g:junkfile#directory=s:get_cache_dir('junk')
 nnoremap <silent> <leader>j :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+
+" jedi-vim
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+
+" neocomplete settings
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns['python'] =
+      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+      " \ '\h\w*\|[^. \t]\.\w*'
+let g:neocomplete#force_omni_input_patterns['python.django'] =
+      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+      " \ '\h\w*\|[^. \t]\.\w*'
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ neocomplete#start_manual_complete()
+function! s:check_back_space()
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+autocmd FileType python,python.django setlocal omnifunc=jedi#completions
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
