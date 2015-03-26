@@ -299,7 +299,6 @@ augroup go_au
   autocmd!
   autocmd FileType go nmap K <Plug>(go-doc)
   autocmd FileType go nmap <leader>d <Plug>(go-def)
-  autocmd FileType haskell set omnifunc=necoghc#omnifunc
 augroup END
 
 " YouCompleteMe settings
@@ -444,3 +443,4 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
