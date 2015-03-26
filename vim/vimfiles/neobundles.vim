@@ -61,6 +61,9 @@ NeoBundle 'mjbrownie/django-template-textobjects'
 " clojure
 NeoBundle 'tpope/vim-fireplace'
 
+" elixir
+NeoBundle 'elixir-lang/vim-elixir'
+
 " misc
 NeoBundle 'christoomey/vim-tmux-navigator.git'
 NeoBundle 'Shougo/vimproc.vim.git', {
