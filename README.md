@@ -69,7 +69,7 @@ these are not sufficient, please warn me.
 - `<leader>G` toggle [Gundo](https://github.com/sjl/gundo.vim) plugin
 - `<leader>o` executes `:only` command. Makes active buffer full screen
 - `<leader>w` bound to `:w` command. Saved the buffer
-- `<leader>,` switch to last edited buffer
+- `<leader><tab>` switch to last edited buffer
 - `<C-u>` convert the word uppercase (both NORMAL and INSERT)
 - `<leader>s` triggers [Dash](http://kapeli.com/dash) search based on active buffer's filetype
 - `<leader>S` triggers global [Dash](http://kapeli.com/dash) search

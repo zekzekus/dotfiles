@@ -101,7 +101,7 @@ nnoremap <leader>o :only<CR>
 nnoremap <leader>w :w<CR>
 
 " easy switch to last edited buffer (alternate buffer)
-nnoremap <leader>, :b#<CR>
+nnoremap <leader><tab> :b#<CR>
 
 " make word uppercase and continue editing
 inoremap <c-u> <esc>gUiw`]a
