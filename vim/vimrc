@@ -56,6 +56,8 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=79
 
+set completeopt-=preview
+
 " To  show special characters in Vim
 set listchars=tab:▸\ ,eol:¬
 
@@ -371,6 +373,7 @@ let g:junkfile#directory=s:get_cache_dir('junk')
 nnoremap <silent> <leader>j :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
 
 " jedi-vim
+let g:jedi#auto_initialization = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
