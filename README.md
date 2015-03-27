@@ -2,10 +2,6 @@
 
 ## VIM Configuration
 
-Now i am using [Vundle](https://github.com/gmarik/Vundle.vim) to manage my VIM plugins.
-
-Based on instructions [here](http://haridas.in/vim-as-your-ide.html).
-
 My first and most useful suggestion is this: BUILD YOUR OWN SET OF VIM
 CONFIGURATION!! I strongly recommend [this](http://mislav.uniqpath.com/2011/12/vim-revisited/) article to start with a minimum
 set of configuration options. Than build your editing environment incrementally
@@ -109,9 +105,9 @@ Based on oh-my-zsh.
 ## FISH Configuration
 
 Based on oh-my-fish
-- I am experimenting with pyenv. so `brew install pyenv pyenv-virtualenv`
 - Install fish shell `brew install fish` or `sudo aptitude install fish` based
   on your platform.
+- `pip install virtualfish`
 - Install [Oh My Fish](https://github.com/bpinto/oh-my-fish).
 - Create a symbolic link fish/config.fish to ~/.config/fish/config.fish
 - Create a symbolic link fish/oh-my-fish/custom to ~/.oh-my-fish/custom
