@@ -226,14 +226,6 @@ let g:virtualenv_stl_format = '[%n]'
 " after this command i type the name of virtualenv
 nnoremap <leader>V :VirtualEnvActivate 
 
-" ctrl-p plugin options
-let g:ctrlp_max_height = 30
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_working_path_mode = 'rw'
-" nnoremap <leader>t :CtrlP<CR>
-" nnoremap <leader>b :CtrlPBuffer<CR>
-" nnoremap <leader>y :CtrlPBufTag<CR>
-
 " gundo settings
 nnoremap <leader>G :GundoToggle<CR>
 
@@ -301,37 +293,10 @@ augroup go_au
   autocmd FileType go nmap <leader>d <Plug>(go-def)
 augroup END
 
-" YouCompleteMe settings
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_complete_in_strings = 0
-let g:ycm_auto_trigger = 1
-let g:ycm_complete_in_strings = 0
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
-nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_filetype_blacklist = {
-        \ 'tagbar' : 1,
-        \ 'qf' : 1,
-        \ 'notes' : 1,
-        \ 'markdown' : 1,
-        \ 'unite' : 1,
-        \ 'text' : 1,
-        \ 'vimwiki' : 1,
-        \ 'pandoc' : 1,
-        \ 'mail' : 1,
-        \ 'gitcommit': 1
-        \}
-
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" go-vim plugin
-let g:go_disable_autoinstall = 1
-
-" haskell
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " multiple cursors
 let g:multi_cursor_use_default_mapping=0
@@ -408,6 +373,7 @@ nnoremap <silent> <leader>j :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=ju
 " jedi-vim
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#use_tabs_not_buffers = 0
 
 " neocomplete settings
 let g:neocomplete#enable_at_startup = 1

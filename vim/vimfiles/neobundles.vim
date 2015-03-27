@@ -28,7 +28,6 @@ NeoBundle 'Shougo/neocomplete.vim'
 " navigating
 NeoBundle 'AndrewRadev/linediff.vim.git'
 NeoBundle 'Lokaltog/vim-easymotion.git'
-NeoBundle 'kien/ctrlp.vim.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'rizzatti/greper.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
