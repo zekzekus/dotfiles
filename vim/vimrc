@@ -378,6 +378,11 @@ let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 
+nnoremap <silent> <localleader>r :call jedi#rename()<cr>
+nnoremap <silent> <localleader>n :call jedi#usages()<cr>
+nnoremap <silent> <localleader>d :call jedi#goto_definitions()<cr>
+nnoremap <silent> <localleader>g :call jedi#goto_assignments()<cr>
+
 " neocomplete settings
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
