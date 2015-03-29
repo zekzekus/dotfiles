@@ -396,6 +396,8 @@ let g:neocomplete#force_omni_input_patterns['python'] =
 let g:neocomplete#force_omni_input_patterns['python.django'] =
       \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
       " \ '\h\w*\|[^. \t]\.\w*'
+let g:neocomplete#force_omni_input_patterns['erlang'] = '[^. *\t]:\w*'
+
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()

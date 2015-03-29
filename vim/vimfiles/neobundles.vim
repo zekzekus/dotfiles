@@ -63,6 +63,9 @@ NeoBundle 'tpope/vim-fireplace'
 " elixir
 NeoBundle 'elixir-lang/vim-elixir'
 
+" erlang
+NeoBundle 'jimenezrick/vimerl'
+
 " misc
 NeoBundle 'christoomey/vim-tmux-navigator.git'
 NeoBundle 'Shougo/vimproc.vim.git', {
