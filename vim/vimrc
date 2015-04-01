@@ -377,6 +377,7 @@ let g:jedi#auto_initialization = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = 0
 
 nnoremap <silent> <localleader>r :call jedi#rename()<cr>
 nnoremap <silent> <localleader>n :call jedi#usages()<cr>
