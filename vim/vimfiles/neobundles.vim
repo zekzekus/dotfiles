@@ -11,8 +11,6 @@ NeoBundle 'zekzekus/vim-snippets'
 NeoBundle 'mhinz/vim-signify.git'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
 
 " editing
 NeoBundle 'Raimondi/delimitMate.git'
