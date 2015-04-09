@@ -318,7 +318,7 @@ call unite#filters#sorter_default#use(['sorter_selecta'])
 call unite#custom#source('buffer,file,file_rec/git', 'sorters', 'sorter_selecta')
 call unite#custom#source('file,file_rec/git','max_candidates', 0)
 call unite#custom#source(
-      \ 'file,buffer,file_rec/git','matchers',
+      \ 'file,buffer,file_rec/git,file_mru,history/yank,register,line,grep,help','matchers',
       \ [ 'matcher_fuzzy', 'matcher_hide_current_file' ])
 
 call unite#custom#profile('default', 'context', {
