@@ -415,9 +415,12 @@ function! s:check_back_space()
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-autocmd FileType python,python.django setlocal omnifunc=jedi#completions
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+augroup omni
+  autocmd!
+  autocmd FileType python,python.django setlocal omnifunc=jedi#completions
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+augroup END
