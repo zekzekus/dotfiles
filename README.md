@@ -33,6 +33,7 @@ deprecated because these NeoBundle can execute them.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
     - install ag aka the silver searcher
 install
+- execute `vim "+NeoBundleInstall vimproc" +qall`
 - execute `vim +NeoBundleInstall +qall`
 
 Yeah these should be enough to use my VIM configuration on your system. If
