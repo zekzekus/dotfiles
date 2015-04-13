@@ -4,9 +4,6 @@
 [submodule "vim/vimfiles/bundle/vundle"]
 	path = vim/vimfiles/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
-[submodule "fish/oh-my-fish/custom/plugins/virtualfish"]
-	path = fish/oh-my-fish/custom/plugins/virtualfish
-	url = https://github.com/adambrenecki/virtualfish.git
 [submodule "vim/vimfiles/bundle/neobundle.vim"]
 	path = vim/vimfiles/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
