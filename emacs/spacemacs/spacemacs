@@ -14,7 +14,9 @@
  dotspacemacs-configuration-layers '(osx
                                      git
                                      python
-                                     company-mode
+                                     auto-completion
+                                     syntax-checking
+                                     org
                                      dash
                                      clojure
                                      html
@@ -24,6 +26,8 @@
                                      slime
                                      erlang-elixir
                                      haskell
+                                     erc
+                                     fish-mode
                                      )
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
