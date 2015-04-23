@@ -62,6 +62,9 @@ NeoBundle 'mjbrownie/django-template-textobjects'
 " clojure
 NeoBundle 'tpope/vim-fireplace'
 
+" go
+NeoBundle 'fatih/vim-go'
+
 " elixir
 NeoBundle 'elixir-lang/vim-elixir'
 
