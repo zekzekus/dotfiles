@@ -12,8 +12,6 @@ NeoBundle 'mhinz/vim-signify.git'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'gregsexton/gitv'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
 
 " editing
 NeoBundle 'Raimondi/delimitMate.git'
@@ -23,7 +21,6 @@ NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'Shougo/neocomplete.vim'
 
 " navigating
@@ -45,7 +42,12 @@ NeoBundle 'bling/vim-bufferline.git'
 NeoBundle 'flazz/vim-colorschemes.git'
 NeoBundle 'zekzekus/vim-airline.git'
 
+" haskell
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
+
 " python
+NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'hynek/vim-python-pep8-indent.git'
 NeoBundle 'jmcantrell/vim-virtualenv.git'
 
