@@ -327,12 +327,13 @@ call unite#custom#source(
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
       \ 'short_source_names': 1,
+      \ 'direction': 'below',
+      \ 'prompt': '> ',
+      \ 'cursor_line_highlight': 'TabLine',
       \ })
 
 let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
-let g:unite_cursor_line_highlight = 'TabLine'
-let g:unite_split_rule = "botright"
 
 if executable('ag')
   let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden --ignore ".git" --ignore "bundle" -g ""'
@@ -356,24 +357,24 @@ function! s:unite_settings()
 endfunction
 autocmd FileType unite call s:unite_settings()
 
-nnoremap <silent> <leader>f :<C-u>Unite -prompt=>\  -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
-nnoremap <silent> <leader>g :<C-u>Unite -prompt=>\  -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
+nnoremap <silent> <leader>f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
+nnoremap <silent> <leader>g :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
 
-nnoremap <silent> <leader>e :<C-u>Unite -prompt=>\  -buffer-name=recent file_mru<cr>
-nnoremap <silent> <leader>h :<C-u>Unite -prompt=>\  -buffer-name=yanks history/yank<cr>
-nnoremap <silent> <leader>r :<C-u>Unite -prompt=>\  -buffer-name=registers register<cr>
-nnoremap <silent> <leader>l :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> <leader>e :<C-u>Unite -buffer-name=recent file_mru<cr>
+nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
+nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
 nnoremap <silent> <leader>B :<C-u>Unite -quick-match buffer<cr>
-nnoremap <silent> <leader>b :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=buffers buffer<cr>
-nnoremap <silent> <leader>/ :<C-u>Unite -prompt=>\  -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> <leader>b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
 
-nnoremap <silent> <leader>y :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=outline outline<cr>
-nnoremap <silent> <leader>H :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=help help<cr>
+nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
+nnoremap <silent> <leader>H :<C-u>Unite -auto-resize -buffer-name=help help<cr>
 nnoremap <silent> <leader>a :<C-u>Unite -auto-preview -no-start-insert -buffer-name=airline airline_themes<cr>
 nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-name=colorschemes colorscheme<cr>
 
 let g:junkfile#directory=s:get_cache_dir('junk')
-nnoremap <silent> <leader>j :<C-u>Unite -prompt=>\  -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+nnoremap <silent> <leader>j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
 
 " jedi-vim
 let g:jedi#auto_initialization = 0
