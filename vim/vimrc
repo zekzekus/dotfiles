@@ -327,9 +327,10 @@ call unite#custom#source(
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
       \ 'short_source_names': 1,
-      \ 'direction': 'below',
+      \ 'direction': 'botright',
       \ 'prompt': '> ',
       \ 'cursor_line_highlight': 'TabLine',
+      \ 'winheight': 10,
       \ })
 
 let g:unite_data_directory=s:get_cache_dir('unite')
