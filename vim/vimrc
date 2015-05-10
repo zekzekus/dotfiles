@@ -195,7 +195,7 @@ augroup END
 augroup programming_au
   autocmd!
   autocmd FileType ruby,vim,jade,stylus setl ts=2 sts=2 sw=2
-  autocmd FileType javascript setl ts=2 sts=2 sw=2
+  autocmd FileType javascript,haskell setl ts=2 sts=2 sw=2
   autocmd FileType html,htmldjango setl nowrap ts=2 sts=2 sw=2
   autocmd FileType snippet,snippets setlocal noexpandtab
   autocmd BufEnter *.rss,*.atom,*.odrl setf xml
@@ -384,10 +384,12 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 
-nnoremap <silent> <localleader>r :call jedi#rename()<cr>
-nnoremap <silent> <localleader>n :call jedi#usages()<cr>
-nnoremap <silent> <localleader>d :call jedi#goto_definitions()<cr>
-nnoremap <silent> <localleader>g :call jedi#goto_assignments()<cr>
+function! s:jedi_bindings()
+  nnoremap <silent> <localleader>r :call jedi#rename()<cr>
+  nnoremap <silent> <localleader>n :call jedi#usages()<cr>
+  nnoremap <silent> <localleader>d :call jedi#goto_definitions()<cr>
+  nnoremap <silent> <localleader>g :call jedi#goto_assignments()<cr>
+endfunction
 
 " neocomplete settings
 let g:neocomplete#enable_at_startup = 1
@@ -398,10 +400,10 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 let g:neocomplete#force_omni_input_patterns['python'] =
       \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-      " \ '\h\w*\|[^. \t]\.\w*'
+" \ '\h\w*\|[^. \t]\.\w*'
 let g:neocomplete#force_omni_input_patterns['python.django'] =
       \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-      " \ '\h\w*\|[^. \t]\.\w*'
+" \ '\h\w*\|[^. \t]\.\w*'
 let g:neocomplete#force_omni_input_patterns['erlang'] = '[^. *\t]:\w*'
 
 
@@ -428,4 +430,16 @@ augroup omni
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+augroup END
+
+function! s:ghcmod_bindings()
+  nnoremap <localleader>t :GhcModType<cr>
+  nnoremap <localleader>c :GhcModTypeClear<cr>
+  nnoremap <localleader>i :GhcModInfoPreview<cr>
+endfunction
+
+augroup bindings
+  autocmd!
+  autocmd FileType haskell call s:ghcmod_bindings()
+  autocmd FileType python,python.django call s:jedi_bindings()
 augroup END
