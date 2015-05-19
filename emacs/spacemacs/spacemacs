@@ -130,6 +130,9 @@ This function is called at the very end of Spacemacs initialization."
 
   ;; python
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+  ;; haskell
+  (setq haskell-process-type 'cabal-repl)
 )
 
 ;; Custom variables
