@@ -41,6 +41,7 @@ NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'bling/vim-bufferline.git'
 NeoBundle 'flazz/vim-colorschemes.git'
 NeoBundle 'zekzekus/vim-airline.git'
+NeoBundle 'NLKNguyen/papercolor-theme'
 
 " haskell
 NeoBundle 'eagletmt/neco-ghc'
@@ -54,6 +55,7 @@ NeoBundle 'jmcantrell/vim-virtualenv.git'
 " javascript
 NeoBundle 'pangloss/vim-javascript.git'
 NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'tpope/vim-jdaddy'
 
 " html
 NeoBundle 'mattn/emmet-vim.git'
