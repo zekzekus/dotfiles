@@ -166,6 +166,7 @@ colorscheme solarized
 set background=dark
 
 syntax enable
+highlight clear VertSplit
 
 " toggle background color base between dark and light
 map <F5> :call ToggleBg()<CR>
