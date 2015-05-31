@@ -14,6 +14,7 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'gregsexton/gitv'
 
 " editing
+NeoBundle 'Plugin reedes/vim-pencil'
 NeoBundle 'Raimondi/delimitMate.git'
 NeoBundle 'sjl/gundo.vim.git'
 NeoBundle 'tpope/vim-commentary.git'
@@ -22,6 +23,7 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'reedes/vim-colors-pencil'
 
 " navigating
 NeoBundle 'AndrewRadev/linediff.vim.git'

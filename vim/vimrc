@@ -444,3 +444,9 @@ augroup bindings
   autocmd FileType haskell call s:ghcmod_bindings()
   autocmd FileType python,python.django call s:jedi_bindings()
 augroup END
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,rst call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
