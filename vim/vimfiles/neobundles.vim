@@ -90,6 +90,7 @@ NeoBundle 'rizzatti/funcoo.vim.git'
 NeoBundle 'sjl/vitality.vim.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'diepm/vim-rest-console'
 
 call neobundle#end()
 
