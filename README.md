@@ -36,6 +36,7 @@ can execute them.
     - flake8 for syntax checks. `pip install flake8` used by sytastic plugin.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
     - install ag aka the silver searcher install
+    - nodejs and npm
 - execute `vim "+NeoBundleInstall vimproc" +qall`
 - execute `vim +NeoBundleInstall +qall`
 
