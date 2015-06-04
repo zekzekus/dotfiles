@@ -13,4 +13,10 @@ Theme "robbyrussell"
 # Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
 # Example format: set fish_plugins autojump bundler
 Plugin "localhost"
-
+Plugin "brew"
+Plugin "osx"
+Plugin "python"
+Plugin "ssh"
+Plugin "theme"
+Plugin "tmux"
+Plugin "vi-mode"
