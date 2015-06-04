@@ -8,6 +8,7 @@ set fish_path $HOME/.oh-my-fish
 . $fish_path/oh-my-fish.fish
 
 Theme "robbyrussell"
+Theme "syl20bnr"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
 # Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
@@ -20,3 +21,4 @@ Plugin "ssh"
 Plugin "theme"
 Plugin "tmux"
 Plugin "vi-mode"
+
