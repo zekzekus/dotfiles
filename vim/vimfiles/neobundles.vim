@@ -55,8 +55,14 @@ NeoBundle 'hynek/vim-python-pep8-indent.git'
 NeoBundle 'jmcantrell/vim-virtualenv.git'
 
 " javascript
+NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'pangloss/vim-javascript.git'
-NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'marijnh/tern_for_vim', {
+        \   'build': {
+        \     'mac': 'npm install',
+        \     'linux': 'npm install',
+        \   }
+        \ }
 NeoBundle 'tpope/vim-jdaddy'
 
 " html

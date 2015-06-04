@@ -406,6 +406,7 @@ let g:neocomplete#force_omni_input_patterns['python.django'] =
       \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " \ '\h\w*\|[^. \t]\.\w*'
 let g:neocomplete#force_omni_input_patterns['erlang'] = '[^. *\t]:\w*'
+let g:neocomplete#force_omni_input_patterns['javascript'] = '[^. \t]\.\w*'
 
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -428,7 +429,7 @@ augroup omni
   autocmd FileType python,python.django setlocal omnifunc=jedi#completions
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
