@@ -76,7 +76,7 @@ function fish_prompt -d "Write out the left prompt of the zekus theme"
     if echo $git_status | grep -E "\s\?\?\s|\sM\s|\sD\s" > /dev/null
       set colbranch $colbred
     end
-    set ps_git $colbwhite"~:"$colbcyan$git_repo_name$colbranch"{"$git_branch_name"}"
+    set ps_git $colbwhite"git:"$colbcyan$git_repo_name$colbwhite":"$colbranch"{"$git_branch_name"}"
     if test "$basedir_name" != "$git_repo_name"
         set ps_git $ps_git$colnormal":"$colbwhite$basedir_name
     end
