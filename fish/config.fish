@@ -20,5 +20,3 @@ Plugin "python"
 Plugin "ssh"
 Plugin "theme"
 Plugin "tmux"
-Plugin "vi-mode"
-
