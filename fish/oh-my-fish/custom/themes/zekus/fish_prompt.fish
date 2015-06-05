@@ -1,43 +1,41 @@
-# name: syl20bnr
+# name: zekus
 
 # ----------------------------------------------------------------------------
 # Utils
 # ----------------------------------------------------------------------------
 
-set -g __syl20bnr_display_rprompt 1
+set -g __zekus_display_rprompt 1
 
-function toggle_right_prompt -d "Toggle the right prompt of the syl20bnr theme"
-  if test $__syl20bnr_display_rprompt -eq 0
+function toggle_right_prompt -d "Toggle the right prompt of the zekus theme"
+  if test $__zekus_display_rprompt -eq 0
     echo "enable right prompt"
-    set __syl20bnr_display_rprompt 1
+    set __zekus_display_rprompt 1
   else
     echo "disable right prompt"
-    set __syl20bnr_display_rprompt 0
+    set __zekus_display_rprompt 0
   end
 end
 
-function __syl20bnr_git_branch_name -d "Return the current branch name"
+function __zekus_virtualenv
+  if set -q VIRTUAL_ENV
+    echo "["(basename "$VIRTUAL_ENV")"]"
+  end
+end
+
+function __zekus_git_branch_name -d "Return the current branch name"
   echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 end
 
-function __syl20bnr_git_repo_name -d "Return the current repository name"
+function __zekus_git_repo_name -d "Return the current repository name"
   echo (command basename (git rev-parse --show-toplevel ^/dev/null))
 end
 
-function __syl20bnr_git_repo_base -d "Return the current repository name"
+function __zekus_git_repo_base -d "Return the current repository name"
   echo (command git rev-parse --show-toplevel ^/dev/null)
 end
 
-function __syl20bnr_git_status -d "git status command"
+function __zekus_git_status -d "git status command"
   git status -b -s --ignore-submodules=dirty
-end
-
-function __syl20bnr_unpushed_commit_count -d "Return the number of unpushed commits"
-  echo $argv[1] | grep -E -o "ahead\ [0-9]+" | awk '{print $2}'
-end
-
-function __syl20bnr_unmerged_commit_count -d "Return the number of unmerged commits"
-  echo $argv[1] | grep -E -o "behind\ [0-9]+" | awk '{print $2}'
 end
 
 # ----------------------------------------------------------------------------
@@ -50,7 +48,7 @@ alias trp toggle_right_prompt
 # Prompts
 # ----------------------------------------------------------------------------
 
-function fish_prompt -d "Write out the left prompt of the syl20bnr theme"
+function fish_prompt -d "Write out the left prompt of the zekus theme"
   set -l last_status $status
   set -l basedir_name (basename (prompt_pwd))
 
@@ -70,10 +68,10 @@ function fish_prompt -d "Write out the left prompt of the syl20bnr theme"
   
   # git
   set -l ps_git ""
-  set -l git_branch_name (__syl20bnr_git_branch_name)
+  set -l git_branch_name (__zekus_git_branch_name)
   if test -n "$git_branch_name"
-    set -l git_repo_name (__syl20bnr_git_repo_name)
-    set -l git_status (__syl20bnr_git_status)
+    set -l git_repo_name (__zekus_git_repo_name)
+    set -l git_status (__zekus_git_status)
     set -l colbranch $colbgreen
     if echo $git_status | grep -E "\s\?\?\s|\sM\s|\sD\s" > /dev/null
       set colbranch $colbred
@@ -128,22 +126,7 @@ function fish_prompt -d "Write out the left prompt of the syl20bnr theme"
   # With this indicator I can quickly remember that I can "ctrl+d" to end the
   # the current shell process and get back to the ranger process.
   set -l ps_end ">"
-  # indicator for ranger parent process
-  set -l ranger ""
-  set -l os (uname)
-  if test "$os" = "Darwin"
-    if pstree -s ranger | grep (echo %self) | grep -v grep > /dev/null
-      set ranger 1
-    end
-  end
-  if test "$os" = "Linux"
-    if pstree -p -l | grep "fish("(echo %self)")" | grep 'ranger([0-9]*)' > /dev/null
-      set ranger 1
-    end
-  end
-  if test -n "$ranger"
-    set ps_end $ps_end$ps_end
-  end
+  #
   # last status give the color of the right arrows at the end of the prompt
   if test $last_status -ne 0 
     set ps_end $colnormal$colbred$ps_end
@@ -153,11 +136,11 @@ function fish_prompt -d "Write out the left prompt of the syl20bnr theme"
 
   # Left Prompt
 
-  echo -n -s $ps_git $ps_pwd $ps_git_dirty ' ' $ps_end ' '
+  echo -n -s (__zekus_virtualenv) $ps_git $ps_pwd $ps_git_dirty ' ' $ps_end ' '
 end
 
 
-function fish_right_prompt -d "Write out the right prompt of the syl20bnr theme"
+function fish_right_prompt -d "Write out the right prompt of the zekus theme"
   set -l colnormal (set_color normal)
 
   # Segments
@@ -171,7 +154,7 @@ function fish_right_prompt -d "Write out the right prompt of the syl20bnr theme"
   
   # Right Prompt
 
-  if test $__syl20bnr_display_rprompt -eq 1
+  if test $__zekus_display_rprompt -eq 1
     echo -n -s $ps_where
   end
 end
