@@ -26,11 +26,11 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'reedes/vim-colors-pencil'
 
 " navigating
+NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'AndrewRadev/linediff.vim.git'
 NeoBundle 'Lokaltog/vim-easymotion.git'
 NeoBundle 'majutsushi/tagbar.git'
 NeoBundle 'rizzatti/greper.vim.git'
-NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'osyo-manga/unite-airline_themes'

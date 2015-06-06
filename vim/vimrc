@@ -208,10 +208,6 @@ augroup programming_au
 augroup END
 
 " ========== Plugin Settings =========="
-" Mapping to NERDTree
-nnoremap <C-s> :NERDTreeToggle<cr>
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.beam$']
-
 " Tagbar key bindings."
 nmap <leader>t <ESC>:TagbarToggle<cr>
 
