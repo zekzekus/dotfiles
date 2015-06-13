@@ -24,6 +24,7 @@ NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'reedes/vim-colors-pencil'
+NeoBundle 'godlygeek/tabular'
 
 " navigating
 NeoBundle 'tpope/vim-vinegar'
