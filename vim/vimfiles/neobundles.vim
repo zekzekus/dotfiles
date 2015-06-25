@@ -48,7 +48,7 @@ NeoBundle 'NLKNguyen/papercolor-theme'
 
 " haskell
 NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'dag/vim2hs'
 
 " python

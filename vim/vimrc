@@ -428,18 +428,17 @@ augroup omni
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
-function! s:ghcmod_bindings()
-  nnoremap <localleader>t :GhcModType<cr>
-  nnoremap <localleader>c :GhcModTypeClear<cr>
-  nnoremap <localleader>i :GhcModInfoPreview<cr>
+function! s:haskell_bindings()
+  nnoremap <localleader>t :HdevtoolsType<cr>
+  nnoremap <localleader>c :HdevtoolsClear<cr>
+  nnoremap <localleader>i :HdevtoolsInfo<cr>
 endfunction
 
 augroup bindings
   autocmd!
-  autocmd FileType haskell call s:ghcmod_bindings()
+  autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:jedi_bindings()
 augroup END
 
