@@ -47,7 +47,6 @@ NeoBundle 'zekzekus/vim-airline.git'
 NeoBundle 'NLKNguyen/papercolor-theme'
 
 " haskell
-NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'dag/vim2hs'
 
