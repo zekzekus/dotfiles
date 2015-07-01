@@ -5,7 +5,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " programming
-NeoBundle 'vim-scripts/paredit.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'zekzekus/vim-snippets'
 NeoBundle 'mhinz/vim-signify.git'
@@ -14,7 +13,7 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'gregsexton/gitv'
 
 " editing
-NeoBundle 'Plugin reedes/vim-pencil'
+NeoBundle 'reedes/vim-pencil'
 NeoBundle 'Raimondi/delimitMate.git'
 NeoBundle 'sjl/gundo.vim.git'
 NeoBundle 'tpope/vim-commentary.git'
@@ -44,7 +43,6 @@ NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'bling/vim-bufferline.git'
 NeoBundle 'flazz/vim-colorschemes.git'
 NeoBundle 'zekzekus/vim-airline.git'
-NeoBundle 'NLKNguyen/papercolor-theme'
 
 " haskell
 NeoBundle 'bitc/vim-hdevtools'
@@ -65,18 +63,6 @@ NeoBundle 'mattn/emmet-vim.git'
 
 " django
 NeoBundle 'mjbrownie/django-template-textobjects'
-
-" clojure
-NeoBundle 'tpope/vim-fireplace'
-
-" go
-NeoBundle 'fatih/vim-go'
-
-" elixir
-NeoBundle 'elixir-lang/vim-elixir'
-
-" erlang
-NeoBundle 'jimenezrick/vimerl'
 
 " misc
 NeoBundle 'christoomey/vim-tmux-navigator.git'
