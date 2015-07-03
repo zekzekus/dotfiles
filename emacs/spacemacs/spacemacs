@@ -24,7 +24,6 @@
                                      markdown
                                      restclient
                                      slime
-                                     erlang-elixir
                                      haskell
                                      erc
                                      fish-mode
@@ -134,7 +133,7 @@ This function is called at the very end of Spacemacs initialization."
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
   ;; haskell
-  (setq haskell-process-type 'cabal-repl)
+  (setq haskell-process-type 'ghci)
 )
 
 ;; Custom variables
