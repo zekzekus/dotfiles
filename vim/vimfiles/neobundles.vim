@@ -45,7 +45,8 @@ NeoBundle 'flazz/vim-colorschemes.git'
 NeoBundle 'zekzekus/vim-airline.git'
 
 " haskell
-NeoBundle 'bitc/vim-hdevtools'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'dag/vim2hs'
 
 " python

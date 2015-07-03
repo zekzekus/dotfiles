@@ -430,9 +430,9 @@ augroup omni
 augroup END
 
 function! s:haskell_bindings()
-  nnoremap <localleader>t :HdevtoolsType<cr>
-  nnoremap <localleader>c :HdevtoolsClear<cr>
-  nnoremap <localleader>i :HdevtoolsInfo<cr>
+  nnoremap <localleader>t :GhcModType<cr>
+  nnoremap <localleader>c :GhcModTypeClear<cr>
+  nnoremap <localleader>i :GhcModTypeInfo<cr>
 endfunction
 
 augroup bindings
