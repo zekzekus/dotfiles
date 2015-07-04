@@ -7,22 +7,18 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " programming
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'zekzekus/vim-snippets'
-NeoBundle 'mhinz/vim-signify.git'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'gregsexton/gitv'
 
 " editing
-NeoBundle 'reedes/vim-pencil'
 NeoBundle 'Raimondi/delimitMate.git'
 NeoBundle 'sjl/gundo.vim.git'
 NeoBundle 'tpope/vim-commentary.git'
 NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
-NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'reedes/vim-colors-pencil'
 NeoBundle 'godlygeek/tabular'
 
 " navigating
@@ -44,11 +40,6 @@ NeoBundle 'bling/vim-bufferline.git'
 NeoBundle 'flazz/vim-colorschemes.git'
 NeoBundle 'zekzekus/vim-airline.git'
 
-" haskell
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'dag/vim2hs'
-
 " python
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'hynek/vim-python-pep8-indent.git'
@@ -58,9 +49,6 @@ NeoBundle 'jmcantrell/vim-virtualenv.git'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'pangloss/vim-javascript.git'
 NeoBundle 'tpope/vim-jdaddy'
-
-" html
-NeoBundle 'mattn/emmet-vim.git'
 
 " django
 NeoBundle 'mjbrownie/django-template-textobjects'
@@ -79,6 +67,11 @@ NeoBundle 'sjl/vitality.vim.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'diepm/vim-rest-console'
+
+" haskell
+NeoBundle 'dag/vim2hs'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
 
 call neobundle#end()
 

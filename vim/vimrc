@@ -207,6 +207,8 @@ augroup programming_au
   autocmd FileType html set ft=htmldjango " For SnipMate
 augroup END
 
+nnoremap <leader>pc :pclose<cr>:cclose<cr>
+
 " ========== Plugin Settings =========="
 " Tagbar key bindings."
 nmap <leader>t <ESC>:TagbarToggle<cr>
@@ -216,6 +218,12 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_go_checkers=['gofmt']
 let g:syntastic_javascript_checkers=['jsl']
 let g:syntastic_check_on_open=1
+let g:syntastic_mode_map={'mode': 'active', 'passive_filetypes': ['haskell']}
+let g:syntastic_always_populate_loc_list = 1
+augroup syn_au
+  autocmd!
+  autocmd BufWritePost *.hs,*.lhs GhcModCheckAsync
+augroup END
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
@@ -353,7 +361,6 @@ function! s:unite_settings()
   inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
 endfunction
-autocmd FileType unite call s:unite_settings()
 
 nnoremap <silent> <leader>f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
 nnoremap <silent> <leader>g :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
@@ -401,9 +408,7 @@ let g:neocomplete#force_omni_input_patterns['python'] =
 let g:neocomplete#force_omni_input_patterns['python.django'] =
       \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " \ '\h\w*\|[^. \t]\.\w*'
-let g:neocomplete#force_omni_input_patterns['erlang'] = '[^. *\t]:\w*'
 let g:neocomplete#force_omni_input_patterns['javascript'] = '[^. \t]\.\w*'
-
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -425,24 +430,20 @@ augroup omni
   autocmd FileType python,python.django setlocal omnifunc=jedi#completions
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
 function! s:haskell_bindings()
   nnoremap <localleader>t :GhcModType<cr>
   nnoremap <localleader>c :GhcModTypeClear<cr>
-  nnoremap <localleader>i :GhcModTypeInfo<cr>
+  nnoremap <localleader>i :GhcModInfoPreview<cr>
+  nnoremap <localleader>h :GhcModCheckAndLintAsync<cr>
 endfunction
 
 augroup bindings
   autocmd!
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:jedi_bindings()
-augroup END
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd,rst call pencil#init()
-  autocmd FileType text         call pencil#init()
+  autocmd FileType unite call s:unite_settings()
 augroup END
