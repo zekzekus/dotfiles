@@ -72,6 +72,9 @@ NeoBundle 'diepm/vim-rest-console'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'Twinside/vim-hoogle'
+NeoBundle 'ujihisa/unite-haskellimport'
+NeoBundle 'nbouscal/vim-stylish-haskell'
 
 call neobundle#end()
 
