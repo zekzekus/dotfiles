@@ -18,7 +18,6 @@
                                      syntax-checking
                                      org
                                      dash
-                                     clojure
                                      html
                                      javascript
                                      markdown
@@ -119,21 +118,18 @@
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
  startup."
-  (setq spacemacs-erlang-elixir-use-edts t)
+  (add-to-list 'exec-path "~/.cabal/bin/")
 )
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
 
-  ;; clojure
-  (setq nrepl-hide-special-buffers t)
-
   ;; python
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
   ;; haskell
-  (setq haskell-process-type 'ghci)
+  (setq haskell-process-type 'cabal-repl)
 )
 
 ;; Custom variables
