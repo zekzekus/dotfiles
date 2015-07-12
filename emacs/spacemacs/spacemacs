@@ -13,24 +13,29 @@
    dotspacemacs-configuration-layers
    '(
      better-defaults
-     git
-     markdown
-     org
+     auto-completion
      syntax-checking
      version-control
+
      osx
+     git
+     shell
+
+     markdown
+     org
+     dash
+
+     haskell
+     slime
+     emacs-lisp
      python
      django
-     auto-completion
-     dash
      html
      javascript
-     haskell
+
      erc
-     emacs-lisp
-     (shell :variables shell-default-term-shell "/usr/local/bin/fish")
      restclient
-     slime
+     xkcd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
