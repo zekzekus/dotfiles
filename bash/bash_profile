@@ -26,10 +26,18 @@ export GOPATH=$HOME/devel/projects/go
 
 # mighty path
 export PATH=$GOPATH/bin:$PATH
-export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/share/npm/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/bin:$PATH
+
+export GHC_DOT_APP=/Applications/ghc-7.8.4.app
+export PATH=$GHC_DOT_APP/Contents/bin:$PATH
+export PATH=$HOME/.stack/programs/x86_64-osx/ghc-7.10.1/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=./.cabal-sandbox/bin:$PATH
 
 # fckn locale settings
 export LANG="en_US.UTF-8"
