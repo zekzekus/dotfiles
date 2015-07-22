@@ -171,6 +171,7 @@ before layers configuration."
 layers configuration."
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   (setq haskell-process-type 'cabal-repl)
+  (add-to-list 'erc-modules 'notifications)
 
 )
 
