@@ -229,8 +229,8 @@ augroup END
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
-
-" after this command i type the name of virtualenv
+" after this command i type the name of virtualenv (yes there is a trailing
+" space)
 nnoremap <leader>V :VirtualEnvActivate 
 
 " gundo settings
@@ -265,43 +265,13 @@ let g:airline_symbols.whitespace = 'Ξ'
 " vitality
 let g:vitality_fix_focus=0
 
-" signify plugin
-let g:signify_vcs_list = [ 'git' ]
-let g:signify_disable_by_default = 1
-let g:signify_update_on_bufenter = 1
-let g:signify_line_highlight = 1
-
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
-" hunk jumping
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
-
-" hunk text object
-omap ic <plug>(signify-motion-inner-pending)
-xmap ic <plug>(signify-motion-inner-visual)
-omap ac <plug>(signify-motion-outer-pending)
-xmap ac <plug>(signify-motion-outer-visual)
-
-" silver searcher options
-let g:agprg="ag --column --smart-case --follow --skip-vcs-ignores"
-let g:aghighlight=1
-
 " dash.vim cinfiguration
 :nmap <silent> <leader>S <Plug>DashGlobalSearch
 :nmap <silent> <leader>s <Plug>DashSearch
-
-" go language
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
-augroup go_au
-  autocmd!
-  autocmd FileType go nmap K <Plug>(go-doc)
-  autocmd FileType go nmap <leader>d <Plug>(go-def)
-  autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
-augroup END
 
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"

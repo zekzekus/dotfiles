@@ -89,8 +89,7 @@ Note: i am changing some keybindings due to mnemonic approach based on
   buffer's filetype
 - `<leader>S` triggers global [Dash](http://kapeli.com/dash) search
 - `<leader>d` tries to go to definition of identifier under cursor. Works with
-  python and Go files out of the box.
-- `K` show godoc of the identifier under cursor for go source files
+  python files out of the box.
 - `<C-j>` expand snippet (INSERT)
 - `<C-b>` jump next edit point within the snippet (INSERT)
 - `<C-z>` jump previous edit point within the snippet (INSERT)
