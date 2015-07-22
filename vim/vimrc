@@ -94,13 +94,13 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>v V`]
 
 " jj For Qicker Escaping between normal and editing mode.
-inoremap jj <ESC>
+inoremap fd <ESC>
 
 " map only command to an easy leader shortcut
 nnoremap <leader>o :only<CR>
 
 " easy save file
-nnoremap <leader>w :w<CR>
+nnoremap <leader>fs :w<CR>
 
 " easy switch to last edited buffer (alternate buffer)
 nnoremap <leader><tab> :b#<CR>
@@ -195,23 +195,24 @@ augroup END
 
 augroup programming_au
   autocmd!
-  autocmd FileType ruby,vim,jade,stylus setl ts=2 sts=2 sw=2
-  autocmd FileType javascript setl ts=2 sts=2 sw=2
-  autocmd FileType html,htmldjango setl nowrap ts=2 sts=2 sw=2
-  autocmd FileType snippet,snippets setlocal noexpandtab
+  autocmd FileType ruby,vim,jade,stylus setlocal ts=2 sts=2 sw=2
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+  autocmd FileType html,htmldjango setlocal nowrap ts=2 sts=2 sw=2
+  autocmd FileType snippet,snippets setlocalocal noexpandtab
   autocmd BufEnter *.rss,*.atom,*.odrl setf xml
   autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
-  autocmd BufEnter plsql setl ts=2 sts=2 sw=2
+  autocmd BufEnter plsql setlocal ts=2 sts=2 sw=2
   autocmd BufEnter volofile setf javascript
   autocmd FileType python set ft=python.django " For SnipMate
   autocmd FileType html set ft=htmldjango " For SnipMate
 augroup END
 
-nnoremap <leader>pc :pclose<cr>:cclose<cr>
+nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>
+nnoremap <leader>qq :qa<cr>
 
 " ========== Plugin Settings =========="
 " Tagbar key bindings."
-nmap <leader>t <ESC>:TagbarToggle<cr>
+nmap <leader>T <ESC>:TagbarToggle<cr>
 
 " syntastic
 let g:syntastic_python_checkers=['flake8']
@@ -270,10 +271,8 @@ let g:signify_disable_by_default = 1
 let g:signify_update_on_bufenter = 1
 let g:signify_line_highlight = 1
 
-nnoremap <leader>gt :SignifyToggle<CR>
-nnoremap <leader>gh :SignifyToggleHighlight<CR>
-nnoremap <leader>gr :SignifyRefresh<CR>
-nnoremap <leader>gd :SignifyDebug<CR>
+" fugitive
+nnoremap <leader>gs :Gstatus<cr>
 
 " hunk jumping
 nmap <leader>gj <plug>(signify-next-hunk)
@@ -362,10 +361,10 @@ function! s:unite_settings()
   nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
 endfunction
 
-nnoremap <silent> <leader>f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
-nnoremap <silent> <leader>g :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
+nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
+nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
 
-nnoremap <silent> <leader>e :<C-u>Unite -buffer-name=recent file_mru<cr>
+nnoremap <silent> <leader>fe :<C-u>Unite -buffer-name=recent file_mru<cr>
 nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
 nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
 nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
@@ -379,7 +378,7 @@ nnoremap <silent> <leader>a :<C-u>Unite -auto-preview -no-start-insert -buffer-n
 nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-name=colorschemes colorscheme<cr>
 
 let g:junkfile#directory=s:get_cache_dir('junk')
-nnoremap <silent> <leader>j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
 
 " jedi-vim
 let g:jedi#auto_initialization = 0

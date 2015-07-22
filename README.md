@@ -45,25 +45,28 @@ these are not sufficient, please warn me.
 
 ### Most notable commands, shortcuts etc. (mode indicator inside parantheses)
 
+Note: i am changing some keybindings due to mnemonic approach based on
+[Spacemacs](https://github.com/syl20bnr/spacemacs#convenient-and-mnemonic-key-bindings) project.
+
 - leader key is `space`
 - `F3` key to toggle vim Paste mode
 - `<leader>n` for removing highlights (`:noh`)
 - `<leader>W` to remove trailing whitespace from whole buffer
 - `<leader>v` to select just pasted text
-- `jj` to `<ESC>`
+- `fd` to `<ESC>`
 - `<C-s>` toggle [NerdTree](https://github.com/scrooloose/nerdtree)
-- `<leader>t` toggle [Tagbar](https://github.com/majutsushi/tagbar)
+- `<leader>T` toggle [Tagbar](https://github.com/majutsushi/tagbar)
 - `F5` key toggle background color
 - `<leader>V` activate specified python virtualenv
-- `<leader>f` activate [Unite](https://github.com/Shougo/unite.vim) source for
+- `<leader>ff` activate [Unite](https://github.com/Shougo/unite.vim) source for
   files (recursive)
-- `<leader>g` activate [Unite](https://github.com/Shougo/unite.vim) git source
+- `<leader>fg` activate [Unite](https://github.com/Shougo/unite.vim) git source
 - `<leader>b` activate [Unite](http://kien.github.io/ctrlp.vim/) buffer list
   with quick selection
 - `<leader>B` activate [Unite](https://github.com/Shougo/unite.vim) buffer list
 - `<leader>y` activate [Unite](https://github.com/Shougo/unite.vim) buffer
   outline
-- `<leader>e` activate [Unite](https://github.com/Shougo/unite.vim) recent
+- `<leader>fe` activate [Unite](https://github.com/Shougo/unite.vim) recent
   files
 - `<leader>h` activate [Unite](https://github.com/Shougo/unite.vim)
   history/yank list
@@ -72,11 +75,11 @@ these are not sufficient, please warn me.
 - `<leader>/` activate [Unite](https://github.com/Shougo/unite.vim) grep
 - `<leader>H` activate [Unite](https://github.com/Shougo/unite.vim) for vim
   help content
-- `<leader>j` activate [Unite](https://github.com/Shougo/unite.vim) for
+- `<leader>fj` activate [Unite](https://github.com/Shougo/unite.vim) for
   [junkfile](https://github.com/Shougo/junkfile.vim) plugin plugin
 - `<leader>G` toggle [Gundo](https://github.com/sjl/gundo.vim) plugin
 - `<leader>o` executes `:only` command. Makes active buffer full screen
-- `<leader>w` bound to `:w` command. Saved the buffer
+- `<leader>fs` bound to `:w` command. Saved the buffer
 - `<leader><tab>` switch to last edited buffer
 - `<C-u>` convert the word uppercase (both NORMAL and INSERT)
 - `<leader>s` triggers [Dash](http://kapeli.com/dash) search based on active
@@ -90,6 +93,10 @@ these are not sufficient, please warn me.
 - `<C-z>` jump previous edit point within the snippet (INSERT)
 - `<C-n>` to invoke multiple cursors plugin
   [info](https://github.com/terryma/vim-multiple-cursors)
+- `<leader>qp` runs close commands for preview, help and other windows (`:pclose
+  :cclose :helpclose`)
+- `<leader>qq` runs command `:qa`
+- `<leader>gs` executes command `:Gstatus`
 
 ## TMUX Configuration
 
