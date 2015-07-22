@@ -39,6 +39,9 @@ can execute them.
     - nodejs and npm
 - execute `vim "+NeoBundleInstall vimproc" +qall`
 - execute `vim +NeoBundleInstall +qall`
+- if you want to override some configuration options you can create a file
+  called `~/.vimrc.local` and put your own settings. This file (if exists) will
+  we sources at the very end of vimrc.
 
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.

@@ -273,6 +273,7 @@ let g:signify_line_highlight = 1
 
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>
 
 " hunk jumping
 nmap <leader>gj <plug>(signify-next-hunk)
@@ -446,3 +447,7 @@ augroup bindings
   autocmd FileType python,python.django call s:jedi_bindings()
   autocmd FileType unite call s:unite_settings()
 augroup END
+
+if filereadable(glob("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
