@@ -209,6 +209,7 @@ augroup END
 
 nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>
 nnoremap <leader>qq :qa<cr>
+nnoremap <leader>bd :bd<cr>
 
 " ========== Plugin Settings =========="
 " Tagbar key bindings."
@@ -339,8 +340,8 @@ nnoremap <silent> <leader>fe :<C-u>Unite -buffer-name=recent file_mru<cr>
 nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
 nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
 nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-nnoremap <silent> <leader>B :<C-u>Unite -quick-match buffer<cr>
-nnoremap <silent> <leader>b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> <leader>bB :<C-u>Unite -quick-match buffer<cr>
+nnoremap <silent> <leader>bb :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
 nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
 
 nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
@@ -421,3 +422,20 @@ augroup END
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" a sketch of mnemonic keybinding namespacing
+" - File
+" -- Find (ff)
+" -- Junk (fj)
+" - Buffer
+" -- Find (bb)
+" -- Delete (bd)
+" - Git
+" -- Status (gs)
+" -- Diff (gd)
+" - Quit
+" -- Quit All (qq)
+" -- Quit Preview, help etc. (qp)
+" -- Save and Quit
+" - Search
+" - Window
