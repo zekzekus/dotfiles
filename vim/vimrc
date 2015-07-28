@@ -360,10 +360,10 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 
 function! s:jedi_bindings()
-  nnoremap <silent> <localleader>r :call jedi#rename()<cr>
-  nnoremap <silent> <localleader>n :call jedi#usages()<cr>
-  nnoremap <silent> <localleader>d :call jedi#goto_definitions()<cr>
-  nnoremap <silent> <localleader>g :call jedi#goto_assignments()<cr>
+  nnoremap <silent> <leader>mr :call jedi#rename()<cr>
+  nnoremap <silent> <leader>mn :call jedi#usages()<cr>
+  nnoremap <silent> <leader>md :call jedi#goto_definitions()<cr>
+  nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
 endfunction
 
 " neocomplete settings
@@ -406,10 +406,10 @@ augroup omni
 augroup END
 
 function! s:haskell_bindings()
-  nnoremap <localleader>t :GhcModType<cr>
-  nnoremap <localleader>c :GhcModTypeClear<cr>
-  nnoremap <localleader>i :GhcModInfoPreview<cr>
-  nnoremap <localleader>h :GhcModCheckAndLintAsync<cr>
+  nnoremap <leader>mt :GhcModType<cr>
+  nnoremap <leader>mc :GhcModTypeClear<cr>
+  nnoremap <leader>mi :GhcModInfoPreview<cr>
+  nnoremap <leader>mh :GhcModCheckAndLintAsync<cr>
 endfunction
 
 augroup bindings
