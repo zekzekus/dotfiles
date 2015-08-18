@@ -20,6 +20,7 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-unimpaired.git'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 " navigating
 NeoBundle 'tpope/vim-vinegar'
