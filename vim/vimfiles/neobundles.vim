@@ -73,5 +73,8 @@ NeoBundle 'diepm/vim-rest-console'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'bitc/vim-hdevtools.git'
 
+" golang
+NeoBundle 'fatih/vim-go'
+
 call neobundle#end()
 

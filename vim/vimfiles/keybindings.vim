@@ -117,11 +117,19 @@ function! s:haskell_bindings()
   nnoremap <leader>mi :HdevtoolsInfo<cr>
 endfunction
 
+function! s:go_bindings()
+  nmap <leader>mt <Plug>(go-info)
+  nmap <leader>mi <Plug>(go-info)
+  nmap <leader>md <Plug>(go-def)
+  nmap <leader>mr <Plug>(go-rename)
+endfunction
+
 augroup bindings
   autocmd!
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:jedi_bindings()
   autocmd FileType unite call s:unite_settings()
+  autocmd FileType go call s:go_bindings()
 augroup END
 
 
