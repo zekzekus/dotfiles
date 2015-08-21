@@ -76,5 +76,8 @@ NeoBundle 'bitc/vim-hdevtools.git'
 " golang
 NeoBundle 'fatih/vim-go'
 
+" rust-lang
+NeoBundle 'rust-lang/rust.vim'
+
 call neobundle#end()
 
