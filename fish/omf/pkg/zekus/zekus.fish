@@ -17,9 +17,6 @@ function init -a path --on-event init_zekus
     set --export GHC_DOT_APP /Applications/ghc-7.8.4.app
     set --export PATH $HOME/.local/bin $PATH
 
-    # my favorite text editor
-    set -U EDITOR vim
-
     set --export LANG "en_US.UTF-8"
     set --export LC_COLLATE "en_US.UTF-8"
     set --export LC_CTYPE "en_US.UTF-8"
