@@ -127,7 +127,8 @@ Based on oh-my-fish
 - Install fish shell `brew install fish` or `sudo aptitude install fish` based
   on your platform.
 - `pip install virtualfish`
-- Install [Oh My Fish](https://github.com/bpinto/oh-my-fish).
+- Install [Oh My Fish](https://github.com/fish-shell/oh-my-fish).
 - Create a symbolic link fish/config.fish to ~/.config/fish/config.fish
-- Create a symbolic link fish/oh-my-fish/custom to ~/.oh-my-fish/custom
+- Create a symbolic link fish/omf/themes/zekus to ~/.config/omf/themes/zekus
+- Create a symbolic link fish/omf/pkg/zekus to ~/.config/omf/pkg/zekus
 - Check and modify your TMUX conf to use fish.

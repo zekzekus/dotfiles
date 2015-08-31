@@ -1,3 +1,0 @@
-# python virtualenv tool
-set -g VIRTUALFISH_COMPAT_ALIASES
-eval (python -m virtualfish)

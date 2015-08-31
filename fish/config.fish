@@ -1,23 +1,13 @@
 # Path to your oh-my-fish.
-set fish_path $HOME/.oh-my-fish
+set -g OMF_PATH $HOME/.local/share/omf
 
-# Path to your custom folder (default path is $FISH/custom)
-#set fish_custom $HOME/dotfiles/oh-my-fish
+# Path to your oh-my-fish configuration.
+set -g OMF_CONFIG $HOME/.config/omf
+
+### Configuration required to load oh-my-fish ###
+# Note: Only add configurations that are required to be set before oh-my-fish is loaded.
+# For common configurations, we advise you to add them to your $OMF_CONFIG/init.fish file or
+# to create a custom plugin instead.
 
 # Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish
-
-Theme "robbyrussell"
-Theme "syl20bnr"
-Theme "zekus"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Example format: set fish_plugins autojump bundler
-Plugin "localhost"
-Plugin "brew"
-Plugin "osx"
-Plugin "python"
-Plugin "ssh"
-Plugin "theme"
-Plugin "tmux"
+source $OMF_PATH/init.fish
