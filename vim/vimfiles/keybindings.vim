@@ -104,7 +104,7 @@ function! s:unite_settings()
   nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
 endfunction
 
-function! s:jedi_bindings()
+function! s:python_bindings()
   nnoremap <silent> <leader>mr :call jedi#rename()<cr>
   nnoremap <silent> <leader>mn :call jedi#usages()<cr>
   nnoremap <silent> <leader>md :call jedi#goto_definitions()<cr>
@@ -127,7 +127,7 @@ endfunction
 augroup bindings
   autocmd!
   autocmd FileType haskell call s:haskell_bindings()
-  autocmd FileType python,python.django call s:jedi_bindings()
+  autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_settings()
   autocmd FileType go call s:go_bindings()
 augroup END
