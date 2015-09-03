@@ -1,13 +1,22 @@
-# Path to your oh-my-fish.
-set -g OMF_PATH $HOME/.local/share/omf
+# PATH modifications. last item has the highest priority
+set --export GOPATH $HOME/devel/projects/go
+set --export PATH /usr/local/sbin $PATH
+set --export PATH /usr/local/bin $PATH
+set --export PATH /usr/local/share/npm/bin $PATH
+set --export PATH $GOPATH/bin $PATH
+set --export PATH $HOME/bin $PATH
 
-# Path to your oh-my-fish configuration.
-set -g OMF_CONFIG $HOME/.config/omf
+set --export PATH $HOME/.local/bin $PATH
 
-### Configuration required to load oh-my-fish ###
-# Note: Only add configurations that are required to be set before oh-my-fish is loaded.
-# For common configurations, we advise you to add them to your $OMF_CONFIG/init.fish file or
-# to create a custom plugin instead.
+set --export LANG "en_US.UTF-8"
+set --export LC_COLLATE "en_US.UTF-8"
+set --export LC_CTYPE "en_US.UTF-8"
+set --export LC_MESSAGES "en_US.UTF-8"
+set --export LC_MONETARY "en_US.UTF-8"
+set --export LC_NUMERIC "en_US.UTF-8"
+set --export LC_TIME "en_US.UTF-8"
+set --export LC_ALL "en_US.UTF-8"
 
-# Load oh-my-fish configuration.
-source $OMF_PATH/init.fish
+# python virtualenv tool
+set -g VIRTUALFISH_COMPAT_ALIASES
+eval (python -m virtualfish)
