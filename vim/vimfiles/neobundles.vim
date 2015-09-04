@@ -78,6 +78,7 @@ NeoBundle 'fatih/vim-go'
 
 " rust-lang
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'ebfe/vim-racer'
 
 call neobundle#end()
 

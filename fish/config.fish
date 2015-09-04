@@ -20,3 +20,5 @@ set --export LC_ALL "en_US.UTF-8"
 # python virtualenv tool
 set -g VIRTUALFISH_COMPAT_ALIASES
 eval (python -m virtualfish)
+
+set --export RUST_SRC_PATH ~/devel/tools/rustc-1.2.0/src/
