@@ -291,6 +291,20 @@ augroup omni
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
+let g:tagbar_type_rust = {
+    \ 'ctagstype' : 'rust',
+    \ 'kinds' : [
+        \'T:types,type definitions',
+        \'f:functions,function definitions',
+        \'g:enum,enumeration names',
+        \'s:structure names',
+        \'m:modules,module names',
+        \'c:consts,static constants',
+        \'t:traits,traits',
+        \'i:impls,trait implementations',
+    \]
+    \}
+
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif

@@ -125,12 +125,17 @@ function! s:go_bindings()
   nmap <leader>mr <Plug>(go-rename)
 endfunction
 
+function! s:rust_bindings()
+  nnoremap <leader>md :call racer#JumpToDefinition()<CR>
+endfunction
+
 augroup bindings
   autocmd!
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_settings()
   autocmd FileType go call s:go_bindings()
+  autocmd FileType rust call s:rust_bindings()
 augroup END
 
 
