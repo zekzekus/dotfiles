@@ -110,29 +110,28 @@ endfunction
 
 function! s:general_bindings()
   " file
-  nnoremap <leader>fs :w<CR>
-  nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
-  nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
-  nnoremap <silent> <leader>fe :<C-u>Unite -buffer-name=recent file_mru<cr>
-  nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+  nnoremap <leader>fs :w<CR> " file save
+  nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u> " find file
+  nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u> " find file in git repo
+  nnoremap <silent> <leader>fe :<C-u>Unite -buffer-name=recent file_mru<cr> " find recent files
+  nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr> " find junk file
 
   " git
-  nnoremap <leader>gs :Gstatus<cr>
-  nnoremap <leader>gd :Gdiff<cr>
+  nnoremap <leader>gs :Gstatus<cr> " git status
+  nnoremap <leader>gd :Gdiff<cr> " git diff
 
   " window
   nnoremap <leader>wm :only<CR> " window-maximize
 
   " buffer
-  nnoremap <silent> <leader>bB :<C-u>Unite -quick-match buffer<cr>
-  nnoremap <silent> <leader>bb :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-  nnoremap <leader>bd :bd<cr>
-  nnoremap <leader><tab> :b#<CR>
-
+  nnoremap <silent> <leader>bB :<C-u>Unite -quick-match buffer<cr> "buffer list with quickmatch
+  nnoremap <silent> <leader>bb :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr> " buffer list
+  nnoremap <leader>bd :bd<cr> " buffer delete
+  nnoremap <leader><tab> :b#<CR> " toggle last edited buffer
 
   " quit
-  nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>
-  nnoremap <leader>qq :qa<cr>
+  nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr> " quit silly windows
+  nnoremap <leader>qq :qa<cr> " quit all
 endfunction
 
 function! s:vimux_bindings()
@@ -150,8 +149,8 @@ endfunction
 
 augroup bindings
   autocmd!
-  autocmd FileType * call s:general_bindings()
-  autocmd FileType * call s:vimux_bindings()
+  autocmd VimEnter * call s:general_bindings()
+  autocmd VimEnter * call s:vimux_bindings()
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_settings()
