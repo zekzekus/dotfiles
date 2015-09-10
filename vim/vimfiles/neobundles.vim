@@ -68,6 +68,7 @@ NeoBundle 'sjl/vitality.vim.git'
 NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'diepm/vim-rest-console'
+NeoBundle 'benmills/vimux'
 
 " haskell
 NeoBundle 'dag/vim2hs'
@@ -79,6 +80,7 @@ NeoBundle 'fatih/vim-go'
 " rust-lang
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'ebfe/vim-racer'
+NeoBundle 'jtdowney/vimux-cargo'
 
 call neobundle#end()
 

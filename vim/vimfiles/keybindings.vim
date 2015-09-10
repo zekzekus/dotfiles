@@ -18,13 +18,10 @@ vnoremap <tab> %
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " ,v Select just pasted text.
-nnoremap <leader>v V`]
+nnoremap <leader>V V`]
 
 " For Qicker Escaping between normal and editing mode.
 inoremap fd <ESC>
-
-" map only command to an easy leader shortcut
-nnoremap <leader>o :only<CR>
 
 " easy save file
 nnoremap <leader>fs :w<CR>
@@ -45,10 +42,6 @@ nnoremap <leader>bd :bd<cr>
 
 " Tagbar key bindings."
 nmap <leader>T <ESC>:TagbarToggle<cr>
-
-" after this command i type the name of virtualenv (yes there is a trailing
-" space)
-nnoremap <leader>V :VirtualEnvActivate 
 
 " gundo settings
 nnoremap <leader>G :GundoToggle<CR>
@@ -110,6 +103,8 @@ function! s:python_bindings()
   nnoremap <silent> <leader>mn :call jedi#usages()<cr>
   nnoremap <silent> <leader>md :call jedi#goto_definitions()<cr>
   nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
+  nnoremap <silent> <leader>mV :VirtualEnvActivate 
+
 endfunction
 
 function! s:haskell_bindings()
@@ -123,14 +118,39 @@ function! s:go_bindings()
   nmap <leader>mi <Plug>(go-info)
   nmap <leader>md <Plug>(go-def)
   nmap <leader>mr <Plug>(go-rename)
+  nmap <leader>mcc :call VimuxRunCommand("go build")<cr>
+  nmap <leader>mcr :call VimuxRunCommand("go run")<cr>
+  nmap <leader>mct :call VimuxRunCommand("go test")<cr>
 endfunction
 
 function! s:rust_bindings()
+  nnoremap <leader>mcc :call VimuxRunCommand("cargo build")<cr>
+  nnoremap <leader>mcr :call VimuxRunCommand("cargo run")<cr>
+  nnoremap <leader>mct :call VimuxRunCommand("cargo test")<cr>
   nnoremap <leader>md :call racer#JumpToDefinition()<CR>
 endfunction
 
+function! s:windows_bindings()
+  nnoremap <leader>wm :only<CR> " window-maximize
+endfunction
+
+function! s:vimux_bindings()
+  nmap <leader>vp :VimuxPromptCommand<cr>
+  nmap <leader>vr :VimuxRunLastCommand<cr>
+  nmap <leader>vi :VimuxInspectRunner<cr>
+  nmap <leader>vt :VimuxTogglePane<cr>
+  nmap <leader>vq :VimuxCloseRunner<cr>
+  nmap <leader>vc :VimuxInterruptRunner<cr>
+  nmap <leader>vz :call VimuxZoomRunner()<cr>
+  nmap <leader>vj :call VimuxScrollDownInspect()<cr>
+  nmap <leader>vk :call VimuxScrollUpInspect()<cr>
+endfunction
+
+
 augroup bindings
   autocmd!
+  autocmd FileType * call s:windows_bindings()
+  autocmd FileType * call s:vimux_bindings()
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_settings()
