@@ -150,8 +150,8 @@ endfunction
 
 augroup bindings
   autocmd!
-  autocmd FileType * call s:general_bindings()
-  autocmd FileType * call s:vimux_bindings()
+  autocmd VimEnter * call s:general_bindings()
+  autocmd VimEnter * call s:vimux_bindings()
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_settings()
