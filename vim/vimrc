@@ -196,7 +196,8 @@ let g:bufferline_fixed_index = -1 "always last
 
 " airline configuration
 let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
+
 " unicode symbols
 let g:airline_symbols = {}
 let g:airline_left_sep = ''
