@@ -4,3 +4,6 @@
 [submodule "vim/vimfiles/bundle/neobundle.vim"]
 	path = vim/vimfiles/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
+[submodule "fish/functions/rust.fish"]
+	path = fish/functions/rust.fish
+	url = https://github.com/bheesham/rust.fish.git

@@ -22,3 +22,8 @@ set -g VIRTUALFISH_COMPAT_ALIASES
 eval (python -m virtualfish)
 
 set --export RUST_SRC_PATH ~/devel/tools/rustc-1.2.0/src/
+
+if test -d ~/.config/fish/functions/rust.fish
+    . ~/.config/fish/functions/rust.fish/rustc.fish
+    . ~/.config/fish/functions/rust.fish/cargo.fish
+end
