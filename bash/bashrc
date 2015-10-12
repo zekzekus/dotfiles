@@ -22,14 +22,12 @@ export SCM_CHECK=true
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # set home for go language
-export GOPATH=$HOME/devel/projects/go
+export GOPATH=$HOME
 
 # mighty path
-export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
-export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
 export GHC_DOT_APP=/Applications/ghc-7.8.4.app
