@@ -92,6 +92,7 @@ set wildignore+=static
 set wildignore+=tmp
 set wildignore+=node_modules
 set wildignore+=*.class
+set wildignore+=.stack-work
 
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
@@ -166,6 +167,7 @@ augroup programming_au
   autocmd BufEnter volofile setf javascript
   autocmd FileType python set ft=python.django " For SnipMate
   autocmd FileType html set ft=htmldjango " For SnipMate
+  autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 augroup END
 
 " ========== Plugin Settings =========="
@@ -174,6 +176,7 @@ augroup END
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_go_checkers=['golint', 'gofmt']
 let g:syntastic_javascript_checkers=['jsl']
+let g:syntastic_haskell_checkers=['']
 let g:syntastic_check_on_open=1
 
 " vim-virtualenv plugin settings
@@ -290,6 +293,7 @@ augroup omni
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
 let g:tagbar_type_rust = {

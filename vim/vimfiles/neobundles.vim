@@ -72,7 +72,8 @@ NeoBundle 'benmills/vimux'
 
 " haskell
 NeoBundle 'dag/vim2hs'
-NeoBundle 'bitc/vim-hdevtools.git'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
 
 " golang
 NeoBundle 'fatih/vim-go'
