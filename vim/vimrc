@@ -167,7 +167,7 @@ augroup programming_au
   autocmd BufEnter volofile setf javascript
   autocmd FileType python set ft=python.django " For SnipMate
   autocmd FileType html set ft=htmldjango " For SnipMate
-  autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+  autocmd BufWritePost *.hs GhcModLintAsync
 augroup END
 
 " ========== Plugin Settings =========="
