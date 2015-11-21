@@ -6,7 +6,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " programming
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'zekzekus/vim-snippets'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'gregsexton/gitv'
@@ -39,7 +39,7 @@ NeoBundle 'Shougo/junkfile.vim'
 " vim interface
 NeoBundle 'bling/vim-bufferline.git'
 NeoBundle 'flazz/vim-colorschemes.git'
-NeoBundle 'zekzekus/vim-airline.git'
+NeoBundle 'bling/vim-airline.git'
 
 " python
 NeoBundle 'davidhalter/jedi-vim'
