@@ -3,3 +3,4 @@ vim/vimfiles/bundle/*
 .netrwhist
 config/fish/fish_history
 config/fish/fishd.*
+vim/vimfiles/init.vim
