@@ -95,8 +95,8 @@ set path+=*/assets " for django versions 1.4 and higher
 set path+=*/*/assets
 set path+=*/*/*/assets " specific for polar project structure
 
-set dir=~/.vimtmp
-set undodir=~/.vimtmp
+set dir=~/.nvimtmp
+set undodir=~/.nvimtmp
 set clipboard=unnamed
 set suffixesadd+=.html
 
@@ -205,7 +205,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " unite
-let s:cache_dir = '~/.vimtmp/cache'
+let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
@@ -274,8 +274,8 @@ let g:tagbar_type_rust = {
     \]
     \}
 
-if filereadable(glob("~/.vim/keybindings.vim"))
-  source ~/.vim/keybindings.vim
+if filereadable(glob("~/.config/nvim/keybindings.vim"))
+  source ~/.config/nvim/keybindings.vim
 endif
 
 if filereadable(glob("~/.vimrc.local"))
