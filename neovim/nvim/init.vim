@@ -156,9 +156,9 @@ augroup programming_au
   autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
   autocmd BufEnter plsql setlocal ts=2 sts=2 sw=2
   autocmd BufEnter volofile setf javascript
-  autocmd FileType python set ft=python.django " For SnipMate
-  autocmd FileType html set ft=htmldjango " For SnipMate
-  autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+  " autocmd FileType python set ft=python.django " For SnipMate
+  " autocmd FileType html set ft=htmldjango " For SnipMate
+  autocmd BufWritePost,BufEnter * Neomake
 augroup END
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -273,6 +273,9 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
+
+" deoplete completion plugin
+let g:deoplete#enable_at_startup = 1
 
 if filereadable(glob("~/.config/nvim/keybindings.vim"))
   source ~/.config/nvim/keybindings.vim

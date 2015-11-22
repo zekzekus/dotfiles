@@ -5,6 +5,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+Plug 'benekastah/neomake'
 
 " editing
 Plug 'Raimondi/delimitMate'
@@ -13,6 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'Shougo/deoplete.nvim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
