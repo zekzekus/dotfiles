@@ -144,6 +144,26 @@ augroup bindings
   autocmd FileType rust call s:rust_bindings()
 augroup END
 
+" deoplete
+inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+inoremap <expr><C-h> deolete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+
+" terminal mode bindings
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n>:TmuxNavigateLeft<cr>
+tnoremap <A-j> <C-\><C-n>:TmuxNavigateDown<cr>
+tnoremap <A-k> <C-\><C-n>:TmuxNavigateUp<cr>
+tnoremap <A-l> <C-\><C-n>:TmuxNavigateRight<cr>
+
+" custom navigating mappings
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <A-a> :TmuxNavigatePrevious<cr>
 
 " a sketch of mnemonic keybinding namespacing
 " - File
