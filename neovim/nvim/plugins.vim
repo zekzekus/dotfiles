@@ -28,6 +28,7 @@ Plug 'osyo-manga/unite-airline_themes'
 Plug 'ujihisa/unite-colorscheme'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-help'
+Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/junkfile.vim'
 
 " vim interface

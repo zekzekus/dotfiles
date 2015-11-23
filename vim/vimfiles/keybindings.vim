@@ -37,8 +37,8 @@ nmap <leader>T <ESC>:TagbarToggle<cr>
 nnoremap <leader>G :GundoToggle<CR>
 
 " dash.vim cinfiguration
-:nmap <silent> <leader>S <Plug>DashGlobalSearch
-:nmap <silent> <leader>s <Plug>DashSearch
+nmap <silent> <leader>S <Plug>DashGlobalSearch
+nmap <silent> <leader>s <Plug>DashSearch
 
 nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
 nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>

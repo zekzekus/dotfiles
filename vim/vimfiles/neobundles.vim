@@ -34,6 +34,7 @@ NeoBundle 'osyo-manga/unite-airline_themes'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite-help'
+NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/junkfile.vim'
 
 " vim interface
