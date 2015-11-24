@@ -1,15 +1,19 @@
 " ========== Vim Basic Settings ============="
 
-" Make vim incompatbile to vi.
-set nocompatible
+if has("nvim")
+  source ~/.vim/plugins.vim
+else
+  set nocompatible
 
-" Pathogen settings.
-filetype off
+  " Pathogen settings.
+  filetype off
 
-" load vundle settings file
-source ~/.vim/neobundles.vim
+  " load vundle settings file
+  source ~/.vim/neobundles.vim
 
-filetype plugin indent on
+  filetype plugin indent on
+endif
+
 set modelines=0
 
 "TAB settings.
@@ -104,8 +108,13 @@ set path+=*/assets " for django versions 1.4 and higher
 set path+=*/*/assets
 set path+=*/*/*/assets " specific for polar project structure
 
-set dir=~/.vimtmp
-set undodir=~/.vimtmp
+if has("nvim")
+  set dir=~/.nvimtmp
+  set undodir=~/.nvimtmp
+else
+  set dir=~/.vimtmp
+  set undodir=~/.vimtmp
+endif
 set clipboard=unnamed
 set suffixesadd+=.html
 
@@ -165,19 +174,29 @@ augroup programming_au
   autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
   autocmd BufEnter plsql setlocal ts=2 sts=2 sw=2
   autocmd BufEnter volofile setf javascript
-  autocmd FileType python set ft=python.django " For SnipMate
+  " autocmd FileType python set ft=python.django " For SnipMate
   autocmd FileType html set ft=htmldjango " For SnipMate
   autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 augroup END
 
+if has("nvim")
+  augroup neovim_au
+    autocmd!
+    autocmd BufWritePost,BufEnter * Neomake
+  augroup END
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
+
 " ========== Plugin Settings =========="
 
-" syntastic
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_go_checkers=['golint', 'gofmt']
-let g:syntastic_javascript_checkers=['jsl']
-let g:syntastic_haskell_checkers=['']
-let g:syntastic_check_on_open=1
+if !has("nvim")
+  " syntastic
+  let g:syntastic_python_checkers=['flake8']
+  let g:syntastic_go_checkers=['golint', 'gofmt']
+  let g:syntastic_javascript_checkers=['jsl']
+  let g:syntastic_haskell_checkers=['']
+  let g:syntastic_check_on_open=1
+endif
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
@@ -218,15 +237,21 @@ let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" multiple cursors
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+if !has("nvim")
+  " multiple cursors
+  let g:multi_cursor_use_default_mapping=0
+  let g:multi_cursor_next_key='<C-n>'
+  let g:multi_cursor_prev_key='<C-p>'
+  let g:multi_cursor_skip_key='<C-x>'
+  let g:multi_cursor_quit_key='<Esc>'
+endif
 
 " unite
-let s:cache_dir = '~/.vimtmp/cache'
+if has("nvim")
+  let s:cache_dir = '~/.nvimtmp/cache'
+else
+  let s:cache_dir = '~/.vimtmp/cache'
+endif
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
@@ -271,20 +296,22 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 
-" neocomplete settings
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
+if !has("nvim")
+  " neocomplete settings
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns['python'] =
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+  " \ '\h\w*\|[^. \t]\.\w*'
+  let g:neocomplete#force_omni_input_patterns['python.django'] =
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+  " \ '\h\w*\|[^. \t]\.\w*'
+  let g:neocomplete#force_omni_input_patterns['javascript'] = '[^. \t]\.\w*'
 endif
-let g:neocomplete#force_omni_input_patterns['python'] =
-      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" \ '\h\w*\|[^. \t]\.\w*'
-let g:neocomplete#force_omni_input_patterns['python.django'] =
-      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" \ '\h\w*\|[^. \t]\.\w*'
-let g:neocomplete#force_omni_input_patterns['javascript'] = '[^. \t]\.\w*'
 
 augroup omni
   autocmd!
@@ -309,6 +336,11 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
+
+if has("nvim")
+  " deoplete completion plugin
+  let g:deoplete#enable_at_startup = 1
+endif
 
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim

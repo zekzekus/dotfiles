@@ -6,4 +6,4 @@ config/fish/fishd.*
 
 *~
 
-neovim/nvim/plugged
+vim/vimfiles/plugged

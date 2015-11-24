@@ -50,20 +50,22 @@ nnoremap <silent> <leader>H :<C-u>Unite -auto-resize -buffer-name=help help<cr>
 nnoremap <silent> <leader>a :<C-u>Unite -auto-preview -no-start-insert -buffer-name=airline airline_themes<cr>
 nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-name=colorschemes colorscheme<cr>
 
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
+if !has("nvim")
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return neocomplete#close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  endfunction
 
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ neocomplete#start_manual_complete()
-function! s:check_back_space()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ neocomplete#start_manual_complete()
+  function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+endif
 
 function! s:unite_settings()
   nmap <buffer> Q <plug>(unite_exit)
@@ -159,6 +161,20 @@ augroup bindings
   autocmd FileType rust call s:rust_bindings()
 augroup END
 
+
+if has("nvim")
+  " deoplete
+  inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+  inoremap <expr><C-h> deolete#mappings#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+
+  " terminal mode bindings
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
+  tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
+  tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
+  tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
+endif
 
 " a sketch of mnemonic keybinding namespacing
 " - File
