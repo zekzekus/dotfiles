@@ -72,4 +72,7 @@ Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 Plug 'ebfe/vim-racer'
 
+" productivity
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
