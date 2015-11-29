@@ -1,17 +1,9 @@
 " ========== Vim Basic Settings ============="
 
 if has("nvim")
-  source ~/.vim/plugins.vim
+  source ~/.vim/plugins_neovim.vim
 else
-  set nocompatible
-
-  " Pathogen settings.
-  filetype off
-
-  " load vundle settings file
-  source ~/.vim/neobundles.vim
-
-  filetype plugin indent on
+  source ~/.vim/plugins_vim.vim
 endif
 
 set modelines=0
