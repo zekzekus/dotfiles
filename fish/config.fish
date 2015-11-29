@@ -22,7 +22,7 @@ set --export LC_ALL "en_US.UTF-8"
 set -g VIRTUALFISH_COMPAT_ALIASES
 eval (python -m virtualfish)
 
-set --export RUST_SRC_PATH ~/devel/tools/rustc-nightly/src/
+set --export RUST_SRC_PATH ~/devel/tools/rust/src/
 
 if test -d ~/.config/fish/functions/rust.fish
     . ~/.config/fish/functions/rust.fish/rustc.fish
