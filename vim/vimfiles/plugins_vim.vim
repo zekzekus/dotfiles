@@ -15,8 +15,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/neocomplete.vim'
-Plug 'godlygeek/tabular'
-Plug 'terryma/vim-multiple-cursors'
 
 " navigating
 Plug 'tpope/vim-vinegar'

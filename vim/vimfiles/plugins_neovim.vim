@@ -3,9 +3,9 @@ call plug#begin()
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
-Plug 'benekastah/neomake'
 
 " editing
 Plug 'Raimondi/delimitMate'
@@ -51,7 +51,7 @@ Plug 'mjbrownie/django-template-textobjects'
 
 " misc
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'rizzatti/dash.vim'
 Plug 'rizzatti/funcoo.vim'
 Plug 'sjl/vitality.vim'
@@ -71,8 +71,5 @@ Plug 'fatih/vim-go'
 " rust-lang
 Plug 'rust-lang/rust.vim'
 Plug 'ebfe/vim-racer'
-
-" productivity
-Plug 'vimwiki/vimwiki'
 
 call plug#end()
