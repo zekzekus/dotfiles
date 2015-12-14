@@ -101,7 +101,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 12
+                               :size 12.5
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -211,6 +211,10 @@ user code."
 layers configuration. You are free to put any user code."
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   (add-to-list 'erc-modules 'notifications)
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2)
+  (setq-default web-mode-markup-indent-offset 2)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
