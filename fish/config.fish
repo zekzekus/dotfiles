@@ -5,6 +5,7 @@ set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/share/npm/bin $PATH
 set --export PATH /usr/local/opt/go/libexec/bin $PATH
 set --export PATH $HOME/.stack/programs/x86_64-osx/ghc-7.10.2/bin $PATH
+set --export PATH $HOME/.multirust/toolchains/nightly/cargo/bin $PATH
 set --export PATH $HOME/bin $PATH
 
 set --export PATH $HOME/.local/bin $PATH
