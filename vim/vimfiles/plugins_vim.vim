@@ -8,7 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 
 " editing
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
