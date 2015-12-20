@@ -1,9 +1,13 @@
-call plug#begin('~/.vim/plugged_vim')
+call plug#begin()
 
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'scrooloose/syntastic'
+if has("nvim")
+  Plug 'benekastah/neomake'
+else
+  Plug 'scrooloose/syntastic'
+endif
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 
@@ -14,7 +18,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'Shougo/neocomplete.vim'
+if has("nvim")
+  Plug 'Shougo/deoplete.nvim'
+else
+  Plug 'Shougo/neocomplete'
+endif
 
 " navigating
 Plug 'tpope/vim-vinegar'

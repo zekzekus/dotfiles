@@ -1,10 +1,6 @@
 " ========== Vim Basic Settings ============="
 
-if has("nvim")
-  source ~/.vim/plugins_neovim.vim
-else
-  source ~/.vim/plugins_vim.vim
-endif
+source ~/.vim/plugins.vim
 
 set modelines=0
 
