@@ -1,4 +1,8 @@
-call plug#begin()
+if has("nvim")
+  call plug#begin('~/.vim/plugged_nvim')
+else 
+  call plug#begin('~/.vim/plugged_vim')
+endif
 
 " programming
 Plug 'SirVer/ultisnips'

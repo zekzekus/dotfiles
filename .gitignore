@@ -6,6 +6,6 @@ config/fish/fishd.*
 
 *~
 
-vim/vimfiles/plugged
+vim/vimfiles/plugged_nvim
 vim/vimfiles/plugged_vim
 vim/vimfiles/init.vim
