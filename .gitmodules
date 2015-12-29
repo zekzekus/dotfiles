@@ -4,3 +4,6 @@
 [submodule "fish/functions/rust.fish"]
 	path = fish/functions/rust.fish
 	url = https://github.com/bheesham/rust.fish.git
+[submodule "macosx/keyboard"]
+	path = macosx/keyboard
+	url = https://github.com/jasonrudolph/keyboard
