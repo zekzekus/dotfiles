@@ -21,7 +21,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>V V`]
 
 " For Qicker Escaping between normal and editing mode.
-inoremap fd <ESC>
+" inoremap fd <ESC>
 
 " make word uppercase and continue editing
 inoremap <c-u> <esc>gUiw`]a
