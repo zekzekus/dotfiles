@@ -24,6 +24,16 @@ hs.hotkey.bind(hyper, "f", function()
     win:setFrame(f)
 end)
 
+hs.hotkey.bind(hyper, "k", function()
+    local win = hs.window.focusedWindow()
+    win:moveOneScreenNorth()
+end)
+
+hs.hotkey.bind(hyper, "j", function()
+    local win = hs.window.focusedWindow()
+    win:moveOneScreenSouth()
+end)
+
 function reload_config(files)
     hs.reload()
 end
