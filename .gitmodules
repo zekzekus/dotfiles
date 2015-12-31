@@ -7,3 +7,6 @@
 [submodule "macosx/keyboard"]
 	path = macosx/keyboard
 	url = https://github.com/jasonrudolph/keyboard
+[submodule "macosx/hammerspoon"]
+	path = macosx/hammerspoon
+	url = git@github.com:zekzekus/hammerspoon-init.git
