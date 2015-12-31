@@ -131,6 +131,13 @@ function! s:general_bindings()
   nnoremap <leader>bd :bd<cr>
   nnoremap <leader><tab> :b#<CR>
 
+  " some toggles
+  nnoremap <leader>tn :set number!<cr>
+  nnoremap <leader>tr :set relativenumber!<cr>
+  nnoremap <leader>tc :set cursorcolumn!<cr>
+  nnoremap <leader>tl :set cursorline!<cr>
+  nnoremap <leader>tg :call ToggleBg()<cr>
+
 
   " quit
   nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>
