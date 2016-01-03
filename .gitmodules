@@ -4,9 +4,6 @@
 [submodule "fish/functions/rust.fish"]
 	path = fish/functions/rust.fish
 	url = https://github.com/bheesham/rust.fish.git
-[submodule "macosx/hammerspoon"]
-	path = macosx/hammerspoon
-	url = git@github.com:zekzekus/hammerspoon-init.git
 [submodule "macosx/keyboard"]
 	path = macosx/keyboard
 	url = git@github.com:zekzekus/keyboard.git
