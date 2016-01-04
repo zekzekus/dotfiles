@@ -22,7 +22,7 @@ local appfinder = require "hs.appfinder"
 local hyper = {"shift", "cmd", "alt", "ctrl"}
 local cmd_alt_ctrl = {"cmd", "alt", "ctrl"}
 local main_monitor = "Color LCD"
-local second_monitor = "DELL E2310H"
+local second_monitor = "DELL S2340L"
 
 --------------------------------------------------------------------------------
 -- CONFIGURATIONS
