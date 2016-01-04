@@ -51,7 +51,7 @@ local layouts = {
     end
   },
   {
-    name = "iTerm",
+    name = "iTerm2",
     func = function(index, win)
       if (#screen.allScreens() > 1) then
         win:moveToScreen(screen.get(second_monitor))
