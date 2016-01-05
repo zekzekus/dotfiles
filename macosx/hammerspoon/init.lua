@@ -1,569 +1,195 @@
---------------------------------------------------------------------------------
--- zekzekus - https://github.com/zekzekus
--- Forked from: rtoshiro - https://github.com/rtoshiro/hammerspoon-init.git
--- You should see: http://www.hammerspoon.org/docs/index.html
---------------------------------------------------------------------------------
+-- -----------------
+-- stolen from https://github.com/exark/dotfiles/tree/master/.hammerspoon
+-- -----------------
 
+-- -----------------
+-- Setup environment
+-- -----------------
 
---------------------------------------------------------------------------------
--- KIND OF IMPORTS
---------------------------------------------------------------------------------
-local window = require "hs.window"
-local screen = require "hs.screen"
-local hotkey = require "hs.hotkey"
-local hints = require "hs.hints"
-local application = require "hs.application"
-local alert = require "hs.alert"
-local appfinder = require "hs.appfinder"
+-- None of this animation shit:
+hs.window.animationDuration = 0
+-- Get list of screens and refresh that list whenever screens are plugged or unplugged:
+local screens = hs.screen.allScreens()
+local screenwatcher = hs.screen.watcher.new(function()
+  screens = hs.screen.allScreens()
+end)
+screenwatcher:start()
 
---------------------------------------------------------------------------------
--- CONSTANTS
---------------------------------------------------------------------------------
-local hyper = {"shift", "cmd", "alt", "ctrl"}
-local cmd_alt_ctrl = {"cmd", "alt", "ctrl"}
-local main_monitor = "Color LCD"
-local second_monitor = "DELL S2340L"
+-- Modifier shortcuts
+local alt = {"alt"}
+local hyper = {"cmd", "alt", "ctrl", "shift"}
+local nudgekey = {"alt", "ctrl"}
+local yankkey = {"alt", "ctrl", "shift"}
+local pushkey = {"ctrl", "cmd"}
+local shiftpushkey= {"ctrl", "cmd", "shift"}
 
---------------------------------------------------------------------------------
--- CONFIGURATIONS
---------------------------------------------------------------------------------
-window.animationDuration = 0
-window.setShadows(false)
+-- --------------------------------------------------------
+-- Helper functions - these do all the heavy lifting below.
+-- Names are roughly stolen from same functions in Slate :)
+-- --------------------------------------------------------
 
---------------------------------------------------------------------------------
--- LAYOUTS
--- SINTAX:
---  {
---    name = "App name" ou { "App name", "App name" }
---    func = function(index, win)
---      COMMANDS
---    end
---  },
---
--- It searches for application "name" and call "func" for each window object
---------------------------------------------------------------------------------
-local layouts = {
-  {
-    name = {"Google Chrome", "Calendar", "Spotify", "Hipchat", "Evernote", "Slack"},
-    func = function(index, win)
-      win:moveToScreen(screen.get(main_monitor))
-      win:maximize()
-    end
-  },
-  {
-    name = "iTerm2",
-    func = function(index, win)
-      if (#screen.allScreens() > 1) then
-        win:moveToScreen(screen.get(second_monitor))
-      end
+-- Move a window a number of pixels in x and y
+function nudge(xpos, ypos)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  f.x = f.x + xpos
+  f.y = f.y + ypos
+  win:setFrame(f)
+end
 
-      if (index == 1) then
-        win:left()
-        elseif (index == 2) then
-          win:right()
-        end
-      end
-    }
-  }
+-- Resize a window by moving the bottom
+function yank(xpixels,ypixels)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
 
-  local closeAll = {
-    "Google Chrome",
-    "Calendar",
-    "Spotify",
-    "Hipchat",
-    "Evernote",
-    "Slack",
-    "iTunes",
-    "Messages",
-    "Preview",
-  }
+  f.w = f.w + xpixels
+  f.h = f.h + ypixels
+  win:setFrame(f)
+end
 
-  local openAll = {
-    "Google Chrome",
-    "Hipchat",
-    "iTerm"
-  }
+-- Resize window for chunk of screen.
+-- For x and y: use 0 to expand fully in that dimension, 0.5 to expand halfway
+-- For w and h: use 1 for full, 0.5 for half
+function push(x, y, w, h)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
 
+  f.x = max.x + (max.w*x)
+  f.y = max.y + (max.h*y)
+  f.w = max.w*w
+  f.h = max.h*h
+  win:setFrame(f)
+end
 
-  function config()
-    hotkey.bind(hyper, "l", function()
-      local win = window.focusedWindow()
-      win:right()
-    end)
-
-    hotkey.bind(hyper, "h", function()
-      local win = window.focusedWindow()
-      win:left()
-    end)
-
-    hotkey.bind(hyper, "k", function()
-      local win = window.focusedWindow()
-      win:up()
-    end)
-
-    hotkey.bind(hyper, "j", function()
-      local win = window.focusedWindow()
-      win:down()
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "h", function()
-      local win = window.focusedWindow()
-      win:upLeft()
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "j", function()
-      local win = window.focusedWindow()
-      win:downLeft()
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "k", function()
-      local win = window.focusedWindow()
-      win:downRight()
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "l", function()
-      local win = window.focusedWindow()
-      win:upRight()
-    end)
-
-    hotkey.bind(hyper, "c", function()
-      local win = window.focusedWindow()
-      window.fullscreenCenter(win)
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "c", function()
-      local win = window.focusedWindow()
-      window.fullscreenAlmostCenter(win)
-    end)
-
-    hotkey.bind(hyper, "f", function()
-      local win = window.focusedWindow()
-      win:maximize()
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "f", function()
-      local win = window.focusedWindow()
-      if (win) then
-        window.fullscreenWidth(win)
-      end
-    end)
-
-    hotkey.bind(hyper, "i", function()
-      hints.windowHints()
-    end)
-
-    hotkey.bind(hyper, "1", function()
-      local win = window.focusedWindow()
-      if (win) then
-        win:moveToScreen(screen.get(second_monitor))
-      end
-    end)
-
-    hotkey.bind(hyper, "2", function()
-      local win = window.focusedWindow()
-      if (win) then
-        win:moveToScreen(screen.get(main_monitor))
-      end
-    end)
-
-    hotkey.bind(hyper, "r", function()
-      hs.reload()
-      alert.show("Config loaded!")
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "p", function()
-      alert.show("Closing")
-      for i,v in ipairs(closeAll) do
-        local app = application(v)
-        if (app) then
-          if (app.name) then
-            alert.show(app:name())
-          end
-          if (app.kill) then
-            app:kill()
-          end
-        end
-      end
-    end)
-
-    hotkey.bind(cmd_alt_ctrl, "o", function()
-      alert.show("Openning")
-      for i,v in ipairs(openAll) do
-        alert.show(v)
-        application.open(v)
-      end
-    end)
-
-    hotkey.bind(hyper, "3", function()
-      applyLayouts(layouts)
-    end)
-
-    hotkey.bind(hyper, "4", function()
-
-      local focusedWindow = window.focusedWindow()
-      local app = focusedWindow:application()
-      if (app) then
-        applyLayout(layouts, app)
-      end
-    end)
-
-    hotkey.bind(hyper, "b", function()
-      application.launchOrFocus("Google Chrome")
-    end)
-
-    hotkey.bind(hyper, "t", function()
-      application.launchOrFocus("iTerm")
-    end)
-
-    hotkey.bind(hyper, "m", function()
-      application.launchOrFocus("Hipchat")
-    end)
+-- Move to monitor x. Checks to make sure monitor exists, if not moves to last monitor that exists
+function moveToMonitor(x)
+  local win = hs.window.focusedWindow()
+  local newScreen = nil
+  while not newScreen do
+    newScreen = screens[x]
+    x = x-1
   end
-  --------------------------------------------------------------------------------
-  -- END CONFIGURATIONS
-  --------------------------------------------------------------------------------
 
-  --------------------------------------------------------------------------------
-  -- METHODS - BECAREFUL :)
-  --------------------------------------------------------------------------------
-  function applyLayout(layouts, app)
-    if (app) then
-      local appName = app:title()
-      for i, layout in ipairs(layouts) do
-        if (type(layout.name) == "table") then
-          for i, layAppName in ipairs(layout.name) do
-            if (layAppName == appName) then
-              local wins = app:allWindows()
-              local counter = 1
-              for j, win in ipairs(wins) do
-                if (win:isVisible() and layout.func) then
-                  layout.func(counter, win)
-                  counter = counter + 1
-                end
-              end
-            end
-          end
-          elseif (type(layout.name) == "string") then
-            if (layout.name == appName) then
-              local wins = app:allWindows()
-              local counter = 1
-              for j, win in ipairs(wins) do
-                if (win:isVisible() and layout.func) then
-                  layout.func(counter, win)
-                  counter = counter + 1
-                end
-              end
-            end
-          end
-        end
-      end
+  win:moveToScreen(newScreen)
+end
+
+-- Mouse circle example from getting started guide.
+-- This places a red circle around the mouse pointer (because I lose it a lot)
+local mouseCircle = nil
+local mouseCircleTimer = nil
+
+function mouseHighlight()
+  -- Delete an existing highlight if it exists
+  if mouseCircle then
+    mouseCircle:delete()
+    if mouseCircleTimer then
+      mouseCircleTimer:stop()
     end
+  end
+  -- Get the current co-ordinates of the mouse pointer
+  mousepoint = hs.mouse.get()
+  -- Prepare a big red circle around the mouse pointer
+  mouseCircle = hs.drawing.circle(hs.geometry.rect(mousepoint.x-40, mousepoint.y-40, 80, 80))
+  mouseCircle:setStrokeColor({["red"]=1,["blue"]=0,["green"]=0,["alpha"]=1})
+  mouseCircle:setFill(false)
+  mouseCircle:setStrokeWidth(5)
+  mouseCircle:show()
 
-    function applyLayouts(layouts)
-      for i, layout in ipairs(layouts) do
-        if (type(layout.name) == "table") then
-          for i, appName in ipairs(layout.name) do
-            local app = appfinder.appFromName(appName)
-            if (app) then
-              local wins = app:allWindows()
-              local counter = 1
-              for j, win in ipairs(wins) do
-                if (win:isVisible() and layout.func) then
-                  layout.func(counter, win)
-                  counter = counter + 1
-                end
-              end
-            end
-          end
-          elseif (type(layout.name) == "string") then
-            local app = appfinder.appFromName(layout.name)
-            if (app) then
-              local wins = app:allWindows()
-              local counter = 1
-              for j, win in ipairs(wins) do
-                if (win:isVisible() and layout.func) then
-                  layout.func(counter, win)
-                  counter = counter + 1
-                end
-              end
-            end
-          end
-        end
-      end
+  -- Set a timer to delete the circle after 3 seconds
+  mouseCircleTimer = hs.timer.doAfter(2, function() mouseCircle:delete() end)
+end
 
-      function screen.get(screen_name)
-        local allScreens = screen.allScreens()
-        for i, screen in ipairs(allScreens) do
-          if screen:name() == screen_name then
-            return screen
-          end
-        end
-      end
+-- Help. Lists shortcuts, etc.
+-- The terrible spacing looks fine when the alert is actually displayed
+function showHelp()
+  helpstr = [[Hyper                     ⌘⌥⌃⇧
+  Nudge                           ⌥⌃
+  Yank                          ⌥⌃⇧
+  Push                              ⌘⌃
 
-      -- Returns the width of the smaller screen size
-      -- isFullscreen = false removes the toolbar
-      -- and dock sizes
-      function screen.minWidth(isFullscreen)
-        local min_width = math.maxinteger
-        local allScreens = screen.allScreens()
-        for i, screen in ipairs(allScreens) do
-          local screen_frame = screen:frame()
-          if (isFullscreen) then
-            screen_frame = screen:fullFrame()
-          end
-          min_width = math.min(min_width, screen_frame.w)
-        end
-        return min_width
-      end
+  Adium                     Hyper-A
+  Chrome                   Hyper-C
+  Evernote                 Hyper-E
+  Excel                       Hyper-X
+  Papers                    Hyper-P
 
-      -- isFullscreen = false removes the toolbar
-      -- and dock sizes
-      -- Returns the height of the smaller screen size
-      function screen.minHeight(isFullscreen)
-        local min_height = math.maxinteger
-        local allScreens = screen.allScreens()
-        for i, screen in ipairs(allScreens) do
-          local screen_frame = screen:frame()
-          if (isFullscreen) then
-            screen_frame = screen:fullFrame()
-          end
-          min_height = math.min(min_height, screen_frame.h)
-        end
-        return min_height
-      end
+  Find pointer            Hyper-W]]
+  hs.alert.show(helpstr)
+end
 
-      -- If you are using more than one monitor, returns X
-      -- considering the reference screen minus smaller screen
-      -- = (MAX_REFSCREEN_WIDTH - MIN_AVAILABLE_WIDTH) / 2
-      -- If using only one monitor, returns the X of ref screen
-      function screen.minX(refScreen)
-        local min_x = refScreen:frame().x
-        local allScreens = screen.allScreens()
-        if (#allScreens > 1) then
-          min_x = refScreen:frame().x + ((refScreen:frame().w - screen.minWidth()) / 2)
-        end
-        return min_x
-      end
+--and magic (from getting started guide):
+function reloadConfig(files)
+  doReload = false
+  for _,file in pairs(files) do
+    if file:sub(-4) == ".lua" then
+      doReload = true
+    end
+  end
+  if doReload then
+    hs.reload()
+  end
+end
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+hs.alert.show("Config loaded")
 
-      -- If you are using more than one monitor, returns Y
-      -- considering the focused screen minus smaller screen
-      -- = (MAX_REFSCREEN_HEIGHT - MIN_AVAILABLE_HEIGHT) / 2
-      -- If using only one monitor, returns the Y of focused screen
-      function screen.minY(refScreen)
-        local min_y = refScreen:frame().y
-        local allScreens = screen.allScreens()
-        if (#allScreens > 1) then
-          min_y = refScreen:frame().y + ((refScreen:frame().h - screen.minHeight()) / 2)
-        end
-        return min_y
-      end
+-- -----------------
+-- Keybindings
+-- -----------------
 
-      -- If you are using more than one monitor, returns the
-      -- half of minX and 0
-      -- = ((MAX_REFSCREEN_WIDTH - MIN_AVAILABLE_WIDTH) / 2) / 2
-      -- If using only one monitor, returns the X of ref screen
-      function screen.almostMinX(refScreen)
-        local min_x = refScreen:frame().x
-        local allScreens = screen.allScreens()
-        if (#allScreens > 1) then
-          min_x = refScreen:frame().x + (((refScreen:frame().w - screen.minWidth()) / 2) - ((refScreen:frame().w - screen.minWidth()) / 4))
-        end
-        return min_x
-      end
+-- Movement hotkeys
+hs.hotkey.bind(nudgekey, 'down', function() nudge(0,100) end) 	--down
+hs.hotkey.bind(nudgekey, "up", function() nudge(0,-100) end)	--up
+hs.hotkey.bind(nudgekey, "right", function() nudge(100,0) end)	--right
+hs.hotkey.bind(nudgekey, "left", function() nudge(-100,0) end)	--left
 
-      -- If you are using more than one monitor, returns the
-      -- half of minY and 0
-      -- = ((MAX_REFSCREEN_HEIGHT - MIN_AVAILABLE_HEIGHT) / 2) / 2
-      -- If using only one monitor, returns the Y of ref screen
-      function screen.almostMinY(refScreen)
-        local min_y = refScreen:frame().y
-        local allScreens = screen.allScreens()
-        if (#allScreens > 1) then
-          min_y = refScreen:frame().y + (((refScreen:frame().h - screen.minHeight()) / 2) - ((refScreen:frame().h - screen.minHeight()) / 4))
-        end
-        return min_y
-      end
+-- Resize hotkeys
+hs.hotkey.bind(yankkey, "up", function() yank(0,-100) end) -- yank bottom up
+hs.hotkey.bind(yankkey, "down", function() yank(0,100) end) -- yank bottom down
+hs.hotkey.bind(yankkey, "right", function() yank(100,0) end) -- yank right side right
+hs.hotkey.bind(yankkey, "left", function() yank(-100,0) end) -- yank right side left
 
-      -- Returns the frame of the smaller available screen
-      -- considering the context of refScreen
-      -- isFullscreen = false removes the toolbar
-      -- and dock sizes
-      function screen.minFrame(refScreen, isFullscreen)
-        return {
-          x = screen.minX(refScreen),
-          y = screen.minY(refScreen),
-          w = screen.minWidth(isFullscreen),
-          h = screen.minHeight(isFullscreen)
-        }
-      end
+-- Push to screen edge
+hs.hotkey.bind(pushkey,"left", function() push(0,0,0.5,1) end) 		-- left side
+hs.hotkey.bind(pushkey,"right", function() push(0.5,0,0.5,1) end)	-- right side
+hs.hotkey.bind(pushkey,"up", function()	push(0,0,1,0.5) end) 		-- top half
+hs.hotkey.bind(pushkey,"down", function()	push(0,0.5,1,0.5) end)	-- bottom half
 
-      -- +-----------------+
-      -- |        |        |
-      -- |        |  HERE  |
-      -- |        |        |
-      -- +-----------------+
-      function window.right(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        minFrame.x = minFrame.x + (minFrame.w/2)
-        minFrame.w = minFrame.w/2
-        win:setFrame(minFrame)
-      end
+-- Center window with some room to see the desktop
+hs.hotkey.bind(pushkey, "m", function() push(0.05,0.05,0.9,0.9) end)
 
-      -- +-----------------+
-      -- |        |        |
-      -- |  HERE  |        |
-      -- |        |        |
-      -- +-----------------+
-      function window.left(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        minFrame.w = minFrame.w/2
-        win:setFrame(minFrame)
-      end
+-- Fullscreen
+hs.hotkey.bind(pushkey, "f", function() push(0,0,1,1) end)
 
-      -- +-----------------+
-      -- |      HERE       |
-      -- +-----------------+
-      -- |                 |
-      -- +-----------------+
-      function window.up(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        minFrame.h = minFrame.h/2
-        win:setFrame(minFrame)
-      end
+-- Chat windows (arrange in grid of 5 on right hand of screen)
+hs.hotkey.bind(hyper, "1", function() push(0.8,   0, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "2", function() push(0.8, 0.2, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "3", function() push(0.8, 0.4, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "4", function() push(0.8, 0.6, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "5", function() push(0.8, 0.8, 0.2, 0.2) end)
 
-      -- +-----------------+
-      -- |                 |
-      -- +-----------------+
-      -- |      HERE       |
-      -- +-----------------+
-      function window.down(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        minFrame.y = minFrame.y + minFrame.h/2
-        minFrame.h = minFrame.h/2
-        win:setFrame(minFrame)
-      end
+-- Move a window between monitors
+hs.hotkey.bind(pushkey,"1", function() moveToMonitor(1) end) -- Move to first monitor
+hs.hotkey.bind(shiftpushkey,"1", function() 											 -- Move to first monitor and fullscreen
+  moveToMonitor(1)
+  push(0,0,1,1)
+end)
+hs.hotkey.bind(pushkey,"2", function() moveToMonitor(2) end) -- Move to second monitor
+hs.hotkey.bind(shiftpushkey,"2", function() 											 -- Move to second monitor and fullscreen
+  moveToMonitor(2)
+  push(0,0,1,1)
+end)
 
-      -- +-----------------+
-      -- |  HERE  |        |
-      -- +--------+        |
-      -- |                 |
-      -- +-----------------+
-      function window.upLeft(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        minFrame.w = minFrame.w/2
-        minFrame.h = minFrame.h/2
-        win:setFrame(minFrame)
-      end
+-- Application shortcuts
+hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Google Chrome") end)
+hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Hipchat") end)
+hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind(hyper, "e", function() hs.application.launchOrFocus("Evernote") end)
 
-      -- +-----------------+
-      -- |                 |
-      -- +--------+        |
-      -- |  HERE  |        |
-      -- +-----------------+
-      function window.downLeft(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        win:setFrame({
-          x = minFrame.x,
-          y = minFrame.y + minFrame.h/2,
-          w = minFrame.w/2,
-          h = minFrame.h/2
-        })
-      end
+hs.hotkey.bind(hyper, "w", mouseHighlight)
 
-      -- +-----------------+
-      -- |                 |
-      -- |        +--------|
-      -- |        |  HERE  |
-      -- +-----------------+
-      function window.downRight(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        win:setFrame({
-          x = minFrame.x + minFrame.w/2,
-          y = minFrame.y + minFrame.h/2,
-          w = minFrame.w/2,
-          h = minFrame.h/2
-        })
-      end
+hs.hotkey.bind(hyper, "q", showHelp)
 
-      -- +-----------------+
-      -- |        |  HERE  |
-      -- |        +--------|
-      -- |                 |
-      -- +-----------------+
-      function window.upRight(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        win:setFrame({
-          x = minFrame.x + minFrame.w/2,
-          y = minFrame.y,
-          w = minFrame.w/2,
-          h = minFrame.h/2
-        })
-      end
-
-      -- +------------------+
-      -- |                  |
-      -- |    +--------+    +--> minY
-      -- |    |  HERE  |    |
-      -- |    +--------+    |
-      -- |                  |
-      -- +------------------+
-      -- Where the window's size is equal to
-      -- the smaller available screen size
-      function window.fullscreenCenter(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        win:setFrame(minFrame)
-      end
-
-      -- +------------------+
-      -- |                  |
-      -- |  +------------+  +--> minY
-      -- |  |    HERE    |  |
-      -- |  +------------+  |
-      -- |                  |
-      -- +------------------+
-      function window.fullscreenAlmostCenter(win)
-        local offsetW = screen.minX(win:screen()) - screen.almostMinX(win:screen())
-        win:setFrame({
-          x = screen.almostMinX(win:screen()),
-          y = screen.minY(win:screen()),
-          w = screen.minWidth(isFullscreen) + (2 * offsetW),
-          h = screen.minHeight(isFullscreen)
-        })
-      end
-
-      -- It like fullscreen but with minY and minHeight values
-      -- +------------------+
-      -- |                  |
-      -- +------------------+--> minY
-      -- |       HERE       |
-      -- +------------------+--> minHeight
-      -- |                  |
-      -- +------------------+
-      function window.fullscreenWidth(win)
-        local minFrame = screen.minFrame(win:screen(), false)
-        win:setFrame({
-          x = win:screen():frame().x,
-          y = minFrame.y,
-          w = win:screen():frame().w,
-          h = minFrame.h
-        })
-      end
-
-      function applicationWatcher(appName, eventType, appObject)
-        if (eventType == application.watcher.activated) then
-          if (appName == "iTerm") then
-            appObject:selectMenuItem({"Window", "Bring All to Front"})
-            elseif (appName == "Finder") then
-              appObject:selectMenuItem({"Window", "Bring All to Front"})
-            end
-          end
-
-          if (eventType == application.watcher.launched) then
-            os.execute("sleep " .. tonumber(3))
-            applyLayout(layouts, appObject)
-          end
-        end
-
-        config()
-        local appWatcher = application.watcher.new(applicationWatcher)
-        appWatcher:start()
+--config reloading. manual (from getting started guide):
+hs.hotkey.bind(hyper, "r", function() hs.reload() end)
