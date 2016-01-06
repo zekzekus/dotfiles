@@ -109,12 +109,6 @@ function showHelp()
   Yank                          ⌥⌃⇧
   Push                              ⌘⌃
 
-  Adium                     Hyper-A
-  Chrome                   Hyper-C
-  Evernote                 Hyper-E
-  Excel                       Hyper-X
-  Papers                    Hyper-P
-
   Find pointer            Hyper-W]]
   hs.alert.show(helpstr)
 end
@@ -180,6 +174,8 @@ hs.hotkey.bind(shiftpushkey,"2", function() 											 -- Move to second monito
   moveToMonitor(2)
   push(0,0,1,1)
 end)
+
+hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 
 -- Application shortcuts
 hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Google Chrome") end)
