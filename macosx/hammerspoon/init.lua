@@ -144,6 +144,12 @@ hs.hotkey.bind(yankkey, "down", function() yank(0,100) end) -- yank bottom down
 hs.hotkey.bind(yankkey, "right", function() yank(100,0) end) -- yank right side right
 hs.hotkey.bind(yankkey, "left", function() yank(-100,0) end) -- yank right side left
 
+-- Navigate hotkeys
+hs.hotkey.bind(hyper, 'h', function() hs.window.focusedWindow():focusWindowWest() end)
+hs.hotkey.bind(hyper, 'l', function() hs.window.focusedWindow():focusWindowEast() end)
+hs.hotkey.bind(hyper, 'k', function() hs.window.focusedWindow():focusWindowNorth() end)
+hs.hotkey.bind(hyper, 'j', function() hs.window.focusedWindow():focusWindowSouth() end)
+
 -- Push to screen edge
 hs.hotkey.bind(pushkey,"left", function() push(0,0,0.5,1) end) 		-- left side
 hs.hotkey.bind(pushkey,"right", function() push(0.5,0,0.5,1) end)	-- right side
@@ -182,6 +188,8 @@ hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Google Chrom
 hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Hipchat") end)
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
 hs.hotkey.bind(hyper, "e", function() hs.application.launchOrFocus("Evernote") end)
+hs.hotkey.bind(hyper, "x", function() hs.application.launchOrFocus("Xcode") end)
+hs.hotkey.bind(hyper, "a", function() hs.application.launchOrFocus("Android Studio") end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
 
