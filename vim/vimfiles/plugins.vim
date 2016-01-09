@@ -23,11 +23,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-if has("nvim")
-  Plug 'Shougo/deoplete.nvim'
-else
-  Plug 'Shougo/neocomplete'
-endif
+Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter'}
 
 " navigating
 Plug 'tpope/vim-vinegar'
