@@ -7,11 +7,7 @@ endif
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-if has("nvim")
-  Plug 'benekastah/neomake'
-else
-  Plug 'scrooloose/syntastic'
-endif
+Plug 'zekzekus/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 

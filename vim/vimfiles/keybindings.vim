@@ -64,8 +64,6 @@ endfunction
 function! s:python_bindings()
   nnoremap <silent> <leader>mr :call jedi#rename()<cr>
   nnoremap <silent> <leader>mn :call jedi#usages()<cr>
-  nnoremap <silent> <leader>md :call jedi#goto_definitions()<cr>
-  nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
   nnoremap <silent> <leader>mV :VirtualEnvActivate 
 
 endfunction
@@ -79,7 +77,6 @@ endfunction
 function! s:go_bindings()
   nmap <leader>mt <Plug>(go-info)
   nmap <leader>mi <Plug>(go-info)
-  nmap <leader>md <Plug>(go-def)
   nmap <leader>mr <Plug>(go-rename)
   nmap <leader>mcc :call VimuxRunCommand("go build")<cr>
   nmap <leader>mcr :call VimuxRunCommand("go run")<cr>
@@ -90,10 +87,13 @@ function! s:rust_bindings()
   nnoremap <leader>mcc :call VimuxRunCommand("cargo build")<cr>
   nnoremap <leader>mcr :call VimuxRunCommand("cargo run")<cr>
   nnoremap <leader>mct :call VimuxRunCommand("cargo test")<cr>
-  nnoremap <leader>md :call racer#JumpToDefinition()<CR>
 endfunction
 
 function! s:general_bindings()
+  " programming
+  nnoremap <leader>md :YcmCompleter GoTo<cr>
+  nnoremap <leader>mg :YcmCompleter GoToDeclaration<cr>
+
   " file
   nnoremap <leader>fs :w<CR>
   nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
