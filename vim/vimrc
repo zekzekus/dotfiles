@@ -286,7 +286,6 @@ let g:jedi#show_call_signatures = 0
 
 augroup omni
   autocmd!
-  autocmd FileType python,python.django setlocal omnifunc=jedi#completions
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS

@@ -23,11 +23,6 @@ nnoremap <leader>V V`]
 " For Qicker Escaping between normal and editing mode.
 " inoremap fd <ESC>
 
-" make word uppercase and continue editing
-inoremap <c-u> <esc>gUiw`]a
-" make word under the cursor uppercase
-nnoremap <c-u> gUiw
-
 map <F5> :call ToggleBg()<CR>
 
 " Tagbar key bindings."
