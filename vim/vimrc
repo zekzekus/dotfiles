@@ -308,6 +308,19 @@ let g:tagbar_type_rust = {
     \}
 
 let g:ycm_rust_src_path = $HOME.'/devel/tools/rust/src'
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+      \ 'gitcommit' : 1
+      \}
 
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
