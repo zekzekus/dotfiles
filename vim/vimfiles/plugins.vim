@@ -19,7 +19,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-compeleter --gocode-completer --racer-compeleter --tern-completer'}
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -75,6 +75,5 @@ Plug 'fatih/vim-go'
 
 " rust-lang
 Plug 'rust-lang/rust.vim'
-Plug 'ebfe/vim-racer'
 
 call plug#end()

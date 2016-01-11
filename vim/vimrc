@@ -308,10 +308,7 @@ let g:tagbar_type_rust = {
     \]
     \}
 
-if has("nvim")
-  " deoplete completion plugin
-  let g:deoplete#enable_at_startup = 1
-endif
+let g:ycm_rust_src_path = $HOME.'/devel/tools/rust/src'
 
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
