@@ -157,7 +157,7 @@ hs.hotkey.bind(pushkey,"up", function()	push(0,0,1,0.5) end) 		-- top half
 hs.hotkey.bind(pushkey,"down", function()	push(0,0.5,1,0.5) end)	-- bottom half
 
 -- Center window with some room to see the desktop
-hs.hotkey.bind(pushkey, "m", function() push(0.05,0.05,0.9,0.9) end)
+hs.hotkey.bind(pushkey, "g", function() push(0.05,0.05,0.9,0.9) end)
 
 -- Fullscreen
 hs.hotkey.bind(pushkey, "f", function() push(0,0,1,1) end)
