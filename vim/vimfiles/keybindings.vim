@@ -148,11 +148,6 @@ augroup END
 
 
 if has("nvim")
-  " deoplete
-  inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-  inoremap <expr><C-h> deolete#mappings#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
-
   " terminal mode bindings
   tnoremap <Esc> <C-\><C-n>
   tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
