@@ -39,7 +39,8 @@ Plug 'Shougo/junkfile.vim'
 " vim interface
 Plug 'bling/vim-bufferline'
 Plug 'flazz/vim-colorschemes'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " python
 Plug 'davidhalter/jedi-vim'
