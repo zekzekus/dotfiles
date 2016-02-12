@@ -10,23 +10,6 @@ incrementally due to your very personal taste of preferences.
 
 Installation steps for who loves risky stuff.
 
-IMPORTANT NOTE: now my setup heavily uses
-[Unite](https://github.com/Shougo/unite.vim) plugin for various type of
-listings. Current MacVim does have a problem with garbage collecting causes
-freezing of vim after selection from any unite buffer. This problem is fixed
-with regular Vim source code. So i strongly recommend using latest official Vim
-distribution until MacVim includes the patch about this bug.
-
-IMPORTANT NOTE (2015-03-26): i started to use
-[neobundle](https://github.com/Shougo/neobundle.vim) for vim plugin management.
-Besides, i am using [neocomplete](https://github.com/Shougo/neocomplete.vim)
-for auto completion and removed youcompleteme from my stack. I migrated my
-package manager from Vundle to NeoBundle with these commands under
-`vim/vimfiles/bundle` directory; `ls | grep -v neobundle.vim | xargs rm -rf`
-then `vim +NeoBundleInstall +qall` command. With neobundle some of the
-compilation commands i mentioned below are deprecated because these NeoBundle
-can execute them.
-
 - clone the repo.
 - execute `git submodule update --init --recursive`
 - make a symbolic link of REPO_PATH/vim/vimfiles to ~/.vim
@@ -37,8 +20,8 @@ can execute them.
     - ctags for tagbar and ctrlp plugin. You can use your OS package manager to
     - install ag aka the silver searcher install
     - nodejs and npm
-- execute `vim "+NeoBundleInstall vimproc" +qall`
-- execute `vim +NeoBundleInstall +qall`
+- execute `vim "+PlugInstall vimproc" +qall`
+- execute `vim +PlugInstall +qall`
 - if you want to override some configuration options you can create a file
   called `~/.vimrc.local` and put your own settings. This file (if exists) will
   we sourced at the very end of vimrc.
@@ -56,17 +39,15 @@ Note: i am changing some keybindings due to mnemonic approach based on
 - `<leader>n` for removing highlights (`:noh`)
 - `<leader>W` to remove trailing whitespace from whole buffer
 - `<leader>v` to select just pasted text
-- `fd` to `<ESC>`
-- `<C-s>` toggle [NerdTree](https://github.com/scrooloose/nerdtree)
 - `<leader>T` toggle [Tagbar](https://github.com/majutsushi/tagbar)
 - `F5` key toggle background color
-- `<leader>V` activate specified python virtualenv
+- `<leader>mV` activate specified python virtualenv
 - `<leader>ff` activate [Unite](https://github.com/Shougo/unite.vim) source for
   files (recursive)
 - `<leader>fg` activate [Unite](https://github.com/Shougo/unite.vim) git source
-- `<leader>b` activate [Unite](http://kien.github.io/ctrlp.vim/) buffer list
+- `<leader>bb` activate [Unite](http://kien.github.io/ctrlp.vim/) buffer list
   with quick selection
-- `<leader>B` activate [Unite](https://github.com/Shougo/unite.vim) buffer list
+- `<leader>bB` activate [Unite](https://github.com/Shougo/unite.vim) buffer list
 - `<leader>y` activate [Unite](https://github.com/Shougo/unite.vim) buffer
   outline
 - `<leader>fe` activate [Unite](https://github.com/Shougo/unite.vim) recent
@@ -81,20 +62,17 @@ Note: i am changing some keybindings due to mnemonic approach based on
 - `<leader>fj` activate [Unite](https://github.com/Shougo/unite.vim) for
   [junkfile](https://github.com/Shougo/junkfile.vim) plugin plugin
 - `<leader>G` toggle [Gundo](https://github.com/sjl/gundo.vim) plugin
-- `<leader>o` executes `:only` command. Makes active buffer full screen
+- `<leader>wm` executes `:only` command. Makes active buffer full screen
 - `<leader>fs` bound to `:w` command. Saved the buffer
 - `<leader><tab>` switch to last edited buffer
-- `<C-u>` convert the word uppercase (both NORMAL and INSERT)
 - `<leader>s` triggers [Dash](http://kapeli.com/dash) search based on active
   buffer's filetype
 - `<leader>S` triggers global [Dash](http://kapeli.com/dash) search
-- `<leader>d` tries to go to definition of identifier under cursor. Works with
+- `<leader>md` tries to go to definition of identifier under cursor. Works with
   python files out of the box.
 - `<C-j>` expand snippet (INSERT)
 - `<C-b>` jump next edit point within the snippet (INSERT)
 - `<C-z>` jump previous edit point within the snippet (INSERT)
-- `<C-n>` to invoke multiple cursors plugin
-  [info](https://github.com/terryma/vim-multiple-cursors)
 - `<leader>qp` runs close commands for preview, help and other windows (`:pclose
   :cclose :helpclose`)
 - `<leader>qq` runs command `:qa`
