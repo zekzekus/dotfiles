@@ -12,7 +12,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 
 " editing
-Plug 'reedes/vim-pencil'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
