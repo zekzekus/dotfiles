@@ -292,6 +292,7 @@ let g:tagbar_type_rust = {
     \]
     \}
 
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:ycm_rust_src_path = $HOME.'/devel/tools/rust/src'
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
