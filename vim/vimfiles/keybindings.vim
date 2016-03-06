@@ -117,11 +117,11 @@ function! s:general_bindings()
   endif
 
   " some toggles
-  nnoremap <leader>tn :set number!<cr>
-  nnoremap <leader>tr :set relativenumber!<cr>
-  nnoremap <leader>tc :set cursorcolumn!<cr>
-  nnoremap <leader>tl :set cursorline!<cr>
-  nnoremap <leader>tg :call ToggleBg()<cr>
+  nnoremap <leader>Tn :set number!<cr>
+  nnoremap <leader>Tr :set relativenumber!<cr>
+  nnoremap <leader>Tc :set cursorcolumn!<cr>
+  nnoremap <leader>Tl :set cursorline!<cr>
+  nnoremap <leader>Tg :call ToggleBg()<cr>
 
 
   " quit
