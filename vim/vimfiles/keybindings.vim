@@ -109,6 +109,13 @@ function! s:general_bindings()
   nnoremap <leader>bd :bd<cr>
   nnoremap <leader><tab> :b#<CR>
 
+  " terminal
+  if has("nvim")
+    nnoremap <leader>tf :terminal fish<cr>
+    nnoremap <leader>tb :terminal bash<cr>
+    nnoremap <leader>tp :terminal ipython<cr>
+  endif
+
   " some toggles
   nnoremap <leader>tn :set number!<cr>
   nnoremap <leader>tr :set relativenumber!<cr>
