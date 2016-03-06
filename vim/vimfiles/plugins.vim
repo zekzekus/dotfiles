@@ -76,4 +76,7 @@ Plug 'fatih/vim-go'
 " rust-lang
 Plug 'rust-lang/rust.vim'
 
+" html
+Plug 'mattn/emmet-vim'
+
 call plug#end()
