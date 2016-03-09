@@ -21,7 +21,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter --gocode-completer --racer-compeleter --tern-completer'}
 
 " navigating
-Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
