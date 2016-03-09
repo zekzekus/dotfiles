@@ -28,9 +28,6 @@ map <F5> :call ToggleBg()<CR>
 " Tagbar key bindings."
 nmap <leader>T <ESC>:TagbarToggle<cr>
 
-" gundo settings
-nnoremap <leader>G :GundoToggle<CR>
-
 " dash.vim cinfiguration
 nmap <silent> <leader>S <Plug>DashGlobalSearch
 nmap <silent> <leader>s <Plug>DashSearch
@@ -42,8 +39,6 @@ nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
 
 nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
 nnoremap <silent> <leader>H :<C-u>Unite -auto-resize -buffer-name=help help<cr>
-nnoremap <silent> <leader>a :<C-u>Unite -auto-preview -no-start-insert -buffer-name=airline airline_themes<cr>
-nnoremap <silent> <leader>c :<C-u>Unite -auto-preview -no-start-insert -buffer-name=colorschemes colorscheme<cr>
 
 function! s:unite_settings()
   nmap <buffer> Q <plug>(unite_exit)

@@ -9,11 +9,9 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'zekzekus/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
-Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -22,14 +20,10 @@ Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter --gocode-co
 
 " navigating
 Plug 'justinmk/vim-dirvish'
-Plug 'AndrewRadev/linediff.vim'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'rizzatti/greper.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
-Plug 'osyo-manga/unite-airline_themes'
-Plug 'ujihisa/unite-colorscheme'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-help'
 Plug 'Shougo/neoyank.vim'
