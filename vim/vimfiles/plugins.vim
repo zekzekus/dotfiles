@@ -50,6 +50,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-jdaddy'
+Plug 'mxw/vim-jsx'
 
 " django
 Plug 'mjbrownie/django-template-textobjects'
