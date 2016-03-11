@@ -1,8 +1,4 @@
-if has("nvim")
-  call plug#begin('~/.vim/plugged_nvim')
-else 
-  call plug#begin('~/.vim/plugged_vim')
-endif
+call plug#begin('~/.vim/plugged')
 
 " programming
 Plug 'SirVer/ultisnips'
@@ -45,6 +41,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-jdaddy'
 Plug 'mxw/vim-jsx'
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 
 " django
 Plug 'mjbrownie/django-template-textobjects'
