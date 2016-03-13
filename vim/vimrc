@@ -175,6 +175,8 @@ augroup neovim_au
   autocmd BufWritePost,BufEnter * Neomake
 augroup END
 
+let g:netrw_liststyle=3
+
 " ========== Plugin Settings =========="
 
 " vim-virtualenv plugin settings

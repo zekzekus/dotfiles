@@ -15,7 +15,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter --gocode-completer --racer-compeleter --tern-completer'}
 
 " navigating
-Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'rizzatti/greper.vim'
 Plug 'Shougo/unite.vim'
