@@ -43,6 +43,9 @@ Plug 'tpope/vim-jdaddy'
 Plug 'mxw/vim-jsx'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 
+" elm
+Plug 'lambdatoast/elm.vim'
+
 " django
 Plug 'mjbrownie/django-template-textobjects'
 
