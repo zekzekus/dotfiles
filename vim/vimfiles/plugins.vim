@@ -13,6 +13,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter --gocode-completer --racer-compeleter --tern-completer'}
+Plug 'reedes/vim-pencil'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -28,7 +29,8 @@ Plug 'easymotion/vim-easymotion'
 
 " vim interface
 Plug 'bling/vim-bufferline'
-Plug 'flazz/vim-colorschemes'
+Plug 'spf13/vim-colors'
+Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -56,7 +58,6 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'rizzatti/dash.vim'
 Plug 'rizzatti/funcoo.vim'
 Plug 'sjl/vitality.vim'
-Plug 'tpope/vim-markdown'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
