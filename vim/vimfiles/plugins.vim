@@ -24,6 +24,7 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-help'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/junkfile.vim'
+Plug 'easymotion/vim-easymotion'
 
 " vim interface
 Plug 'bling/vim-bufferline'
