@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter --gocode-completer --racer-compeleter --tern-completer'}
 Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
