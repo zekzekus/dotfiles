@@ -5,7 +5,7 @@ vnoremap / /\v
 nnoremap j gj
 nnoremap k gk
 
-"Changing Leader Key
+" Changing Leader Key
 nnoremap <Space> <nop>
 let mapleader = "\<Space>"
 let localleader = "\\"
@@ -14,29 +14,14 @@ nnoremap <leader>n :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-",W Command to remove white space from a file.
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
 " ,v Select just pasted text.
 nnoremap <leader>V V`]
 
-" For Qicker Escaping between normal and editing mode.
-" inoremap fd <ESC>
-
-map <F5> :call ToggleBg()<CR>
-
-" Tagbar key bindings."
-nmap <leader>T <ESC>:TagbarToggle<cr>
-
-" dash.vim cinfiguration
-nmap <silent> <leader>S <Plug>DashGlobalSearch
-nmap <silent> <leader>s <Plug>DashSearch
-
+" unite bindings
 nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
 nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
 nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
 nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-
 nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
 nnoremap <silent> <leader>H :<C-u>Unite -auto-resize -buffer-name=help help<cr>
 
@@ -86,6 +71,10 @@ function! s:general_bindings()
 
   " file
   nnoremap <leader>fs :w<CR>
+  nmap <leader>ft <ESC>:TagbarToggle<cr>
+  "to remove white space from a file.
+  nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
+
   nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
   nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
   nnoremap <silent> <leader>fe :<C-u>Unite -buffer-name=recent file_mru<cr>
@@ -94,9 +83,10 @@ function! s:general_bindings()
   " git
   nnoremap <leader>gs :Gstatus<cr>
   nnoremap <leader>gd :Gdiff<cr>
+  nnoremap <leader>gb :Gblame<cr>
 
   " window
-  nnoremap <leader>wm :only<CR> " window-maximize
+  nnoremap <leader>wm :only<CR>
 
   " buffer
   nnoremap <silent> <leader>bB :<C-u>Unite -quick-match buffer<cr>
@@ -117,6 +107,10 @@ function! s:general_bindings()
   nnoremap <leader>Tc :set cursorcolumn!<cr>
   nnoremap <leader>Tl :set cursorline!<cr>
   nnoremap <leader>Tg :call ToggleBg()<cr>
+
+  " search
+  nmap <silent> <leader>sS <Plug>DashGlobalSearch
+  nmap <silent> <leader>ss <Plug>DashSearch
 
 
   " quit
