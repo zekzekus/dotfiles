@@ -59,6 +59,7 @@ Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
+Plug 'mhinz/vim-startify'
 
 " haskell
 Plug 'dag/vim2hs'
