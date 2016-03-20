@@ -109,8 +109,9 @@ function! s:general_bindings()
   nnoremap <leader>Tg :call ToggleBg()<cr>
 
   " search
-  nmap <silent> <leader>sS <Plug>DashGlobalSearch
-  nmap <silent> <leader>ss <Plug>DashSearch
+  nmap <silent> <leader>sD <Plug>DashGlobalSearch
+  nmap <silent> <leader>sd <Plug>DashSearch
+  nnoremap <leader>ss :Grepper<cr>
 
 
   " quit

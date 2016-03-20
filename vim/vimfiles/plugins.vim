@@ -17,7 +17,7 @@ Plug 'reedes/vim-pencil'
 " navigating
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
-Plug 'rizzatti/greper.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
