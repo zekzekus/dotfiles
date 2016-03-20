@@ -128,15 +128,6 @@ set background=dark
 syntax enable
 highlight clear VertSplit
 
-" toggle background color base between dark and light
-function! ToggleBg()
-  if &background == 'dark'
-    set bg=light
-  else
-    set bg=dark
-  endif
-endfunc
-
 " Set vim to save the file on focus out.
 augroup file_operation
   autocmd!
@@ -200,6 +191,7 @@ let g:bufferline_fixed_index = -1 "always last
 " airline configuration
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
 
 " unicode symbols
 let g:airline_symbols = {}

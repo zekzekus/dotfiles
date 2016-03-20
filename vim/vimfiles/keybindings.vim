@@ -68,6 +68,8 @@ function! s:general_bindings()
 
   " window
   nnoremap <leader>wm :only<CR>
+  nnoremap <leader>ws :split<CR>
+  nnoremap <leader>wv :vsplit<CR>
 
   " buffer
   nnoremap <silent> <leader>bB :<C-u>Unite -quick-match buffer<cr>
@@ -83,13 +85,14 @@ function! s:general_bindings()
   endif
 
   " some toggles
-  nnoremap <leader>Tn :set number!<cr>
-  nnoremap <leader>Tr :set relativenumber!<cr>
-  nnoremap <leader>Tc :set cursorcolumn!<cr>
-  nnoremap <leader>Tl :set cursorline!<cr>
-  nnoremap <leader>Tg :call ToggleBg()<cr>
-  nnoremap <leader>Ts :SignifyToggle<cr>
-  nnoremap <leader>TS :SignifyToggleHighlight<cr>
+  " use unimpaired for these toggles -- unimpaired eq
+  " nnoremap <leader>Tn :set number!<cr> -- con
+  " nnoremap <leader>Tr :set relativenumber!<cr> -- cor
+  " nnoremap <leader>Tc :set cursorcolumn!<cr> -- cou
+  " nnoremap <leader>Tl :set cursorline!<cr> -- coc
+  " nnoremap <leader>Tg :call ToggleBg()<cr> -- cob
+  nnoremap cot :SignifyToggle<cr>
+  nnoremap coT :SignifyToggleHighlight<cr>
 
   " search
   nnoremap / /\v
