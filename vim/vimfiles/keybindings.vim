@@ -96,6 +96,13 @@ function! s:general_bindings()
   nmap <silent> <leader>sd <Plug>DashSearch
   nnoremap <leader>ss :Grepper<cr>
   nnoremap <leader>sn :noh<cr>
+  nmap sg  <plug>(GrepperOperator)
+  xmap sg  <plug>(GrepperOperator)
+  nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
+  " for browsing the input history
+  cnoremap <c-n> <down>
+  cnoremap <c-p> <up>
+
 
   " misc
   nnoremap <tab> %
