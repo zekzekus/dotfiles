@@ -88,6 +88,8 @@ function! s:general_bindings()
   nnoremap <leader>Tc :set cursorcolumn!<cr>
   nnoremap <leader>Tl :set cursorline!<cr>
   nnoremap <leader>Tg :call ToggleBg()<cr>
+  nnoremap <leader>Ts :SignifyToggle<cr>
+  nnoremap <leader>TS :SignifyToggleHighlight<cr>
 
   " search
   nnoremap / /\v

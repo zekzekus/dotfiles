@@ -31,6 +31,7 @@ Plug 'bling/vim-bufferline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-signify'
 
 " python
 Plug 'davidhalter/jedi-vim'

@@ -310,6 +310,9 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1
       \}
 
+" signify
+let g:signify_disable_by_default = 1
+
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif
