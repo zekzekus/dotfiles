@@ -11,7 +11,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-compeleter --gocode-completer --racer-compeleter --tern-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-completer --gocode-completer --racer-completer --tern-completer'}
 Plug 'reedes/vim-pencil'
 
 " navigating
