@@ -2,12 +2,6 @@
 
 ## VIM Configuration
 
-My first and most useful suggestion is this: BUILD YOUR OWN SET OF VIM
-CONFIGURATION!! I strongly recommend
-[this](http://mislav.uniqpath.com/2011/12/vim-revisited/) article to start with
-a minimum set of configuration options. Than build your editing environment
-incrementally due to your very personal taste of preferences.
-
 Installation steps for who loves risky stuff.
 
 - clone the repo.
@@ -29,54 +23,13 @@ Installation steps for who loves risky stuff.
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.
 
+I am using neovim for a while and this conf is completely neovim compatible. You'll need to create ~/.nvimtmp for cache purposes.
+
 ### Most notable commands, shortcuts etc. (mode indicator inside parantheses)
 
-Note: i am changing some keybindings due to mnemonic approach based on
-[Spacemacs](https://github.com/syl20bnr/spacemacs#convenient-and-mnemonic-key-bindings) project.
-
-- leader key is `space`
-- `F3` key to toggle vim Paste mode
-- `<leader>n` for removing highlights (`:noh`)
-- `<leader>W` to remove trailing whitespace from whole buffer
-- `<leader>v` to select just pasted text
-- `<leader>T` toggle [Tagbar](https://github.com/majutsushi/tagbar)
-- `F5` key toggle background color
-- `<leader>mV` activate specified python virtualenv
-- `<leader>ff` activate [Unite](https://github.com/Shougo/unite.vim) source for
-  files (recursive)
-- `<leader>fg` activate [Unite](https://github.com/Shougo/unite.vim) git source
-- `<leader>bb` activate [Unite](http://kien.github.io/ctrlp.vim/) buffer list
-  with quick selection
-- `<leader>bB` activate [Unite](https://github.com/Shougo/unite.vim) buffer list
-- `<leader>y` activate [Unite](https://github.com/Shougo/unite.vim) buffer
-  outline
-- `<leader>fe` activate [Unite](https://github.com/Shougo/unite.vim) recent
-  files
-- `<leader>h` activate [Unite](https://github.com/Shougo/unite.vim)
-  history/yank list
-- `<leader>l` activate [Unite](https://github.com/Shougo/unite.vim) lines of
-  current file
-- `<leader>/` activate [Unite](https://github.com/Shougo/unite.vim) grep
-- `<leader>H` activate [Unite](https://github.com/Shougo/unite.vim) for vim
-  help content
-- `<leader>fj` activate [Unite](https://github.com/Shougo/unite.vim) for
-  [junkfile](https://github.com/Shougo/junkfile.vim) plugin plugin
-- `<leader>G` toggle [Gundo](https://github.com/sjl/gundo.vim) plugin
-- `<leader>wm` executes `:only` command. Makes active buffer full screen
-- `<leader>fs` bound to `:w` command. Saved the buffer
-- `<leader><tab>` switch to last edited buffer
-- `<leader>s` triggers [Dash](http://kapeli.com/dash) search based on active
-  buffer's filetype
-- `<leader>S` triggers global [Dash](http://kapeli.com/dash) search
-- `<leader>md` tries to go to definition of identifier under cursor. Works with
-  python files out of the box.
-- `<C-j>` expand snippet (INSERT)
-- `<C-b>` jump next edit point within the snippet (INSERT)
-- `<C-z>` jump previous edit point within the snippet (INSERT)
-- `<leader>qp` runs close commands for preview, help and other windows (`:pclose
-  :cclose :helpclose`)
-- `<leader>qq` runs command `:qa`
-- `<leader>gs` executes command `:Gstatus`
+I am using a separated file for my all keybindings. So you can check the
+keybindings.vim file and find out all my custom shortcuts easily in one single
+place.
 
 ## TMUX Configuration
 
