@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-signify'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -54,6 +55,7 @@ Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
+Plug 'mhinz/vim-startify'
 
 " haskell
 Plug 'dag/vim2hs'
