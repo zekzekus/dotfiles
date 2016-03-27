@@ -58,7 +58,6 @@ function! s:general_bindings()
 
   nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
   nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
-  nnoremap <silent> <leader>fe :<C-u>Unite -buffer-name=recent file_mru<cr>
   nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
 
   " git
@@ -142,7 +141,6 @@ function! s:general_bindings()
   nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
   nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
   nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-  nnoremap <silent> <leader>H :<C-u>Unite -auto-resize -buffer-name=help help<cr>
 
   " quit
   nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>

@@ -19,20 +19,16 @@ Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
-Plug 'Shougo/unite-help'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/junkfile.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
 
 " vim interface
-Plug 'bling/vim-bufferline'
-Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mhinz/vim-signify'
+Plug 'bling/vim-bufferline'
+Plug 'altercation/vim-colors-solarized'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -44,10 +40,6 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-jdaddy'
 Plug 'mxw/vim-jsx'
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-
-" elm
-Plug 'lambdatoast/elm.vim'
 
 " django
 Plug 'mjbrownie/django-template-textobjects'
@@ -61,7 +53,6 @@ Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
-Plug 'mhinz/vim-startify'
 
 " haskell
 Plug 'dag/vim2hs'
