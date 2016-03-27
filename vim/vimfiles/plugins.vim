@@ -28,7 +28,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'altercation/vim-colors-solarized'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'morhetz/gruvbox'
 
 " python
 Plug 'davidhalter/jedi-vim'
