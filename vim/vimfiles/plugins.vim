@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'zekzekus/neomake'
+Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 
 " editing
