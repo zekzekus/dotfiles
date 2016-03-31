@@ -26,3 +26,5 @@ if test -d ~/.config/fish/functions/rust.fish
     . ~/.config/fish/functions/rust.fish/rustc.fish
     . ~/.config/fish/functions/rust.fish/cargo.fish
 end
+
+set --export EDITOR vim
