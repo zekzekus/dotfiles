@@ -13,6 +13,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-completer --gocode-completer --racer-completer --tern-completer'}
 Plug 'reedes/vim-pencil'
+Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
