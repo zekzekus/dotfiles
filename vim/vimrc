@@ -160,15 +160,19 @@ augroup programming_au
   autocmd BufEnter volofile setf javascript
   " autocmd FileType python set ft=python.django " For SnipMate
   autocmd FileType html set ft=htmldjango " For SnipMate
-  autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 augroup END
 
 if has("nvim")
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
-augroup neovim_au
+augroup neomake_au
   autocmd!
-  autocmd BufWritePost,BufEnter * Neomake
+  autocmd BufWritePost,BufEnter *.hs Neomake
+  autocmd BufWritePost,BufEnter *.py Neomake
+  autocmd BufWritePost,BufEnter *.rs Neomake
+  autocmd BufWritePost,BufEnter *.go Neomake
+  autocmd BufWritePost,BufEnter *.vim Neomake
+  autocmd BufWritePost,BufEnter *.rb Neomake
 augroup END
 
 let g:netrw_liststyle=3
