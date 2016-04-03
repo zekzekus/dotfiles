@@ -316,6 +316,9 @@ let g:ycm_filetype_blacklist = {
 " signify
 let g:signify_disable_by_default = 1
 
+" startify
+let g:startify_change_to_dir = 0
+
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif
