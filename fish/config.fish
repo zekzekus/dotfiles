@@ -28,3 +28,6 @@ if test -d ~/.config/fish/functions/rust.fish
 end
 
 set --export EDITOR vim
+
+alias ghc 'stack ghc --'
+alias ghci 'stack ghci --'
