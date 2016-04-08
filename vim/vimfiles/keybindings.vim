@@ -84,12 +84,6 @@ function! s:general_bindings()
   endif
 
   " some toggles
-  " use unimpaired for these toggles -- unimpaired eq
-  " nnoremap <leader>Tn :set number!<cr> -- con
-  " nnoremap <leader>Tr :set relativenumber!<cr> -- cor
-  " nnoremap <leader>Tc :set cursorcolumn!<cr> -- cou
-  " nnoremap <leader>Tl :set cursorline!<cr> -- coc
-  " nnoremap <leader>Tg :call ToggleBg()<cr> -- cob
   nnoremap cot :SignifyToggle<cr>
   nnoremap coT :SignifyToggleHighlight<cr>
 
@@ -103,6 +97,7 @@ function! s:general_bindings()
   nmap sg  <plug>(GrepperOperator)
   xmap sg  <plug>(GrepperOperator)
   nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
+
   " for browsing the input history
   cnoremap <c-n> <down>
   cnoremap <c-p> <up>
