@@ -25,8 +25,8 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 
-set nonumber
-set norelativenumber
+set number
+set relativenumber
 
 set undofile
 set shell=/bin/bash
@@ -128,7 +128,7 @@ let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
 
-colorscheme solarized
+colorscheme off
 
 syntax enable
 highlight clear VertSplit
