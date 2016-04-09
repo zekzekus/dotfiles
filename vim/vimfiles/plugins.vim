@@ -30,7 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'pbrisbin/vim-colors-off'
+Plug 'zekzekus/vim-colors-off'
 Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-signify'
 
