@@ -25,8 +25,8 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 
-set number
-set relativenumber
+set nonumber
+set norelativenumber
 
 set undofile
 set shell=/bin/bash
