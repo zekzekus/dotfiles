@@ -12,8 +12,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-completer --gocode-completer --racer-completer --tern-completer'}
-Plug 'reedes/vim-pencil'
-Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -32,7 +30,6 @@ Plug 'bling/vim-bufferline'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'zekzekus/vim-colors-off'
 Plug 'morhetz/gruvbox'
-Plug 'mhinz/vim-signify'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -43,7 +40,6 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-jdaddy'
-Plug 'mxw/vim-jsx'
 
 " django
 Plug 'mjbrownie/django-template-textobjects'
@@ -57,7 +53,6 @@ Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
-Plug 'mhinz/vim-startify'
 
 " haskell
 Plug 'dag/vim2hs'
@@ -69,8 +64,5 @@ Plug 'fatih/vim-go'
 
 " rust-lang
 Plug 'rust-lang/rust.vim'
-
-" html
-Plug 'mattn/emmet-vim'
 
 call plug#end()

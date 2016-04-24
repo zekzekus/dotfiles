@@ -83,10 +83,6 @@ function! s:general_bindings()
     nnoremap <leader>tp :terminal ipython<cr>
   endif
 
-  " some toggles
-  nnoremap cot :SignifyToggle<cr>
-  nnoremap coT :SignifyToggleHighlight<cr>
-
   " search
   nnoremap / /\v
   vnoremap / /\v
