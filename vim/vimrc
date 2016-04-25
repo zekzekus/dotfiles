@@ -131,6 +131,7 @@ set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
+let g:solarized_diffmode="high"    "default value is normal
 
 colorscheme solarized
 
