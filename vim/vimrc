@@ -122,13 +122,17 @@ if !has("gui_running")
   set t_Co=256
 endif
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if has("nvim")
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+else
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=0
+endif
 set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
 
-colorscheme gruvbox
+colorscheme solarized
 
 syntax enable
 highlight clear VertSplit
