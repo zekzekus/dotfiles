@@ -132,7 +132,7 @@ let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
 
-colorscheme solarized
+colorscheme gruvbox
 
 syntax enable
 highlight clear VertSplit
