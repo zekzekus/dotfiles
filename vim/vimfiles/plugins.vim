@@ -14,7 +14,6 @@ Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-completer --gocode-completer --racer-completer --tern-completer'}
 
 " navigating
-Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'Shougo/unite.vim'
@@ -26,10 +25,7 @@ Plug 'tpope/vim-unimpaired'
 " vim interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'zekzekus/vim-colors-off'
-Plug 'morhetz/gruvbox'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -37,8 +33,6 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'jmcantrell/vim-virtualenv'
 
 " javascript
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-jdaddy'
 
 " django
@@ -47,8 +41,6 @@ Plug 'mjbrownie/django-template-textobjects'
 " misc
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
-Plug 'rizzatti/dash.vim'
-Plug 'rizzatti/funcoo.vim'
 Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
