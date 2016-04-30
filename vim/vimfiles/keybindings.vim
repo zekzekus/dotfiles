@@ -86,6 +86,8 @@ function! s:general_bindings()
   " search
   nnoremap / /\v
   vnoremap / /\v
+  nmap <silent> <leader>sD <Plug>DashGlobalSearch
+  nmap <silent> <leader>sd <Plug>DashSearch
   nnoremap <leader>ss :Grepper<cr>
   nnoremap <leader>sn :noh<cr>
   nmap sg  <plug>(GrepperOperator)

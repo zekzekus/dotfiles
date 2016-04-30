@@ -128,6 +128,9 @@ else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=0
 endif
 set background=dark
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="soft"
+let g:gruvbox_contrast_light="soft"
 let g:solarized_diffmode="high"    "default value is normal
 
 colorscheme solarized
@@ -194,6 +197,12 @@ runtime macros/matchit.vim
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+" bufferline
+let g:bufferline_solo_highlight = 1
+let g:bufferline_echo = 0
+let g:bufferline_rotate = 1
+let g:bufferline_fixed_index = -1 "always last
 
 " airline configuration
 let g:airline#extensions#virtualenv#enabled = 1
