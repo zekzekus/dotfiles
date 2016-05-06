@@ -86,6 +86,8 @@ function! s:general_bindings()
   " search
   nnoremap / /\v
   vnoremap / /\v
+  nnoremap n nzzzv
+  nnoremap N Nzzzv
   nmap <silent> <leader>sD <Plug>DashGlobalSearch
   nmap <silent> <leader>sd <Plug>DashSearch
   nnoremap <leader>ss :Grepper<cr>
