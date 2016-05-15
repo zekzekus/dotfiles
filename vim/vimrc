@@ -123,9 +123,7 @@ if !has("gui_running")
 endif
 
 if has("nvim")
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-else
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=0
+  set termguicolors
 endif
 set background=dark
 let g:gruvbox_italic=1
