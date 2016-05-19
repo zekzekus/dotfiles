@@ -31,3 +31,5 @@ set --export EDITOR vim
 
 alias ghc 'stack ghc --'
 alias ghci 'stack ghci --'
+
+set --export RUST_SRC_PATH $HOME/devel/tools/rust/src
