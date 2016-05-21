@@ -315,6 +315,9 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1
       \}
 
+" fzf
+let g:fzf_command_prefix = 'F'
+
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif
