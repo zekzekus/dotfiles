@@ -23,7 +23,8 @@ Installation steps for who loves risky stuff.
 Yeah these should be enough to use my VIM configuration on your system. If
 these are not sufficient, please warn me.
 
-I am using neovim for a while and this conf is completely neovim compatible. You'll need to create ~/.nvimtmp for cache purposes.
+I am using neovim for a while and this conf is completely neovim compatible.
+You'll need to create ~/.nvimtmp for cache purposes.
 
 ### Most notable commands, shortcuts etc. (mode indicator inside parantheses)
 
