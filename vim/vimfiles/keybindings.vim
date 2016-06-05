@@ -24,6 +24,8 @@ function! s:haskell_bindings()
   nnoremap <leader>mt :GhcModType<cr>
   nnoremap <leader>mc :GhcModTypeClear<cr>
   nnoremap <leader>mi :GhcModInfoPreview<cr>
+  nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
+  nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction
 
 function! s:go_bindings()
