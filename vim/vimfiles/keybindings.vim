@@ -137,7 +137,7 @@ function! s:general_bindings()
   nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
 
   " quit
-  nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>
+  nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
   nnoremap <leader>qq :qa<cr>
 endfunction
 
