@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', {'do': 'install.py --clang-completer --gocode-completer --racer-completer --tern-completer'}
 
 " navigating
+Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
