@@ -30,6 +30,7 @@
 --exclude=docs/_build
 --exclude=bower_components
 --exclude=node_modules
+--exclude=plugged
 --exclude=assets/*/css/main.css
 --exclude=assets/www.otel.com/js/bundle.js
 --exclude=assets/www.otel.com/css
