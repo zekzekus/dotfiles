@@ -8,3 +8,4 @@ config/fish/fishd.*
 
 vim/vimfiles/plugged
 vim/vimfiles/init.vim
+tags
