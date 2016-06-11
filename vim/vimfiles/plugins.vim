@@ -63,6 +63,7 @@ Plug 'eagletmt/neco-ghc'
 
 " golang
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim'
