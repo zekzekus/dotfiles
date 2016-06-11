@@ -40,6 +40,9 @@ function! s:go_bindings()
 endfunction
 
 function! s:rust_bindings()
+  nmap <buffer><leader>md <Plug>RacerGoToDefinitionDrect
+  nmap <buffer><leader>mD <Plug>RacerGoToDefinitionSplit
+  nmap <buffer><leader>mi <Plug>RacerShowDocumentation
   nnoremap <leader>mcc :call VimuxRunCommand("cargo build")<cr>
   nnoremap <leader>mcr :call VimuxRunCommand("cargo run")<cr>
   nnoremap <leader>mct :call VimuxRunCommand("cargo test")<cr>
