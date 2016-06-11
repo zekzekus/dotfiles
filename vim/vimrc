@@ -126,10 +126,6 @@ if has("nvim")
   set termguicolors
 endif
 set background=dark
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="soft"
-let g:gruvbox_contrast_light="soft"
-
 colorscheme solarized
 
 syntax enable
@@ -283,6 +279,7 @@ augroup omni
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+  autocmd FileType python setlocal omnifunc=jedi#completions
 augroup END
 
 let g:tagbar_type_rust = {
@@ -298,25 +295,6 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
-
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
-let g:ycm_rust_src_path = $HOME.'/devel/tools/rust/src'
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'gitcommit' : 1
-      \}
-
-" fzf
-let g:fzf_command_prefix = 'F'
 
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim

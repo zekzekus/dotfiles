@@ -15,15 +15,14 @@ function! s:unite_bindings()
 endfunction
 
 function! s:python_bindings()
+  nnoremap <silent> <leader>md :call jedi#goto()<cr>
+  nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
   nnoremap <silent> <leader>mr :call jedi#rename()<cr>
   nnoremap <silent> <leader>mn :call jedi#usages()<cr>
   nnoremap <silent> <leader>mV :VirtualEnvActivate 
 endfunction
 
 function! s:haskell_bindings()
-  nnoremap <leader>mt :GhcModType<cr>
-  nnoremap <leader>mc :GhcModTypeClear<cr>
-  nnoremap <leader>mi :GhcModInfoPreview<cr>
   nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
   nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction
@@ -48,12 +47,7 @@ function! s:general_bindings()
   nnoremap j gj
   nnoremap k gk
 
-  " programming
-  nnoremap <leader>md :YcmCompleter GoTo<cr>
-  nnoremap <leader>mg :YcmCompleter GoToDeclaration<cr>
-
   " file
-  nnoremap <leader>fs :w<CR>
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
@@ -62,28 +56,9 @@ function! s:general_bindings()
   nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
   nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
 
-  " git
-  nnoremap <leader>gs :Gstatus<cr>
-  nnoremap <leader>gd :Gdiff<cr>
-  nnoremap <leader>gb :Gblame<cr>
-
-  " window
-  nnoremap <leader>wm :only<CR>
-  nnoremap <leader>ws :split<CR>
-  nnoremap <leader>wv :vsplit<CR>
-
   " buffer
-  nnoremap <silent> <leader>bB :<C-u>Unite -quick-match buffer<cr>
   nnoremap <silent> <leader>bb :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-  nnoremap <leader>bd :bd<cr>
   nnoremap <leader><tab> :b#<CR>
-
-  " terminal
-  if has("nvim")
-    nnoremap <leader>tf :terminal fish<cr>
-    nnoremap <leader>tb :terminal bash<cr>
-    nnoremap <leader>tp :terminal ipython<cr>
-  endif
 
   " search
   nnoremap / /\v
@@ -130,7 +105,6 @@ function! s:general_bindings()
   endif
 
   " unite bindings
-  nnoremap <silent> <leader>h :<C-u>Unite -buffer-name=yanks history/yank<cr>
   nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
   nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
   nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
@@ -138,7 +112,6 @@ function! s:general_bindings()
 
   " quit
   nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
-  nnoremap <leader>qq :qa<cr>
 endfunction
 
 augroup bindings
