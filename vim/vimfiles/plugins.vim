@@ -36,6 +36,7 @@ Plug 'szw/vim-smartclose'
 
 " python
 Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jmcantrell/vim-virtualenv'
 
