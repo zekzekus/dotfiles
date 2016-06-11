@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'ervandew/supertab'
 
 " navigating
 Plug 'tpope/vim-vinegar'

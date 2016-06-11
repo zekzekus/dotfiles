@@ -302,6 +302,9 @@ let g:smartclose_set_default_mapping = 0
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif
