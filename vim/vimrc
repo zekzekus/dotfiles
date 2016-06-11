@@ -277,7 +277,6 @@ augroup omni
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
 let g:tagbar_type_rust = {
