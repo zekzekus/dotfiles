@@ -43,7 +43,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'tpope/vim-jdaddy'
 
 " django
-Plug 'mjbrownie/django-template-textobjects'
+Plug 'tweekmonster/django-plus.vim'
 
 " misc
 Plug 'christoomey/vim-tmux-navigator'
