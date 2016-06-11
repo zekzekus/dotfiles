@@ -1,3 +1,7 @@
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 call plug#begin('~/.vim/plugged')
 
 " programming
@@ -11,6 +15,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " navigating
 Plug 'tpope/vim-vinegar'
