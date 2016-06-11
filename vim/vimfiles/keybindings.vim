@@ -111,7 +111,8 @@ function! s:general_bindings()
   nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
 
   " quit
-  nnoremap <leader>qp :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
+  nnoremap <silent><leader>Q :SmartClose<cr>
+  vnoremap <silent><leader>Q :SmartClose<cr>
 endfunction
 
 augroup bindings
