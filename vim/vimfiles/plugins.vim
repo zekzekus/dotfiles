@@ -31,7 +31,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+if has("nvim")
+  Plug 'frankier/neovim-colors-solarized-truecolor-only'
+else
+  Plug 'altercation/vim-colors-solarized'
+endif
 Plug 'szw/vim-smartclose'
 
 " python
