@@ -299,8 +299,9 @@ let g:racer_no_default_keymappings = 1
 " smartclose
 let g:smartclose_set_default_mapping = 0
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
+if has("nvim")
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"

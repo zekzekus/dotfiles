@@ -2,7 +2,11 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-call plug#begin('~/.vim/plugged')
+if has("nvim")
+  call plug#begin('~/.vim/plugged')
+else
+  call plug#begin('~/.vim/plugged_vim')
+endif
 
 " programming
 Plug 'SirVer/ultisnips'
@@ -15,7 +19,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ervandew/supertab'
 
 " navigating
@@ -32,6 +35,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 if has("nvim")
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+  Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-go', { 'do': 'make'}
   Plug 'frankier/neovim-colors-solarized-truecolor-only'
 else
   Plug 'altercation/vim-colors-solarized'
@@ -40,7 +46,6 @@ Plug 'szw/vim-smartclose'
 
 " python
 Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jmcantrell/vim-virtualenv'
 
@@ -67,7 +72,6 @@ Plug 'eagletmt/neco-ghc'
 
 " golang
 Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim'
