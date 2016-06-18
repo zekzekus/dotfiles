@@ -174,6 +174,7 @@ augroup neomake_au
 augroup END
 
 let g:netrw_liststyle=3
+let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 " ========== Plugin Settings =========="
