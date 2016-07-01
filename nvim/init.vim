@@ -96,13 +96,8 @@ set path+=*/assets " for django versions 1.4 and higher
 set path+=*/*/assets
 set path+=*/*/*/assets " specific for polar project structure
 
-if has("nvim")
-  set dir=~/.nvimtmp
-  set undodir=~/.nvimtmp
-else
-  set dir=~/.vimtmp
-  set undodir=~/.vimtmp
-endif
+set dir=~/.nvimtmp
+set undodir=~/.nvimtmp
 set clipboard=unnamed
 set suffixesadd+=.html
 
@@ -122,9 +117,7 @@ if !has("gui_running")
   set t_Co=256
 endif
 
-if has("nvim")
-  set termguicolors
-endif
+set termguicolors
 set background=dark
 colorscheme solarized
 
@@ -160,9 +153,7 @@ augroup programming_au
   autocmd FileType html set ft=htmldjango " For SnipMate
 augroup END
 
-if has("nvim")
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-endif
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 augroup neomake_au
   autocmd!
   autocmd BufWritePost,BufEnter *.hs Neomake
@@ -213,9 +204,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " vitality
 let g:vitality_fix_focus=0
-if has("nvim")
-  let g:vitality_fix_cursor=0
-endif
 
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -223,11 +211,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " unite
-if has("nvim")
-  let s:cache_dir = '~/.nvimtmp/cache'
-else
-  let s:cache_dir = '~/.vimtmp/cache'
-endif
+let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
@@ -300,9 +284,7 @@ let g:racer_no_default_keymappings = 1
 " smartclose
 let g:smartclose_set_default_mapping = 0
 
-if has("nvim")
-  let g:deoplete#enable_at_startup = 1
-endif
+let g:deoplete#enable_at_startup = 1
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
