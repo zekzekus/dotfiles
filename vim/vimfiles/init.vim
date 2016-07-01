@@ -1,1 +1,0 @@
-/Users/zekus/devel/tools/dotfiles/vim/vimrc

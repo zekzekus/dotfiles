@@ -1,12 +1,9 @@
-vim/vimfiles/bundle/*
-!vim/vimfiles/bundle/neobundle.vim
 .netrwhist
 config/fish/fish_history
 config/fish/fishd.*
 
 *~
 
-vim/vimfiles/plugged
-vim/vimfiles/plugged_vim
-vim/vimfiles/init.vim
+plugged
+plugged_vim
 tags
