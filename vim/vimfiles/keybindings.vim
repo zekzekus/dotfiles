@@ -55,6 +55,7 @@ function! s:general_bindings()
 
   " file
   nmap <leader>ft <ESC>:TagbarToggle<cr>
+  nmap <leader>fs <ESC>:w<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
