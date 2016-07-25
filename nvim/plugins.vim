@@ -33,6 +33,7 @@ Plug 'bling/vim-bufferline'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'Konfekt/FastFold'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'szw/vim-smartclose'
 
