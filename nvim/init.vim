@@ -25,7 +25,7 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 
-set nonumber
+set number
 set norelativenumber
 
 set undofile
