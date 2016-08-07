@@ -15,7 +15,7 @@ if &background == "light"
     hi DiffAdd gui=NONE guifg=NONE guibg=#d9ffd9
     hi DiffChange gui=NONE guifg=NONE guibg=#fafafa
     hi DiffDelete gui=NONE guifg=NONE guibg=#ffd9d9
-    hi DiffText gui=NONE guifg=NONE guibg=#dedede
+    hi DiffText gui=bold guifg=NONE guibg=#d1d1d1
     hi Directory gui=NONE guifg=#474747 guibg=NONE
     hi Error gui=NONE guifg=NONE guibg=#ffd9d9
     hi ErrorMsg gui=NONE guifg=NONE guibg=#ffd9d9
@@ -77,7 +77,7 @@ elseif &background == "dark"
     hi DiffAdd gui=NONE guifg=NONE guibg=#003600
     hi DiffChange gui=NONE guifg=NONE guibg=#000000
     hi DiffDelete gui=NONE guifg=NONE guibg=#360000
-    hi DiffText gui=NONE guifg=NONE guibg=#333333
+    hi DiffText gui=bold guifg=NONE guibg=#404040
     hi Directory gui=NONE guifg=#8c8c8c guibg=NONE
     hi Error gui=NONE guifg=NONE guibg=#360000
     hi ErrorMsg gui=NONE guifg=NONE guibg=#360000
