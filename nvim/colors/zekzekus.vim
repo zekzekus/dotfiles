@@ -22,7 +22,7 @@ if &background == "light"
     hi FoldColumn gui=NONE guifg=#bdbdbd guibg=NONE
     hi Folded gui=NONE guifg=#949494 guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
-    hi IncSearch gui=NONE guifg=NONE guibg=#dedede
+    hi IncSearch gui=NONE guifg=#ff0000 guibg=#dedede
     hi LineNr gui=NONE guifg=#bdbdbd guibg=NONE
     hi MatchParen gui=NONE guifg=NONE guibg=#dedede
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
@@ -84,7 +84,7 @@ elseif &background == "dark"
     hi FoldColumn gui=NONE guifg=#5e5e5e guibg=NONE
     hi Folded gui=NONE guifg=#6e6e6e guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
-    hi IncSearch gui=NONE guifg=NONE guibg=#333333
+    hi IncSearch gui=NONE guifg=#ff0000 guibg=#333333
     hi LineNr gui=NONE guifg=#5e5e5e guibg=NONE
     hi MatchParen gui=NONE guifg=NONE guibg=#333333
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
