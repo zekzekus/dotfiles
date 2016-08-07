@@ -22,7 +22,7 @@ if &background == "light"
     hi FoldColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Folded gui=standout guifg=#969696 guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
-    hi IncSearch gui=NONE guifg=NONE guibg=#e3e3e3
+    hi IncSearch gui=NONE guifg=#ff2600 guibg=#e3e3e3
     hi LineNr gui=NONE guifg=#c2c2c2 guibg=NONE
     hi MatchParen gui=NONE guifg=NONE guibg=#e3e3e3
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
@@ -35,7 +35,7 @@ if &background == "light"
     hi PmenuSel gui=NONE guifg=NONE guibg=#e3e3e3
     hi PmenuThumb gui=NONE guifg=NONE guibg=#dbdbdb
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#ededed
+    hi Search gui=NONE guifg=NONE guibg=#00ffff
     hi SignColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Special gui=NONE guifg=#707070 guibg=NONE
     hi SpecialKey gui=NONE guifg=#c2c2c2 guibg=NONE
@@ -84,7 +84,7 @@ elseif &background == "dark"
     hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
     hi Folded gui=standout guifg=#707070 guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
-    hi IncSearch gui=NONE guifg=NONE guibg=#333333
+    hi IncSearch gui=NONE guifg=#ff2600 guibg=#333333
     hi LineNr gui=NONE guifg=#616161 guibg=NONE
     hi MatchParen gui=NONE guifg=NONE guibg=#333333
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
@@ -97,7 +97,7 @@ elseif &background == "dark"
     hi PmenuSel gui=NONE guifg=NONE guibg=#333333
     hi PmenuThumb gui=NONE guifg=NONE guibg=#424242
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#262626
+    hi Search gui=NONE guifg=NONE guibg=#a97942
     hi SignColumn gui=NONE guifg=#616161 guibg=NONE
     hi Special gui=NONE guifg=#808080 guibg=NONE
     hi SpecialKey gui=NONE guifg=#616161 guibg=NONE
