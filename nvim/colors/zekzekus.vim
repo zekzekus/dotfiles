@@ -35,7 +35,7 @@ if &background == "light"
     hi PmenuSel gui=NONE guifg=NONE guibg=#dedede
     hi PmenuThumb gui=NONE guifg=NONE guibg=#d6d6d6
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#e8e8e8
+    hi Search gui=standout guifg=NONE guibg=#e8e8e8
     hi SignColumn gui=NONE guifg=#bdbdbd guibg=NONE
     hi Special gui=NONE guifg=#6e6e6e guibg=NONE
     hi SpecialKey gui=NONE guifg=#bdbdbd guibg=NONE
@@ -97,7 +97,7 @@ elseif &background == "dark"
     hi PmenuSel gui=NONE guifg=NONE guibg=#333333
     hi PmenuThumb gui=NONE guifg=NONE guibg=#404040
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#262626
+    hi Search gui=standout guifg=NONE guibg=#262626
     hi SignColumn gui=NONE guifg=#5e5e5e guibg=NONE
     hi Special gui=NONE guifg=#7d7d7d guibg=NONE
     hi SpecialKey gui=NONE guifg=#5e5e5e guibg=NONE
