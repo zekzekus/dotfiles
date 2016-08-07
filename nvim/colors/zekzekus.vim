@@ -11,7 +11,7 @@ if &background == "light"
     hi Cursor gui=reverse guifg=NONE guibg=NONE
     hi CursorColumn gui=NONE guifg=NONE guibg=#f0f0f0
     hi CursorLine gui=NONE guifg=NONE guibg=#f0f0f0
-    hi CursorLineNr gui=NONE guifg=#949494 guibg=NONE
+    hi CursorLineNr gui=NONE guifg=#000000 guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#d9ffd9
     hi DiffChange gui=NONE guifg=NONE guibg=#f0f0f0
     hi DiffDelete gui=NONE guifg=NONE guibg=#ffd9d9
@@ -73,7 +73,7 @@ elseif &background == "dark"
     hi Cursor gui=reverse guifg=NONE guibg=NONE
     hi CursorColumn gui=NONE guifg=NONE guibg=#1a1a1a
     hi CursorLine gui=NONE guifg=NONE guibg=#1a1a1a
-    hi CursorLineNr gui=NONE guifg=#6e6e6e guibg=NONE
+    hi CursorLineNr gui=NONE guifg=#fafafa guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#003600
     hi DiffChange gui=NONE guifg=NONE guibg=#1a1a1a
     hi DiffDelete gui=NONE guifg=NONE guibg=#360000
