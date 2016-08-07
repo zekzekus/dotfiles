@@ -56,7 +56,7 @@ if &background == "light"
     hi Type gui=NONE guifg=#474747 guibg=NONE
     hi Underlined gui=NONE guifg=NONE guibg=NONE
     hi VertSplit gui=NONE guifg=#dedede guibg=NONE
-    hi Visual gui=NONE guifg=NONE guibg=#dedede
+    hi Visual gui=NONE guifg=NONE guibg=#bababa
     hi VisualNOS gui=NONE guifg=NONE guibg=NONE
     hi WarningMsg gui=NONE guifg=NONE guibg=#ffd9d9
     hi WildMenu gui=NONE guifg=NONE guibg=#cccccc
@@ -118,7 +118,7 @@ elseif &background == "dark"
     hi Type gui=NONE guifg=#8c8c8c guibg=NONE
     hi Underlined gui=NONE guifg=NONE guibg=NONE
     hi VertSplit gui=NONE guifg=#333333 guibg=NONE
-    hi Visual gui=NONE guifg=NONE guibg=#333333
+    hi Visual gui=NONE guifg=NONE guibg=#5c5c5c
     hi VisualNOS gui=NONE guifg=NONE guibg=NONE
     hi WarningMsg gui=NONE guifg=NONE guibg=#360000
     hi WildMenu gui=NONE guifg=NONE guibg=#4f4f4f
