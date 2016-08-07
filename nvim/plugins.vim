@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
