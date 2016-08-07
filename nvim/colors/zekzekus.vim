@@ -13,7 +13,7 @@ if &background == "light"
     hi CursorLine gui=NONE guifg=NONE guibg=#f0f0f0
     hi CursorLineNr gui=NONE guifg=#000000 guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#d9ffd9
-    hi DiffChange gui=NONE guifg=NONE guibg=#f0f0f0
+    hi DiffChange gui=NONE guifg=NONE guibg=#fafafa
     hi DiffDelete gui=NONE guifg=NONE guibg=#ffd9d9
     hi DiffText gui=NONE guifg=NONE guibg=#dedede
     hi Directory gui=NONE guifg=#474747 guibg=NONE
@@ -75,7 +75,7 @@ elseif &background == "dark"
     hi CursorLine gui=NONE guifg=NONE guibg=#1a1a1a
     hi CursorLineNr gui=NONE guifg=#fafafa guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#003600
-    hi DiffChange gui=NONE guifg=NONE guibg=#1a1a1a
+    hi DiffChange gui=NONE guifg=NONE guibg=#000000
     hi DiffDelete gui=NONE guifg=NONE guibg=#360000
     hi DiffText gui=NONE guifg=NONE guibg=#333333
     hi Directory gui=NONE guifg=#8c8c8c guibg=NONE
