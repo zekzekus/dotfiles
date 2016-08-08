@@ -28,7 +28,7 @@ if &background == "light"
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
     hi MoreMsg gui=NONE guifg=NONE guibg=NONE
     hi NonText gui=NONE guifg=#bdbdbd guibg=NONE
-    hi Normal gui=NONE guifg=#000000 guibg=#e6e6e6
+    hi Normal gui=NONE guifg=#000000 guibg=#fdf6e3
     hi Number gui=NONE guifg=#6e6e6e guibg=NONE
     hi Pmenu gui=NONE guifg=NONE guibg=#f0f0f0
     hi PmenuSbar gui=NONE guifg=NONE guibg=#e8e8e8
@@ -65,14 +65,14 @@ if &background == "light"
     hi PreProc gui=NONE guifg=NONE guibg=NONE
 elseif &background == "dark"
     hi Boolean gui=NONE guifg=#7d7d7d guibg=NONE
-    hi ColorColumn gui=NONE guifg=NONE guibg=#1a1a1a
+    hi ColorColumn gui=NONE guifg=NONE guibg=#002e44
     hi Comment gui=NONE guifg=#5c5c5c guibg=NONE
     hi Conceal gui=NONE guifg=#7d7d7d guibg=NONE
     hi Conditional gui=NONE guifg=#8c8c8c guibg=NONE
     hi Constant gui=NONE guifg=#7d7d7d guibg=NONE
     hi Cursor gui=reverse guifg=NONE guibg=NONE
     hi CursorColumn gui=NONE guifg=NONE guibg=#1a1a1a
-    hi CursorLine gui=NONE guifg=NONE guibg=#1a1a1a
+    hi CursorLine gui=NONE guifg=NONE guibg=#002e44
     hi CursorLineNr gui=NONE guifg=#fafafa guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#003600
     hi DiffChange gui=NONE guifg=NONE guibg=#000000
@@ -90,7 +90,7 @@ elseif &background == "dark"
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
     hi MoreMsg gui=NONE guifg=NONE guibg=NONE
     hi NonText gui=NONE guifg=#5e5e5e guibg=NONE
-    hi Normal gui=NONE guifg=#ababab guibg=#212121
+    hi Normal gui=NONE guifg=#ababab guibg=#002833
     hi Number gui=NONE guifg=#7d7d7d guibg=NONE
     hi Pmenu gui=NONE guifg=NONE guibg=#1a1a1a
     hi PmenuSbar gui=NONE guifg=NONE guibg=#262626
@@ -112,7 +112,7 @@ elseif &background == "dark"
     hi String gui=NONE guifg=#7d7d7d guibg=NONE
     hi TabLine gui=NONE guifg=#6e6e6e guibg=#262626
     hi TabLineFill gui=NONE guifg=NONE guibg=#262626
-    hi TabLineSel gui=NONE guifg=#999999 guibg=#262626
+    hi TabLineSel gui=standout guifg=#999999 guibg=#262626
     hi Title gui=NONE guifg=#7d7d7d guibg=NONE
     hi Todo gui=standout guifg=NONE guibg=NONE
     hi Type gui=NONE guifg=#8c8c8c guibg=NONE
