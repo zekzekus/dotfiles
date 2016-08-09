@@ -119,7 +119,7 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme zekzekus
+colorscheme solarized
 
 syntax enable
 highlight clear VertSplit
