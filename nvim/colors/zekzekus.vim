@@ -4,7 +4,7 @@ let g:colors_name = "zekzekus"
 if &background == "light"
     hi Boolean gui=NONE guifg=#6e6e6e guibg=NONE
     hi ColorColumn gui=NONE guifg=NONE guibg=#f0f0f0
-    hi Comment gui=NONE guifg=#bababa guibg=#e6e6e6
+    hi Comment gui=NONE guifg=#bababa guibg=#fdf6e3    
     hi Conceal gui=NONE guifg=#6e6e6e guibg=NONE
     hi Conditional gui=NONE guifg=#474747 guibg=NONE
     hi Constant gui=NONE guifg=#6e6e6e guibg=NONE
@@ -71,7 +71,7 @@ elseif &background == "dark"
     hi Conditional gui=NONE guifg=#8c8c8c guibg=NONE
     hi Constant gui=NONE guifg=#7d7d7d guibg=NONE
     hi Cursor gui=reverse guifg=NONE guibg=NONE
-    hi CursorColumn gui=NONE guifg=NONE guibg=#1a1a1a
+    hi CursorColumn gui=NONE guifg=NONE guibg=#002e44
     hi CursorLine gui=NONE guifg=NONE guibg=#002e44
     hi CursorLineNr gui=NONE guifg=#fafafa guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#003600
