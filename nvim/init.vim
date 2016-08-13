@@ -156,7 +156,7 @@ augroup END
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 augroup neomake_au
   autocmd!
-  autocmd BufWritePost,BufEnter *.hs Neomake
+  autocmd BufWritePost *.hs Neomake
   autocmd BufWritePost,BufEnter *.py Neomake
   autocmd BufWritePost,BufEnter *.rs Neomake
   autocmd BufWritePost,BufEnter *.go Neomake
