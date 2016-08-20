@@ -6,6 +6,7 @@ set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $HOME/bin $PATH
 
 set --export PATH $HOME/.local/bin $PATH
+set --export PATH $HOME/.stack/programs/x86_64-osx/ghc-7.10.3/bin $PATH
 
 set --export LANG "en_US.UTF-8"
 set --export LC_COLLATE "en_US.UTF-8"
@@ -26,9 +27,6 @@ if test -d ~/.config/fish/functions/rust.fish
 end
 
 set --export EDITOR vim
-
-alias ghc 'stack ghc --'
-alias ghci 'stack ghci --'
 
 set --export RUST_SRC_PATH $HOME/devel/tools/rust/src
 set --export FZF_DEFAULT_COMMAND 'ag -g ""'

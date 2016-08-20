@@ -23,9 +23,9 @@ function! s:python_bindings()
 endfunction
 
 function! s:haskell_bindings()
-  nnoremap <leader>mt :GhcModType<cr>
-  nnoremap <leader>mc :GhcModTypeClear<cr>
-  nnoremap <leader>mi :GhcModInfoPreview<cr>
+  nnoremap <leader>mt :HdevtoolsType<cr>
+  nnoremap <leader>mc :HdevtoolsClear<cr>
+  nnoremap <leader>mi :HdevtoolsInfo<cr>
   nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
   nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction

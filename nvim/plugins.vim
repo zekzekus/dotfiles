@@ -63,6 +63,7 @@ Plug 'benmills/vimux'
 Plug 'dag/vim2hs'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
+Plug 'bitc/vim-hdevtools'
 
 " golang
 Plug 'fatih/vim-go'
