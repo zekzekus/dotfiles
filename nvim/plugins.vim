@@ -9,6 +9,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
