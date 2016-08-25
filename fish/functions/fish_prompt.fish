@@ -59,6 +59,7 @@ function fish_prompt -d "Write out the left prompt of the zekus theme"
   set -l colgreen  (set_color green)
   set -l colbgreen (set_color -o green)
   set -l colnormal (set_color normal)
+  set -l colbnormal (set_color -o normal)
   set -l colred    (set_color red)
   set -l colbred   (set_color -o red)
   set -l colwhite  (set_color white)
@@ -76,9 +77,9 @@ function fish_prompt -d "Write out the left prompt of the zekus theme"
     if echo $git_status | grep -E "\s\?\?\s|\sM\s|\sD\s" > /dev/null
       set colbranch $colbred
     end
-    set ps_git $colbwhite"git:"$colbcyan$git_repo_name$colbwhite":"$colbranch"{"$git_branch_name"}"
+    set ps_git $colbnormal"git:"$colbcyan$git_repo_name$colbnormal":"$colbranch"{"$git_branch_name"}"
     if test "$basedir_name" != "$git_repo_name"
-        set ps_git $ps_git$colnormal":"$colbwhite$basedir_name
+        set ps_git $ps_git$colnormal":"$colbnormal$basedir_name
     end
   end
 
@@ -88,9 +89,9 @@ function fish_prompt -d "Write out the left prompt of the zekus theme"
     set -l depth (echo (pwd) | sed "s/\// /g" | wc -w)
     set -l in_home (echo (pwd) | grep ~)
     if test -n "$in_home"
-      set ps_pwd $colbwhite"~"
+      set ps_pwd $colbnormal"~"
     else
-      set ps_pwd $colbwhite"/"
+      set ps_pwd $colbnormal"/"
     end
     if test (echo (pwd)) != ~ -a (echo (pwd)) != /
       set ps_pwd $ps_pwd":"$colgreen$basedir_name
