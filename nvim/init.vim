@@ -85,6 +85,7 @@ set wildignore+=tmp
 set wildignore+=node_modules
 set wildignore+=*.class
 set wildignore+=.stack-work
+set wildignore+=plugged
 
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
@@ -95,6 +96,7 @@ set path+=assets " for django versions < 1.4
 set path+=*/assets " for django versions 1.4 and higher
 set path+=*/*/assets
 set path+=*/*/*/assets " specific for polar project structure
+set path+=**
 
 set dir=~/.nvimtmp
 set undodir=~/.nvimtmp
