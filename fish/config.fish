@@ -30,3 +30,5 @@ set --export EDITOR vim
 
 set --export RUST_SRC_PATH $HOME/devel/tools/rust/src
 set --export FZF_DEFAULT_COMMAND 'ag -g ""'
+
+eval (thefuck --alias | tr '\n' ';')

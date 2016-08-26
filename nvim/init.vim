@@ -120,7 +120,7 @@ endif
 set termguicolors
 set background=dark
 let g:zenesque_colors = 2
-colorscheme zenesque
+colorscheme solarized
 
 syntax enable
 highlight clear VertSplit
