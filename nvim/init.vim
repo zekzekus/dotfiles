@@ -165,7 +165,7 @@ let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 augroup neomake_au
   autocmd!
-  autocmd BufWritePost,BufEnter *.hs Neomake
+  " autocmd BufWritePost,BufEnter *.hs Neomake
   autocmd BufWritePost,BufEnter *.py Neomake
   autocmd BufWritePost,BufEnter *.rs Neomake
   autocmd BufWritePost,BufEnter *.go Neomake

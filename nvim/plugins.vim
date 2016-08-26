@@ -67,7 +67,7 @@ Plug 'dag/vim2hs'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'bitc/vim-hdevtools'
-" Plug 'cloudhead/neovim-ghcid'
+Plug 'cloudhead/neovim-ghcid'
 
 " golang
 Plug 'fatih/vim-go'
