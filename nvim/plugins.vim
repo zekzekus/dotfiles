@@ -37,6 +37,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'Konfekt/FastFold'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'robertmeta/nofrils'
 Plug 'zekzekus/zenesque.vim'
 Plug 'szw/vim-smartclose'
 
