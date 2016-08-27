@@ -121,7 +121,7 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme solarized
+colorscheme zenesque
 
 syntax enable
 highlight clear VertSplit
@@ -196,7 +196,7 @@ let g:bufferline_fixed_index = -1 "always last
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#hunks#enabled = 1
-let g:airline_theme='solarized'
+let g:airline_theme = "solarized"
 
 " unicode symbols
 let g:airline_symbols = {}
