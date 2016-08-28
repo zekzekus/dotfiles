@@ -10,6 +10,7 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -18,6 +19,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
+Plug 'szw/vim-smartclose'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -27,24 +29,22 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'christoomey/vim-tmux-navigator'
 
 " vim interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'Konfekt/FastFold'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'robertmeta/nofrils'
 Plug 'zekzekus/zenesque.vim'
-Plug 'szw/vim-smartclose'
 
 " python
 Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'zchee/deoplete-jedi'
 
 " javascript
 Plug 'tpope/vim-jdaddy'
@@ -53,7 +53,6 @@ Plug 'tpope/vim-jdaddy'
 Plug 'tweekmonster/django-plus.vim'
 
 " misc
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'rizzatti/dash.vim'
 Plug 'rizzatti/funcoo.vim'
@@ -71,6 +70,7 @@ Plug 'cloudhead/neovim-ghcid'
 
 " golang
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim'
