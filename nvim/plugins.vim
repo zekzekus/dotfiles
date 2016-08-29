@@ -67,6 +67,7 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'bitc/vim-hdevtools'
 Plug 'cloudhead/neovim-ghcid'
+Plug 'parsonsmatt/intero-neovim'
 
 " golang
 Plug 'fatih/vim-go'
