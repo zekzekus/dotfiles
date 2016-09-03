@@ -242,7 +242,15 @@ let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
 
 if executable('ag')
-  let g:unite_source_rec_async_command= ['ag', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '--ignore', 'bundle', '--ignore', '.stack-work', '-g', '']
+  let g:unite_source_rec_async_command= ['ag', '--nocolor',
+                                              \'--nogroup',
+                                              \'--hidden',
+                                              \'--ignore', '.git',
+                                              \'--ignore', 'bundle',
+                                              \'--ignore', '.stack-work',
+                                              \'--ignore', 'build',
+                                              \'-g', '']
+
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' . '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt=''
