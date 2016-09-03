@@ -220,7 +220,7 @@ let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 
 call unite#custom#source('buffer,file,file_rec/git', 'sorters', 'sorter_selecta')
