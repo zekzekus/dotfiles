@@ -121,7 +121,7 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme zenesque
+colorscheme solarized
 
 syntax enable
 highlight clear VertSplit
