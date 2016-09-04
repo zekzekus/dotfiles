@@ -121,7 +121,7 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme zenesque
+colorscheme nofrils-dark
 
 syntax enable
 highlight clear VertSplit

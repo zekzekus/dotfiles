@@ -37,7 +37,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'Konfekt/FastFold'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'robertmeta/nofrils'
+Plug 'zekzekus/nofrils'
 Plug 'zekzekus/zenesque.vim'
 
 " python
