@@ -23,9 +23,19 @@ function! s:python_bindings()
 endfunction
 
 function! s:haskell_bindings()
-  nnoremap <leader>mt :HdevtoolsType<cr>
-  nnoremap <leader>mc :HdevtoolsClear<cr>
-  nnoremap <leader>mi :HdevtoolsInfo<cr>
+  nnoremap <Leader>mss :InteroOpen<CR>
+  nnoremap <Leader>msk :InteroKill<CR>
+  nnoremap <Leader>msh :InteroHide<CR>
+  nnoremap <Leader>msl :InteroLoadCurrentModule<CR>
+
+  nnoremap <Leader>me :InteroEval<CR>
+  nnoremap <Leader>mg :InteroGenericType<CR>
+  nnoremap <Leader>mt :InteroType<CR>
+  nnoremap <Leader>mi :InteroInfo<CR>
+  nnoremap <Leader>mI :InteroTypeInsert<CR>
+  nnoremap <Leader>md :InteroGoToDef<CR>
+  nnoremap <Leader>mu :InteroUses<CR>
+
   nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
   nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction
