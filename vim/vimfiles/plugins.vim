@@ -5,6 +5,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -12,6 +13,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'szw/vim-smartclose'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -21,6 +24,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'christoomey/vim-tmux-navigator'
 
 " vim interface
 Plug 'vim-airline/vim-airline'
@@ -41,7 +45,6 @@ Plug 'tpope/vim-jdaddy'
 Plug 'tweekmonster/django-plus.vim'
 
 " misc
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'rizzatti/dash.vim'
 Plug 'rizzatti/funcoo.vim'
@@ -54,6 +57,9 @@ Plug 'benmills/vimux'
 Plug 'dag/vim2hs'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
+Plug 'bitc/vim-hdevtools'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'parsonsmatt/intero-neovim'
 
 " golang
 Plug 'fatih/vim-go'
