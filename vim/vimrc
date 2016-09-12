@@ -85,6 +85,7 @@ set wildignore+=tmp
 set wildignore+=node_modules
 set wildignore+=*.class
 set wildignore+=.stack-work
+set wildignore+=plugged
 
 " enable file jump for django template files
 set path+=templates " for django versions < 1.4
@@ -95,6 +96,7 @@ set path+=assets " for django versions < 1.4
 set path+=*/assets " for django versions 1.4 and higher
 set path+=*/*/assets
 set path+=*/*/*/assets " specific for polar project structure
+set path+=**
 
 set dir=~/.vimtmp
 set undodir=~/.vimtmp
@@ -152,6 +154,14 @@ augroup programming_au
   autocmd FileType html set ft=htmldjango " For SnipMate
 augroup END
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+let g:netrw_liststyle=3
+let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+
+" ========== Plugin Settings =========="
+
 augroup neomake_au
   autocmd!
   autocmd BufWritePost,BufEnter *.hs Neomake
@@ -190,6 +200,7 @@ let g:bufferline_fixed_index = -1 "always last
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#hunks#enabled = 1
+let g:airline_theme = "solarized"
 
 " unicode symbols
 let g:airline_symbols = {}
@@ -235,7 +246,15 @@ let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
 
 if executable('ag')
-  let g:unite_source_rec_async_command= ['ag', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '--ignore', 'bundle', '--ignore', '.stack-work', '-g', '']
+  let g:unite_source_rec_async_command= ['ag', '--nocolor',
+                                              \'--nogroup',
+                                              \'--hidden',
+                                              \'--ignore', '.git',
+                                              \'--ignore', 'bundle',
+                                              \'--ignore', '.stack-work',
+                                              \'--ignore', 'build',
+                                              \'-g', '']
+
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' . '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt=''
