@@ -1,8 +1,9 @@
 # PATH modifications. last item has the highest priority
-set --export GOPATH $HOME
+set --export GOPATH $HOME/go
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/opt/go/libexec/bin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
+set --export PATH $GOPATH/bin $PATH
 set --export PATH $HOME/bin $PATH
 
 set --export PATH $HOME/.local/bin $PATH
