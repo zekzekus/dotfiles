@@ -30,7 +30,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'lifepillar/vim-solarized8'
 Plug 'szw/vim-smartclose'
 
 " python
