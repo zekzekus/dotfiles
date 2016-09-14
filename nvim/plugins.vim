@@ -54,8 +54,6 @@ Plug 'tweekmonster/django-plus.vim'
 
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
-Plug 'rizzatti/dash.vim'
-Plug 'rizzatti/funcoo.vim'
 Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
