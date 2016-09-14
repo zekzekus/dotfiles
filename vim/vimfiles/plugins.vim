@@ -9,13 +9,13 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'scrooloose/syntastic'
+Plug 'ervandew/supertab'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'szw/vim-smartclose'
 
@@ -33,10 +33,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'Konfekt/FastFold'
 Plug 'lifepillar/vim-solarized8'
-Plug 'zekzekus/nofrils'
-Plug 'zekzekus/zenesque.vim'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -62,7 +59,6 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'bitc/vim-hdevtools'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'parsonsmatt/intero-neovim'
 
 " golang
 Plug 'fatih/vim-go'
