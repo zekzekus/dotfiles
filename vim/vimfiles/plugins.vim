@@ -30,8 +30,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
+Plug 'Konfekt/FastFold'
 Plug 'lifepillar/vim-solarized8'
-Plug 'szw/vim-smartclose'
+Plug 'zekzekus/nofrils'
+Plug 'zekzekus/zenesque.vim'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -46,8 +48,6 @@ Plug 'tweekmonster/django-plus.vim'
 
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
-Plug 'rizzatti/dash.vim'
-Plug 'rizzatti/funcoo.vim'
 Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'

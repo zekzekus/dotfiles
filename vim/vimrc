@@ -208,9 +208,6 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" vitality
-let g:vitality_fix_focus=0
-
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"

@@ -56,14 +56,13 @@ function! s:general_bindings()
   " file
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
-  " to remove white space from a file.
-  nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
-
   nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
   nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
   nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+  " to remove white space from a file.
+  nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
-  " buffer
+  " buffers
   nnoremap <silent> <leader>bb :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
   nnoremap <leader><tab> :b#<CR>
 
@@ -72,8 +71,6 @@ function! s:general_bindings()
   vnoremap / /\v
   nnoremap n nzzzv
   nnoremap N Nzzzv
-  nmap <silent> <leader>sD <Plug>DashGlobalSearch
-  nmap <silent> <leader>sd <Plug>DashSearch
   nnoremap <leader>ss :Grepper<cr>
   nnoremap <leader>sn :noh<cr>
   nmap sg  <plug>(GrepperOperator)
