@@ -45,7 +45,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'tpope/vim-jdaddy'
 
 " django
-Plug 'tweekmonster/django-plus.vim'
+" Plug 'tweekmonster/django-plus.vim'
 
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
