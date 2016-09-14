@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
+
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

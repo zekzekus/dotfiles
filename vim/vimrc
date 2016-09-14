@@ -11,9 +11,6 @@ set softtabstop=4
 set expandtab
 
 " More Common Settings.
-set encoding=utf-8
-set scrolloff=3
-set autoindent
 set noshowmode
 set showcmd
 set hidden
@@ -21,29 +18,23 @@ set visualbell
 
 set cursorline
 set ttyfast
-set ruler
-set backspace=indent,eol,start
-set laststatus=2
 
 set number
 set norelativenumber
 
 set undofile
-set shell=/bin/bash
 set lazyredraw
 set matchtime=3
 
 "Settings for Searching and Moving
 set ignorecase
 set smartcase
-set incsearch
 set showmatch
 set hlsearch
 
 " Make Vim to handle long lines nicely.
 set wrap
 set textwidth=79
-set formatoptions=qrn1
 set colorcolumn=79
 
 set completeopt-=preview
@@ -65,7 +56,6 @@ set pastetoggle=<F3>
 set backupskip=/tmp/*,/private/tmp/*"
 
 " Wildmenu completion "
-set wildmenu
 set wildmode=list:longest
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
@@ -162,9 +152,6 @@ let g:netrw_liststyle=3
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
-
-" enable matchit plugin
-runtime macros/matchit.vim
 
 " vim-javascript configuration
 let g:html_indent_inctags = "html,body,head,tbody"
