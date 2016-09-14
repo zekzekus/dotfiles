@@ -163,18 +163,6 @@ let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 " ========== Plugin Settings =========="
 
-augroup neomake_au
-  autocmd!
-  " autocmd BufWritePost,BufEnter *.hs Neomake
-  autocmd! BufWritePost *.hs InteroReload
-  autocmd BufWritePost,BufEnter *.py Neomake
-  autocmd BufWritePost,BufEnter *.rs Neomake
-  autocmd BufWritePost,BufEnter *.go Neomake
-  autocmd BufWritePost,BufEnter *.vim Neomake
-  autocmd BufWritePost,BufEnter *.rb Neomake
-augroup END
-let g:neomake_haskell_enabled_makers = ['ghcmod','hlint','hdevtools']
-
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
@@ -298,6 +286,12 @@ let g:smartclose_set_default_mapping = 0
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif
@@ -305,5 +299,7 @@ endif
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" something i do not know about having true colors
 set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
