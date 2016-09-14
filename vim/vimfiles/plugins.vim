@@ -9,7 +9,6 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'scrooloose/syntastic'
-Plug 'ervandew/supertab'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -49,7 +48,6 @@ Plug 'tpope/vim-jdaddy'
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
-Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
 
@@ -57,8 +55,6 @@ Plug 'benmills/vimux'
 Plug 'dag/vim2hs'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
-Plug 'bitc/vim-hdevtools'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 " golang
 Plug 'fatih/vim-go'
