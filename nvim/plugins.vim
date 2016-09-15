@@ -58,6 +58,7 @@ Plug 'sjl/vitality.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
+Plug 'freitass/todo.txt-vim'
 
 " haskell
 Plug 'dag/vim2hs'
