@@ -36,6 +36,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'Konfekt/FastFold'
 Plug 'lifepillar/vim-solarized8'
+Plug 'zekzekus/nofrils'
+Plug 'zekzekus/zenesque.vim'
 
 " python
 Plug 'davidhalter/jedi-vim'
