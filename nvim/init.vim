@@ -121,7 +121,7 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme nofrils-dark
+colorscheme solarized8_dark
 
 syntax enable
 highlight clear VertSplit
