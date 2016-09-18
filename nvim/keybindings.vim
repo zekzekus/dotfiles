@@ -1,7 +1,7 @@
 " Changing Leader Key
 nnoremap <Space> <nop>
 let mapleader = "\<Space>"
-let localleader = "\\"
+let maplocalleader = "\,"
 
 function! s:unite_bindings()
   nmap <buffer> Q <plug>(unite_exit)
