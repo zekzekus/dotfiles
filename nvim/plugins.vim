@@ -63,10 +63,6 @@ Plug 'eagletmt/neco-ghc'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'parsonsmatt/intero-neovim'
 
-" golang
-Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-
 " rust-lang
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
