@@ -120,8 +120,12 @@ endif
 " endif
 
 set termguicolors
-set background=dark
-colorscheme solarized8_dark
+if $ITERM_PROFILE =~? 'light'
+  set background=light
+else
+  set background=dark
+endif
+colorscheme solarized
 
 syntax enable
 highlight clear VertSplit

@@ -35,7 +35,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'Konfekt/FastFold'
-Plug 'lifepillar/vim-solarized8'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'zekzekus/nofrils'
 Plug 'zekzekus/zenesque.vim'
 
