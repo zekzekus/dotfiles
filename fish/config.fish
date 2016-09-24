@@ -7,7 +7,6 @@ set --export PATH $GOPATH/bin $PATH
 set --export PATH $HOME/bin $PATH
 
 set --export PATH $HOME/.local/bin $PATH
-set --export PATH $HOME/.stack/programs/x86_64-osx/ghc-7.10.3/bin $PATH
 
 set --export LANG "en_US.UTF-8"
 set --export LC_COLLATE "en_US.UTF-8"
