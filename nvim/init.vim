@@ -186,11 +186,6 @@ let g:virtualenv_stl_format = '[%n]'
 " enable matchit plugin
 runtime macros/matchit.vim
 
-" vim-javascript configuration
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-
 " bufferline
 let g:bufferline_solo_highlight = 1
 let g:bufferline_echo = 0
