@@ -110,8 +110,12 @@ endif
 " endif
 
 set termguicolors
-set background=dark
-colorscheme solarized8_dark
+if $ITERM_PROFILE =~? 'light'
+  set background=light
+else
+  set background=dark
+endif
+colorscheme solarized
 
 syntax enable
 highlight clear VertSplit
@@ -153,10 +157,6 @@ let g:netrw_liststyle=3
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'
 
-" vim-javascript configuration
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
 
 " bufferline
 let g:bufferline_solo_highlight = 1
@@ -275,6 +275,6 @@ if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-" something i do not know about having true colors
+" something i do not know about having true colors under tmux
 set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum

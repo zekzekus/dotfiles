@@ -15,7 +15,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
 Plug 'szw/vim-smartclose'
 
 " navigating
@@ -32,7 +31,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'lifepillar/vim-solarized8'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
 " python
 Plug 'davidhalter/jedi-vim'
@@ -42,14 +41,12 @@ Plug 'jmcantrell/vim-virtualenv'
 " javascript
 Plug 'tpope/vim-jdaddy'
 
-" django
-" Plug 'tweekmonster/django-plus.vim'
-
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
+Plug 'freitass/todo.txt-vim'
 
 " haskell
 Plug 'dag/vim2hs'
