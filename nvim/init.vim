@@ -90,7 +90,7 @@ set path+=**
 
 set dir=~/.nvimtmp
 set undodir=~/.nvimtmp
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set suffixesadd+=.html
 
 " Removing scrollbars
@@ -159,8 +159,7 @@ let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 augroup neomake_au
   autocmd!
-  " autocmd BufWritePost,BufEnter *.hs Neomake
-  autocmd! BufWritePost *.hs InteroReload
+  autocmd BufWritePost,BufEnter *.hs Neomake
   autocmd BufWritePost,BufEnter *.py Neomake
   autocmd BufWritePost,BufEnter *.rs Neomake
   autocmd BufWritePost,BufEnter *.go Neomake

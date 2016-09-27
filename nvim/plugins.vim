@@ -57,8 +57,6 @@ Plug 'freitass/todo.txt-vim'
 Plug 'dag/vim2hs'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'parsonsmatt/intero-neovim'
 
 " rust-lang
 Plug 'rust-lang/rust.vim'
