@@ -73,7 +73,7 @@ function! s:general_bindings()
   vnoremap / /\v
   nnoremap n nzzzv
   nnoremap N Nzzzv
-  nnoremap <leader>ss :Grepper<cr>
+  nnoremap <leader>ss :Grepper -tool rg<cr>
   nnoremap <leader>sn :noh<cr>
   nmap sg  <plug>(GrepperOperator)
   xmap sg  <plug>(GrepperOperator)
@@ -127,11 +127,7 @@ function! s:general_bindings()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
   endfunc
 
-  " toggle background (actually toggle color scheme)
-  nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
-      \ ? substitute(g:colors_name, 'dark', 'light', '')
-      \ : substitute(g:colors_name, 'light', 'dark', '')
-      \ )<cr>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 endfunction
 
 augroup bindings

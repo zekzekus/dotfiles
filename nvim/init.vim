@@ -286,6 +286,9 @@ let g:deoplete#enable_at_startup = 1
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
+" FZF fuzzy finder
+let g:fzf_command_prefix = "FZF"
+
 if filereadable(glob("~/.config/nvim/keybindings.vim"))
   source ~/.config/nvim/keybindings.vim
 endif
