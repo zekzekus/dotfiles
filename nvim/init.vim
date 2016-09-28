@@ -115,7 +115,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme solarized
+colorscheme NeoSolarized
 
 syntax enable
 highlight clear VertSplit
