@@ -60,6 +60,9 @@ Plug 'dag/vim2hs'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 
+" golang
+Plug 'fatih/vim-go'
+
 " rust-lang
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
