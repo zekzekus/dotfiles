@@ -23,9 +23,11 @@ function! s:python_bindings()
 endfunction
 
 function! s:haskell_bindings()
-  nnoremap <leader>mt :GhcModType<cr>
-  nnoremap <leader>mc :GhcModTypeClear<cr>
-  nnoremap <leader>mi :GhcModInfoPreview<cr>
+  nnoremap <Leader>mt :GhcModType<CR>
+  nnoremap <Leader>mi :GhcModInfo<CR>
+  nnoremap <Leader>mI :GhcModInfoPreview<CR>
+  nnoremap <Leader>mc :GhcModTypeClear<CR>
+
   nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
   nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction
@@ -53,7 +55,7 @@ function! s:general_bindings()
   nnoremap j gj
   nnoremap k gk
 
-  " file
+  " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
   nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
@@ -118,11 +120,7 @@ function! s:general_bindings()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
   endfunc
 
-  " toggle background (actually toggle color scheme)
-  nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
-      \ ? substitute(g:colors_name, 'dark', 'light', '')
-      \ : substitute(g:colors_name, 'light', 'dark', '')
-      \ )<cr>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 endfunction
 
 augroup bindings

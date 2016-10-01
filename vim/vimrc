@@ -153,6 +153,17 @@ let g:netrw_liststyle=3
 
 " ========== Plugin Settings =========="
 
+augroup neomake_au
+  autocmd!
+  autocmd BufWritePost,BufEnter *.hs Neomake
+  autocmd BufWritePost,BufEnter *.py Neomake
+  autocmd BufWritePost,BufEnter *.rs Neomake
+  autocmd BufWritePost,BufEnter *.go Neomake
+  autocmd BufWritePost,BufEnter *.vim Neomake
+  autocmd BufWritePost,BufEnter *.rb Neomake
+augroup END
+let g:neomake_haskell_enabled_makers = ['ghcmod','hlint','hdevtools']
+
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[%n]'

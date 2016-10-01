@@ -8,7 +8,6 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-Plug 'scrooloose/syntastic'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -26,6 +25,8 @@ Plug 'Shougo/unite-outline'
 Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'vim-airline/vim-airline'

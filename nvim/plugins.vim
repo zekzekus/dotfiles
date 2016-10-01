@@ -50,7 +50,6 @@ Plug 'tpope/vim-jdaddy'
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
-Plug 'kana/vim-textobj-user'
 Plug 'diepm/vim-rest-console'
 Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
