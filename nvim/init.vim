@@ -101,7 +101,7 @@ if has("gui_running")
   set guioptions-=L
   set guioptions+=a
   set guioptions-=m
-  set guifont=Hack:h12
+  set guifont=Fira\ Code:h12
 endif
 
 " Special Settings for Consoles
