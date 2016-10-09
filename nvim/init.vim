@@ -159,14 +159,13 @@ let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 augroup neomake_au
   autocmd!
-  autocmd BufWritePost,BufEnter *.hs Neomake
-  autocmd BufWritePost,BufEnter *.py Neomake
-  autocmd BufWritePost,BufEnter *.rs Neomake
-  autocmd BufWritePost,BufEnter *.go Neomake
-  autocmd BufWritePost,BufEnter *.vim Neomake
-  autocmd BufWritePost,BufEnter *.rb Neomake
+  autocmd BufWritePost *.hs Neomake
+  autocmd BufWritePost *.py Neomake
+  autocmd BufWritePost *.rs Neomake
+  autocmd BufWritePost *.go Neomake
+  autocmd BufWritePost *.vim Neomake
+  autocmd BufWritePost *.rb Neomake
 augroup END
-let g:neomake_haskell_enabled_makers = ['ghcmod','hlint','hdevtools']
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
