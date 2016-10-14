@@ -36,7 +36,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'iCyMind/NeoSolarized'
+Plug 'lifepillar/vim-solarized8'
 
 " python
 Plug 'davidhalter/jedi-vim'
