@@ -128,6 +128,13 @@ function! s:general_bindings()
   endfunc
 
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+
+  " toggle background (actually toggle color scheme)
+  nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
+      \ ? substitute(g:colors_name, 'dark', 'light', '')
+      \ : substitute(g:colors_name, 'light', 'dark', '')
+      \ )<cr>
 endfunction
 
 augroup bindings
