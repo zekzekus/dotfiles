@@ -56,7 +56,7 @@ set pastetoggle=<F3>
 set backupskip=/tmp/*,/private/tmp/*"
 
 " Wildmenu completion "
-set wildmode=full
+set wildmode=list:longest
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
@@ -72,26 +72,26 @@ set wildignore+=*.beam
 set wildignore+=build
 set wildignore+=static
 set wildignore+=tmp
-set wildignore+=**/node_modules/**
+set wildignore+=node_modules
 set wildignore+=*.class
 set wildignore+=.stack-work
-set wildignore+=**/plugged/**
+set wildignore+=plugged
 
 " enable file jump for django template files
-set path=**
+set path+=templates " for django versions < 1.4
+set path+=*/templates " for django versions 1.4 and higher
+set path+=*/*/templates
+set path+=*/*/*/templates " specific for polar project structure
+set path+=assets " for django versions < 1.4
+set path+=*/assets " for django versions 1.4 and higher
+set path+=*/*/assets
+set path+=*/*/*/assets " specific for polar project structure
+set path+=**
 
 set dir=~/.nvimtmp
 set undodir=~/.nvimtmp
 set clipboard+=unnamedplus
-
 set suffixesadd+=.html
-set suffixesadd+=.vim
-set suffixesadd+=.py
-set suffixesadd+=.rs
-set suffixesadd+=.hs
-set suffixesadd+=.md
-set suffixesadd+=.txt
-set suffixesadd+=.todo
 
 " Removing scrollbars
 if has("gui_running")
