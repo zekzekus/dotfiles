@@ -75,7 +75,7 @@ set wildignore+=tmp
 set wildignore+=**/node_modules/**
 set wildignore+=*.class
 set wildignore+=.stack-work
-set wildignore+=**/plugged/**
+set wildignore+=**/bower_components/**
 
 " enable file jump for django template files
 set path=**
