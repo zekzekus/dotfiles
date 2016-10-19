@@ -285,9 +285,6 @@ let g:smartclose_set_default_mapping = 0
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" FZF fuzzy finder
-let g:fzf_command_prefix = "FZF"
-
 if filereadable(glob("~/.vim/keybindings.vim"))
   source ~/.vim/keybindings.vim
 endif
