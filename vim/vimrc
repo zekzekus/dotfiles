@@ -56,7 +56,7 @@ set pastetoggle=<F3>
 set backupskip=/tmp/*,/private/tmp/*"
 
 " Wildmenu completion "
-set wildmode=list:longest
+set wildmode=full
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
@@ -72,26 +72,26 @@ set wildignore+=*.beam
 set wildignore+=build
 set wildignore+=static
 set wildignore+=tmp
-set wildignore+=node_modules
+set wildignore+=**/node_modules/**
 set wildignore+=*.class
 set wildignore+=.stack-work
-set wildignore+=plugged
+set wildignore+=**/bower_components/**
 
 " enable file jump for django template files
-set path+=templates " for django versions < 1.4
-set path+=*/templates " for django versions 1.4 and higher
-set path+=*/*/templates
-set path+=*/*/*/templates " specific for polar project structure
-set path+=assets " for django versions < 1.4
-set path+=*/assets " for django versions 1.4 and higher
-set path+=*/*/assets
-set path+=*/*/*/assets " specific for polar project structure
-set path+=**
+set path=**
 
-set dir=~/.vimtmp
-set undodir=~/.vimtmp
-set clipboard=unnamed
+set dir=~/.nvimtmp
+set undodir=~/.nvimtmp
+set clipboard+=unnamedplus
+
 set suffixesadd+=.html
+set suffixesadd+=.vim
+set suffixesadd+=.py
+set suffixesadd+=.rs
+set suffixesadd+=.hs
+set suffixesadd+=.md
+set suffixesadd+=.txt
+set suffixesadd+=.todo
 
 " Removing scrollbars
 if has("gui_running")
@@ -101,7 +101,7 @@ if has("gui_running")
   set guioptions-=L
   set guioptions+=a
   set guioptions-=m
-  set guifont=Hack:h12
+  set guifont=Fira\ Code:h12
 endif
 
 " Special Settings for Consoles
@@ -155,14 +155,13 @@ let g:netrw_liststyle=3
 
 augroup neomake_au
   autocmd!
-  autocmd BufWritePost,BufEnter *.hs Neomake
-  autocmd BufWritePost,BufEnter *.py Neomake
-  autocmd BufWritePost,BufEnter *.rs Neomake
-  autocmd BufWritePost,BufEnter *.go Neomake
-  autocmd BufWritePost,BufEnter *.vim Neomake
-  autocmd BufWritePost,BufEnter *.rb Neomake
+  autocmd BufWritePost *.hs Neomake
+  autocmd BufWritePost *.py Neomake
+  autocmd BufWritePost *.rs Neomake
+  autocmd BufWritePost *.go Neomake
+  autocmd BufWritePost *.vim Neomake
+  autocmd BufWritePost *.rb Neomake
 augroup END
-let g:neomake_haskell_enabled_makers = ['ghcmod','hlint','hdevtools']
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
@@ -239,8 +238,20 @@ elseif executable('ack')
   let g:unite_source_grep_default_opts='--no-heading --no-color'
   let g:unite_source_grep_recursive_opt=''
 endif
+if executable('rg')
+  let g:unite_source_grep_command='rg'
+  let g:unite_source_grep_default_opts = '--hidden --no-heading --vimgrep -S'
+  let g:unite_source_grep_recursive_opt=''
+endif
 
 let g:junkfile#directory=s:get_cache_dir('junk')
+
+" jedi-vim
+let g:jedi#auto_initialization = 1
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = 0
+let g:jedi#popup_on_dot = 0
 
 augroup omni
   autocmd!
@@ -272,11 +283,6 @@ let g:smartclose_set_default_mapping = 0
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " FZF fuzzy finder
 let g:fzf_command_prefix = "FZF"

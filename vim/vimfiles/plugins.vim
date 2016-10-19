@@ -14,6 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 
 " navigating
