@@ -83,6 +83,8 @@ function! s:general_bindings()
   cnoremap <c-n> <down>
   cnoremap <c-p> <up>
 
+  nmap - <Plug>VinegarVerticalSplitUp
+
   " misc
   nnoremap <tab> %
   vnoremap <tab> %
