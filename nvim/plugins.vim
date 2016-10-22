@@ -39,7 +39,6 @@ Plug 'lifepillar/vim-solarized8'
 " python
 Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'zchee/deoplete-jedi'
 
 " javascript
