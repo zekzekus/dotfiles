@@ -37,7 +37,7 @@ set wrap
 set textwidth=79
 set colorcolumn=79
 
-set completeopt-=preview
+set completeopt=menu,noinsert,noselect
 
 " To  show special characters in Vim
 set listchars=tab:▸\ ,eol:¬
@@ -78,7 +78,7 @@ set wildignore+=.stack-work
 set wildignore+=**/bower_components/**
 
 " enable file jump for django template files
-set path=**
+set path+=**
 
 set dir=~/.nvimtmp
 set undodir=~/.nvimtmp

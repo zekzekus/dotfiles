@@ -78,7 +78,7 @@ set wildignore+=.stack-work
 set wildignore+=**/bower_components/**
 
 " enable file jump for django template files
-set path=**
+set path+=**
 
 set dir=~/.nvimtmp
 set undodir=~/.nvimtmp
