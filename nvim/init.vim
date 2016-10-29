@@ -297,6 +297,9 @@ else
   let g:jedi#auto_initialization = 1
   let g:jedi#popup_on_dot = 0
   set clipboard+=unnamed
+
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
 if filereadable(glob("~/.config/nvim/keybindings.vim"))
