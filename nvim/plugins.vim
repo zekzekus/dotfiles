@@ -2,6 +2,7 @@ if has("nvim")
   call plug#begin('~/.config/nvim/plugged')
 else
   call plug#begin('~/.config/nvim/plugged_vim')
+  Plug 'tpope/vim-sensible'
 endif
 
 " programming
