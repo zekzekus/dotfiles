@@ -73,7 +73,7 @@ function! s:general_bindings()
   vnoremap / /\v
   nnoremap n nzzzv
   nnoremap N Nzzzv
-  nnoremap <leader>ss :Grepper<cr>
+  nnoremap <leader>ss :Grepper -tool rg -quickfix -open -switch -nojump -prompt<cr>
   nnoremap <leader>sn :noh<cr>
   nmap sg  <plug>(GrepperOperator)
   xmap sg  <plug>(GrepperOperator)
