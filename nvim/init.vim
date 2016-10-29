@@ -1,7 +1,4 @@
-let g:python_host_skip_check=1
-let g:python3_host_skip_check=1
 " ========== Vim Basic Settings ============="
-
 source ~/.config/nvim/plugins.vim
 
 set modelines=0
@@ -84,7 +81,6 @@ set path+=**
 
 set dir=~/.nvimtmp
 set undodir=~/.nvimtmp
-set clipboard+=unnamedplus
 
 set suffixesadd+=.html
 set suffixesadd+=.vim
@@ -151,11 +147,7 @@ augroup programming_au
   autocmd FileType html set ft=htmldjango " For SnipMate
 augroup END
 
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
 let g:netrw_liststyle=3
-let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 " ========== Plugin Settings =========="
 
@@ -253,8 +245,6 @@ endif
 let g:junkfile#directory=s:get_cache_dir('junk')
 
 " jedi-vim
-let g:jedi#auto_initialization = 0
-let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
@@ -265,6 +255,7 @@ augroup omni
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
 let g:tagbar_type_rust = {
@@ -292,10 +283,22 @@ let g:deoplete#enable_at_startup = 1
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-if filereadable(glob("~/.config/nvim/keybindings.vim"))
-  source ~/.config/nvim/keybindings.vim
+if has("nvim")
+  let g:python_host_skip_check=1
+  let g:python3_host_skip_check=1
+  set clipboard+=unnamedplus
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+  let g:jedi#auto_initialization = 0
+  let g:jedi#completions_enabled = 0
+  let g:deoplete#enable_at_startup = 1
+else
+  let g:jedi#auto_initialization = 1
+  let g:jedi#popup_on_dot = 0
+  set clipboard+=unnamed
 endif
 
-if filereadable(glob("~/.vimrc.local"))
-  source ~/.vimrc.local
+if filereadable(glob("~/.config/nvim/keybindings.vim"))
+  source ~/.config/nvim/keybindings.vim
 endif

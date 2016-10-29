@@ -1,8 +1,8 @@
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
-call plug#begin('~/.config/nvim/plugged')
+if has("nvim")
+  call plug#begin('~/.config/nvim/plugged')
+else
+  call plug#begin('~/.config/nvim/plugged_vim')
+endif
 
 " programming
 Plug 'SirVer/ultisnips'
@@ -10,7 +10,6 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -63,5 +62,15 @@ Plug 'zchee/deoplete-go'
 " rust-lang
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+
+if has("nvim")
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-go'
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+endif
 
 call plug#end()

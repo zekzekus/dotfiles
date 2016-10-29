@@ -103,12 +103,14 @@ function! s:general_bindings()
   nmap <leader>vj :call VimuxScrollDownInspect()<cr>
   nmap <leader>vk :call VimuxScrollUpInspect()<cr>
 
-  " terminal mode bindings
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
-  tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
-  tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
-  tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
+  if has("nvim")
+    " terminal mode bindings
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
+    tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
+    tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
+    tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
+  endif
 
   " unite bindings
   nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
