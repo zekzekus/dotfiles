@@ -1,5 +1,12 @@
 if has("nvim")
   call plug#begin('~/.config/nvim/plugged')
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-go'
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
@@ -63,15 +70,5 @@ Plug 'zchee/deoplete-go'
 " rust-lang
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-
-if has("nvim")
-  function! DoRemote(arg)
-    UpdateRemotePlugins
-  endfunction
-
-  Plug 'zchee/deoplete-jedi'
-  Plug 'zchee/deoplete-go'
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-endif
 
 call plug#end()
