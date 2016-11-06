@@ -38,9 +38,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 
 " vim interface
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
+Plug 'zekzekus/vim-neatstatus'
 Plug 'lifepillar/vim-solarized8'
 
 " python

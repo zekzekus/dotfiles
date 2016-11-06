@@ -172,21 +172,6 @@ let g:bufferline_echo = 0
 let g:bufferline_rotate = 1
 let g:bufferline_fixed_index = -1 "always last
 
-" airline configuration
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#hunks#enabled = 1
-let g:airline_theme = "solarized"
-
-" unicode symbols
-let g:airline_symbols = {}
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
-
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
