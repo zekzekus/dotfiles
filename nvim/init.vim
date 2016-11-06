@@ -161,7 +161,6 @@ augroup neomake_au
   autocmd BufWritePost *.vim Neomake
   autocmd BufWritePost *.rb Neomake
 augroup END
-let g:neomake_open_list = 2
 
 " vim-virtualenv plugin settings
 let g:virtualenv_auto_activate = 1
