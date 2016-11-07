@@ -162,17 +162,6 @@ augroup neomake_au
   autocmd BufWritePost *.rb Neomake
 augroup END
 
-" vim-virtualenv plugin settings
-let g:virtualenv_auto_activate = 1
-let g:virtualenv_stl_format = '[%n]'
-
-
-" bufferline
-let g:bufferline_solo_highlight = 1
-let g:bufferline_echo = 0
-let g:bufferline_rotate = 1
-let g:bufferline_fixed_index = -1 "always last
-
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
