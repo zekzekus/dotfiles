@@ -18,7 +18,7 @@ set visualbell
 set cursorline
 set ttyfast
 
-set nonumber
+set number
 set norelativenumber
 
 set undofile
