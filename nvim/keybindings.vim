@@ -59,14 +59,14 @@ function! s:general_bindings()
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
-  nnoremap <silent> <leader>ff :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
-  nnoremap <silent> <leader>fg :<C-u>Unite -toggle -auto-resize -buffer-name=gitfiles file_rec/git:<cr><c-u>
+  nnoremap <silent> <leader>ff :FzfFiles<cr>
+  nnoremap <silent> <leader>fg :FzfGFiles?<cr>
   nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
   " buffers
-  nnoremap <silent> <leader>bb :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+  nnoremap <silent> <leader>bb :FzfBuffers<cr>
   nnoremap <leader><tab> :b#<CR>
 
   " search
@@ -107,17 +107,19 @@ function! s:general_bindings()
   if has("nvim")
     " terminal mode bindings
     tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
-    tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
-    tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
-    tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
+    tnoremap <C-h> <C-\><C-h>:TmuxNavigateLeft<cr>
+    tnoremap <C-j> <C-\><C-j>:TmuxNavigateDown<cr>
+    tnoremap <C-k> <C-\><C-k>:TmuxNavigateUp<cr>
+    tnoremap <C-l> <C-\><C-l>:TmuxNavigateRight<cr>
   endif
 
   " unite bindings
   nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
-  nnoremap <silent> <leader>l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-  nnoremap <silent> <leader>/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-  nnoremap <silent> <leader>y :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
+  nnoremap <silent> <leader>l :FzfBLines<cr>
+  nnoremap <silent> <leader>L :FzfLines<cr>
+  nnoremap <leader>/ :FzfAg<space>
+  nnoremap <silent> <leader>y :FzfBTags<cr>
+  nnoremap <silent> <leader>Y :FzfTags<cr>
 
   " quit
   nnoremap <silent><leader>Q :SmartClose<cr>
