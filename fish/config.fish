@@ -29,7 +29,7 @@ end
 set --export EDITOR vim
 
 set --export RUST_SRC_PATH $HOME/devel/tools/rust/src
-set --export FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
+set --export FZF_DEFAULT_COMMAND 'rg --files --follow --glob "!.git/*"'
 
 if test -f /usr/local/bin/thefuck
     eval (thefuck --alias | tr '\n' ';')

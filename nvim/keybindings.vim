@@ -59,14 +59,14 @@ function! s:general_bindings()
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
-  nnoremap <silent> <leader>ff :FzfFiles<cr>
-  nnoremap <silent> <leader>fg :FzfGFiles?<cr>
+  nnoremap <silent> <leader>ff :FFFiles<cr>
+  nnoremap <silent> <leader>fg :FFGFiles?<cr>
   nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
   " buffers
-  nnoremap <silent> <leader>bb :FzfBuffers<cr>
+  nnoremap <silent> <leader>bb :FFBuffers<cr>
   nnoremap <leader><tab> :b#<CR>
 
   " search
@@ -106,11 +106,11 @@ function! s:general_bindings()
 
   " unite bindings
   nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
-  nnoremap <silent> <leader>l :FzfBLines<cr>
-  nnoremap <silent> <leader>L :FzfLines<cr>
-  nnoremap <leader>/ :FzfAg<space>
-  nnoremap <silent> <leader>y :FzfBTags<cr>
-  nnoremap <silent> <leader>Y :FzfTags<cr>
+  nnoremap <silent> <leader>l :FFBLines<cr>
+  nnoremap <silent> <leader>L :FFLines<cr>
+  nnoremap <leader>/ :FFAg<space>
+  nnoremap <silent> <leader>y :FFBTags<cr>
+  nnoremap <silent> <leader>Y :FFTags<cr>
 
   " quit
   nnoremap <silent><leader>Q :SmartClose<cr>

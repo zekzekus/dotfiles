@@ -281,7 +281,8 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-let g:fzf_command_prefix = 'Fzf' 
+let g:fzf_command_prefix = 'FF' 
+let g:fzf_layout = { 'down': '~20%' }
 
 function! s:fzf_statusline()
   " Override statusline as you like
