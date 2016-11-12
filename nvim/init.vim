@@ -253,8 +253,6 @@ let g:racer_no_default_keymappings = 1
 " smartclose
 let g:smartclose_set_default_mapping = 0
 
-let g:deoplete#enable_at_startup = 1
-
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
