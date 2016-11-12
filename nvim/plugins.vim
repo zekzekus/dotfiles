@@ -32,7 +32,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/unite-outline'
 Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
@@ -46,7 +45,6 @@ Plug 'lifepillar/vim-solarized8'
 " python
 Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'zchee/deoplete-jedi'
 
 " javascript
 Plug 'tpope/vim-jdaddy'
