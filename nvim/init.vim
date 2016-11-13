@@ -64,7 +64,6 @@ set wildignore+=*.spl "Compiled speolling world list"
 set wildignore+=*.sw? "Vim swap files"
 set wildignore+=*.DS_Store "OSX SHIT"
 set wildignore+=*.luac "Lua byte code"
-"set wildignore+=migrations "Django migrations"
 set wildignore+=*.pyc "Python Object codes"
 set wildignore+=*.orig "Merge resolution files"
 set wildignore+=*.beam
@@ -76,7 +75,6 @@ set wildignore+=*.class
 set wildignore+=.stack-work
 set wildignore+=**/bower_components/**
 
-" enable file jump for django template files
 set path+=**
 
 set dir=~/.nvimtmp
@@ -118,7 +116,7 @@ colorscheme solarized8_dark
 syntax enable
 highlight clear VertSplit
 
-" Set vim to save the file on focus out.
+" make vim to autoresize its windows after resize
 augroup file_operation
   autocmd!
   autocmd VimResized * :wincmd =
@@ -258,15 +256,6 @@ endif
 
 let g:fzf_command_prefix = 'FF' 
 let g:fzf_layout = { 'down': '~20%' }
-
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 if filereadable(glob("~/.config/nvim/keybindings.vim"))
   source ~/.config/nvim/keybindings.vim
