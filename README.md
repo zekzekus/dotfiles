@@ -10,6 +10,4 @@ The installation instructions are coming soon...
 
 ## CTAGS
 
-## GHC
-
 ## MACOSX
