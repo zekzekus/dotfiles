@@ -175,12 +175,6 @@ endfunction
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
 
-call unite#custom#source('buffer,file,file_rec/git', 'sorters', 'sorter_selecta')
-call unite#custom#source('file,file_rec/git','max_candidates', 0)
-" call unite#custom#source(
-"       \ 'file,buffer,file_rec/git,file_mru,history/yank,register,line,grep,help','matchers',
-"       \ [ 'matcher_fuzzy', 'matcher_hide_current_file' ])
-
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
       \ 'short_source_names': 1,
@@ -192,30 +186,6 @@ call unite#custom#profile('default', 'context', {
 
 let g:unite_data_directory=s:get_cache_dir('unite')
 let g:unite_source_history_yank_enable=1
-
-if executable('ag')
-  let g:unite_source_rec_async_command= ['ag', '--nocolor',
-                                              \'--nogroup',
-                                              \'--hidden',
-                                              \'--ignore', '.git',
-                                              \'--ignore', 'bundle',
-                                              \'--ignore', '.stack-work',
-                                              \'--ignore', 'build',
-                                              \'-g', '']
-
-  let g:unite_source_grep_command='ag'
-  let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' . '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt=''
-elseif executable('ack')
-  let g:unite_source_grep_command='ack'
-  let g:unite_source_grep_default_opts='--no-heading --no-color'
-  let g:unite_source_grep_recursive_opt=''
-endif
-if executable('rg')
-  let g:unite_source_grep_command='rg'
-  let g:unite_source_grep_default_opts = '--hidden --no-heading --vimgrep -S'
-  let g:unite_source_grep_recursive_opt=''
-endif
 
 let g:junkfile#directory=s:get_cache_dir('junk')
 
