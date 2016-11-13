@@ -28,7 +28,7 @@ end
 
 set --export EDITOR vim
 
-set --export RUST_SRC_PATH $HOME/devel/tools/rust/src
+set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 set --export FZF_DEFAULT_COMMAND 'rg --files --follow --glob "!.git/*"'
 
 if test -f /usr/local/bin/thefuck
