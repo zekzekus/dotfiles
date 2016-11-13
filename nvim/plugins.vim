@@ -53,8 +53,6 @@ Plug 'tpope/vim-jdaddy'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
 Plug 'diepm/vim-rest-console'
-Plug 'benmills/vimux'
-Plug 'freitass/todo.txt-vim'
 
 " haskell
 Plug 'dag/vim2hs'

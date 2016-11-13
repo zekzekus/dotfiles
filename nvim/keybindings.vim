@@ -93,17 +93,6 @@ function! s:general_bindings()
   " Select just pasted text.
   nnoremap <leader>V V`]
 
-  " vimux
-  nmap <leader>vp :VimuxPromptCommand<cr>
-  nmap <leader>vr :VimuxRunLastCommand<cr>
-  nmap <leader>vi :VimuxInspectRunner<cr>
-  nmap <leader>vt :VimuxTogglePane<cr>
-  nmap <leader>vq :VimuxCloseRunner<cr>
-  nmap <leader>vc :VimuxInterruptRunner<cr>
-  nmap <leader>vz :call VimuxZoomRunner()<cr>
-  nmap <leader>vj :call VimuxScrollDownInspect()<cr>
-  nmap <leader>vk :call VimuxScrollUpInspect()<cr>
-
   " unite bindings
   nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
   nnoremap <silent> <leader>l :FFBLines<cr>
