@@ -125,12 +125,17 @@ augroup file_operation
 augroup END
 
 " Make Sure that Vim returns to the same line when we reopen a file"
+function! FindLatestPosition()
+  if &ft =~ 'gitcommit'
+    return
+  endif
+  if line("'\"") > 0 && line("'\"") <= line("$") |
+    execute 'normal! g`"zvzz' |
+  endif
+endfunction
 augroup line_return
   autocmd!
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \ execute 'normal! g`"zvzz' |
-        \ endif
+  autocmd BufReadPost * call FindLatestPosition()
 augroup END
 
 augroup programming_au
