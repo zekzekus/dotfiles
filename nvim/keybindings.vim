@@ -27,9 +27,6 @@ function! s:haskell_bindings()
   nnoremap <Leader>mi :GhcModInfo<CR>
   nnoremap <Leader>mI :GhcModInfoPreview<CR>
   nnoremap <Leader>mc :GhcModTypeClear<CR>
-
-  nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
-  nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction
 
 function! s:go_bindings()
@@ -37,18 +34,12 @@ function! s:go_bindings()
   nmap <leader>mt <Plug>(go-info)
   nmap <leader>mi <Plug>(go-info)
   nmap <leader>mr <Plug>(go-rename)
-  nmap <leader>mcc :call VimuxRunCommand("go build")<cr>
-  nmap <leader>mcr :call VimuxRunCommand("go run")<cr>
-  nmap <leader>mct :call VimuxRunCommand("go test")<cr>
 endfunction
 
 function! s:rust_bindings()
   nmap <buffer><leader>md <Plug>RacerGoToDefinitionDrect
   nmap <buffer><leader>mD <Plug>RacerGoToDefinitionSplit
   nmap <buffer><leader>mi <Plug>RacerShowDocumentation
-  nnoremap <leader>mcc :call VimuxRunCommand("cargo build")<cr>
-  nnoremap <leader>mcr :call VimuxRunCommand("cargo run")<cr>
-  nnoremap <leader>mct :call VimuxRunCommand("cargo test")<cr>
 endfunction
 
 function! s:general_bindings()
