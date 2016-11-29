@@ -43,8 +43,8 @@ Plug 'zekzekus/vim-neatstatus'
 Plug 'lifepillar/vim-solarized8'
 
 " python
-Plug 'davidhalter/jedi-vim'
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript
 Plug 'tpope/vim-jdaddy'
@@ -52,18 +52,18 @@ Plug 'tpope/vim-jdaddy'
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
-Plug 'diepm/vim-rest-console'
+Plug 'diepm/vim-rest-console', {'for': 'rest'}
 
 " haskell
-Plug 'dag/vim2hs'
-Plug 'eagletmt/ghcmod-vim'
-Plug 'eagletmt/neco-ghc'
+Plug 'dag/vim2hs', {'for': 'haskell'}
+Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
+Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 
 " golang
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', {'for': 'go'}
 
 " rust-lang
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
 call plug#end()
