@@ -39,8 +39,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'zekzekus/vim-neatstatus'
 Plug 'lifepillar/vim-solarized8'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
