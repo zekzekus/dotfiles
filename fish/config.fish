@@ -34,3 +34,6 @@ set --export FZF_DEFAULT_COMMAND 'rg --files --follow --glob "!.git/*"'
 if test -f /usr/local/bin/thefuck
     eval (thefuck --alias | tr '\n' ';')
 end
+
+alias t "task"
+alias g "geeknote"
