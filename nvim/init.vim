@@ -281,6 +281,7 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 
 let g:airline#extensions#disable_rtp_load = 1
+let g:airline#extensions#branch#enabled = 0
 
 if filereadable(glob("~/.config/nvim/keybindings.vim"))
   source ~/.config/nvim/keybindings.vim
