@@ -155,6 +155,7 @@ let g:netrw_liststyle=3
 " ========== Plugin Settings =========="
 
 " neomake syntax checker settings
+let g:neomake_open_list = 2
 augroup neomake_au
   autocmd!
   autocmd BufWritePost *.hs Neomake
