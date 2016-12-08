@@ -40,8 +40,7 @@ Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
