@@ -10,13 +10,17 @@ set softtabstop=4
 set expandtab
 
 " More Common Settings.
-set noshowmode
+set showmode
 set showcmd
 set hidden
 set visualbell
 
-set cursorline
 set ttyfast
+
+set re=1
+set synmaxcol=300
+set nocursorcolumn
+set nocursorline
 
 set nonumber
 set norelativenumber
@@ -113,7 +117,7 @@ else
 endif
 colorscheme solarized8_dark
 
-syntax enable
+syntax sync minlines=256
 highlight clear VertSplit
 
 " make vim to autoresize its windows after resize

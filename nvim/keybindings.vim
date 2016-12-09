@@ -67,7 +67,7 @@ function! s:general_bindings()
   nnoremap N Nzzzv
   nnoremap <leader>ss :Grepper -tool rg -quickfix -open -switch -nojump -prompt<cr>
   nnoremap <leader>sS :Grepper -side -tool rg -prompt<cr>
-  nnoremap <leader>sn :noh<cr>
+  nnoremap <silent><BS> :noh<cr>
   nmap sg  <plug>(GrepperOperator)
   xmap sg  <plug>(GrepperOperator)
   nnoremap <leader>* :Grepper -cword -noprompt<cr>
