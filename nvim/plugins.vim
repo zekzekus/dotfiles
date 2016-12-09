@@ -41,7 +41,6 @@ Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
-Plug 'itchyny/lightline.vim'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
