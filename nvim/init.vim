@@ -115,7 +115,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme zek1
+colorscheme solarized8_dark
 
 syntax sync minlines=256
 highlight clear VertSplit
