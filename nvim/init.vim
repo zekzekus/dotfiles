@@ -115,7 +115,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme solarized8_dark
+colorscheme zek1
 
 syntax sync minlines=256
 highlight clear VertSplit
@@ -261,10 +261,6 @@ endif
 
 let g:fzf_command_prefix = 'FF'
 let g:fzf_layout = { 'down': '~20%' }
-
-let g:lightline = {
-\ 'colorscheme': 'solarized',
-\}
 
 if filereadable(glob("~/.config/nvim/keybindings.vim"))
   source ~/.config/nvim/keybindings.vim
