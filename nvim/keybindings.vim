@@ -105,6 +105,12 @@ function! s:general_bindings()
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
   endfunc
+
+  " toggle background (actually toggle color scheme)
+  nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
+      \ ? substitute(g:colors_name, 'dark', 'light', '')
+      \ : substitute(g:colors_name, 'light', 'dark', '')
+      \ )<cr>
 endfunction
 
 augroup bindings
