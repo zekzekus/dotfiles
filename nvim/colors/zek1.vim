@@ -48,9 +48,9 @@ if &background == "light"
     hi StatusLineNC gui=NONE guifg=#969696 guibg=#ededed
     hi StorageClass gui=NONE guifg=#4a4a4a guibg=NONE
     hi String gui=NONE guifg=#707070 guibg=NONE
-    hi TabLine gui=NONE guifg=#969696 guibg=#ededed
-    hi TabLineFill gui=NONE guifg=NONE guibg=#ededed
-    hi TabLineSel gui=NONE guifg=#262626 guibg=#ededed
+    hi TabLine gui=NONE guifg=#969696 guibg=#ede7d4
+    hi TabLineFill gui=NONE guifg=NONE guibg=#ede7d4
+    hi TabLineSel gui=NONE guifg=#262626 guibg=#ede7d4
     hi Title gui=NONE guifg=#707070 guibg=NONE
     hi Todo gui=standout guifg=NONE guibg=NONE
     hi Type gui=NONE guifg=#4a4a4a guibg=NONE
@@ -110,9 +110,9 @@ elseif &background == "dark"
     hi StatusLineNC gui=NONE guifg=#707070 guibg=#262626
     hi StorageClass gui=NONE guifg=#8f8f8f guibg=NONE
     hi String gui=NONE guifg=#808080 guibg=NONE
-    hi TabLine gui=NONE guifg=#707070 guibg=#262626
-    hi TabLineFill gui=NONE guifg=NONE guibg=#262626
-    hi TabLineSel gui=NONE guifg=#9e9e9e guibg=#262626
+    hi TabLine gui=NONE guifg=#707070 guibg=#073541
+    hi TabLineFill gui=NONE guifg=NONE guibg=#073541
+    hi TabLineSel gui=NONE guifg=#9e9e9e guibg=#073541
     hi Title gui=NONE guifg=#808080 guibg=NONE
     hi Todo gui=standout guifg=NONE guibg=NONE
     hi Type gui=NONE guifg=#8f8f8f guibg=NONE
