@@ -47,6 +47,9 @@ function! s:general_bindings()
   nnoremap j gj
   nnoremap k gk
 
+  nnoremap ; :
+  nnoremap : ;
+
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
