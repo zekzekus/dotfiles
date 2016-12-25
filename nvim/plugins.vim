@@ -41,6 +41,8 @@ Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
+Plug 'zekzekus/vim-colors-off'
+Plug 'zekzekus/nofrils'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
