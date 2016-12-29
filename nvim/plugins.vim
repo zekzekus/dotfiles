@@ -38,6 +38,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'yuttie/comfortable-motion.vim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
