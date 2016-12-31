@@ -1,4 +1,5 @@
 " ========== Vim Basic Settings ============="
+scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 
 set modelines=0
@@ -17,7 +18,7 @@ set visualbell
 
 set ttyfast
 
-set re=1
+set regexpengine=1
 set synmaxcol=300
 set nocursorcolumn
 set nocursorline
@@ -81,7 +82,7 @@ set wildignore+=**/bower_components/**
 
 set path+=**
 
-set dir=~/.nvimtmp
+set directory=~/.nvimtmp
 set undodir=~/.nvimtmp
 
 set suffixesadd+=.html
@@ -94,7 +95,7 @@ set suffixesadd+=.txt
 set suffixesadd+=.todo
 
 " Removing scrollbars
-if has("gui_running")
+if has('gui_running')
   set guitablabel=%-0.12t%M
   set guioptions-=T
   set guioptions-=r
@@ -128,10 +129,10 @@ augroup END
 
 " Make Sure that Vim returns to the same line when we reopen a file"
 function! FindLatestPosition()
-  if &ft =~ 'gitcommit'
+  if &filetype =~? 'gitcommit'
     return
   endif
-  if line("'\"") > 0 && line("'\"") <= line("$") |
+  if line("'\"") > 0 && line("'\"") <= line('$') |
     execute 'normal! g`"zvzz' |
   endif
 endfunction
@@ -170,9 +171,9 @@ let g:netrw_liststyle=3
 " augroup END
 
 " snipmate trigger key modified because conflicts with youcompleteme
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<C-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " unite
 let s:cache_dir = '~/.nvimtmp/cache'
@@ -231,10 +232,10 @@ let g:racer_no_default_keymappings = 1
 let g:smartclose_set_default_mapping = 0
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
-if has("nvim")
+if has('nvim')
   let g:python_host_skip_check=1
   let g:python3_host_skip_check=1
   let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
@@ -261,6 +262,6 @@ endif
 let g:fzf_command_prefix = 'FF'
 let g:fzf_layout = { 'down': '~20%' }
 
-if filereadable(glob("~/.config/nvim/keybindings.vim"))
+if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif

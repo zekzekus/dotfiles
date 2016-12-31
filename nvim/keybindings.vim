@@ -1,7 +1,7 @@
 " Changing Leader Key
 nnoremap <Space> <nop>
-let mapleader = "\<Space>"
-let maplocalleader = "\,"
+let g:mapleader = "\<Space>"
+let g:maplocalleader = "\,"
 
 function! s:unite_bindings()
   nmap <buffer> Q <plug>(unite_exit)
@@ -100,10 +100,10 @@ function! s:general_bindings()
   " Show syntax highlighting groups for word under cursor
   nmap <C-S-P> :call <SID>SynStack()<CR>
   function! <SID>SynStack()
-    if !exists("*synstack")
+    if !exists('*synstack')
       return
     endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, ''name'')')
   endfunc
 
   " toggle background (actually toggle color scheme)

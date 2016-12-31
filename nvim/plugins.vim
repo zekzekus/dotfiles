@@ -1,4 +1,4 @@
-if has("nvim")
+if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
   function! DoRemote(arg)
     UpdateRemotePlugins
