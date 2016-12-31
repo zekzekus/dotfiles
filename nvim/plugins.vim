@@ -16,7 +16,8 @@ endif
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 

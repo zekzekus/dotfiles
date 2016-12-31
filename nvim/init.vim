@@ -159,15 +159,15 @@ let g:netrw_liststyle=3
 " ========== Plugin Settings =========="
 
 " neomake syntax checker settings
-augroup neomake_au
-  autocmd!
-  autocmd BufWritePost *.hs Neomake
-  autocmd BufWritePost *.py Neomake
-  autocmd BufWritePost *.rs Neomake
-  autocmd BufWritePost *.go Neomake
-  autocmd BufWritePost *.vim Neomake
-  autocmd BufWritePost *.rb Neomake
-augroup END
+" augroup neomake_au
+"   autocmd!
+"   autocmd BufWritePost *.hs Neomake
+"   autocmd BufWritePost *.py Neomake
+"   autocmd BufWritePost *.rs Neomake
+"   autocmd BufWritePost *.go Neomake
+"   autocmd BufWritePost *.vim Neomake
+"   autocmd BufWritePost *.rb Neomake
+" augroup END
 
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger="<C-j>"
