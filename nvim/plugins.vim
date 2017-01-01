@@ -5,7 +5,6 @@ if has('nvim')
   endfunction
 
   Plug 'zchee/deoplete-jedi'
-  Plug 'zchee/deoplete-go'
   Plug 'Shougo/neco-vim'
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 else
@@ -18,7 +17,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -61,9 +59,6 @@ Plug 'diepm/vim-rest-console', {'for': 'rest'}
 Plug 'dag/vim2hs', {'for': 'haskell'}
 Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
 Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
-
-" golang
-Plug 'fatih/vim-go', {'for': 'go'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
