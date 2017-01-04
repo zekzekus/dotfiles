@@ -225,9 +225,6 @@ let g:tagbar_type_rust = {
     \]
     \}
 
-" rust racer
-let g:racer_no_default_keymappings = 1
-
 " smartclose
 let g:smartclose_set_default_mapping = 0
 

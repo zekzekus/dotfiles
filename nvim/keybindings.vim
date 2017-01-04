@@ -37,9 +37,9 @@ function! s:go_bindings()
 endfunction
 
 function! s:rust_bindings()
-  nmap <buffer><leader>md <Plug>RacerGoToDefinitionDrect
-  nmap <buffer><leader>mD <Plug>RacerGoToDefinitionSplit
-  nmap <buffer><leader>mi <Plug>RacerShowDocumentation
+  nmap <buffer><leader>md <Plug>(rust-def)
+  nmap <buffer><leader>mD <Plug>(rust-def-split-vertical)
+  nmap <buffer><leader>mi <Plug>(rust-doc)
 endfunction
 
 function! s:general_bindings()
