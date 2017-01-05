@@ -21,7 +21,7 @@ set ttyfast
 set regexpengine=1
 set synmaxcol=300
 set nocursorcolumn
-set nocursorline
+set cursorline
 
 set number
 set norelativenumber
@@ -116,7 +116,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme solarized8_dark
+colorscheme nofrils-dark
 
 syntax sync minlines=256
 highlight clear VertSplit

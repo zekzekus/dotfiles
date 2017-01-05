@@ -41,7 +41,7 @@ Plug 'yuttie/comfortable-motion.vim'
 " vim interface
 Plug 'lifepillar/vim-solarized8'
 Plug 'zekzekus/vim-colors-off'
-Plug 'zekzekus/nofrils'
+Plug 'robertmeta/nofrils'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
