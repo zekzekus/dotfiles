@@ -112,11 +112,14 @@ endif
 
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
-  set background=light
+  colorscheme nofrils-light
+elseif $ITERM_PROFILE =~? 'acme'
+  colorscheme nofrils-acme
+elseif $ITERM_PROFILE =~? 'sepia'
+  colorscheme nofrils-sepia
 else
-  set background=dark
+  colorscheme nofrils-dark
 endif
-colorscheme nofrils-dark
 
 syntax sync minlines=256
 highlight clear VertSplit
