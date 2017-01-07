@@ -19,7 +19,6 @@ function! s:python_bindings()
   nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
   nnoremap <silent> <leader>mr :call jedi#rename()<cr>
   nnoremap <silent> <leader>mn :call jedi#usages()<cr>
-  nnoremap <silent> <leader>mV :VirtualEnvActivate 
 endfunction
 
 function! s:haskell_bindings()
