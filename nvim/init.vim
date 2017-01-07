@@ -21,7 +21,7 @@ set ttyfast
 set regexpengine=1
 set synmaxcol=300
 set nocursorcolumn
-set nocursorline
+set cursorline
 
 set number
 set norelativenumber
