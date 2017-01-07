@@ -60,7 +60,7 @@ set pastetoggle=<F3>
 set backupskip=/tmp/*,/private/tmp/*"
 
 " Wildmenu completion "
-set wildmode=full
+set wildmode=longest:full,full
 set wildignore+=.hg,.git,.svn " Version Controls"
 set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
