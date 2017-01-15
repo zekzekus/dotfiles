@@ -171,6 +171,8 @@ augroup neomake_au
   autocmd BufWritePost *.go Neomake
   autocmd BufWritePost *.vim Neomake
   autocmd BufWritePost *.rb Neomake
+  autocmd BufWritePost *.html Neomake
+  autocmd BufWritePost *.js Neomake
 augroup END
 
 " snipmate trigger key modified because conflicts with youcompleteme
@@ -227,6 +229,34 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 " smartclose
 let g:smartclose_set_default_mapping = 0

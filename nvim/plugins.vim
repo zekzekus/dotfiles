@@ -64,4 +64,7 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
+" go lang
+Plug 'fatih/vim-go', {'for': 'go'}
+
 call plug#end()
