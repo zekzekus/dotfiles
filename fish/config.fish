@@ -40,3 +40,5 @@ alias g "geeknote"
 
 set fish_user_paths ~/devel/tools/google-cloud-sdk/bin
 set -x MANPATH ~/devel/tools/google-cloud-sdk/help/man /usr/local/share/man /usr/share/man /opt/X11/share/man
+
+eval (direnv hook fish)
