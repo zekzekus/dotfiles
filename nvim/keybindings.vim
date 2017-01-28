@@ -26,6 +26,9 @@ function! s:haskell_bindings()
   nnoremap <Leader>mi :GhcModInfo<CR>
   nnoremap <Leader>mI :GhcModInfoPreview<CR>
   nnoremap <Leader>mc :GhcModTypeClear<CR>
+
+  nmap <leader>mcc :call VimuxRunCommand("stack build")<cr>
+  nmap <leader>mct :call VimuxRunCommand("stack test")<cr>
 endfunction
 
 function! s:go_bindings()
@@ -33,12 +36,32 @@ function! s:go_bindings()
   nmap <leader>mt <Plug>(go-info)
   nmap <leader>mi <Plug>(go-info)
   nmap <leader>mr <Plug>(go-rename)
+
+  nmap <leader>mcc :call VimuxRunCommand("go build")<cr>
+  nmap <leader>mcr :call VimuxRunCommand("go run")<cr>
+  nmap <leader>mct :call VimuxRunCommand("go test")<cr>
 endfunction
 
 function! s:rust_bindings()
   nmap <buffer><leader>md <Plug>(rust-def)
   nmap <buffer><leader>mD <Plug>(rust-def-split-vertical)
   nmap <buffer><leader>mi <Plug>(rust-doc)
+
+  nnoremap <leader>mcc :call VimuxRunCommand("cargo build")<cr>
+  nnoremap <leader>mcr :call VimuxRunCommand("cargo run")<cr>
+  nnoremap <leader>mct :call VimuxRunCommand("cargo test")<cr>
+endfunction
+
+function! s:vimux_bindings()
+  nmap <leader>vp :VimuxPromptCommand<cr>
+  nmap <leader>vr :VimuxRunLastCommand<cr>
+  nmap <leader>vi :VimuxInspectRunner<cr>
+  nmap <leader>vt :VimuxTogglePane<cr>
+  nmap <leader>vq :VimuxCloseRunner<cr>
+  nmap <leader>vc :VimuxInterruptRunner<cr>
+  nmap <leader>vz :call VimuxZoomRunner()<cr>
+  nmap <leader>vj :call VimuxScrollDownInspect()<cr>
+  nmap <leader>vk :call VimuxScrollUpInspect()<cr>
 endfunction
 
 function! s:general_bindings()
@@ -133,6 +156,7 @@ endfunction
 augroup bindings
   autocmd!
   autocmd VimEnter * call s:general_bindings()
+  autocmd FileType * call s:vimux_bindings()
   autocmd FileType haskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_bindings()
