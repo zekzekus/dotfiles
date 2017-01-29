@@ -180,7 +180,7 @@ let g:currentmode={
 
 set statusline=
 set statusline+=[%{toupper(g:currentmode[mode()])}]
-set statusline+=[%n]
+set statusline+=%{(&paste==0?'':'[P]')}
 set statusline+=[%f
 set statusline+=%m
 set statusline+=%r
