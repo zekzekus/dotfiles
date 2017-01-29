@@ -156,7 +156,7 @@ augroup END
 
 let g:netrw_liststyle=3
 
-let g:currentmode={
+let g:modmap={
     \ 'n'  : 'Normal',
     \ 'no' : 'N·Operator Pending',
     \ 'v'  : 'Visual',
@@ -179,14 +179,14 @@ let g:currentmode={
     \}
 
 set statusline=
-set statusline+=[%{toupper(g:currentmode[mode()])}]
+set statusline+=[%{toupper(g:modmap[mode()])}]
 set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=[%f
+set statusline+=\ %f
 set statusline+=%m
 set statusline+=%r
 set statusline+=%h
 set statusline+=%w
-set statusline+=%q]
+set statusline+=%q
 set statusline+=%=
 set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
 set statusline+=%y
