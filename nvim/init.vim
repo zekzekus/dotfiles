@@ -181,13 +181,14 @@ let g:modmap={
 set statusline=
 set statusline+=[%{toupper(g:modmap[mode()])}]
 set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=\ %f
+set statusline+=\ [%f]
 set statusline+=%m
 set statusline+=%r
 set statusline+=%h
 set statusline+=%w
 set statusline+=%q
 set statusline+=%=
+set statusline+=[%{substitute(getcwd(),expand('~'),'~','g')}]
 set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
 set statusline+=%y
 set statusline+=[%l
