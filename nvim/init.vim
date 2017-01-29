@@ -11,7 +11,7 @@ set softtabstop=4
 set expandtab
 
 " More Common Settings.
-set showmode
+set noshowmode
 set showcmd
 set hidden
 set visualbell
@@ -155,6 +155,44 @@ augroup programming_au
 augroup END
 
 let g:netrw_liststyle=3
+
+let g:currentmode={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'N·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ '' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
+set statusline=
+set statusline+=[%{toupper(g:currentmode[mode()])}]
+set statusline+=[%n]
+set statusline+=[%f
+set statusline+=%m
+set statusline+=%r
+set statusline+=%h
+set statusline+=%w
+set statusline+=%q]
+set statusline+=%=
+set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
+set statusline+=%y
+set statusline+=[%l
+set statusline+=/
+set statusline+=%L]
 
 " ========== Plugin Settings =========="
 
