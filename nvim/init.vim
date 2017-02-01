@@ -3,6 +3,7 @@ scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 
 set modelines=0
+set mouse=a
 
 "TAB settings.
 set tabstop=4
@@ -324,7 +325,6 @@ else
   let g:jedi#popup_on_dot = 0
 
   set clipboard+=unnamed
-  set mouse=a
 
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
