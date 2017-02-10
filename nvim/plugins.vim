@@ -18,6 +18,7 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
+Plug 'LnL7/vim-nix', {'for': 'nix'}
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -27,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 Plug 'godlygeek/tabular'
+Plug 'Ron89/thesaurus_query.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
