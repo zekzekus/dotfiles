@@ -157,7 +157,7 @@ augroup bindings
   autocmd!
   autocmd VimEnter * call s:general_bindings()
   autocmd FileType * call s:vimux_bindings()
-  autocmd FileType haskell call s:haskell_bindings()
+  autocmd FileType haskell,lhaskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
   autocmd FileType unite call s:unite_bindings()
   autocmd FileType go call s:go_bindings()
