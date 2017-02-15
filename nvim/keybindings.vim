@@ -129,10 +129,10 @@ function! s:general_bindings()
   endfunc
 
   " toggle background (actually toggle color scheme)
-  nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
-      \ ? substitute(g:colors_name, 'dark', 'light', '')
-      \ : substitute(g:colors_name, 'light', 'dark', '')
-      \ )<cr>
+  " nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
+  "     \ ? substitute(g:colors_name, 'dark', 'light', '')
+  "     \ : substitute(g:colors_name, 'light', 'dark', '')
+  "     \ )<cr>
 
   let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
 

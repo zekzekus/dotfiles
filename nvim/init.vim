@@ -119,7 +119,7 @@ elseif $ITERM_PROFILE =~? 'acme'
 elseif $ITERM_PROFILE =~? 'sepia'
   colorscheme nofrils-sepia
 else
-  colorscheme solarized8_dark
+  colorscheme goodwolf
 endif
 
 syntax sync minlines=256
