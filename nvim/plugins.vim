@@ -5,6 +5,7 @@ if has('nvim')
   endfunction
 
   Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-go'
   Plug 'Shougo/neco-vim'
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 else
