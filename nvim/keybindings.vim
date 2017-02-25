@@ -151,6 +151,8 @@ function! s:general_bindings()
 
   vnoremap <expr> cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
   vnoremap <expr> cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
+
+  nnoremap <leader>fu :GundoToggle<CR>
 endfunction
 
 augroup bindings

@@ -30,6 +30,7 @@ Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 Plug 'godlygeek/tabular'
 Plug 'Ron89/thesaurus_query.vim'
+Plug 'sjl/gundo.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
