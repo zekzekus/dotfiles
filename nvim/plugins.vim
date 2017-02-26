@@ -4,9 +4,9 @@ if has('nvim')
     UpdateRemotePlugins
   endfunction
 
-  Plug 'zchee/deoplete-jedi'
-  Plug 'zchee/deoplete-go'
-  Plug 'Shougo/neco-vim'
+  Plug 'zchee/deoplete-jedi', {'for': 'python'}
+  Plug 'zchee/deoplete-go', {'for': 'go'}
+  Plug 'Shougo/neco-vim', {'for': 'vim'}
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 else
   call plug#begin('~/.config/nvim/plugged_vim')
