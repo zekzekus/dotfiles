@@ -333,6 +333,9 @@ endif
 let g:fzf_command_prefix = 'FF'
 let g:fzf_layout = { 'down': '~20%' }
 
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
+
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
