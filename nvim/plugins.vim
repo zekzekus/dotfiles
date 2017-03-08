@@ -20,7 +20,6 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
 Plug 'LnL7/vim-nix', {'for': 'nix'}
-Plug 'ludovicchabant/vim-gutentags'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
