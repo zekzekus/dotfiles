@@ -114,12 +114,8 @@ endif
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
   colorscheme solarized8_light
-elseif $ITERM_PROFILE =~? 'acme'
-  colorscheme nofrils-acme
-elseif $ITERM_PROFILE =~? 'sepia'
-  colorscheme nofrils-sepia
 else
-  colorscheme goodwolf
+  colorscheme solarized8_dark
 endif
 
 syntax sync minlines=256
