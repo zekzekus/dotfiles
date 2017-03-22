@@ -45,7 +45,8 @@ set colorcolumn=79
 set completeopt=menu,noinsert,noselect
 
 " To  show special characters in Vim
-set listchars=tab:▸\ ,eol:¬
+set showbreak=↪\ 
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 " enable folding
 set foldmethod=indent
