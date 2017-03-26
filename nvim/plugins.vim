@@ -19,7 +19,7 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
-Plug 'LnL7/vim-nix', {'for': 'nix'}
+Plug 'AndrewRadev/linediff.vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
