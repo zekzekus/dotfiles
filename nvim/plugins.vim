@@ -61,6 +61,7 @@ Plug 'tpope/vim-jdaddy'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
+Plug 'mhinz/vim-startify'
 
 " haskell
 Plug 'dag/vim2hs', {'for': 'haskell'}
