@@ -312,8 +312,6 @@ if has('nvim')
 
   set clipboard+=unnamedplus
 
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
   let g:jedi#auto_initialization = 0
   let g:jedi#completions_enabled = 0
   let g:deoplete#enable_at_startup = 1
