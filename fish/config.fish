@@ -18,7 +18,6 @@ set --export LC_TIME "en_US.UTF-8"
 set --export LC_ALL "en_US.UTF-8"
 
 # python virtualenv tool
-set -g VIRTUALFISH_COMPAT_ALIASES
 eval (python -m virtualfish)
 
 if test -d ~/.config/fish/functions/rust.fish
@@ -30,13 +29,6 @@ set --export EDITOR vim
 
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 set --export FZF_DEFAULT_COMMAND 'rg --hidden --files --follow --glob "!.git/*"'
-
-if test -f /usr/local/bin/thefuck
-    eval (thefuck --alias | tr '\n' ';')
-end
-
-alias t "task"
-alias g "geeknote"
 
 set fish_user_paths ~/devel/tools/google-cloud-sdk/bin
 set -x MANPATH ~/devel/tools/google-cloud-sdk/help/man /usr/local/share/man /usr/share/man /opt/X11/share/man
