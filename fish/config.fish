@@ -18,7 +18,7 @@ set --export LC_TIME "en_US.UTF-8"
 set --export LC_ALL "en_US.UTF-8"
 
 # python virtualenv tool
-eval (python -m virtualfish)
+python -m virtualfish | source
 
 if test -d ~/.config/fish/functions/rust.fish
     . ~/.config/fish/functions/rust.fish/rustc.fish
