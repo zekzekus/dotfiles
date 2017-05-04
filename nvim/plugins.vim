@@ -18,8 +18,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'benmills/vimux'
-Plug 'AndrewRadev/linediff.vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -29,8 +27,6 @@ Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 Plug 'godlygeek/tabular'
-Plug 'Ron89/thesaurus_query.vim'
-Plug 'sjl/gundo.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -46,8 +42,6 @@ Plug 'yuttie/comfortable-motion.vim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
-Plug 'zekzekus/vim-colors-off'
-Plug 'robertmeta/nofrils'
 Plug 'sjl/badwolf'
 
 " python
@@ -61,7 +55,6 @@ Plug 'tpope/vim-jdaddy'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
-Plug 'mhinz/vim-startify'
 
 " haskell
 Plug 'dag/vim2hs', {'for': 'haskell'}
