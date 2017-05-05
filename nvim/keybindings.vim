@@ -95,6 +95,7 @@ function! s:general_bindings()
   nnoremap <silent> <leader>Y :FFTags<cr>
 
   " quit
+  nnoremap <silent><leader>qq :SmartClose<cr>
   nnoremap <silent><leader>Q :SmartClose<cr>
   vnoremap <silent><leader>Q :SmartClose<cr>
 
