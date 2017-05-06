@@ -42,6 +42,7 @@ Plug 'yuttie/comfortable-motion.vim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
+Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 
 " python
