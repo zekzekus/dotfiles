@@ -215,6 +215,7 @@ augroup neomake_au
   autocmd BufWritePost *.html Neomake
   autocmd BufWritePost *.js Neomake
 augroup END
+let g:neomake_go_enabled_makers = ['go']
 
 " snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger='<C-j>'
