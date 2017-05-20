@@ -95,6 +95,12 @@ set suffixesadd+=.hs
 set suffixesadd+=.md
 set suffixesadd+=.txt
 set suffixesadd+=.todo
+set suffixesadd+=.yml
+set suffixesadd+=.yaml
+set suffixesadd+=.toml
+set suffixesadd+=.cabal
+set suffixesadd+=.md
+set suffixesadd+=.rst
 
 " Removing scrollbars
 if has('gui_running')
@@ -104,7 +110,7 @@ if has('gui_running')
   set guioptions-=L
   set guioptions+=a
   set guioptions-=m
-  set guifont=Fira\ Code:h12
+  set guifont=Fira\ Code:h14
 endif
 
 " Special Settings for Consoles
@@ -115,10 +121,10 @@ endif
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
   set background=light
-  colorscheme goodwolf
+  colorscheme gruvbox
 else
   set background=dark
-  colorscheme goodwolf
+  colorscheme gruvbox
 endif
 
 syntax sync minlines=256
