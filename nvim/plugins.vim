@@ -26,14 +26,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
-Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

@@ -3,17 +3,6 @@ nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\,"
 
-function! s:unite_bindings()
-  nmap <buffer> Q <plug>(unite_exit)
-  nmap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-r>   <Plug>(unite_redraw)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-endfunction
-
 function! s:python_bindings()
   nnoremap <silent> <leader>md :call jedi#goto()<cr>
   nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
@@ -53,7 +42,6 @@ function! s:general_bindings()
   nmap <leader>fs <ESC>:w<cr>
   nnoremap <silent> <leader>ff :FFFiles<cr>
   nnoremap <silent> <leader>fg :FFGFiles?<cr>
-  nnoremap <silent> <leader>fj :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -86,8 +74,6 @@ function! s:general_bindings()
   " Select just pasted text.
   nnoremap <leader>V V`]
 
-  " unite bindings
-  nnoremap <silent> <leader>r :<C-u>Unite -buffer-name=registers register<cr>
   nnoremap <silent> <leader>l :FFBLines<cr>
   nnoremap <silent> <leader>L :FFLines<cr>
   nnoremap <leader>/ :FFAg<space>
@@ -139,7 +125,6 @@ augroup bindings
   autocmd VimEnter * call s:general_bindings()
   autocmd FileType haskell,lhaskell call s:haskell_bindings()
   autocmd FileType python,python.django call s:python_bindings()
-  autocmd FileType unite call s:unite_bindings()
   autocmd FileType go call s:go_bindings()
   autocmd FileType rust call s:rust_bindings()
 augroup END

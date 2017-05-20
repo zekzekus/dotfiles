@@ -201,6 +201,8 @@ set statusline+=/
 set statusline+=%L]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
+set grepprg=rg\ --vimgrep
+
 " ========== Plugin Settings =========="
 
 " neomake syntax checker settings
@@ -222,27 +224,10 @@ let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-" unite
 let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_selecta'])
-
-call unite#custom#profile('default', 'context', {
-      \ 'start_insert': 1,
-      \ 'short_source_names': 1,
-      \ 'direction': 'botright',
-      \ 'prompt': '> ',
-      \ 'cursor_line_highlight': 'TabLine',
-      \ 'winheight': 10,
-      \ })
-
-let g:unite_data_directory=s:get_cache_dir('unite')
-let g:unite_source_history_yank_enable=1
-
-let g:junkfile#directory=s:get_cache_dir('junk')
 
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
@@ -331,9 +316,9 @@ endif
 let g:fzf_command_prefix = 'FF'
 let g:fzf_layout = { 'down': '~20%' }
 
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
-
+runtime autoload/grepper.vim
+let g:grepper.rg.grepprg .= ' --smart-case'
+        
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
