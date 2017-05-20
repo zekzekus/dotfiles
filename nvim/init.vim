@@ -201,7 +201,7 @@ set statusline+=/
 set statusline+=%L]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
-set grepprg=rg\ --vimgrep
+set grepprg=rg\ --vimgrep\ --smart-case
 
 " ========== Plugin Settings =========="
 
