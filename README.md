@@ -61,14 +61,14 @@ The installation instructions are coming soon... (WIP)
 
 * For each editor execute `:PlugInstall` command.
 
-## Plugins List
+### Plugins List
 
 Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins and [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
 keybindings.
 
 ## TMUX Configuration
 
-#### Mac OS X
+### Mac OS X
 
 - First install Homebrew
 
@@ -97,7 +97,7 @@ keybindings.
 
 - ##### Et voilà!
 
-#### Debian/Ubuntu
+### Debian/Ubuntu
 
 - Install the `xsel` and `tmux` packages
 
@@ -127,10 +127,6 @@ keybindings.
 - ##### Et voilà!
 
 ## ZSH Configuration
-
-- Install zsh `brew install zsh` or `sudo apt-get install zsh` based on your
-  platform.
-- Install [Oh My Zsh!](https://github.com/robbyrussell/oh-my-zsh).
 
 ## FISH Configuration
 
