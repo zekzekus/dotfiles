@@ -40,13 +40,15 @@ function! s:general_bindings()
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
-  nnoremap <silent> <leader>ff :FFFiles<cr>
-  nnoremap <silent> <leader>fg :FFGFiles?<cr>
+  nnoremap <leader>ff :find 
+  nnoremap <leader>fF :FFFiles<cr>
+  nnoremap <leader>fg :FFGFiles?<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
   " buffers
-  nnoremap <silent> <leader>bb :FFBuffers<cr>
+  nnoremap <leader>bb :b 
+  nnoremap <leader>bB :FFBuffers<cr>
   nnoremap <leader><tab> :b#<CR>
 
   " search
