@@ -185,11 +185,9 @@ hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 
 -- Application shortcuts
 hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Google Chrome") end)
-hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Hipchat") end)
+hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Slack") end)
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
 hs.hotkey.bind(hyper, "e", function() hs.application.launchOrFocus("Evernote") end)
-hs.hotkey.bind(hyper, "x", function() hs.application.launchOrFocus("Xcode") end)
-hs.hotkey.bind(hyper, "a", function() hs.application.launchOrFocus("Android Studio") end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
 
