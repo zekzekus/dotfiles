@@ -323,7 +323,7 @@ endif
 let g:fzf_command_prefix = 'FF'
 let g:fzf_layout = { 'down': '~20%' }
 
-runtime autoload/grepper.vim
+runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
         
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
