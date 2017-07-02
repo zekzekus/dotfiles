@@ -300,6 +300,7 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
 if has('nvim')
+  set inccommand=nosplit
   let g:python_host_skip_check=1
   let g:python3_host_skip_check=1
   let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
