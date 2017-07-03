@@ -8,6 +8,7 @@ if has('nvim')
   Plug 'zchee/deoplete-go', {'for': 'go'}
   Plug 'Shougo/neco-vim', {'for': 'vim'}
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+  Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
@@ -59,7 +60,6 @@ Plug 'dag/vim2hs', {'for': 'haskell'}
 Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
 Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 Plug 'Twinside/vim-hoogle', {'for': 'haskell'}
-Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
