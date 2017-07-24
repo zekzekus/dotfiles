@@ -37,3 +37,5 @@ set -x MANPATH ~/devel/tools/google-cloud-sdk/help/man /usr/local/share/man /usr
 
 alias mux='tmuxinator'
 set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
+
+status --is-interactive; and source (nodenv init -|psub)
