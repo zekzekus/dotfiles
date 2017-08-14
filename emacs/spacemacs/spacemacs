@@ -59,6 +59,7 @@ values."
      clojure
      common-lisp
      javascript
+     react
 
      ;; markups
      html
