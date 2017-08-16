@@ -27,6 +27,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
+Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
