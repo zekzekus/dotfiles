@@ -49,7 +49,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript
-Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
 " misc
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
@@ -68,12 +68,5 @@ Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
-
-" clojure
-Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'tpope/vim-salve', {'for': 'clojure'}
-Plug 'tpope/vim-dispatch', {'for': 'clojure'}
-Plug 'guns/vim-sexp', {'for': 'clojure'}
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
