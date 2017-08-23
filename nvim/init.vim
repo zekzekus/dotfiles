@@ -137,20 +137,6 @@ augroup file_operation
   autocmd VimResized * :wincmd =
 augroup END
 
-" Make Sure that Vim returns to the same line when we reopen a file"
-function! FindLatestPosition()
-  if &filetype =~? 'gitcommit'
-    return
-  endif
-  if line("'\"") > 0 && line("'\"") <= line('$') |
-    execute 'normal! g`"zvzz' |
-  endif
-endfunction
-augroup line_return
-  autocmd!
-  autocmd BufReadPost * call FindLatestPosition()
-augroup END
-
 augroup programming_au
   autocmd!
   autocmd FileType ruby,vim,jade,stylus setlocal ts=2 sts=2 sw=2

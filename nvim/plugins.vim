@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 Plug 'godlygeek/tabular'
+Plug 'farmergreg/vim-lastplace'
 
 " navigating
 Plug 'tpope/vim-vinegar'
