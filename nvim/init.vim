@@ -312,6 +312,41 @@ let g:fzf_layout = { 'down': '~20%' }
 
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
+
+" ----- neovimhaskell/haskell-vim -----
+" Align 'then' two spaces after 'if'
+let g:haskell_indent_if = 2
+" Indent 'where' block two spaces under previous body
+let g:haskell_indent_before_where = 2
+" Allow a second case indent style (see haskell-vim README)
+let g:haskell_indent_case_alternative = 1
+" Only next under 'let' if there's an equals sign
+let g:haskell_indent_let_no_in = 0
+
+" ----- hindent & stylish-haskell -----
+" Indenting on save is too aggressive for me
+let g:hindent_on_save = 0
+
+" Helper function, called below with mappings
+function! HaskellFormat(which) abort
+  if a:which ==# 'hindent' || a:which ==# 'both'
+    :Hindent
+  endif
+  if a:which ==# 'stylish' || a:which ==# 'both'
+    silent! exe 'undojoin'
+    silent! exe 'keepjumps %!stylish-haskell'
+  endif
+endfunction
+
+" ale the async linter
+if !exists('g:ale_linters')
+  let g:ale_linters = {}
+endif
+let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
+let g:ale_linters.rust = ['rls']
+
+" Use ALE (works even when not using Intero)
+let g:intero_use_neomake = 0
         
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
