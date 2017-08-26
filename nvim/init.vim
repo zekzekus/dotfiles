@@ -337,16 +337,6 @@ function! HaskellFormat(which) abort
     silent! exe 'keepjumps %!stylish-haskell'
   endif
 endfunction
-
-" ale the async linter
-if !exists('g:ale_linters')
-  let g:ale_linters = {}
-endif
-let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
-let g:ale_linters.rust = ['rls']
-
-" Use ALE (works even when not using Intero)
-let g:intero_use_neomake = 0
         
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
