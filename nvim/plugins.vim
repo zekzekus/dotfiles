@@ -29,6 +29,7 @@ Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 Plug 'godlygeek/tabular'
 Plug 'farmergreg/vim-lastplace'
+Plug 'Shougo/junkfile.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -36,8 +37,7 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 Plug 'yuttie/comfortable-motion.vim'
 
 " vim interface

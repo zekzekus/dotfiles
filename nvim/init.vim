@@ -337,6 +337,18 @@ function! HaskellFormat(which) abort
     silent! exe 'keepjumps %!stylish-haskell'
   endif
 endfunction
+
+" Ripgrep for finding files
+call denite#custom#var('file_rec', 'command',
+	\ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
+
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
         
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim

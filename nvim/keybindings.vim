@@ -59,13 +59,13 @@ function! s:general_bindings()
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
-  nnoremap <silent> <leader>ff :FFFiles<cr>
-  nnoremap <silent> <leader>fg :FFGFiles?<cr>
+  nnoremap <silent> <leader>ff :<c-u>Denite -reversed file_rec<cr>
+  nnoremap <silent> <leader>fj :<c-u>Denite junkfile<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
   " buffers
-  nnoremap <silent> <leader>bb :FFBuffers<cr>
+  nnoremap <silent> <leader>bb :<c-u>Denite buffer<cr>
   nnoremap <leader><tab> :b#<CR>
 
   " search
@@ -93,11 +93,9 @@ function! s:general_bindings()
   " Select just pasted text.
   nnoremap <leader>V V`]
 
-  nnoremap <silent> <leader>l :FFBLines<cr>
-  nnoremap <silent> <leader>L :FFLines<cr>
-  nnoremap <leader>/ :FFAg<space>
-  nnoremap <silent> <leader>y :FFBTags<cr>
-  nnoremap <silent> <leader>Y :FFTags<cr>
+  nnoremap <silent> <leader>l :<c-u>Denite lines<cr>
+  nnoremap <silent> <leader>/ :<c-u>Denite grep<cr>
+  nnoremap <silent> <leader>y :<c-u>Denite outline<cr>
 
   " quit
   nnoremap <silent><leader>qq :SmartClose<cr>
@@ -136,6 +134,19 @@ function! s:general_bindings()
 
   vnoremap <expr> cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
   vnoremap <expr> cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
+
+  call denite#custom#map(
+	      \ 'insert',
+	      \ '<C-j>',
+	      \ '<denite:move_to_next_line>',
+	      \ 'noremap'
+	      \)
+	call denite#custom#map(
+	      \ 'insert',
+	      \ '<C-k>',
+	      \ '<denite:move_to_previous_line>',
+	      \ 'noremap'
+	      \)
 
 endfunction
 
