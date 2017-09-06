@@ -16,6 +16,8 @@ set noshowmode
 set showcmd
 set hidden
 set visualbell
+set splitbelow
+set splitright
 
 set ttyfast
 
@@ -103,22 +105,6 @@ set suffixesadd+=.cabal
 set suffixesadd+=.md
 set suffixesadd+=.rst
 
-" Removing scrollbars
-if has('gui_running')
-  set guitablabel=%-0.12t%M
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=L
-  set guioptions+=a
-  set guioptions-=m
-  set guifont=Fira\ Code:h14
-endif
-
-" Special Settings for Consoles
-" if !has("gui_running")
-"   set t_Co=256
-" endif
-
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
   set background=light
@@ -195,6 +181,20 @@ set statusline+=%L]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --smart-case
+
+if has('nvim')
+  set inccommand=nosplit
+  set clipboard+=unnamedplus
+
+  augroup terminal_au
+    autocmd!
+    autocmd TermOpen * setlocal nonumber
+  augroup END
+else
+  set clipboard+=unnamed
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 " ========== Plugin Settings =========="
 
@@ -286,25 +286,29 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
 if has('nvim')
-  set inccommand=nosplit
   let g:python_host_skip_check=1
   let g:python3_host_skip_check=1
   let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
-  set clipboard+=unnamedplus
-
   let g:jedi#auto_initialization = 0
   let g:jedi#completions_enabled = 0
   let g:deoplete#enable_at_startup = 1
+
+  " Ripgrep for finding files
+  call denite#custom#var('file_rec', 'command',
+    \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
+
+  " Ripgrep command on grep source
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 else
   let g:jedi#auto_initialization = 1
   let g:jedi#popup_on_dot = 0
-
-  set clipboard+=unnamed
-
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
 let g:fzf_command_prefix = 'FF'
@@ -338,18 +342,6 @@ function! HaskellFormat(which) abort
   endif
 endfunction
 
-" Ripgrep for finding files
-call denite#custom#var('file_rec', 'command',
-	\ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
-
-" Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-        
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif

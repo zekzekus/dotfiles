@@ -9,6 +9,7 @@ if has('nvim')
   Plug 'Shougo/neco-vim', {'for': 'vim'}
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
+  Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
@@ -37,7 +38,6 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 Plug 'yuttie/comfortable-motion.vim'
 
 " vim interface
