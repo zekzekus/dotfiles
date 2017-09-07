@@ -157,6 +157,9 @@ function! s:general_bindings()
           \)
   endif
 
+  nnoremap <leader>z <c-w><Bar><c-w>_<cr>
+  nnoremap <leader>= <c-w>=
+
 endfunction
 
 augroup bindings
