@@ -39,6 +39,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'lambdalisue/lista.nvim'
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
@@ -56,6 +57,7 @@ Plug 'tpope/vim-jdaddy', {'for': 'json'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
+Plug 'lambdalisue/vim-rplugin'
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
