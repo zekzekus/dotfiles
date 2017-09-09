@@ -182,20 +182,13 @@ set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --smart-case
 
-if has('nvim')
-  set inccommand=nosplit
-  set clipboard+=unnamedplus
+set inccommand=nosplit
+set clipboard+=unnamedplus
 
-  augroup terminal_au
-    autocmd!
-    autocmd TermOpen * setlocal nonumber
-  augroup END
-else
-  set clipboard+=unnamed
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
+augroup terminal_au
+  autocmd!
+  autocmd TermOpen * setlocal nonumber
+augroup END
 " ========== Plugin Settings =========="
 
 " neomake syntax checker settings
@@ -285,19 +278,14 @@ let g:smartclose_set_default_mapping = 0
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
-if has('nvim')
-  let g:python_host_skip_check=1
-  let g:python3_host_skip_check=1
-  let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+let g:python_host_skip_check=1
+let g:python3_host_skip_check=1
+let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
-  let g:jedi#auto_initialization = 0
-  let g:jedi#completions_enabled = 0
-  let g:deoplete#enable_at_startup = 1
-else
-  let g:jedi#auto_initialization = 1
-  let g:jedi#popup_on_dot = 0
-endif
+let g:jedi#auto_initialization = 0
+let g:jedi#completions_enabled = 0
+let g:deoplete#enable_at_startup = 1
 
 " Ripgrep for finding files
 call denite#custom#var('file_rec', 'command',
