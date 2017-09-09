@@ -294,29 +294,26 @@ if has('nvim')
   let g:jedi#auto_initialization = 0
   let g:jedi#completions_enabled = 0
   let g:deoplete#enable_at_startup = 1
-
-  " Ripgrep for finding files
-  call denite#custom#var('file_rec', 'command',
-    \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
-
-  " Ripgrep command on grep source
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
-
-  call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
-  call denite#custom#option('_', 'highlight_matched_range', 'None')
-  call denite#custom#option('_', 'highlight_matched_char', 'None')
 else
   let g:jedi#auto_initialization = 1
   let g:jedi#popup_on_dot = 0
 endif
 
-let g:fzf_command_prefix = 'FF'
-let g:fzf_layout = { 'down': '~20%' }
+" Ripgrep for finding files
+call denite#custom#var('file_rec', 'command',
+  \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
+
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
+call denite#custom#option('_', 'highlight_matched_range', 'None')
+call denite#custom#option('_', 'highlight_matched_char', 'None')
 
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'

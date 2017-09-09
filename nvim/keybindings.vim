@@ -136,27 +136,25 @@ function! s:general_bindings()
   vnoremap <expr> cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
   vnoremap <expr> cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
-  if has('nvim')
-    call denite#custom#map(
-          \ 'insert',
-          \ '<C-j>',
-          \ '<denite:move_to_next_line>',
-          \ 'noremap'
-          \)
-    call denite#custom#map(
-          \ 'insert',
-          \ '<C-k>',
-          \ '<denite:move_to_previous_line>',
-          \ 'noremap'
-          \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-j>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-k>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
 
-    call denite#custom#map(
-          \ 'insert',
-          \ '<C-v>',
-          \ '<denite:do_action:vsplitswitch>',
-          \ 'noremap'
-          \)
-  endif
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-v>',
+        \ '<denite:do_action:vsplitswitch>',
+        \ 'noremap'
+        \)
 
   nnoremap <leader>z <c-w><Bar><c-w>_<cr>
   nnoremap <leader>= <c-w>=

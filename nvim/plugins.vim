@@ -1,15 +1,17 @@
+function! DoRemote(arg)
+  if has('nvim')
+    UpdateRemotePlugins
+  endif
+endfunction
+
 if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
-  function! DoRemote(arg)
-    UpdateRemotePlugins
-  endfunction
 
   Plug 'zchee/deoplete-jedi', {'for': 'python'}
   Plug 'zchee/deoplete-go', {'for': 'go'}
   Plug 'Shougo/neco-vim', {'for': 'vim'}
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
-  Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
@@ -40,6 +42,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'lambdalisue/lista.nvim'
+Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'lifepillar/vim-solarized8'
@@ -47,6 +50,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 
 " python
+Plug 'jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
