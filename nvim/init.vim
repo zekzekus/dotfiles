@@ -182,6 +182,11 @@ if has('nvim')
     autocmd!
     autocmd TermOpen * setlocal nonumber
   augroup END
+
+  let g:python_host_skip_check=1
+  let g:python3_host_skip_check=1
+  let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
   set ttyfast
   set clipboard+=unnamed
@@ -193,13 +198,6 @@ let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
-
-if has('nvim')
-  let g:python_host_skip_check=1
-  let g:python3_host_skip_check=1
-  let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
-endif
 
 " ========== Plugin Settings =========="
 
