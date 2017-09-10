@@ -82,7 +82,7 @@ set wildignore+=*.class
 set wildignore+=.stack-work
 set wildignore+=**/bower_components/**
 
-set path+=**
+set path=.,**
 
 set directory=~/.nvimtmp
 set undodir=~/.nvimtmp
