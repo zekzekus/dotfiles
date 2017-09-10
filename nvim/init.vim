@@ -127,7 +127,6 @@ augroup general_au
   autocmd FileType html set ft=htmldjango " For SnipMate
 
   autocmd VimResized * :wincmd =
-  autocmd TermOpen * setlocal nonumber
 augroup END
 
 let g:netrw_liststyle=3
@@ -175,18 +174,32 @@ set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --smart-case
 
-set inccommand=nosplit
-set clipboard+=unnamedplus
+if has('nvim')
+  set inccommand=nosplit
+  set clipboard+=unnamedplus
+
+  augroup terminal_au
+    autocmd!
+    autocmd TermOpen * setlocal nonumber
+  augroup END
+else
+  set ttyfast
+  set clipboard+=unnamed
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
   return resolve(expand(s:cache_dir . '/' . a:suffix))
 endfunction
 
-let g:python_host_skip_check=1
-let g:python3_host_skip_check=1
-let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+if has('nvim')
+  let g:python_host_skip_check=1
+  let g:python3_host_skip_check=1
+  let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+endif
 
 " ========== Plugin Settings =========="
 
@@ -273,26 +286,31 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
 " jedi-vim
-let g:jedi#auto_initialization = 0
-let g:jedi#completions_enabled = 0
-let g:deoplete#enable_at_startup = 1
+if has('nvim')
+  let g:jedi#auto_initialization = 0
+  let g:jedi#completions_enabled = 0
+  let g:deoplete#enable_at_startup = 1
 
-" denite
-" Ripgrep for finding files
-call denite#custom#var('file_rec', 'command',
-  \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
+  " denite
+  " Ripgrep for finding files
+  call denite#custom#var('file_rec', 'command',
+    \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
 
-" Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+  " Ripgrep command on grep source
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 
-call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
-call denite#custom#option('_', 'highlight_matched_range', 'None')
-call denite#custom#option('_', 'highlight_matched_char', 'None')
+  call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
+  call denite#custom#option('_', 'highlight_matched_range', 'None')
+  call denite#custom#option('_', 'highlight_matched_char', 'None')
+else
+  let g:jedi#auto_initialization = 1
+  let g:jedi#popup_on_dot = 0
+endif
 
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
