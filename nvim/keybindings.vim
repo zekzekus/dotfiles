@@ -93,7 +93,7 @@ function! s:general_bindings()
   nnoremap <leader>V V`]
 
   nnoremap <silent> <leader>l :<c-u>Lista<cr>
-  nnoremap <silent> <leader>L :<c-u>Denite lines<cr>
+  nnoremap <silent> <leader>L :<c-u>Denite line<cr>
   nnoremap <silent> <leader>/ :<c-u>Denite grep<cr>
   nnoremap <silent> <leader>y :<c-u>Denite outline<cr>
 

@@ -19,8 +19,6 @@ set visualbell
 set splitbelow
 set splitright
 
-set ttyfast
-
 set regexpengine=1
 set synmaxcol=300
 set nocursorcolumn
@@ -41,7 +39,6 @@ set hlsearch
 
 " Make Vim to handle long lines nicely.
 set wrap
-set textwidth=79
 set colorcolumn=79
 
 set completeopt=menu,noinsert,noselect
