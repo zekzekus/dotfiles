@@ -39,7 +39,6 @@ Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 
 " python
-Plug 'jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'zchee/deoplete-jedi', {'for': 'python'}
@@ -51,7 +50,6 @@ Plug 'tpope/vim-jdaddy', {'for': 'json'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'sjl/vitality.vim'
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
-Plug 'lambdalisue/vim-rplugin'
 
 " haskell
 Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}

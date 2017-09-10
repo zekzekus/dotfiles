@@ -115,15 +115,8 @@ else
 endif
 
 syntax sync minlines=256
-highlight clear VertSplit
 
-" make vim to autoresize its windows after resize
-augroup file_operation
-  autocmd!
-  autocmd VimResized * :wincmd =
-augroup END
-
-augroup programming_au
+augroup general_au
   autocmd!
   autocmd FileType ruby,vim,jade,stylus setlocal ts=2 sts=2 sw=2
   autocmd FileType javascript,lua setlocal ts=2 sts=2 sw=2
@@ -135,6 +128,9 @@ augroup programming_au
   autocmd BufEnter volofile setf javascript
   " autocmd FileType python set ft=python.django " For SnipMate
   autocmd FileType html set ft=htmldjango " For SnipMate
+
+  autocmd VimResized * :wincmd =
+  autocmd TermOpen * setlocal nonumber
 augroup END
 
 let g:netrw_liststyle=3
@@ -185,10 +181,16 @@ set grepprg=rg\ --vimgrep\ --smart-case
 set inccommand=nosplit
 set clipboard+=unnamedplus
 
-augroup terminal_au
-  autocmd!
-  autocmd TermOpen * setlocal nonumber
-augroup END
+let s:cache_dir = '~/.nvimtmp/cache'
+function! s:get_cache_dir(suffix)
+  return resolve(expand(s:cache_dir . '/' . a:suffix))
+endfunction
+
+let g:python_host_skip_check=1
+let g:python3_host_skip_check=1
+let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+
 " ========== Plugin Settings =========="
 
 " neomake syntax checker settings
@@ -210,17 +212,12 @@ let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-let s:cache_dir = '~/.nvimtmp/cache'
-function! s:get_cache_dir(suffix)
-  return resolve(expand(s:cache_dir . '/' . a:suffix))
-endfunction
-
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 
-augroup omni
+augroup omni_au
   autocmd!
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -229,6 +226,7 @@ augroup omni
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
+" tagbar
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds' : [
@@ -242,7 +240,6 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
-
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -278,15 +275,12 @@ let g:smartclose_set_default_mapping = 0
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
-let g:python_host_skip_check=1
-let g:python3_host_skip_check=1
-let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
-
+" jedi-vim
 let g:jedi#auto_initialization = 0
 let g:jedi#completions_enabled = 0
 let g:deoplete#enable_at_startup = 1
 
+" denite
 " Ripgrep for finding files
 call denite#custom#var('file_rec', 'command',
   \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
