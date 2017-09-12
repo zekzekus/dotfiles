@@ -4,7 +4,6 @@ function! DoRemote(arg)
   endif
 endfunction
 
-call plug#begin('~/.config/nvim/plugged')
 if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
 
