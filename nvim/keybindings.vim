@@ -58,13 +58,13 @@ function! s:general_bindings()
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
-  nnoremap <silent> <leader>ff :<c-u>Denite file_rec<cr>
-  nnoremap <silent> <leader>fj :<c-u>Denite junkfile<cr>
+  nnoremap <silent> <leader>ff :<c-u>Denite file_rec -winheight=`30*winheight(0)/100`<cr>
+  nnoremap <silent> <leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
   " buffers
-  nnoremap <silent> <leader>bb :<c-u>Denite buffer<cr>
+  nnoremap <silent> <leader>bb :<c-u>Denite buffer -winheight=`30*winheight(0)/100`<cr>
   nnoremap <leader><tab> :b#<CR>
 
   " search
@@ -72,8 +72,8 @@ function! s:general_bindings()
   vnoremap / /\v
   nnoremap n nzzzv
   nnoremap N Nzzzv
-  nnoremap <leader>ss :Grepper -tool rg -quickfix -open -switch -nojump -prompt<cr>
-  nnoremap <leader>sS :Grepper -side -tool rg -prompt<cr>
+  nnoremap <leader>ss :Grepper -tool ag -quickfix -open -switch -nojump -prompt<cr>
+  nnoremap <leader>sS :Grepper -side -tool ag -prompt<cr>
   nnoremap <silent><BS> :noh<cr>
   nmap sg  <plug>(GrepperOperator)
   xmap sg  <plug>(GrepperOperator)
@@ -94,7 +94,7 @@ function! s:general_bindings()
 
   nnoremap <silent> <leader>l :<c-u>Lista<cr>
   nnoremap <silent> <leader>L :<c-u>Denite line<cr>
-  nnoremap <silent> <leader>/ :<c-u>Denite grep<cr>
+  nnoremap <silent> <leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
   nnoremap <silent> <leader>y :<c-u>Denite outline<cr>
 
   " quit

@@ -172,7 +172,7 @@ set statusline+=/
 set statusline+=%L]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
-set grepprg=rg\ --vimgrep\ --smart-case
+set grepprg=ag\ --vimgrep\ --smart-case
 
 if has('nvim')
   set inccommand=nosplit
@@ -292,15 +292,15 @@ if has('nvim')
   " denite
   " Ripgrep for finding files
   call denite#custom#var('file_rec', 'command',
-    \ ['rg', '--hidden', '--follow', '--files', '--glob', '!.git', ''])
+    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-  " Ripgrep command on grep source
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
+	" Ag command on grep source
+	call denite#custom#var('grep', 'command', ['ag'])
+	call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', [])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
 
   call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
   call denite#custom#option('_', 'highlight_matched_range', 'None')
@@ -311,7 +311,6 @@ else
 endif
 
 runtime plugin/grepper.vim
-let g:grepper.rg.grepprg .= ' --smart-case'
 
 " ----- neovimhaskell/haskell-vim -----
 let g:haskell_indent_if = 2
