@@ -8,10 +8,6 @@ if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
 
   Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
-  Plug 'zchee/deoplete-jedi', {'for': 'python'}
-  Plug 'zchee/deoplete-go', {'for': 'go'}
-  Plug 'Shougo/neco-vim', {'for': 'vim'}
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
@@ -30,11 +26,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'ervandew/supertab'
 Plug 'szw/vim-smartclose'
 Plug 'godlygeek/tabular'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
+Plug 'lifepillar/vim-mucomplete'
 
 " navigating
 Plug 'tpope/vim-vinegar'

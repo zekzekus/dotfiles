@@ -41,7 +41,7 @@ set hlsearch
 set wrap
 set colorcolumn=79
 
-set completeopt=menu,noinsert,noselect
+set completeopt=menuone,noinsert,noselect
 
 " To  show special characters in Vim
 set showbreak=↪\ 
@@ -216,23 +216,9 @@ augroup END
 let g:neomake_go_enabled_makers = ['go']
 
 " snipmate trigger key modified because conflicts with youcompleteme
-let g:UltiSnipsExpandTrigger='<C-j>'
+let g:UltiSnipsExpandTrigger='<C-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-
-" jedi-vim
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures = 0
-
-augroup omni_au
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-augroup END
 
 " tagbar
 let g:tagbar_type_rust = {
@@ -279,16 +265,12 @@ let g:tagbar_type_go = {
 " smartclose
 let g:smartclose_set_default_mapping = 0
 
-" supertab
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-n>'
-
 " jedi-vim
-if has('nvim')
-  let g:jedi#auto_initialization = 0
-  let g:jedi#completions_enabled = 0
-  let g:deoplete#enable_at_startup = 1
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = 0
+let g:jedi#popup_on_dot = 0
 
+if has('nvim')
   " denite
   " Ripgrep for finding files
   call denite#custom#var('file_rec', 'command',
@@ -305,9 +287,6 @@ if has('nvim')
   call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
   call denite#custom#option('_', 'highlight_matched_range', 'None')
   call denite#custom#option('_', 'highlight_matched_char', 'None')
-else
-  let g:jedi#auto_initialization = 1
-  let g:jedi#popup_on_dot = 0
 endif
 
 runtime plugin/grepper.vim
@@ -331,6 +310,12 @@ function! HaskellFormat(which) abort
     silent! exe 'keepjumps %!stylish-haskell'
   endif
 endfunction
+
+" mucomplete
+let g:mucomplete#chains = {
+      \ 'default' : ['path', 'omni', 'keyn', 'ulti'],
+      \ 'vim'     : ['path', 'cmd', 'keyn']
+      \ }
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
