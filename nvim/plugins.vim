@@ -55,10 +55,8 @@ Plug 'diepm/vim-rest-console', {'for': 'rest'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-Plug 'alx741/vim-hindent', {'for': 'haskell'}
 Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
 Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
-Plug 'Twinside/vim-hoogle', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}

@@ -297,20 +297,6 @@ let g:haskell_indent_before_where = 2
 let g:haskell_indent_case_alternative = 1
 let g:haskell_indent_let_no_in = 0
 
-" ----- hindent & stylish-haskell -----
-let g:hindent_on_save = 0
-
-" Helper function, called below with mappings
-function! HaskellFormat(which) abort
-  if a:which ==# 'hindent' || a:which ==# 'both'
-    :Hindent
-  endif
-  if a:which ==# 'stylish' || a:which ==# 'both'
-    silent! exe 'undojoin'
-    silent! exe 'keepjumps %!stylish-haskell'
-  endif
-endfunction
-
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
