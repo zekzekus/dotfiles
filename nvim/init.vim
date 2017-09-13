@@ -311,12 +311,6 @@ function! HaskellFormat(which) abort
   endif
 endfunction
 
-" mucomplete
-let g:mucomplete#chains = {
-      \ 'default' : ['path', 'omni', 'keyn', 'ulti'],
-      \ 'vim'     : ['path', 'cmd', 'keyn']
-      \ }
-
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
