@@ -93,7 +93,7 @@ function! s:general_bindings()
 
   nnoremap <silent> <leader>l :<c-u>Lista<cr>
   nnoremap <silent> <leader>L :<c-u>Denite line<cr>
-  nnoremap <silent> <leader>y :<c-u>Denite outline<cr>
+  nnoremap <silent> <leader>y :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
   " quit
   nnoremap <silent><leader>qq :SmartClose<cr>
