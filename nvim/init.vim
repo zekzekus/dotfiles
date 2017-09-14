@@ -115,6 +115,8 @@ syntax sync minlines=256
 
 augroup general_au
   autocmd!
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
   autocmd VimResized * :wincmd =
 augroup END
 
