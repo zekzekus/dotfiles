@@ -52,6 +52,7 @@ Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
