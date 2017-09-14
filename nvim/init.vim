@@ -115,17 +115,6 @@ syntax sync minlines=256
 
 augroup general_au
   autocmd!
-  autocmd FileType ruby,vim,jade,stylus setlocal ts=2 sts=2 sw=2
-  autocmd FileType javascript,lua setlocal ts=2 sts=2 sw=2
-  autocmd FileType html,htmldjango setlocal nowrap ts=2 sts=2 sw=2
-  autocmd FileType snippet,snippets setlocalocal noexpandtab
-  autocmd BufEnter *.rss,*.atom,*.odrl setf xml
-  autocmd BufEnter *.pkb,*.pks,*.tpb,*.tps,*.prc set ft=plsql
-  autocmd BufEnter plsql setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter volofile setf javascript
-  " autocmd FileType python set ft=python.django " For SnipMate
-  autocmd FileType html set ft=htmldjango " For SnipMate
-
   autocmd VimResized * :wincmd =
 augroup END
 

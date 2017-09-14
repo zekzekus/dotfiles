@@ -72,11 +72,10 @@ function! s:general_bindings()
   vnoremap / /\v
   nnoremap n nzzzv
   nnoremap N Nzzzv
+  nnoremap <silent> <leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
   nnoremap <leader>ss :Grepper -tool ag -quickfix -open -switch -nojump -prompt<cr>
   nnoremap <leader>sS :Grepper -side -tool ag -prompt<cr>
   nnoremap <silent><BS> :noh<cr>
-  nmap sg  <plug>(GrepperOperator)
-  xmap sg  <plug>(GrepperOperator)
   nnoremap <leader>* :Grepper -cword -noprompt<cr>
 
   " for browsing the input history
@@ -94,19 +93,12 @@ function! s:general_bindings()
 
   nnoremap <silent> <leader>l :<c-u>Lista<cr>
   nnoremap <silent> <leader>L :<c-u>Denite line<cr>
-  nnoremap <silent> <leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
   nnoremap <silent> <leader>y :<c-u>Denite outline<cr>
 
   " quit
   nnoremap <silent><leader>qq :SmartClose<cr>
   nnoremap <silent><leader>Q :SmartClose<cr>
   vnoremap <silent><leader>Q :SmartClose<cr>
-
-  " toggle background (actually toggle color scheme)
-  " nnoremap  cob :<c-u>exe "colors" (g:colors_name =~# "dark"
-  "     \ ? substitute(g:colors_name, 'dark', 'light', '')
-  "     \ : substitute(g:colors_name, 'light', 'dark', '')
-  "     \ )<cr>
 
   let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
 
