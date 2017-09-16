@@ -36,7 +36,6 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'lambdalisue/lista.nvim'
 
 " vim interface
 Plug 'morhetz/gruvbox'

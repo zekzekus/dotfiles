@@ -91,8 +91,7 @@ function! s:general_bindings()
   " Select just pasted text.
   nnoremap <leader>V V`]
 
-  nnoremap <silent> <leader>l :<c-u>Lista<cr>
-  nnoremap <silent> <leader>L :<c-u>Denite line<cr>
+  nnoremap <silent> <leader>l :<c-u>Denite line<cr>
   nnoremap <silent> <leader>y :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
   " quit
