@@ -21,7 +21,6 @@ set splitright
 
 set regexpengine=1
 set synmaxcol=300
-set nocursorcolumn
 set cursorline
 
 set number
@@ -38,7 +37,6 @@ set showmatch
 set hlsearch
 
 " Make Vim to handle long lines nicely.
-set wrap
 set colorcolumn=79
 
 set completeopt=menuone,noinsert,noselect
@@ -50,12 +48,6 @@ set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 " enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Set title to window
-set title
-
-" Make pasting done without any indentation break."
-set pastetoggle=<F3>
 
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
@@ -115,6 +107,7 @@ syntax sync minlines=256
 
 augroup general_au
   autocmd!
+  autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
   autocmd VimResized * :wincmd =
