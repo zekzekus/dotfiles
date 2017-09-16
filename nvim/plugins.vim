@@ -29,7 +29,6 @@ Plug 'tpope/vim-surround'
 Plug 'szw/vim-smartclose'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'maralla/completor.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar'
