@@ -207,7 +207,8 @@ augroup END
 let g:neomake_go_enabled_makers = ['go']
 
 " snipmate trigger key modified because conflicts with youcompleteme
-let g:UltiSnipsExpandTrigger='<C-w>'
+let g:UltiSnipsExpandTrigger='<C-j>'
+let g:UltiSnipsListSnippets = '<c-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
