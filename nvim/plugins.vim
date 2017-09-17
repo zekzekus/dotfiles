@@ -29,6 +29,7 @@ Plug 'tpope/vim-surround'
 Plug 'szw/vim-smartclose'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
+Plug 'ervandew/supertab'
 
 " navigating
 Plug 'tpope/vim-vinegar'

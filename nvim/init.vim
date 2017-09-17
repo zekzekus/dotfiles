@@ -257,7 +257,6 @@ let g:jedi#popup_on_dot = 0
 
 if has('nvim')
   " denite
-  " Ripgrep for finding files
   call denite#custom#var('file_rec', 'command',
     \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
@@ -281,6 +280,17 @@ let g:haskell_indent_if = 2
 let g:haskell_indent_before_where = 2
 let g:haskell_indent_case_alternative = 1
 let g:haskell_indent_let_no_in = 0
+
+" supertab configuration
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-n>'
+
+augroup plugins_au
+  autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-n>") |
+    \ endif
+augroup END
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
