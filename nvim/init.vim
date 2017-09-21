@@ -5,13 +5,11 @@ source ~/.config/nvim/plugins.vim
 set modelines=0
 set mouse=a
 
-"TAB settings.
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" More Common Settings.
 set noshowmode
 set showcmd
 set hidden
@@ -30,41 +28,35 @@ set undofile
 set lazyredraw
 set matchtime=3
 
-"Settings for Searching and Moving
 set ignorecase
 set smartcase
 set showmatch
 set hlsearch
 
-" Make Vim to handle long lines nicely.
 set colorcolumn=79
 
 set completeopt=menuone,noinsert,noselect
 
-" To  show special characters in Vim
 set showbreak=↪\ 
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
-" enable folding
 set foldmethod=indent
 set foldlevel=99
 
-" Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"
 
-" Wildmenu completion "
 set wildmode=longest:full,full
 set wildignorecase
-set wildignore+=.hg,.git,.svn " Version Controls"
-set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest "Compiled Object files"
-set wildignore+=*.spl "Compiled speolling world list"
-set wildignore+=*.sw? "Vim swap files"
-set wildignore+=*.DS_Store "OSX SHIT"
-set wildignore+=*.luac "Lua byte code"
-set wildignore+=*.pyc "Python Object codes"
-set wildignore+=*.orig "Merge resolution files"
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
+set wildignore+=*.spl
+set wildignore+=*.sw?
+set wildignore+=*.DS_Store
+set wildignore+=*.luac
+set wildignore+=*.pyc
+set wildignore+=*.orig
 set wildignore+=*.beam
 set wildignore+=build
 set wildignore+=static
@@ -85,14 +77,11 @@ set suffixesadd+=.py
 set suffixesadd+=.rs
 set suffixesadd+=.hs
 set suffixesadd+=.md
-set suffixesadd+=.txt
-set suffixesadd+=.todo
 set suffixesadd+=.yml
 set suffixesadd+=.yaml
 set suffixesadd+=.toml
 set suffixesadd+=.cabal
 set suffixesadd+=.md
-set suffixesadd+=.rst
 
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
