@@ -174,7 +174,6 @@ endfunction
 
 " ========== Plugin Settings =========="
 
-" neomake syntax checker settings
 augroup neomake_au
   autocmd!
   autocmd BufWritePost *.hs Neomake
@@ -188,13 +187,11 @@ augroup neomake_au
 augroup END
 let g:neomake_go_enabled_makers = ['go']
 
-" snipmate trigger key modified because conflicts with youcompleteme
 let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsListSnippets = '<c-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-" tagbar
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds' : [
@@ -236,20 +233,16 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-" smartclose
 let g:smartclose_set_default_mapping = 0
 
-" jedi-vim
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
 
 if has('nvim')
-  " denite
   call denite#custom#var('file_rec', 'command',
     \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-	" Ag command on grep source
 	call denite#custom#var('grep', 'command', ['ag'])
 	call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
 	call denite#custom#var('grep', 'recursive_opts', [])
@@ -264,13 +257,11 @@ endif
 
 runtime plugin/grepper.vim
 
-" ----- neovimhaskell/haskell-vim -----
 let g:haskell_indent_if = 2
 let g:haskell_indent_before_where = 2
 let g:haskell_indent_case_alternative = 1
 let g:haskell_indent_let_no_in = 0
 
-" supertab configuration
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 

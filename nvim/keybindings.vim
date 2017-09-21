@@ -1,4 +1,3 @@
-" Changing Leader Key
 nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\,"
@@ -11,26 +10,21 @@ function! s:python_bindings()
 endfunction
 
 function! s:haskell_bindings()
-  " Process management:
   nnoremap <Leader>mio :InteroOpen<CR>
   nnoremap <Leader>mik :InteroKill<CR>
   nnoremap <Leader>mic :InteroHide<CR>
   nnoremap <Leader>mil :InteroLoadCurrentModule<CR>
 
-  " REPL commands
   nnoremap <Leader>me :InteroEval<CR>
   nnoremap <Leader>mt :InteroGenericType<CR>
   nnoremap <Leader>mT :InteroType<CR>
   nnoremap <Leader>mi :InteroInfo<CR>
   nnoremap <Leader>mI :InteroTypeInsert<CR>
 
-  " Go to definition:
   nnoremap <Leader>md :InteroGoToDef<CR>
 
-  " Highlight uses of identifier:
   nnoremap <Leader>mu :InteroUses<CR>
 
-  " Reload the file in Intero after saving
   augroup haskell_intero
     autocmd!
     autocmd BufWritePost *.hs InteroReload
@@ -94,7 +88,6 @@ function! s:general_bindings()
   nnoremap <silent> <leader>l :<c-u>Denite line<cr>
   nnoremap <silent> <leader>y :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
-  " quit
   nnoremap <silent><leader>qq :SmartClose<cr>
   nnoremap <silent><leader>Q :SmartClose<cr>
   vnoremap <silent><leader>Q :SmartClose<cr>
