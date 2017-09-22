@@ -67,6 +67,7 @@ function! s:general_bindings()
   nnoremap n nzzzv
   nnoremap N Nzzzv
   nnoremap <silent> <leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
+  nnoremap <silent> <leader>. :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
   nnoremap <leader>ss :Grepper -tool ag -quickfix -open -switch -nojump -prompt<cr>
   nnoremap <leader>sS :Grepper -side -tool ag -prompt<cr>
   nnoremap <silent><BS> :noh<cr>
@@ -87,6 +88,7 @@ function! s:general_bindings()
 
   nnoremap <silent> <leader>l :<c-u>Denite line<cr>
   nnoremap <silent> <leader>y :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
+  nnoremap <silent> <leader>r :<c-u>Denite register<cr>
 
   nnoremap <silent><leader>qq :SmartClose<cr>
   nnoremap <silent><leader>Q :SmartClose<cr>

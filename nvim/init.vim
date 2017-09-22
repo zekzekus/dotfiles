@@ -272,6 +272,8 @@ augroup plugins_au
     \ endif
 augroup END
 
+let g:racer_experimental_completer = 1
+
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
