@@ -79,10 +79,6 @@ function! s:general_bindings()
 
   nmap - <Plug>VinegarVerticalSplitUp
 
-  " misc
-  nnoremap <tab> %
-  vnoremap <tab> %
-
   " Select just pasted text.
   nnoremap <leader>V V`]
 
