@@ -137,7 +137,7 @@ set statusline+=%h
 set statusline+=%w
 set statusline+=%q
 set statusline+=%=
-" set statusline+=[%{substitute(getcwd(),expand('~'),'~','g')}]
+set statusline+=[%{substitute(getcwd(),expand('~'),'~','g')}]
 set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
 set statusline+=%y
 set statusline+=[%l
@@ -256,11 +256,6 @@ if has('nvim')
 endif
 
 runtime plugin/grepper.vim
-
-let g:haskell_indent_if = 2
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_case_alternative = 1
-let g:haskell_indent_let_no_in = 0
 
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
