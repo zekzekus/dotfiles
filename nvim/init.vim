@@ -13,15 +13,20 @@ set expandtab
 set noshowmode
 set showcmd
 set hidden
+set visualbell
 set splitbelow
 set splitright
 
+set regexpengine=1
+set synmaxcol=300
 set cursorline
 
 set number
 set norelativenumber
 
 set undofile
+set lazyredraw
+set matchtime=3
 
 set ignorecase
 set smartcase
