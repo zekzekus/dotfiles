@@ -40,7 +40,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " vim interface
 Plug 'morhetz/gruvbox'
-Plug 'sjl/badwolf'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}

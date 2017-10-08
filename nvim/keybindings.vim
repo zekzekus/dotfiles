@@ -1,6 +1,6 @@
 nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
-let g:maplocalleader = "\,"
+let g:maplocalleader = '\,'
 
 function! s:python_bindings()
   nnoremap <silent> <leader>md :call jedi#goto()<cr>
@@ -67,11 +67,11 @@ function! s:general_bindings()
   nnoremap n nzzzv
   nnoremap N Nzzzv
   nnoremap <silent> <leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
-  nnoremap <silent> <leader>. :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
+  nnoremap <silent> <leader>* :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
   nnoremap <leader>ss :Grepper -tool ag -quickfix -open -switch -nojump -prompt<cr>
   nnoremap <leader>sS :Grepper -side -tool ag -prompt<cr>
   nnoremap <silent><BS> :noh<cr>
-  nnoremap <leader>* :Grepper -cword -noprompt<cr>
+  nnoremap <leader>. :Grepper -cword -noprompt<cr>
 
   " for browsing the input history
   cnoremap <c-n> <down>
@@ -132,7 +132,6 @@ function! s:general_bindings()
 
   nnoremap <leader>z <c-w><Bar><c-w>_<cr>
   nnoremap <leader>= <c-w>=
-
 endfunction
 
 augroup bindings
