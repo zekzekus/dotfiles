@@ -259,6 +259,7 @@ runtime plugin/grepper.vim
 
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
+let g:SuperTabCrMapping = 1
 
 augroup plugins_au
   autocmd FileType *
