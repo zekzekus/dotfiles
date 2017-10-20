@@ -9,6 +9,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set noswapfile
 
 set noshowmode
 set showcmd
@@ -267,6 +268,8 @@ let g:racer_experimental_completer = 1
 let g:sexp_enable_insert_mode_mappings = 0
 let g:vlime_leader = ','
 let g:vlime_compiler_policy = {'DEBUG': 3}
+
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
