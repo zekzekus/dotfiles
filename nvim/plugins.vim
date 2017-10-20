@@ -9,6 +9,7 @@ if has('nvim')
 
   Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
+  Plug 'dart-lang/dart-vim-plugin'
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
