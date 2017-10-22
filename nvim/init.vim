@@ -266,6 +266,8 @@ augroup plugins_au
     \ if &omnifunc != '' |
     \   call SuperTabChain(&omnifunc, "<c-n>") |
     \ endif
+
+  autocmd FileType python BracelessEnable +indent
 augroup END
 
 let g:racer_experimental_completer = 1
