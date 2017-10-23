@@ -270,6 +270,7 @@ let g:vlime_leader = ','
 let g:vlime_compiler_policy = {'DEBUG': 3}
 
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype php setlocal ts=2 sw=2 expandtab
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
