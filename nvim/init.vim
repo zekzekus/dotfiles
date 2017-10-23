@@ -270,9 +270,6 @@ augroup plugins_au
   autocmd FileType python BracelessEnable +indent
 augroup END
 
-
-let g:braceless_block_key = 'p'
-
 let g:racer_experimental_completer = 1
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
