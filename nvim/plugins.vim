@@ -37,13 +37,13 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tweekmonster/braceless.vim'
 
 " vim interface
 Plug 'morhetz/gruvbox'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
