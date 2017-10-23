@@ -66,7 +66,10 @@ Plug 'fatih/vim-go', {'for': 'go'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'guns/vim-sexp', {'for': 'clojure'}
-Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
+Plug 'guns/vim-sexp', {'for': ['clojure', 'lisp']}
+Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'lisp']}
+
+" common lisp
+Plug 'l04m33/vlime', {'rtp': 'vim/', 'for': ['clojure', 'lisp']}
 
 call plug#end()
