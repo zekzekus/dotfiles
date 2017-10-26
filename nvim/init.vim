@@ -137,9 +137,9 @@ set statusline+=%h
 set statusline+=%w
 set statusline+=%q
 set statusline+=%=
-set statusline+=[%{substitute(getcwd(),expand('~'),'~','g')}]
-set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
+" set statusline+=[%{substitute(getcwd(),expand('~'),'~','g')}]
 set statusline+=%y
+set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
 set statusline+=[%l
 set statusline+=/
 set statusline+=%L]
@@ -173,7 +173,6 @@ function! s:get_cache_dir(suffix)
 endfunction
 
 " ========== Plugin Settings =========="
-
 augroup neomake_au
   autocmd!
   autocmd BufWritePost *.hs Neomake
