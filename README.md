@@ -10,11 +10,11 @@ The installation instructions are coming soon... (WIP)
   `has('nvim')` conditionals.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
-* Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go`
+* Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go`, `Clojure` and `Common Lisp`
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
-* Local leader is `,`.
+* Local leader is `\`.
 
 ### Installation
 
@@ -22,8 +22,8 @@ The installation instructions are coming soon... (WIP)
 
 * Install `Neovim` and `Vim` (i prefer HEAD for both).
         
-        brew install neovim/neovim/neovim --HEAD
-        brew install vim --with-lua --with-luajit --with-override-system-vi --without-nls --HEAD
+        brew install neovim --HEAD
+        brew install vim --with-luajit --with-override-system-vi --HEAD
 
 * For Neovim it is recommended to use separated virtual python environments for
   editor's own needs (i use Fish shell and virtualfish). For any shell these
