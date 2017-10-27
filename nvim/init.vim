@@ -96,7 +96,7 @@ syntax sync minlines=256
 
 augroup general_au
   autocmd!
-  autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
   autocmd VimResized * :wincmd =
