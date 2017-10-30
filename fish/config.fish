@@ -27,7 +27,7 @@ if test -d ~/.config/fish/functions/rust.fish
     . ~/.config/fish/functions/rust.fish/cargo.fish
 end
 
-set --export EDITOR vim
+set --export EDITOR nvim
 
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 set --export FZF_DEFAULT_COMMAND 'rg --hidden --files --follow --glob "!.git/*"'
