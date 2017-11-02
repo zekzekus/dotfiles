@@ -9,7 +9,7 @@ if has('nvim')
 
   Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
-  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
@@ -45,6 +45,7 @@ Plug 'morhetz/gruvbox'
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'nvie/vim-flake8', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
