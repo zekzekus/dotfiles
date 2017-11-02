@@ -45,7 +45,6 @@ Plug 'morhetz/gruvbox'
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'nvie/vim-flake8', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
