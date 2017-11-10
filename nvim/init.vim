@@ -173,17 +173,12 @@ function! s:get_cache_dir(suffix)
 endfunction
 
 " ========== Plugin Settings =========="
-augroup neomake_au
-  autocmd!
-  autocmd BufWritePost *.hs Neomake
-  autocmd BufWritePost *.py Neomake
-  autocmd BufWritePost *.rs Neomake
-  autocmd BufWritePost *.go Neomake
-  autocmd BufWritePost *.vim Neomake
-  autocmd BufWritePost *.rb Neomake
-  autocmd BufWritePost *.html Neomake
-  autocmd BufWritePost *.js Neomake
-augroup END
+call neomake#configure#automake({
+\ 'TextChanged': {},
+\ 'InsertLeave': {},
+\ 'BufWritePost': {'delay': 0},
+\ 'BufWinEnter': {},
+\ }, 500)
 let g:neomake_go_enabled_makers = ['go']
 
 let g:UltiSnipsExpandTrigger='<C-j>'
