@@ -265,8 +265,6 @@ augroup END
 let g:racer_experimental_completer = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
-let g:vlime_leader = ','
-let g:vlime_compiler_policy = {'DEBUG': 3}
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim

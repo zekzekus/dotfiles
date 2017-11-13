@@ -65,10 +65,8 @@ Plug 'racer-rust/vim-racer', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go'}
 
 " clojure
-" common lisp
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'guns/vim-sexp', {'for': ['clojure', 'lisp']}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'lisp']}
-Plug 'l04m33/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 
 call plug#end()
