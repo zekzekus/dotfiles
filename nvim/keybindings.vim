@@ -63,10 +63,10 @@ function! s:general_bindings()
   " search
   nnoremap n nzzzv
   nnoremap N Nzzzv
-  nnoremap <leader>ss :Grepper -tool ag -quickfix -open -switch -nojump -prompt<cr>
-  nnoremap <leader>sS :Grepper -side -tool ag -prompt<cr>
+  nnoremap <leader>ss :Grepper -tool rg -quickfix -open -switch -nojump -prompt<cr>
+  nnoremap <leader>sS :Grepper -side -tool rg -prompt<cr>
   nnoremap <silent><BS> :noh<cr>
-  nnoremap <leader>* :Grepper -cword -noprompt<cr>
+  nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 
   " for browsing the input history
   cnoremap <c-n> <down>
