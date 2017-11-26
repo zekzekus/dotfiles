@@ -62,8 +62,6 @@ function! s:general_bindings()
   nnoremap <leader><tab> :b#<CR>
 
   " search
-  nnoremap / /\v
-  vnoremap / /\v
   nnoremap n nzzzv
   nnoremap N Nzzzv
   nnoremap <silent> <leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>

@@ -32,6 +32,7 @@ set ignorecase
 set smartcase
 set showmatch
 set hlsearch
+set incsearch
 
 set colorcolumn=79
 
@@ -100,6 +101,7 @@ augroup general_au
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
   autocmd VimResized * :wincmd =
+
 augroup END
 
 let g:netrw_liststyle=3
