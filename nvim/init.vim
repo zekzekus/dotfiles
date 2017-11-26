@@ -147,7 +147,7 @@ set statusline+=/
 set statusline+=%L]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
-set grepprg=ag\ --vimgrep\ --smart-case
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
 if has('nvim')
   set inccommand=nosplit
