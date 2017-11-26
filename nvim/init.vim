@@ -235,22 +235,6 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
 
-if has('nvim')
-  call denite#custom#var('file_rec', 'command',
-    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-	call denite#custom#var('grep', 'command', ['ag'])
-	call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-	call denite#custom#var('grep', 'recursive_opts', [])
-	call denite#custom#var('grep', 'pattern_opt', [])
-	call denite#custom#var('grep', 'separator', ['--'])
-	call denite#custom#var('grep', 'final_opts', [])
-
-  call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
-  call denite#custom#option('_', 'highlight_matched_range', 'None')
-  call denite#custom#option('_', 'highlight_matched_char', 'None')
-endif
-
 runtime plugin/grepper.vim
 
 let g:SuperTabDefaultCompletionType = 'context'
@@ -267,6 +251,10 @@ augroup END
 let g:racer_experimental_completer = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
+
+let g:ctrlp_user_command = 'rg --files %s'
+let g:ctrlp_switch_buffer = 'et'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:10,max:10,results:10'
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim

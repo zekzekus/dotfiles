@@ -7,7 +7,6 @@ endfunction
 if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
 
-  Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
@@ -32,6 +31,7 @@ Plug 'Shougo/junkfile.vim'
 Plug 'ervandew/supertab'
 
 " navigating
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
