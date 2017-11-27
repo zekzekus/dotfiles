@@ -47,6 +47,7 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
+Plug 'neoclide/vim-jsx-improve', {'for': 'javascript'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
