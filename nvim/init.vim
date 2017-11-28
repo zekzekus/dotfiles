@@ -9,6 +9,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set noswapfile
 
 set noshowmode
 set showcmd
@@ -261,6 +262,10 @@ let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_match_window = 'bottom,order:ttb,min:10,max:10,results:10'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 0
+
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype php setlocal ts=2 sw=2 expandtab
+autocmd Filetype less setlocal ts=2 sw=2 expandtab
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim

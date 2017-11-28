@@ -8,6 +8,7 @@ if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
 
   Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
+  Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
