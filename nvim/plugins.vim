@@ -62,9 +62,6 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
-" go lang
-Plug 'fatih/vim-go', {'for': 'go'}
-
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'guns/vim-sexp', {'for': 'clojure'}
