@@ -7,3 +7,4 @@ config/fish/fishd.*
 plugged
 plugged_vim
 tags
+nvim/pack
