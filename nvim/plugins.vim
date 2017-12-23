@@ -22,12 +22,12 @@ Plug 'Shougo/junkfile.vim'
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " navigating
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'morhetz/gruvbox'

@@ -234,15 +234,23 @@ runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
 let g:grepper.ag.grepprg .= ' --smart-case'
 
+call denite#custom#var('file_rec', 'command',
+  \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
+call denite#custom#option('_', 'highlight_matched_range', 'None')
+call denite#custom#option('_', 'highlight_matched_char', 'None')
+
 let g:racer_experimental_completer = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
-
-let g:ctrlp_user_command = 'rg --files %s'
-let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_match_window = 'bottom,order:ttb,min:10,max:10,results:10'
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_working_path_mode = 0
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
