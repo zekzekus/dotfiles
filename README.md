@@ -4,10 +4,9 @@ The installation instructions are coming soon... (WIP)
 
 ## VIM Configuration
 
-* Compatible with [Vim](http://www.vim.org/) and [Neovim](https://neovim.io/).
-* Layout compatible for `Neovim` but easily linkable for `Vim`.
-* All `Neovim` specific plugins, settings, key mappings etc. are isolated with
-  `has('nvim')` conditionals.
+* Compatible with [Neovim](https://neovim.io/).
+* Fully supports only Neovim at the moment.
+* Some plugins might not support vanilla Vim without compiled python3.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go` and `Clojure`
@@ -20,10 +19,9 @@ The installation instructions are coming soon... (WIP)
 
 #### MacOS
 
-* Install `Neovim` and `Vim` (i prefer HEAD for both).
+* Install `Neovim` (i prefer HEAD).
         
         brew install neovim --HEAD
-        brew install vim --with-luajit --with-override-system-vi --HEAD
 
 * For Neovim it is recommended to use separated virtual python environments for
   editor's own needs (i use Fish shell and virtualfish). For any shell these
@@ -39,15 +37,11 @@ The installation instructions are coming soon... (WIP)
 
         git clone https://github.com/zekzekus/dotfiles.git
 
-* Create symbolic links for both editors.
+* Create symbolic links.
 
         cd $HOME
         cd .config
         ln -s /path/to/dotfiles/nvim .
-
-        cd $HOME
-        ln -s /path/to/dotfiles/nvim .vim
-        ln -s /path/to/dotfiles/nvim/init.vim .vimrc
 
 * Create necessary directories.
 
@@ -57,7 +51,6 @@ The installation instructions are coming soon... (WIP)
 * First run will give errors. Ignore them.
 
         $ nvim
-        $ vim
 
 * For each editor execute `:PlugInstall` command.
 

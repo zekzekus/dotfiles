@@ -1,19 +1,8 @@
 function! DoRemote(arg)
-  if has('nvim')
-    UpdateRemotePlugins
-  endif
+  UpdateRemotePlugins
 endfunction
 
-if has('nvim')
-  call plug#begin('~/.config/nvim/plugged')
-
-  Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
-else
-  call plug#begin('~/.config/nvim/plugged_vim')
-  Plug 'tpope/vim-sensible'
-  Plug 'sjl/vitality.vim'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+call plug#begin('~/.config/nvim/plugged')
 
 " programming
 Plug 'SirVer/ultisnips'
@@ -59,6 +48,8 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
 Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
+Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
+
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
