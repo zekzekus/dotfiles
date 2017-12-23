@@ -21,6 +21,7 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/neco-vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
