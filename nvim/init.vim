@@ -234,23 +234,12 @@ let g:smartclose_set_default_mapping = 0
 
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
-let g:jedi#popup_on_dot = 0
+let g:jedi#completions_enabled = 0
 
 let g:grepper = {}
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
 let g:grepper.ag.grepprg .= ' --smart-case'
-
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-n>'
-let g:SuperTabCrMapping = 1
-
-augroup plugins_au
-  autocmd FileType *
-    \ if &omnifunc != '' |
-    \   call SuperTabChain(&omnifunc, "<c-n>") |
-    \ endif
-augroup END
 
 let g:racer_experimental_completer = 1
 

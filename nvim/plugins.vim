@@ -12,6 +12,7 @@ else
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
   Plug 'sjl/vitality.vim'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 " programming
@@ -19,6 +20,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'roxma/nvim-completion-manager'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -28,7 +30,6 @@ Plug 'tpope/vim-surround'
 Plug 'szw/vim-smartclose'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'ervandew/supertab'
 
 " navigating
 Plug 'ctrlpvim/ctrlp.vim'
