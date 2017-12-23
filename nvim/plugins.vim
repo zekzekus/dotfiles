@@ -71,5 +71,6 @@ Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
+Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
 
 call plug#end()
