@@ -9,7 +9,7 @@ The installation instructions are coming soon... (WIP)
 * Some plugins might not support vanilla Vim without compiled python3.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
-* Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go` and `Clojure`
+* Primary programming languages supported: `Python`, `Haskell`, `Rust`, and `Go`
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.

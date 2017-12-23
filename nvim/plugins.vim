@@ -10,7 +10,6 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'roxma/nvim-completion-manager'
-Plug 'Shougo/neco-vim'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -20,6 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'szw/vim-smartclose'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
+Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " navigating
 Plug 'ctrlpvim/ctrlp.vim'
@@ -58,11 +58,5 @@ Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
-
-" clojure
-Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'guns/vim-sexp', {'for': 'clojure'}
-Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
-Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
 
 call plug#end()
