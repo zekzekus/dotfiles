@@ -232,17 +232,15 @@ let g:jedi#completions_enabled = 0
 let g:grepper = {}
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
-let g:grepper.ag.grepprg .= ' --smart-case'
 
-call denite#custom#var('file_rec', 'command',
-  \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+	call denite#custom#var('grep', 'command', ['rg'])
+	call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
 
 call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
