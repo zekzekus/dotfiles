@@ -7,9 +7,9 @@ call plug#begin('~/.config/nvim/plugged')
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'roxma/nvim-completion-manager'
+Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin' }
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -19,7 +19,6 @@ Plug 'tpope/vim-surround'
 Plug 'szw/vim-smartclose'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -33,7 +32,6 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 Plug 'morhetz/gruvbox'
 
 " python
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
@@ -46,15 +44,10 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
-Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
-Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
 
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
-Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}

@@ -2,48 +2,6 @@ nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
-function! s:python_bindings()
-  nnoremap <silent> <leader>md :call jedi#goto()<cr>
-  nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
-  nnoremap <silent> <leader>mr :call jedi#rename()<cr>
-  nnoremap <silent> <leader>mn :call jedi#usages()<cr>
-endfunction
-
-function! s:haskell_bindings()
-  nnoremap <Leader>mio :InteroOpen<CR>
-  nnoremap <Leader>mik :InteroKill<CR>
-  nnoremap <Leader>mic :InteroHide<CR>
-  nnoremap <Leader>mil :InteroLoadCurrentModule<CR>
-
-  nnoremap <Leader>me :InteroEval<CR>
-  nnoremap <Leader>mt :InteroGenericType<CR>
-  nnoremap <Leader>mT :InteroType<CR>
-  nnoremap <Leader>mi :InteroInfo<CR>
-  nnoremap <Leader>mI :InteroTypeInsert<CR>
-
-  nnoremap <Leader>md :InteroGoToDef<CR>
-
-  nnoremap <Leader>mu :InteroUses<CR>
-
-  augroup haskell_intero
-    autocmd!
-    autocmd BufWritePost *.hs InteroReload
-  augroup END
-endfunction
-
-function! s:go_bindings()
-  nmap <leader>md <Plug>(go-def)
-  nmap <leader>mt <Plug>(go-info)
-  nmap <leader>mi <Plug>(go-info)
-  nmap <leader>mr <Plug>(go-rename)
-endfunction
-
-function! s:rust_bindings()
-  nmap <buffer><leader>md <Plug>(rust-def)
-  nmap <buffer><leader>mD <Plug>(rust-def-split-vertical)
-  nmap <buffer><leader>mi <Plug>(rust-doc)
-endfunction
-
 function! s:general_bindings()
   " vim handles long lines nicely with these
   nnoremap j gj
@@ -106,27 +64,25 @@ function! s:general_bindings()
   vnoremap <expr> cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
   vnoremap <expr> cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
-  if has('nvim')
-    call denite#custom#map(
-          \ 'insert',
-          \ '<C-j>',
-          \ '<denite:move_to_next_line>',
-          \ 'noremap'
-          \)
-    call denite#custom#map(
-          \ 'insert',
-          \ '<C-k>',
-          \ '<denite:move_to_previous_line>',
-          \ 'noremap'
-          \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-j>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-k>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
 
-    call denite#custom#map(
-          \ 'insert',
-          \ '<C-v>',
-          \ '<denite:do_action:vsplitswitch>',
-          \ 'noremap'
-          \)
-  endif
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-v>',
+        \ '<denite:do_action:vsplitswitch>',
+        \ 'noremap'
+        \)
 
   nnoremap <leader>o <c-w><Bar><c-w>_<cr>
   nnoremap <leader>= <c-w>=
@@ -134,13 +90,13 @@ function! s:general_bindings()
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+  nnoremap <leader>mh :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <leader>md :call LanguageClient_textDocument_definition()<cr>
+  nnoremap <leader>mr :call LanguageClient_textDocument_rename()<cr>
+  nnoremap <leader>mn :call LanguageClient_textDocument_references()<cr>
 endfunction
 
 augroup bindings
   autocmd!
   autocmd VimEnter * call s:general_bindings()
-  autocmd FileType haskell,lhaskell call s:haskell_bindings()
-  autocmd FileType python,python.django call s:python_bindings()
-  autocmd FileType go call s:go_bindings()
-  autocmd FileType rust call s:rust_bindings()
 augroup END
