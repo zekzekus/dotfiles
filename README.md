@@ -54,6 +54,18 @@ The installation instructions are coming soon... (WIP)
 
 * For each editor execute `:PlugInstall` command.
 
+* Language specific capabilities comes from [LSP](http://langserver.org/) for each.
+
+* [Python](https://github.com/palantir/python-language-server)
+
+* [Rust](https://github.com/rust-lang-nursery/rls)
+
+* [Javascript](https://github.com/sourcegraph/javascript-typescript-langserver)
+
+* [Go](https://github.com/sourcegraph/go-langserver)
+
+* [Haskell](https://github.com/haskell/haskell-ide-engine)
+
 ### Plugins List
 
 Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins and [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
