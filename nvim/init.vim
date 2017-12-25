@@ -99,10 +99,8 @@ augroup general_au
   autocmd!
   autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
   autocmd VimResized * :wincmd =
-
 augroup END
 
 let g:netrw_liststyle=3
@@ -234,7 +232,7 @@ call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'go': ['go-langserver'],
