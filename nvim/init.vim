@@ -100,6 +100,8 @@ augroup general_au
   autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
   autocmd VimResized * :wincmd =
 augroup END
 
@@ -144,6 +146,7 @@ set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
 set statusline+=[%l
 set statusline+=/
 set statusline+=%L]
+set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -166,6 +169,14 @@ function! s:get_cache_dir(suffix)
 endfunction
 
 " ========== Plugin Settings =========="
+call neomake#configure#automake({
+\ 'TextChanged': {},
+\ 'InsertLeave': {},
+\ 'BufWritePost': {'delay': 0},
+\ 'BufWinEnter': {},
+\ }, 500)
+let g:neomake_go_enabled_makers = ['go']
+
 let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsListSnippets = '<c-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
@@ -214,6 +225,10 @@ let g:tagbar_type_go = {
 
 let g:smartclose_set_default_mapping = 0
 
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = 0
+let g:jedi#completions_enabled = 0
+
 let g:grepper = {}
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
@@ -231,13 +246,7 @@ call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'go': ['go-langserver'],
-    \ 'haskell': ['hie', '--lsp'],
-    \ }
+let g:racer_experimental_completer = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
 
