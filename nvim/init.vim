@@ -1,7 +1,6 @@
 " ========== Vim Basic Settings ============="
 scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
-set shell=/bin/bash\ -i
 
 set modelines=0
 set mouse=a
