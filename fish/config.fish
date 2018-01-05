@@ -33,10 +33,9 @@ set --export MANPAGER "nvim -c 'set ft=man' -"
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 set --export FZF_DEFAULT_COMMAND 'rg --hidden --files --follow --glob "!.git/*"'
 
-set fish_user_paths ~/devel/tools/google-cloud-sdk/bin
-set -x MANPATH ~/devel/tools/google-cloud-sdk/help/man /usr/local/share/man /usr/share/man /opt/X11/share/man
-
 alias mux='tmuxinator'
 set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
 
 status --is-interactive; and source (nodenv init -|psub)
+
+. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
