@@ -10,7 +10,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set noshowmode
 set showcmd
 set hidden
 set visualbell
@@ -129,6 +128,8 @@ let g:modmap={
     \ 't'  : 'Terminal'
     \}
 
+set showmode
+set laststatus=0
 set statusline=
 set statusline+=[%{toupper(g:modmap[mode()])}]
 set statusline+=[%{fugitive#head(6)}]
