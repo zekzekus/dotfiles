@@ -86,11 +86,10 @@ set suffixesadd+=.md
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
   set background=light
-  colorscheme gruvbox
 else
   set background=dark
-  colorscheme gruvbox
 endif
+colorscheme gruvbox
 
 syntax sync minlines=256
 
