@@ -128,7 +128,7 @@ let g:modmap={
     \}
 
 set showmode
-set laststatus=0
+set laststatus=2
 set statusline=
 set statusline+=[%{toupper(g:modmap[mode()])}]
 set statusline+=[%{fugitive#head(6)}]
