@@ -150,13 +150,20 @@ set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
-set inccommand=nosplit
-set clipboard+=unnamedplus
+if has('nvim')
+  set inccommand=nosplit
+  set clipboard+=unnamedplus
 
-augroup terminal_au
-  autocmd!
-  autocmd TermOpen * setlocal nonumber
-augroup END
+  augroup terminal_au
+    autocmd!
+    autocmd TermOpen * setlocal nonumber
+  augroup END
+else
+  set ttyfast
+  set clipboard+=unnamed
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1

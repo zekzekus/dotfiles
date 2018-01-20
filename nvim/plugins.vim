@@ -1,8 +1,17 @@
 function! DoRemote(arg)
-  UpdateRemotePlugins
+  if has('nvim')
+    UpdateRemotePlugins
+  endif
 endfunction
 
-call plug#begin('~/.config/nvim/plugged')
+if !has('nvim')
+  call plug#begin('~/.config/nvim/plugged_vim')
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'tpope/vim-sensible'
+else
+  call plug#begin('~/.config/nvim/plugged')
+endif
 
 " programming
 Plug 'benekastah/neomake'
