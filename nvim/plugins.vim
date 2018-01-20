@@ -9,6 +9,7 @@ if !has('nvim')
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'tpope/vim-sensible'
+  Plug 'sjl/vitality.vim'
 else
   call plug#begin('~/.config/nvim/plugged')
 endif

@@ -127,7 +127,7 @@ let g:modmap={
     \ 't'  : 'Terminal'
     \}
 
-set showmode
+set noshowmode
 set laststatus=2
 set statusline=
 set statusline+=[%{toupper(g:modmap[mode()])}]
