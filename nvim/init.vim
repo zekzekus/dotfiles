@@ -255,8 +255,6 @@ call denite#custom#option('_', 'highlight_matched_char', 'None')
 
 let g:racer_experimental_completer = 1
 
-let g:sexp_enable_insert_mode_mappings = 0
-
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
