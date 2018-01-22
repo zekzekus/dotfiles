@@ -45,6 +45,10 @@ function! s:rust_bindings()
 endfunction
 
 function! s:general_bindings()
+  " vim handles long lines nicely with these
+  nnoremap j gj
+  nnoremap k gk
+
   " files
   nmap <leader>ft <ESC>:TagbarToggle<cr>
   nmap <leader>fs <ESC>:w<cr>
