@@ -38,7 +38,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose'
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
-Plug 'haya14busa/is.vim'
 
 " vim interface
 Plug 'morhetz/gruvbox'
