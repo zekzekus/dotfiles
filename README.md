@@ -9,7 +9,7 @@ The installation instructions are coming soon... (WIP)
 * Some plugins might not support vanilla Vim without compiled python3.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
-* Primary programming languages supported: `Python`, `Haskell`, `Rust`, and `Go`
+* Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go`, and `Javascript (React)`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
@@ -54,10 +54,40 @@ The installation instructions are coming soon... (WIP)
 
 * For each editor execute `:PlugInstall` command.
 
+* Install necessary OS packages.
+
+        $ brew install ctags ripgrep the_silver_searcher
+
+### Keybindings List
+
+Notable custom keybindings;
+
+* File based operations (starts with `<leader>f`)
+    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
+    * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in junk file folder.
+    * `<leader>ft` Toggle tagbar.
+    * `<leader>fs` Write buffer to disk. Equilavent `:w<cr>`.
+    * `<leader>fW` Remove trailing whitespace from whole buffer.
+* Buffer based operations (starts with `<leader>b`)
+    * `<leader>bb` List buffer to jump. Fuzzy search UI.
+    * `<leader><tab>` Switch to previous buffer. Equilavent to `:b#<cr>`.
+    * `<leader>bl` Populates all lines of current buffer into fuzzy search UI.
+    * `<leader>by` Poplulates (on the fly) all tags in the buffer (ctags) into fuzzy search UI.
+* Search based operations
+    * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
+    * `<leader>/` greps recursively in the directory and loads results into fuzzy search UI including preview for each row.
+    * `<leader>*` same as previous one except this does not wait for input. Instead uses the word under cursor as input.
+    * `<leader>ss` uses grepper plugin to grep. Results loaded into quickfix window.
+    * `<BS>` executes `:nohlsearch<cr>`.
+* Other
+    * `<leader>V` selects just pasted text.
+
+Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
+keybindings.
+
 ### Plugins List
 
-Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins and [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
-keybindings.
+Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins. 
 
 ## TMUX Configuration
 

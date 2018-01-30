@@ -60,6 +60,8 @@ function! s:general_bindings()
   " buffers
   nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`15*winheight(0)/100`<cr>
   nnoremap <leader><tab> :b#<CR>
+  nnoremap <silent><leader>bl :<c-u>Denite line<cr>
+  nnoremap <silent><leader>by :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
   " search
   nnoremap n nzzzv
@@ -79,8 +81,6 @@ function! s:general_bindings()
   " Select just pasted text.
   nnoremap <leader>V V`]
 
-  nnoremap <silent><leader>l :<c-u>Denite line<cr>
-  nnoremap <silent><leader>y :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
   nnoremap <silent><leader>r :<c-u>Denite register<cr>
 
   nnoremap <leader>qq :SmartClose<cr>
