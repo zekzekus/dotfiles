@@ -36,6 +36,7 @@ set incsearch
 set colorcolumn=79
 
 set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 
 set showbreak=↪\ 
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
