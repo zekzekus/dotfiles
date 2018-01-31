@@ -41,6 +41,8 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'morhetz/gruvbox'
+Plug 'thenewvu/vim-colors-blueprint'
+Plug 'pbrisbin/vim-colors-off'
 
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}

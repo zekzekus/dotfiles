@@ -61,7 +61,7 @@ function! s:general_bindings()
   nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`15*winheight(0)/100`<cr>
   nnoremap <leader><tab> :b#<CR>
   nnoremap <silent><leader>bl :<c-u>Denite line<cr>
-  nnoremap <silent><leader>by :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
+  nnoremap <silent><leader>bo :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
   " search
   nnoremap n nzzzv
