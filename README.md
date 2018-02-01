@@ -72,7 +72,7 @@ Notable custom keybindings;
     * `<leader>bb` List buffer to jump. Fuzzy search UI.
     * `<leader><tab>` Switch to previous buffer. Equilavent to `:b#<cr>`.
     * `<leader>bl` Populates all lines of current buffer into fuzzy search UI.
-    * `<leader>by` Poplulates (on the fly) all tags in the buffer (ctags) into fuzzy search UI.
+    * `<leader>bo` Poplulates (on the fly) all tags (outline) in the buffer (ctags) into fuzzy search UI.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
     * `<leader>/` greps recursively in the directory and loads results into fuzzy search UI including preview for each row.
