@@ -91,7 +91,6 @@ else
   set background=dark
 endif
 colorscheme off
-highlight clear CursorLine
 
 syntax sync minlines=256
 
