@@ -1,3 +1,4 @@
+set --export GOROOT /usr/local/opt/go/libexec
 set --export GOPATH $HOME/go
 
 # PATH modifications. last item has the highest priority

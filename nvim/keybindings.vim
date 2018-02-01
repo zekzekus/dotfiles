@@ -83,7 +83,7 @@ function! s:general_bindings()
 
   nnoremap <silent><leader>r :<c-u>Denite register<cr>
 
-  nnoremap <leader>qq :SmartClose<cr>
+  nnoremap <silent><leader>qq :SmartClose<cr>
 
   let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
 
