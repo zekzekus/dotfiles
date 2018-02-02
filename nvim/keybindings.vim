@@ -34,7 +34,7 @@ endfunction
 function! s:go_bindings()
   nmap <leader>md <Plug>(go-def)
   nmap <leader>mt <Plug>(go-info)
-  nmap <leader>mi <Plug>(go-info)
+  nmap <leader>mi <Plug>(go-doc)
   nmap <leader>mr <Plug>(go-rename)
 endfunction
 

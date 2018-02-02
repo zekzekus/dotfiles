@@ -67,6 +67,11 @@ Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
 
+" clojure
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+Plug 'tpope/vim-salve', {'for': 'clojure'}
+Plug 'bhurlow/vim-parinfer', {'for': 'clojure'}
+
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}

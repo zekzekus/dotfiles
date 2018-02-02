@@ -154,6 +154,18 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 if has('nvim')
   set inccommand=nosplit
   set clipboard+=unnamedplus
+  " temporary solution to workaround slow startup
+  let g:clipboard = {
+            \   'name': 'mac-custom',
+            \   'copy': {
+            \      '+': 'pbcopy',
+            \      '*': 'pbcopy',
+            \    },
+            \   'paste': {
+            \      '+': 'pbpaste',
+            \      '*': 'pbpaste',
+            \   },
+            \ }
 
   augroup terminal_au
     autocmd!
