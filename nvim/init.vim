@@ -155,18 +155,19 @@ if has('nvim')
   set inccommand=nosplit
   set clipboard+=unnamedplus
   " temporary solution to workaround slow startup
-  let g:clipboard = {
-            \   'name': 'mac-custom',
-            \   'copy': {
-            \      '+': 'pbcopy',
-            \      '*': 'pbcopy',
-            \    },
-            \   'paste': {
-            \      '+': 'pbpaste',
-            \      '*': 'pbpaste',
-            \   },
-            \ }
-
+  if has('mac')
+    let g:clipboard = {
+              \   'name': 'mac-custom',
+              \   'copy': {
+              \      '+': 'pbcopy',
+              \      '*': 'pbcopy',
+              \    },
+              \   'paste': {
+              \      '+': 'pbpaste',
+              \      '*': 'pbpaste',
+              \   },
+              \ }
+  endif
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber
