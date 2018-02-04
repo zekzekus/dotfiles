@@ -18,6 +18,7 @@ endif
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
 Plug 'SirVer/ultisnips'
@@ -28,7 +29,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'Shougo/neco-vim', {'for': 'vim'}
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 
 " navigating
 Plug 'tpope/vim-vinegar'
