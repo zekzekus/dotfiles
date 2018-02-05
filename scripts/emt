@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+# Checks if there's a frame open
+emacsclient -n -e "(if (> (length (frame-list)) 1) ‚Äòt)" 2> /dev/null | grep t &> /dev/null
+if [ "$?" -eq "1" ]; then
+ emacsclient -t -c -q "$@" &> /dev/null
+else
+ emacsclient -t -q "$@" &> /dev/null
+fi

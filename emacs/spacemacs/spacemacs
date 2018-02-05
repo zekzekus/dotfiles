@@ -343,8 +343,6 @@ you should place your code here."
   (add-hook 'haskell-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   (add-hook 'html-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   (add-hook 'javascript-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (evil-leader/set-key "q q" 'spacemacs/frame-killer)
-  (evil-leader/set-key "q z" 'spacemacs/prompt-kill-emacs)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
