@@ -182,6 +182,9 @@ call neomake#configure#automake({
   \ 'BufWinEnter': {},
   \ }, 500)
 
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E722'], }
+
 let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsListSnippets = '<c-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
@@ -272,6 +275,8 @@ let g:vlime_compiler_policy = {'DEBUG': 3}
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype php setlocal ts=2 sw=2 expandtab
 autocmd Filetype less setlocal ts=2 sw=2 expandtab
+autocmd Filetype dart setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
