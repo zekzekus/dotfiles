@@ -66,6 +66,7 @@ set wildignore+=**/node_modules/**
 set wildignore+=*.class
 set wildignore+=.stack-work
 set wildignore+=**/bower_components/**
+set wildignore+=vendor
 
 set path=.,**
 
@@ -98,8 +99,6 @@ augroup general_au
   autocmd!
   autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
   autocmd VimResized * :wincmd =
 augroup END
