@@ -30,6 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
@@ -68,6 +69,5 @@ Plug 'fatih/vim-go', {'for': 'go'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
-Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 call plug#end()
