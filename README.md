@@ -28,10 +28,10 @@ The installation instructions are coming soon... (WIP)
   virtual environments must be located under `~/.virtualenvs/`.
 
         vf new neovim2
-        pip install neovim
+        pip install neovim jedi psutil setproctitle
 
         vf new --python=python3 neovim3
-        pip3 install neovim
+        pip3 install neovim jedi psutil setproctitle
 
 * Clone repository to any place you prefer.
 
