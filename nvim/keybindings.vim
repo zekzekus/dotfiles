@@ -56,12 +56,12 @@ function! s:general_bindings()
   nnoremap <silent><leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
   " to remove white space from a file.
   nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
+  nnoremap <silent><leader>fl :<c-u>Denite line<cr>
+  nnoremap <silent><leader>fo :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
   " buffers
   nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`15*winheight(0)/100`<cr>
   nnoremap <leader><tab> :b#<CR>
-  nnoremap <silent><leader>bl :<c-u>Denite line<cr>
-  nnoremap <silent><leader>bo :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
   " search
   nnoremap n nzzzv

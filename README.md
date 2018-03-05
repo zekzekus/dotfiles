@@ -69,10 +69,10 @@ Notable custom keybindings;
     * `<leader>fs` Write buffer to disk. Equilavent `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
+    * `<leader>fl` Populates all lines of current file into fuzzy search UI.
+    * `<leader>fo` Poplulates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
     * `<leader>bb` List buffer to jump. Fuzzy search UI.
     * `<leader><tab>` Switch to previous buffer. Equilavent to `:b#<cr>`.
-    * `<leader>bl` Populates all lines of current buffer into fuzzy search UI.
-    * `<leader>bo` Poplulates (on the fly) all tags (outline) in the buffer (ctags) into fuzzy search UI.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
     * `<leader>/` greps recursively in the directory and loads results into fuzzy search UI including preview for each row.
