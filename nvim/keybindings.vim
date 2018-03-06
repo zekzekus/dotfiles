@@ -10,20 +10,20 @@ function! s:python_bindings()
 endfunction
 
 function! s:haskell_bindings()
-  nnoremap <leader>mio :InteroOpen<CR>
-  nnoremap <leader>mik :InteroKill<CR>
-  nnoremap <leader>mic :InteroHide<CR>
-  nnoremap <leader>mil :InteroLoadCurrentModule<CR>
+  nnoremap <silent><leader>mio :InteroOpen<CR>
+  nnoremap <silent><leader>mik :InteroKill<CR>
+  nnoremap <silent><leader>mic :InteroHide<CR>
+  nnoremap <silent><leader>mil :InteroLoadCurrentModule<CR>
 
-  nnoremap <leader>me :InteroEval<CR>
-  nnoremap <leader>mt :InteroGenericType<CR>
-  nnoremap <leader>mT :InteroType<CR>
-  nnoremap <leader>mi :InteroInfo<CR>
-  nnoremap <leader>mI :InteroTypeInsert<CR>
+  nnoremap <silent><leader>me :InteroEval<CR>
+  nnoremap <silent><leader>mt :InteroGenericType<CR>
+  nnoremap <silent><leader>mT :InteroType<CR>
+  nnoremap <silent><leader>mi :InteroInfo<CR>
+  nnoremap <silent><leader>mI :InteroTypeInsert<CR>
 
-  nnoremap <leader>md :InteroGoToDef<CR>
+  nnoremap <silent><leader>md :InteroGoToDef<CR>
 
-  nnoremap <leader>mu :InteroUses<CR>
+  nnoremap <silent><leader>mu :InteroUses<CR>
 
   augroup haskell_intero
     autocmd!
