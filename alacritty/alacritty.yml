@@ -41,19 +41,19 @@ draw_bold_text_with_bright_colors: false
 font:
   # The normal (roman) font face to use.
   normal:
-    family: "Hack"
+    family: "Fira Code"
     # Style can be specified to pick a specific face.
-    style: Regular
+    style: Retina
 
   # The bold font face
   bold:
-    family: "Hack"
+    family: "Fira Code"
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    family: "Hack"
+    family: "Fira Code"
     # Style can be specified to pick a specific face.
     style: Italic
 
