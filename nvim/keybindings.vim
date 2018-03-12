@@ -54,8 +54,8 @@ function! s:general_bindings()
   nnoremap k gk
 
   " files
-  nmap <leader>ft <ESC>:TagbarToggle<cr>
-  nmap <leader>fs <ESC>:w<cr>
+  nnoremap <leader>ft <ESC>:TagbarToggle<cr>
+  nnoremap <leader>fs <ESC>:w<cr>
   nnoremap <silent><leader>ff :<c-u>Denite file_rec -winheight=`30*winheight(0)/100`<cr>
   nnoremap <silent><leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
   " to remove white space from a file.

@@ -62,6 +62,8 @@ The installation instructions are coming soon... (WIP)
 
 Notable custom keybindings;
 
+* General
+    * Swap `;` with `:` so to enter command mode use only one keystroke. If you want to repeat latest linewise jump use `:`.
 * File based operations (starts with `<leader>f`)
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
     * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in junk file folder.
