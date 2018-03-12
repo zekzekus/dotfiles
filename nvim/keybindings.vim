@@ -45,6 +45,10 @@ function! s:rust_bindings()
 endfunction
 
 function! s:general_bindings()
+  " swap ; and : to save one keystroke on one of the most used keys
+  nnoremap ; :
+  nnoremap : ;
+
   " vim handles long lines nicely with these
   nnoremap j gj
   nnoremap k gk
