@@ -3,6 +3,7 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
 nnoremap d "_d
+vnoremap d "_d
 
 function! s:python_bindings()
   nnoremap <silent> <leader>md :call jedi#goto()<cr>
