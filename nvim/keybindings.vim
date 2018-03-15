@@ -2,6 +2,8 @@ nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
+nnoremap d "_d
+
 function! s:python_bindings()
   nnoremap <silent> <leader>md :call jedi#goto()<cr>
   nnoremap <silent> <leader>mg :call jedi#goto_assignments()<cr>
