@@ -282,20 +282,6 @@ let g:haskell_indent_in = 1
 let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
-let g:necoghc_use_stack = 1
-let g:necoghc_enable_detailed_browse = 1
-
-augroup plugins_au
-  autocmd!
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-  au User CmSetup call cm#register_source({'name' : 'neco-ghc',
-          \ 'priority': 9,
-          \ 'scopes': ['haskell'],
-          \ 'abbreviation': 'hs',
-          \ 'cm_refresh_patterns':['import\s+'],
-          \ 'cm_refresh': {'omnifunc': 'necoghc#omnifunc'},
-          \ })
-augroup END
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
