@@ -29,10 +29,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
-Plug 'junegunn/goyo.vim', {'for': ['txt', 'markdown']}
-Plug 'junegunn/limelight.vim', {'for': ['txt', 'markdown']}
 
 " navigating
 Plug 'tpope/vim-vinegar'
