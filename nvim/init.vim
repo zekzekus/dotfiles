@@ -100,6 +100,7 @@ augroup general_au
   autocmd!
   autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType haskell setlocal expandtab
 
   autocmd VimResized * :wincmd =
 augroup END
