@@ -92,7 +92,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme off
+colorscheme gruvbox
 
 syntax sync minlines=256
 
