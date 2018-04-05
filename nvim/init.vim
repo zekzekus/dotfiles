@@ -303,18 +303,20 @@ call denite#custom#option('_', 'highlight_matched_char', 'None')
 let g:racer_experimental_completer = 1
 
 let g:intero_type_on_hover = 1
-let g:haskell_classic_highlighting = 1
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 1
-let g:haskell_indent_guard = 2
-let g:haskell_indent_case_alternative = 1
-let g:cabal_indent_section = 2
+function! Haskell_editing_tabular()
+  AddTabularPattern! colon                  /^[^:]*\zs:/
+  AddTabularPattern! haskell_bindings       /^[^=]*\zs=\ze[^[:punct:]]/
+  AddTabularPattern! haskell_comments       /--.*/l2
+  AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
+  AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
+  AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
+  AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
+endfunction
+
+augroup au_plugins
+  autocmd!
+  autocmd FileType haskell call Haskell_editing_tabular()
+augroup end
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
