@@ -19,14 +19,6 @@ set --export LC_NUMERIC "en_US.UTF-8"
 set --export LC_TIME "en_US.UTF-8"
 set --export LC_ALL "en_US.UTF-8"
 
-# python virtualenv tool
-python3 -m virtualfish | source
-
-if test -d ~/.config/fish/functions/rust.fish
-    . ~/.config/fish/functions/rust.fish/rustc.fish
-    . ~/.config/fish/functions/rust.fish/cargo.fish
-end
-
 set --export EDITOR nvim
 set --export MANPAGER "nvim -c 'set ft=man' -"
 
@@ -35,6 +27,13 @@ set --export FZF_DEFAULT_COMMAND 'rg --hidden --files --follow --glob "!.git/*"'
 
 alias mux='tmuxinator'
 set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
+
+python3 -m virtualfish | source
+
+if test -d ~/.config/fish/functions/rust.fish
+    . ~/.config/fish/functions/rust.fish/rustc.fish
+    . ~/.config/fish/functions/rust.fish/cargo.fish
+end
 
 status --is-interactive; and source (nodenv init -|psub)
 
