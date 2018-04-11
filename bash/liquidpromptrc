@@ -38,7 +38,7 @@ LP_PATH_LENGTH=35
 # The number of directories (including '/') to keep at the beginning of a
 # shortened path.
 # Recommended value is 2
-LP_PATH_KEEP=2
+LP_PATH_KEEP=1
 
 # Determine if the hostname should always be displayed, even if not connecting
 # through network.
@@ -56,12 +56,12 @@ LP_ENABLE_FQDN=0
 # Defaults to 1 (always display the user name)
 # set to 0 if you want to hide the logged user (it will always display different
 # users)
-LP_USER_ALWAYS=1
+LP_USER_ALWAYS=0
 
 # Display the percentages of load/batteries along with their
 # corresponding marks. Set to 0 to only print the colored marks.
 # Defaults to 1 (display percentages)
-LP_PERCENTS_ALWAYS=1
+LP_PERCENTS_ALWAYS=0
 
 # Use the permissions feature and display a red ':' before the prompt to show
 # when you don't have write permission to the current directory.
