@@ -56,7 +56,6 @@ Plug 'neoclide/vim-jsx-improve', {'for': 'javascript'}
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
 
-
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'racer-rust/vim-racer', {'for': 'rust'}
