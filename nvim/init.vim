@@ -311,11 +311,23 @@ function! Haskell_editing_tabular()
   AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
   AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
 endfunction
+let g:haskell_classic_highlighting = 1
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
+let g:haskell_indent_guard = 2
+let g:haskell_indent_case_alternative = 1
+let g:cabal_indent_section = 2
 
 augroup au_plugins
   autocmd!
   autocmd FileType haskell call Haskell_editing_tabular()
-  autocmd FileType haskell setlocal formatprg=stylish-haskell expandtab
+  autocmd FileType haskell setlocal formatprg=format-haskell expandtab
 augroup end
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
