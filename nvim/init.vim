@@ -100,7 +100,6 @@ augroup general_au
   autocmd!
   autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType haskell setlocal expandtab
 
   autocmd VimResized * :wincmd =
 augroup END
@@ -316,6 +315,7 @@ endfunction
 augroup au_plugins
   autocmd!
   autocmd FileType haskell call Haskell_editing_tabular()
+  autocmd FileType haskell setlocal formatprg=stylish-haskell expandtab
 augroup end
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
