@@ -1,3 +1,4 @@
+" plugin settings
 let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds' : [
@@ -14,6 +15,7 @@ let g:tagbar_type_rust = {
 
 let g:racer_experimental_completer = 1
 
+" keybindings
 nmap <leader>md <Plug>(rust-def)
 nmap <leader>mD <Plug>(rust-def-split-vertical)
 nmap <leader>mi <Plug>(rust-doc)

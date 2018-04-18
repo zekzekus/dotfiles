@@ -1,1 +1,5 @@
-  setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
+" buffer local options
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal keywordprg=:help

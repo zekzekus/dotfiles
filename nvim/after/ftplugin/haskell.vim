@@ -1,4 +1,10 @@
 scriptencoding utf-8
+
+" buffer local options
+setlocal formatprg=format-haskell
+setlocal expandtab
+
+" plugin settings
 let g:tagbar_type_haskell = {
     \ 'ctagsbin'  : 'hasktags',
     \ 'ctagsargs' : '-x -c -o-',
@@ -31,14 +37,6 @@ let g:tagbar_type_haskell = {
     \ }
 \ }
 
-
-AddTabularPattern! colon                  /^[^:]*\zs:/
-AddTabularPattern! haskell_bindings       /^[^=]*\zs=\ze[^[:punct:]]/
-AddTabularPattern! haskell_comments       /--.*/l2
-AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
-AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
-AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
-AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
 let g:haskell_classic_highlighting = 1
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 2
@@ -52,11 +50,21 @@ let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
 
-setlocal formatprg=format-haskell
-setlocal expandtab
-
 let g:intero_type_on_hover = 1
+augroup haskell_intero
+  autocmd!
+  autocmd BufWritePost *.hs InteroReload
+augroup END
 
+AddTabularPattern! colon                  /^[^:]*\zs:/
+AddTabularPattern! haskell_bindings       /^[^=]*\zs=\ze[^[:punct:]]/
+AddTabularPattern! haskell_comments       /--.*/l2
+AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
+AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
+AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
+AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
+
+" keybindings
 nnoremap <silent><leader>mio :InteroOpen<CR>
 nnoremap <silent><leader>mik :InteroKill<CR>
 nnoremap <silent><leader>mic :InteroHide<CR>
@@ -71,8 +79,3 @@ nnoremap <silent><leader>mI :InteroTypeInsert<CR>
 nnoremap <silent><leader>md :InteroGoToDef<CR>
 
 nnoremap <silent><leader>mu :InteroUses<CR>
-
-augroup haskell_intero
-  autocmd!
-  autocmd BufWritePost *.hs InteroReload
-augroup END

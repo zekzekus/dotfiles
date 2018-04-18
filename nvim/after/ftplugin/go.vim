@@ -1,3 +1,4 @@
+" plugin settings
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -28,6 +29,7 @@ let g:tagbar_type_go = {
 
 let g:neomake_go_enabled_makers = ['go']
 
+" keybindings
 nmap <leader>md <Plug>(go-def)
 nmap <leader>mt <Plug>(go-info)
 nmap <leader>mi <Plug>(go-doc)
