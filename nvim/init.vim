@@ -98,8 +98,6 @@ syntax sync minlines=256
 
 augroup general_au
   autocmd!
-  autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 keywordprg=:help
-  autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
   autocmd VimResized * :wincmd =
 augroup END
@@ -196,91 +194,13 @@ call neomake#configure#automake({
 \ 'BufWritePost': {'delay': 0},
 \ 'BufWinEnter': {},
 \ }, 500)
-let g:neomake_go_enabled_makers = ['go']
 
 let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsListSnippets = '<c-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-let g:tagbar_type_rust = {
-    \ 'ctagstype' : 'rust',
-    \ 'kinds' : [
-        \'T:types,type definitions',
-        \'f:functions,function definitions',
-        \'g:enum,enumeration names',
-        \'s:structure names',
-        \'m:modules,module names',
-        \'c:consts,static constants',
-        \'t:traits,traits',
-        \'i:impls,trait implementations',
-    \]
-    \}
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-
-let g:tagbar_type_haskell = {
-    \ 'ctagsbin'  : 'hasktags',
-    \ 'ctagsargs' : '-x -c -o-',
-    \ 'kinds'     : [
-        \  'm:modules:0:1',
-        \  'd:data: 0:1',
-        \  'd_gadt: data gadt:0:1',
-        \  't:type names:0:1',
-        \  'nt:new types:0:1',
-        \  'c:classes:0:1',
-        \  'cons:constructors:1:1',
-        \  'c_gadt:constructor gadt:1:1',
-        \  'c_a:constructor accessors:1:1',
-        \  'ft:function types:1:1',
-        \  'fi:function implementations:0:1',
-        \  'o:others:0:1'
-    \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'm' : 'module',
-        \ 'c' : 'class',
-        \ 'd' : 'data',
-        \ 't' : 'type'
-    \ },
-    \ 'scope2kind' : {
-        \ 'module' : 'm',
-        \ 'class'  : 'c',
-        \ 'data'   : 'd',
-        \ 'type'   : 't'
-    \ }
-\ }
-
 let g:smartclose_set_default_mapping = 0
-
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures = 0
-let g:jedi#completions_enabled = 0
 
 let g:grepper = {}
 runtime plugin/grepper.vim
@@ -298,37 +218,6 @@ call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
-
-let g:racer_experimental_completer = 1
-
-let g:intero_type_on_hover = 1
-function! Haskell_editing_tabular()
-  AddTabularPattern! colon                  /^[^:]*\zs:/
-  AddTabularPattern! haskell_bindings       /^[^=]*\zs=\ze[^[:punct:]]/
-  AddTabularPattern! haskell_comments       /--.*/l2
-  AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
-  AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
-  AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
-  AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
-endfunction
-let g:haskell_classic_highlighting = 1
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 1
-let g:haskell_indent_guard = 2
-let g:haskell_indent_case_alternative = 1
-let g:cabal_indent_section = 2
-
-augroup au_plugins
-  autocmd!
-  autocmd FileType haskell call Haskell_editing_tabular()
-  autocmd FileType haskell setlocal formatprg=format-haskell expandtab
-augroup end
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
