@@ -3,6 +3,7 @@ scriptencoding utf-8
 " buffer local options
 setlocal formatprg=format-haskell
 setlocal expandtab
+setlocal omnifunc=necoghc#omnifunc
 
 " plugin settings
 let g:tagbar_type_haskell = {
@@ -54,6 +55,13 @@ let g:intero_type_on_hover = 1
 augroup haskell_intero
   autocmd!
   autocmd BufWritePost *.hs InteroReload
+  au User CmSetup call cm#register_source({'name' : 'neco-ghc',
+          \ 'priority': 9,
+          \ 'scopes': ['haskell'],
+          \ 'abbreviation': 'hs',
+          \ 'cm_refresh_patterns':['import\s+'],
+          \ 'cm_refresh': {'omnifunc': 'necoghc#omnifunc'},
+          \ })
 augroup END
 
 AddTabularPattern! colon                  /^[^:]*\zs:/

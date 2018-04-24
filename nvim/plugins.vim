@@ -55,6 +55,7 @@ Plug 'neoclide/vim-jsx-improve', {'for': 'javascript'}
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
+Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
