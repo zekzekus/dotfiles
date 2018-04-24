@@ -17,7 +17,7 @@ endif
 " programming
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
@@ -47,6 +47,7 @@ Plug 'pbrisbin/vim-colors-off'
 " python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'zchee/deoplete-jedi', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
@@ -60,10 +61,11 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'racer-rust/vim-racer', {'for': 'rust'}
-Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
+Plug 'sebastianmarkow/deoplete-rust', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'zchee/deoplete-go', {'for': 'go'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}

@@ -219,6 +219,8 @@ call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 
+let g:deoplete#enable_at_startup = 1
+
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
