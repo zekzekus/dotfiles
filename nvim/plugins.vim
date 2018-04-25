@@ -17,7 +17,7 @@ endif
 " programming
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
