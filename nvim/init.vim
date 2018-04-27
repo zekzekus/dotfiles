@@ -170,17 +170,17 @@ if has('nvim')
     autocmd!
     autocmd TermOpen * setlocal nonumber
   augroup END
+
+  let g:python_host_skip_check=1
+  let g:python3_host_skip_check=1
+  let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
   set ttyfast
   set clipboard+=unnamed
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-
-let g:python_host_skip_check=1
-let g:python3_host_skip_check=1
-let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 
 let s:cache_dir = '~/.nvimtmp/cache'
 function! s:get_cache_dir(suffix)
@@ -207,14 +207,12 @@ runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
 
 call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
-
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
-
 call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
