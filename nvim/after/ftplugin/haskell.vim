@@ -52,6 +52,8 @@ let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
 
 let g:intero_type_on_hover = 1
+let g:necoghc_enable_detailed_browse = 1
+
 augroup haskell_intero
   autocmd!
   autocmd BufWritePost *.hs InteroReload
