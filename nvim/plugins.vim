@@ -17,7 +17,6 @@ endif
 " programming
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
 Plug 'SirVer/ultisnips'
