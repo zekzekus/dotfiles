@@ -169,6 +169,7 @@ if has('nvim')
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber
+    autocmd InsertEnter * call deoplete#enable()
   augroup END
 
   let g:python_host_skip_check=1
@@ -217,7 +218,11 @@ call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
+augroup plugins_au
+  autocmd!
+  autocmd InsertEnter * call deoplete#enable()
+augroup END
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
