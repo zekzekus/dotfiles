@@ -82,3 +82,6 @@ call denite#custom#map(
 
 nnoremap <leader>o <c-w><Bar><c-w>_<cr>
 nnoremap <leader>= <c-w>=
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
