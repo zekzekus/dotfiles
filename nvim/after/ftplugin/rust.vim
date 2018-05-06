@@ -12,10 +12,3 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
-
-let g:racer_experimental_completer = 1
-
-" keybindings
-nmap <leader>md <Plug>(rust-def)
-nmap <leader>mD <Plug>(rust-def-split-vertical)
-nmap <leader>mi <Plug>(rust-doc)

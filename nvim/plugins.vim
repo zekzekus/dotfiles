@@ -43,8 +43,10 @@ Plug 'morhetz/gruvbox'
 Plug 'pbrisbin/vim-colors-off'
 
 " python
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
@@ -57,7 +59,6 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
