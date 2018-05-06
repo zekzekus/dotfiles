@@ -51,21 +51,6 @@ let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
 
-let g:intero_type_on_hover = 1
-let g:necoghc_enable_detailed_browse = 1
-
-augroup haskell_intero
-  autocmd!
-  autocmd BufWritePost *.hs InteroReload
-  au User CmSetup call cm#register_source({'name' : 'neco-ghc',
-          \ 'priority': 9,
-          \ 'scopes': ['haskell'],
-          \ 'abbreviation': 'hs',
-          \ 'cm_refresh_patterns':['import\s+'],
-          \ 'cm_refresh': {'omnifunc': 'necoghc#omnifunc'},
-          \ })
-augroup END
-
 AddTabularPattern! colon                  /^[^:]*\zs:/
 AddTabularPattern! haskell_bindings       /^[^=]*\zs=\ze[^[:punct:]]/
 AddTabularPattern! haskell_comments       /--.*/l2
@@ -73,19 +58,3 @@ AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
 AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
 AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
 AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
-
-" keybindings
-nnoremap <silent><leader>mio :InteroOpen<CR>
-nnoremap <silent><leader>mik :InteroKill<CR>
-nnoremap <silent><leader>mic :InteroHide<CR>
-nnoremap <silent><leader>mil :InteroLoadCurrentModule<CR>
-
-nnoremap <silent><leader>me :InteroEval<CR>
-nnoremap <silent><leader>mt :InteroGenericType<CR>
-nnoremap <silent><leader>mT :InteroType<CR>
-nnoremap <silent><leader>mi :InteroInfo<CR>
-nnoremap <silent><leader>mI :InteroTypeInsert<CR>
-
-nnoremap <silent><leader>md :InteroGoToDef<CR>
-
-nnoremap <silent><leader>mu :InteroUses<CR>
