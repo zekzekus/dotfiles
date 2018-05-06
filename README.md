@@ -4,8 +4,8 @@ The installation instructions are coming soon... (WIP)
 
 ## VIM Configuration
 
-* Compatible with [Neovim](https://neovim.io/).
-* Fully supports only Neovim at the moment.
+* Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
+* Only Haskell development plugin called intero is Neovim only.
 * Some plugins might not support vanilla Vim without compiled python3.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
@@ -14,6 +14,7 @@ The installation instructions are coming soon... (WIP)
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
+* Lately i removed all autocomplete plugins. I am using default Vim functionality for completion.
 
 ### Installation
 
@@ -28,10 +29,8 @@ The installation instructions are coming soon... (WIP)
   virtual environments must be located under `~/.virtualenvs/`.
 
         vf new neovim2
-        pip install neovim jedi psutil setproctitle
 
         vf new --python=python3 neovim3
-        pip3 install neovim jedi psutil setproctitle
 
 * Clone repository to any place you prefer.
 
@@ -62,17 +61,15 @@ The installation instructions are coming soon... (WIP)
 
 Notable custom keybindings;
 
-* General
-    * Swap `;` with `:` so to enter command mode use only one keystroke. If you want to repeat latest linewise jump use `:`.
 * File based operations (starts with `<leader>f`)
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
     * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in junk file folder.
     * `<leader>ft` Toggle tagbar.
     * `<leader>fs` Write buffer to disk. Equilavent `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
-* Buffer based operations (starts with `<leader>b`)
     * `<leader>fl` Populates all lines of current file into fuzzy search UI.
     * `<leader>fo` Poplulates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
+* Buffer based operations (starts with `<leader>b`)
     * `<leader>bb` List buffer to jump. Fuzzy search UI.
     * `<leader><tab>` Switch to previous buffer. Equilavent to `:b#<cr>`.
 * Search based operations
@@ -85,7 +82,7 @@ Notable custom keybindings;
     * `<leader>V` selects just pasted text.
 
 Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
-keybindings.
+keybindings. Filetype based keybindings (for haskell, python etc.) and confogurations can be found in corresponding files under `nvim/after/ftplugin` directory.
 
 ### Plugins List
 
