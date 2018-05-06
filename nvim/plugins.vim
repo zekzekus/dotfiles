@@ -17,6 +17,11 @@ endif
 " programming
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 
 " editing
 Plug 'SirVer/ultisnips'
@@ -43,10 +48,7 @@ Plug 'morhetz/gruvbox'
 Plug 'pbrisbin/vim-colors-off'
 
 " python
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
