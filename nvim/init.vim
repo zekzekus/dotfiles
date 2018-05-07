@@ -220,7 +220,7 @@ call denite#custom#option('_', 'highlight_matched_char', 'None')
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'python': [$HOME . '/.virtualenvs/neovim3/bin/pyls'],
+    \ 'python': ['pyls'],
     \ 'haskell': ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
 
