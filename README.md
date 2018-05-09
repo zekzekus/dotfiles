@@ -5,16 +5,16 @@ The installation instructions are coming soon... (WIP)
 ## VIM Configuration
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
-* Only Haskell development plugin called intero is Neovim only.
 * Some plugins might not support vanilla Vim without compiled python3.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go`, and `Javascript (React)`.
+* Language support is available via corresponding [Language Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/) except for `Go`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
-* Lately i removed all autocomplete plugins. I am using default Vim functionality for completion.
+* Lately i removed all autocomplete plugins. I am using default Vim functionality for completion. And if language server supports completion `omnifunc` set to language server's completion function.
 
 ### Installation
 
@@ -25,7 +25,7 @@ The installation instructions are coming soon... (WIP)
         brew install neovim --HEAD
 
 * For Neovim it is recommended to use separated virtual python environments for
-  editor's own needs (i use Fish shell and virtualfish). For any shell these
+  editor's own needs (i use Fish shell and virtualfish). For any shell, these
   virtual environments must be located under `~/.virtualenvs/`.
 
         vf new neovim2
@@ -57,6 +57,12 @@ The installation instructions are coming soon... (WIP)
 
         $ brew install ctags ripgrep the_silver_searcher
 
+* Install Language Servers for the languages you want work on.
+    * [Python Language Server](https://github.com/palantir/python-language-server)
+    * [Haskell IDE Engine](https://github.com/haskell/haskell-ide-engine)
+    * [Rust Language Server](https://github.com/rust-lang-nursery/rls)
+    * [Javascript/Typescript Language Server](https://github.com/sourcegraph/javascript-typescript-langserver)
+
 ### Keybindings List
 
 Notable custom keybindings;
@@ -80,6 +86,11 @@ Notable custom keybindings;
     * `<BS>` executes `:nohlsearch<cr>`.
 * Other
     * `<leader>V` selects just pasted text.
+* Language server client bindings
+    * `<leader>md` jump to definition of the symbol under cursor using language server.
+    * `<leader>mt` shows hover information using language server.
+    * `<leader>mr` rename the symbol under cursor using language server.
+    * `<leader>mn` shows usages of the symbol under cursor using language server.
 
 Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
 keybindings. Filetype based keybindings (for haskell, python etc.) and confogurations can be found in corresponding files under `nvim/after/ftplugin` directory.
