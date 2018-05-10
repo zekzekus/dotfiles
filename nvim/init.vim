@@ -168,6 +168,7 @@ if has('nvim')
   endif
   augroup terminal_au
     autocmd!
+
     autocmd TermOpen * setlocal nonumber
   augroup END
 
