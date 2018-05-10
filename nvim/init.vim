@@ -195,7 +195,7 @@ call neomake#configure#automake({
 \ 'BufWinEnter': {},
 \ }, 500)
 
-let g:UltiSnipsExpandTrigger='<C-a>' 
+let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsListSnippets = '<c-w>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
@@ -223,12 +223,6 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'haskell': ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
-
-let g:AutoPairsMapCh = 0
-
-let g:mucomplete#chains = {}
-let g:mucomplete#chains.default  = ['path', 'omni', 'keyn', 'ulti']
-let g:mucomplete#always_use_completeopt = 1
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
