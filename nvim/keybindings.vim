@@ -83,9 +83,6 @@ call denite#custom#map(
 nnoremap <leader>o <c-w><Bar><c-w>_<cr>
 nnoremap <leader>= <c-w>=
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 " programming (language server) bindings
 nnoremap <leader>md :call LanguageClient#textDocument_definition()<cr>
 nnoremap <leader>mt :call LanguageClient#textDocument_hover()<cr>
