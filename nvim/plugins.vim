@@ -22,7 +22,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-
 " editing
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

@@ -196,10 +196,10 @@ call neomake#configure#automake({
 \ 'BufWinEnter': {},
 \ }, 500)
 
-let g:UltiSnipsExpandTrigger='<C-j>'
-let g:UltiSnipsListSnippets = '<c-w>'
-let g:UltiSnipsJumpForwardTrigger='<c-b>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+let g:UltiSnipsExpandTrigger       = '<C-j>'
+let g:UltiSnipsListSnippets        = '<c-w>'
+let g:UltiSnipsJumpForwardTrigger  = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 let g:smartclose_set_default_mapping = 0
 
@@ -219,10 +219,10 @@ call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
-    \ 'haskell': ['stack', 'exec', 'hie', '--', '--lsp'],
+    \ 'rust':       [ 'rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': [ 'javascript-typescript-stdio'],
+    \ 'python':     [ 'pyls'],
+    \ 'haskell':    [ 'stack', 'exec', 'hie', '--', '--lsp'],
     \ }
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
