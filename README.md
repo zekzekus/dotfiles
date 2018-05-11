@@ -10,11 +10,10 @@ The installation instructions are coming soon... (WIP)
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go`, and `Javascript (React)`.
 * Language support is available via corresponding [Language Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/) except for `Go`.
-* Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
-  buffer based shortcuts are under `<Leader>b`.
+* Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
-* Lately i removed all autocomplete plugins. I am using default Vim functionality for completion. And if language server supports completion `omnifunc` set to language server's completion function.
+* I am using default Vim functionality for completion. And if language server supports completion `omnifunc` set to language server's completion function.
 
 ### Installation
 
