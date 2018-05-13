@@ -76,7 +76,7 @@ Notable custom keybindings;
     * `<leader>fo` Poplulates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
 * Buffer based operations (starts with `<leader>b`)
     * `<leader>bb` List buffer to jump. Fuzzy search UI.
-    * `<leader>bd` Delete current buffer. Equilavent of `:bd<cr>`.
+    * `<leader>bd` Delete current buffer. Equivalent of `:bd<cr>`.
     * `<leader><tab>` Switch to previous buffer. Equilavent to `:b#<cr>`.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
