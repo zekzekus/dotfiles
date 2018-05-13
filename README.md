@@ -70,7 +70,7 @@ Notable custom keybindings;
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
     * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in junk file folder.
     * `<leader>ft` Toggle tagbar.
-    * `<leader>fs` Write buffer to disk. Equilavent `:w<cr>`.
+    * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
     * `<leader>fl` Populates all lines of current file into fuzzy search UI.
     * `<leader>fo` Poplulates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
