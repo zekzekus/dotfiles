@@ -13,11 +13,12 @@ nnoremap <silent><leader>ff :<c-u>Denite file_rec -winheight=`30*winheight(0)/10
 nnoremap <silent><leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
 " to remove white space from a file.
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <silent><leader>fl :<c-u>Denite line<cr>
+nnoremap <silent><leader>fl :<c-u>Denite line -winheight=`30*winheight(0)/100`<cr>
 nnoremap <silent><leader>fo :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
 " buffers
 nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`15*winheight(0)/100`<cr>
+nnoremap <silent><leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
