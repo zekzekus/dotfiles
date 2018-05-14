@@ -19,7 +19,7 @@ set splitright
 
 set regexpengine=1
 set synmaxcol=300
-set cursorline
+set nocursorline
 
 set number
 set norelativenumber
