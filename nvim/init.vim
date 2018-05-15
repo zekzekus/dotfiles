@@ -68,6 +68,8 @@ set wildignore+=*.class
 set wildignore+=.stack-work
 set wildignore+=**/bower_components/**
 set wildignore+=vendor
+set wildignore+=**/plugged/**
+set wildignore+=**/plugged_vim/**
 
 set path=.,**
 
@@ -85,6 +87,7 @@ set suffixesadd+=.yaml
 set suffixesadd+=.toml
 set suffixesadd+=.cabal
 set suffixesadd+=.md
+set suffixesadd+=.go
 
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
