@@ -107,32 +107,9 @@ augroup END
 
 let g:netrw_liststyle=3
 
-let g:modmap={
-    \ 'n'  : 'Normal',
-    \ 'no' : 'N·Operator Pending',
-    \ 'v'  : 'Visual',
-    \ 'V'  : 'V·Line',
-    \ '' : 'V·Block',
-    \ 's'  : 'Select',
-    \ 'S'  : 'S·Line',
-    \ '' : 'S·Block',
-    \ 'i'  : 'Insert',
-    \ 'R'  : 'Replace',
-    \ 'Rv' : 'V·Replace',
-    \ 'c'  : 'Command',
-    \ 'cv' : 'Vim Ex',
-    \ 'ce' : 'Ex',
-    \ 'r'  : 'Prompt',
-    \ 'rm' : 'More',
-    \ 'r?' : 'Confirm',
-    \ '!'  : 'Shell',
-    \ 't'  : 'Terminal'
-    \}
-
-set noshowmode
+set showmode
 set laststatus=2
 set statusline=
-set statusline+=[%{toupper(g:modmap[mode()])}]
 set statusline+=[%{fugitive#head(6)}]
 set statusline+=%{(&paste==0?'':'[P]')}
 set statusline+=[%f]
@@ -148,6 +125,8 @@ set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
 set statusline+=[%l
 set statusline+=/
 set statusline+=%L]
+set statusline+=[%c]
+set statusline+=[%%%p]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
