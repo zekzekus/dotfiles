@@ -112,12 +112,11 @@ set laststatus=2
 set statusline=
 set statusline+=%w
 set statusline+=%q
-set statusline+=\ »\ %F
+set statusline+=\ »\ %F%m
 set statusline+=%=
 set statusline+=[%{fugitive#head(6)}]
 set statusline+=%{(&paste==0?'':'\ \>\>\ [P]')}
-set statusline+=[%M
-set statusline+=%H
+set statusline+=[%H
 set statusline+=%Y
 set statusline+=%R]
 set statusline+=[%l
