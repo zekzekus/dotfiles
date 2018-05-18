@@ -110,22 +110,19 @@ let g:netrw_liststyle=3
 set showmode
 set laststatus=2
 set statusline=
-set statusline+=[%{fugitive#head(6)}]
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=[%f]
-set statusline+=%m
-set statusline+=%r
-set statusline+=%h
 set statusline+=%w
 set statusline+=%q
+set statusline+=\ »\ %F
 set statusline+=%=
-" set statusline+=[%{substitute(getcwd(),expand('~'),'~','g')}]
-set statusline+=%y
-set statusline+=[%{(&fenc!=''?&fenc:&enc)}]\[%{&ff}]
+set statusline+=[%{fugitive#head(6)}]
+set statusline+=%{(&paste==0?'':'\ \>\>\ [P]')}
+set statusline+=[%M
+set statusline+=%H
+set statusline+=%Y
+set statusline+=%R]
 set statusline+=[%l
-set statusline+=/
-set statusline+=%L]
-set statusline+=[%c]
+set statusline+=,
+set statusline+=%c]
 set statusline+=[%%%p]
 set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
