@@ -5,6 +5,8 @@ source ~/.config/nvim/plugins.vim
 set modelines=0
 set mouse=a
 set updatetime=1000
+set autowrite
+set autoread
 
 set tabstop=4
 set shiftwidth=4
