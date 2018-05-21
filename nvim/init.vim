@@ -207,7 +207,7 @@ let g:deoplete#enable_at_startup = 0
 augroup plugins_au
   autocmd!
 
-  autocmd CursorHold, CursorHoldI * call deoplete#enable()
+  autocmd CursorHold * call deoplete#enable()
 augroup END
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
