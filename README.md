@@ -13,7 +13,7 @@ The installation instructions are coming soon... (WIP)
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
-* I am using default Vim functionality for completion. And if language server supports completion `omnifunc` set to language server's completion function.
+* I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as autocompletion engine. It uses language client sources by default except vimscript and Go. Those have their own sources implemented.
 
 ### Installation
 
