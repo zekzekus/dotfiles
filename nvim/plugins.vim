@@ -21,6 +21,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
 Plug 'SirVer/ultisnips'
@@ -61,6 +63,7 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'zchee/deoplete-go', {'for': 'go'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
