@@ -13,7 +13,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set showcmd
 set hidden
 set visualbell
 set splitbelow
@@ -96,6 +95,7 @@ else
   set background=dark
 endif
 colorscheme off
+highlight clear VertSplit
 
 syntax sync minlines=256
 
@@ -107,23 +107,26 @@ augroup END
 
 let g:netrw_liststyle=3
 
+runtime! plugin/sensible.vim
 set showmode
-set laststatus=2
+set noruler
+set noshowcmd
+set laststatus=0
 set statusline=
-set statusline+=%w
-set statusline+=%q
-set statusline+=\ »\ %F%m\ «
-set statusline+=%=
-set statusline+=[%{fugitive#head(6)}]
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=[%H
-set statusline+=%Y
-set statusline+=%R]
-set statusline+=(%l
-set statusline+=/
-set statusline+=%L)
-set statusline+=%%%p
-set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
+" set statusline+=%w
+" set statusline+=%q
+" set statusline+=\ »\ %F%m\ «
+" set statusline+=%=
+" set statusline+=[%{fugitive#head(6)}]
+" set statusline+=%{(&paste==0?'':'[P]')}
+" set statusline+=[%H
+" set statusline+=%Y
+" set statusline+=%R]
+" set statusline+=(%l
+" set statusline+=/
+" set statusline+=%L)
+" set statusline+=%%%p
+" set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -207,7 +210,7 @@ let g:deoplete#enable_at_startup = 0
 augroup plugins_au
   autocmd!
 
-  autocmd CursorHold * call deoplete#enable()
+  autocmd InsertEnter * call deoplete#enable()
 augroup END
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
