@@ -27,15 +27,16 @@ set norelativenumber
 
 set undofile
 set lazyredraw
-set matchtime=3
 
 set ignorecase
 set smartcase
-set showmatch
 set hlsearch
 set incsearch
 
-set colorcolumn=79
+set showmatch
+set matchtime=3
+
+set colorcolumn=+1
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
