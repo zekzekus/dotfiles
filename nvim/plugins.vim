@@ -20,7 +20,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ 'for': ['python', 'javascript', 'haskell', 'rust']
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
