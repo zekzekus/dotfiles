@@ -20,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
+    \ 'for': ['python', 'javascript', 'haskell', 'rust']
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
@@ -33,7 +34,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
