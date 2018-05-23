@@ -110,24 +110,11 @@ let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 set showmode
-set noruler
 set noshowcmd
 set laststatus=0
-set statusline=
-set statusline+=%w
-set statusline+=%q
-set statusline+=\ »\ %F%m\ «
-set statusline+=%=
-set statusline+=[%{fugitive#head(6)}]
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=[%H
-set statusline+=%Y
-set statusline+=%R]
-set statusline+=(%l
-set statusline+=/
-set statusline+=%L)
-set statusline+=%%%p
-set statusline+=%#ErrorMsg#%{neomake#statusline#LoclistStatus()}
+
+set ruler
+set rulerformat=%25(%=%{neomake#statusline#LoclistStatus()}%)
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
