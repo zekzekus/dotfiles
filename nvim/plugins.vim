@@ -33,6 +33,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
+Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar'
