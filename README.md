@@ -14,6 +14,7 @@ The installation instructions are coming soon... (WIP)
 * Leader key is `space`.
 * Local leader is `\`.
 * I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as autocompletion engine. It uses language client sources by default except vimscript and Go. Those have their own sources implemented.
+* For a while i am going for simplicity so i removed statusline completely.
 
 ### Installation
 
