@@ -1,8 +1,8 @@
 # My Personal Configuration Files
 
-The installation instructions are coming soon... (WIP)
-
 ## VIM Configuration
+
+My very personal Vim configuration. Visually unattractive (no fancy status or tab line with fancy powerline symbols (actually no status line at all :)) but functionally cool stuff. I do Python development at work on a daily basis. Also I need to read (more than writing) Javasctipt code (mostly ReactJS). My personal interests at the moment includes Haskell, Rust and Go programming languages to play on my free time. So this configuration supports these 5 languages. Except Go, all other language supports comes from corresponding Language Server. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
 * Some plugins might not support vanilla Vim without compiled python3.
@@ -25,7 +25,7 @@ The installation instructions are coming soon... (WIP)
         brew install neovim --HEAD
 
 * For Neovim it is recommended to use separated virtual python environments for
-  editor's own needs (i use Fish shell and virtualfish). For any shell, these
+  editor's own needs (I use Fish shell and virtualfish). For any shell, these
   virtual environments must be located under `~/.virtualenvs/`.
 
         vf new neovim2
