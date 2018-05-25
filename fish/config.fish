@@ -23,7 +23,6 @@ set --export EDITOR nvim
 set --export MANPAGER "nvim -c 'set ft=man' -"
 
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
-set --export FZF_DEFAULT_COMMAND 'rg --hidden --files --follow --glob "!.git/*"'
 
 alias mux='tmuxinator'
 set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
