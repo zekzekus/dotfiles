@@ -2,7 +2,7 @@
 
 ## VIM Configuration
 
-My very personal Vim configuration. Visually unattractive (no fancy status or tab line with fancy powerline powerline symbols (actually no status line at all :)) but functionally cool stuff. I do Python development at work on a daily basis. Also I need to read (more than writing) Javasctipt code (mostly ReactJS). My personal interests at the moment includes Haskell, Rust and Go programming languages to play on my free time. So this configuration supports these 5 languages. Except Go, all other language supports comes from corresponding Language Server. Some more details below.
+My very personal Vim configuration. Visually unattractive (no fancy status or tab line with fancy Powerline symbols (actually no status line at all :)) but functionally cool stuff. I do Python development at work on a daily basis. Also I need to read (more than writing) Javascript code (mostly ReactJS). My personal interests at the moment includes Haskell, Rust and Go programming languages to play on my free time. So this configuration supports these 5 languages. Except Go, all other language supports comes from corresponding Language Server. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
 * Some plugins might not support vanilla Vim without compiled python3.
@@ -20,7 +20,7 @@ My very personal Vim configuration. Visually unattractive (no fancy status or ta
 
 #### MacOS
 
-* Install `Neovim` (i prefer HEAD).
+* Install `Neovim` (I prefer HEAD).
         
         brew install neovim --HEAD
 
@@ -63,9 +63,9 @@ My very personal Vim configuration. Visually unattractive (no fancy status or ta
     * [Rust Language Server](https://github.com/rust-lang-nursery/rls)
     * [Javascript/Typescript Language Server](https://github.com/sourcegraph/javascript-typescript-langserver)
 
-### Keybindings List
+### Key bindings List
 
-Notable custom keybindings;
+Notable custom key bindings;
 
 * File based operations (starts with `<leader>f`)
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
@@ -117,7 +117,7 @@ Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugin
         ln -s /path/to/repo/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 - ###### (Optional) Change the shell from `fish` to `zsh`
-    - Open `~/.tmux.conf` in your favourite editor and edit the `MYSHELL` and `MYSHELL_PATH` variables in the file which defaults to `fish`
+    - Open `~/.tmux.conf` in your favorite editor and edit the `MYSHELL` and `MYSHELL_PATH` variables in the file which defaults to `fish`
 
             ...
             3 # SHELL choice (zsh | fish)
@@ -141,7 +141,7 @@ Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugin
         ln -s /path/to/repo/dotfiles/tmux/tmux.ubuntu.conf ~/.tmux.conf
 
 - ###### (Optional) Change the shell from `fish` to `zsh`
-    - Open `~/.tmux.conf` in your favourite editor and edit the `MYSHELL` and `MYSHELL_PATH` variables in the file which defaults to `fish`
+    - Open `~/.tmux.conf` in your favorite editor and edit the `MYSHELL` and `MYSHELL_PATH` variables in the file which defaults to `fish`
 
             ...
             3 # SHELL choice (zsh | fish)
