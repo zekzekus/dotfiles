@@ -2,7 +2,7 @@
 
 ## VIM Configuration
 
-My very personal Vim configuration. Visually unattractive (no fancy status or tab line with fancy powerline symbols (actually no status line at all :)) but functionally cool stuff. I do Python development at work on a daily basis. Also I need to read (more than writing) Javasctipt code (mostly ReactJS). My personal interests at the moment includes Haskell, Rust and Go programming languages to play on my free time. So this configuration supports these 5 languages. Except Go, all other language supports comes from corresponding Language Server. Some more details below.
+My very personal Vim configuration. Visually unattractive (no fancy status or tab line with fancy powerline powerline symbols (actually no status line at all :)) but functionally cool stuff. I do Python development at work on a daily basis. Also I need to read (more than writing) Javasctipt code (mostly ReactJS). My personal interests at the moment includes Haskell, Rust and Go programming languages to play on my free time. So this configuration supports these 5 languages. Except Go, all other language supports comes from corresponding Language Server. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
 * Some plugins might not support vanilla Vim without compiled python3.
@@ -14,7 +14,7 @@ My very personal Vim configuration. Visually unattractive (no fancy status or ta
 * Leader key is `space`.
 * Local leader is `\`.
 * I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as autocompletion engine. It uses language client sources by default except vimscript and Go. Those have their own sources implemented.
-* For a while i am going for simplicity so i removed statusline completely.
+* For a while I am going for simplicity so I removed statusline completely.
 
 ### Installation
 
@@ -74,7 +74,7 @@ Notable custom keybindings;
     * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
     * `<leader>fl` Populates all lines of current file into fuzzy search UI.
-    * `<leader>fo` Poplulates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
+    * `<leader>fo` Populates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
 * Buffer based operations (starts with `<leader>b`)
     * `<leader>bb` List buffer to jump. Fuzzy search UI.
     * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
@@ -94,7 +94,7 @@ Notable custom keybindings;
     * `<leader>mn` shows usages of the symbol under cursor using language server.
 
 Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
-keybindings. Filetype based keybindings (for haskell, python etc.) and confogurations can be found in corresponding files under `nvim/after/ftplugin` directory.
+keybindings. Filetype based keybindings (for haskell, python etc.) and configurations can be found in corresponding files under `nvim/after/ftplugin` directory.
 
 ### Plugins List
 

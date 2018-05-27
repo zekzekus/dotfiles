@@ -32,6 +32,16 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'godlygeek/tabular'
 
+" writing prose
+Plug 'reedes/vim-pencil', {'for': 'markdown'}
+Plug 'tpope/vim-abolish', {'for': 'markdown'}
+Plug 'junegunn/limelight.vim', {'for': 'markdown'}
+Plug 'junegunn/goyo.vim', {'for': 'markdown'}
+Plug 'reedes/vim-lexical', {'for': 'markdown'}
+Plug 'reedes/vim-litecorrect', {'for': 'markdown'}
+Plug 'reedes/vim-textobj-sentence', {'for': 'markdown'}
+Plug 'reedes/vim-wordy', {'for': 'markdown'}
+
 " navigating
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
