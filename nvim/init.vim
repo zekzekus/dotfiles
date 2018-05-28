@@ -36,6 +36,7 @@ set incsearch
 set showmatch
 set matchtime=3
 
+set textwidth=79
 set colorcolumn=+1
 
 set completeopt=menuone,noinsert,noselect
