@@ -47,6 +47,7 @@ Plug 'pbrisbin/vim-colors-off'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
