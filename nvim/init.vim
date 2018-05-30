@@ -139,7 +139,7 @@ if has('nvim')
   augroup terminal_au
     autocmd!
 
-    autocmd TermOpen * setlocal nonumber
+    autocmd TermOpen * setlocal nonumber norelativenumber
   augroup END
 
   let g:python_host_skip_check=1
