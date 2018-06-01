@@ -18,7 +18,7 @@ nnoremap <silent><leader>fo :<c-u>Denite outline -winheight=`30*winheight(0)/100
 
 " buffers
 nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`15*winheight(0)/100`<cr>
-nnoremap <silent><leader>bd :bd<cr>
+nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
