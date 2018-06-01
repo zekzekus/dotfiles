@@ -33,12 +33,12 @@ Plug 'Shougo/junkfile.vim'
 Plug 'godlygeek/tabular'
 
 " navigating
-Plug 'tpope/vim-vinegar'
-Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'szw/vim-smartclose'
+Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
