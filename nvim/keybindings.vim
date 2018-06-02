@@ -24,11 +24,11 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <silent><leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
 nnoremap <silent><leader>* :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
-nnoremap <leader>ss :Grepper -tool rg -quickfix -open -switch -nojump -prompt<cr>
+nnoremap <leader>sp :Grepper -tool rg -quickfix -open -switch -nojump -prompt<cr>
 nnoremap <leader>. :Grepper -cword -noprompt<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>sl :<c-u>Denite line -winheight=`30*winheight(0)/100`<cr>
-nnoremap <silent><leader>sj :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
+nnoremap <silent><leader>ss :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
 " for browsing the input history
 cnoremap <c-n> <down>

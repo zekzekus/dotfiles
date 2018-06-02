@@ -34,10 +34,10 @@ Notable custom key bindings;
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
     * `<leader>/` greps recursively in the directory and loads results into fuzzy search UI including preview for each row.
     * `<leader>*` same as previous one except this does not wait for input. Instead uses the word under cursor as input.
-    * `<leader>ss` uses grepper plugin to grep. Results loaded into quickfix window.
+    * `<leader>sp` uses grepper plugin to grep in project root. Results loaded into quickfix window.
     * `<BS>` executes `:nohlsearch<cr>`.
     * `<leader>sl` Populates all lines of current file into fuzzy search UI.
-    * `<leader>sj` Populates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
+    * `<leader>ss` Populates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
 * Other
     * `<leader>V` selects just pasted text.
 * Language server client bindings
