@@ -16,6 +16,43 @@ My very personal Vim configuration. Visually unattractive (no fancy status or ta
 * I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as autocompletion engine. It uses language client sources by default except vimscript and Go. Those have their own sources implemented.
 * For a while I am going for simplicity so I removed statusline completely.
 
+### Key bindings List
+
+Notable custom key bindings;
+
+* File based operations (starts with `<leader>f`)
+    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
+    * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in junk file folder.
+    * `<leader>ft` Toggle tagbar.
+    * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
+    * `<leader>fW` Remove trailing whitespace from whole buffer.
+* Buffer based operations (starts with `<leader>b`)
+    * `<leader>bb` List buffer to jump. Fuzzy search UI.
+    * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
+    * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
+* Search based operations
+    * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
+    * `<leader>/` greps recursively in the directory and loads results into fuzzy search UI including preview for each row.
+    * `<leader>*` same as previous one except this does not wait for input. Instead uses the word under cursor as input.
+    * `<leader>ss` uses grepper plugin to grep. Results loaded into quickfix window.
+    * `<BS>` executes `:nohlsearch<cr>`.
+    * `<leader>sl` Populates all lines of current file into fuzzy search UI.
+    * `<leader>sj` Populates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
+* Other
+    * `<leader>V` selects just pasted text.
+* Language server client bindings
+    * `<leader>md` jump to definition of the symbol under cursor using language server.
+    * `<leader>mt` shows hover information using language server.
+    * `<leader>mr` rename the symbol under cursor using language server.
+    * `<leader>mn` shows usages of the symbol under cursor using language server.
+
+Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
+keybindings. Filetype based keybindings (for haskell, python etc.) and configurations can be found in corresponding files under `nvim/after/ftplugin` directory.
+
+### Plugins List
+
+Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins. 
+
 ### Installation
 
 #### MacOS
@@ -62,43 +99,6 @@ My very personal Vim configuration. Visually unattractive (no fancy status or ta
     * [Haskell IDE Engine](https://github.com/haskell/haskell-ide-engine)
     * [Rust Language Server](https://github.com/rust-lang-nursery/rls)
     * [Javascript/Typescript Language Server](https://github.com/sourcegraph/javascript-typescript-langserver)
-
-### Key bindings List
-
-Notable custom key bindings;
-
-* File based operations (starts with `<leader>f`)
-    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
-    * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in junk file folder.
-    * `<leader>ft` Toggle tagbar.
-    * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
-    * `<leader>fW` Remove trailing whitespace from whole buffer.
-    * `<leader>fl` Populates all lines of current file into fuzzy search UI.
-    * `<leader>fo` Populates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
-* Buffer based operations (starts with `<leader>b`)
-    * `<leader>bb` List buffer to jump. Fuzzy search UI.
-    * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
-    * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
-* Search based operations
-    * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
-    * `<leader>/` greps recursively in the directory and loads results into fuzzy search UI including preview for each row.
-    * `<leader>*` same as previous one except this does not wait for input. Instead uses the word under cursor as input.
-    * `<leader>ss` uses grepper plugin to grep. Results loaded into quickfix window.
-    * `<BS>` executes `:nohlsearch<cr>`.
-* Other
-    * `<leader>V` selects just pasted text.
-* Language server client bindings
-    * `<leader>md` jump to definition of the symbol under cursor using language server.
-    * `<leader>mt` shows hover information using language server.
-    * `<leader>mr` rename the symbol under cursor using language server.
-    * `<leader>mn` shows usages of the symbol under cursor using language server.
-
-Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom
-keybindings. Filetype based keybindings (for haskell, python etc.) and configurations can be found in corresponding files under `nvim/after/ftplugin` directory.
-
-### Plugins List
-
-Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins. 
 
 ## TMUX Configuration
 
