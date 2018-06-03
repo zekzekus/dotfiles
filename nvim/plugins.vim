@@ -31,6 +31,7 @@ Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'godlygeek/tabular'
+Plug 'eraserhd/parinfer-rust', {'for': ['lisp', 'clojure'], 'do': 'cargo build --release'}
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
@@ -61,6 +62,11 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'zchee/deoplete-go', {'for': 'go'}
+
+" common lisp / clojure
+Plug 'l04m33/vlime', {'for': 'lisp', 'rtp': 'vim/'}
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
