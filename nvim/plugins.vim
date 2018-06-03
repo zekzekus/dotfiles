@@ -18,7 +18,7 @@ endif
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote')}
+Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
