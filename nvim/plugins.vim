@@ -32,7 +32,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'eraserhd/parinfer-rust', {'for': ['lisp', 'clojure'], 'do': 'cargo build --release'}
-Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo', {'on': 'MundoShow'}
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
