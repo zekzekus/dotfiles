@@ -24,7 +24,6 @@ set nocursorline
 set number
 set relativenumber
 
-set undofile
 set lazyredraw
 
 set ignorecase
@@ -74,6 +73,7 @@ set wildignore+=vendor
 set path=.,**
 
 set directory=~/.nvimtmp
+set undofile
 set undodir=~/.nvimtmp
 
 set suffixesadd+=.html
