@@ -95,7 +95,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme monotone
+colorscheme off
 highlight clear VertSplit
 
 syntax sync minlines=256

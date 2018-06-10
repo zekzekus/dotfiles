@@ -46,7 +46,6 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 " vim interface
 Plug 'morhetz/gruvbox'
 Plug 'pbrisbin/vim-colors-off'
-Plug 'Lokaltog/vim-monotone'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
