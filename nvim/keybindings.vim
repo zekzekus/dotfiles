@@ -77,3 +77,9 @@ nnoremap <silent><leader>md :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent><leader>mt :call LanguageClient#textDocument_hover()<cr>
 nnoremap <silent><leader>mr :call LanguageClient#textDocument_rename()<cr>
 nnoremap <silent><leader>mn :call LanguageClient#textDocument_references()<cr>
+
+" slightly more useful arrow keys
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
