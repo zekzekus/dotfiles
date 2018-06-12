@@ -40,6 +40,7 @@ Notable custom key bindings;
     * `<leader>ss` Populates (on the fly) all tags (outline) in the file (ctags) into fuzzy search UI.
 * Other
     * `<leader>V` selects just pasted text.
+    * Arrow keys to resize active window.
 * Language server client bindings
     * `<leader>md` jump to definition of the symbol under cursor using language server.
     * `<leader>mt` shows hover information using language server.
