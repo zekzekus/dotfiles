@@ -156,7 +156,12 @@ function! s:get_cache_dir(suffix)
 endfunction
 
 " ========== Plugin Settings =========="
-call neomake#configure#automake({'TextChanged': {}, 'InsertLeave': {}, 'BufWritePost': {'delay': 0}, 'BufWinEnter': {}, }, 500)
+call neomake#configure#automake({
+      \ 'TextChanged': {},
+      \ 'InsertLeave': {},
+      \ 'BufWritePost': {'delay': 0},
+      \ 'BufWinEnter': {}, },
+      \ 500)
 let g:neomake_open_list = 2
 let g:neomake_list_height = 5
 
