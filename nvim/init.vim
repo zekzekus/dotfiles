@@ -112,7 +112,8 @@ runtime! plugin/sensible.vim
 set showmode
 set noshowcmd
 set laststatus=0
-set noruler
+set ruler
+set rulerformat=%25(%=%{neomake#statusline#LoclistStatus()}%)
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -162,7 +163,7 @@ call neomake#configure#automake({
       \ 'BufWritePost': {'delay': 0},
       \ 'BufWinEnter': {}, },
       \ 500)
-let g:neomake_open_list = 2
+let g:neomake_open_list = 0
 let g:neomake_list_height = 5
 
 let g:UltiSnipsExpandTrigger       = '<C-j>'
