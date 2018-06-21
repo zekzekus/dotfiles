@@ -19,10 +19,10 @@ set splitright
 
 set regexpengine=1
 set synmaxcol=300
-set nocursorline
+set cursorline
 
 set number
-set relativenumber
+set norelativenumber
 
 set lazyredraw
 
@@ -95,8 +95,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme off
-highlight clear VertSplit
+colorscheme monotone
 
 syntax sync minlines=256
 
