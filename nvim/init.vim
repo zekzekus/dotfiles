@@ -50,44 +50,10 @@ set backupskip=/tmp/*,/private/tmp/*"
 
 set wildmode=longest:full,full
 set wildignorecase
-set wildignore+=.hg,.git,.svn
-set wildignore+=*.aux,*.out,*.toc
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
-set wildignore+=*.spl
-set wildignore+=*.sw?
-set wildignore+=*.DS_Store
-set wildignore+=*.luac
-set wildignore+=*.pyc
-set wildignore+=*.orig
-set wildignore+=*.beam
-set wildignore+=build
-set wildignore+=static
-set wildignore+=tmp
-set wildignore+=**/node_modules/**
-set wildignore+=*.class
-set wildignore+=.stack-work
-set wildignore+=**/bower_components/**
-set wildignore+=vendor
-
-set path=.,**
 
 set directory=~/.nvimtmp
 set undofile
 set undodir=~/.nvimtmp
-
-set suffixesadd+=.html
-set suffixesadd+=.vim
-set suffixesadd+=.py
-set suffixesadd+=.rs
-set suffixesadd+=.hs
-set suffixesadd+=.md
-set suffixesadd+=.yml
-set suffixesadd+=.yaml
-set suffixesadd+=.toml
-set suffixesadd+=.cabal
-set suffixesadd+=.md
-set suffixesadd+=.go
 
 set termguicolors
 if $ITERM_PROFILE =~? 'light'
@@ -206,3 +172,4 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim
 endif
+
