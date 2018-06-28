@@ -51,6 +51,8 @@ set backupskip=/tmp/*,/private/tmp/*"
 set wildmode=longest:full,full
 set wildignorecase
 
+set wildignore+=*.pyc
+
 set directory=~/.nvimtmp
 set undofile
 set undodir=~/.nvimtmp
