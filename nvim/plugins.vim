@@ -32,6 +32,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'simnalamburt/vim-mundo', {'on': 'MundoShow'}
+Plug 'joom/turkish-deasciifier.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
