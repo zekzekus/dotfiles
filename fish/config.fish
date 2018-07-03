@@ -21,11 +21,11 @@ set --export LC_ALL "en_US.UTF-8"
 
 set --export EDITOR nvim
 set --export MANPAGER "nvim -c 'set ft=man' -"
+set --export PGDATA /usr/local/var/postgres
 
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
-set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
 
 python3 -m virtualfish | source
 
@@ -35,5 +35,3 @@ if test -d ~/.config/fish/functions/rust.fish
 end
 
 status --is-interactive; and source (nodenv init -|psub)
-
-. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
