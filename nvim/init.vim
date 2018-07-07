@@ -159,7 +159,7 @@ let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python':     ['pyls'],
-    \ 'haskell':    ['stack', 'exec', 'hie-wrapper', '--', '--lsp'],
+    \ 'haskell':    ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
 
 let g:deoplete#enable_at_startup = 0
