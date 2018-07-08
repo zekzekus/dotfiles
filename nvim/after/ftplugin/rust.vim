@@ -12,3 +12,5 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
+
+let g:neomake_rust_enabled_makers = []

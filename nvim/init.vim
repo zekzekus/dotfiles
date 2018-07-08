@@ -79,8 +79,7 @@ runtime! plugin/sensible.vim
 set showmode
 set noshowcmd
 set laststatus=0
-set ruler
-set rulerformat=%25(%=%{neomake#statusline#LoclistStatus()}%)
+set noruler
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 

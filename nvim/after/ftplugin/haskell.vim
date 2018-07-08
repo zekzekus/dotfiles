@@ -58,3 +58,5 @@ AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
 AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
 AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
 AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
+
+let g:neomake_haskell_enabled_makers = []
