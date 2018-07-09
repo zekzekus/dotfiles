@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " buffer local options
-setlocal formatprg=format-haskell
+setlocal formatprg=brittany
 setlocal expandtab
 setlocal omnifunc=necoghc#omnifunc
 
