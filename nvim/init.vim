@@ -34,6 +34,7 @@ set incsearch
 set showmatch
 set matchtime=3
 
+set nowrap
 set textwidth=79
 set colorcolumn=+1
 
@@ -142,6 +143,7 @@ let g:smartclose_set_default_mapping = 0
 let g:grepper = {}
 runtime plugin/grepper.vim
 let g:grepper.rg.grepprg .= ' --smart-case'
+let g:grepper.quickfix = 0
 
 call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
 call denite#custom#var('grep', 'command', ['rg'])
