@@ -18,7 +18,6 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`15*winheight(0)/100`<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
-nnoremap <leader>bu :MundoShow<CR>
 
 " search
 nnoremap n nzzzv
