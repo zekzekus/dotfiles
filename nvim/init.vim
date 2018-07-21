@@ -64,7 +64,7 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme nord
+colorscheme monotone
 
 syntax sync minlines=256
 
