@@ -43,6 +43,7 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'Lokaltog/vim-monotone'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
