@@ -27,8 +27,9 @@ nnoremap <silent><leader>* :<c-u>DeniteCursorWord -auto-preview -vertical-previe
 nnoremap <leader>sp :Grepper -tool rg -open -switch -nojump -prompt<cr>
 nnoremap <leader>. :Grepper -tool rg -cword -noprompt<cr>
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>sl :<c-u>Denite line -winheight=`30*winheight(0)/100`<cr>
-nnoremap <silent><leader>ss :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
+nnoremap <leader>sc :nohlsearch<cr>
+nnoremap <silent><leader>ss :<c-u>Denite line -winheight=`30*winheight(0)/100`<cr>
+nnoremap <silent><leader>sj :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 
 " for browsing the input history
 cnoremap <c-n> <down>
