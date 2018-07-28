@@ -21,7 +21,7 @@ set regexpengine=1
 set synmaxcol=300
 set cursorline
 
-set number
+set nonumber
 set norelativenumber
 
 set lazyredraw
@@ -65,6 +65,7 @@ else
   set background=dark
 endif
 colorscheme nord
+highlight clear VertSplit
 
 syntax sync minlines=256
 
