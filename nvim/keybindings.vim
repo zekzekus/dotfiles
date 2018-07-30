@@ -24,7 +24,7 @@ nnoremap N Nzzzv
 nnoremap <silent><leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
 nnoremap <silent><leader>* :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
 nnoremap <leader>sp :Grepper -tool rg -open -switch -nojump -prompt<cr>
-nnoremap <leader>. :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>sP :Grepper -tool rg -cword -noprompt<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>
 
