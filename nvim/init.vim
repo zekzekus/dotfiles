@@ -119,11 +119,6 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-let s:cache_dir = '~/.nvimtmp/cache'
-function! s:get_cache_dir(suffix)
-  return resolve(expand(s:cache_dir . '/' . a:suffix))
-endfunction
-
 " ========== Plugin Settings =========="
 call neomake#configure#automake({
       \ 'TextChanged': {},
@@ -132,7 +127,6 @@ call neomake#configure#automake({
       \ 'BufWinEnter': {}, },
       \ 500)
 let g:neomake_open_list = 0
-let g:neomake_list_height = 5
 
 let g:UltiSnipsExpandTrigger       = '<C-j>'
 let g:UltiSnipsListSnippets        = '<c-w>'
@@ -174,7 +168,4 @@ augroup END
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
-if filereadable(glob('~/.config/nvim/keybindings.vim'))
-  source ~/.config/nvim/keybindings.vim
-endif
-
+source ~/.config/nvim/keybindings.vim
