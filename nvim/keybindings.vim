@@ -8,7 +8,7 @@ nnoremap k gk
 
 
 " files
-nnoremap <silent><leader><space> :<c-u>Denite file_rec buffer junkfile -winheight=`30*winheight(0)/100`<cr>
+nnoremap <silent><leader>ff :<c-u>Denite file_rec buffer junkfile -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>ft <ESC>:TagbarToggle<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 " to remove white space from a file.
@@ -23,8 +23,8 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <silent><leader>/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
 nnoremap <silent><leader>* :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
-nnoremap <leader>sp :Grepper -tool rg -open -switch -nojump -prompt<cr>
-nnoremap <leader>sP :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>s/ :Grepper -tool rg -open -switch -nojump -prompt<cr>
+nnoremap <leader>s* :Grepper -tool rg -cword -noprompt<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>
 
@@ -70,10 +70,11 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " programming (language server) bindings
-nnoremap <silent><leader>md :call LanguageClient#textDocument_definition()<cr>
-nnoremap <silent><leader>mt :call LanguageClient#textDocument_hover()<cr>
-nnoremap <silent><leader>mr :call LanguageClient#textDocument_rename()<cr>
-nnoremap <silent><leader>mn :call LanguageClient#textDocument_references()<cr>
+nnoremap <silent>[<C-d> :call LanguageClient#textDocument_definition()<cr>
+nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
+nnoremap <silent>[d :call LanguageClient#textDocument_hover()<cr>
+nnoremap <silent>[<C-n> :call LanguageClient#textDocument_rename()<cr>
+nnoremap <silent>[<C-r> :call LanguageClient#textDocument_references()<cr>
 
 " slightly more useful arrow keys
 nnoremap <Up>    :resize +2<CR>

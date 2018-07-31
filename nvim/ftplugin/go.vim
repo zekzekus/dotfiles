@@ -29,8 +29,11 @@ let g:tagbar_type_go = {
 
 let g:neomake_go_enabled_makers = ['go']
 
+let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
+
 " keybindings
-nmap <leader>md <Plug>(go-def)
-nmap <leader>mt <Plug>(go-info)
-nmap <leader>mi <Plug>(go-doc)
-nmap <leader>mr <Plug>(go-rename)
+nmap [<C-d> <Plug>(go-def)
+nmap K <Plug>(go-info)
+nmap [d <Plug>(go-doc)
+nmap [<C-n> <Plug>(go-rename)
