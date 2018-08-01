@@ -34,6 +34,8 @@ let g:go_doc_keywordprg_enabled = 0
 
 " keybindings
 nmap [<C-d> <Plug>(go-def)
+nmap ]<C-d> <Plug>(go-def)
 nmap K <Plug>(go-info)
 nmap [d <Plug>(go-doc)
+nmap ]d <Plug>(go-doc)
 nmap [<C-n> <Plug>(go-rename)
