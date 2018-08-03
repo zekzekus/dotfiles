@@ -66,6 +66,7 @@ Plug 'zchee/deoplete-go', {'for': 'go'}
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
+Plug 'venantius/vim-cljfmt', {'for': 'clojure'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
