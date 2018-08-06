@@ -21,7 +21,7 @@ set regexpengine=1
 set synmaxcol=300
 set cursorline
 
-set nonumber
+set number
 set norelativenumber
 
 set lazyredraw
