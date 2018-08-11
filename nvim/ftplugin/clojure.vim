@@ -1,3 +1,6 @@
+" plugin settings
+let g:clj_fmt_autosave = 0
+
 " keybindings
 nnoremap <silent>[<C-d> <Plug>FireplaceDjump
 nnoremap <silent>]<C-d> <Plug>FireplaceDjump
