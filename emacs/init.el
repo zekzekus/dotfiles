@@ -178,6 +178,12 @@
 
 (use-package rust-mode :ensure t)
 
+(use-package clojure-mode :ensure t)
+
+(use-package cider :ensure t)
+
+(use-package haskell-mode :ensure t)
+
 (use-package evil-magit
   :ensure t
   :config
