@@ -102,6 +102,10 @@
   :config
   (add-hook 'after-init-hook 'counsel-projectile-mode))
 
+(defun x/system-is-mac ()
+  "Helper function to get system type."
+  (eq system-type 'darwin))
+
 (use-package exec-path-from-shell
   :if (x/system-is-mac)
   :init
@@ -179,6 +183,8 @@
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
+(use-package pyvenv :ensure t)
+
 (use-package evil-magit
   :ensure t
   :config
@@ -191,6 +197,11 @@
 
 (use-package imenu-list :ensure t)
 
+(use-package markdown-mode
+  :mode ("\\.m[k]d" . markdown-mode)
+  :defer t
+  :config)
+
 (use-package general
   :ensure t
   :config
@@ -198,6 +209,7 @@
 
 (nvmap :prefix "SPC"
   "TAB" 'projectile-project-buffers-other-buffer
+  "SPC" 'counsel-M-x
 
   "p" '(:ignore t :which-key "Projects")
   "pp" 'counsel-projectile-switch-project
