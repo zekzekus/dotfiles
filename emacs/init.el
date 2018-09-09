@@ -30,6 +30,7 @@
       mac-option-modifier 'none)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(save-place-mode 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
       backup-by-copying t
