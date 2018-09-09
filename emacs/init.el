@@ -1,4 +1,4 @@
-;;; init.el --- Summary
+;; init.el --- Summary
 ;;; Commentary:
 
 ;;; Code:
@@ -16,10 +16,10 @@
 (setq gc-cons-threshold 10000000)
 ;; Restore after startup
 (add-hook 'after-init-hook
-          (lambda ()
-            (setq gc-cons-threshold 1000000)
-            (message "gc-cons-threshold restored to %S"
-                     gc-cons-threshold)))
+	  (lambda ()
+	    (setq gc-cons-threshold 1000000)
+	    (message "gc-cons-threshold restored to %S"
+		     gc-cons-threshold)))
 
 (set-frame-font "PragmataPro 15" nil t)
 (global-hl-line-mode 1)
@@ -103,9 +103,12 @@
   (add-hook 'after-init-hook 'counsel-projectile-mode))
 
 (use-package exec-path-from-shell
-  :ensure t
+  :if (x/system-is-mac)
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
   :config
-  (exec-path-from-shell-initialize))
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
 
 (use-package magit :ensure t)
 
@@ -216,7 +219,7 @@
 
   "q" '(:ignore t :which-key "Quit")
   "qq" 'evil-quit-all
-)
+  )
 
 (provide 'init)
 ;;; init.el ends here
