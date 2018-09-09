@@ -213,10 +213,7 @@
 
 (use-package imenu-list :ensure t)
 
-(use-package markdown-mode
-  :mode ("\\.m[k]d" . markdown-mode)
-  :defer t
-  :config)
+(use-package markdown-mode :ensure t)
 
 (use-package general
   :ensure t
