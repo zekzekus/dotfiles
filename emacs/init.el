@@ -188,8 +188,21 @@
   (general-evil-setup t))
 
 (nvmap :prefix "SPC"
-  "pp" 'counsel-projectile
-  "gs" 'magit-status)
+  "g" '(:ignore t :which-key "Git")
+  "gs" 'magit
+
+  "p" '(:ignore t :which-key "Projects")
+  "pp" 'counsel-projectile-switch-project
+
+  "f" '(:ignore t :which-key "Files")
+  "fs" 'evil-write
+
+  "b" '(:ignore t :which-key "Buffers")
+  "bb" 'counsel-ibuffer
+
+  "q" '(:ignore t :which-key "Quit")
+  "qq" 'evil-quit-all
+)
 
 (provide 'init)
 ;;; init.el ends here
