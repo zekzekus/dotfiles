@@ -246,5 +246,14 @@
   "qq" 'evil-quit-all
   )
 
+(general-define-key
+ :keymaps 'normal
+ :prefix "["
+ "C-d" 'xref-find-definitions
+ "d" 'eglot-help-at-point
+ "C-n" 'eglot-rename
+ "C-r" 'xref-find-references
+ )
+
 (provide 'init)
 ;;; init.el ends here
