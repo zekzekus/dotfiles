@@ -164,26 +164,19 @@
     :fringe-bitmap 'flycheck-fringe-bitmap-ball
     :fringe-face 'flycheck-fringe-info))
 
+(use-package eglot :ensure t)
+
 (use-package company
   :ensure t
   :diminish company-mode
   :config
   (add-hook 'after-init-hook 'global-company-mode)
 
-  (setq company-idle-delay t)
-
-  (use-package company-anaconda
-    :ensure t
-    :config
-    (add-to-list 'company-backends 'company-anaconda)))
-
-(use-package anaconda-mode
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+  (setq company-idle-delay t))
 
 (use-package pyvenv :ensure t)
+
+(use-package rust-mode :ensure t)
 
 (use-package evil-magit
   :ensure t
