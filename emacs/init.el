@@ -9,6 +9,14 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq gc-cons-threshold 10000000)
+;; Restore after startup
+(add-hook 'after-init-hook
+          (lambda ()
+            (setq gc-cons-threshold 1000000)
+            (message "gc-cons-threshold restored to %S"
+                     gc-cons-threshold)))
+
 (set-frame-font "PragmataPro 15" nil t)
 (global-hl-line-mode 1)
 (setq custom-file (make-temp-file "emacs-custom"))
@@ -26,6 +34,8 @@
       kept-new-versions 20
       kept-old-versions 5)
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
 
 (use-package nord-theme
   :ensure t
@@ -35,7 +45,7 @@
 (use-package evil
   :ensure t
   :config
-  (evil-mode))
+  (evil-mode 1))
 
 (use-package smex :ensure t)
 
@@ -122,36 +132,41 @@
 	    #b00000000
 	    #b00000000))
   (flycheck-define-error-level 'error
-			       :severity 2
-			       :overlay-category 'flycheck-error-overlay
-			       :fringe-bitmap 'flycheck-fringe-bitmap-ball
-			       :fringe-face 'flycheck-fringe-error)
+    :severity 2
+    :overlay-category 'flycheck-error-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-error)
   (flycheck-define-error-level 'warning
-			       :severity 1
-			       :overlay-category 'flycheck-warning-overlay
-			       :fringe-bitmap 'flycheck-fringe-bitmap-ball
-			       :fringe-face 'flycheck-fringe-warning)
+    :severity 1
+    :overlay-category 'flycheck-warning-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-warning)
   (flycheck-define-error-level 'info
-			       :severity 0
-			       :overlay-category 'flycheck-info-overlay
-			       :fringe-bitmap 'flycheck-fringe-bitmap-ball
-			       :fringe-face 'flycheck-fringe-info))
+    :severity 0
+    :overlay-category 'flycheck-info-overlay
+    :fringe-bitmap 'flycheck-fringe-bitmap-ball
+    :fringe-face 'flycheck-fringe-info))
 
-  (use-package company
+(use-package company
+  :ensure t
+  :diminish
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  (setq company-idle-delay t)
+
+  (use-package company-anaconda
     :ensure t
-    :diminish
     :config
-    (add-hook 'after-init-hook 'global-company-mode)
-
-    (setq company-idle-delay t)
-
-    (use-package company-anaconda
-      :ensure t
-      :config
-      (add-to-list 'company-backends 'company-anaconda)))
+    (add-to-list 'company-backends 'company-anaconda)))
 
 (use-package anaconda-mode
   :ensure t
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+
+(use-package evil-magit
+  :ensure t
+  :config
+  (setq evil-magit-state 'normal))
