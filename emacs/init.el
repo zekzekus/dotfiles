@@ -58,6 +58,10 @@
 (use-package ivy
   :ensure t
   :diminish ivy-mode
+  :bind
+  (:map ivy-mode-map
+	("C-j" . ivy-next-line)
+	("C-k" . ivy-previous-line))
   :config
   (ivy-mode t)
   (setq ivy-initial-inputs-alist nil))
@@ -195,10 +199,14 @@
   "pp" 'counsel-projectile-switch-project
 
   "f" '(:ignore t :which-key "Files")
+  "ff" 'counsel-projectile-find-file
   "fs" 'evil-write
 
   "b" '(:ignore t :which-key "Buffers")
-  "bb" 'counsel-ibuffer
+  "bb" 'counsel-projectile-switch-to-buffer
+
+  "s" '(:ignore t :which-key "Search")
+  "ss" 'swiper
 
   "q" '(:ignore t :which-key "Quit")
   "qq" 'evil-quit-all
