@@ -21,7 +21,15 @@
 	    (message "gc-cons-threshold restored to %S"
 		     gc-cons-threshold)))
 
+(set-terminal-coding-system  'utf-8)
+(set-keyboard-coding-system  'utf-8)
+(set-language-environment    'utf-8)
+(set-selection-coding-system 'utf-8)
+(setq locale-coding-system   'utf-8)
+(prefer-coding-system        'utf-8)
+(set-input-method nil)
 (set-frame-font "PragmataPro 15" nil t)
+(setq inhibit-compacting-font-caches t)
 (global-hl-line-mode 1)
 (setq custom-file (make-temp-file "emacs-custom"))
 (setq ring-bell-function 'ignore)
@@ -31,6 +39,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (save-place-mode 1)
+(show-paren-mode 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
       backup-by-copying t
@@ -180,6 +189,8 @@
 (use-package rust-mode :ensure t)
 
 (use-package clojure-mode :ensure t)
+
+(use-package paredit :ensure t)
 
 (use-package cider :ensure t)
 
