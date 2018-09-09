@@ -47,6 +47,8 @@
   :config
   (evil-mode 1))
 
+(use-package diminish :ensure t)
+
 (use-package smex :ensure t)
 
 (use-package ivy
@@ -170,3 +172,8 @@
   :ensure t
   :config
   (setq evil-magit-state 'normal))
+
+(use-package feebleline
+  :ensure t
+  :config
+  (feebleline-mode 1))
