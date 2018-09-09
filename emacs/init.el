@@ -186,14 +186,15 @@
   :config
   (feebleline-mode 1))
 
+(use-package imenu-list :ensure t)
+
 (use-package general
   :ensure t
   :config
   (general-evil-setup t))
 
 (nvmap :prefix "SPC"
-  "g" '(:ignore t :which-key "Git")
-  "gs" 'magit
+  "TAB" 'projectile-project-buffers-other-buffer
 
   "p" '(:ignore t :which-key "Projects")
   "pp" 'counsel-projectile-switch-project
@@ -201,12 +202,17 @@
   "f" '(:ignore t :which-key "Files")
   "ff" 'counsel-projectile-find-file
   "fs" 'evil-write
+  "ft" 'imenu-list-smart-toggle
 
   "b" '(:ignore t :which-key "Buffers")
   "bb" 'counsel-projectile-switch-to-buffer
+  "bd" 'kill-this-buffer
 
   "s" '(:ignore t :which-key "Search")
-  "ss" 'swiper
+  "ss" 'counsel-imenu
+  "sl" 'swiper
+  "/" 'counsel-projectile-rg
+  "*" 'counsel-projectile-rg-initial-input
 
   "q" '(:ignore t :which-key "Quit")
   "qq" 'evil-quit-all
