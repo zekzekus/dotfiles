@@ -9,3 +9,5 @@ plugged_vim
 tags
 nvim/pack
 nvim/bundles
+
+flycheck_*.el

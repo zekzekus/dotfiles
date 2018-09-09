@@ -177,3 +177,15 @@
   :ensure t
   :config
   (feebleline-mode 1))
+
+(use-package general
+  :ensure t
+  :config
+  (general-evil-setup t))
+
+(nvmap :prefix "SPC"
+  "pp" 'counsel-projectile
+  "gs" 'magit-status)
+
+(provide 'init)
+;;; init.el ends here
