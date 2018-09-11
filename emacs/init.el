@@ -62,6 +62,11 @@
   :config
   (evil-mode 1))
 
+(use-package evil-commentary
+  :ensure t
+  :config
+  (evil-commentary-mode))
+
 (use-package diminish :ensure t)
 
 (use-package smex :ensure t)
@@ -70,9 +75,9 @@
   :ensure t
   :diminish ivy-mode
   :bind
-  (:map ivy-mode-map
-	("C-j" . ivy-next-line)
-	("C-k" . ivy-previous-line))
+  (:map ivy-mode-map)
+  ("C-j" . ivy-next-line)
+  ("C-k" . ivy-previous-line)
   :config
   (ivy-mode t)
   (setq ivy-initial-inputs-alist nil))
@@ -229,35 +234,35 @@
 (use-package markdown-mode :ensure t)
 
 (use-package general
-  :ensure t
-  :config
-  (general-evil-setup t))
+  :ensure t)
 
-(nvmap :prefix "SPC"
-  "TAB" 'projectile-project-buffers-other-buffer
-  "SPC" 'counsel-M-x
+(general-define-key
+ :states '(normal visual)
+ :prefix "SPC"
+ "TAB" 'projectile-project-buffers-other-buffer
+ "SPC" 'counsel-M-x
 
-  "p" '(:ignore t :which-key "Projects")
-  "pp" 'counsel-projectile-switch-project
+ "p" '(:ignore t :which-key "Projects")
+ "pp" 'counsel-projectile-switch-project
 
-  "f" '(:ignore t :which-key "Files")
-  "ff" 'counsel-projectile-find-file
-  "fs" 'evil-write
-  "ft" 'imenu-list-smart-toggle
+ "f" '(:ignore t :which-key "Files")
+ "ff" 'counsel-projectile-find-file
+ "fs" 'evil-write
+ "ft" 'imenu-list-smart-toggle
 
-  "b" '(:ignore t :which-key "Buffers")
-  "bb" 'counsel-projectile-switch-to-buffer
-  "bd" 'kill-this-buffer
+ "b" '(:ignore t :which-key "Buffers")
+ "bb" 'counsel-projectile-switch-to-buffer
+ "bd" 'kill-this-buffer
 
-  "s" '(:ignore t :which-key "Search")
-  "ss" 'counsel-imenu
-  "sl" 'swiper
-  "/" 'counsel-projectile-rg
-  "*" 'counsel-projectile-rg-initial-input
+ "s" '(:ignore t :which-key "Search")
+ "ss" 'counsel-imenu
+ "sl" 'swiper
+ "/" 'counsel-projectile-rg
+ "*" 'counsel-projectile-rg-initial-input
 
-  "q" '(:ignore t :which-key "Quit")
-  "qq" 'evil-quit-all
-  )
+ "q" '(:ignore t :which-key "Quit")
+ "qq" 'evil-quit-all)
+
 
 (general-define-key
  :keymaps 'normal
@@ -265,8 +270,8 @@
  "C-d" 'xref-find-definitions
  "d" 'eglot-help-at-point
  "C-n" 'eglot-rename
- "C-r" 'xref-find-references
- )
+ "C-r" 'xref-find-references)
+
 
 (provide 'init)
 ;;; init.el ends here
