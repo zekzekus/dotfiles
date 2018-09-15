@@ -6,10 +6,10 @@ My very personal Vim configuration. Visually unattractive (no fancy status or
 tab line with fancy Powerline symbols (actually no status line at all :)) but
 functionally cool stuff. I do Python development at work on a daily basis. Also
 I need to read (more than writing) Javascript code (mostly ReactJS). My
-personal interests at the moment includes Haskell, Rust and Go programming
-languages to play on my free time. So this configuration supports these 5
-languages. Except Go, all other language supports comes from corresponding
-Language Server. Some more details below.
+personal interests at the moment includes Clojure, Haskell, Rust and Go
+programming languages to play on my free time. So this configuration supports
+these 6 languages. Except Go and Clojure, all other language supports comes
+from corresponding Language Server. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and
   [Neovim](https://neovim.io/).
@@ -18,11 +18,11 @@ Language Server. Some more details below.
   nightly](https://www.iterm2.com/downloads/nightly) and
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
-* Primary programming languages supported: `Python`, `Haskell`, `Rust`, `Go`,
-  and `Javascript (React)`.
+* Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
+  `Rust`, `Go`, and `Javascript (React)`.
 * Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
-  except for `Go`.
+  except for `Go` and `Clojure`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
@@ -37,14 +37,13 @@ Language Server. Some more details below.
 Notable custom key bindings;
 
 * File based operations (starts with `<leader>f`)
-    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep.
-    * `<leader>fj` Find junkfile files. Fuzzy search UI populated with files in
-      junk file folder.
+    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It
+      simulteanously shows files, open buffers and junk files. You can switch
+      between these with `C-n` and `C-p`.
     * `<leader>ft` Toggle tagbar.
     * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
-    * `<leader>bb` List buffer to jump. Fuzzy search UI.
     * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
@@ -56,19 +55,23 @@ Notable custom key bindings;
     * `<leader>sp` uses grepper plugin to grep in project root. Results loaded
       into quickfix window.
     * `<BS>` executes `:nohlsearch<cr>`.
-    * `<leader>sl` Populates all lines of current file into fuzzy search UI.
-    * `<leader>ss` Populates (on the fly) all tags (outline) in the file
+    * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
+      all lines in the buffer will be in the list to narrow with fuzzy search.
       (ctags) into fuzzy search UI.
 * Other
     * `<leader>V` selects just pasted text.
     * Arrow keys to resize active window.
-* Language server client bindings
-    * `<leader>md` jump to definition of the symbol under cursor using language
-      server.
-    * `<leader>mt` shows hover information using language server.
-    * `<leader>mr` rename the symbol under cursor using language server.
-    * `<leader>mn` shows usages of the symbol under cursor using language
-      server.
+* Programming support bindings. I like [Tim Pope](https://github.com/tpope)
+  style shortcuts (ones derived from default vim bindings);
+    * `[C-d` jump to definition of the symbol under cursor using language
+      server or specific plugin.
+    * `K` shows hover information using language server or specific plugin.
+    * `[d` shows detailed hover information using language server or specific
+      plugin.
+    * `[C-n` rename the symbol under cursor using language server or specific
+      plugin.
+    * `[C-r` shows usages of the symbol under cursor using language server or
+      specific plugin.
 
 Check
 [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim)
