@@ -42,7 +42,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
-Plug 'Lokaltog/vim-monotone'
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 
 " python
@@ -50,7 +49,8 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
-Plug 'neoclide/vim-jsx-improve', {'for': 'javascript'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'mxw/vim-jsx', {'for': 'javsscript'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
