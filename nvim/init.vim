@@ -17,10 +17,7 @@ set visualbell
 set splitbelow
 set splitright
 
-set regexpengine=1
-set synmaxcol=300
 set cursorline
-
 set number
 set norelativenumber
 
@@ -51,7 +48,6 @@ set backupskip=/tmp/*,/private/tmp/*"
 
 set wildmode=longest:full,full
 set wildignorecase
-
 set wildignore+=*.pyc
 
 set directory=~/.nvimtmp
@@ -59,15 +55,8 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-if $ITERM_PROFILE =~? 'light'
-  set background=light
-else
-  set background=dark
-endif
 colorscheme nord
 highlight clear VertSplit
-
-syntax sync minlines=256
 
 augroup general_au
   autocmd!
