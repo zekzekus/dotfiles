@@ -49,8 +49,8 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'mxw/vim-jsx', {'for': 'javsscript'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript.jsx'}
+Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
