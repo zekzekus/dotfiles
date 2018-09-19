@@ -80,7 +80,9 @@
   ("C-j" . ivy-next-line)
   ("C-k" . ivy-previous-line)
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-initial-inputs-alist nil))
 
 (use-package counsel
   :ensure t
@@ -89,5 +91,13 @@
 (use-package swiper
   :ensure t
   :bind (("M-s" . swiper)))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
 
 ;;; init-use-package.el ends here
