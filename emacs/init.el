@@ -70,4 +70,24 @@
   :config
   (setq evil-magit-state 'normal))
 
+(use-package diminish :ensure t)
+
+(use-package ivy
+  :ensure t
+  :diminish ivy-mode
+  :bind
+  (:map ivy-mode-map)
+  ("C-j" . ivy-next-line)
+  ("C-k" . ivy-previous-line)
+  :config
+  (ivy-mode 1))
+
+(use-package counsel
+  :ensure t
+  :bind (("M-x" . counsel-M-x)))
+
+(use-package swiper
+  :ensure t
+  :bind (("M-s" . swiper)))
+
 ;;; init-use-package.el ends here
