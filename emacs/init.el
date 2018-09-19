@@ -44,6 +44,7 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (show-paren-mode 1)
+(electric-pair-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
