@@ -65,11 +65,20 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " programming (language server) bindings
-nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
-nnoremap <silent>[<C-d> :call LanguageClient#textDocument_definition()<cr>
-nnoremap <silent>[d :call LanguageClient#textDocument_hover()<cr>
-nnoremap <silent>[<C-n> :call LanguageClient#textDocument_rename()<cr>
-nnoremap <silent>[<C-r> :call LanguageClient#textDocument_references()<cr>
+function LC_maps()
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <silent>[<C-d> :call LanguageClient#textDocument_definition()<cr>
+    nnoremap <silent>[d :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <silent>[<C-n> :call LanguageClient#textDocument_rename()<cr>
+    nnoremap <silent>[<C-r> :call LanguageClient#textDocument_references()<cr>
+  endif
+endfunction
+augroup keybindings_au
+  autocmd!
+
+  autocmd FileType * call LC_maps()
+augroup END
 
 " slightly more useful arrow keys
 nnoremap <Up>    :resize +2<CR>
