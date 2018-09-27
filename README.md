@@ -48,12 +48,14 @@ Notable custom key bindings;
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
-    * `<leader>/` greps recursively in the directory and loads results into
+    * `<leader>s/` greps recursively in the directory and loads results into
       fuzzy search UI including preview for each row.
-    * `<leader>*` same as previous one except this does not wait for input.
+    * `<leader>s*` same as previous one except this does not wait for input.
       Instead uses the word under cursor as input.
-    * `<leader>sp` uses grepper plugin to grep in project root. Results loaded
+    * `<leader>/` uses grepper plugin to grep in project root. Results loaded
       into quickfix window.
+    * `<leader>*` uses grepper plugin to grep in project root. Results loaded
+      into quickfix window. Uses the word under cursor.
     * `<BS>` executes `:nohlsearch<cr>`.
     * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
       all lines in the buffer will be in the list to narrow with fuzzy search.
