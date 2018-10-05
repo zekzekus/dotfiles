@@ -121,9 +121,15 @@
    "g"  '(:ignore t :which-key "Git")
    "gs" '(magit-status :which-key "Git Status")
 
-   "f"  '(:ignore t :which-key "File")
+   "f"  '(:ignore t :which-key "Files")
    "ff" '(counsel-find-file :which-key "Find")
    "fs" '(evil-write :which-key "Save")
+
+   "b"  '(:ignore t :which-key "Buffers")
+   "bd" '(evil-delete-buffer :which-key "Delete")
+
+   "s"  '(:ignore t :which-key "Search")
+   "ss" '(swiper :which-key "Buffer")
 
    "q" '(:ignore t :which-key "Quit")
    "qq" '(evil-quit-all :which-key "Quit All")
