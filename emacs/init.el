@@ -19,7 +19,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(package-initialize)
+;; (package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -70,7 +70,11 @@
   :config
   (setq evil-magit-state 'normal))
 
-(use-package diminish :ensure t)
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'eldoc-mode)
+  (diminish 'undo-tree-mode))
 
 (use-package ivy
   :ensure t
@@ -106,5 +110,17 @@
   :init
   (which-key-mode)
   :diminish which-key-mode)
+
+(use-package general :ensure t
+  :config
+  (general-evil-setup t)
+
+  (general-define-key
+   :states '(normal visual emacs)
+   :prefix "SPC"
+   "g"  '(:ignore t :which-key "Git")
+   "gs" '(magit-status :which-key "Git Status")
+   )
+  )
 
 ;;; init-use-package.el ends here
