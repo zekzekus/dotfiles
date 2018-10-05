@@ -134,6 +134,10 @@
    "q" '(:ignore t :which-key "Quit")
    "qq" '(evil-quit-all :which-key "Quit All")
    )
+
+  (general-define-key
+   :states '(normal)
+   "DEL" 'evil-ex-nohighlight)
   )
 
 ;;; init-use-package.el ends here
