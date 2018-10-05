@@ -118,6 +118,7 @@
   (general-define-key
    :states '(normal visual emacs)
    :prefix "SPC"
+   "TAB" '(evil-switch-to-windows-last-buffer :which-key "Last Buffer")
    "g"  '(:ignore t :which-key "Git")
    "gs" '(magit-status :which-key "Git Status")
 
