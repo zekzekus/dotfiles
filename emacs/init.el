@@ -127,31 +127,31 @@
   (general-define-key
    :states '(normal visual emacs)
    :prefix "SPC"
-   "TAB" '(evil-switch-to-windows-last-buffer :which-key "Last Buffer")
-   "g"  '(:ignore t :which-key "Git")
-   "gs" '(magit-status :which-key "Git Status")
+   "TAB" '(evil-switch-to-windows-last-buffer :which-key "last buffer")
+   "g"  '(:ignore t :which-key "git")
+   "gs" '(magit-status :which-key "git status")
 
-   "f"  '(:ignore t :which-key "Files")
-   "ff" '(counsel-find-file :which-key "Find")
-   "fs" '(evil-write :which-key "Save")
+   "f"  '(:ignore t :which-key "files")
+   "ff" '(counsel-find-file :which-key "find")
+   "fs" '(evil-write :which-key "save")
 
-   "b"  '(:ignore t :which-key "Buffers")
-   "bd" '(evil-delete-buffer :which-key "Delete")
-   "bb" '(counsel-ibuffer :which-key "List")
+   "b"  '(:ignore t :which-key "buffers")
+   "bd" '(evil-delete-buffer :which-key "delete")
+   "bb" '(counsel-ibuffer :which-key "list")
 
-   "s"  '(:ignore t :which-key "Search")
-   "ss" '(swiper :which-key "Buffer")
+   "s"  '(:ignore t :which-key "search")
+   "ss" '(swiper :which-key "buffer")
 
-   "/" '(counsel-rg :which-key "Grep")
+   "/" '(counsel-rg :which-key "grep")
 
-   "p" '(:ignore t :which-key "Projects")
-   "pp" '(counsel-projectile-switch-project :which-key "Switch Project")
-   "pf" '(counsel-projectile-find-file :which-key "Files")
-   "pb" '(counsel-projectile-switch-to-buffer :which-key "Buffers")
-   "p/" '(counsel-projectile-rg :which-key "Grep")
+   "p" '(:ignore t :which-key "projects")
+   "pp" '(counsel-projectile-switch-project :which-key "switch project")
+   "pf" '(counsel-projectile-find-file :which-key "files")
+   "pb" '(counsel-projectile-switch-to-buffer :which-key "buffers")
+   "p/" '(counsel-projectile-rg :which-key "grep")
 
-   "q" '(:ignore t :which-key "Quit")
-   "qq" '(evil-quit-all :which-key "Quit All")
+   "q" '(:ignore t :which-key "quit")
+   "qq" '(evil-quit-all :which-key "quit all")
    )
 
   (general-define-key
