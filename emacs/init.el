@@ -111,6 +111,15 @@
   (which-key-mode)
   :diminish which-key-mode)
 
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :config
+  (projectile-mode +1))
+
+(use-package counsel-projectile
+  :ensure t)
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
@@ -128,9 +137,18 @@
 
    "b"  '(:ignore t :which-key "Buffers")
    "bd" '(evil-delete-buffer :which-key "Delete")
+   "bb" '(counsel-ibuffer :which-key "List")
 
    "s"  '(:ignore t :which-key "Search")
    "ss" '(swiper :which-key "Buffer")
+
+   "/" '(counsel-rg :which-key "Grep")
+
+   "p" '(:ignore t :which-key "Projects")
+   "pp" '(counsel-projectile-switch-project :which-key "Switch Project")
+   "pf" '(counsel-projectile-find-file :which-key "Files")
+   "pb" '(counsel-projectile-switch-to-buffer :which-key "Buffers")
+   "p/" '(counsel-projectile-rg :which-key "Grep")
 
    "q" '(:ignore t :which-key "Quit")
    "qq" '(evil-quit-all :which-key "Quit All")
