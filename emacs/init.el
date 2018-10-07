@@ -121,7 +121,8 @@
   :ensure t
   :diminish projectile-mode
   :config
-  (projectile-mode +1))
+  (projectile-mode +1)
+  (setq projectile-git-submodule-command ""))
 
 (use-package counsel-projectile
   :ensure t)
