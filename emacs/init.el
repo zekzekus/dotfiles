@@ -60,6 +60,12 @@
   :config
   (evil-mode 1))
 
+(use-package evil-commentary
+  :ensure t
+  :diminish evil-commentary-mode
+  :config
+  (add-hook 'prog-mode-hook 'evil-commentary-mode))
+
 (use-package magit
   :ensure t
   :commands (magit))
