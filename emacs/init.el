@@ -97,7 +97,7 @@
 (use-package counsel
   :ensure t
   :bind (("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file)))
+         ("C-x C-f" . counsel-find-file)))
 
 (use-package swiper
   :ensure t
@@ -135,6 +135,26 @@
   :config
   (setq-default evil-escape-key-sequence "C-["))
 
+(use-package parinfer
+  :ensure t
+  :diminish parinfer-mode
+  :bind
+  (("C-," . parinfer-toggle-mode))
+  :init
+  (progn
+    (setq parinfer-extensions
+          '(defaults       ; should be included.
+            pretty-parens  ; different paren styles for different modes.
+            evil           ; If you use Evil.
+            paredit        ; Introduce some paredit commands.
+            smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+            smart-yank))   ; Yank behavior depend on mode.
+    (add-hook 'clojure-mode-hook #'parinfer-mode)
+    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'lisp-mode-hook #'parinfer-mode)))
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
@@ -166,12 +186,12 @@
    "p/" '(counsel-projectile-rg :which-key "grep")
 
    "q" '(:ignore t :which-key "quit")
-   "qq" '(evil-quit-all :which-key "quit all")
-   )
+   "qq" '(evil-quit-all :which-key "quit all"))
+   
 
   (general-define-key
    :states '(normal)
-   "DEL" 'evil-ex-nohighlight)
-  )
+   "DEL" 'evil-ex-nohighlight))
+  
 
 ;;; init-use-package.el ends here
