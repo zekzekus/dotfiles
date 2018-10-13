@@ -49,6 +49,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (use-package nord-theme
   :ensure t
@@ -154,6 +155,16 @@
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
     (add-hook 'scheme-mode-hook #'parinfer-mode)
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
+
+(use-package clojure-mode :ensure t)
+
+(use-package cider :ensure t)
+
+(use-package company
+  :ensure t
+  :diminish company-mode
+  :init
+  (global-company-mode))
 
 (use-package general :ensure t
   :config
