@@ -127,6 +127,14 @@
 (use-package counsel-projectile
   :ensure t)
 
+(use-package evil-escape
+  :ensure t
+  :diminish evil-escape-mode
+  :init
+  (evil-escape-mode)
+  :config
+  (setq-default evil-escape-key-sequence "C-["))
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
