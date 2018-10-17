@@ -45,6 +45,7 @@
 (menu-bar-mode -1)
 (show-paren-mode 1)
 (electric-pair-mode 1)
+(setq eldoc-echo-area-use-multiline-p nil)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -86,23 +87,14 @@
 (use-package ivy
   :ensure t
   :diminish ivy-mode
-  :bind
-  (:map ivy-mode-map)
-  ("C-j" . ivy-next-line)
-  ("C-k" . ivy-previous-line)
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-initial-inputs-alist nil))
 
-(use-package counsel
-  :ensure t
-  :bind (("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)))
+(use-package counsel :ensure t)
 
-(use-package swiper
-  :ensure t
-  :bind (("M-s" . swiper)))
+(use-package swiper :ensure t)
 
 (use-package exec-path-from-shell
   :ensure t
@@ -139,8 +131,6 @@
 (use-package parinfer
   :ensure t
   :diminish parinfer-mode
-  :bind
-  (("C-," . parinfer-toggle-mode))
   :init
   (progn
     (setq parinfer-extensions
@@ -197,6 +187,14 @@
 
   (general-define-key
    :states '(normal)
-   "DEL" 'evil-ex-nohighlight))
+   "DEL" 'evil-ex-nohighlight
+   "M-x" 'counsel-M-x
+   "M-s" 'swiper
+   "C-," 'parinfer-toggle-mode)
+
+  (general-define-key
+   :keymaps 'ivy-mode-map
+   "C-j" 'ivy-next-line
+   "C-k" 'ivy-previous-line))
 
 ;;; init-use-package.el ends here
