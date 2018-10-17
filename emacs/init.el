@@ -19,7 +19,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-;; (package-initialize)
+(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -156,10 +156,6 @@
     (add-hook 'scheme-mode-hook #'parinfer-mode)
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
 
-(use-package clojure-mode :ensure t)
-
-(use-package cider :ensure t)
-
 (use-package company
   :ensure t
   :diminish company-mode
@@ -198,11 +194,9 @@
 
    "q" '(:ignore t :which-key "quit")
    "qq" '(evil-quit-all :which-key "quit all"))
-   
 
   (general-define-key
    :states '(normal)
    "DEL" 'evil-ex-nohighlight))
-  
 
 ;;; init-use-package.el ends here
