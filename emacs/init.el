@@ -40,13 +40,14 @@
       kept-new-versions 20
       kept-old-versions 5)
 (setq inhibit-splash-screen t)
+(setq eldoc-echo-area-use-multiline-p nil)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (show-paren-mode 1)
 (electric-pair-mode 1)
-(setq eldoc-echo-area-use-multiline-p nil)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
