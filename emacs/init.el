@@ -172,6 +172,14 @@
 
 (use-package cider :ensure t)
 
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
@@ -211,6 +219,13 @@
    "M-x" 'counsel-M-x
    "M-s" 'swiper
    "C-," 'parinfer-toggle-mode)
+
+  (general-define-key
+   :states '(normal visual emacs)
+   :keymaps 'eglot-mode-map
+   "K" 'eglot-help-at-point
+   "[ d" 'eglot-help-at-point
+   "[ C-d" 'xref-find-definitions)
 
   (general-define-key
    :keymaps 'ivy-mode-map
