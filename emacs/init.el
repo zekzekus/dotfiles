@@ -19,7 +19,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(package-initialize)
+(unless package--initialized
+  (package-initialize))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -96,6 +97,8 @@
 
 (use-package swiper :ensure t)
 
+(use-package smex :ensure t)
+
 (use-package exec-path-from-shell
   :ensure t
   :init
@@ -152,6 +155,22 @@
   :init
   (global-company-mode))
 
+(use-package eglot :ensure t)
+
+(use-package rust-mode
+  :ensure t
+  :mode ("\\.rs\\'" . rust-mode)
+  :diminish eldoc-mode
+  :config
+  (setq company-tooltip-align-annotations t)
+  (setq rust-format-on-save t))
+
+(use-package haskell-mode :ensure t)
+
+(use-package go-mode :ensure t)
+
+(use-package cider :ensure t)
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
@@ -195,6 +214,11 @@
   (general-define-key
    :keymaps 'ivy-mode-map
    "C-j" 'ivy-next-line
-   "C-k" 'ivy-previous-line))
+   "C-k" 'ivy-previous-line)
+
+  (general-define-key
+   :keymaps 'company-active-map
+   "C-j" 'company-select-next-or-abort
+   "C-k" 'company-select-previous-or-abort))
 
 ;;; init-use-package.el ends here
