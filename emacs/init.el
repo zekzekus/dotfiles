@@ -172,6 +172,8 @@
 
 (use-package cider :ensure t)
 
+(use-package org :ensure t)
+
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -228,12 +230,23 @@
    "[ C-d" 'xref-find-definitions)
 
   (general-define-key
+   :states '(normal visual emacs)
+   :keymaps 'clojure-mode-map
+   "K" 'cider-doc
+   "[ d" 'cider-doc
+   "[ C-d" 'cider-find-var)
+
+  (general-define-key
    :keymaps 'ivy-mode-map
+   "C-n" 'ivy-next-line
+   "C-p" 'ivy-previous-line
    "C-j" 'ivy-next-line
    "C-k" 'ivy-previous-line)
 
   (general-define-key
    :keymaps 'company-active-map
+   "C-n" 'company-select-next-or-abort
+   "C-p" 'company-select-previous-or-abort
    "C-j" 'company-select-next-or-abort
    "C-k" 'company-select-previous-or-abort))
 
