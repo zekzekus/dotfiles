@@ -138,12 +138,12 @@
   :init
   (progn
     (setq parinfer-extensions
-          '(defaults       ; should be included.
-            pretty-parens  ; different paren styles for different modes.
-            evil           ; If you use Evil.
-            paredit        ; Introduce some paredit commands.
-            smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-            smart-yank))   ; Yank behavior depend on mode.
+	  '(defaults       ; should be included.
+	    pretty-parens  ; different paren styles for different modes.
+	    evil           ; If you use Evil.
+	    paredit        ; Introduce some paredit commands.
+	    smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+	    smart-yank))   ; Yank behavior depend on mode.
     (add-hook 'clojure-mode-hook #'parinfer-mode)
     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
@@ -181,8 +181,8 @@
   :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
 (use-package general :ensure t
@@ -193,6 +193,7 @@
    :states '(normal visual emacs)
    :prefix "SPC"
    "TAB" '(evil-switch-to-windows-last-buffer :which-key "last buffer")
+   "SPC" '(counsel-M-x :which-key "M-x")
    "g"  '(:ignore t :which-key "git")
    "gs" '(magit-status :which-key "git status")
 
@@ -205,7 +206,8 @@
    "bb" '(counsel-ibuffer :which-key "list")
 
    "s"  '(:ignore t :which-key "search")
-   "ss" '(swiper :which-key "buffer")
+   "sl" '(swiper :which-key "buffer")
+   "ss" '(counsel-imenu :which-key "outline")
 
    "/" '(counsel-rg :which-key "grep")
 
@@ -251,6 +253,8 @@
    "C-n" 'company-select-next-or-abort
    "C-p" 'company-select-previous-or-abort
    "C-j" 'company-select-next-or-abort
-   "C-k" 'company-select-previous-or-abort))
+   "C-k" 'company-select-previous-or-abort)
+
+  (define-key key-translation-map (kbd "ESC") (kbd "C-g")))
 
 ;;; init-use-package.el ends here
