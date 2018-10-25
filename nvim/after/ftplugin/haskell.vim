@@ -3,7 +3,6 @@ scriptencoding utf-8
 " buffer local options
 setlocal formatprg=brittany
 setlocal expandtab
-setlocal omnifunc=necoghc#omnifunc
 
 " plugin settings
 let g:tagbar_type_haskell = {
