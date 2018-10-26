@@ -185,6 +185,12 @@
 
 (use-package haskell-mode :ensure t)
 
+(use-package intero
+  :ensure t
+  :after haskell-mode
+  :init
+  (add-hook 'haskell-mode-hook 'intero-mode))
+
 (use-package go-mode :ensure t)
 
 (use-package cider
@@ -264,6 +270,13 @@
    "K" 'cider-doc
    "[ d" 'cider-doc
    "[ C-d" 'cider-find-var)
+
+  (general-define-key
+   :states '(normal visual emacs)
+   :keymaps 'haskell-mode-map
+   "K" 'intero-type-at
+   "[ d" 'intero-info
+   "[ C-d" 'intero-goto-definition)
 
   (general-define-key
    :keymaps 'ivy-mode-map
