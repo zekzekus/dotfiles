@@ -279,6 +279,13 @@
    "[ C-d" 'intero-goto-definition)
 
   (general-define-key
+   :states '(normal visual emacs)
+   :keymaps 'go-mode-map
+   "K" 'godef-describe
+   "[ d" 'godef-describe
+   "[ C-d" 'godef-jump)
+
+  (general-define-key
    :keymaps 'ivy-mode-map
    "C-n" 'ivy-next-line
    "C-p" 'ivy-previous-line
