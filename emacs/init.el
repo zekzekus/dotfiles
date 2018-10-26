@@ -163,6 +163,12 @@
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
+(use-package company-anaconda
+  :ensure t
+  :after company
+  :init
+  (add-to-list 'company-backends '(company-anaconda :with company-capf)))
+
 (use-package rust-mode
   :ensure t
   :mode ("\\.rs\\'" . rust-mode)
@@ -186,8 +192,8 @@
   :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-	 ("\\.md\\'" . markdown-mode)
-	 ("\\.markdown\\'" . markdown-mode))
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
 (use-package general :ensure t
@@ -234,10 +240,10 @@
 
   (general-define-key
    :states '(normal visual emacs)
-   :keymaps 'eglot-mode-map
-   "K" 'eglot-help-at-point
-   "[ d" 'eglot-help-at-point
-   "[ C-d" 'xref-find-definitions)
+   :keymaps 'anaconda-mode-map
+   "K" 'anaconda-mode-show-doc
+   "[ d" 'anaconda-mode-show-doc
+   "[ C-d" 'anaconda-mode-find-definitions)
 
   (general-define-key
    :states '(normal visual emacs)
