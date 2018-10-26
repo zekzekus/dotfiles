@@ -256,7 +256,7 @@
 
   (general-define-key
    :states '(normal visual emacs)
-   :keymaps 'anaconda-mode-map
+   :keymaps 'python-mode-map
    "K" 'anaconda-mode-show-doc
    "[ d" 'anaconda-mode-show-doc
    "[ C-d" 'anaconda-mode-find-definitions)
