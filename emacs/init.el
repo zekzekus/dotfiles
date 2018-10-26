@@ -212,6 +212,11 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
