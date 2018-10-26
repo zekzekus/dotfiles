@@ -137,13 +137,7 @@
   :diminish parinfer-mode
   :init
   (progn
-    (setq parinfer-extensions
-          '(defaults
-	    pretty-parens
-	    evil
-	    paredit
-	    smart-tab
-	    smart-yank))
+    (setq parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank))
     (add-hook 'clojure-mode-hook #'parinfer-mode)
     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
