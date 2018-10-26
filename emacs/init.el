@@ -177,6 +177,12 @@
   (setq company-tooltip-align-annotations t)
   (setq rust-format-on-save t))
 
+(use-package racer
+  :ensure t
+  :init
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode))
+
 (use-package haskell-mode :ensure t)
 
 (use-package go-mode :ensure t)
@@ -244,6 +250,13 @@
    "K" 'anaconda-mode-show-doc
    "[ d" 'anaconda-mode-show-doc
    "[ C-d" 'anaconda-mode-find-definitions)
+
+  (general-define-key
+   :states '(normal visual emacs)
+   :keymaps 'rust-mode-map
+   "K" 'racer-describe-tooltip
+   "[ d" 'racer-describe
+   "[ C-d" 'racer-find-definition)
 
   (general-define-key
    :states '(normal visual emacs)
