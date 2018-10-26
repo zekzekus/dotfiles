@@ -138,12 +138,12 @@
   :init
   (progn
     (setq parinfer-extensions
-	  '(defaults       ; should be included.
-	    pretty-parens  ; different paren styles for different modes.
-	    evil           ; If you use Evil.
-	    paredit        ; Introduce some paredit commands.
-	    smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-	    smart-yank))   ; Yank behavior depend on mode.
+          '(defaults
+	    pretty-parens
+	    evil
+	    paredit
+	    smart-tab
+	    smart-yank))
     (add-hook 'clojure-mode-hook #'parinfer-mode)
     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
@@ -154,7 +154,11 @@
   :ensure t
   :diminish company-mode
   :init
-  (global-company-mode))
+  (global-company-mode)
+  (setq company-tooltip-limit 20)                      ; bigger popup window
+  (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+  (setq company-echo-delay 0)                          ; remove annoying blinking
+  (setq company-begin-commands '(self-insert-command))) ; start autocompletion only after typing
 
 (use-package anaconda-mode
   :ensure t
@@ -192,6 +196,12 @@
   (add-hook 'haskell-mode-hook 'intero-mode))
 
 (use-package go-mode :ensure t)
+
+(use-package company-go
+  :ensure t
+  :after company
+  :init
+  (add-to-list 'company-backends '(company-go :with company-capf)))
 
 (use-package cider
   :ensure t
