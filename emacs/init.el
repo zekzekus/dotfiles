@@ -78,6 +78,11 @@
   :config
   (evil-mode 1))
 
+(use-package indent-guide
+  :ensure t
+  :init
+  (indent-guide-global-mode))
+
 (use-package evil-collection
   :after evil
   :ensure t
