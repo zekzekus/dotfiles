@@ -48,6 +48,7 @@
 (menu-bar-mode -1)
 (show-paren-mode 1)
 (electric-pair-mode 1)
+(global-linum-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -58,6 +59,17 @@
   :ensure t
   :config
   (load-theme 'nord t))
+
+(use-package telephone-line
+  :ensure t
+  :init
+  (setq telephone-line-primary-left-separator 'telephone-line-gradient
+        telephone-line-secondary-left-separator 'telephone-line-nil
+        telephone-line-primary-right-separator 'telephone-line-gradient
+        telephone-line-secondary-right-separator 'telephone-line-nil)
+  (setq telephone-line-height 24
+        telephone-line-evil-use-short-tag t)
+  (telephone-line-mode 1))
 
 (use-package evil
   :ensure t
@@ -222,6 +234,7 @@
 
 (use-package flycheck
   :ensure t
+  :diminish flycheck-mode
   :init
   (global-flycheck-mode))
 
