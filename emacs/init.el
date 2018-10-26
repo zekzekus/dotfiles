@@ -257,7 +257,11 @@
    "DEL" 'evil-ex-nohighlight
    "M-x" 'counsel-M-x
    "M-s" 'swiper
-   "C-," 'parinfer-toggle-mode)
+   "C-," 'parinfer-toggle-mode
+   "] q" 'flycheck-next-error
+   "[ q" 'flycheck-previous-error
+   "] Q" 'flycheck-last-error
+   "[ Q" 'flycheck-first-error)
 
   (general-define-key
    :states '(normal visual emacs)
