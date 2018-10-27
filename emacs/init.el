@@ -49,6 +49,7 @@
 (show-paren-mode 1)
 (electric-pair-mode 1)
 (global-linum-mode 1)
+(save-place-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -77,11 +78,6 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1))
-
-(use-package indent-guide
-  :ensure t
-  :init
-  (indent-guide-global-mode))
 
 (use-package evil-collection
   :after evil
