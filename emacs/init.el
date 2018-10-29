@@ -140,7 +140,25 @@
   :diminish projectile-mode
   :config
   (projectile-mode +1)
-  (setq projectile-git-submodule-command ""))
+  (setq projectile-git-submodule-command "")
+
+  (defun zek:find-file ()
+    (interactive)
+    (if (projectile-project-p)
+        (counsel-projectile-find-file)
+      (counsel-find-file)))
+
+  (defun zek:find-buffer ()
+    (interactive)
+    (if (projectile-project-p)
+        (counsel-projectile-switch-to-buffer)
+      (counsel-ibuffer)))
+
+  (defun zek:grep ()
+    (interactive)
+    (if (projectile-project-p)
+        (counsel-projectile-rg)
+      (counsel-rg))))
 
 (use-package counsel-projectile
   :ensure t)
@@ -257,18 +275,21 @@
    "gs" '(magit-status :which-key "git status")
 
    "f"  '(:ignore t :which-key "files")
-   "ff" '(counsel-find-file :which-key "find")
+   "ff" '(zek:find-file :which-key "find")
+   "fF" '(counsel-find-file :which-key "find")
    "fs" '(evil-write :which-key "save")
 
    "b"  '(:ignore t :which-key "buffers")
    "bd" '(evil-delete-buffer :which-key "delete")
-   "bb" '(counsel-ibuffer :which-key "list")
+   "bb" '(zek:find-buffer :which-key "list")
+   "bB" '(counsel-ibuffer :which-key "list")
 
    "s"  '(:ignore t :which-key "search")
    "sl" '(swiper :which-key "buffer")
    "ss" '(counsel-imenu :which-key "outline")
+   "s/" '(counsel-rg :which-key "grep")
 
-   "/" '(counsel-rg :which-key "grep")
+   "/" '(zek:grep :which-key "grep")
 
    "p" '(:ignore t :which-key "projects")
    "pp" '(counsel-projectile-switch-project :which-key "switch project")
