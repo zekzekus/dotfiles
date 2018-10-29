@@ -48,7 +48,7 @@
 (menu-bar-mode -1)
 (show-paren-mode 1)
 (electric-pair-mode 1)
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 (save-place-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
