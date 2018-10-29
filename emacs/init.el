@@ -276,6 +276,17 @@
    "pb" '(counsel-projectile-switch-to-buffer :which-key "buffers")
    "p/" '(counsel-projectile-rg :which-key "grep")
 
+   "t" '(:ignore t :which-key "toggles")
+   "tn" '(linum-mode :which-key "line numbers")
+   "tN" '(global-linum-mode :which-key "global line numbers")
+   "tc" '(company-mode :which-key "completion")
+   "tC" '(global-company-mode :which-key "global completion")
+   "tf" '(flycheck-mode :which-key "flycheck")
+   "tF" '(global-flycheck-mode :which-key "global flycheck")
+
+   "m" '(:ignore t :which-key "majors")
+   "mw" '(pyvenv-workon :which-key "workon")
+
    "q" '(:ignore t :which-key "quit")
    "qq" '(evil-quit-all :which-key "quit all"))
 
