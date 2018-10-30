@@ -358,6 +358,13 @@
    "[ C-d" 'godef-jump)
 
   (general-define-key
+   :states '(normal visual emacs)
+   :keymaps 'emacs-lisp-mode-map
+   "K" 'describe-symbol
+   "[ d" 'describe-symbol
+   "[ C-d" 'xref-find-definitions)
+
+  (general-define-key
    :keymaps 'ivy-mode-map
    "C-n" 'ivy-next-line
    "C-p" 'ivy-previous-line
