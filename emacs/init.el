@@ -9,7 +9,7 @@
 
 ;;; Commentary:
 
-;; My 1000th attempt to create an emacs config from scratch
+;; My 1000th attempt to create an Emacs config from scratch
 
 
 ;;; Code:
@@ -392,4 +392,5 @@
             gc-cons-percentage 0.1
             file-name-handler-alist zek--file-name-handler-alist)))
 
-;;; init-use-package.el ends here
+(provide 'init)
+;;; init.el ends here
