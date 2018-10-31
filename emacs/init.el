@@ -47,6 +47,7 @@
 (setq inhibit-splash-screen t)
 (setq eldoc-echo-area-use-multiline-p nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
+(setq-default tab-width 4)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
