@@ -10,7 +10,6 @@
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use 'alacritty' if it is
   # available, otherwise 'xterm-256color' is used.
-  #
   #TERM: xterm-256color
 
 window:
@@ -262,7 +261,6 @@ live_config_reload: true
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
-#
 #shell:
 #  program: /bin/bash
 #  args:
