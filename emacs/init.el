@@ -14,8 +14,13 @@
 
 ;;; Code:
 
-(require 'package)
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6)
+(defvar zek--file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
 (setq package-enable-at-startup nil)
+
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
@@ -379,5 +384,11 @@
    "C-k" 'company-select-previous-or-abort)
 
   (define-key key-translation-map (kbd "ESC") (kbd "C-g")))
+
+(add-hook 'emacs-startup-hook
+    (lambda ()
+      (setq gc-cons-threshold 16777216
+            gc-cons-percentage 0.1
+            file-name-handler-alist zek--file-name-handler-alist)))
 
 ;;; init-use-package.el ends here
