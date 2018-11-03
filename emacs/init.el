@@ -84,7 +84,9 @@
   :init
   (setq evil-want-keybinding nil)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol)))
 
 (use-package evil-collection
   :after evil
