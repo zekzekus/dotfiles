@@ -180,9 +180,13 @@
   :config
   (setq-default evil-escape-key-sequence "C-["))
 
+(use-package paredit
+  :ensure t)
+
 (use-package parinfer
   :ensure t
   :diminish parinfer-mode
+  :after paredit
   :init
   (progn
     (setq parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank))
@@ -249,6 +253,12 @@
   :ensure t
   :config
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
+
+(use-package slime
+  :ensure t
+  :config
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+  (setq slime-contribs '(slime-fancy)))
 
 (use-package rjsx-mode
   :ensure t
