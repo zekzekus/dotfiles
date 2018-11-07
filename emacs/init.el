@@ -112,31 +112,23 @@
 
 (use-package diminish
   :ensure t
-  :defer 1
   :config
   (diminish 'eldoc-mode)
   (diminish 'undo-tree-mode))
 
 (use-package ivy
   :ensure t
-  :defer 1
   :diminish ivy-mode
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-initial-inputs-alist nil))
 
-(use-package counsel
-  :ensure t
-  :defer 1)
+(use-package counsel :ensure t)
 
-(use-package swiper
-  :defer 1
-  :ensure t)
+(use-package swiper :ensure t)
 
-(use-package smex
-  :defer 1
-  :ensure t)
+(use-package smex :ensure t)
 
 (use-package exec-path-from-shell
   :ensure t
@@ -148,14 +140,12 @@
 
 (use-package which-key
   :ensure t
-  :defer 1
   :init
   (which-key-mode)
   :diminish which-key-mode)
 
 (use-package projectile
   :ensure t
-  :defer 1
   :diminish projectile-mode
   :config
   (projectile-mode +1)
@@ -180,7 +170,6 @@
       (counsel-rg))))
 
 (use-package counsel-projectile
-  :defer 1
   :ensure t)
 
 (use-package evil-escape
@@ -192,12 +181,10 @@
   (setq-default evil-escape-key-sequence "C-["))
 
 (use-package paredit
-  :ensure t
-  :defer 1)
+  :ensure t)
 
 (use-package parinfer
   :ensure t
-  :defer 1
   :diminish parinfer-mode
   :after paredit
   :init
@@ -211,7 +198,6 @@
 
 (use-package company
   :ensure t
-  :defer 1
   :diminish company-mode
   :init
   (global-company-mode)
@@ -222,7 +208,6 @@
 
 (use-package anaconda-mode
   :ensure t
-  :defer 1
   :diminish anaconda-mode
   :init
   (add-hook 'python-mode-hook 'anaconda-mode)
@@ -230,14 +215,12 @@
 
 (use-package company-anaconda
   :ensure t
-  :defer 1
   :after company
   :init
   (add-to-list 'company-backends '(company-anaconda :with company-capf)))
 
 (use-package rust-mode
   :ensure t
-  :defer 1
   :mode ("\\.rs\\'" . rust-mode)
   :diminish eldoc-mode
   :config
@@ -246,18 +229,14 @@
 
 (use-package racer
   :ensure t
-  :defer 1
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode))
 
-(use-package haskell-mode
-  :ensure t
-  :defer 1)
+(use-package haskell-mode :ensure t)
 
 (use-package intero
   :ensure t
-  :defer 1
   :after haskell-mode
   :init
   (add-hook 'haskell-mode-hook 'intero-mode))
@@ -266,27 +245,23 @@
 
 (use-package company-go
   :ensure t
-  :defer 1
   :after company
   :init
   (add-to-list 'company-backends '(company-go :with company-capf)))
 
 (use-package cider
   :ensure t
-  :defer 1
   :config
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
 
 (use-package slime
   :ensure t
-  :defer 1
   :config
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
   (setq slime-contribs '(slime-fancy)))
 
 (use-package rjsx-mode
   :ensure t
-  :defer 1
   :config
   (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode)))
 
@@ -310,7 +285,6 @@
 
 (use-package markdown-mode
   :ensure t
-  :defer 1
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -319,7 +293,6 @@
 
 (use-package flycheck
   :ensure t
-  :defer 1
   :diminish flycheck-mode
   :init
   (global-flycheck-mode))
