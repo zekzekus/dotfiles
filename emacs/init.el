@@ -101,7 +101,6 @@
   (add-hook 'prog-mode-hook 'evil-commentary-mode))
 
 (use-package magit
-  :defer 1
   :ensure t
   :commands (magit))
 
@@ -291,7 +290,23 @@
   :config
   (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode)))
 
-(use-package org :ensure t)
+(use-package org
+  :mode ("\\.org\\'" . org-mode)
+  :ensure t
+  :config
+  (setq org-log-done 'time)
+  (setq org-agenda-files "~/org/agenda_files.list"))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 (use-package markdown-mode
   :ensure t
