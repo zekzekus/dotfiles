@@ -270,7 +270,8 @@
   :ensure t
   :config
   (setq org-log-done 'time)
-  (setq org-agenda-files "~/org/agenda_files.list"))
+  (setq org-agenda-files "~/org/agenda_files.list")
+  (setq org-tags-column -80))
 
 (use-package evil-org
   :ensure t
