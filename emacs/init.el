@@ -167,7 +167,13 @@
     (interactive)
     (if (projectile-project-p)
         (counsel-projectile-rg)
-      (counsel-rg))))
+      (counsel-rg)))
+
+  (defun zek:projectile-auto-venv-hook ()
+    (if (eq (projectile-detect-project-type) 'python-pip)
+      (pyvenv-workon (projectile-project-name))))
+
+  (add-hook 'projectile-after-switch-project-hook 'zek:projectile-auto-venv-hook))
 
 (use-package counsel-projectile
   :ensure t)
