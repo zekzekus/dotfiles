@@ -68,6 +68,17 @@
   :config
   (load-theme 'nord t))
 
+(use-package telephone-line
+  :ensure t
+  :init
+  (setq telephone-line-primary-left-separator 'telephone-line-gradient
+        telephone-line-secondary-left-separator 'telephone-line-nil
+        telephone-line-primary-right-separator 'telephone-line-gradient
+        telephone-line-secondary-right-separator 'telephone-line-nil)
+  (setq telephone-line-height 24
+        telephone-line-evil-use-short-tag t)
+  (telephone-line-mode 1))
+
 (use-package evil
   :ensure t
   :init
