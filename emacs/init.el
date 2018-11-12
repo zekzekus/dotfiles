@@ -279,7 +279,12 @@
   :ensure t
   :config
   (setq org-log-done 'time)
-  (setq org-agenda-files "~/org/agenda_files.list")
+  (setq org-directory "~/Documents/org")
+  (setq org-agenda-files "agenda_files.list")
+  (setq org-refile-targets '(("gtd.org" :maxlevel . 2)))
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-tags-column -80))
 
 (use-package evil-org
