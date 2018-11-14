@@ -68,6 +68,12 @@
   :config
   (load-theme 'nord t))
 
+(use-package smart-mode-line
+  :ensure t
+  :init
+  (setq sml/no-confirm-load-theme t)
+  (sml/setup))
+
 (use-package evil
   :ensure t
   :init
@@ -135,6 +141,7 @@
 
 (use-package projectile
   :ensure t
+  :diminish projectile-mode
   :config
   (projectile-mode +1)
   (setq projectile-git-submodule-command "")
@@ -227,6 +234,7 @@
 
 (use-package racer
   :ensure t
+  :diminish racer-mode
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode))
