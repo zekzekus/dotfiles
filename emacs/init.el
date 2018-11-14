@@ -138,6 +138,7 @@
   :config
   (projectile-mode +1)
   (setq projectile-git-submodule-command "")
+  (setq projectile-mode-line-prefix " P")
 
   (defun zek:find-file ()
     (interactive)
@@ -180,6 +181,7 @@
 (use-package parinfer
   :ensure t
   :after paredit
+  :diminish parinfer-mode
   :init
   (progn
     (setq parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank))
@@ -296,7 +298,8 @@
 (use-package flycheck
   :ensure t
   :init
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  (setq flycheck-mode-line-prefix "F"))
 
 (use-package general :ensure t
   :config
