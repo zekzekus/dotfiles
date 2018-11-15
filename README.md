@@ -38,8 +38,9 @@ Notable custom key bindings;
 
 * File based operations (starts with `<leader>f`)
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It
-      simulteanously shows files, open buffers and junk files. You can switch
-      between these with `C-n` and `C-p`.
+      simulteanously shows files, open buffers. You can switch between these
+      with `C-n` and `C-p`.
+    * `<leader>fj` Fuzzy find junkfiles.
     * `<leader>ft` Toggle tagbar.
     * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
