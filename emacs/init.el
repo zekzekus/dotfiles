@@ -35,7 +35,7 @@
   (require 'use-package))
 
 (set-frame-font "PragmataPro 15" nil t)
-(setq custom-file (make-temp-file "emacs-custom"))
+(setq custom-file "~/.emacs.d/custom.el")
 (setq mac-command-modifier 'meta
       mac-option-modifier 'none)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
@@ -432,6 +432,8 @@
       (setq gc-cons-threshold 16777216
             gc-cons-percentage 0.1
             file-name-handler-alist zek--file-name-handler-alist)))
+
+(load-file custom-file)
 
 (provide 'init)
 ;;; init.el ends here
