@@ -7,7 +7,8 @@ nnoremap j gj
 nnoremap k gk
 
 " files
-nnoremap <silent><leader>ff :<c-u>Denite file_rec buffer junkfile -winheight=`30*winheight(0)/100`<cr>
+nnoremap <silent><leader>ff :<c-u>Denite file_rec buffer -winheight=`30*winheight(0)/100`<cr>
+nnoremap <silent><leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>ft <ESC>:TagbarToggle<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 " to remove white space from a file.
