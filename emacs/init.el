@@ -74,6 +74,11 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
+(use-package smooth-scrolling
+  :ensure t
+  :init
+  (smooth-scrolling-mode 1))
+
 (use-package evil
   :ensure t
   :init
