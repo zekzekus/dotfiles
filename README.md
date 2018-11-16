@@ -29,7 +29,7 @@ from corresponding Language Server. Some more details below.
 * Local leader is `\`.
 * I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as
   autocompletion engine. It uses language client sources by default except
-  vimscript and Go. Those have their own sources implemented.
+  vimscript, Go and Clojure. Those have their own sources implemented.
 * For a while I am going for simplicity so I removed statusline completely.
 
 ### Key bindings List
