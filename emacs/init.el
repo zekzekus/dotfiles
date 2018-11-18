@@ -74,6 +74,11 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
+(use-package winum
+  :ensure t
+  :init
+  (winum-mode))
+
 (use-package smooth-scrolling
   :ensure t
   :init
