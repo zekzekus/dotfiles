@@ -14,11 +14,15 @@
 
 ;;; Code:
 
+(setq user-full-name "Zekeriya Koc"
+      user-mail-address "zekzekus@gmail.com")
+
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
 (defvar zek--file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (setq package-enable-at-startup nil)
+(setq message-log-max 16384)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -48,6 +52,12 @@
 (setq eldoc-echo-area-use-multiline-p nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default tab-width 4)
+(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+(setq inhibit-startup-buffer-menu t)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message "Welcome zekzekus!")
+(setq initial-buffer-choice t)
+(setq initial-scratch-message nil)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -57,6 +67,7 @@
 ;; (global-linum-mode 1)
 (save-place-mode 1)
 (global-hl-line-mode +1)
+(fringe-mode '(3 . 1))
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
