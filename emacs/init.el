@@ -95,6 +95,9 @@
   :init
   (smooth-scrolling-mode 1))
 
+(use-package shell-pop
+  :ensure t)
+
 (use-package evil
   :ensure t
   :init
@@ -192,9 +195,10 @@
 
   (add-hook 'projectile-after-switch-project-hook 'zek:projectile-auto-venv-hook)
 
-  (defun zek:projectile-run-term ()
+  (defun zek:projectile-shell-pop ()
     (interactive)
-    (projectile-run-term "fish")))
+    (let ((default-directory (projectile-project-root)))
+      (call-interactively 'shell-pop))))
 
 (use-package counsel-projectile
   :ensure t)
@@ -368,7 +372,7 @@
    "pf" '(counsel-projectile-find-file :which-key "files")
    "pb" '(counsel-projectile-switch-to-buffer :which-key "buffers")
    "p/" '(counsel-projectile-rg :which-key "grep")
-   "pt" '(zek:projectile-run-term :which-key "terminal")
+   "pt" '(zek:projectile-shell-pop :which-key "terminal")
 
    "t" '(:ignore t :which-key "toggles")
    "tn" '(linum-mode :which-key "line numbers")
@@ -377,6 +381,9 @@
    "tC" '(global-company-mode :which-key "global completion")
    "tf" '(flycheck-mode :which-key "flycheck")
    "tF" '(global-flycheck-mode :which-key "global flycheck")
+
+   "a" '(:ignore t :which-key "applications")
+   "at" '(shell-pop :which-key "terminal")
 
    "m" '(:ignore t :which-key "majors")
    "mw" '(pyvenv-workon :which-key "workon")
