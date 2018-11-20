@@ -190,7 +190,11 @@
     (if (eq (projectile-detect-project-type) 'python-pip)
       (pyvenv-workon (projectile-project-name))))
 
-  (add-hook 'projectile-after-switch-project-hook 'zek:projectile-auto-venv-hook))
+  (add-hook 'projectile-after-switch-project-hook 'zek:projectile-auto-venv-hook)
+
+  (defun zek:projectile-run-term ()
+    (interactive)
+    (projectile-run-term "fish")))
 
 (use-package counsel-projectile
   :ensure t)
@@ -364,6 +368,7 @@
    "pf" '(counsel-projectile-find-file :which-key "files")
    "pb" '(counsel-projectile-switch-to-buffer :which-key "buffers")
    "p/" '(counsel-projectile-rg :which-key "grep")
+   "pt" '(zek:projectile-run-term :which-key "terminal")
 
    "t" '(:ignore t :which-key "toggles")
    "tn" '(linum-mode :which-key "line numbers")
