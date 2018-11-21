@@ -407,7 +407,8 @@
    :keymaps 'python-mode-map
    "K" 'anaconda-mode-show-doc
    "[ d" 'anaconda-mode-show-doc
-   "[ C-d" 'anaconda-mode-find-definitions)
+   "[ C-d" 'anaconda-mode-find-assignments
+   "[ C-r" 'anaconda-mode-find-references)
 
   (general-define-key
    :states '(normal visual emacs)
