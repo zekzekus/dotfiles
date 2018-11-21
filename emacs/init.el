@@ -373,6 +373,7 @@
    "pb" '(counsel-projectile-switch-to-buffer :which-key "buffers")
    "p/" '(counsel-projectile-rg :which-key "grep")
    "pt" '(zek:projectile-shell-pop :which-key "terminal")
+   "pk" '(projectile-kill-buffers :which-key "kill buffers")
 
    "t" '(:ignore t :which-key "toggles")
    "tn" '(linum-mode :which-key "line numbers")
