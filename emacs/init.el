@@ -311,7 +311,7 @@
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
-  (setq org-tags-column -80))
+  (setq org-tags-column -89))
 
 (use-package evil-org
   :ensure t
@@ -338,6 +338,9 @@
   (global-flycheck-mode)
   (setq flycheck-mode-line-prefix "F"))
 
+(use-package restclient
+  :ensure t)
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
@@ -357,8 +360,8 @@
 
    "b"  '(:ignore t :which-key "buffers")
    "bd" '(evil-delete-buffer :which-key "delete")
-   "bb" '(zek:find-buffer :which-key "list")
-   "bB" '(counsel-ibuffer :which-key "list")
+   "bB" '(zek:find-buffer :which-key "list")
+   "bb" '(counsel-ibuffer :which-key "list")
 
    "s"  '(:ignore t :which-key "search")
    "sl" '(swiper :which-key "buffer")
@@ -370,7 +373,7 @@
    "p" '(:ignore t :which-key "projects")
    "pp" '(counsel-projectile-switch-project :which-key "switch project")
    "pf" '(counsel-projectile-find-file :which-key "files")
-   "pb" '(counsel-projectile-switch-to-buffer :which-key "buffers")
+   "pb" '(zek:find-buffer :which-key "buffers")
    "p/" '(counsel-projectile-rg :which-key "grep")
    "pt" '(zek:projectile-shell-pop :which-key "terminal")
    "pk" '(projectile-kill-buffers :which-key "kill buffers")
