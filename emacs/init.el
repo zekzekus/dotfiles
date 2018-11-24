@@ -85,10 +85,9 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
-(use-package winum
+(use-package ace-window
   :ensure t
-  :init
-  (winum-mode))
+  :init)
 
 (use-package smooth-scrolling
   :ensure t
@@ -391,6 +390,8 @@
 
    "m" '(:ignore t :which-key "majors")
    "mw" '(pyvenv-workon :which-key "workon")
+
+   "w" '(ace-window :which-key "ace-window")
 
    "q" '(:ignore t :which-key "quit")
    "qq" '(evil-quit-all :which-key "quit all"))
