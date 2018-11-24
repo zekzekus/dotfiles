@@ -310,7 +310,9 @@
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
-  (setq org-tags-column -89))
+  (setq org-tags-column -89)
+  (setq org-todo-keywords
+        '((sequence "TODO" "FOLLOW" "WAITING" "DELEGATED" "|" "DONE" "CANCELLED"))))
 
 (use-package evil-org
   :ensure t
