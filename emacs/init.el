@@ -142,6 +142,33 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-initial-inputs-alist nil))
 
+(use-package ivy-hydra
+  :ensure t)
+
+(use-package hydra
+  :ensure t
+  :init
+  (defhydra hydra-clojure (:color teal)
+    ("i" cider-jack-in-clj "cider-jack-in-clj")
+    ("j" cider-jack-in-clj&cljs "cider-jack-in-clj&cljs")
+    ("z" cider-switch-to-repl-buffer "switch to repl")
+    ("q" nil "quit" :color blue))
+
+  (defhydra hydra-org (:color amaranth)
+    ("j" org-next-visible-heading "next")
+    ("J" org-forward-heading-same-level "next")
+    ("k" org-previous-visible-heading "previous")
+    ("K" org-backward-heading-same-level "next")
+    ("$" org-archive-subtree "archive")
+    ("w" org-refile "refile")
+    ("s" org-schedule "schedule")
+    ("d" org-deadline "deadline")
+    ("," org-priority "priority")
+    ("/" org-sparse-tree "sparse-tree")
+    ("t" org-todo "todo")
+    ("c" org-ctrl-c-ctrl-c "tag")
+    ("q" nil "quit" :color blue)))
+
 (use-package counsel :ensure t)
 
 (use-package swiper :ensure t)
@@ -306,7 +333,8 @@
   (setq org-log-done 'time)
   (setq org-directory "~/Documents/org")
   (setq org-agenda-files "agenda_files.list")
-  (setq org-refile-targets '(("gtd.org" :maxlevel . 2)))
+  (setq org-refile-targets '(("work.org" :maxlevel . 2)
+                             ("personal.org" :maxlevel . 2)))
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
@@ -390,9 +418,6 @@
    "a" '(:ignore t :which-key "applications")
    "at" '(shell-pop :which-key "terminal")
 
-   "m" '(:ignore t :which-key "majors")
-   "mw" '(pyvenv-workon :which-key "workon")
-
    "w" '(ace-window :which-key "ace-window")
 
    "q" '(:ignore t :which-key "quit")
@@ -433,6 +458,12 @@
 
   (general-define-key
    :states '(normal visual emacs)
+   :prefix "SPC"
+   :keymaps 'clojure-mode-map
+   "m" '(hydra-clojure/body :which-key "clojure"))
+
+  (general-define-key
+   :states '(normal visual emacs)
    :keymaps 'haskell-mode-map
    "K" 'intero-type-at
    "[ d" 'intero-info
@@ -458,6 +489,12 @@
    "C-p" 'ivy-previous-line
    "C-j" 'ivy-next-line
    "C-k" 'ivy-previous-line)
+
+  (general-define-key
+   :states '(normal visual emacs)
+   :prefix "SPC"
+   :keymaps 'org-mode-map
+   "m" '(hydra-org/body :which-key "org-mode"))
 
   (general-define-key
    :keymaps 'company-active-map
