@@ -86,8 +86,7 @@
   (sml/setup))
 
 (use-package ace-window
-  :ensure t
-  :init)
+  :ensure t)
 
 (use-package smooth-scrolling
   :ensure t
@@ -152,6 +151,8 @@
     ("i" cider-jack-in-clj "cider-jack-in-clj")
     ("j" cider-jack-in-clj&cljs "cider-jack-in-clj&cljs")
     ("z" cider-switch-to-repl-buffer "switch to repl")
+    ("l" cider-ns-reload "reload ns")
+    ("L" cider-ns-reload-all "reload ns all")
     ("q" nil "quit" :color blue))
 
   (defhydra hydra-org (:color amaranth)
