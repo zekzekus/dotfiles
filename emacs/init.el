@@ -48,7 +48,7 @@
       delete-old-versions t
       kept-new-versions 20
       kept-old-versions 5)
-(setq inhibit-splash-screen t)
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq eldoc-echo-area-use-multiline-p nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default tab-width 4)
@@ -156,6 +156,7 @@
     ("q" nil "quit" :color blue))
 
   (defhydra hydra-org (:color amaranth)
+    ("a" org-agenda "agenda")
     ("j" org-next-visible-heading "next")
     ("J" org-forward-heading-same-level "next")
     ("k" org-previous-visible-heading "previous")
@@ -335,13 +336,22 @@
   (setq org-directory "~/Documents/org")
   (setq org-agenda-files "agenda_files.list")
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
-                             ("personal.org" :maxlevel . 2)))
+                             ("personal.org" :maxlevel . 2)
+                             ("tickler.org" :maxlevel . 2)
+                             ("someday.org" :level . 1)))
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-tags-column -89)
   (setq org-todo-keywords
-        '((sequence "TODO" "FOLLOW" "WAITING" "DELEGATED" "|" "DONE" "CANCELLED"))))
+        '((sequence "TODO" "FOLLOW" "WAITING" "DELEGATED" "|" "DONE" "CANCELLED")))
+  (setq org-default-notes-file (concat org-directory "/inbox.org"))
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                                 (file+headline org-default-notes-file "Tasks")
+                                 "* TODO %i%?")
+                                ("T" "Tickler" entry
+                                 (file+headline (concat org-directory "/tickler.org") "Tickler")
+                                 "* %i%? \n %U"))))
 
 (use-package evil-org
   :ensure t
@@ -420,6 +430,9 @@
    "at" '(shell-pop :which-key "terminal")
 
    "w" '(ace-window :which-key "ace-window")
+
+   "c" '(:ignore t :which-key "globals")
+   "cc" '(org-capture :which-key "capture")
 
    "q" '(:ignore t :which-key "quit")
    "qq" '(evil-quit-all :which-key "quit all"))
