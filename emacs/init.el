@@ -58,6 +58,8 @@
 (setq inhibit-startup-echo-area-message "Welcome zekzekus!")
 (setq initial-buffer-choice t)
 (setq initial-scratch-message nil)
+(setq scroll-conservatively 101)
+(put 'dired-find-alternate-file 'disabled nil)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -68,6 +70,7 @@
 (save-place-mode 1)
 (global-hl-line-mode +1)
 (fringe-mode '(3 . 1))
+(transient-mark-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
