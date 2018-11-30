@@ -60,6 +60,8 @@
 (setq initial-scratch-message nil)
 (setq scroll-conservatively 101)
 (put 'dired-find-alternate-file 'disabled nil)
+(setq display-time-day-and-date t)
+(setq display-time-24hr-format t)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -71,6 +73,7 @@
 (global-hl-line-mode +1)
 (fringe-mode '(3 . 1))
 (transient-mark-mode t)
+(display-time-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -172,6 +175,7 @@
     ("/" org-sparse-tree "sparse-tree")
     ("t" org-todo "todo")
     ("c" org-ctrl-c-ctrl-c "tag")
+    ("C" org-remove-occur-highlights "nohighlight")
     ("q" nil "quit" :color blue)))
 
 (use-package counsel :ensure t)
