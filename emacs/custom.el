@@ -6,7 +6,7 @@
  '(custom-safe-themes
    '("cc0dbb53a10215b696d391a90de635ba1699072745bf653b53774706999208e3" default))
  '(package-selected-packages
-   '(darktooth-theme leuven-theme persp-projectile perspective which-key use-package tron-theme telephone-line tao-theme smex smart-mode-line slime rjsx-mode racer pyvenv parinfer paredit nord-theme minimal-theme markdown-mode intero general exec-path-from-shell evil-org evil-magit evil-escape evil-commentary evil-collection diminish counsel-projectile company-go company-anaconda cider))
+   '(use-package darktooth-theme doom-modeline ace-window smooth-scrolling shell-pop evil evil-collection evil-commentary magit evil-magit diminish ivy ivy-hydra hydra counsel swiper smex exec-path-from-shell which-key projectile counsel-projectile evil-escape paredit parinfer company anaconda-mode pyvenv company-anaconda rust-mode racer haskell-mode intero go-mode company-go cider slime rjsx-mode org evil-org markdown-mode flycheck restclient general))
  '(shell-pop-full-span t)
  '(shell-pop-shell-type
    '("ansi-term" "*ansi-term*"
