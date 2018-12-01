@@ -17,12 +17,12 @@
 (setq user-full-name "Zekeriya Koc"
       user-mail-address "zekzekus@gmail.com")
 
-(setq gc-cons-threshold 402653184
-      gc-cons-percentage 0.6)
 (defvar zek--file-name-handler-alist file-name-handler-alist)
-(setq file-name-handler-alist nil)
-(setq package-enable-at-startup nil)
-(setq message-log-max 16384)
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6
+      file-name-handler-alist nil
+      package-enable-at-startup nil
+      message-log-max 16384)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -39,44 +39,45 @@
   (require 'use-package))
 
 (set-frame-font "PragmataPro 15" nil t)
-(setq custom-file "~/.emacs.d/custom.el")
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq-default tab-width 4)
+
 (setq mac-command-modifier 'meta
       mac-option-modifier 'none)
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+      custom-file "~/.emacs.d/custom.el"
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       backup-by-copying t
       version-control t
       delete-old-versions t
       kept-new-versions 20
-      kept-old-versions 5)
-(setq eldoc-echo-area-use-multiline-p nil)
-(defalias 'yes-or-no-p 'y-or-n-p)
-(setq-default tab-width 4)
+      kept-old-versions 5
+      eldoc-echo-area-use-multiline-p nil
+      byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+
 (setq inhibit-startup-buffer-menu t
       inhibit-startup-screen t
       inhibit-startup-echo-area-message "Welcome zekzekus!"
       initial-buffer-choice t
       initial-scratch-message nil)
-(setq scroll-conservatively 101)
 (put 'dired-find-alternate-file 'disabled nil)
-(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (show-paren-mode 1)
 (electric-pair-mode 1)
-;; (global-linum-mode 1)
 (save-place-mode 1)
 (global-hl-line-mode +1)
 (fringe-mode '(3 . 1))
 (transient-mark-mode t)
-(display-time-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (use-package darktooth-theme
   :ensure t
