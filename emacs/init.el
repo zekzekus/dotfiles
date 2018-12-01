@@ -43,23 +43,23 @@
 (setq mac-command-modifier 'meta
       mac-option-modifier 'none)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       backup-by-copying t
       version-control t
       delete-old-versions t
       kept-new-versions 20
       kept-old-versions 5)
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq eldoc-echo-area-use-multiline-p nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default tab-width 4)
-(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
-(setq inhibit-startup-buffer-menu t)
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message "Welcome zekzekus!")
-(setq initial-buffer-choice t)
-(setq initial-scratch-message nil)
+(setq inhibit-startup-buffer-menu t
+      inhibit-startup-screen t
+      inhibit-startup-echo-area-message "Welcome zekzekus!"
+      initial-buffer-choice t
+      initial-scratch-message nil)
 (setq scroll-conservatively 101)
 (put 'dired-find-alternate-file 'disabled nil)
+(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
