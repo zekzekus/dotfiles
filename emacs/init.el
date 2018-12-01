@@ -60,8 +60,6 @@
 (setq initial-scratch-message nil)
 (setq scroll-conservatively 101)
 (put 'dired-find-alternate-file 'disabled nil)
-(setq display-time-day-and-date t)
-(setq display-time-24hr-format t)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
