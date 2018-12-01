@@ -73,7 +73,6 @@
 (show-paren-mode 1)
 (electric-pair-mode 1)
 (save-place-mode 1)
-(global-hl-line-mode +1)
 (fringe-mode '(3 . 1))
 (transient-mark-mode t)
 
