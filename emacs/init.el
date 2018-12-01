@@ -85,7 +85,6 @@
 
 (use-package doom-modeline
   :ensure t
-  :defer t
   :hook (after-init . doom-modeline-init))
 
 (use-package ace-window
@@ -117,8 +116,7 @@
 (use-package evil-commentary
   :ensure t
   :diminish evil-commentary-mode
-  :config
-  (add-hook 'prog-mode-hook 'evil-commentary-mode))
+  :hook (prog-mode . evil-commentary-mode))
 
 (use-package magit
   :ensure t
@@ -250,14 +248,9 @@
   :ensure t
   :after paredit
   :diminish parinfer-mode
+  :hook ((clojure-mode emacs-lisp-mode common-lisp-mode scheme-mode lisp-mode) . parinfer-mode)
   :init
-  (progn
-    (setq parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank))
-    (add-hook 'clojure-mode-hook #'parinfer-mode)
-    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
-    (add-hook 'scheme-mode-hook #'parinfer-mode)
-    (add-hook 'lisp-mode-hook #'parinfer-mode)))
+  (setq parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank)))
 
 (use-package company
   :ensure t
@@ -272,9 +265,8 @@
 (use-package anaconda-mode
   :ensure t
   :diminish anaconda-mode
-  :init
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+  :hook ((python-mode . anaconda-mode)
+         (python-mode . anaconda-eldoc-mode)))
 
 (use-package pyvenv
   :ensure t)
@@ -296,17 +288,15 @@
 (use-package racer
   :ensure t
   :diminish racer-mode
-  :init
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode))
+  :hook ((rust-mode . racer-mode)
+         (racer-mode . eldoc-mode)))
 
 (use-package haskell-mode :ensure t)
 
 (use-package intero
   :ensure t
   :after haskell-mode
-  :init
-  (add-hook 'haskell-mode-hook 'intero-mode))
+  :hook (haskell-mode . intero-mode))
 
 (use-package go-mode :ensure t)
 
@@ -318,8 +308,7 @@
 
 (use-package cider
   :ensure t
-  :config
-  (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
+  :hook (eval-expression-minibuffer-setup . eldoc-mode))
 
 (use-package slime
   :ensure t
@@ -360,8 +349,8 @@
 (use-package evil-org
   :ensure t
   :after org
+  :hook (org-mode . evil-org-mode)
   :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
             (lambda ()
               (evil-org-set-key-theme)))
