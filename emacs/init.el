@@ -375,6 +375,18 @@
 (use-package restclient
   :ensure t)
 
+(use-package treemacs
+  :ensure t
+  :defer t)
+
+(use-package treemacs-evil
+  :after treemacs evil
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
 (use-package general :ensure t
   :config
   (general-evil-setup t)
@@ -391,6 +403,7 @@
    "ff" '(zek:find-file :which-key "find")
    "fF" '(counsel-find-file :which-key "find")
    "fs" '(evil-write :which-key "save")
+   "ft" '(treemacs :which-key "treemacs")
 
    "b"  '(:ignore t :which-key "buffers")
    "bd" '(evil-delete-buffer :which-key "delete")
@@ -436,6 +449,7 @@
    "DEL" 'evil-ex-nohighlight
    "M-x" 'counsel-M-x
    "M-s" 'swiper
+   "M-0" 'treemacs-select-window
    "C-," 'parinfer-toggle-mode
    "] q" 'flycheck-next-error
    "[ q" 'flycheck-previous-error
