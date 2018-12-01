@@ -80,16 +80,15 @@
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(use-package nord-theme
-  :ensure t
-  :config
-  (load-theme 'nord t))
-
-(use-package smart-mode-line
+(use-package darktooth-theme
   :ensure t
   :init
-  (setq sml/no-confirm-load-theme t)
-  (sml/setup))
+  (load-theme 'darktooth t))
+
+(use-package doom-modeline
+  :ensure t
+  :defer t
+  :hook (after-init . doom-modeline-init))
 
 (use-package ace-window
   :ensure t)
