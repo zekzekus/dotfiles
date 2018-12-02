@@ -254,6 +254,10 @@
   :init
   (setq parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank)))
 
+(use-package eglot
+  :ensure t
+  :hook ((python-mode rust-mode haskell-mode go-mode rjsx-mode) . eglot-ensure))
+
 (use-package company
   :ensure t
   :diminish company-mode
@@ -264,20 +268,8 @@
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command)))
 
-(use-package anaconda-mode
-  :ensure t
-  :diminish anaconda-mode
-  :hook ((python-mode . anaconda-mode)
-         (python-mode . anaconda-eldoc-mode)))
-
 (use-package pyvenv
   :ensure t)
-
-(use-package company-anaconda
-  :ensure t
-  :after company
-  :init
-  (add-to-list 'company-backends '(company-anaconda :with company-capf)))
 
 (use-package rust-mode
   :ensure t
@@ -287,26 +279,9 @@
   (setq company-tooltip-align-annotations t)
   (setq rust-format-on-save t))
 
-(use-package racer
-  :ensure t
-  :diminish racer-mode
-  :hook ((rust-mode . racer-mode)
-         (racer-mode . eldoc-mode)))
-
 (use-package haskell-mode :ensure t)
 
-(use-package intero
-  :ensure t
-  :after haskell-mode
-  :hook (haskell-mode . intero-mode))
-
 (use-package go-mode :ensure t)
-
-(use-package company-go
-  :ensure t
-  :after company
-  :init
-  (add-to-list 'company-backends '(company-go :with company-capf)))
 
 (use-package cider
   :ensure t
@@ -463,18 +438,15 @@
 
   (general-define-key
    :states '(normal visual emacs)
-   :keymaps 'python-mode-map
-   "K" 'anaconda-mode-show-doc
-   "[ d" 'anaconda-mode-show-doc
-   "[ C-d" 'anaconda-mode-find-assignments
-   "[ C-r" 'anaconda-mode-find-references)
-
-  (general-define-key
-   :states '(normal visual emacs)
-   :keymaps 'rust-mode-map
-   "K" 'racer-describe-tooltip
-   "[ d" 'racer-describe
-   "[ C-d" 'racer-find-definition)
+   :keymaps '(eglot-mode-map
+              python-mode-map
+              rust-mode-map
+              haskell-mode-map
+              go-mode)
+   "K" 'eglot-help-at-point
+   "[ d" 'eglot-help-at-point
+   "[ C-d" 'xref-find-definitions
+   "[ C-r" 'xref-find-references)
 
   (general-define-key
    :states '(normal visual emacs)
@@ -488,20 +460,6 @@
    :prefix "SPC"
    :keymaps 'clojure-mode-map
    "m" '(hydra-clojure/body :which-key "clojure"))
-
-  (general-define-key
-   :states '(normal visual emacs)
-   :keymaps 'haskell-mode-map
-   "K" 'intero-type-at
-   "[ d" 'intero-info
-   "[ C-d" 'intero-goto-definition)
-
-  (general-define-key
-   :states '(normal visual emacs)
-   :keymaps 'go-mode-map
-   "K" 'godef-describe
-   "[ d" 'godef-describe
-   "[ C-d" 'godef-jump)
 
   (general-define-key
    :states '(normal visual emacs)
