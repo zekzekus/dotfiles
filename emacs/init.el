@@ -85,6 +85,8 @@
 
 (use-package doom-modeline
   :ensure t
+  :init
+  (setq doom-modeline-height 18)
   :hook (after-init . doom-modeline-init))
 
 (use-package ace-window
