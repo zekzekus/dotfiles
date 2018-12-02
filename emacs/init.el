@@ -376,7 +376,11 @@
 
 (use-package treemacs
   :ensure t
-  :defer t)
+  :defer t
+  :config
+  (setq treemacs-indentation-string (propertize " ⫶ " 'face 'font-lock-comment-face)
+        treemacs-indentation 1)
+  (treemacs-resize-icons 18))
 
 (use-package treemacs-evil
   :after treemacs evil
