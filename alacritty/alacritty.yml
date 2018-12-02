@@ -85,7 +85,7 @@ tabspaces: 8
 
 # Font configuration (changes require restart)
 font:
-  # The normal (roman) font face to use.
+  # Normal (roman) font face
   normal:
     family: "PragmataPro"
     # Style can be specified to pick a specific face.
