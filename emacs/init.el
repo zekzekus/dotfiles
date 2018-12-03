@@ -67,6 +67,11 @@
       initial-scratch-message nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-follow-mouse 't
+      scroll-step 1)
+
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
@@ -91,11 +96,6 @@
 
 (use-package ace-window
   :ensure t)
-
-(use-package smooth-scrolling
-  :ensure t
-  :init
-  (smooth-scrolling-mode 1))
 
 (use-package shell-pop
   :ensure t)
