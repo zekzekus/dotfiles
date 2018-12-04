@@ -339,7 +339,7 @@
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-tags-column -89)
   (setq org-todo-keywords
-        '((sequence "TODO" "FOLLOW" "WAITING" "DELEGATED" "|" "DONE" "CANCELLED")))
+        '((sequence "TODO" "ONGOING" "FOLLOW" "WAITING" "|" "JIRA" "DONE" "CANCELLED")))
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                  (file+headline org-default-notes-file "Tasks")
