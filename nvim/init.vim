@@ -1,5 +1,5 @@
 scriptencoding utf-8
-source ~/.config/nvim/plugins.vim
+runtime plugins.vim
 
 set modelines=0
 set mouse=a
@@ -157,4 +157,4 @@ augroup END
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
-source ~/.config/nvim/keybindings.vim
+runtime keybindings.vim
