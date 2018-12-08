@@ -373,6 +373,17 @@
   (global-flycheck-mode)
   (setq flycheck-mode-line-prefix "F"))
 
+(use-package flycheck-rust
+  :ensure t
+  :after flycheck
+  :hook (flycheck-mode . flycheck-rust-setup))
+
+(use-package flycheck-inline
+  :ensure t
+  :after flycheck
+  :hook (flycheck-mode . flycheck-inline-mode))
+  
+
 (use-package restclient
   :ensure t)
 
