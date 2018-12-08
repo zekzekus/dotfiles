@@ -42,8 +42,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
-Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
-Plug 'morhetz/gruvbox'
 Plug 'Lokaltog/vim-monotone'
 
 " python
@@ -69,7 +67,6 @@ Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for':['lisp', 'clojure'], 'do': 'cargo build --release'}
 Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
-Plug 'l04m33/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
