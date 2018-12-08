@@ -56,7 +56,7 @@ set undodir=~/.nvimtmp
 
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme monotone
 highlight clear VertSplit
 
 augroup general_au
