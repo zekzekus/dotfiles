@@ -27,6 +27,8 @@ nnoremap <silent><leader>/ :Grepper -tool rg -open -switch -nojump -prompt<cr>
 nnoremap <silent><leader>* :Grepper -tool rg -cword -noprompt<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>
+nmap <silent>[s <Plug>DashSearch
+nmap <silent>[<C-s> <Plug>DashGlobalSearch
 
 " for browsing the input history
 cnoremap <c-n> <down>
