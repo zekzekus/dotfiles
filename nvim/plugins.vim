@@ -63,10 +63,10 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'zchee/deoplete-go', {'for': 'go'}
 
-" clojure / lisp
+" clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
-Plug 'eraserhd/parinfer-rust', {'for':['lisp', 'clojure'], 'do': 'cargo build --release'}
+Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
 
 " misc
