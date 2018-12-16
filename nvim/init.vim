@@ -18,8 +18,6 @@ set splitbelow
 set splitright
 
 set cursorline
-set number
-set norelativenumber
 
 set lazyredraw
 
