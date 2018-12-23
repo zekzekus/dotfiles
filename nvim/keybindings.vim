@@ -75,6 +75,7 @@ function LC_maps()
     nnoremap <silent>[d :call LanguageClient#textDocument_hover()<cr>
     nnoremap <silent>[<C-n> :call LanguageClient#textDocument_rename()<cr>
     nnoremap <silent>[<C-r> :call LanguageClient#textDocument_references()<cr>
+    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
   endif
 endfunction
 augroup keybindings_au
