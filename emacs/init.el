@@ -83,10 +83,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(use-package darktooth-theme
+(use-package nord-theme
   :ensure t
   :init
-  (load-theme 'darktooth t))
+  (load-theme 'nord t))
 
 (use-package doom-modeline
   :ensure t

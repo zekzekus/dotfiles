@@ -9,7 +9,7 @@
    '("cc0dbb53a10215b696d391a90de635ba1699072745bf653b53774706999208e3" default))
  '(hl-sexp-background-color "#efebe9")
  '(package-selected-packages
-   '(use-package darktooth-theme doom-modeline ace-window shell-pop evil evil-collection evil-commentary magit evil-magit diminish ivy ivy-hydra hydra counsel swiper smex exec-path-from-shell which-key projectile counsel-projectile evil-escape paredit parinfer company anaconda-mode pyvenv company-anaconda rust-mode racer haskell-mode intero go-mode company-go cider slime rjsx-mode org evil-org markdown-mode flycheck restclient treemacs treemacs-evil treemacs-projectile general))
+   '(use-package nord-theme doom-modeline ace-window shell-pop evil evil-collection evil-commentary magit evil-magit diminish ivy ivy-hydra hydra counsel swiper smex exec-path-from-shell which-key projectile counsel-projectile evil-escape paredit parinfer company anaconda-mode pyvenv company-anaconda rust-mode racer haskell-mode intero go-mode company-go cider slime rjsx-mode org evil-org markdown-mode flycheck restclient treemacs treemacs-evil treemacs-projectile general))
  '(safe-local-variable-values
    '((eval progn
 		   (put 'defendpoint 'clojure-doc-string-elt 3)
@@ -36,6 +36,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
  '(flycheck-inline-error ((t (:inherit compilation-error :background "black" :box (:line-width 1 :color "grey75" :style released-button)))))
  '(flycheck-inline-info ((t (:inherit compilation-info :background "black" :box (:line-width 1 :color "grey75" :style released-button)))))
  '(flycheck-inline-warning ((t (:inherit compilation-warning :background "black" :box (:line-width 1 :color "grey75" :style released-button)))))
