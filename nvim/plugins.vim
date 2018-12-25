@@ -22,6 +22,7 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 Plug 'rizzatti/dash.vim'
+Plug 'tpope/vim-dispatch'
 
 " editing
 Plug 'SirVer/ultisnips'
