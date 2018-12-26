@@ -21,19 +21,16 @@ Plug 'junegunn/gv.vim'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
-Plug 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim', {'on': ['<Plug>DashSearch', '<Plug>DashGlobalSearch']}
 Plug 'tpope/vim-dispatch'
 
 " editing
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'godlygeek/tabular'
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
