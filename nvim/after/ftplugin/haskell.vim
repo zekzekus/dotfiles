@@ -50,12 +50,4 @@ let g:haskell_indent_guard = 2
 let g:haskell_indent_case_alternative = 1
 let g:cabal_indent_section = 2
 
-AddTabularPattern! colon                  /^[^:]*\zs:/
-AddTabularPattern! haskell_bindings       /^[^=]*\zs=\ze[^[:punct:]]/
-AddTabularPattern! haskell_comments       /--.*/l2
-AddTabularPattern! haskell_do_arrows      / \(<-\|←\) /l0r0
-AddTabularPattern! haskell_imports        /^[^(]*\zs(.*\|\<as\>.*/
-AddTabularPattern! haskell_pattern_arrows / \(->\|→\) /l0r0
-AddTabularPattern! haskell_types          / \(::\|∷\) /l0r0
-
 let g:neomake_haskell_enabled_makers = []

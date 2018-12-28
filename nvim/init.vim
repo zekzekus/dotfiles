@@ -116,11 +116,6 @@ call neomake#configure#automake({
       \ 500)
 let g:neomake_open_list = 0
 
-let g:UltiSnipsExpandTrigger       = '<C-j>'
-let g:UltiSnipsListSnippets        = '<c-w>'
-let g:UltiSnipsJumpForwardTrigger  = '<c-b>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
-
 let g:smartclose_set_default_mapping = 0
 
 let g:grepper = {}
