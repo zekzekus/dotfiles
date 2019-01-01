@@ -3,7 +3,7 @@ runtime plugins.vim
 
 set modelines=0
 set mouse=a
-set updatetime=1000
+set updatetime=500
 set autowrite
 set autoread
 
