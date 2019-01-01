@@ -130,10 +130,11 @@ call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust':       ['rls'],
+    \ 'rust':           ['rls'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'python':     ['pyls'],
-    \ 'haskell':    ['stack', 'exec', 'hie', '--', '--lsp'],
+    \ 'python':         ['pyls'],
+    \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
+    \ 'go':             ['bingo', '--mode', 'stdio', '--logfile', '/tmp/lspserver.log','--trace', '--pprof', ':6060'],
     \ }
 let g:LanguageClient_diagnosticsEnable = 0
 
