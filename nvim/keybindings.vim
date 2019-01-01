@@ -2,7 +2,6 @@ nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
-" vim handles long lines nicely with these
 nnoremap j gj
 nnoremap k gk
 
@@ -67,7 +66,6 @@ nnoremap <leader>= <c-w>=
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" programming (language server) bindings
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
@@ -84,8 +82,38 @@ augroup keybindings_au
   autocmd FileType * call LC_maps()
 augroup END
 
-" slightly more useful arrow keys
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
+
+function! CCR()
+  let cmdline = getcmdline()
+  if cmdline =~ '\v\C^(ls|files|buffers)'
+    return "\<CR>:b"
+  elseif cmdline =~ '\v\C/(#|nu|num|numb|numbe|number)$'
+    return "\<CR>:"
+  elseif cmdline =~ '\v\C^(dli|il)'
+    return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
+  elseif cmdline =~ '\v\C^(cli|lli)'
+    return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
+  elseif cmdline =~ '\C^old'
+    set nomore
+    return "\<CR>:sil se more|e #<"
+  elseif cmdline =~ '\C^changes'
+    set nomore
+    return "\<CR>:sil se more|norm! g;\<S-Left>"
+  elseif cmdline =~ '\C^ju'
+    set nomore
+    return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
+  elseif cmdline =~ '\C^marks'
+    return "\<CR>:norm! `"
+  elseif cmdline =~ '\C^undol'
+    return "\<CR>:u "
+  elseif cmdline =~ '\C^reg'
+    return "\<CR>:norm! \"p\<Left>"
+  else
+    return "\<CR>"
+  endif
+endfunction
+cnoremap <expr> <CR> CCR()
