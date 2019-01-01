@@ -3,7 +3,7 @@ runtime plugins.vim
 
 set modelines=0
 set mouse=a
-set updatetime=500
+set updatetime=1000
 set autowrite
 set autoread
 
@@ -143,5 +143,14 @@ let g:LanguageClient_serverCommands = {
     \ 'python':     ['pyls'],
     \ 'haskell':    ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
+
+let g:deoplete#enable_at_startup = 0
+augroup plugins_au
+  autocmd!
+
+  autocmd InsertEnter * call deoplete#enable()
+augroup END
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 runtime keybindings.vim
