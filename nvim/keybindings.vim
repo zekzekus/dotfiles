@@ -23,8 +23,8 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>s/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
 nnoremap <leader>s* :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
-nnoremap <silent><leader>/ :Grepper -tool rg -open -switch -nojump -prompt<cr>
-nnoremap <silent><leader>* :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>/ :<C-u>grep!<Space>
+nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>
 nmap <silent>[s <Plug>DashSearch
