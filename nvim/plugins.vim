@@ -27,7 +27,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
-Plug 'Shougo/junkfile.vim'
+Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
