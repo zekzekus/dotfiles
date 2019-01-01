@@ -14,7 +14,7 @@ nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap <leader>bb :buffers<CR>
+nmap <leader>bb :buffers<CR>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
