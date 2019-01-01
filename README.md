@@ -28,8 +28,8 @@ from corresponding Language Server. Some more details below.
 * Leader key is `space`.
 * Local leader is `\`.
 * I am not using anything as autocompletion engine. Just language client
-  sources by default except vimscript, Go and Clojure. Those have their own
-  sources implemented.
+  sources by default except Go and Clojure. Those have their own sources
+  implemented.
 * For a while I am going for simplicity so I removed statusline completely.
 
 ### Key bindings List
@@ -45,20 +45,19 @@ Notable custom key bindings;
     * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
+    * `<leader>bb` List open buffers and prompt for buffer number to jump.
     * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
-    * `<leader>s/` greps recursively in the directory and loads results into
-      fuzzy search UI including preview for each row.
-    * `<leader>s*` same as previous one except this does not wait for input.
-      Instead uses the word under cursor as input.
-    * `<leader>/` uses grepper plugin to grep in project root. Results loaded
-      into quickfix window.
-    * `<leader>*` uses grepper plugin to grep in project root. Results loaded
-      into quickfix window. Uses the word under cursor.
+    * `<leader>/` uses `:grep!` command to prompt and load results into
+      quickfix list.
+    * `<leader>*` uses `:grep!` command with word under cursor and load results
+      into quickfix list.
     * `<BS>` executes `:nohlsearch<cr>`.
-    * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
+    * `<leader>ss` Prompts for input and uses `:ilist` command to list all
+      occurances in the buffer and prompt to jump.
+    * `<leader>sl` Populates (on the fly) all tags (outline) in the file. Plus
       all lines in the buffer will be in the list to narrow with fuzzy search.
       (ctags) into fuzzy search UI.
 * Other

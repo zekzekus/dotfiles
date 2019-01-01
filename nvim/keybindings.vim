@@ -25,6 +25,7 @@ nnoremap <leader>/ :<C-u>grep!<Space>
 nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <leader>ss :<c-u>ilist //<Left>
+nnoremap <silent><leader>sl :<c-u>Denite outline -winheight=`30*winheight(0)/100`<cr>
 nmap <silent>[s <Plug>DashSearch
 nmap <silent>[<C-s> <Plug>DashGlobalSearch
 
