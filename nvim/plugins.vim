@@ -19,8 +19,6 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
-Plug 'Shougo/neco-vim', {'for': 'vim'}
 Plug 'rizzatti/dash.vim', {'on': ['<Plug>DashSearch', '<Plug>DashGlobalSearch']}
 Plug 'tpope/vim-dispatch'
 
@@ -60,7 +58,6 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'zchee/deoplete-go', {'for': 'go'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}

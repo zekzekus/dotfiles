@@ -27,9 +27,9 @@ from corresponding Language Server. Some more details below.
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
-* I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as
-  autocompletion engine. It uses language client sources by default except
-  vimscript, Go and Clojure. Those have their own sources implemented.
+* I am not using anything as autocompletion engine. Just language client
+  sources by default except vimscript, Go and Clojure. Those have their own
+  sources implemented.
 * For a while I am going for simplicity so I removed statusline completely.
 
 ### Key bindings List
