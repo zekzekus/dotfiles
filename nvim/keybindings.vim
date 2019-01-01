@@ -14,18 +14,17 @@ nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
+nnoremap <leader>bb :buffers<CR>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>s/ :<c-u>Denite -auto-preview -vertical-preview grep<cr>
-nnoremap <leader>s* :<c-u>DeniteCursorWord -auto-preview -vertical-preview grep<cr>
 nnoremap <leader>/ :<C-u>grep!<Space>
 nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>
+nnoremap <leader>ss :<c-u>ilist //<Left>
 nmap <silent>[s <Plug>DashSearch
 nmap <silent>[<C-s> <Plug>DashGlobalSearch
 
@@ -87,33 +86,36 @@ nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
-function! CCR()
-  let cmdline = getcmdline()
-  if cmdline =~ '\v\C^(ls|files|buffers)'
-    return "\<CR>:b"
-  elseif cmdline =~ '\v\C/(#|nu|num|numb|numbe|number)$'
-    return "\<CR>:"
-  elseif cmdline =~ '\v\C^(dli|il)'
-    return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
-  elseif cmdline =~ '\v\C^(cli|lli)'
-    return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
-  elseif cmdline =~ '\C^old'
-    set nomore
-    return "\<CR>:sil se more|e #<"
-  elseif cmdline =~ '\C^changes'
-    set nomore
-    return "\<CR>:sil se more|norm! g;\<S-Left>"
-  elseif cmdline =~ '\C^ju'
-    set nomore
-    return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
-  elseif cmdline =~ '\C^marks'
-    return "\<CR>:norm! `"
-  elseif cmdline =~ '\C^undol'
-    return "\<CR>:u "
-  elseif cmdline =~ '\C^reg'
-    return "\<CR>:norm! \"p\<Left>"
-  else
+function! <sid>CCR()
+  if getcmdtype() isnot# ':'
     return "\<CR>"
   endif
+  let cmdline = getcmdline()
+  if cmdline =~# '\v^\s*(ls|files|buffers)!?\s*(\s[+\-=auhx%#]+)?$'
+    return "\<CR>:b"
+  elseif cmdline =~# '\v/(#|nu%[mber])$'
+    return "\<CR>:"
+  elseif cmdline =~# '\v^\s*(dli%[st]|il%[ist])!?\s+\S'
+    return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
+  elseif cmdline =~# '\v^\s*(cli|lli)%[st]!?\s*(\s\d+(,\s*\d+)?)?$'
+    return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
+  elseif cmdline =~# '\v^\s*ol%[dfiles]\s*$'
+    set nomore
+    return "\<CR>:sil se more|e #<"
+  elseif cmdline =~# '^\s*changes\s*$'
+    set nomore
+    return "\<CR>:sil se more|norm! g;\<S-Left>"
+  elseif cmdline =~# '\v^\s*ju%[mps]'
+    set nomore
+    return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
+  elseif cmdline =~ '\v^\s*marks\s*(\s\w+)?$'
+    return "\<CR>:norm! `"
+  elseif cmdline =~# '\v^\s*undol%[ist]'
+    return "\<CR>:u "
+  elseif cmdline =~# '\C^reg'
+    return "\<CR>:norm! \"p\<Left>"
+  else
+    return "\<c-]>\<CR>"
+  endif
 endfunction
-cnoremap <expr> <CR> CCR()
+cnoremap <expr> <CR> <sid>CCR()

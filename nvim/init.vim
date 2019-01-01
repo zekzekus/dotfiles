@@ -113,12 +113,6 @@ endif
 let g:smartclose_set_default_mapping = 0
 
 call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
