@@ -57,7 +57,6 @@ set undodir=~/.nvimtmp
 set termguicolors
 set background=dark
 colorscheme monotone
-highlight clear VertSplit
 
 augroup general_au
   autocmd!
