@@ -20,6 +20,7 @@ Plug 'junegunn/gv.vim'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'rizzatti/dash.vim', {'on': ['<Plug>DashSearch', '<Plug>DashGlobalSearch']}
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-apathy'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
