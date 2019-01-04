@@ -93,7 +93,7 @@ function! <sid>CCR()
   endif
   let cmdline = getcmdline()
   if cmdline =~# '\v^\s*(ls|files|buffers)!?\s*(\s[+\-=auhx%#]+)?$'
-    return "\<CR>:b"
+    return "\<CR>:b\<Space>"
   elseif cmdline =~# '\v/(#|nu%[mber])$'
     return "\<CR>:"
   elseif cmdline =~# '\v^\s*(dli%[st]|il%[ist])!?\s+\S'
