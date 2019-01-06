@@ -57,7 +57,6 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'clojure-vim/async-clj-omni', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
 
