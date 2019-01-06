@@ -56,7 +56,8 @@ set undodir=~/.nvimtmp
 
 set termguicolors
 set background=dark
-colorscheme monotone
+let g:two_firewatch_italics=1
+colorscheme two-firewatch
 
 augroup general_au
   autocmd!
