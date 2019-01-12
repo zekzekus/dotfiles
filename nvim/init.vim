@@ -120,7 +120,6 @@ call denite#custom#option('_', 'source_names', 'short')
 
 let g:LanguageClient_serverCommands = {
     \ 'rust':           ['rls'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'python':         ['pyls'],
     \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
     \ 'go':             ['bingo', '--mode', 'stdio', '--logfile', '/tmp/lspserver.log','--trace', '--pprof', ':6060'],
