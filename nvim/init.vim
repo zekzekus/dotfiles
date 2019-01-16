@@ -125,7 +125,6 @@ let g:LanguageClient_serverCommands = {
     \ 'rust':           ['rls'],
     \ 'python':         ['pyls'],
     \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
-    \ 'go':             ['bingo', '--mode', 'stdio', '--logfile', '/tmp/lspserver.log','--trace', '--pprof', ':6060'],
     \ }
 let g:LanguageClient_diagnosticsEnable = 0
 

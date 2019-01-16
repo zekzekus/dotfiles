@@ -53,6 +53,9 @@ Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
+" go lang
+Plug 'fatih/vim-go', {'for': 'go'}
+
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
