@@ -58,6 +58,9 @@ set termguicolors
 set background=dark
 let g:two_firewatch_italics=1
 colorscheme two-firewatch
+if !has('nvim')
+  highlight CursorLine cterm=none
+endif
 
 augroup general_au
   autocmd!
