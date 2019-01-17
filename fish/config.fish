@@ -33,6 +33,10 @@ if test -d ~/.config/fish/functions/rust.fish
     . ~/.config/fish/functions/rust.fish/cargo.fish
 end
 
+if test -e ~/.nix-profile/etc/profile.d/nix.sh
+    bass source ~/.nix-profile/etc/profile.d/nix.sh
+end
+
 status --is-interactive; and source (nodenv init -|psub)
 set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
