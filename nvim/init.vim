@@ -1,5 +1,5 @@
 scriptencoding utf-8
-runtime plugins.vim
+runtime! plugins.vim
 
 set modelines=0
 set mouse=a
@@ -128,4 +128,4 @@ let g:LanguageClient_serverCommands = {
     \ }
 let g:LanguageClient_diagnosticsEnable = 0
 
-runtime keybindings.vim
+runtime! keybindings.vim
