@@ -79,7 +79,7 @@ endfunction
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType * call LC_maps()
+  autocmd FileType python,rust,haskell call LC_maps()
 augroup END
 
 nnoremap <Up>    :resize +2<CR>
