@@ -39,7 +39,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 set showbreak=↪\ 
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:∘,extends:⟩,precedes:⟨,space:∘
 
 set foldmethod=indent
 set foldlevel=99
