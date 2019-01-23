@@ -39,7 +39,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 set showbreak=↪\ 
-set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:∘,extends:⟩,precedes:⟨,space:∘
+set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
 
 set foldmethod=indent
 set foldlevel=99
@@ -70,6 +70,8 @@ augroup general_au
   autocmd!
 
   autocmd VimResized * :wincmd =
+  autocmd InsertEnter * setlocal list
+  autocmd InsertLeave * setlocal nolist
 augroup END
 
 let g:netrw_liststyle=3
@@ -77,7 +79,20 @@ let g:netrw_liststyle=3
 runtime! plugin/sensible.vim
 set showmode
 set noshowcmd
-set laststatus=0
+set laststatus=2
+set statusline=
+set statusline+=%w
+set statusline+=%q
+set statusline+=\ »\ %F%m\ «
+set statusline+=%=
+set statusline+=%{(&paste==0?'':'[P]')}
+set statusline+=[%H
+set statusline+=%Y
+set statusline+=%R]
+set statusline+=(%l
+set statusline+=/
+set statusline+=%L)
+set statusline+=%%%p
 set noruler
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
