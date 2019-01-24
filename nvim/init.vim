@@ -132,12 +132,7 @@ else
 endif
 
 " ========== Plugin Settings =========="
-call neomake#configure#automake({
-      \ 'TextChanged': {},
-      \ 'InsertLeave': {},
-      \ 'BufWritePost': {'delay': 0},
-      \ 'BufWinEnter': {}, },
-      \ 500)
+call neomake#configure#automake('rw', 1000)
 let g:neomake_open_list = 0
 
 let g:smartclose_set_default_mapping = 0
