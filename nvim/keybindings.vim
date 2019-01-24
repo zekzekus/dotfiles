@@ -14,7 +14,7 @@ nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nmap <leader>bb :buffers<CR>
+nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
@@ -86,37 +86,3 @@ nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
-
-function! <sid>CCR()
-  if getcmdtype() isnot# ':'
-    return "\<CR>"
-  endif
-  let cmdline = getcmdline()
-  if cmdline =~# '\v^\s*(ls|files|buffers)!?\s*(\s[+\-=auhx%#]+)?$'
-    return "\<CR>:b\<Space>"
-  elseif cmdline =~# '\v/(#|nu%[mber])$'
-    return "\<CR>:"
-  elseif cmdline =~# '\v^\s*(dli%[st]|il%[ist])!?\s+\S'
-    return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
-  elseif cmdline =~# '\v^\s*(cli|lli)%[st]!?\s*(\s\d+(,\s*\d+)?)?$'
-    return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
-  elseif cmdline =~# '\v^\s*ol%[dfiles]\s*$'
-    set nomore
-    return "\<CR>:sil se more|e #<"
-  elseif cmdline =~# '^\s*changes\s*$'
-    set nomore
-    return "\<CR>:sil se more|norm! g;\<S-Left>"
-  elseif cmdline =~# '\v^\s*ju%[mps]'
-    set nomore
-    return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
-  elseif cmdline =~ '\v^\s*marks\s*(\s\w+)?$'
-    return "\<CR>:norm! `"
-  elseif cmdline =~# '\v^\s*undol%[ist]'
-    return "\<CR>:u "
-  elseif cmdline =~# '\C^reg'
-    return "\<CR>:norm! \"p\<Left>"
-  else
-    return "\<c-]>\<CR>"
-  endif
-endfunction
-cnoremap <expr> <CR> <sid>CCR()
