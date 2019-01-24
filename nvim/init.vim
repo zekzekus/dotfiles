@@ -145,6 +145,6 @@ let g:LanguageClient_serverCommands = {
     \ 'python':         ['pyls'],
     \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
-let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_diagnosticsEnable = 1
 
 runtime! keybindings.vim
