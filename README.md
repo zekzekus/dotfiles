@@ -2,14 +2,13 @@
 
 ## VIM Configuration
 
-My very personal Vim configuration. Visually unattractive (no fancy status or
-tab line with fancy Powerline symbols (actually no status line at all :)) but
-functionally cool stuff. I do Python development at work on a daily basis. Also
-I need to read (more than writing) Javascript code (mostly ReactJS). My
-personal interests at the moment includes Clojure, Haskell, Rust and Go
-programming languages to play on my free time. So this configuration supports
-these 6 languages. Except Go and Clojure, all other language supports comes
-from corresponding Language Server. Some more details below.
+My very personal Vim configuration. I do Python development at work on a daily
+basis. Also I need to read (more than writing) Javascript code (mostly
+ReactJS). My personal interests at the moment includes Clojure, Haskell, Rust
+and Go programming languages to play on my free time. So this configuration
+supports these 6 languages. Except Javascript, Go and Clojure, all other
+language supports comes from corresponding Language Server. Some more details
+below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and
   [Neovim](https://neovim.io/).
@@ -19,10 +18,10 @@ from corresponding Language Server. Some more details below.
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
-  `Rust`, `Go`, and `Javascript (React)`.
+  `Rust`, `Go`, and `Javascript`.
 * Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
-  except for `Go` and `Clojure`.
+  except for `Javascript`, `Go` and `Clojure`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
@@ -30,7 +29,6 @@ from corresponding Language Server. Some more details below.
 * I am not using anything as autocompletion engine. Just language client
   sources by default except Go and Clojure. Those have their own sources
   implemented.
-* For a while I am going for simplicity so I removed statusline completely.
 
 ### Key bindings List
 
@@ -45,7 +43,7 @@ Notable custom key bindings;
     * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
-    * `<leader>bb` List open buffers and prompt for buffer number to jump.
+    * `<leader>bb` List open buffers and prompt with fuzzy search to jump.
     * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
@@ -55,9 +53,7 @@ Notable custom key bindings;
     * `<leader>*` uses `:grep!` command with word under cursor and load results
       into quickfix list.
     * `<BS>` executes `:nohlsearch<cr>`.
-    * `<leader>ss` Prompts for input and uses `:ilist` command to list all
-      occurances in the buffer and prompt to jump.
-    * `<leader>sl` Populates (on the fly) all tags (outline) in the file. Plus
+    * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
       all lines in the buffer will be in the list to narrow with fuzzy search.
       (ctags) into fuzzy search UI.
 * Other
@@ -65,14 +61,14 @@ Notable custom key bindings;
     * Arrow keys to resize active window.
 * Programming support bindings. I like [Tim Pope](https://github.com/tpope)
   style shortcuts (ones derived from default vim bindings);
-    * `[C-d` jump to definition of the symbol under cursor using language
+    * `[<C-d>` jump to definition of the symbol under cursor using language
       server or specific plugin.
     * `K` shows hover information using language server or specific plugin.
     * `[d` shows detailed hover information using language server or specific
       plugin.
-    * `[C-n` rename the symbol under cursor using language server or specific
+    * `[<C-n>` rename the symbol under cursor using language server or specific
       plugin.
-    * `[C-r` shows usages of the symbol under cursor using language server or
+    * `[<C-r>` shows usages of the symbol under cursor using language server or
       specific plugin.
 
 Check

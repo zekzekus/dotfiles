@@ -77,22 +77,10 @@ augroup END
 let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
-set showmode
+
+set noshowmode
 set noshowcmd
 set laststatus=2
-set statusline=
-set statusline+=%w
-set statusline+=%q
-set statusline+=\ »\ %F%m\ «
-set statusline+=%=
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=[%H
-set statusline+=%Y
-set statusline+=%R]
-set statusline+=(%l
-set statusline+=/
-set statusline+=%L)
-set statusline+=%%%p
 set noruler
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -148,5 +136,9 @@ let g:LanguageClient_serverCommands = {
     \ 'python':         ['pyls'],
     \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
+
+let g:lightline = {
+  \ 'colorscheme': 'twofirewatch',
+  \ }
 
 runtime! keybindings.vim
