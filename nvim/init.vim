@@ -70,8 +70,6 @@ augroup general_au
   autocmd!
 
   autocmd VimResized * :wincmd =
-  autocmd InsertEnter * setlocal list
-  autocmd InsertLeave * setlocal nolist
 augroup END
 
 let g:netrw_liststyle=3
@@ -137,8 +135,25 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
 
+function! LightlineListInfos()
+  let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
+  let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
+  return qflist . loclist
+endfunction
+
 let g:lightline = {
   \ 'colorscheme': 'twofirewatch',
   \ }
+
+let g:lightline.active = {
+      \ 'colorscheme': 'twofirewatch',
+      \ 'left': [ [ 'mode', 'paste' ],
+      \           [ 'readonly', 'filename', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ],
+      \            [ 'fileformat', 'fileencoding', 'filetype', 'listcounts' ] ] }
+let g:lightline.component_function = {
+      \ 'listcounts': 'LightlineListInfos',
+      \ }
 
 runtime! keybindings.vim
