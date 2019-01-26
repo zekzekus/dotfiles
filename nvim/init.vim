@@ -141,7 +141,9 @@ function! LightlineListInfos()
   return qflist . loclist
 endfunction
 
-let g:lightline = {}
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ }
 
 let g:lightline.active = {
       \ 'colorscheme': 'twofirewatch',
