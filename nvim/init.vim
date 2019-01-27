@@ -130,9 +130,9 @@ call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust':           ['rls'],
-    \ 'python':         ['pyls'],
-    \ 'haskell':        ['stack', 'exec', 'hie', '--', '--lsp'],
+    \ 'rust':    ['rls'],
+    \ 'python':  ['pyls'],
+    \ 'haskell': ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
 
 function! LightlineListInfos()
