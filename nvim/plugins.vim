@@ -20,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['rust', 'python', 'haskell']}
 Plug 'rizzatti/dash.vim', {'on': ['<Plug>DashSearch', '<Plug>DashGlobalSearch']}
+Plug 'ajh17/VimCompletesMe'
 
 " editing
 Plug 'jiangmiao/auto-pairs'

@@ -63,9 +63,6 @@ call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplitswitch>', 'no
 nnoremap <leader>o <c-w><Bar><c-w>_<cr>
 nnoremap <leader>= <c-w>=
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
