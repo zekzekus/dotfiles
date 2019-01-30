@@ -21,8 +21,8 @@ nnoremap <leader><tab> :b#<CR>
 " search
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>/ :<C-u>grep!<Space>
-nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>
+nnoremap <leader>/ :<C-u>lgrep!<Space>
+nnoremap <leader>* :lgrep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>sl :<c-u>ilist //<Left>
