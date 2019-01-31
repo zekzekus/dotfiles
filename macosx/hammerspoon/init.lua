@@ -144,6 +144,12 @@ hs.hotkey.bind(yankkey, "down", function() yank(0,100) end) -- yank bottom down
 hs.hotkey.bind(yankkey, "right", function() yank(100,0) end) -- yank right side right
 hs.hotkey.bind(yankkey, "left", function() yank(-100,0) end) -- yank right side left
 
+-- Navigate hotkeys
+hs.hotkey.bind(hyper, 'h', function() hs.window.focusedWindow():focusWindowWest() end)
+hs.hotkey.bind(hyper, 'l', function() hs.window.focusedWindow():focusWindowEast() end)
+hs.hotkey.bind(hyper, 'k', function() hs.window.focusedWindow():focusWindowNorth() end)
+hs.hotkey.bind(hyper, 'j', function() hs.window.focusedWindow():focusWindowSouth() end)
+
 -- Push to screen edge
 hs.hotkey.bind(pushkey,"left", function() push(0,0,0.5,1) end) 		-- left side
 hs.hotkey.bind(pushkey,"right", function() push(0.5,0,0.5,1) end)	-- right side
@@ -155,6 +161,13 @@ hs.hotkey.bind(pushkey, "g", function() push(0.05,0.05,0.9,0.9) end)
 
 -- Fullscreen
 hs.hotkey.bind(pushkey, "f", function() push(0,0,1,1) end)
+
+-- Chat windows (arrange in grid of 5 on right hand of screen)
+hs.hotkey.bind(hyper, "1", function() push(0.8,   0, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "2", function() push(0.8, 0.2, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "3", function() push(0.8, 0.4, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "4", function() push(0.8, 0.6, 0.2, 0.2) end)
+hs.hotkey.bind(hyper, "5", function() push(0.8, 0.8, 0.2, 0.2) end)
 
 -- Move a window between monitors
 hs.hotkey.bind(pushkey,"1", function() moveToMonitor(1) end) -- Move to first monitor
@@ -169,7 +182,15 @@ hs.hotkey.bind(shiftpushkey,"2", function() 											 -- Move to second monito
 end)
 
 hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
+
+-- Application shortcuts
+hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Google Chrome") end)
+hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Slack") end)
+hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind(hyper, "e", function() hs.application.launchOrFocus("Evernote") end)
+
 hs.hotkey.bind(hyper, "w", mouseHighlight)
+
 hs.hotkey.bind(hyper, "q", showHelp)
 
 --config reloading. manual (from getting started guide):
