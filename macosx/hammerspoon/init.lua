@@ -181,6 +181,7 @@ hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Safari") end
 hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Slack") end)
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
 hs.hotkey.bind(hyper, "e", function() hs.application.launchOrFocus("Things") end)
+hs.hotkey.bind(hyper, "l", function() hs.application.launchOrFocus("Mail") end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
 
