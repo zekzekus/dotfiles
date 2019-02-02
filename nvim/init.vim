@@ -72,8 +72,6 @@ let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 
-set showmode
-set showcmd
 set laststatus=2
 set noruler
 set statusline=
