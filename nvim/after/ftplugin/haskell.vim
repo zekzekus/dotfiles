@@ -1,7 +1,6 @@
 scriptencoding utf-8
 
 " buffer local options
-setlocal formatprg=brittany
 setlocal expandtab
 
 " plugin settings
