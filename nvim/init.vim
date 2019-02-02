@@ -60,11 +60,7 @@ if $ITERM_PROFILE =~? 'dark'
 else
   set background=light
 endif
-let g:two_firewatch_italics=1
-colorscheme two-firewatch
-if !has('nvim')
-  highlight CursorLine cterm=none
-endif
+colorscheme off
 
 augroup general_au
   autocmd!
@@ -76,10 +72,28 @@ let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 
-set noshowmode
-set noshowcmd
+set showmode
+set showcmd
 set laststatus=2
 set noruler
+set statusline=
+set statusline+=%w
+set statusline+=%q
+set statusline+=\ ⋮\ %F%m\ ⋮
+set statusline+=%=
+set statusline+=%{(&paste==0?'':'[P]')}
+set statusline+=\ ⋮\ 
+set statusline+=[%H
+set statusline+=%Y
+set statusline+=%R]
+set statusline+=\ ⋮\ 
+set statusline+=(%l
+set statusline+=/
+set statusline+=%L)
+set statusline+=\ ⋮\ 
+set statusline+=%%%p
+set statusline+=\ ⋮\ 
+set statusline+=%{ListInfos()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -135,25 +149,10 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['stack', 'exec', 'hie', '--', '--lsp'],
     \ }
 
-function! LightlineListInfos()
+function! ListInfos()
   let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
   let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
   return qflist . loclist
 endfunction
-
-let g:lightline = {
-  \ 'colorscheme': 'seoul256',
-  \ }
-
-let g:lightline.active = {
-      \ 'colorscheme': 'twofirewatch',
-      \ 'left': [ [ 'mode', 'paste' ],
-      \           [ 'readonly', 'filename', 'modified' ] ],
-      \ 'right': [ [ 'lineinfo' ],
-      \            [ 'percent' ],
-      \            [ 'fileformat', 'fileencoding', 'filetype', 'listcounts' ] ] }
-let g:lightline.component_function = {
-      \ 'listcounts': 'LightlineListInfos',
-      \ }
 
 runtime! keybindings.vim
