@@ -2,16 +2,12 @@ nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
-nnoremap j gj
-nnoremap k gk
-
 " files
 nnoremap <silent><leader>ff :<c-u>Denite file_rec buffer -winheight=`30*winheight(0)/100`<cr>
 nnoremap <silent><leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>ft <ESC>:TagbarToggle<cr>
 nnoremap <leader>fs <ESC>:w<cr>
-" to remove white space from a file.
-nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
 nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`30*winheight(0)/100`<cr>
@@ -66,9 +62,6 @@ call denite#custom#map('insert', '<C-n>', '<denite:jump_to_next_source>', 'norem
 call denite#custom#map('insert', '<C-p>', '<denite:jump_to_previous_source>', 'noremap')
 call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplitswitch>', 'noremap')
 
-nnoremap <leader>o <c-w><Bar><c-w>_<cr>
-nnoremap <leader>= <c-w>=
-
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
@@ -84,8 +77,3 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell call LC_maps()
 augroup END
-
-nnoremap <Up>    :resize +2<CR>
-nnoremap <Down>  :resize -2<CR>
-nnoremap <Left>  :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
