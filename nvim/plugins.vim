@@ -39,7 +39,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
-Plug 'pbrisbin/vim-colors-off'
 Plug 'zekzekus/vim-two-firewatch'
 
 " python
