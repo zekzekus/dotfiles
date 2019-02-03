@@ -36,7 +36,7 @@ set textwidth=79
 set colorcolumn=+1
 
 set completeopt=menuone,noinsert,noselect
-set shortmess+=c
+set shortmess+=cI
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
