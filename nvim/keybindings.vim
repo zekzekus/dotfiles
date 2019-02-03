@@ -38,6 +38,12 @@ nmap - <Plug>VinegarVerticalSplitUp
 " Select just pasted text.
 nnoremap <leader>V V`]
 
+" keep cursor centered while page up/down like operations
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+noremap <C-f> <C-f>zz
+noremap <C-b> <C-b>zz
+
 nnoremap <silent><leader>qq :SmartClose<cr>
 
 let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
