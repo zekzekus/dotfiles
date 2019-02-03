@@ -55,10 +55,10 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-if $ITERM_PROFILE =~? 'dark'
-  set background=dark
-else
+if $ITERM_PROFILE =~? 'light'
   set background=light
+else
+  set background=dark
 endif
 colorscheme off
 
