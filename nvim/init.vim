@@ -62,11 +62,13 @@ else
 endif
 let g:two_firewatch_italics=1
 colorscheme two-firewatch
+highlight CursorLine cterm=none
 
 augroup general_au
   autocmd!
 
   autocmd VimResized * :wincmd =
+  autocmd ColorScheme * highlight CursorLine cterm=none
 augroup END
 
 let g:netrw_liststyle=3
@@ -74,7 +76,6 @@ let g:netrw_liststyle=3
 runtime! plugin/sensible.vim
 
 set laststatus=2
-set noruler
 set statusline=
 set statusline+=%w
 set statusline+=%q
