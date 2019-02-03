@@ -60,7 +60,8 @@ if $ITERM_PROFILE =~? 'light'
 else
   set background=dark
 endif
-colorscheme off
+let g:two_firewatch_italics=1
+colorscheme two-firewatch
 
 augroup general_au
   autocmd!

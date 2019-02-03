@@ -40,6 +40,7 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'pbrisbin/vim-colors-off'
+Plug 'zekzekus/vim-two-firewatch'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
