@@ -70,6 +70,7 @@ function LC_maps()
     nnoremap <silent>[<C-n> :call LanguageClient#textDocument_rename()<cr>
     nnoremap <silent>[<C-r> :call LanguageClient#textDocument_references()<cr>
     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+    let g:LanguageClient_useVirtualText = 0
   endif
 endfunction
 augroup keybindings_au
