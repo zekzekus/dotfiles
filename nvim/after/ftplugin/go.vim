@@ -1,5 +1,4 @@
 " plugin configuration
-let g:neomake_go_enabled_makers = []
 let g:go_metalinter_autosave = 1
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
