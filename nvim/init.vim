@@ -55,20 +55,13 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-if $ITERM_PROFILE =~? 'light'
-  set background=light
-else
-  set background=dark
-endif
-let g:two_firewatch_italics=1
-colorscheme two-firewatch
-highlight CursorLine cterm=none
+set background=dark
+colorscheme monotone
 
 augroup general_au
   autocmd!
 
   autocmd VimResized * :wincmd =
-  autocmd ColorScheme * highlight CursorLine cterm=none
 augroup END
 
 let g:netrw_liststyle=3
