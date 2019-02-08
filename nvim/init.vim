@@ -13,13 +13,11 @@ set softtabstop=4
 set expandtab
 
 set hidden
-set visualbell
 set splitbelow
 set splitright
 
 set cursorline
 set number
-set norelativenumber
 
 set lazyredraw
 
@@ -55,7 +53,6 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-set background=dark
 colorscheme monotone
 
 augroup general_au
@@ -70,7 +67,6 @@ runtime! plugin/sensible.vim
 
 set noshowmode
 set noshowcmd
-set laststatus=2
 set noruler
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
