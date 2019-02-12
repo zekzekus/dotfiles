@@ -54,13 +54,11 @@ set undodir=~/.nvimtmp
 
 set termguicolors
 colorscheme monotone
-highlight CursorLine gui=underline
 
 augroup general_au
   autocmd!
 
   autocmd VimResized * :wincmd =
-  autocmd ColorScheme highlight CursorLine gui=underline
 augroup END
 
 let g:netrw_liststyle=3
