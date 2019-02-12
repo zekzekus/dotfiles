@@ -38,7 +38,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
-Plug 'zekzekus/vim-two-firewatch'
 Plug 'itchyny/lightline.vim'
 Plug 'Lokaltog/vim-monotone'
 
