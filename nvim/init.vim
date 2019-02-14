@@ -53,7 +53,8 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-colorscheme monotone
+let g:two_firewatch_italics=1
+colorscheme two-firewatch
 
 augroup general_au
   autocmd!
@@ -127,7 +128,7 @@ function! ListInfos()
 endfunction
 
 let g:lightline = {
-  \ 'colorscheme': 'seoul256',
+  \ 'colorscheme': 'twofirewatch',
   \ }
 
 let g:lightline.active = {

@@ -78,6 +78,3 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell call LC_maps()
 augroup END
-
-nmap yoB :call g:Monotone(5, 3, 100)<cr>
-nmap yoN :call g:Monotone(5, 3, 82)<cr>
