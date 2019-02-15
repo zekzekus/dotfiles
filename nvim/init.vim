@@ -54,6 +54,11 @@ set undodir=~/.nvimtmp
 
 set termguicolors
 let g:two_firewatch_italics=1
+if $ITERM_PROFILE =~? 'light'
+  set background=light
+else
+  set background=dark
+endif
 colorscheme two-firewatch
 
 augroup general_au
