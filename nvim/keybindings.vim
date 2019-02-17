@@ -22,8 +22,6 @@ nnoremap <leader>* :lgrep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>zz
 nnoremap <leader>sl :<c-u>ilist //<Left>
-nmap <silent>[s <Plug>DashSearch
-nmap <silent>[<C-s> <Plug>DashGlobalSearch
 
 " for browsing the input history
 cnoremap <c-n> <down>
