@@ -11,6 +11,6 @@ function _pure_prompt_git \
             set git_prompt $git_prompt $git_pending_commits
         end
 
-        echo $git_prompt
+        echo "{$git_prompt}"
     end
 end
