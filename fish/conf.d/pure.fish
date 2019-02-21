@@ -4,7 +4,7 @@ set --universal pure_version 2.1.0 # used for bug report
 _pure_set_default pure_color_primary (set_color blue)
 _pure_set_default pure_color_info (set_color cyan)
 _pure_set_default pure_color_mute (set_color cyan)
-_pure_set_default pure_color_success (set_color magenta)
+_pure_set_default pure_color_success (set_color green)
 _pure_set_default pure_color_normal (set_color normal)
 _pure_set_default pure_color_danger (set_color red)
 _pure_set_default pure_color_light (set_color white)
@@ -27,7 +27,7 @@ _pure_set_default pure_symbol_git_dirty "*"
 _pure_set_default pure_color_git_unpulled_commits $pure_color_info
 _pure_set_default pure_color_git_unpushed_commits $pure_color_info
 _pure_set_default pure_color_git_branch $pure_color_mute
-_pure_set_default pure_color_git_dirty $pure_color_danger
+_pure_set_default pure_color_git_dirty $pure_color_mute
 
 # SSH info
 _pure_set_default pure_color_ssh_hostname $pure_color_mute
@@ -51,7 +51,7 @@ _pure_set_default pure_begin_prompt_with_current_directory false
 _pure_set_default pure_separate_prompt_on_error false
 
 # Max execution time of a process before its run time is shown when it exits
-_pure_set_default pure_threshold_command_duration 5
+_pure_set_default pure_threshold_command_duration 10
 _pure_set_default pure_color_command_duration $pure_color_warning
 
 # Right Prompt variables

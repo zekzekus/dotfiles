@@ -8,6 +8,7 @@ function _pure_prompt_first_line \
     set --local prompt (_pure_print_prompt \
                             (_pure_prompt_ssh) \
                             (_pure_prompt_git) \
+                            (_pure_prompt_virtualenv) \
                             (_pure_prompt_command_duration)
                         )
     set --local prompt_width (_pure_string_width $prompt)
@@ -19,12 +20,14 @@ function _pure_prompt_first_line \
                 (_pure_prompt_current_folder $prompt_width) \
                 (_pure_prompt_git) \
                 (_pure_prompt_ssh) \
+                (_pure_prompt_virtualenv) \
                 (_pure_prompt_command_duration)
     else
         set prompt_components \
                 (_pure_prompt_ssh) \
                 (_pure_prompt_current_folder $prompt_width) \
                 (_pure_prompt_git) \
+                (_pure_prompt_virtualenv) \
                 (_pure_prompt_command_duration)
     end
 
