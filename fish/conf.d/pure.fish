@@ -43,7 +43,7 @@ set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
 # false:            user@hostname (ssh-only), current directory, git, command duration
-_pure_set_default pure_begin_prompt_with_current_directory true
+_pure_set_default pure_begin_prompt_with_current_directory false
 
 # Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default
