@@ -31,7 +31,7 @@ def gen_script():
     old_env = output.strip()
 
     command = '{} && (echo "{}"; {}; echo "{}"; alias)'.format(
-        ' '.join(sys.argv[1:]),
+        ' '.join(sys.argv[1:]).rstrip().rstrip(';'),
         divider,
         env_reader,
         divider,
@@ -89,7 +89,7 @@ try:
     script = gen_script()
 except subprocess.CalledProcessError as e:
     print('exit code:', e.returncode, file=sys.stderr)
-    print('__error', end='')
+    print('__error', e.returncode, end='')
 except Exception as e:
     print('unknown error:', str(e), file=sys.stderr)
     traceback.print_exc(10, file=sys.stderr)
