@@ -23,6 +23,9 @@ nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>zz
 nnoremap <leader>sl :<c-u>ilist //<Left>
 
+nnoremap yom :match DiffDelete /\%>80c/<cr>
+nnoremap yoM :match none /\%>80c/<cr>
+
 " for browsing the input history
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>

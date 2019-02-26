@@ -31,7 +31,7 @@ set matchtime=3
 
 set nowrap
 set textwidth=79
-set colorcolumn=+1
+match DiffDelete /\%>80c/
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=cI
