@@ -5,9 +5,7 @@
 w Newcol Kill Putall [Dump acme/acme.dump] Exit [Load acme/acme.dump]
 c          0 New Cut Paste Snarf Sort Zerox Delcol 
 c          1 New Cut Paste Snarf Sort Zerox Delcol 
-f          0           4           0           0   2.2727273 
-          4          56         147           1           0 /Users/zekus/devel/tools/dotfiles/ Del Snarf Get | Look 
-f          0           5          17          17  28.4659091 
-          5          73          43           0           0 /Users/zekus/devel/tools/dotfiles/acme.commands Del Snarf Undo | Look Get
-F          1           0           0           0   2.2727273           0 
-          8          18           0           0           0  Del Snarf | Look 
+f          0           2           0           0   2.2727273 
+          2          56         171           1           0 /Users/zekus/devel/tools/dotfiles/ Del Snarf Get | Look 
+f          0           3          17          17  19.3181818 
+          3          72          43           0           0 /Users/zekus/devel/tools/dotfiles/acme.commands Del Snarf | Look Get win
