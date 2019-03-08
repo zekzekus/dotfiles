@@ -1,6 +1,6 @@
 fd fish
 
-f nnoremap
+f remap
 
 git fetch -a
 
