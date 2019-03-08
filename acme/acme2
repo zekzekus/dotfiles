@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
+FIXED_PITCH_FONT='/mnt/font/TriplicateT4p/14a/font'
+
+export PAGER=nobs
+export MANPAGER=nobs
+export prompt='$ '
+export EDITOR=E
+export TERM=dumb
+export MANPAGER=nobs
+export PAGER=nobs
+
+export PLUMBFILE=$HOME/lib/plumbing
+export SHELL=/bin/bash
+export acmeshell=/bin/bash
+export PLAN9=/usr/local/opt/plan9port/libexec
+export PATH=$PATH:$PLAN9/bin
+export MANPATH=$MANPATH:$PLAN9/man
+
+# bash "-z": true if the length of the string is zero
+[ -z "$(9 pgrep plumber)" ] && 9 plumber;
+
+9 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
+
+[ -z "$(9 pgrep acme)" ] && 9 acme -a -m /tmp/acme -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &

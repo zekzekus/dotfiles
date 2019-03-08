@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+# 9 unmount /mnt/plumb
+# 9 unmount /mnt/acme
+# 9 unmount /mnt/fontsrv
+if pgrep -x "plumber" > /dev/null
+then
+    pkill plumber
+fi
+
+if pgrep -x "acme" > /dev/null
+then
+    pkill acme
+fi
+
+echo "unmount fontsrv"
+if mount | grep /mnt/fontsrv > /dev/null
+then
+    umount `mount | grep /mnt/fontsrv | awk '{print $1}'`
+fi
+
+echo "unmount acme"
+if mount | grep /tmp/acme > /dev/null
+then
+    umount `mount | grep /tmp/acme | awk '{print $1}'`
+fi
+
+echo "unmount plumb"
+if mount | grep /mnt/plumb > /dev/null
+then
+    umount `mount | grep /mnt/plumb | awk '{print $1}'`
+fi
+
+echo "delete namespace"
+rm -rf `9 namespace`

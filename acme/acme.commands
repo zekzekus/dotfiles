@@ -1,0 +1,7 @@
+fd fish
+
+f nnoremap
+
+git fetch -a
+
+git status
