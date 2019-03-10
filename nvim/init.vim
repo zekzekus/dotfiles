@@ -146,4 +146,13 @@ let g:lightline.component_function = {
       \ 'listcounts': 'ListInfos',
       \ }
 
+let g:deoplete#enable_at_startup = 0
+augroup plugins_au
+  autocmd!
+
+  autocmd InsertEnter * call deoplete#enable()
+augroup END
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
 runtime! keybindings.vim

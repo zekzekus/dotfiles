@@ -18,6 +18,8 @@ endif
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['rust', 'python', 'haskell']}
+Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+Plug 'Shougo/neco-vim', {'for': 'vim'}
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -54,6 +56,7 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " go lang
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'zchee/deoplete-go', {'for': 'go'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
