@@ -18,24 +18,17 @@ below.
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
-  `Rust`, `Go`, and `Javascript`.
+  `Rust`, `Go`, and `Javascript` and `Scala`.
 * Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
-  except for `Javascript`, `Go` and `Clojure`.
+  except for `Clojure` and `Scala`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
-<<<<<<< HEAD
-* I am not using anything as autocompletion engine. Just language client
-  sources by default except Go and Clojure. Those have their own sources
-  implemented.
-=======
-* I am using [deoplete](https://github.com/Shougo/deoplete.nvim/) as
-  autocompletion engine. It uses language client sources by default except
-  vimscript, Go and Clojure. Those have their own sources implemented.
-* For a while I am going for simplicity so I removed statusline completely.
->>>>>>> parent of fa9c127... Revert "Revert "VIM: removed deoplete autocomplete engine""
+* I am using [coc](https://github.com/neoclide/coc.nvim) as autocompletion
+  and language client engine. Except Clojure and Scala all completion and
+  language server capabilities comes from `coc`.
 
 ### Key bindings List
 
@@ -66,17 +59,16 @@ Notable custom key bindings;
 * Other
     * `<leader>V` selects just pasted text.
     * Arrow keys to resize active window.
-* Programming support bindings. I like [Tim Pope](https://github.com/tpope)
-  style shortcuts (ones derived from default vim bindings);
-    * `[<C-d>` jump to definition of the symbol under cursor using language
+* Programming support bindings.
+    * `gd` jump to definition of the symbol under cursor using language
       server or specific plugin.
     * `K` shows hover information using language server or specific plugin.
-    * `[d` shows detailed hover information using language server or specific
-      plugin.
-    * `[<C-n>` rename the symbol under cursor using language server or specific
-      plugin.
-    * `[<C-r>` shows usages of the symbol under cursor using language server or
-      specific plugin.
+    * `[c` jump to next language server diagnostic message.
+    * `]c` jump to previous language server diagnostic message.
+    * `gy` show type definition from language server.
+    * `gi` show implementations from language server.
+    * `gr` show references from language server.
+    * `<leader>rn` use rename function from language server.
 
 Check
 [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim)

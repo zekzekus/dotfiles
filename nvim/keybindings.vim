@@ -17,8 +17,8 @@ nnoremap <leader><tab> :b#<CR>
 " search
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>/ :<C-u>lgrep!<Space>
-nnoremap <leader>* :lgrep! "\b<C-R><C-W>\b"<CR>
+nnoremap <leader>/ :<C-u>grep!<Space>
+nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -split=floating<cr>zz
 nnoremap <leader>sl :<c-u>ilist //<Left>
@@ -63,19 +63,37 @@ call denite#custom#map('insert', '<C-n>', '<denite:jump_to_next_source>', 'norem
 call denite#custom#map('insert', '<C-p>', '<denite:jump_to_previous_source>', 'noremap')
 call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplitswitch>', 'noremap')
 
-function LC_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-    nnoremap <silent>K :call LanguageClient#textDocument_hover()<cr>
-    nnoremap <silent>[<C-d> :call LanguageClient#textDocument_definition()<cr>
-    nnoremap <silent>[d :call LanguageClient#textDocument_hover()<cr>
-    nnoremap <silent>[<C-n> :call LanguageClient#textDocument_rename()<cr>
-    nnoremap <silent>[<C-r> :call LanguageClient#textDocument_references()<cr>
-    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-    let g:LanguageClient_useVirtualText = 0
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
   endif
+endfunction
+
+function! s:LC_maps()
+  nmap <silent> [c <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]c <Plug>(coc-diagnostic-next)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+  nmap <leader>rn <Plug>(coc-rename)
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
 endfunction
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType python,rust,haskell call LC_maps()
+  autocmd FileType python,rust,haskell,go,javascript call <SID>LC_maps()
+  autocmd FileType python,rust,haskell,go,javascript setl formatexpr=CocAction('formatSelected')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END

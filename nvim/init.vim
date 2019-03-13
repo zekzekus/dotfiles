@@ -119,12 +119,6 @@ call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust':    ['rls'],
-    \ 'python':  ['pyls'],
-    \ 'haskell': ['stack', 'exec', 'hie', '--', '--lsp'],
-    \ }
-
 function! ListInfos()
   let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
   let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
@@ -144,14 +138,5 @@ let g:lightline.active = {
 let g:lightline.component_function = {
       \ 'listcounts': 'ListInfos',
       \ }
-
-let g:deoplete#enable_at_startup = 0
-augroup plugins_au
-  autocmd!
-
-  autocmd InsertEnter * call deoplete#enable()
-augroup END
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 runtime! keybindings.vim

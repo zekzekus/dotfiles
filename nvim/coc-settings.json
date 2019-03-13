@@ -1,0 +1,20 @@
+{
+    "codeLens.enable": true,
+    "suggest.timeout": 5000,
+    "suggest.noselect": false,
+    "suggest.preferCompleteThanJumpPlaceholder": true,
+    "languageserver": {
+        "golang": {
+            "args": ["--diagnostics-style=instant"],
+            "command": "bingo",
+            "filetypes": ["go"],
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
+        },
+        "haskell": {
+            "command": "hie-wrapper",
+            "filetypes": ["hs", "lhs", "haskell"],
+            "initializationOptions": {},
+            "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"]
+        }
+    }
+}

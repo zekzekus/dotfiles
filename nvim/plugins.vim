@@ -16,10 +16,11 @@ endif
 
 " programming
 Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['rust', 'python', 'haskell']}
-Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
+Plug 'neoclide/coc-neco', {'for': 'vim'}
+Plug 'honza/vim-snippets'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -53,10 +54,6 @@ Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-
-" go lang
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'zchee/deoplete-go', {'for': 'go'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
