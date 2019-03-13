@@ -3,14 +3,14 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
 " files
-nnoremap <silent><leader>ff :<c-u>Denite file_rec buffer -split=floating<cr>
-nnoremap <silent><leader>fj :<c-u>Denite junkfile -split=floating<cr>
+nnoremap <silent><leader>ff :<c-u>Denite file_rec buffer -winheight=`30*winheight(0)/100`<cr>
+nnoremap <silent><leader>fj :<c-u>Denite junkfile -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>ft <ESC>:TagbarToggle<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
-nnoremap <silent><leader>bb :<c-u>Denite buffer -split=floating<cr>
+nnoremap <silent><leader>bb :<c-u>Denite buffer -winheight=`30*winheight(0)/100`<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
@@ -20,7 +20,7 @@ nnoremap N Nzzzv
 nnoremap <leader>/ :<C-u>lgrep!<Space>
 nnoremap <leader>* :lgrep! "\b<C-R><C-W>\b"<CR>
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>Denite outline line -split=floating<cr>zz
+nnoremap <silent><leader>ss :<c-u>Denite outline line -winheight=`30*winheight(0)/100`<cr>zz
 nnoremap <leader>sl :<c-u>ilist //<Left>
 
 nnoremap yom :match DiffDelete /\%>80c/<cr>
