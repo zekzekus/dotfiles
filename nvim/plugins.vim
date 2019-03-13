@@ -65,7 +65,7 @@ Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
 
 " scala
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}
-Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins', 'for': 'scala' }
+Plug 'ensime/ensime-vim', { 'do': function('DoRemote'), 'for': 'scala' }
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
