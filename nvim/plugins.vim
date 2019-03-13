@@ -16,7 +16,7 @@ endif
 
 " programming
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
+Plug 'rbong/vim-flog'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['rust', 'python', 'haskell']}
 Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
