@@ -18,9 +18,12 @@ export PLAN9=/usr/local/opt/plan9port/libexec
 export PATH=$PATH:$PLAN9/bin
 export MANPATH=$MANPATH:$PLAN9/man
 
+export NAMESPACE=`mktemp -d -t acme`
+export ACME_MPOINT=`basename $NAMESPACE`
+
 # bash "-z": true if the length of the string is zero
-[ -z "$(9 pgrep plumber)" ] && 9 plumber;
+9 plumber;
 
 9 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
 
-[ -z "$(9 pgrep acme)" ] && 9 acme -a -m /tmp/acme -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
+9 acme -a -m /tmp/$ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
