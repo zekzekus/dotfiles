@@ -2,6 +2,7 @@
     "codeLens.enable": true,
     "suggest.timeout": 5000,
     "suggest.noselect": false,
+    "suggest.snippetIndicator": " ►",
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "languageserver": {
         "golang": {
