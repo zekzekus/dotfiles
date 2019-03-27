@@ -5,7 +5,7 @@ let g:maplocalleader = '\'
 " files
 nnoremap <silent><leader>ff :<c-u>Denite file/rec buffer -split=floating<cr>
 nnoremap <silent><leader>fj :<c-u>Denite junkfile -split=floating<cr>
-nnoremap <leader>ft <ESC>:TagbarToggle<cr>
+nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 

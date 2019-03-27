@@ -32,7 +32,7 @@ Plug 'Shougo/junkfile.vim'
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
