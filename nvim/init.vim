@@ -74,17 +74,17 @@ set laststatus=2
 set statusline=
 set statusline+=%w
 set statusline+=%q
-set statusline+=\ ⋮\ %F%m\ ⋮
+set statusline+=\ ⋮\ %F%M%R%H\ ⋮
 set statusline+=%=
 set statusline+=%{(&paste==0?'':'[P]')}
 set statusline+=\ ⋮\ 
-set statusline+=[%H
-set statusline+=%Y
-set statusline+=%R]
+set statusline+=%y
 set statusline+=\ ⋮\ 
 set statusline+=(%l
 set statusline+=/
-set statusline+=%L)
+set statusline+=%L
+set statusline+=/
+set statusline+=%c)
 set statusline+=\ ⋮\ 
 set statusline+=%%%p
 set statusline+=\ ⋮\ 
