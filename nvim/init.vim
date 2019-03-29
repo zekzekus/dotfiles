@@ -70,9 +70,25 @@ let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 
-set noshowmode
-set noshowcmd
-set noruler
+set laststatus=2
+set statusline=
+set statusline+=%w
+set statusline+=%q
+set statusline+=\ ⋮\ %F%m\ ⋮
+set statusline+=%=
+set statusline+=%{(&paste==0?'':'[P]')}
+set statusline+=\ ⋮\ 
+set statusline+=[%H
+set statusline+=%Y
+set statusline+=%R]
+set statusline+=\ ⋮\ 
+set statusline+=(%l
+set statusline+=/
+set statusline+=%L)
+set statusline+=\ ⋮\ 
+set statusline+=%%%p
+set statusline+=\ ⋮\ 
+set statusline+=%{ListInfos()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -124,19 +140,5 @@ function! ListInfos()
   let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
   return qflist . loclist
 endfunction
-
-let g:lightline = {
-  \ 'colorscheme': 'twofirewatch',
-  \ }
-
-let g:lightline.active = {
-      \ 'left': [ [ 'mode', 'paste' ],
-      \           [ 'readonly', 'filename', 'modified' ] ],
-      \ 'right': [ [ 'lineinfo' ],
-      \            [ 'percent' ],
-      \            [ 'fileformat', 'fileencoding', 'filetype', 'listcounts' ] ] }
-let g:lightline.component_function = {
-      \ 'listcounts': 'ListInfos',
-      \ }
 
 runtime! keybindings.vim
