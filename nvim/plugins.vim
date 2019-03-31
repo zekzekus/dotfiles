@@ -40,6 +40,7 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'zekzekus/vim-two-firewatch'
+Plug 'ajgrf/parchment'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
