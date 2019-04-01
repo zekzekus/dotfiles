@@ -13,22 +13,27 @@ then
     pkill acme
 fi
 
-echo "unmount fontsrv"
-if mount | grep /mnt/fontsrv > /dev/null
+if pgrep -x "fontsrv" > /dev/null
 then
-    umount `mount | grep /mnt/fontsrv | awk '{print $1}'`
+    pkill fontsrv
 fi
 
 echo "unmount acme"
-if mount | grep /tmp/acme > /dev/null
+if mount | grep plan9 | grep acme > /dev/null
 then
-    umount `mount | grep /tmp/acme | awk '{print $1}'`
+    umount `mount | grep plan9 | grep acme | awk '{print $1}'`
+fi
+
+echo "unmount fontsrv"
+if mount | grep plan9 | grep font > /dev/null
+then
+    umount `mount | grep plan9 | grep font | awk '{print $1}'`
 fi
 
 echo "unmount plumb"
-if mount | grep /mnt/plumb > /dev/null
+if mount | grep plan9 | grep plumb > /dev/null
 then
-    umount `mount | grep /mnt/plumb | awk '{print $1}'`
+    umount `mount | grep plan9 | grep plumb | awk '{print $1}'`
 fi
 
 echo "delete namespace"

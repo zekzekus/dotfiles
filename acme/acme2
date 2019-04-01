@@ -1,11 +1,10 @@
 #!/usr/bin/env sh
 
 VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
-FIXED_PITCH_FONT='/mnt/font/TriplicateT4p/14a/font'
+FIXED_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
 
 export PAGER=nobs
 export MANPAGER=nobs
-export prompt='$ '
 export EDITOR=E
 export TERM=dumb
 export MANPAGER=nobs
@@ -18,12 +17,20 @@ export PLAN9=/usr/local/plan9
 export PATH=$PATH:$PLAN9/bin
 export MANPATH=$MANPATH:$PLAN9/man
 
-export NAMESPACE=`mktemp -d -t acme`
-export ACME_MPOINT=`basename $NAMESPACE`
+export NAMESPACE=`mktemp -d -t plan9`
+export PLAN9_MPOINT=/tmp/`basename $NAMESPACE`
+
+export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
+export FONT_MPOINT=`echo $PLAN9_MPOINT`_font
+
+mkdir -p $ACME_MPOINT
+mkdir -p $FONT_MPOINT
 
 # bash "-z": true if the length of the string is zero
+9 fontsrv -m $FONT_MPOINT &
+
 9 plumber;
 
 9 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
 
-9 acme -a -m /tmp/$ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
+9 acme -a -m $ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
