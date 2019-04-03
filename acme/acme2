@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+source .local.env
 VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
 FIXED_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
 

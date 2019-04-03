@@ -16,3 +16,4 @@ emacs/auto-save-list
 emacs/backup
 emacs/elpa
 emacs/network-security.data
+.local.env
