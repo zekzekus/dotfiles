@@ -6,7 +6,7 @@ My very personal Vim configuration. I do Python development at work on a daily
 basis. Also I need to read (more than writing) Javascript code (mostly
 ReactJS). My personal interests at the moment includes Clojure, Haskell, Rust
 and Go programming languages to play on my free time. So this configuration
-supports these 6 languages. Except Javascript, Go and Clojure, all other
+supports these 6 languages. Except Clojure, all other
 language supports comes from corresponding Language Server. Some more details
 below.
 
@@ -18,16 +18,16 @@ below.
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
-  `Rust`, `Go`, and `Javascript` and `Scala`.
+  `Rust`, `Go`, and `Javascript`.
 * Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
-  except for `Clojure` and `Scala`.
+  except for `Clojure`. 
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
 * I am using [coc](https://github.com/neoclide/coc.nvim) as autocompletion
-  and language client engine. Except Clojure and Scala all completion and
+  and language client engine. Except Clojure all completion and
   language server capabilities comes from `coc`.
 
 ### Key bindings List
