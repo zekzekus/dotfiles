@@ -1,7 +1,9 @@
 fd acme
 
-f remap
+rg+ remap
 
 git fetch -a
 
 git status
+
+git diff
