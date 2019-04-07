@@ -82,11 +82,9 @@
 (transient-mark-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/parchment/")
+(load-theme 'parchment t)
 
-(use-package nord-theme
-  :ensure t
-  :init
-  (load-theme 'nord t))
 
 (use-package doom-modeline
   :ensure t
