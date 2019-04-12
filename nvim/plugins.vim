@@ -57,8 +57,11 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
+Plug 'eraserhd/parinfer-rust', {'for': ['clojure', 'lisp'], 'do': 'cargo build --release'}
 Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
+
+" common lisp
+Plug 'l04m33/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
