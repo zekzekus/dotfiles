@@ -40,3 +40,21 @@ end
 status --is-interactive; and source (nodenv init -|psub)
 set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
+
+set -gx PATH '/Users/zekus/.jenv/shims' $PATH
+set -gx JENV_SHELL fish
+set -gx JENV_LOADED 1
+set -e JAVA_HOME
+source '/usr/local/Cellar/jenv/0.5.2/libexec/libexec/../completions/jenv.fish'
+jenv rehash 2>/dev/null
+function jenv
+  set command $argv[1]
+  set -e argv[1]
+
+  switch "$command"
+  case enable-plugin rehash shell shell-options
+    source (jenv "sh-$command" $argv|psub)
+  case '*'
+    command jenv "$command" $argv
+  end
+end
