@@ -18,7 +18,7 @@ nnoremap <leader><tab> :b#<CR>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>/ :<C-u>grep!<Space>
-nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>
+nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:copen<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line -split=floating<cr>zz
 nnoremap <leader>sl :<c-u>ilist //<Left>
@@ -35,7 +35,6 @@ nmap - <Plug>VinegarVerticalSplitUp
 " Select just pasted text.
 nnoremap <leader>V V`]
 
-" keep cursor centered while page up/down like operations
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 noremap <C-f> <C-f>zz

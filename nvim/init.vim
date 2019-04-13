@@ -4,8 +4,6 @@ runtime! plugins.vim
 set modelines=0
 set mouse=a
 set updatetime=500
-set autowrite
-set autoread
 
 set tabstop=4
 set shiftwidth=4
@@ -55,14 +53,11 @@ set termguicolors
 let g:two_firewatch_italics=1
 if $ITERM_PROFILE =~? 'light'
   set background=light
-else
-  set background=dark
 endif
 colorscheme two-firewatch
 
 augroup general_au
   autocmd!
-
   autocmd VimResized * :wincmd =
 augroup END
 
@@ -70,21 +65,15 @@ let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 
-set laststatus=2
-set statusline=
-set statusline+=%w
-set statusline+=%q
+set noshowcmd
+set statusline=%w%q
 set statusline+=\ ⋮\ %F%M%R%H\ ⋮
 set statusline+=%=
 set statusline+=%{(&paste==0?'':'[P]')}
 set statusline+=\ ⋮\ 
 set statusline+=%y
 set statusline+=\ ⋮\ 
-set statusline+=(%l
-set statusline+=/
-set statusline+=%L
-set statusline+=/
-set statusline+=%c)
+set statusline+=(%l/%L/%c)
 set statusline+=\ ⋮\ 
 set statusline+=%%%p
 set statusline+=\ ⋮\ 
@@ -109,9 +98,9 @@ if has('nvim')
               \   },
               \ }
   endif
+
   augroup terminal_au
     autocmd!
-
     autocmd TermOpen * setlocal nonumber norelativenumber
   augroup END
 
