@@ -135,6 +135,9 @@ call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
 
+let g:vista#renderer#enable_icon = 0
+let g:vista_sidebar_width = 40
+
 function! ListInfos()
   let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
   let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
