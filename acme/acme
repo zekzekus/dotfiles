@@ -21,13 +21,8 @@ export NAMESPACE=`mktemp -d -t plan9`
 export PLAN9_MPOINT=/tmp/`basename $NAMESPACE`
 
 export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
-export FONT_MPOINT=`echo $PLAN9_MPOINT`_font
 
 mkdir -p $ACME_MPOINT
-mkdir -p $FONT_MPOINT
-
-# bash "-z": true if the length of the string is zero
-9 fontsrv -m $FONT_MPOINT &
 
 9 plumber;
 
