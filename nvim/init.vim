@@ -84,7 +84,6 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 if has('nvim')
   set inccommand=nosplit
   set clipboard+=unnamedplus
-  " temporary solution to workaround slow startup
   if has('mac')
     let g:clipboard = {
               \   'name': 'mac-custom',
