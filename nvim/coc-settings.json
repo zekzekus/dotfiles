@@ -11,6 +11,12 @@
             "command": "bingo",
             "filetypes": ["go"],
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
+        },
+        "haskell": {
+            "command": "hie-wrapper",
+            "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
+            "filetypes": ["hs", "lhs", "haskell"],
+            "initializationOptions": {}
         }
     }
 }
