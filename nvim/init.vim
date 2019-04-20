@@ -1,4 +1,3 @@
-scriptencoding utf-8
 runtime! plugins.vim
 
 set modelines=0

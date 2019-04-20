@@ -1,5 +1,3 @@
-scriptencoding utf-8
-
 " buffer local options
 setlocal expandtab
 
