@@ -2,13 +2,12 @@
 
 ## VIM Configuration
 
-My very personal Vim configuration. I do Python development at work on a daily
-basis. Also I need to read (more than writing) Javascript code (mostly
+My very personal Vim configuration. I do Python and Go development at work on a
+daily basis. Also I need to read (more than writing) Javascript code (mostly
 ReactJS). My personal interests at the moment includes Clojure, Haskell, Rust
-and Go programming languages to play on my free time. So this configuration
-supports these 6 languages. Except Clojure, all other
-language supports comes from corresponding Language Server. Some more details
-below.
+and Scala programming languages to play on my free time. So this configuration
+supports these 7 languages. Except Clojure, all other language supports comes
+from corresponding Language Server. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and
   [Neovim](https://neovim.io/).
@@ -18,7 +17,7 @@ below.
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
-  `Rust`, `Go`, and `Javascript`.
+  `Rust`, `Go`, `Javascript` and `Scala`.
 * Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
   except for `Clojure`. 
@@ -58,7 +57,6 @@ Notable custom key bindings;
       (ctags) into fuzzy search UI.
 * Other
     * `<leader>V` selects just pasted text.
-    * Arrow keys to resize active window.
 * Programming support bindings.
     * `gd` jump to definition of the symbol under cursor using language
       server or specific plugin.
