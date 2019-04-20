@@ -87,12 +87,12 @@ function! s:LC_maps()
   nmap <silent> gr <Plug>(coc-references)
   nmap <leader>rn <Plug>(coc-rename)
   nnoremap <silent> K :call <SID>show_documentation()<CR>
+  setlocal formatexpr=CocAction('formatSelected')
 endfunction
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType python,rust,haskell,go,javascript call <SID>LC_maps()
-  autocmd FileType python,rust,haskell,go,javascript setl formatexpr=CocAction('formatSelected')
+  autocmd FileType python,rust,haskell,go,javascript,scala call <SID>LC_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END

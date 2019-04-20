@@ -17,6 +17,11 @@
             "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
             "filetypes": ["hs", "lhs", "haskell"],
             "initializationOptions": {}
+        },
+        "scala": {
+            "command": "metals-vim",
+            "rootPatterns": ["build.sbt"],
+            "filetypes": ["scala", "sbt"]
         }
     }
 }

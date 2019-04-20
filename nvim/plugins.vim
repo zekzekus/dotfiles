@@ -59,6 +59,9 @@ Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
 
+" scala
+Plug 'derekwyatt/vim-scala', {'for': 'scala'}
+
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
 
