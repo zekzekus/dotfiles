@@ -38,7 +38,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(set-frame-font "PragmataPro 15" nil t)
+(set-frame-font "PragmataPro 16" nil t)
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -82,15 +82,16 @@
 (transient-mark-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/parchment/")
-(load-theme 'parchment t)
 
+(use-package gruvbox-theme
+  :ensure t
+  :init (load-theme 'gruvbox t))
 
 (use-package doom-modeline
   :ensure t
   :init
   (setq doom-modeline-height 18)
-  :hook (after-init . doom-modeline-init))
+  :hook (after-init . doom-modeline-mode))
 
 (use-package ace-window
   :ensure t)
@@ -375,12 +376,6 @@
   :ensure t
   :after flycheck
   :hook (flycheck-mode . flycheck-rust-setup))
-
-(use-package flycheck-inline
-  :ensure t
-  :after flycheck
-  :hook (flycheck-mode . flycheck-inline-mode))
-  
 
 (use-package restclient
   :ensure t)
