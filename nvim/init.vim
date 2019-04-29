@@ -54,10 +54,12 @@ if $ITERM_PROFILE =~? 'light'
   set background=light
 endif
 colorscheme two-firewatch
+highlight CursorLine cterm=none term=none
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
+  autocmd ColorScheme * highlight CursorLine cterm=none term=none
 augroup END
 
 let g:netrw_liststyle=3
