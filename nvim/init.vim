@@ -121,6 +121,7 @@ call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
+call denite#custom#option('_', 'split', 'floating')
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
