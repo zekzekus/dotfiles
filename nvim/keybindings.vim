@@ -3,14 +3,13 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
 " files
-nnoremap <silent><leader>ff :<c-u>Denite file/rec buffer<cr>
-nnoremap <silent><leader>fj :<c-u>Denite junkfile<cr>
+nnoremap <silent><leader>ff :<c-u>Denite file/rec buffer junkfile -winrow=1<cr>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
-nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
+nnoremap <silent><leader>bb :<c-u>Denite buffer -winrow=1<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
@@ -21,7 +20,6 @@ nnoremap <leader>/ :<C-u>grep!<Space>
 nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:copen<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line<cr>zz
-nnoremap <leader>sl :<c-u>ilist //<Left>
 
 nnoremap yom :match DiffDelete /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
@@ -70,14 +68,6 @@ inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 function! s:LC_maps()
   nmap <silent> [c <Plug>(coc-diagnostic-prev)
   nmap <silent> ]c <Plug>(coc-diagnostic-next)
@@ -86,7 +76,7 @@ function! s:LC_maps()
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
   nmap <leader>rn <Plug>(coc-rename)
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  nnoremap <silent> K :call CocAction('doHover')<cr>
   setlocal formatexpr=CocAction('formatSelected')
 endfunction
 augroup keybindings_au

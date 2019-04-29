@@ -1,5 +1,4 @@
 " buffer local options
-setlocal expandtab
 
 " plugin settings
 let g:tagbar_type_haskell = {
