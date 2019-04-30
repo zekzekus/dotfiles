@@ -85,20 +85,6 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 if has('nvim')
   set inccommand=nosplit
   set clipboard+=unnamedplus
-  if has('mac')
-    let g:clipboard = {
-              \   'name': 'mac-custom',
-              \   'copy': {
-              \      '+': 'pbcopy',
-              \      '*': 'pbcopy',
-              \    },
-              \   'paste': {
-              \      '+': 'pbpaste',
-              \      '*': 'pbpaste',
-              \   },
-              \ }
-  endif
-
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
