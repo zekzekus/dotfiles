@@ -3,13 +3,13 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
 " files
-nnoremap <silent><leader>ff :<c-u>Denite file/rec buffer junkfile -winrow=1<cr>
+nnoremap <silent><leader>ff :<c-u>Denite file/rec buffer junkfile<cr>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
-nnoremap <silent><leader>bb :<c-u>Denite buffer -winrow=1<cr>
+nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 

@@ -118,14 +118,12 @@ endif
 " ========== Plugin Settings =========="
 let g:smartclose_set_default_mapping = 0
 
-let s:winheight = 50*winheight(0)/100
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 call denite#custom#option('_', 'highlight_mode_insert', 'DeniteCursorLine')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
 call denite#custom#option('_', 'split', 'floating')
-call denite#custom#option('_', 'winheight', s:winheight)
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
