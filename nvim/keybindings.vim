@@ -2,6 +2,8 @@ nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
 
+nnoremap <leader><space> :<c-u>Denite command<cr>
+
 " files
 nnoremap <silent><leader>ff :<c-u>Denite file/rec buffer junkfile<cr>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
@@ -59,6 +61,7 @@ call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'nor
 call denite#custom#map('insert', '<C-n>', '<denite:jump_to_next_source>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:jump_to_previous_source>', 'noremap')
 call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplitswitch>', 'noremap')
+call denite#custom#map('insert', '<C-e>', '<denite:do_action:edit>', 'noremap')
 
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
