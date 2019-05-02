@@ -66,19 +66,9 @@ let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 
-set noshowcmd
-set statusline=%w%q
-set statusline+=\ ⋮\ %F%M%R%H\ ⋮
-set statusline+=%=
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=\ ⋮\ 
-set statusline+=%y
-set statusline+=\ ⋮\ 
-set statusline+=(%l/%L/%c)
-set statusline+=\ ⋮\ 
-set statusline+=%%%p
-set statusline+=\ ⋮\ 
-set statusline+=%{ListInfos()}
+set laststatus=0
+set ruler
+set rulerformat=%{ListInfos()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
