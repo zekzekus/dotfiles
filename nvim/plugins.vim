@@ -39,7 +39,7 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
-Plug 'ajgrf/parchment'
+Plug 'zekzekus/parchment'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
