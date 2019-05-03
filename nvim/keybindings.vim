@@ -87,4 +87,5 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell,go,javascript,scala call <SID>LC_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
