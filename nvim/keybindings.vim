@@ -1,7 +1,6 @@
 nnoremap <Space> <nop>
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
-:nnoremap <silent> <C-g> :file<Bar>echon ' ' &filetype<CR>
 
 nnoremap <leader><space> :<c-u>Denite command<cr>
 
