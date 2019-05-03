@@ -1,4 +1,5 @@
 {
+    "diagnostic.enableSign": false,
     "codeLens.enable": true,
     "suggest.timeout": 5000,
     "suggest.noselect": false,
