@@ -16,16 +16,12 @@ set splitright
 set cursorline
 set number
 
-set lazyredraw
-
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 
 set showmatch
-set matchtime=3
-
 set nowrap
 set textwidth=79
 
@@ -67,6 +63,7 @@ let g:netrw_liststyle=3
 runtime! plugin/sensible.vim
 
 set laststatus=0
+set noshowcmd
 set ruler
 set rulerformat=%{ListInfos()}
 
