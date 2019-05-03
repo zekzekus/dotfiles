@@ -26,7 +26,7 @@ set nowrap
 set textwidth=79
 
 set completeopt=menuone,noinsert,noselect
-set shortmess+=cI
+set shortmess=flmnrwxoOtTIc
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
