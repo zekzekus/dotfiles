@@ -14,7 +14,6 @@ set splitbelow
 set splitright
 
 set cursorline
-set number
 
 set ignorecase
 set smartcase
@@ -47,9 +46,10 @@ set undodir=~/.nvimtmp
 set termguicolors
 let g:two_firewatch_italics=1
 if $ITERM_PROFILE =~? 'light'
-  set background=light
+  colorscheme parchment
+else
+  colorscheme two-firewatch
 endif
-colorscheme two-firewatch
 highlight CursorLine cterm=none term=none
 highlight clear VertSplit
 
