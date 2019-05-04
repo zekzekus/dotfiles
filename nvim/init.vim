@@ -51,11 +51,13 @@ if $ITERM_PROFILE =~? 'light'
 endif
 colorscheme two-firewatch
 highlight CursorLine cterm=none term=none
+highlight clear VertSplit
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd ColorScheme * highlight CursorLine cterm=none term=none
+  autocmd ColorScheme * highlight clear VertSplit
 augroup END
 
 let g:netrw_liststyle=3
