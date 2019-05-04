@@ -67,7 +67,7 @@ runtime! plugin/sensible.vim
 set noruler
 set noshowcmd
 set statusline=%w%q
-set statusline+=\ ⋮\ %F%M%R%H\ ⋮
+set statusline+=\ ⋮\ %f%M%R%H\ ⋮
 set statusline+=%=
 set statusline+=%{(&paste==0?'':'[P]')}
 set statusline+=\ ⋮\ 
