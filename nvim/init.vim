@@ -44,17 +44,11 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-let g:two_firewatch_italics=1
-if $ITERM_PROFILE =~? 'light'
-  set background=light
-endif
-colorscheme two-firewatch
-highlight CursorLine cterm=none term=none
+colorscheme monotone
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
-  autocmd ColorScheme * highlight CursorLine cterm=none term=none
 augroup END
 
 let g:netrw_liststyle=3
@@ -101,7 +95,7 @@ endif
 let g:smartclose_set_default_mapping = 0
 
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-call denite#custom#option('_', 'highlight_mode_insert', 'DeniteCursorLine')
+call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#option('_', 'source_names', 'short')
