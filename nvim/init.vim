@@ -56,7 +56,6 @@ call CustomHighlights()
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
-  autocmd ColorScheme * call CustomHighlights()
 augroup END
 
 let g:netrw_liststyle=3
