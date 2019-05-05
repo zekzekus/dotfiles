@@ -18,6 +18,11 @@
             "filetypes": ["hs", "lhs", "haskell"],
             "initializationOptions": {}
         },
+        "dotty": {
+            "command": "~/bin/start-dotty-ide",
+            "rootPatterns": [".dotty-ide.json"],
+            "filetypes": ["scala", "sbt"]
+        },
         "scala": {
             "command": "metals-vim",
             "rootPatterns": ["build.sbt"],
