@@ -4,7 +4,7 @@
     "suggest.noselect": false,
     "suggest.snippetIndicator": " ►",
     "suggest.preferCompleteThanJumpPlaceholder": true,
-    "coc.source.omni.filetypes": ["clojure", "lisp"],
+    "coc.source.omni.filetypes": ["clojure"],
     "languageserver": {
         "golang": {
             "args": ["--diagnostics-style=instant"],
