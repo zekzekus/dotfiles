@@ -272,11 +272,14 @@ let g:sexp_enable_insert_mode_mappings = 0
 let g:vlime_leader = ','
 let g:vlime_compiler_policy = {'DEBUG': 3}
 
+let g:localvimrc_whitelist='.lvimrc'
+
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype php setlocal ts=2 sw=2 expandtab
 autocmd Filetype less setlocal ts=2 sw=2 expandtab
 autocmd Filetype dart setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 
 if filereadable(glob('~/.config/nvim/keybindings.vim'))
   source ~/.config/nvim/keybindings.vim

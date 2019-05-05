@@ -16,6 +16,8 @@ else
   Plug 'sjl/vitality.vim'
 endif
 
+Plug 'OrangeT/vim-csharp'
+
 " programming
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -71,5 +73,7 @@ Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'guns/vim-sexp', {'for': ['clojure', 'lisp']}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'lisp']}
 Plug 'l04m33/vlime', {'rtp': 'vim/', 'for': 'lisp'}
+
+Plug 'embear/vim-localvimrc'
 
 call plug#end()
