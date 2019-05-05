@@ -1,5 +1,5 @@
-nnoremap <Space> <nop>
-let g:mapleader = "\<Space>"
+nnoremap <space> <nop>
+let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
 nnoremap <leader><space> :<c-u>Denite command<cr>
@@ -18,7 +18,7 @@ nnoremap <leader><tab> :b#<CR>
 " search
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>/ :<C-u>grep!<Space>
+nnoremap <leader>/ :<C-u>grep!<space>
 nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:copen<cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line<cr>zz
