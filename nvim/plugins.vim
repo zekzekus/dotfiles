@@ -40,7 +40,6 @@ Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
 
 " vim interface
 Plug 'zekzekus/vim-two-firewatch'
-Plug 'zekzekus/parchment'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
@@ -59,9 +58,6 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 Plug 'zekzekus/vim-cljfmt', {'for': 'clojure'}
-
-" scala
-Plug 'derekwyatt/vim-scala', {'for': 'scala'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
