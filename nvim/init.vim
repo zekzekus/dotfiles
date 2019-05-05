@@ -3,6 +3,7 @@ runtime! plugins.vim
 set modelines=0
 set mouse=a
 set updatetime=500
+set number
 
 set tabstop=4
 set shiftwidth=4
@@ -43,12 +44,19 @@ set directory=~/.nvimtmp
 set undofile
 set undodir=~/.nvimtmp
 
+function! CustomHighlights()
+  highlight clear Pmenu
+  highlight link Pmenu QuickFixLine
+  highlight clear StatusLine
+  highlight link StatusLine Pmenu
+endfunction
 set termguicolors
 colorscheme monotone
-
+call CustomHighlights()
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
+  autocmd ColorScheme * call CustomHighlights()
 augroup END
 
 let g:netrw_liststyle=3
