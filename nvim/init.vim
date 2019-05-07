@@ -110,6 +110,7 @@ call denite#custom#option('_', 'split', 'floating')
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
+let g:vista_echo_cursor_strategy = "floating_win" 
 
 function! ListInfos()
   let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
