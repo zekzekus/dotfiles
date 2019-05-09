@@ -118,4 +118,6 @@ function! ListInfos()
   return qflist . loclist
 endfunction
 
+let g:coc_node_path = $HOME . '/.nodenv/versions/11.11.0/bin/node'
+
 runtime! keybindings.vim
