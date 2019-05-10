@@ -56,6 +56,7 @@ call CustomHighlights()
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
+  autocmd QuickFixCmdPost cgetexpr cwindow
 augroup END
 
 let g:netrw_liststyle=3

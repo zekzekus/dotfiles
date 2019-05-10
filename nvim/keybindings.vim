@@ -16,10 +16,11 @@ nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>/ :<C-u>grep!<space>
-nnoremap <leader>* :grep! "\b<C-R><C-W>\b"<CR>:copen<cr>
+nnoremap <leader>/ :<C-u>Grep<space>
+nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line<cr>zz
 
