@@ -44,15 +44,9 @@ set directory=~/.nvimtmp
 set undofile
 set undodir=~/.nvimtmp
 
-function! CustomHighlights()
-  highlight clear Pmenu
-  highlight link Pmenu QuickFixLine
-  highlight clear StatusLine
-  highlight link StatusLine Pmenu
-endfunction
 set termguicolors
 colorscheme monotone
-call CustomHighlights()
+call zek#custom_highlights()
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
@@ -76,7 +70,7 @@ set statusline+=(%l/%L/%c)
 set statusline+=\ ⋮\ 
 set statusline+=%%%p
 set statusline+=\ ⋮\ 
-set statusline+=%{ListInfos()}
+set statusline+=%{zek#listinfos()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -112,12 +106,6 @@ call denite#custom#option('_', 'split', 'floating')
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = "floating_win" 
-
-function! ListInfos()
-  let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
-  let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
-  return qflist . loclist
-endfunction
 
 let g:coc_node_path = $HOME . '/.nodenv/versions/11.11.0/bin/node'
 

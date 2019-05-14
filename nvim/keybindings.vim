@@ -49,13 +49,10 @@ nnoremap cN *``cgN
 vnoremap <expr> cn g:mc . "``cgn"
 vnoremap <expr> cN g:mc . "``cgN"
 
-function! SetupCR()
-  nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
-endfunction
-nnoremap cq :call SetupCR()<CR>*``qz
-nnoremap cQ :call SetupCR()<CR>#``qz
-vnoremap <expr> cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
-vnoremap <expr> cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
+nnoremap cq :call zek#setup_cr()<CR>*``qz
+nnoremap cQ :call zek#setup_cr()<CR>#``qz
+vnoremap <expr> cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
+vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
 call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
@@ -72,20 +69,9 @@ inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-function! s:LC_maps()
-  nmap <silent> [c <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]c <Plug>(coc-diagnostic-next)
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  nmap <leader>rn <Plug>(coc-rename)
-  nnoremap <silent> K :call CocAction('doHover')<cr>
-  setlocal formatexpr=CocAction('formatSelected')
-endfunction
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType python,rust,haskell,go,javascript,scala call <SID>LC_maps()
+  autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END

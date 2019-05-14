@@ -1,9 +1,3 @@
-function! DoRemote(arg)
-  if has('nvim')
-    UpdateRemotePlugins
-  endif
-endfunction
-
 if !has('nvim')
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'roxma/nvim-yarp'
@@ -36,7 +30,7 @@ Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
-Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
+Plug 'Shougo/denite.nvim', {'do': function('zek#do_remote')}
 
 " vim interface
 Plug 'Lokaltog/vim-monotone'
