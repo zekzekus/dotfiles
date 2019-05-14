@@ -22,8 +22,6 @@ set hlsearch
 set incsearch
 
 set showmatch
-set nowrap
-set textwidth=79
 
 set completeopt=menuone,noinsert,noselect
 set shortmess=flmnrwxoOtTIc
@@ -38,7 +36,6 @@ set backupskip=/tmp/*,/private/tmp/*"
 
 set wildmode=longest:full,full
 set wildignorecase
-set wildignore+=*.pyc
 
 set directory=~/.nvimtmp
 set undofile
