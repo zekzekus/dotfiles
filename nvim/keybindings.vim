@@ -12,7 +12,6 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
 nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
-nnoremap <leader>bd :bd<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
@@ -24,7 +23,7 @@ nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
 nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>Denite outline line<cr>zz
 
-nnoremap yom :match DiffDelete /\%>80c/<cr>
+nnoremap yom :match ErrorMsg /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
 
 " for browsing the input history
