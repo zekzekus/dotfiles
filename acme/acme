@@ -5,14 +5,14 @@ FIXED_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
 
 export PAGER=nobs
 export MANPAGER=nobs
-export EDITOR=E
+export EDITOR=E2
 export TERM=dumb
 export MANPAGER=nobs
 export PAGER=nobs
 
 export PLUMBFILE=$HOME/lib/plumbing
 export SHELL=/usr/local/plan9/bin/rc
-export acmeshell=/usr/local/bin/fish
+# export acmeshell=/usr/local/bin/fish
 export PLAN9=/usr/local/plan9
 export PATH=$PATH:$PLAN9/bin
 export MANPATH=$MANPATH:$PLAN9/man
