@@ -11,7 +11,7 @@ function! zek#custom_highlights()
   highlight link StatusLine Pmenu
 endfunction
 
-function! zek#do_remote()
+function! zek#do_remote(arg)
   if has('nvim')
     UpdateRemotePlugins
   endif
@@ -32,3 +32,18 @@ function! zek#lc_maps()
   nnoremap <silent> K :call CocAction('doHover')<cr>
   setlocal formatexpr=CocAction('formatSelected')
 endfunction
+
+function! zek#denite_maps()
+  nnoremap <silent><buffer><expr> <esc> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+endfunction
+
+function! zek#denite_filter_maps()
+  inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+  inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplitswitch')
+  inoremap <silent><buffer><expr> <C-e> denite#do_map('do_action', 'edit')
+endfunction
+

@@ -53,13 +53,6 @@ nnoremap cQ :call zek#setup_cr()<CR>#``qz
 vnoremap <expr> cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
 vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-n>', '<denite:jump_to_next_source>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:jump_to_previous_source>', 'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplitswitch>', 'noremap')
-call denite#custom#map('insert', '<C-e>', '<denite:do_action:edit>', 'noremap')
-
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -73,4 +66,7 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd FileType denite-filter call zek#denite_filter_maps()
+  autocmd FileType denite call zek#denite_maps()
+  autocmd FileType denite,denite-filter let b:coc_suggest_disable = 1
 augroup END
