@@ -238,7 +238,7 @@ let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
 
 if has('nvim')
-  call denite#custom#var('file_rec', 'command',
+  call denite#custom#var('file/rec', 'command',
     \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 	call denite#custom#var('grep', 'command', ['ag'])
