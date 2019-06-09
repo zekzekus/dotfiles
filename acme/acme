@@ -12,7 +12,6 @@ export PAGER=nobs
 
 export PLUMBFILE=$HOME/lib/plumbing
 export SHELL=/usr/local/plan9/bin/rc
-# export acmeshell=/usr/local/bin/fish
 export PLAN9=/usr/local/plan9
 export PATH=$PATH:$PLAN9/bin
 export MANPATH=$MANPATH:$PLAN9/man
