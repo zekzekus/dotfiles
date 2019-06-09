@@ -6,4 +6,6 @@ git fetch -a
 
 git status
 
+git commit -va
+
 git diff
