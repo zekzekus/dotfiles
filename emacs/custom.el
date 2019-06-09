@@ -11,7 +11,7 @@
  '(hl-sexp-background-color "#efebe9")
  '(package-selected-packages
    (quote
-	(use-package gruvbox-theme flycheck flycheck-rust doom-modeline ace-window shell-pop evil evil-collection evil-commentary magit evil-magit diminish ivy ivy-hydra hydra counsel swiper smex exec-path-from-shell which-key projectile counsel-projectile evil-escape paredit parinfer company anaconda-mode pyvenv company-anaconda rust-mode racer haskell-mode intero go-mode company-go cider slime rjsx-mode org evil-org markdown-mode flycheck restclient treemacs treemacs-evil treemacs-projectile general)))
+	(parchment-theme use-package flycheck flycheck-rust doom-modeline ace-window shell-pop evil evil-collection evil-commentary magit evil-magit diminish ivy ivy-hydra hydra counsel swiper smex exec-path-from-shell which-key projectile counsel-projectile evil-escape paredit parinfer company anaconda-mode pyvenv company-anaconda rust-mode racer haskell-mode intero go-mode company-go cider slime rjsx-mode org evil-org markdown-mode flycheck restclient treemacs treemacs-evil treemacs-projectile general)))
  '(safe-local-variable-values
    (quote
 	((eval progn
@@ -57,8 +57,4 @@
  ;; If there is more than one, they won't work right.
  '(flycheck-inline-error ((t (:inherit compilation-error :background "black" :box (:line-width 1 :color "grey75" :style released-button)))))
  '(flycheck-inline-info ((t (:inherit compilation-info :background "black" :box (:line-width 1 :color "grey75" :style released-button)))))
- '(flycheck-inline-warning ((t (:inherit compilation-warning :background "black" :box (:line-width 1 :color "grey75" :style released-button)))))
- '(org-checkbox-statistics-done ((t (:inherit org-done :box (:line-width 1 :color "grey75" :style released-button)))))
- '(org-checkbox-statistics-todo ((t (:inherit org-todo :box (:line-width 1 :color "grey75" :style released-button)))))
- '(org-level-1 ((t (:background "gray18" :foreground "#FE8019" :overline "grey75"))))
- '(org-level-2 ((t (:background "gray18" :foreground "#FE8019" :overline "grey75")))))
+ '(flycheck-inline-warning ((t (:inherit compilation-warning :background "black" :box (:line-width 1 :color "grey75" :style released-button))))))

@@ -83,15 +83,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(use-package gruvbox-theme
+(use-package parchment-theme
   :ensure t
-  :init (load-theme 'gruvbox t))
-
-(use-package doom-modeline
-  :ensure t
-  :init
-  (setq doom-modeline-height 18)
-  :hook (after-init . doom-modeline-mode))
+  :init (load-theme 'parchment t))
 
 (use-package ace-window
   :ensure t)
