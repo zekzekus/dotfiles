@@ -257,6 +257,7 @@
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command)))
 
+;;; PL: Python
 (use-package anaconda-mode
   :ensure t
   :diminish anaconda-mode
@@ -272,6 +273,7 @@
   :init
   (add-to-list 'company-backends '(company-anaconda :with company-capf)))
 
+;;; PL: Rust
 (use-package rust-mode
   :ensure t
   :mode ("\\.rs\\'" . rust-mode)
@@ -286,6 +288,12 @@
   :hook ((rust-mode . racer-mode)
          (racer-mode . eldoc-mode)))
 
+(use-package flycheck-rust
+  :ensure t
+  :after flycheck
+  :hook (flycheck-mode . flycheck-rust-setup))
+
+;;; PL: Haskell
 (use-package haskell-mode :ensure t)
 
 (use-package intero
@@ -293,6 +301,7 @@
   :after haskell-mode
   :hook (haskell-mode . intero-mode))
 
+;;; PL: Go
 (use-package go-mode :ensure t)
 
 (use-package company-go
@@ -301,16 +310,19 @@
   :init
   (add-to-list 'company-backends '(company-go :with company-capf)))
 
+;;; PL: Clojure
 (use-package cider
   :ensure t
   :hook (eval-expression-minibuffer-setup . eldoc-mode))
 
+;;; PL: Lisp
 (use-package slime
   :ensure t
   :config
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
   (setq slime-contribs '(slime-fancy)))
 
+;;; PL: Javascript (React)
 (use-package rjsx-mode
   :ensure t
   :config
@@ -365,11 +377,6 @@
   :init
   (global-flycheck-mode)
   (setq flycheck-mode-line-prefix "F"))
-
-(use-package flycheck-rust
-  :ensure t
-  :after flycheck
-  :hook (flycheck-mode . flycheck-rust-setup))
 
 (use-package restclient
   :ensure t)
