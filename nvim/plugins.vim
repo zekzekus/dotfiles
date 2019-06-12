@@ -34,6 +34,7 @@ Plug 'Shougo/denite.nvim', {'do': function('zek#do_remote')}
 
 " vim interface
 Plug 'Lokaltog/vim-monotone'
+Plug 'ajgrf/parchment'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
