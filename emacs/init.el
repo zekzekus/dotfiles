@@ -296,11 +296,6 @@
 ;;; PL: Haskell
 (use-package haskell-mode :ensure t)
 
-(use-package intero
-  :ensure t
-  :after haskell-mode
-  :hook (haskell-mode . intero-mode))
-
 ;;; PL: Go
 (use-package go-mode :ensure t)
 
