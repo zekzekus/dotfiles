@@ -439,7 +439,7 @@
    "tF" '(global-flycheck-mode :which-key "global flycheck")
 
    "a" '(:ignore t :which-key "applications")
-   "at" '(shell-pop :which-key "terminal")
+   "at" '(zek:projectile-shell-pop :which-key "terminal")
 
    "w" '(ace-window :which-key "ace-window")
 
