@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
 FIXED_PITCH_FONT='/mnt/font/PragmataPro/16a/font'
@@ -13,7 +13,7 @@ export PAGER=nobs
 export PLUMBFILE=$HOME/lib/plumbing
 export SHELL=/usr/local/plan9/bin/rc
 export PLAN9=/usr/local/plan9
-export PATH=$PATH:$PLAN9/bin
+export PATH=$PLAN9/bin:$PATH
 export MANPATH=$MANPATH:$PLAN9/man
 
 export NAMESPACE=`mktemp -d -t plan9`
@@ -23,8 +23,8 @@ export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
 
 mkdir -p $ACME_MPOINT
 
-9 plumber;
+plumber;
 
-9 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
+cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
 
-9 acme -a -m $ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
+acme -l acme.dump -a -m $ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
