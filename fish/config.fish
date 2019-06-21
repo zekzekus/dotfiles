@@ -8,6 +8,8 @@ set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $GOPATH/bin $PATH
 set --export PATH $HOME/.local/bin $PATH
 set --export PATH $HOME/bin $PATH
+set --export PATH $HOME/.ghcup/bin $PATH
+set --export PATH $HOME/.cabal/bin $PATH
 
 set --export LANG "en_US.UTF-8"
 set --export LC_COLLATE "en_US.UTF-8"
