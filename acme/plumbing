@@ -75,3 +75,6 @@ type is	text
 data matches 'POLAR-([0-9]*)'
 plumb to web
 plumb start web  'https://metglobal.atlassian.net/browse/POLAR-'$1''
+
+# declarations of ports without rules
+plumb to lsp
