@@ -12,6 +12,7 @@ nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
+nnoremap <leader>bd :<c-u>bdelete<cr>
 nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
 nnoremap <leader><tab> :b#<CR>
 
