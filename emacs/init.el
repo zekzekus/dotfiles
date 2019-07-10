@@ -83,9 +83,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(use-package parchment-theme
+(use-package nord-theme
   :ensure t
-  :init (load-theme 'parchment t))
+  :init (load-theme 'nord t))
 
 (use-package ace-window
   :ensure t)
@@ -193,6 +193,7 @@
   :ensure t
   :diminish projectile-mode
   :config
+  (setq projectile-enable-caching t)
   (projectile-mode +1)
   (setq projectile-git-submodule-command "")
   (setq projectile-mode-line-prefix " P")
@@ -200,7 +201,7 @@
   (defun zek:find-file ()
     (interactive)
     (if (projectile-project-p)
-        (counsel-projectile-find-file)
+        (counsel-projectile)
       (counsel-find-file)))
 
   (defun zek:find-buffer ()
