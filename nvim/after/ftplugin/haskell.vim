@@ -1,4 +1,5 @@
 " buffer local options
+setlocal nowrap
 
 " plugin settings
 let g:tagbar_type_haskell = {
