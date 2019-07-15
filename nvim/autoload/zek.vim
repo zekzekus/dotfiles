@@ -47,4 +47,6 @@ function! zek#denite_filter_maps()
   inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
   inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplitswitch')
   inoremap <silent><buffer><expr> <C-e> denite#do_map('do_action', 'edit')
+  inoremap <silent><buffer> <C-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+  inoremap <silent><buffer> <C-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
