@@ -4,21 +4,13 @@
     "suggest.noselect": false,
     "suggest.snippetIndicator": " ►",
     "suggest.preferCompleteThanJumpPlaceholder": true,
+    "coc.source.omni.filetypes": ["clojure"],
     "languageserver": {
         "golang": {
             "args": ["--diagnostics-style=instant"],
             "command": "bingo",
             "filetypes": ["go"],
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
-        },
-        "clojure": {
-            "command": "clojure-lsp",
-            "filetypes": ["clojure"],
-            "rootPatterns": ["project.clj", "deps.edn", "boot.clj"],
-            "additionalSchemes": ["jar", "zipfile"],
-            "trace.server": "verbose",
-            "initializationOptions": {
-            }
         }
     }
 }
