@@ -66,7 +66,7 @@ let g:coc_snippet_prev = '<S-TAB>'
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
+  autocmd FileType python,rust,haskell,go,javascript,scala,clojure call zek#lc_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   autocmd FileType denite-filter call zek#denite_filter_maps()
   autocmd FileType denite call zek#denite_maps()
