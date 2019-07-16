@@ -13,6 +13,7 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
 nnoremap <leader>bd :<c-u>bdelete<cr>
+nnoremap <leader>bD :<c-u>bdelete!<cr>
 nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
 nnoremap <leader><tab> :b#<CR>
 

@@ -24,7 +24,6 @@ set incsearch
 set showmatch
 
 set completeopt=menuone,noinsert,noselect
-set shortmess=flmnrwxoOtTIc
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
