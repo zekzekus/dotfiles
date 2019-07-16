@@ -106,5 +106,9 @@ let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = "floating_win" 
 
 let g:coc_node_path = $HOME . '/.nodenv/versions/11.11.0/bin/node'
+let g:coc_global_extensions = [
+      \ "coc-snippets", "coc-omni", "coc-conjure", "coc-yaml", "coc-tsserver",
+      \ "coc-rls", "coc-pyls", "coc-json", "coc-html", "coc-css",
+      \]
 
 runtime! keybindings.vim
