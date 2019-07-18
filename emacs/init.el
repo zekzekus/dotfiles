@@ -80,7 +80,6 @@
 (save-place-mode 1)
 (fringe-mode '(3 . 1))
 (transient-mark-mode t)
-(global-linum-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
