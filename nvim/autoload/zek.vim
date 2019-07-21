@@ -9,6 +9,10 @@ function! zek#custom_highlights()
   highlight link Pmenu QuickFixLine
   highlight clear StatusLine
   highlight link StatusLine Pmenu
+
+  highlight link clojureKeyword clojureSymbol
+  highlight link clojureFunc clojureSymbol
+  highlight link clojureParen clojureString
 endfunction
 
 function! zek#do_remote(arg)
