@@ -13,6 +13,7 @@ function! zek#custom_highlights()
   highlight link clojureKeyword clojureSymbol
   highlight link clojureFunc clojureSymbol
   highlight link clojureParen clojureString
+  highlight link clojureRepeat clojureSymbol
 endfunction
 
 function! zek#do_remote(arg)
