@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
-if [ ! "$(which fzf)" ]; then
+if [ ! "$(which fzy)" ]; then
 	echo '+----------------------------------------------------+'
-	echo '| The fzf is not found. Go get it tiger!             |'
+	echo '| The fzy is not found. Go get it tiger!             |'
+	echo '|                                                    |'
+	echo '+----------------------------------------------------+'
+	exit 1
+fi
+if [ ! "$(which rg)" ]; then
+	echo '+----------------------------------------------------+'
+	echo '| The rg is not found. Go get it tiger!              |'
 	echo '|                                                    |'
 	echo '+----------------------------------------------------+'
 	exit 1
 fi
 
-fzf -f "$1"
+rg --files --hidden --follow --glob "!.git/*" | fzy -e "$1"
 
 if [ $? -ne 0 ]; then
 	echo 'Not found'
+	echo $?
 fi
