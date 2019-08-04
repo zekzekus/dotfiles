@@ -1,6 +1,6 @@
 {
     "codeLens.enable": true,
-    "suggest.autoTrigger": "trigger",
+    "suggest.autoTrigger": "none",
     "suggest.timeout": 5000,
     "suggest.noselect": false,
     "suggest.snippetIndicator": " ►",
