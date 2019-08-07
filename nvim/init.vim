@@ -101,6 +101,7 @@ call denite#custom#option('_', 'auto_resize', 1)
 if has("nvim")
   call denite#custom#option('_', 'split', 'floating')
   call denite#custom#option('_', 'highlight_window_background', 'CursorColumn')
+  call denite#custom#option('_', 'highlight_filter_background', 'WarningMsg')
 else
   call denite#custom#option('_', 'split', 'horizontal')
 endif
