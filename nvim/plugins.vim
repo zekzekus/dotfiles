@@ -31,7 +31,6 @@ Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
-Plug 'Shougo/denite.nvim', {'do': function('zek#do_remote')}
 
 " vim interface
 Plug 'Lokaltog/vim-monotone'

@@ -33,6 +33,7 @@ set foldlevel=99
 
 set backupskip=/tmp/*,/private/tmp/*"
 
+set errorformat+=%f
 set wildmode=longest:full,full
 set wildignorecase
 
@@ -89,23 +90,12 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+packadd cfilter
+
 " ========== Plugin Settings =========="
 let g:smartclose_set_default_mapping = 0
 
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
-call denite#custom#option('_', 'highlight_matched_range', 'Underlined')
-call denite#custom#option('_', 'highlight_matched_char', 'WarningMsg')
-call denite#custom#option('_', 'source_names', 'short')
-call denite#custom#option('_', 'auto_resize', 1)
-if has("nvim")
-  call denite#custom#option('_', 'split', 'floating')
-  call denite#custom#option('_', 'highlight_window_background', 'CursorColumn')
-  call denite#custom#option('_', 'highlight_filter_background', 'WarningMsg')
-else
-  call denite#custom#option('_', 'split', 'horizontal')
-endif
-call denite#custom#option('_', 'start_filter', 1)
+let g:junkfile#directory = "~/.cache/junkfile/" 
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40

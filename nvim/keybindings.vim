@@ -2,29 +2,23 @@ nnoremap <space> <nop>
 let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
-nnoremap <leader><space> :<c-u>Denite command<cr>
+" my commands
+command! -nargs=0 -bar Zlist cclose | cgetexpr system("rg --files --hidden --follow --glob \"!.git\"")
+command! -nargs=1 -bar Zfind cclose | cgetexpr system("ff <args>")
+command! -nargs=0 -bar Zjunk cclose | cgetexpr system("rg --files ~/.cache/junkfile")
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 
 " files
-nnoremap <silent><leader>ff :<c-u>Denite file/rec<cr>
-nnoremap <silent><leader>fj :<c-u>Denite junkfile<cr>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
-nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
 " buffers
-nnoremap <leader>bd :<c-u>bdelete<cr>
-nnoremap <leader>bD :<c-u>bdelete!<cr>
-nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <leader>/ :<C-u>Grep<space>
-nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>Denite outline line<cr>
 
 nnoremap yom :match ErrorMsg /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
@@ -71,7 +65,18 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  autocmd FileType denite-filter call zek#denite_filter_maps()
-  autocmd FileType denite call zek#denite_maps()
-  autocmd FileType denite,denite-filter let b:coc_suggest_disable = 1
 augroup END
+
+function! CCR()
+    let cmdline = getcmdline()
+    if cmdline =~ '\v\C^(ls|files|buffers)'
+        return "\<CR>:b"
+    elseif cmdline =~ '\v\C^(dli|il)'
+        return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
+    elseif cmdline =~ '\v\C^(cli|lli)'
+        return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
+    else
+        return "\<CR>"
+    endif
+endfunction
+cnoremap <expr> <CR> CCR()
