@@ -42,3 +42,16 @@ function! zek#check_backspace()
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+function! zek#qlist(command, is_bang, ...)
+  cclose
+  if a:command == "f"
+    if a:is_bang
+      cgetexpr system("rg --files --hidden --follow --glob \"!.git\"")
+    else
+      cgetexpr system("ff " . a:1)
+    endif
+  elseif a:command == "j"
+    cgetexpr system("rg --files ~/.cache/junkfile")
+  endif
+endfunction

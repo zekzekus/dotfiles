@@ -3,9 +3,8 @@ let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
 " my commands
-command! -nargs=0 -bar Zlist cclose | cgetexpr system("rg --files --hidden --follow --glob \"!.git\"")
-command! -nargs=1 -bar Zfind cclose | cgetexpr system("ff <args>")
-command! -nargs=0 -bar Zjunk cclose | cgetexpr system("rg --files ~/.cache/junkfile")
+command! -nargs=? -bar -bang Zfind call zek#qlist("f", '<bang>' == '!', <f-args>)
+command! -nargs=0 -bar Zjunk call zek#qlist("j", v:false, '')
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 
 " files
