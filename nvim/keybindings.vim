@@ -5,7 +5,7 @@ let g:maplocalleader = '\'
 " my commands
 command! -nargs=? -bar -bang Zfind call zek#qlist("f", '<bang>' == '!', <f-args>)
 command! -nargs=0 -bar Zjunk call zek#qlist("j", v:false, '')
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 
 " files
 nnoremap <leader>ft <ESC>:Vista!!<cr>
