@@ -8,6 +8,7 @@ command! -nargs=0 -bar Zjunk call zek#qlist("j", v:false, '')
 command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 
 " files
+nnoremap <leader>ff :<C-u>Zfind<space>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
@@ -15,12 +16,11 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 nnoremap <leader><tab> :b#<CR>
 
 " search
+nnoremap <leader>/ :<C-u>Zgrep<space>
+nnoremap <leader>* :<C-u>Zgrep<space><C-r><C-w><cr>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
-
-nnoremap yom :match ErrorMsg /\%>80c/<cr>
-nnoremap yoM :match none /\%>80c/<cr>
 
 " for browsing the input history
 cnoremap <c-n> <down>
