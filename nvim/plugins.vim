@@ -23,6 +23,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " navigating
 Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
@@ -30,6 +31,7 @@ Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
+Plug 'Shougo/denite.nvim', {'do': function('zek#do_remote')}
 
 " vim interface
 Plug 'Lokaltog/vim-monotone'

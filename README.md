@@ -31,23 +31,30 @@ from corresponding Language Server. Some more details below.
 
 ### Key bindings List
 
-I removed the [Denite](https://github.com/Shougo/denite.nvim) plugin. So some
-keybindings went away. Using some custom commands instead. `Zfind`, `Zjunk` and
-`Zgrep` for now. `Zfind` takes one argument and uses it to populate quickfix
-list with fuzzy matching files.  `Zjunk` takes no argument and populates
-quickfix list with files from
-[junkfile](https://github.com/Shougo/junkfile.vim) plugin's directory. `Zgrep`
-populates quickfix list with the results of the grep operation.  Notable custom
-key bindings;
+Notable custom key bindings;
 
 * File based operations (starts with `<leader>f`)
+    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It
+      simulteanously shows files, open buffers. You can switch between these
+      with `C-n` and `C-p`.
+    * `<leader>fj` Fuzzy find junkfiles.
     * `<leader>ft` Toggle tagbar.
+    * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
+    * `<leader>bb` List open buffers and prompt with fuzzy search to jump.
+    * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
+    * `<leader>/` uses `:grep!` command to prompt and load results into
+      quickfix list.
+    * `<leader>*` uses `:grep!` command with word under cursor and load results
+      into quickfix list.
     * `<BS>` executes `:nohlsearch<cr>`.
+    * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
+      all lines in the buffer will be in the list to narrow with fuzzy search.
+      (ctags) into fuzzy search UI.
 * Other
     * `<leader>V` selects just pasted text.
 * Programming support bindings.
