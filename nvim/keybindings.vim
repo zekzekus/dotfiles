@@ -63,6 +63,8 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd FileType qf nnoremap <buffer><CR> <CR>:cclose<CR>
+  autocmd Filetype qf nnoremap <buffer><C-v> <C-w><CR><C-w>L:cclose<CR>
 augroup END
 
 function! CCR()
