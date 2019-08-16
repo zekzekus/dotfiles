@@ -97,13 +97,7 @@ call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_range', 'Underlined')
 call denite#custom#option('_', 'highlight_matched_char', 'WarningMsg')
 call denite#custom#option('_', 'source_names', 'short')
-if has("nvim")
-  call denite#custom#option('_', 'split', 'floating')
-  call denite#custom#option('_', 'highlight_window_background', 'CursorColumn')
-  call denite#custom#option('_', 'highlight_filter_background', 'WarningMsg')
-else
-  call denite#custom#option('_', 'split', 'horizontal')
-endif
+call denite#custom#option('_', 'split', has("nvim") ? 'floating' : 'horizontal')
 call denite#custom#option('_', 'start_filter', 1)
 
 let g:vista#renderer#enable_icon = 0
