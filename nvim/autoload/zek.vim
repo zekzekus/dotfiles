@@ -53,5 +53,7 @@ function! zek#qlist(command, is_bang, ...)
     endif
   elseif a:command == "j"
     cgetexpr system("rg --files ~/.cache/junkfile")
+  elseif a:command == "g"
+    cgetexpr system(&grepprg . ' ' . a:1)
   endif
 endfunction
