@@ -33,6 +33,10 @@ nnoremap yoM :match none /\%>80c/<cr>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
+" swap entering command mode and repeating last linewise jump
+nnoremap ; :
+nnoremap : ;
+
 nmap - <Plug>VinegarVerticalSplitUp
 
 " Select just pasted text.
