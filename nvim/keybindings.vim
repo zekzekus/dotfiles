@@ -5,9 +5,10 @@ let g:maplocalleader = '\'
 " my commands
 command! -nargs=? -bar -bang Zfind call zek#qlist("f", '<bang>' == '!', <f-args>)
 command! -nargs=0 -bar Zjunk call zek#qlist("j", v:false, '')
-command! -nargs=+ -complete=file_in_path -bar Zgrep call zek#qlist("g", v:false, shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 
 " files
+nnoremap <leader>ff :<C-u>Zfind<space>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 
@@ -15,6 +16,8 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 nnoremap <leader><tab> :b#<CR>
 
 " search
+nnoremap <leader>/ :<C-u>Zgrep<space>
+nnoremap <leader>* :<C-u>Zgrep<space><C-r><C-w><cr>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
