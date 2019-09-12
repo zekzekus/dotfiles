@@ -12,6 +12,11 @@
             "command": "bingo",
             "filetypes": ["go"],
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
+        },
+        "metals" :{
+            "command": "metals-vim",
+            "rootPatterns": ["build.sbt"],
+            "filetypes": ["scala", "sbt"]
         }
     }
 }
