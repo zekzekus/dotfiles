@@ -1,7 +1,7 @@
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=true
 
-colorscheme zenburn
+colorscheme tomorrow-night
 
 define-command ide %{
     rename-client main
@@ -19,7 +19,7 @@ define-command -docstring 'Invoke fzf to open a file' -params 0 fzf-edit %{
         if [ -z "${kak_client_env_TMUX}" ]; then
             printf 'fail "client was not started under tmux"\n'
         else
-            file="$(find . -type f |TMUX="${kak_client_env_TMUX}" fzf-tmux -d 15)"
+            file="$(rg --files --hidden --follow --glob ""!.git/*""|TMUX="${kak_client_env_TMUX}" fzf-tmux -d 15)"
             if [ -n "$file" ]; then
                 printf 'edit "%s"\n' "$file"
             fi
