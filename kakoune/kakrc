@@ -1,0 +1,13 @@
+set-option global grepcmd 'rg+'
+set-option global ui_options ncurses_status_on_top=true
+colorscheme lucius
+define-command ide %{
+rename-client main
+set-option global jumpclient main
+
+new rename-client tools
+set-option global toolsclient tools
+
+new rename-client docs
+set-option global docsclient docs
+}
