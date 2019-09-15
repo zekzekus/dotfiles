@@ -1,13 +1,28 @@
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=true
-colorscheme lucius
+
+colorscheme zenburn
+
 define-command ide %{
-rename-client main
-set-option global jumpclient main
+    rename-client main
+    set-option global jumpclient main
 
-new rename-client tools
-set-option global toolsclient tools
+    new rename-client tools
+    set-option global toolsclient tools
 
-new rename-client docs
-set-option global docsclient docs
+    new rename-client docs
+    set-option global docsclient docs
+}
+
+define-command -docstring 'Invoke fzf to open a file' -params 0 fzf-edit %{
+    evaluate-commands %sh{
+        if [ -z "${kak_client_env_TMUX}" ]; then
+            printf 'fail "client was not started under tmux"\n'
+        else
+            file="$(find . -type f |TMUX="${kak_client_env_TMUX}" fzf-tmux -d 15)"
+            if [ -n "$file" ]; then
+                printf 'edit "%s"\n' "$file"
+            fi
+        fi
+    }
 }
