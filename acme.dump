@@ -1,11 +1,11 @@
 /Users/zekus/devel/tools/dotfiles
-/mnt/font/PragmataPro/16a/font
-/mnt/font/PragmataPro/16a/font
-  0.0000000  60.0000000
+/mnt/font/PragmataPro/14a/font
+/mnt/font/PragmataPro/14a/font
+  0.0000000  59.9305556
 w Newcol Kill Putall [Dump acme.dump] Exit [Load acme.dump]
-c          0 New Cut Paste Snarf Sort Zerox Delcol 
+c          0 New Cut Paste Snarf Sort Zerox Delcol [|i+][|i-][|c+][|c-][|s2t 4][|t2s 4][L win hov][L def][L comp]
 c          1 New Cut Paste Snarf Sort Zerox Delcol 
-f          1           2           0           0   3.5842294 
-          2          27         192           1           0 ./ Del Snarf Get | Look Get
-f          1           3          20          20  23.6559140 
-          3          36          72           0           0 ./acme.commands Del Snarf | Look win
+f          1           5           0           0   2.0408163 
+          5          24         215           1           0 ./ Del Snarf Get | Look 
+f          1           6           7           7  23.2426304 
+          6          36          70           0           0 ./acme.commands Del Snarf | Look win
