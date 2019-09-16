@@ -1,7 +1,7 @@
 #!/bin/sh
 
-VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/14a/font'
-FIXED_PITCH_FONT='/mnt/font/PragmataPro/14a/font'
+VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
+FIXED_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
 
 export PAGER=nobs
 export MANPAGER=nobs
