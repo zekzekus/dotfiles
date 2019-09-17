@@ -9,3 +9,5 @@ git status
 git commit -va
 
 git diff
+
+git push
