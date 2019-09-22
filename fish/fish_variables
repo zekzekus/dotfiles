@@ -4,7 +4,7 @@ SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:005fd7
+SETUVAR fish_color_command:5f87ff
 SETUVAR fish_color_comment:990000
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
