@@ -8,8 +8,7 @@
     "coc.source.omni.filetypes": ["clojure"],
     "languageserver": {
         "golang": {
-            "args": ["--diagnostics-style=instant"],
-            "command": "bingo",
+            "command": "gopls",
             "filetypes": ["go"],
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
         },

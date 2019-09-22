@@ -4,18 +4,6 @@ function! zek#listinfos()
   return qflist . loclist
 endfunction
 
-function! zek#custom_highlights()
-  highlight clear Pmenu
-  highlight link Pmenu QuickFixLine
-  highlight clear StatusLine
-  highlight link StatusLine Pmenu
-
-  highlight link clojureKeyword clojureSymbol
-  highlight link clojureFunc clojureSymbol
-  highlight link clojureParen clojureString
-  highlight link clojureRepeat clojureSymbol
-endfunction
-
 function! zek#do_remote(arg)
   if has('nvim')
     UpdateRemotePlugins
@@ -60,3 +48,9 @@ function! zek#check_backspace()
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+fun zek#set_background()
+  if $ITERM_PROFILE =~# 'light'
+    set background=light
+  endif
+endf
