@@ -41,8 +41,8 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-colorscheme monotone
-call zek#custom_highlights()
+colorscheme two-firewatch
+" call zek#custom_highlights()
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =

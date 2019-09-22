@@ -33,8 +33,7 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'Shougo/denite.nvim', {'do': function('zek#do_remote')}
 
 " vim interface
-Plug 'Lokaltog/vim-monotone'
-Plug 'ajgrf/parchment'
+Plug 'rakr/vim-two-firewatch'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
