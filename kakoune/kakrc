@@ -1,7 +1,7 @@
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=true
 
-colorscheme solarized-light
+colorscheme lucius
 
 define-command ide %{
     rename-client main
