@@ -1,5 +1,5 @@
 set-option global grepcmd 'rg+'
-set-option global ui_options ncurses_status_on_top=true
+set-option global ui_options ncurses_status_on_top=false
 
 colorscheme lucius
 
