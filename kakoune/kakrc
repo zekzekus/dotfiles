@@ -7,7 +7,6 @@ plug 'Delapouite/kakoune-buffers'
 
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=false
-map global normal <space> , -docstring 'leader'
 
 colorscheme zenburn
 
@@ -38,3 +37,4 @@ define-command -docstring 'Invoke fzf to open a file' -params 0 fzf-edit %{
 hook global WinDisplay .* info-buffers
 map global user b ':enter-buffers-mode<ret>'              -docstring 'buffers…'
 map global user B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
+map global user f ':fzf-edit<ret>'                        -docstring 'files find'
