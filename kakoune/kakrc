@@ -1,7 +1,15 @@
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "eraserhd/parinfer-rust" do %{
+    cargo build --release
+    cargo install --force --path .
+}
+plug 'Delapouite/kakoune-buffers'
+
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=false
+map global normal <space> , -docstring 'leader'
 
-colorscheme lucius
+colorscheme zenburn
 
 define-command ide %{
     rename-client main
@@ -26,3 +34,7 @@ define-command -docstring 'Invoke fzf to open a file' -params 0 fzf-edit %{
         fi
     }
 }
+
+hook global WinDisplay .* info-buffers
+map global user b ':enter-buffers-mode<ret>'              -docstring 'buffers…'
+map global user B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'

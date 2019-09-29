@@ -18,3 +18,5 @@ emacs/backup
 emacs/elpa
 emacs/network-security.data
 .local.env
+
+kakoune/plugins
