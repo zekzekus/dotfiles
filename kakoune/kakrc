@@ -4,9 +4,11 @@ plug "eraserhd/parinfer-rust" do %{
     cargo install --force --path .
 }
 plug 'Delapouite/kakoune-buffers'
+plug "andreyorst/fzf.kak"
 
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=false
+set-option global fzf_file_command 'rg --files --hidden --follow --glob "!.git/*"'
 
 colorscheme zenburn
 
@@ -21,20 +23,7 @@ define-command ide %{
     set-option global docsclient docs
 }
 
-define-command -docstring 'Invoke fzf to open a file' -params 0 fzf-edit %{
-    evaluate-commands %sh{
-        if [ -z "${kak_client_env_TMUX}" ]; then
-            printf 'fail "client was not started under tmux"\n'
-        else
-            file="$(rg --files --hidden --follow --glob ""!.git/*""|TMUX="${kak_client_env_TMUX}" fzf-tmux -d 15)"
-            if [ -n "$file" ]; then
-                printf 'edit "%s"\n' "$file"
-            fi
-        fi
-    }
-}
-
 hook global WinDisplay .* info-buffers
 map global user b ':enter-buffers-mode<ret>'              -docstring 'buffers…'
 map global user B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
-map global user f ':fzf-edit<ret>'                        -docstring 'files find'
+map global user f ':fzf-mode<ret>'                        -docstring 'fzf mode'
