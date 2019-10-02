@@ -18,9 +18,6 @@ define-command ide %{
 
     new rename-client tools
     set-option global toolsclient tools
-
-    new rename-client docs
-    set-option global docsclient docs
 }
 
 hook global WinDisplay .* info-buffers
