@@ -4,11 +4,12 @@ plug "eraserhd/parinfer-rust" do %{
     cargo install --force --path .
 }
 plug 'Delapouite/kakoune-buffers'
-plug "andreyorst/fzf.kak"
+plug "andreyorst/fzf.kak" defer "fzf" %{
+    set-option global fzf_file_command 'rg --files --hidden --follow --glob "!.git/*"'
+}
 
 set-option global grepcmd 'rg+'
 set-option global ui_options ncurses_status_on_top=false
-set-option global fzf_file_command 'rg --files --hidden --follow --glob "!.git/*"'
 
 colorscheme zenburn
 
