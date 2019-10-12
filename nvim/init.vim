@@ -43,11 +43,13 @@ set undodir=~/.nvimtmp
 set termguicolors
 call zek#set_background()
 colorscheme two-firewatch
+highlight CursorLine cterm=none
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd ColorScheme * highlight CursorLine cterm=none
 augroup END
 
 let g:netrw_liststyle=3
