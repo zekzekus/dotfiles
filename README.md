@@ -116,7 +116,7 @@ for all plugins.
 
 * Install necessary OS packages.
 
-        $ brew install ctags ripgrep the_silver_searcher
+        $ brew install ctags ripgrep the_silver_searcher fzf
 
 * Install Language Servers for the languages you want work on.
     * [Python Language
