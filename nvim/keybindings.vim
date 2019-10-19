@@ -2,11 +2,11 @@ nnoremap <space> <nop>
 let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
-nnoremap <leader><space> :<c-u>Denite command<cr>
+nnoremap <leader><space> :<c-u>Commands<cr>
 
 " files
-nnoremap <silent><leader>ff :<c-u>Denite file/rec<cr>
-nnoremap <silent><leader>fj :<c-u>Denite junkfile<cr>
+nnoremap <silent><leader>ff :<c-u>Files<cr>
+nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
@@ -14,7 +14,7 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
 " buffers
 nnoremap <leader>bd :<c-u>bdelete<cr>
 nnoremap <leader>bD :<c-u>bdelete!<cr>
-nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
+nnoremap <silent><leader>bb :<c-u>Buffers<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
@@ -24,7 +24,8 @@ nnoremap N Nzzzv
 nnoremap <leader>/ :<C-u>Grep<space>
 nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>Denite outline line<cr>
+nnoremap <silent><leader>ss :<c-u>BTags<cr>
+nnoremap <silent><leader>sl :<c-u>Lines<cr>
 
 nnoremap yom :match ErrorMsg /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
@@ -66,7 +67,4 @@ augroup keybindings_au
 
   autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  autocmd FileType denite-filter call zek#denite_filter_maps()
-  autocmd FileType denite call zek#denite_maps()
-  autocmd FileType denite,denite-filter let b:coc_suggest_disable = 1
 augroup END

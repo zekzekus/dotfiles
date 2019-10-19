@@ -95,13 +95,9 @@ endif
 " ========== Plugin Settings =========="
 let g:smartclose_set_default_mapping = 0
 
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-call denite#custom#option('_', 'highlight_mode_insert', 'Underlined')
-call denite#custom#option('_', 'highlight_matched_range', 'Underlined')
-call denite#custom#option('_', 'highlight_matched_char', 'WarningMsg')
-call denite#custom#option('_', 'source_names', 'short')
-call denite#custom#option('_', 'split', has("nvim") ? 'floating' : 'horizontal')
-call denite#custom#option('_', 'start_filter', 1)
+if has('nvim')
+  let g:fzf_layout = { 'window': 'call zek#float_fzf()' }
+endif
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40

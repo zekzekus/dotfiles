@@ -26,31 +26,34 @@ function! zek#lc_maps()
   setlocal formatexpr=CocAction('formatSelected')
 endfunction
 
-function! zek#denite_maps()
-  nnoremap <silent><buffer><expr> <esc> denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-endfunction
-
-function! zek#denite_filter_maps()
-  inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <esc> denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
-  inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplitswitch')
-  inoremap <silent><buffer><expr> <C-e> denite#do_map('do_action', 'edit')
-  inoremap <silent><buffer> <C-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-  inoremap <silent><buffer> <C-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-endfunction
-
 function! zek#check_backspace()
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-fun zek#set_background()
+function! zek#set_background()
   if $ITERM_PROFILE =~# 'light'
     set background=light
   endif
-endf
+endfunction
+
+function! zek#float_fzf()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(30)
+  let width = float2nr(120)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
