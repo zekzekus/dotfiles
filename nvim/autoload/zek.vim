@@ -42,7 +42,7 @@ function! zek#float_fzf()
   call setbufvar(buf, '&signcolumn', 'no')
 
   let height = float2nr(30)
-  let width = float2nr(120)
+  let width = float2nr(100)
   let horizontal = float2nr((&columns - width) / 2)
   let vertical = 1
 
