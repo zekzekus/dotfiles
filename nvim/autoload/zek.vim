@@ -32,7 +32,7 @@ function! zek#check_backspace()
 endfunction
 
 function! zek#set_background()
-  if $ITERM_PROFILE =~# 'light'
+  if $ITERM_PROFILE =~? 'light'
     set background=light
   endif
 endfunction
