@@ -86,27 +86,29 @@ for all plugins.
 
 * Install `Neovim` (I prefer HEAD).
         
-        brew install neovim --HEAD
+        $ brew install neovim --HEAD
 
 * For Neovim it is recommended to use separated virtual python environments for
   editor's own needs (I use Fish shell and virtualfish). For any shell, these
   virtual environments must be located under `~/.virtualenvs/`.
 
-        vf new neovim2
-
-        vf new --python=python3 neovim3
+        $ vf new neovim2
+        $ vf new --python=python3 neovim3
 
 * Clone repository to any place you prefer.
 
-        git clone https://github.com/zekzekus/dotfiles.git
+        $ git clone https://github.com/zekzekus/dotfiles.git
 
 * Create symbolic links.
 
-        cd $HOME cd .config ln -s /path/to/dotfiles/nvim .
+        $ cd $HOME
+        $ cd .config
+        $ ln -s /path/to/dotfiles/nvim .
 
 * Create necessary directories.
 
-        cd $HOME mkdir .nvimtmp
+        $ cd $HOME
+        $ mkdir .nvimtmp
 
 * First run will give errors. Ignore them.
 
@@ -116,7 +118,7 @@ for all plugins.
 
 * Install necessary OS packages.
 
-        $ brew install ctags ripgrep the_silver_searcher fzf
+        $ brew install ctags ripgrep the_silver_searcher fzf brew install tavianator/tap/bfs
 
 * Install Language Servers for the languages you want work on.
     * [Python Language
