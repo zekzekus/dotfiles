@@ -11,7 +11,11 @@ endif
 " programming
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh',}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go'],
+    \ }
 
 " editing
 Plug 'jiangmiao/auto-pairs'
