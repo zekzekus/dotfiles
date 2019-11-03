@@ -16,6 +16,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go'],
     \ }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " editing
 Plug 'jiangmiao/auto-pairs'

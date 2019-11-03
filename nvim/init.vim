@@ -101,15 +101,19 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'haskell': ['ghcide', '--lsp'],
     \ 'go': ['gopls'],
-    \ 'javascript': ['javascrip-typescript-stdio'],
+    \ 'javascript': ['javascript-typescript-stdio'],
     \ 'scala': ['metals-vim'],
     \ }
 let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 0
 let g:LanguageClient_useFloatingHover = 0
+let g:LanguageClient_diagnosticsMaxSeverity = 'Warning'
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = "floating_win" 
+
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 runtime! keybindings.vim
