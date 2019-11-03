@@ -37,7 +37,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'zekzekus/vim-two-firewatch'
+Plug 'seesleestak/duo-mini'
+Plug 'ajgrf/parchment'
 
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}

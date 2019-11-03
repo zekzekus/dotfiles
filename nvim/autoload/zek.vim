@@ -29,6 +29,12 @@ function! zek#set_background()
   endif
 endfunction
 
+function! zek#custom_highlights()
+  if g:colors_name == 'duo-mini'
+    highlight StatusLineNC  gui=underline,italic
+  endif
+endfunction
+
 function! zek#float_fzf()
   let buf = nvim_create_buf(v:false, v:true)
   call setbufvar(buf, '&signcolumn', 'no')
