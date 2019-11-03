@@ -97,7 +97,7 @@ let g:smartclose_set_default_mapping = 0
 
 if has('nvim')
   let g:fzf_layout = { 'window': 'call zek#float_fzf()' }
-  let $FZF_DEFAULT_OPTS=' --layout=reverse  --margin=1,2 --border'
+  let $FZF_DEFAULT_OPTS=' --layout=reverse  --margin=1,2'
 endif
 
 let g:vista#renderer#enable_icon = 0

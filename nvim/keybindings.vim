@@ -9,7 +9,7 @@ nnoremap <silent><leader>ff :<c-u>Files<cr>
 nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
 nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fs <ESC>:w<cr>
-nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR> " remove trailing whitespace
+nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
 nnoremap <leader>bd :<c-u>bdelete<cr>
@@ -57,7 +57,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-y>" : zek#check_backspace() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 let g:coc_snippet_next = '<TAB>'
