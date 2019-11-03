@@ -25,9 +25,11 @@ from corresponding Language Server. Some more details below.
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
 * Local leader is `\`.
-* I am using [coc](https://github.com/neoclide/coc.nvim) as autocompletion
+* I am using
+  [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim) as
+  autocompletion
   and language client engine. Except Clojure all completion and
-  language server capabilities comes from `coc`.
+  language server capabilities comes from `LanguageClient`.
 
 ### Key bindings List
 

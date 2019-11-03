@@ -24,6 +24,7 @@ set incsearch
 set showmatch
 
 set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
@@ -95,19 +96,20 @@ endif
 " ========== Plugin Settings =========="
 let g:smartclose_set_default_mapping = 0
 
-if has('nvim')
-  let g:fzf_layout = { 'window': 'call zek#float_fzf()' }
-  let $FZF_DEFAULT_OPTS=' --layout=reverse  --margin=1,2'
-endif
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['pyls'],
+    \ 'haskell': ['ghcide', '--lsp'],
+    \ 'go': ['gopls'],
+    \ 'javascript': ['javascrip-typescript-stdio'],
+    \ 'scala': ['metals-vim'],
+    \ }
+let g:LanguageClient_diagnosticsList = 'location'
+let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useFloatingHover = 0
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = "floating_win" 
-
-let g:coc_node_path = $HOME . '/.nodenv/versions/11.11.0/bin/node'
-let g:coc_global_extensions = [
-      \ "coc-snippets", "coc-omni", "coc-conjure", "coc-yaml", "coc-tsserver",
-      \ "coc-rls", "coc-pyls", "coc-json", "coc-html", "coc-css",
-      \]
 
 runtime! keybindings.vim

@@ -15,15 +15,7 @@ function! zek#setup_cr()
 endfunction
 
 function! zek#lc_maps()
-  nmap <silent> [c <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]c <Plug>(coc-diagnostic-next)
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  nmap <leader>rn <Plug>(coc-rename)
-  nnoremap <silent> K :call CocAction('doHover')<cr>
-  setlocal formatexpr=CocAction('formatSelected')
+  nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
 endfunction
 
 function! zek#check_backspace()

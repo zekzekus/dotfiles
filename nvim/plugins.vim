@@ -11,10 +11,7 @@ endif
 " programming
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
-Plug 'Shougo/neco-vim', {'for': 'vim'}
-Plug 'neoclide/coc-neco', {'for': 'vim'}
-Plug 'honza/vim-snippets'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh',}
 
 " editing
 Plug 'jiangmiao/auto-pairs'

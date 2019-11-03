@@ -53,18 +53,12 @@ nnoremap cQ :call zek#setup_cr()<CR>#``qz
 vnoremap <expr> cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
 vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
-inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-y>" : zek#check_backspace() ? "\<TAB>" : coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
 
 augroup keybindings_au
   autocmd!
 
   autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
