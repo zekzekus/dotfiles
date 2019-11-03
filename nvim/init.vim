@@ -96,7 +96,7 @@ endif
 let g:smartclose_set_default_mapping = 0
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
     \ 'haskell': ['ghcide', '--lsp'],
     \ 'go': ['gopls'],
