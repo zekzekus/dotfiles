@@ -1,6 +1,6 @@
 function! zek#listinfos()
-  let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . ' ' : ''
-  let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) : ''
+  let qflist = len(getqflist()) > 0 ? 'Q:' . len(getqflist()) . '✓' . ' ' : ''
+  let loclist = len(getloclist(winnr())) > 0 ? 'L:' . len(getloclist(winnr())) . '✗' . ' ' : ''
   return qflist . loclist
 endfunction
 
@@ -31,7 +31,7 @@ endfunction
 
 function! zek#custom_highlights()
   if g:colors_name == 'duo-mini'
-    highlight StatusLineNC  gui=underline,italic
+    highlight StatusLineNC  gui=underline
   endif
 endfunction
 

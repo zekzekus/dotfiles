@@ -59,16 +59,16 @@ runtime! plugin/sensible.vim
 set noruler
 set noshowcmd
 set statusline=%w%q
-set statusline+=\ ♢\ %f%M%R%H\ ♢
+set statusline+=\ 【\ %f%M%R%H\ 】
 set statusline+=%=
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=\ ♢\ 
-set statusline+=%y
-set statusline+=\ ♢\ 
-set statusline+=(%l/%L/%c)
-set statusline+=\ ♢\ 
+set statusline+=%{(&paste==0?'':'〖P〗')}
+set statusline+=\ 《\ 
+set statusline+=%Y
+set statusline+=\ 》\ 
+set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
+set statusline+=\ ┇\ 
 set statusline+=%%%p
-set statusline+=\ ♢\ 
+set statusline+=\ ┇\ 
 set statusline+=%{zek#listinfos()}
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
