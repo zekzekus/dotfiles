@@ -1,0 +1,20 @@
+[package]
+disabled = true
+
+[golang]
+symbol = "G:"
+
+[java]
+symbol = "J:"
+
+[nodejs]
+symbol = "N:"
+
+[python]
+symbol = "P:"
+
+[ruby]
+symbol = "R:"
+
+[rust]
+symbol = "RS:"
