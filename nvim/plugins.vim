@@ -14,7 +14,7 @@ Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go'],
+    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
     \ }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

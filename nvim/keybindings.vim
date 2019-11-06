@@ -61,5 +61,5 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType python,rust,haskell,go,javascript,scala call zek#lc_maps()
+  autocmd FileType ruby,python,rust,haskell,go,javascript,scala call zek#lc_maps()
 augroup END
