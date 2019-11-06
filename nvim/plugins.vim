@@ -18,6 +18,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-dadbod'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -56,6 +58,11 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
+
+" ruby
+Plug 'tpope/vim-rails', {'for': 'ruby'}
+Plug 'tpope/vim-bundler', {'for': 'ruby'}
+Plug 'tpope/vim-rake', {'for': 'ruby'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
