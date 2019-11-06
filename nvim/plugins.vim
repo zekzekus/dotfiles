@@ -63,6 +63,7 @@ Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 Plug 'tpope/vim-rails', {'for': 'ruby'}
 Plug 'tpope/vim-bundler', {'for': 'ruby'}
 Plug 'tpope/vim-rake', {'for': 'ruby'}
+Plug 'tpope/vim-rbenv', {'for': 'ruby'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
