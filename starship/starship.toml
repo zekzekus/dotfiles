@@ -21,3 +21,6 @@ symbol = "RS:"
 
 [cmd_duration]
 disabled = true
+
+[git_branch]
+style = "bold cyan"
