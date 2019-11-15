@@ -92,6 +92,8 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+packadd cfilter
+
 " ========== Plugin Settings =========="
 let g:smartclose_set_default_mapping = 0
 
