@@ -8,3 +8,16 @@ config/fish/fishd.*
 plugged
 plugged_vim
 tags
+nvim/pack
+nvim/bundles
+nvim/sessions
+
+flycheck_*.el
+
+emacs/auto-save-list
+emacs/backup
+emacs/elpa
+emacs/network-security.data
+.local.env
+
+kakoune/plugins

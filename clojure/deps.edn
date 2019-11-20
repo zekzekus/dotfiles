@@ -1,0 +1,80 @@
+;; see https://github.com/seancorfield/dot-clojure
+{:mvn/repos {"sonatype" {:url "https://oss.sonatype.org/content/repositories/snapshots/"}}
+ :aliases
+ {;; pull in specific versions of Clojure:
+  :1.10 {:override-deps {org.clojure/clojure {:mvn/version "RELEASE"}}}
+  :master {:override-deps {org.clojure/clojure {:mvn/version "1.10.0-master-SNAPSHOT"}}}
+
+  ;; testing and debugging tools:
+  :test {:extra-paths ["test" "src/test/clojure"]
+         :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
+  ;; - see https://github.com/cognitect-labs/test-runner
+  ;; - run your tests: clj -A:test:runner
+  :runner {:extra-deps {com.cognitect/test-runner
+                        {:git/url "https://github.com/cognitect-labs/test-runner"
+                         :sha "3cb0a9daf1cb746259dc8309b218f9211ad3b33b"}}
+           :main-opts ["-m" "cognitect.test-runner"
+                       "-d" "test"
+                       "-d" "src/test/clojure"]}
+  ;; see https://github.com/jonase/eastwood#running-eastwood-in-a-repl
+  :eastwood {:extra-deps {jonase/eastwood {:mvn/version "RELEASE"}}
+             :main-opts ["-m" "eastwood.lint" "{:source-paths,[\"src\"],:test-paths,[\"test\"]}"]}
+
+  ;; - see https://github.com/hugoduncan/criterium/
+  ;; - (require '[criterium.core :refer [bench]])
+  ;; - (bench (your-expression))
+  :bench {:extra-deps {criterium {:mvn/version "RELEASE"}}}
+  ;; - see https://github.com/clojure-goes-fast/clj-memory-meter
+  ;; - (require '[clj-memory-meter.core :as mm])
+  ;; - (mm/measure (your-expression))
+  :measure {:extra-deps {com.clojure-goes-fast/clj-memory-meter {:mvn/version "RELEASE"}}}
+  ;; - see https://github.com/Olical/depot
+  :outdated {:extra-deps {olical/depot {:mvn/version "RELEASE"}}
+             :main-opts ["-m" "depot.outdated.main"]}
+
+  ;; REPL-related tools:
+  ;; - start an nREPL server on port 60606:
+  :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}}
+          :main-opts ["-e" "(require,'[nrepl.server,:refer,[start-server]]),(start-server,:port,60606)"]}
+  :nrepl/old {:extra-deps {org.clojure/tools.nrepl {:mvn/version "RELEASE"}}
+              :main-opts ["-e" "(require,'[clojure.tools.nrepl.server,:refer,[start-server]]),(start-server,:port,60606)"]}
+  ;; - see https://github.com/bhauman/rebel-readline
+  ;; - start a Rebel Readline REPL:
+  :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}
+                       cider/cider-nrepl {:mvn/version "RELEASE"}}
+          :main-opts ["-m" "rebel-readline.main" "--middleware" "[cider.nrepl/cider-middleware]"]}
+  :cider-clj {:extra-deps {cider/cider-nrepl {:mvn/version "0.21.1"}}
+              :main-opts ["-m" "nrepl.cmdline" "--middleware" "[cider.nrepl/cider-middleware]"]}
+
+  :cider-cljs {:extra-deps {org.clojure/clojure {:mvn/version "1.9.0"}
+                            org.clojure/clojurescript {:mvn/version "1.10.339"}
+                            cider/cider-nrepl {:mvn/version "0.21.1"}
+                            cider/piggieback {:mvn/version "0.4.0"}}
+               :main-opts ["-m" "nrepl.cmdline" "--middleware"
+                           "[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]"]}
+
+  ;; project creation from templates:
+  ;; - see https://github.com/seancorfield/clj-new
+  ;; - create an application project:
+  ;;   - clj -A:new app myname/myapp
+  ;;   - cd myapp
+  ;;   - clj -m myname.myapp # run it!
+  ;;   - clj -A:test:runner # run the tests!
+  ;; - create a library project:
+  ;;   - clj -A:new lib myname/my-cool-lib
+  ;;   - cd my-cool-lib
+  ;;   - clj -A:test:runner # run the tests!
+  :new {:extra-deps {seancorfield/clj-new {:mvn/version "RELEASE"}}
+        :main-opts ["-m" "clj-new.create"]}
+
+  ;; uberjar building:
+  ;; - see https://github.com/seancorfield/depstar for a minimalist approach:
+  ;;   - clj -A:uberjar result.jar
+  ;; - to run it:
+  ;;   - java -cp result.jar clojure.main -m mymain.namespace
+  ;; - build a library JAR:
+  ;;   - clj -A:jar result-lib.jar
+  :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+            :main-opts ["-m" "hf.depstar.uberjar"]}
+  :jar {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+        :main-opts ["-m" "hf.depstar.jar"]}}}

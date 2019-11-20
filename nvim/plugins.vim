@@ -1,78 +1,74 @@
-function! DoRemote(arg)
-  if has('nvim')
-    UpdateRemotePlugins
-  endif
-endfunction
-
-if has('nvim')
-  call plug#begin('~/.config/nvim/plugged')
-
-  Plug 'Shougo/denite.nvim', {'do': function('DoRemote')}
-  Plug 'parsonsmatt/intero-neovim', {'for': 'haskell'}
-  Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-else
+if !has('nvim')
   call plug#begin('~/.config/nvim/plugged_vim')
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'tpope/vim-sensible'
   Plug 'sjl/vitality.vim'
+else
+  call plug#begin('~/.config/nvim/plugged')
 endif
 
 Plug 'OrangeT/vim-csharp'
 
 " programming
+Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
+    \ }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'benekastah/neomake'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-dadbod'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'szw/vim-smartclose'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
-Plug 'ervandew/supertab'
 
 " navigating
-Plug 'tpope/vim-vinegar'
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-grepper'
+Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
+Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'morhetz/gruvbox'
+Plug 'seesleestak/duo-mini'
+Plug 'ajgrf/parchment'
 
 " python
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
-
-" misc
-Plug 'diepm/vim-rest-console', {'for': 'rest'}
-Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript.jsx'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
-Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
-
-" go lang
-Plug 'fatih/vim-go', {'for': 'go'}
 
 " clojure
-" common lisp
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'guns/vim-sexp', {'for': ['clojure', 'lisp']}
-Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'lisp']}
-Plug 'l04m33/vlime', {'rtp': 'vim/', 'for': 'lisp'}
+Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
+
+" ruby
+Plug 'tpope/vim-rails', {'for': 'ruby'}
+Plug 'tpope/vim-bundler', {'for': 'ruby'}
+Plug 'tpope/vim-rake', {'for': 'ruby'}
+Plug 'tpope/vim-rbenv', {'for': 'ruby'}
+
+" misc
+Plug 'diepm/vim-rest-console', {'for': 'rest'}
 
 Plug 'embear/vim-localvimrc'
 

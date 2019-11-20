@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+awk -v n_spaces="$1" '
+
+BEGIN {
+	tab = "	"
+	space = " "
+
+	if (n_spaces < 1) {
+		n_spaces = 4
+	}
+
+	spaces_per_tab = ""
+	for (i = 1; i <= n_spaces; i += 1) {
+		spaces_per_tab = spaces_per_tab space
+	}
+}
+
+function spaces_for_n_tabs(n) {
+	spaces = ""
+	while (n--) {
+		spaces = spaces spaces_per_tab
+	}
+	return spaces
+}
+
+function tabs_to_spaces(line) {
+	n_tabs = 0
+	for (i = 1; i <= length(line); i += 1) {
+		if (substr(line, i, 1) != tab) {
+			break
+		}
+		n_tabs += 1
+	}
+	return spaces_for_n_tabs(n_tabs) substr(line, i)
+}
+
+{
+	print tabs_to_spaces($0)
+}
+
+'

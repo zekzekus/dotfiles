@@ -1,0 +1,30 @@
+#!/bin/sh
+
+VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
+FIXED_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
+
+export PAGER=nobs
+export MANPAGER=nobs
+export EDITOR=E2
+export TERM=dumb
+export MANPAGER=nobs
+export PAGER=nobs
+
+export PLUMBFILE=$HOME/lib/plumbing
+export PLAN9=$HOME/plan9port
+export SHELL=$PLAN9/bin/rc
+export PATH=$PLAN9/bin:$PATH
+export MANPATH=$MANPATH:$PLAN9/man
+
+export NAMESPACE=`mktemp -d -t plan9`
+export PLAN9_MPOINT=/tmp/`basename $NAMESPACE`
+
+export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
+
+mkdir -p $ACME_MPOINT
+
+plumber;
+
+cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
+
+acme -l acme.dump -a -m $ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
