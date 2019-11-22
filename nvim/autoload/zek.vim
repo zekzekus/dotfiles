@@ -4,13 +4,7 @@ function! zek#listinfos()
   return qflist . loclist
 endfunction
 
-function! zek#do_remote(arg)
-  if has('nvim')
-    UpdateRemotePlugins
-  endif
-endfunction
-
 function! zek#lc_maps()
   nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
 endfunction

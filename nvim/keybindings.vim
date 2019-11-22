@@ -52,13 +52,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-function SetLSPShortcuts()
-  nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
-  nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
-endfunction()
-
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType ruby,python,rust,haskell,go,javascript,scala call SetLSPShortcuts()
+  autocmd FileType ruby,python,rust,haskell,go,javascript,scala call zek#lc_maps()
 augroup END
