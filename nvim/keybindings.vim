@@ -42,19 +42,23 @@ nnoremap <leader>V V`]
 
 nnoremap <silent><leader>Q :SmartClose<cr>
 
-" let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
-" nnoremap cn *``cgn
-" nnoremap cN *``cgN
-" vnoremap <expr> cn g:mc . "``cgn"
-" vnoremap <expr> cN g:mc . "``cgN"
+let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
+nnoremap cn *``cgn
+nnoremap cN *``cgN
+vnoremap <expr> cn g:mc . "``cgn"
+vnoremap <expr> cN g:mc . "``cgN"
 
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-" augroup keybindings_au
-"   autocmd!
+function SetLSPShortcuts()
+  nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
+  nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
+endfunction()
 
-"   " autocmd FileType ruby,python,rust,haskell,go,javascript,scala call zek#lc_maps()
-"   autocmd FileType python,javascript call zek#lc_maps()
-" augroup END
+augroup keybindings_au
+  autocmd!
+
+  autocmd FileType ruby,python,rust,haskell,go,javascript,scala call SetLSPShortcuts()
+augroup END
