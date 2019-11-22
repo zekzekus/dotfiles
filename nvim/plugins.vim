@@ -45,6 +45,9 @@ Plug 'junegunn/fzf.vim'
 " python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
+" dart
+Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript.jsx'}
