@@ -39,7 +39,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'seesleestak/duo-mini'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ajgrf/parchment'
 
 " python
