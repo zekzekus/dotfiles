@@ -58,6 +58,7 @@
       kept-new-versions 20
       kept-old-versions 5
       eldoc-echo-area-use-multiline-p nil
+      max-mini-window-height 1
       byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
 
 (setq inhibit-startup-buffer-menu t
