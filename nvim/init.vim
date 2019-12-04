@@ -113,7 +113,4 @@ let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = "floating_win" 
 
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 runtime! keybindings.vim

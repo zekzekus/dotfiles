@@ -16,8 +16,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
     \ }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dadbod'
 

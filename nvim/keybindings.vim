@@ -18,7 +18,6 @@ nnoremap <silent><leader>bb :<c-u>Buffers<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
-command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
