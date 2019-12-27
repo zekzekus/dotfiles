@@ -10,7 +10,7 @@ export TERM=dumb
 export MANPAGER=nobs
 export PAGER=nobs
 
-export PLUMBFILE=$HOME/lib/plumbing
+export PLUMBFILE=$HOME/bin/plumbing
 export PLAN9=$HOME/plan9port
 export SHELL=$PLAN9/bin/rc
 export PATH=$PLAN9/bin:$PATH
