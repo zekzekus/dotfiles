@@ -69,7 +69,7 @@ set statusline+=%%%p
 set statusline+=\ ┇\ 
 set statusline+=%{zek#listinfos()}
 
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 
 if has('nvim')
   set inccommand=nosplit
