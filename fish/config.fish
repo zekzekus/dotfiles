@@ -68,5 +68,6 @@ set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 
 set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 
-starship init fish | source
 status --is-interactive; and source (rbenv init -|psub)
+
+starship init fish | source
