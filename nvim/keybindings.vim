@@ -13,7 +13,7 @@ nnoremap <silent><leader>bb :<c-u>Buffers<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
