@@ -50,3 +50,18 @@ map global user b ':enter-buffers-mode<ret>'              -docstring 'buffers…
 map global user B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
 map global user f ':fzf-mode<ret>'                        -docstring 'fzf mode'
 map global user m ':enter-user-mode lsp<ret>'             -docstring 'lsp mode'
+
+hook global KakBegin .* %{
+    evaluate-commands %sh{
+        path="$PWD"
+        while [ "$path" != "$HOME" ] && [ "$path" != "/" ]; do
+            if [ -e "./tags" ]; then
+                printf "%s\n" "set-option -add current ctagsfiles %{$path/tags}"
+                break
+            else
+                cd ..
+                path="$PWD"
+            fi
+        done
+    }
+}
