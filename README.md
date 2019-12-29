@@ -2,22 +2,17 @@
 
 ## VIM Configuration
 
-My very personal Vim configuration. I do Python and Go development at work on a
-daily basis. Also I need to read (more than writing) Javascript code (mostly
-ReactJS). My personal interests at the moment includes Clojure, Haskell, Rust
-and Scala programming languages to play on my free time. So this configuration
-supports these 7 languages. Except Clojure, all other language supports comes
-from corresponding Language Server. Some more details below.
+My very personal Vim configuration. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and
   [Neovim](https://neovim.io/).
-* Some plugins might not support vanilla Vim without compiled python3.
+* Some plugins might not support vanilla Vim if not compiled with python3.
 * Recommended environment includes [iTerm
   nightly](https://www.iterm2.com/downloads/nightly) and
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
-  `Rust`, `Go`, `Javascript` and `Scala`.
+  `Rust`, `Go`, `Javascript`, `Scala` and `Ruby`.
 * Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
   except for `Clojure`. 
@@ -27,9 +22,7 @@ from corresponding Language Server. Some more details below.
 * Local leader is `\`.
 * I am using
   [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim) as
-  autocompletion
-  and language client engine. Except Clojure all completion and
-  language server capabilities comes from `LanguageClient`.
+  autocompletion and language client engine.
 
 ### Key bindings List
 
@@ -41,18 +34,12 @@ Notable custom key bindings;
       with `C-n` and `C-p`.
     * `<leader>fj` Fuzzy find junkfiles.
     * `<leader>ft` Toggle tagbar.
-    * `<leader>fs` Write buffer to disk. Equivalent to `:w<cr>`.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
     * `<leader>bb` List open buffers and prompt with fuzzy search to jump.
-    * `<leader>bd` Delete current buffer. Equivalent to `:bd<cr>`.
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
-    * `<leader>/` uses `:grep!` command to prompt and load results into
-      quickfix list.
-    * `<leader>*` uses `:grep!` command with word under cursor and load results
-      into quickfix list.
     * `<BS>` executes `:nohlsearch<cr>`.
     * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
       all lines in the buffer will be in the list to narrow with fuzzy search.
@@ -60,15 +47,7 @@ Notable custom key bindings;
 * Other
     * `<leader>V` selects just pasted text.
 * Programming support bindings.
-    * `gd` jump to definition of the symbol under cursor using language
-      server or specific plugin.
-    * `K` shows hover information using language server or specific plugin.
-    * `[c` jump to next language server diagnostic message.
-    * `]c` jump to previous language server diagnostic message.
-    * `gy` show type definition from language server.
-    * `gi` show implementations from language server.
-    * `gr` show references from language server.
-    * `<leader>rn` use rename function from language server.
+    * `<C-p>` list supported LSP functionalities
 
 Check
 [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim)
@@ -120,7 +99,8 @@ for all plugins.
 
 * Install necessary OS packages.
 
-        $ brew install ctags ripgrep the_silver_searcher fzf brew install tavianator/tap/bfs
+        $ brew install ctags ripgrep the_silver_searcher fzf
+        $ brew install tavianator/tap/bfs
 
 * Install Language Servers for the languages you want work on.
     * [Python Language
@@ -129,6 +109,7 @@ for all plugins.
     * [Rust Language Server](https://github.com/rust-lang-nursery/rls)
     * [Javascript/Typescript Language
       Server](https://github.com/sourcegraph/javascript-typescript-langserver)
+    * [Ruby](https://solargraph.org)
 
 ## TMUX Configuration
 
@@ -142,7 +123,8 @@ for all plugins.
 - Next, install the `tmux` and `reattach-to-user-namespace` packages using
   Homebrew
 
-        brew install tmux brew install reattach-to-user-namespace
+        $ brew install tmux
+        $ brew install reattach-to-user-namespace
 - Create a symbolic link to `dotfiles/tmux/tmux.conf`
 
         ln -s /path/to/repo/dotfiles/tmux/tmux.conf ~/.tmux.conf
@@ -187,8 +169,6 @@ for all plugins.
             # set -g mouse on
 
 - ##### Et voilà!
-
-## ZSH Configuration
 
 ## FISH Configuration
 
