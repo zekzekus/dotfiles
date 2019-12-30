@@ -2,8 +2,6 @@ nnoremap <space> <nop>
 let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
-nnoremap <leader><space> :<c-u>Commands<cr>
-
 " files
 nnoremap <silent><leader>ff :<c-u>Files<cr>
 nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
@@ -18,7 +16,7 @@ nnoremap <silent><leader>bb :<c-u>Buffers<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
-command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>/ :<C-u>Grep<space>
