@@ -10,14 +10,11 @@ endif
 
 " programming
 Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
     \ }
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-dadbod'
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -29,7 +26,6 @@ Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-sleuth'
 
 " navigating
-Plug 'tpope/vim-vinegar', {'on': '<Plug>VinegarVerticalSplitUp'}
 Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
@@ -57,9 +53,6 @@ Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 
 " ruby
 Plug 'tpope/vim-rails', {'for': 'ruby'}
-Plug 'tpope/vim-bundler', {'for': 'ruby'}
-Plug 'tpope/vim-rake', {'for': 'ruby'}
-Plug 'tpope/vim-rbenv', {'for': 'ruby'}
 
 " misc
 Plug 'diepm/vim-rest-console', {'for': 'rest'}
