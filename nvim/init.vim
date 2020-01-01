@@ -37,12 +37,14 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-colorscheme nord
+colorscheme monotone
+call zek#custom_highlights()
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd ColorScheme * call zek#custom_highlights()
 augroup END
 
 let g:netrw_liststyle=3
