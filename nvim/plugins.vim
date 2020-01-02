@@ -34,7 +34,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'Lokaltog/vim-monotone'
+Plug 'arcticicestudio/nord-vim'
+Plug 'ajgrf/parchment'
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}

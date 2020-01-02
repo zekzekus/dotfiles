@@ -17,7 +17,3 @@ endfunction
 function! zek#lc_maps()
   nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
 endfunction
-
-function! zek#custom_highlights()
-  highlight StatusLine guibg=#222020
-endfunction
