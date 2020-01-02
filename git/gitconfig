@@ -1,0 +1,16 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+me = Zekeriya Koç
+email = zekzekus@gmail.com
+[core]
+	excludesFile = /Users/zekus/.gitignore_global
+
+[difftool]
+prompt = false
+
+[difftool "vimdiff"]
+path = nvim
+
+[diff]
+tool = vimdiff
