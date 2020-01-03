@@ -3,6 +3,7 @@
 VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
 FIXED_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
 
+export TERM=dump
 export PAGER=nobs
 export MANPAGER=nobs
 export EDITOR=E2
@@ -16,15 +17,20 @@ export SHELL=$PLAN9/bin/rc
 export PATH=$PLAN9/bin:$PATH
 export MANPATH=$MANPATH:$PLAN9/man
 
-export NAMESPACE=`mktemp -d -t plan9`
-export PLAN9_MPOINT=/tmp/`basename $NAMESPACE`
+if [ "$(pgrep plumber)" ]; then
+    echo "Plumber is running"
+else
+    echo "Starting plumber"
+    9 plumber
+fi
 
-export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
-
-mkdir -p $ACME_MPOINT
-
-plumber;
+if [ "$(pgrep fontsrv)" ]; then
+    echo "Fontsrv is running"
+else
+    echo "Starting fontsrv"
+    9 fontsrv &
+fi
 
 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
 
-acme -l acme.dump -a -m $ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
+acme -l acme.dump -a -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
