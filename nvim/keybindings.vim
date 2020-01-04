@@ -3,19 +3,27 @@ let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
 " files
-command! Zfiles Files
-command! Zjunkfiles Files ~/.cache/junkfile
+nnoremap <silent><leader>ff :<c-u>Files<cr>
+nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
+nnoremap <leader>ft <ESC>:Vista!!<cr>
+nnoremap <leader>fs <ESC>:w<cr>
+nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap [<tab> :b#<CR>
-command! Zbuffers Buffers
-command! Zlines BLines
-command! Ztags BTags
+nnoremap <leader>bd :<c-u>bdelete<cr>
+nnoremap <leader>bD :<c-u>bdelete!<cr>
+nnoremap <silent><leader>bb :<c-u>Buffers<cr>
+nnoremap <leader><tab> :b#<CR>
 
 " search
-command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap <leader>/ :<C-u>Grep<space>
+nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
+nnoremap <silent><leader>ss :<c-u>BTags<cr>
+nnoremap <silent><leader>sl :<c-u>BLines<cr>
+nnoremap <silent><leader>sL :<c-u>Lines<cr>
 
 nnoremap yom :match ErrorMsg /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
@@ -24,10 +32,12 @@ nnoremap yoM :match none /\%>80c/<cr>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
-" Select just pasted text.
-nnoremap ]v V`]
+nmap - <Plug>VinegarVerticalSplitUp
 
-nnoremap ZZ :SmartClose<cr>
+" Select just pasted text.
+nnoremap <leader>V V`]
+
+nnoremap <silent><leader>qq :SmartClose<cr>
 
 let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
 nnoremap cn *``cgn
