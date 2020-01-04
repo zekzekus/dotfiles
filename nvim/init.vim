@@ -108,4 +108,6 @@ let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = "echo" 
 
+let g:CoolTotalMatches = 1
+
 runtime! keybindings.vim

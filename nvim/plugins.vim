@@ -24,6 +24,7 @@ Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-sleuth'
+Plug 'romainl/vim-cool'
 
 " navigating
 Plug 'liuchengxu/vista.vim', {'on': 'Vista'}

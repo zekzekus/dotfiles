@@ -21,7 +21,6 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>/ :<C-u>Grep<space>
 nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
-nnoremap <BS> :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>BTags<cr>
 nnoremap <silent><leader>sl :<c-u>BLines<cr>
 nnoremap <silent><leader>sL :<c-u>Lines<cr>
