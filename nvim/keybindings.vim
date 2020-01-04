@@ -19,6 +19,7 @@ nnoremap <leader><tab> :b#<CR>
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap <BS> :nohlsearch<cr>
 nnoremap <leader>/ :<C-u>Grep<space>
 nnoremap <leader>* :<C-u>Grep <C-R><C-W><cr>
 nnoremap <silent><leader>ss :<c-u>BTags<cr>
