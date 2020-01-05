@@ -6,7 +6,6 @@ export PATH=/usr/local/opt/go/libexec/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.ghcup/bin:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/opt/icu4c/bin":$PATH
@@ -30,6 +29,7 @@ eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 eval "$(jenv init -)"
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 if [ "${BASH_VERSINFO[0]}" -gt 4 ] || ([ "${BASH_VERSINFO[0]}" -eq 4 ] && [ "${BASH_VERSINFO[1]}" -ge 1 ]) then
