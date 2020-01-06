@@ -24,6 +24,7 @@ Plug 'tpope/vim-surround'
 Plug 'farmergreg/vim-lastplace'
 Plug 'Shougo/junkfile.vim'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-projectionist'
 
 " navigating
 Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
@@ -34,7 +35,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'pbrisbin/vim-colors-off'
+Plug 'arcticicestudio/nord-vim'
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}

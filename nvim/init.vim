@@ -37,14 +37,12 @@ set undofile
 set undodir=~/.nvimtmp
 
 set termguicolors
-colorscheme off
-highlight clear VertSplit
+colorscheme nord
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr cwindow
-  autocmd ColorScheme * highlight clear VertSplit
 augroup END
 
 let g:netrw_liststyle=3
