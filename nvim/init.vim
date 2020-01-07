@@ -97,7 +97,7 @@ let g:LanguageClient_serverCommands = {
     \ 'go': ['gopls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'scala': ['metals-vim'],
-    \ 'ruby': ['rbenv', 'exec', 'solargraph', 'stdio'],
+    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 0
