@@ -9,6 +9,7 @@ set --export GOPATH $HOME/go
 
 # PATH modifications. last item has the highest priority
 set --export PATH /usr/local/bin $PATH
+set --export PATH /usr/local/sbin $PATH
 set --export PATH /usr/local/opt/go/libexec/bin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $GOPATH/bin $PATH
