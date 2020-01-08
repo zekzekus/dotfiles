@@ -9,6 +9,7 @@ else
 endif
 
 " programming
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -40,13 +41,6 @@ Plug 'arcticicestudio/nord-vim'
 
 " javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
-Plug 'pangloss/vim-javascript', {'for': 'javascript.jsx'}
-
-" haskell
-Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-
-" rust-lang
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
