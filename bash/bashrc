@@ -2,6 +2,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/go
 
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/opt/go/libexec/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
