@@ -100,7 +100,7 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 let g:LanguageClient_diagnosticsList = 'location'
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_diagnosticsMaxSeverity = 'Warning'
 
