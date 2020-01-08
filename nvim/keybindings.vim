@@ -51,7 +51,6 @@ nnoremap cQ :call zek#setup_cr()<CR>#``qz
 vnoremap <expr> cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
 vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 

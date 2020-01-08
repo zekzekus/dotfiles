@@ -18,6 +18,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " editing
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -53,8 +54,5 @@ Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 
 " ruby
 Plug 'tpope/vim-rails', {'for': 'ruby'}
-
-" misc
-Plug 'diepm/vim-rest-console', {'for': 'rest'}
 
 call plug#end()
