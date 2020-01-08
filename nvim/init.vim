@@ -102,6 +102,7 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
+let g:LanguageClient_usePopupHover = 0
 let g:LanguageClient_diagnosticsMaxSeverity = 'Warning'
 
 let g:vista#renderer#enable_icon = 0
