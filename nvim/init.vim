@@ -20,6 +20,7 @@ set showmatch
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
+set errorformat+=%f
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
