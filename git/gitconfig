@@ -3,6 +3,7 @@
 # Please adapt and uncomment the following lines:
 me = Zekeriya Koç
 email = zekzekus@gmail.com
+	signingkey = AE222BC7211F27DC
 [core]
 	excludesFile = /Users/zekus/.gitignore_global
 
@@ -14,3 +15,7 @@ path = nvim
 
 [diff]
 tool = vimdiff
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
