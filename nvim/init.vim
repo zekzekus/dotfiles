@@ -32,6 +32,7 @@ set wildignorecase
 set directory=~/.nvimtmp
 set undofile
 set undodir=~/.nvimtmp
+set tags+=,.git/tags
 
 set termguicolors
 colorscheme nord
@@ -40,8 +41,6 @@ augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr cwindow
-  autocmd InsertEnter * set list
-  autocmd InsertLeave * set nolist
 
 augroup END
 
