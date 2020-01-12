@@ -19,3 +19,7 @@ tool = vimdiff
 	gpgsign = true
 [gpg]
 	program = gpg2
+[init]
+	templatedir = ~/.git_template
+[alias]
+	ctags = !.git/hooks/ctags
