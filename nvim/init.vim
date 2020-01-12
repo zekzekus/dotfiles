@@ -16,11 +16,7 @@ set smartcase
 set hlsearch
 set incsearch
 
-set showmatch
-
 set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-set errorformat+=%f
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
@@ -44,14 +40,15 @@ augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd InsertEnter * set list
+  autocmd InsertLeave * set nolist
+
 augroup END
 
 let g:netrw_liststyle=3
 
 runtime! plugin/sensible.vim
 
-set noruler
-set noshowcmd
 set statusline=%w%q
 set statusline+=\ 【\ %f%M%R%H\ 】
 set statusline+=%=
@@ -75,8 +72,6 @@ if has('nvim')
     autocmd TermOpen * setlocal nonumber norelativenumber
   augroup END
 
-  let g:python_host_skip_check=1
-  let g:python3_host_skip_check=1
   let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
@@ -104,12 +99,8 @@ let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
-let g:LanguageClient_diagnosticsMaxSeverity = 'Warning'
 
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
-let g:vista_echo_cursor_strategy = "echo" 
-
-let g:CoolTotalMatches = 1
 
 runtime! keybindings.vim
