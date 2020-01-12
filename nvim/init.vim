@@ -36,12 +36,13 @@ set tags+=,.git/tags
 
 set termguicolors
 colorscheme nord
+call zek#my_highlights()
 
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr cwindow
-
+  autocmd ColorScheme * call zek#my_highlights()
 augroup END
 
 let g:netrw_liststyle=3

@@ -17,3 +17,9 @@ endfunction
 function! zek#lc_maps()
   nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
 endfunction
+
+function! zek#my_highlights()
+  if g:colors_name == 'nord'
+    highlight link clojureParen clojureComment
+  endif
+endfunction
