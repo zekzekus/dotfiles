@@ -3,7 +3,6 @@ runtime! plugins.vim
 set modelines=0
 set mouse=a
 set updatetime=500
-set number
 
 set hidden
 set splitbelow
