@@ -1,0 +1,6 @@
+{
+  "nvim/*.vim": {"type": "vim"},
+  "nvim/autoload/zek.vim": {"type": "autoload"},
+  "nvim/after/ftplugin/*.vim": {"type": "ftplugin"},
+  "README.md": {"type": "readme"}
+}

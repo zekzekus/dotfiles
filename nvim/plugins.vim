@@ -9,6 +9,7 @@ else
 endif
 
 " programming
+Plug 'tpope/vim-projectionist'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', {
