@@ -9,6 +9,7 @@ else
 endif
 
 " programming
+Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-projectionist'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
@@ -48,5 +49,8 @@ Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 
 " ruby
 Plug 'tpope/vim-rails', {'for': 'ruby'}
+Plug 'tpope/vim-rake', {'for': 'ruby'}
+Plug 'tpope/vim-bundler', {'for': 'ruby'}
+Plug 'tpope/vim-rbenv', {'for': 'ruby'}
 
 call plug#end()
