@@ -1,11 +1,7 @@
 {
-  "*": {
-    "path": "**",
-    "suffixesadd": ".vim",
-    "wildignore": "*/plugged/*,*/plugged_vim/*"
-  },
+  "*": {"path": "**", "suffixesadd": ".vim"},
+  "README.md": {"type": "readme"},
   "nvim/*.vim": {"type": "vim"},
-  "nvim/autoload/zek.vim": {"type": "autoload"},
   "nvim/after/ftplugin/*.vim": {"type": "ftplugin"},
-  "README.md": {"type": "readme"}
+  "nvim/autoload/zek.vim": {"type": "autoload"}
 }

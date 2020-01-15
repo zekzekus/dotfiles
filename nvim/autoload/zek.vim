@@ -28,7 +28,4 @@ function! zek#custom_projections()
   for [root, value] in projectionist#query('suffixesadd')
     let &l:suffixesadd = value
   endfor
-  for [root, value] in projectionist#query('wildignore')
-    let &l:wildignore = value
-  endfor
 endfunction
