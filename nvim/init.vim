@@ -67,7 +67,7 @@ set statusline+=%{zek#listinfos()}
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 
 if has('nvim')
-  set inccommand=nosplit
+  set inccommand=split
   set clipboard+=unnamedplus
   augroup terminal_au
     autocmd!
