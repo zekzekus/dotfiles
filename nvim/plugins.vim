@@ -10,6 +10,7 @@ endif
 
 " programming
 Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'

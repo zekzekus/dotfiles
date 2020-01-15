@@ -20,6 +20,7 @@ set completeopt=menuone,noinsert,noselect
 
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
+set errorformat+=%f
 
 set foldmethod=indent
 set foldlevel=99
