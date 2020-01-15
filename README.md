@@ -29,11 +29,9 @@ My very personal Vim configuration. Some more details below.
 Notable custom key bindings;
 
 * File based operations (starts with `<leader>f`)
-    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It
-      simulteanously shows files, open buffers. You can switch between these
-      with `C-n` and `C-p`.
+    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It shows
+      project files. You can switch between these with `C-n` and `C-p`.
     * `<leader>fj` Fuzzy find junkfiles.
-    * `<leader>ft` Toggle tagbar.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
     * `<leader>bb` List open buffers and prompt with fuzzy search to jump.
@@ -41,9 +39,6 @@ Notable custom key bindings;
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
     * `<BS>` executes `:nohlsearch<cr>`.
-    * `<leader>ss` Populates (on the fly) all tags (outline) in the file. Plus
-      all lines in the buffer will be in the list to narrow with fuzzy search.
-      (ctags) into fuzzy search UI.
 * Other
     * `<leader>V` selects just pasted text.
 * Programming support bindings.
@@ -73,7 +68,7 @@ for all plugins.
   editor's own needs (I use Fish shell and virtualfish). For any shell, these
   virtual environments must be located under `~/.virtualenvs/`.
 
-        $ vf new neovim2
+        $ vf new --python=python2 neovim2
         $ vf new --python=python3 neovim3
 
 * Clone repository to any place you prefer.
