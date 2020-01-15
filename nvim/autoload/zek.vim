@@ -23,3 +23,9 @@ function! zek#my_highlights()
     highlight link clojureParen clojureComment
   endif
 endfunction
+
+function! zek#custom_projections()
+  for [root, value] in projectionist#query('suffixesadd')
+    let &l:suffixesadd = value
+  endfor
+endfunction

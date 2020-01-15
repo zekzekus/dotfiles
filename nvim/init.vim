@@ -103,4 +103,9 @@ let g:LanguageClient_usePopupHover = 0
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_width = 40
 
+augroup custom_au
+  autocmd!
+  autocmd User ProjectionistActivate call zek#custom_projections()
+augroup END
+
 runtime! keybindings.vim
