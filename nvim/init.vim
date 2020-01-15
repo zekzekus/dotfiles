@@ -84,8 +84,6 @@ endif
 packadd cfilter
 
 " ========== Plugin Settings =========="
-let g:smartclose_set_default_mapping = 0
-
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
@@ -99,9 +97,6 @@ let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
-
-let g:vista#renderer#enable_icon = 0
-let g:vista_sidebar_width = 40
 
 augroup custom_au
   autocmd!

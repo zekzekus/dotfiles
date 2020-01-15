@@ -5,7 +5,6 @@ let g:maplocalleader = '\'
 " files
 nnoremap <silent><leader>ff :<c-u>Files<cr>
 nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
-nnoremap <leader>ft <ESC>:Vista!!<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -37,8 +36,6 @@ nmap - <Plug>VinegarVerticalSplitUp
 
 " Select just pasted text.
 nnoremap <leader>V V`]
-
-nnoremap <silent><leader>qq :SmartClose<cr>
 
 let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
 nnoremap cn *``cgn
