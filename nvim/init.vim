@@ -15,7 +15,6 @@ set cursorline
 set ignorecase
 set smartcase
 set hlsearch
-set incsearch
 
 set completeopt=menuone,noinsert,noselect
 
