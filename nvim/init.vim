@@ -9,7 +9,6 @@ set hidden
 set splitbelow
 set splitright
 
-set number
 set cursorline
 
 set ignorecase
