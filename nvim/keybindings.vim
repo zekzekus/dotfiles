@@ -33,6 +33,7 @@ cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
 nmap - <Plug>VinegarVerticalSplitUp
+nnoremap <silent><leader>qq :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
 
 " Select just pasted text.
 nnoremap <leader>V V`]
