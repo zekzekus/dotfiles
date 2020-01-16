@@ -4,6 +4,7 @@
 me = Zekeriya Koc
 email = zekzekus@gmail.com
 	signingkey = 6716516470AD2D7A
+	name = Zekeriya Koc
 [core]
 	excludesFile = /Users/zekus/.gitignore_global
 
