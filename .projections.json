@@ -3,5 +3,10 @@
   "README.md": {"type": "readme"},
   "nvim/*.vim": {"type": "vim"},
   "nvim/after/ftplugin/*.vim": {"type": "ftplugin"},
-  "nvim/autoload/zek.vim": {"type": "autoload"}
+  "nvim/autoload/zek.vim": {"type": "autoload"},
+  "fish/*": {"type": "fish"},
+  "tmux/*": {"type": "tmux"},
+  "macosx/*": {"type": "macosx"},
+  "git/*": {"type": "git"},
+  "emacs/*": {"type": "emacs"}
 }
