@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-me = Zekeriya Koç
+me = Zekeriya Koc
 email = zekzekus@gmail.com
 	signingkey = AE222BC7211F27DC
 [core]
