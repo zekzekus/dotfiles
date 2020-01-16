@@ -19,6 +19,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
     \ }
+Plug 'tpope/vim-apathy', {'for': ['c', 'coffee', 'csh', 'desktop', 'dosbatch', 'go', 'javascript', 'lua', 'python', 'scheme', 'sh', 'typescript', 'zsh']
+}
 
 " editing
 Plug 'jiangmiao/auto-pairs'
@@ -45,6 +47,7 @@ Plug 'tpope/vim-jdaddy', {'for': 'json'}
 " clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
+Plug 'tpope/vim-salve', {'for': 'clojure'}
 
 " ruby
 Plug 'tpope/vim-rails', {'for': 'ruby'}
