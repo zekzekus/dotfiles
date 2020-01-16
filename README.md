@@ -94,7 +94,7 @@ for all plugins.
 
 * Install necessary OS packages.
 
-        $ brew install ctags ripgrep the_silver_searcher fzf
+        $ brew install universal-ctags ripgrep the_silver_searcher fzf
         $ brew install tavianator/tap/bfs
 
 * Install Language Servers for the languages you want work on.
