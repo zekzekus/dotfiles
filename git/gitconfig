@@ -3,7 +3,7 @@
 # Please adapt and uncomment the following lines:
 me = Zekeriya Koc
 email = zekzekus@gmail.com
-	signingkey = AE222BC7211F27DC
+	signingkey = 6716516470AD2D7A
 [core]
 	excludesFile = /Users/zekus/.gitignore_global
 
