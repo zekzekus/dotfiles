@@ -21,6 +21,7 @@ endfunction
 function! zek#my_highlights()
   if g:colors_name == 'nord'
     highlight link clojureParen clojureComment
+    highlight clear CursorLine
   endif
 endfunction
 
