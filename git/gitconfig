@@ -3,10 +3,11 @@
 # Please adapt and uncomment the following lines:
 me = Zekeriya Koc
 email = zekzekus@gmail.com
-	signingkey = 6716516470AD2D7A
-	name = Zekeriya Koc
+signingkey = 6716516470AD2D7A
+name = Zekeriya Koc
+
 [core]
-	excludesFile = /Users/zekus/.gitignore_global
+excludesFile = /Users/zekus/.gitignore_global
 
 [difftool]
 prompt = false
@@ -16,11 +17,15 @@ path = nvim
 
 [diff]
 tool = vimdiff
+
 [commit]
-	gpgsign = true
+gpgsign = true
+
 [gpg]
-	program = gpg2
+program = gpg2
+
 [init]
-	templatedir = ~/.git_template
+templatedir = ~/.git_template
+
 [alias]
-	ctags = !.git/hooks/ctags
+ctags = !.git/hooks/ctags
