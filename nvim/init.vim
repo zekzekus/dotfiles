@@ -25,8 +25,6 @@ set errorformat+=%f
 set foldmethod=indent
 set foldlevel=99
 
-set backupskip=/tmp/*,/private/tmp/*"
-
 set wildignorecase
 
 set directory=~/.nvimtmp
