@@ -27,7 +27,6 @@ set foldlevel=99
 
 set backupskip=/tmp/*,/private/tmp/*"
 
-set wildmode=longest:full,full
 set wildignorecase
 
 set directory=~/.nvimtmp
@@ -42,7 +41,7 @@ call zek#my_highlights()
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
-  autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
   autocmd ColorScheme * call zek#my_highlights()
 augroup END
 

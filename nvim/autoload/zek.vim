@@ -19,10 +19,8 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  if g:colors_name == 'nord'
-    highlight link clojureParen clojureComment
-    highlight clear CursorLine
-  endif
+  highlight link clojureParen clojureComment
+  highlight clear CursorLine
 endfunction
 
 function! zek#custom_projections()
