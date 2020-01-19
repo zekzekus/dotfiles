@@ -23,7 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
 " vim interface
-Plug 'arcticicestudio/nord-vim'
+Plug 'seesleestak/duo-mini'
 
 " programming
 Plug 'tpope/vim-endwise'

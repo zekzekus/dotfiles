@@ -33,7 +33,8 @@ set undodir=~/.nvimtmp
 set tags+=,.git/tags
 
 set termguicolors
-colorscheme nord
+let g:duo_mini_bg = "#2E3440"
+colorscheme duo-mini
 call zek#my_highlights()
 
 augroup general_au

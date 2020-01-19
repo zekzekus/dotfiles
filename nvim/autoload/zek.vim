@@ -20,7 +20,7 @@ endfunction
 
 function! zek#my_highlights()
   highlight link clojureParen clojureComment
-  highlight clear CursorLine
+  highlight StatuslineNC gui=underline
 endfunction
 
 function! zek#custom_projections()
