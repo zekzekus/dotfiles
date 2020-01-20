@@ -11,11 +11,12 @@ My very personal Vim configuration. Some more details below.
   nightly](https://www.iterm2.com/downloads/nightly) and
   [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
-* Primary programming languages supported: `Python`, `Clojure`, `Haskell`,
-  `Rust`, `Go`, `Javascript`, `Scala` and `Ruby`.
-* Language support is available via corresponding [Language
+* Basic language support comes from [vim-polyglot](https://github.com/sheerun/vim-polyglot/).
+* Advanced Language support is available via corresponding [Language
   Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)
-  except for `Clojure`. 
+  except for `Clojure` and `Ruby`. 
+* Programming languages configured for LSP: `Python`, `Clojure`, `Haskell`,
+  `Rust`, `Go`, `Javascript`, `Scala` and `Ruby`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and
   buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.
