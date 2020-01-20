@@ -1,6 +1,6 @@
 runtime! plugins.vim
 
-set shell=/usr/local/bin/bash
+set shell=/usr/bin/env\ bash
 set modelines=0
 set mouse=a
 set updatetime=500
@@ -70,7 +70,6 @@ if has('nvim')
   let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
-  set ttyfast
   set clipboard+=unnamed
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
