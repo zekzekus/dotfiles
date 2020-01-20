@@ -21,6 +21,9 @@ endfunction
 function! zek#my_highlights()
   highlight link clojureParen clojureComment
   highlight StatuslineNC gui=underline
+  if !has("nvim")
+    highlight Comment cterm=none
+  endif
 endfunction
 
 function! zek#custom_projections()

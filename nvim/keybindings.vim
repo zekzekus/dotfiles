@@ -18,6 +18,8 @@ command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . '
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
+nnoremap <silent><leader>ss :<c-u>BTags<cr>
+nnoremap <silent><leader>sl :<c-u>BLines<cr>
 
 nnoremap yom :match ErrorMsg /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
