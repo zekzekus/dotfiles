@@ -10,8 +10,8 @@ endif
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 Plug 'tpope/vim-sleuth'
+Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'tpope/vim-unimpaired'
@@ -24,10 +24,10 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'seesleestak/duo-mini'
 
 " programming
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'autozimu/LanguageClient-neovim', {

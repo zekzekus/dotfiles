@@ -41,6 +41,7 @@ augroup general_au
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
   autocmd ColorScheme * call zek#my_highlights()
+  autocmd User ProjectionistActivate call zek#custom_projections()
 augroup END
 
 let g:netrw_liststyle=3
@@ -74,7 +75,6 @@ endif
 
 packadd cfilter
 
-" ========== Plugin Settings =========="
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
@@ -90,10 +90,5 @@ let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
 
 let g:vitality_fix_focus = 0
-
-augroup custom_au
-  autocmd!
-  autocmd User ProjectionistActivate call zek#custom_projections()
-augroup END
 
 runtime! keybindings.vim
