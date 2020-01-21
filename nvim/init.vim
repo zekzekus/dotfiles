@@ -9,7 +9,6 @@ set hidden
 set splitbelow
 set splitright
 
-set number
 set cursorline
 
 set ignorecase
@@ -45,8 +44,6 @@ augroup general_au
 augroup END
 
 let g:netrw_liststyle=3
-
-runtime! plugin/sensible.vim
 
 set statusline=%w%q
 set statusline+=\ 【\ %f%M%R%H\ 】
@@ -91,6 +88,8 @@ let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
+
+let g:vitality_fix_focus = 0
 
 augroup custom_au
   autocmd!
