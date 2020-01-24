@@ -35,7 +35,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
     \ }
-Plug 'tpope/vim-apathy', {'for': ['c', 'coffee', 'csh', 'desktop', 'dosbatch', 'go', 'javascript', 'lua', 'python', 'scheme', 'sh', 'typescript', 'zsh']}
 Plug 'tpope/vim-dadbod'
 
 " javascript / JSON
