@@ -129,7 +129,10 @@
   :ensure t
   :config
   (diminish 'eldoc-mode)
-  (diminish 'undo-tree-mode))
+  (diminish 'undo-tree-mode)
+  (diminish 'auto-revert-mode)
+  (diminish 'global-auto-revert-mode)
+  (diminish 'abbrev-mode))
 
 (use-package ivy
   :ensure t
