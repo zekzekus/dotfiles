@@ -110,6 +110,7 @@
   (evil-collection-init))
 
 (use-package evil-commentary
+  :after evil
   :ensure t
   :diminish evil-commentary-mode
   :hook (prog-mode . evil-commentary-mode))
@@ -139,6 +140,7 @@
   (setq ivy-initial-inputs-alist nil))
 
 (use-package ivy-hydra
+  :after (ivy hydra)
   :ensure t)
 
 (use-package hydra
@@ -232,6 +234,7 @@
   :ensure t)
 
 (use-package evil-escape
+  :after evil
   :ensure t
   :diminish evil-escape-mode
   :init
@@ -327,7 +330,7 @@
 
 (use-package evil-org
   :ensure t
-  :after org
+  :after (org evil)
   :hook (org-mode . evil-org-mode)
   :config
   (add-hook 'evil-org-mode-hook
@@ -362,11 +365,11 @@
   (treemacs-resize-icons 18))
 
 (use-package treemacs-evil
-  :after treemacs evil
+  :after (treemacs evil)
   :ensure t)
 
 (use-package treemacs-projectile
-  :after treemacs projectile
+  :after (treemacs projectile)
   :ensure t)
 
 (use-package general :ensure t
