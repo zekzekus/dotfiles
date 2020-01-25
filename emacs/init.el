@@ -266,6 +266,25 @@
 (use-package eglot
   :ensure t)
 
+;;; PL: Ruby
+(use-package enh-ruby-mode
+  :ensure t
+  :mode (("Gemfile" . enh-ruby-mode)
+         ("\\.rb$" . enh-ruby-mode))
+  :config
+  (defvaralias 'ruby-indent-level 'tab-width))
+
+(use-package rbenv
+  :ensure t
+  :init
+  (global-rbenv-mode))
+
+(use-package projectile-rails
+  :ensure t
+  :after enh-ruby-mode
+  :init
+  (projectile-rails-global-mode))
+
 ;;; PL: Python
 (use-package pyvenv
   :ensure t)
@@ -455,6 +474,12 @@
    "K" 'cider-doc
    "[ d" 'cider-doc
    "[ C-d" 'cider-find-var)
+
+  (general-define-key
+   :states '(normal visual emacs)
+   :prefix "SPC"
+   :keymaps 'projectile-rails-mode-map
+   "m" 'hydra-projectile-rails/body)
 
   (general-define-key
    :states '(normal visual emacs)
