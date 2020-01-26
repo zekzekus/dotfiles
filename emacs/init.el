@@ -84,6 +84,11 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+(use-package nord-theme
+  :ensure t
+  :init
+  (load-theme 'nord t))
+
 (use-package ace-window
   :ensure t)
 

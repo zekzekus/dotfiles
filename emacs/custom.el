@@ -7,7 +7,7 @@
    [default default default italic underline success warning error])
  '(custom-safe-themes
    (quote
-	("dbade2e946597b9cda3e61978b5fcc14fa3afa2d3c4391d477bdaeff8f5638c5" "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2" "cf63f337c42da2087555a7db621e0b4191158ce5c40d1d641077441f5889f28f" "cc0dbb53a10215b696d391a90de635ba1699072745bf653b53774706999208e3" default)))
+	("7f6d4aebcc44c264a64e714c3d9d1e903284305fd7e319e7cb73345a9994f5ef" "dbade2e946597b9cda3e61978b5fcc14fa3afa2d3c4391d477bdaeff8f5638c5" "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2" "cf63f337c42da2087555a7db621e0b4191158ce5c40d1d641077441f5889f28f" "cc0dbb53a10215b696d391a90de635ba1699072745bf653b53774706999208e3" default)))
  '(hl-sexp-background-color "#efebe9")
  '(package-selected-packages
    (quote
