@@ -16,6 +16,10 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
 
+" for browsing the input history
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+
 nnoremap <silent><leader>qq :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
 
 " Select just pasted text.
