@@ -1,51 +1,34 @@
-runtime! plugins.vim
-
 set shell=/usr/bin/env\ bash
-set modelines=0
+
+runtime! plugins.vim
+packadd cfilter
+
 set mouse=a
-set updatetime=500
-
 set hidden
-set splitbelow
-set splitright
-
 set number
 set cursorline
-
+set nomodeline
+set splitbelow
+set splitright
+set wildignorecase
 set ignorecase
 set smartcase
 set hlsearch
-
-set completeopt=menuone,noinsert,noselect
-
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
-set errorformat+=%f
-
+set completeopt=menuone,noinsert,noselect
 set foldmethod=indent
 set foldlevel=99
-
-set wildignorecase
-
-set directory=~/.nvimtmp
 set undofile
+set directory=~/.nvimtmp
 set undodir=~/.nvimtmp
 set tags+=,.git/tags
-
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 set termguicolors
+
 let g:duo_mini_bg = "#2E3440"
 colorscheme duo-mini
 call zek#my_highlights()
-
-augroup general_au
-  autocmd!
-  autocmd VimResized * :wincmd =
-  autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
-  autocmd ColorScheme * call zek#my_highlights()
-  autocmd User ProjectionistActivate call zek#custom_projections()
-augroup END
-
-let g:netrw_liststyle=3
 
 set statusline=%w%q
 set statusline+=\ 【\ %f%M%R%H\ 】
@@ -56,7 +39,13 @@ set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
 set statusline+=\ ┇\ %%%p\ ┇
 set statusline+=%{zek#listinfos()}
 
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
+augroup general_au
+  autocmd!
+  autocmd VimResized * :wincmd =
+  autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
+  autocmd ColorScheme * call zek#my_highlights()
+  autocmd User ProjectionistActivate call zek#custom_projections()
+augroup END
 
 if has('nvim')
   set inccommand=split
@@ -74,8 +63,6 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-packadd cfilter
-
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
@@ -91,5 +78,6 @@ let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
 
 let g:vitality_fix_focus = 0
+let g:netrw_liststyle=3
 
 runtime! keybindings.vim
