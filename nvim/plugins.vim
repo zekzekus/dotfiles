@@ -37,15 +37,12 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
     \ }
 
-" javascript / JSON
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
-" clojure
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-salve', {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'for': 'clojure', 'do': 'cargo build --release'}
 
-" ruby
 Plug 'tpope/vim-rails', {'for': 'ruby'}
 Plug 'tpope/vim-rake', {'for': 'ruby'}
 Plug 'tpope/vim-bundler', {'for': 'ruby'}

@@ -16,13 +16,6 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
 
-nnoremap yom :match ErrorMsg /\%>80c/<cr>
-nnoremap yoM :match none /\%>80c/<cr>
-
-" for browsing the input history
-cnoremap <c-n> <down>
-cnoremap <c-p> <up>
-
 nnoremap <silent><leader>qq :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
 
 " Select just pasted text.
