@@ -152,7 +152,8 @@
   :init
   (defhydra hydra-clojure (:color teal)
     ("i" cider-jack-in-clj "cider-jack-in-clj")
-    ("j" cider-jack-in-clj&cljs "cider-jack-in-clj&cljs")
+    ("j" cider-jack-in-cljs "cider-jack-in-cljs")
+    ("a" cider-jack-in-clj&cljs "cider-jack-in-clj&cljs")
     ("z" cider-switch-to-repl-buffer "switch to repl")
     ("l" cider-ns-reload "reload ns")
     ("L" cider-ns-reload-all "reload ns all")

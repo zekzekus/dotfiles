@@ -5,8 +5,11 @@ let g:maplocalleader = '\'
 " files
 nnoremap <silent><leader>ff :<c-u>Files<cr>
 nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
+nnoremap <leader>fs <ESC>:w<cr>
+nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
+nnoremap <leader>bd :<c-u>bdelete<cr>
 nnoremap <silent><leader>bb :<c-u>Buffers<cr>
 nnoremap <leader><tab> :b#<CR>
 
