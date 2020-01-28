@@ -7,18 +7,18 @@ else
 endif
 
 " editing
-Plug 'tpope/vim-repeat'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
-Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-repeat'
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'tpope/vim-unimpaired'
+Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'farmergreg/vim-lastplace'
 
 " vim interface
 Plug 'seesleestak/duo-mini'

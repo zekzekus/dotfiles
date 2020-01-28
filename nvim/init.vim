@@ -14,18 +14,18 @@ set wildignorecase
 set ignorecase
 set smartcase
 set hlsearch
-set showbreak=↪\ 
-set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
-set completeopt=menuone,noinsert,noselect
 set foldmethod=indent
 set foldlevel=99
+set showbreak=↪\ 
 set undofile
-set directory=~/.nvimtmp
-set undodir=~/.nvimtmp
 set tags+=,.git/tags
+set undodir=~/.nvimtmp
+set directory=~/.nvimtmp
+set completeopt=menuone,noinsert,noselect
+set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
-set termguicolors
 
+set termguicolors
 let g:duo_mini_bg = "#2E3440"
 colorscheme duo-mini
 call zek#my_highlights()
