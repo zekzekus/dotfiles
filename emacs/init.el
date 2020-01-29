@@ -278,6 +278,7 @@
          ("\\.rb$" . enh-ruby-mode))
   :config
   (defvaralias 'ruby-indent-level 'tab-width))
+  
 
 (use-package rbenv
   :ensure t
@@ -376,7 +377,8 @@
   :ensure t
   :init
   (global-flycheck-mode)
-  (setq flycheck-mode-line-prefix "F"))
+  (setq flycheck-mode-line-prefix "F")
+  (setq flycheck-ruby-rubocop-executable "bundle exec rubocop"))
 
 (use-package restclient
   :ensure t)
