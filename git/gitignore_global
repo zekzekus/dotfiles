@@ -2,3 +2,4 @@ dump.rdb
 tags
 acme.commands
 acme.dump
+Session.vim
