@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 dir="`git rev-parse --git-dir`"
-trap 'rm -f "$dir/$$.TAGS"' EXIT
-git ls-files --recurse-submodules | ctags -e --tag-relative -L - -f"$dir/$$.TAGS"
-mv "$dir/$$.TAGS" "$dir/TAGS"
+trap 'rm -f "$dir/$$.emacs_TAGS"' EXIT
+git ls-files --recurse-submodules | ctags -e --tag-relative -L - -f"$dir/$$.emacs_TAGS"
+mv "$dir/$$.emacs_TAGS" "$dir/tagse"
