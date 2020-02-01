@@ -17,6 +17,7 @@ Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'szw/vim-smartclose'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 

@@ -78,5 +78,6 @@ let g:LanguageClient_usePopupHover = 0
 
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
+let g:smartclose_set_default_mapping = 0
 
 runtime! keybindings.vim

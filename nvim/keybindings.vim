@@ -23,7 +23,7 @@ nnoremap <BS> :nohlsearch<cr>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
-nnoremap <silent><leader>qq :pclose<cr>:cclose<cr>:helpclose<cr>:lclose<cr>
+nnoremap <silent><leader>qq :SmartClose<cr>
 
 " Select just pasted text.
 nnoremap <leader>V V`]
