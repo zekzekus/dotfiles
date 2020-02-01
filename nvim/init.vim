@@ -16,7 +16,6 @@ set smartcase
 set hlsearch
 set foldmethod=indent
 set foldlevel=99
-set showbreak=↪\ 
 set undofile
 set tags+=,.git/tags
 set undodir=~/.nvimtmp

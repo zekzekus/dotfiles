@@ -32,9 +32,12 @@ Notable custom key bindings;
 * File based operations (starts with `<leader>f`)
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It shows
       project files. You can switch between these with `C-n` and `C-p`.
+    * `<leader>fs` Save file in active buffer.
     * `<leader>fj` Fuzzy find junkfiles.
+    * `<leader>fW` Remove trailing whitespace from whole buffer.
 * Buffer based operations (starts with `<leader>b`)
     * `<leader>bb` List open buffers and prompt with fuzzy search to jump.
+    * `<leader>bd` Delete current buffer. (runs `:bdelete`)
     * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
 * Search based operations
     * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
