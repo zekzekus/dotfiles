@@ -2,6 +2,10 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "eraserhd/parinfer-rust" do %{
     cargo build --release
     cargo install --force --path .
+} config %{
+    hook global WinSetOption filetype=(clojure|list) %{
+        parinfer-enable-window
+    }
 }
 plug 'Delapouite/kakoune-buffers'
 plug "andreyorst/fzf.kak" defer "fzf" %{
