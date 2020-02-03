@@ -181,11 +181,13 @@ hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Firefox") en
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
 hs.hotkey.bind(hyper, "n", function() hs.application.launchOrFocus("Notebook") end)
 hs.hotkey.bind(hyper, "v", function() hs.application.launchOrFocus("Things3") end)
+hs.hotkey.bind(hyper, "r", function() hs.application.launchOrFocus("Slack") end)
 hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Firefox")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Notebook")
   hs.application.launchOrFocus("Things3")
+  hs.application.launchOrFocus("Slack")
 end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
