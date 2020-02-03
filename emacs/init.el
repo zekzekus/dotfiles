@@ -283,8 +283,7 @@
 (use-package rbenv
   :ensure t
   :after enh-ruby-mode
-  :init
-  (global-rbenv-mode))
+  :hook (rbenv-use-corresponding . enh-ruby-mode))
 
 (use-package projectile-rails
   :ensure t

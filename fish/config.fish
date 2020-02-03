@@ -39,7 +39,8 @@ alias mux='tmuxinator'
 
 python3 -m virtualfish | source
 status --is-interactive; and source (nodenv init -|psub)
-status --is-interactive; and source (rbenv init -|psub)
+# status --is-interactive; and source (rbenv init -|psub)
+rbenv init - | source
 set -gx PATH '/Users/zekus/.jenv/shims' $PATH
 set -gx JENV_SHELL fish
 set -gx JENV_LOADED 1
