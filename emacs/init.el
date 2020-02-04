@@ -285,14 +285,11 @@
 
 (use-package rbenv
   :ensure t
-  :after enh-ruby-mode
-  :hook (rbenv-use-corresponding . enh-ruby-mode))
+  :hook (enh-ruby-mode . rbenv-use-corresponding))
 
 (use-package projectile-rails
   :ensure t
-  :after enh-ruby-mode
-  :init
-  (projectile-rails-global-mode))
+  :hook (enh-ruby-mode . projectile-rails-mode))
 
 ;;; PL: Python
 (use-package pyvenv
