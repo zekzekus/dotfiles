@@ -205,6 +205,7 @@
   (projectile-mode +1)
   (setq projectile-git-submodule-command "")
   (setq projectile-mode-line-prefix " P")
+  (setq projectile-completion-system 'ivy)
 
   (defun zek:find-file ()
     (interactive)
