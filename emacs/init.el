@@ -283,7 +283,6 @@
   :config
   (defvaralias 'ruby-indent-level 'tab-width))
   
-
 (use-package rbenv
   :ensure t
   :hook (enh-ruby-mode . rbenv-use-corresponding))
