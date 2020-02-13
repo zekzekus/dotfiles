@@ -30,7 +30,7 @@
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -55,5 +55,27 @@
     :args '("start" "-p" "3000")
     :cwd (projectile-project-root)
     :env '(("WEB_CONCURRENCY" "1"))))
+
+(after! org
+  (setq org-log-done 'time)
+  (setq org-directory "~/Documents/org")
+  (setq org-agenda-files "agenda_files.list")
+  (setq org-refile-targets '(("work.org" :maxlevel . 2)
+                             ("personal.org" :maxlevel . 2)
+                             ("tickler.org" :maxlevel . 2)
+                             ("someday.org" :level . 1)))
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+  (setq org-tags-column -89)
+  (setq org-todo-keywords
+        '((sequence "TODO" "ONGOING" "FOLLOW" "WAITING" "|" "JIRA" "DONE" "CANCELLED")))
+  (setq org-default-notes-file (concat org-directory "/inbox.org"))
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                                 (file+headline org-default-notes-file "Tasks")
+                                 "* TODO %i%?")
+                                ("T" "Tickler" entry
+                                 (file+headline (concat org-directory "/tickler.org") "Tickler")
+                                 "* %i%? \n %U"))))
 
 (map! :n "DEL" 'evil-ex-nohighlight)
