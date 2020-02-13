@@ -48,6 +48,11 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(setq mac-command-modifier 'meta
+      mac-option-modifier 'none)
+
 (after! prodigy
   (prodigy-define-service
     :name "Voice Foreman"
@@ -78,4 +83,9 @@
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U"))))
 
-(map! :n "DEL" 'evil-ex-nohighlight)
+(after! evil
+  (defalias #'forward-evil-word #'forward-evil-symbol)
+  (map! :n "DEL" 'evil-ex-nohighlight))
+
+(after! ivy
+  (setq ivy-use-virtual-buffers t))
