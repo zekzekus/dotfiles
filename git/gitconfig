@@ -30,7 +30,6 @@ templatedir = ~/.git_template
 [alias]
 ctags = !.git/hooks/ctags
 ctagse = !.git/hooks/ctagse
-gtags = !.git/hooks/gtags
 
 [filter "lfs"]
 clean = git-lfs clean -- %f
