@@ -35,7 +35,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
+    \ 'for': ['python', 'haskell', 'rust', 'go', 'ruby'],
     \ }
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}

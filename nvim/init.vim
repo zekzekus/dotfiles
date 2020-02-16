@@ -66,8 +66,6 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'haskell': ['ghcide', '--lsp'],
     \ 'go': ['gopls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'scala': ['metals-vim'],
     \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 let g:LanguageClient_diagnosticsList = 'location'
