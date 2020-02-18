@@ -30,13 +30,12 @@ colorscheme duo-mini
 call zek#my_highlights()
 
 set statusline=%w%q
-set statusline+=\ %f%M%R%H
+set statusline+=\ 【\ %f%M%R%H\ 】
 set statusline+=%=
-set statusline+=%{(&paste==0?'':'[P]')}
-set statusline+=%{fugitive#statusline()}
-set statusline+=[%Y]
-set statusline+=[%02l\|%02c\|%03L]
-set statusline+=[%%%03p]
+set statusline+=%{(&paste==0?'':'〖P〗')}
+set statusline+=\ 《\ %Y\ 》
+set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
+set statusline+=\ ┇\ %%%p\ ┇
 set statusline+=%{zek#listinfos()}
 
 augroup general_au
