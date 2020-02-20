@@ -43,5 +43,5 @@ vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '
 
 augroup keybindings_au
   autocmd!
-  autocmd FileType ruby,python,rust,haskell,go,javascript,scala call zek#lc_maps()
+  autocmd FileType ruby,python,rust,haskell,go call zek#lc_maps()
 augroup END
