@@ -5,8 +5,8 @@
   "nvim/after/ftplugin/*.vim": {"type": "ftplugin"},
   "nvim/autoload/zek.vim": {"type": "autoload"},
   "fish/*": {"type": "fish"},
-  "tmux/*": {"type": "tmux"},
+  "tmux/*.conf": {"type": "tmux"},
   "macosx/*": {"type": "macosx"},
   "git/*": {"type": "git"},
-  "emacs/*": {"type": "emacs"}
+  "emacs/*.el": {"type": "emacs"}
 }
