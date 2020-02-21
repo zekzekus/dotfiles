@@ -5,7 +5,6 @@ packadd cfilter
 
 set mouse=a
 set hidden
-set number
 set cursorline
 set nomodeline
 set splitbelow
