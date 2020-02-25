@@ -17,7 +17,10 @@ function! zek#my_highlights()
     highlight StatusLine cterm=none
     highlight CursorLine cterm=none
     highlight VertSplit cterm=none
+    highlight CursorLineNr cterm=none
   endif
+  highlight PmenuSel guifg=#23272e guibg=#56b6c2
+  highlight StatusLine guifg=#23272e guibg=#56b6c2
 endfunction
 
 function! zek#custom_projections()
