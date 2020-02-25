@@ -24,8 +24,7 @@ set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,spa
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 
 set termguicolors
-let g:duo_mini_bg = "#2E3440"
-colorscheme duo-mini
+colorscheme two-firewatch
 call zek#my_highlights()
 
 set statusline=%w%q

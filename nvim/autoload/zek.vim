@@ -13,11 +13,10 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  highlight link clojureParen clojureComment
-  highlight StatuslineNC gui=underline
-  highlight TabLineSel gui=underline,bold
   if !has("nvim")
-    highlight Comment cterm=none
+    highlight StatusLine cterm=none
+    highlight CursorLine cterm=none
+    highlight VertSplit cterm=none
   endif
 endfunction
 
