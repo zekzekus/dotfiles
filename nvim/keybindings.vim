@@ -5,14 +5,9 @@ let g:maplocalleader = '\'
 " files
 command! -nargs=+ -bar Zfiles cgetexpr system('ff ' . shellescape(<q-args>))
 command! -nargs=0 -bar Zjunk cgetexpr system('rg --files ~/.cache/junkfile')
-nnoremap <leader>ff :<c-u>Zfiles<space>
-nnoremap <leader>fj :<c-u>Zjunk<cr>
-nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap <leader>bd :<c-u>bdelete<cr>
-nnoremap <leader>bb :<c-u>:b<space>
 nnoremap <leader><tab> :b#<CR>
 
 " search
