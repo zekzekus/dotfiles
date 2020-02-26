@@ -3,14 +3,16 @@ let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
 " files
-nnoremap <silent><leader>ff :<c-u>Files<cr>
-nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
+command! -nargs=+ -bar Zfiles cgetexpr system('ff ' . shellescape(<q-args>))
+command! -nargs=0 -bar Zjunk cgetexpr system('rg --files ~/.cache/junkfile')
+nnoremap <leader>ff :<c-u>Zfiles<space>
+nnoremap <leader>fj :<c-u>Zjunk<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
 nnoremap <leader>bd :<c-u>bdelete<cr>
-nnoremap <silent><leader>bb :<c-u>Buffers<cr>
+nnoremap <leader>bb :<c-u>:b<space>
 nnoremap <leader><tab> :b#<CR>
 
 " search
@@ -18,8 +20,6 @@ command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . '
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>BTags<cr>
-nnoremap <silent><leader>sl :<c-u>BLines<cr>
 
 " for browsing the input history
 cnoremap <c-n> <down>

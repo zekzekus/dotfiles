@@ -18,8 +18,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'shofel/vim-two-firewatch'

@@ -15,7 +15,7 @@ if [ ! "$(which rg)" ]; then
 	exit 1
 fi
 
-rg --files --hidden --glob "!.git/*" | fzy -e "$@"
+rg --files --hidden --glob "!.git/*" | fzf -f "$@"
 
 if [ $? -ne 0 ]; then
 	echo 'Not found'
