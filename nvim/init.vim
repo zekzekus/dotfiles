@@ -25,6 +25,7 @@ set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,spa
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 
 set termguicolors
+call zek#set_background()
 colorscheme two-firewatch
 call zek#my_highlights()
 

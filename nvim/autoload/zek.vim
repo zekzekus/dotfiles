@@ -28,3 +28,9 @@ function! zek#custom_projections()
     let &l:suffixesadd = value
   endfor
 endfunction
+
+function! zek#set_background()
+  if $ITERM_PROFILE =~? 'light'
+    set background=light
+  endif
+endfunction
