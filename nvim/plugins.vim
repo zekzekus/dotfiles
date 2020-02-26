@@ -23,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'shofel/vim-two-firewatch'
+Plug 'Lokaltog/vim-monotone'
 
 " programming
 Plug 'sheerun/vim-polyglot'

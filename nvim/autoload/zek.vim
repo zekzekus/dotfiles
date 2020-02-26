@@ -13,13 +13,6 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  if !has("nvim")
-    highlight StatusLine cterm=none
-    highlight CursorLine cterm=none
-    highlight VertSplit cterm=none
-    highlight CursorLineNr cterm=none
-  endif
-  highlight PmenuSel guifg=#23272e guibg=#56b6c2
   highlight StatusLine guifg=#23272e guibg=#56b6c2
 endfunction
 
@@ -27,10 +20,4 @@ function! zek#custom_projections()
   for [root, value] in projectionist#query('suffixesadd')
     let &l:suffixesadd = value
   endfor
-endfunction
-
-function! zek#set_background()
-  if $ITERM_PROFILE =~? 'light'
-    set background=light
-  endif
 endfunction
