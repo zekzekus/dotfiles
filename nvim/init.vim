@@ -59,6 +59,8 @@ else
   set clipboard+=unnamed
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  let &t_ZH="\e[3m"
+  let &t_ZR="\e[23m"
 endif
 
 let g:LanguageClient_serverCommands = {
