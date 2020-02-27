@@ -26,7 +26,8 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 set errorformat+=%f
 
 set termguicolors
-colorscheme monotone
+call zek#set_background()
+colorscheme two-firewatch
 call zek#my_highlights()
 
 set statusline=%w%q
@@ -58,8 +59,6 @@ else
   set clipboard+=unnamed
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  let &t_ZH="\e[3m"
-  let &t_ZR="\e[23m"
 endif
 
 let g:LanguageClient_serverCommands = {
