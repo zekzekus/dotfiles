@@ -13,10 +13,6 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  if g:colors_name == 'vacme'
-    highlight PmenuSel guifg=#23272e guibg=#56b6c2
-    highlight StatusLine guifg=#23272e guibg=#56b6c2
-  endif
   highlight StatusLineNC gui=underline
 endfunction
 

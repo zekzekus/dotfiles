@@ -21,7 +21,6 @@ Plug 'szw/vim-smartclose'
 
 " vim interface
 Plug 'seesleestak/duo-mini'
-Plug 'olivertaylor/vacme'
 
 " programming
 Plug 'sheerun/vim-polyglot'
