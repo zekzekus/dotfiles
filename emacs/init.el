@@ -191,6 +191,9 @@
     (exec-path-from-shell-initialize)
     (exec-path-from-shell-copy-env "GOROOT")))
 
+(use-package prodigy
+  :ensure t)
+
 (use-package which-key
   :ensure t
   :init
@@ -229,7 +232,16 @@
     (if (eq (projectile-detect-project-type) 'python-pip)
       (pyvenv-workon (projectile-project-name))))
 
+  (defun zek:projectile-define-voice-service ()
+    (prodigy-define-service
+      :name "Voice Foreman"
+      :command "foreman"
+      :args '("start" "-p" "3000")
+      :cwd (projectile-project-root)
+      :env '(("WEB_CONCURRENCY" "1"))))
+
   (add-hook 'projectile-after-switch-project-hook 'zek:projectile-auto-venv-hook)
+  (add-hook 'projectile-after-switch-project-hook 'zek:projectile-define-voice-service)
 
   (defun zek:projectile-shell-pop ()
     (interactive)
@@ -418,7 +430,7 @@
 
    "b"  '(:ignore t :which-key "buffers")
    "bd" '(evil-delete-buffer :which-key "delete")
-   "bB" '(zek:find-buffer :which-key "list")
+   ","  '(zek:find-buffer :which-key "buffers")
    "bb" '(counsel-ibuffer :which-key "list")
 
    "s"  '(:ignore t :which-key "search")
