@@ -89,3 +89,6 @@
 
 (after! ivy
   (setq ivy-use-virtual-buffers t))
+
+(after! projectile
+  (setq projectile-completion-system 'ivy))
