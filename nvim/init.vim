@@ -16,6 +16,7 @@ set hlsearch
 set foldmethod=indent
 set foldlevel=99
 set undofile
+set nowrap
 set tags+=,.git/tags
 set undodir=~/.nvimtmp
 set directory=~/.nvimtmp
