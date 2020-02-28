@@ -22,7 +22,6 @@ set directory=~/.nvimtmp
 set completeopt=menuone,noinsert,noselect
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
-set errorformat+=%f
 
 set termguicolors
 colorscheme duo-mini
