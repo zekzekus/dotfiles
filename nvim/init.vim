@@ -3,7 +3,6 @@ set shell=/usr/bin/env\ bash
 runtime! plugins.vim
 packadd cfilter
 
-set number
 set mouse=a
 set hidden
 set cursorline
