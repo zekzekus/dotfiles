@@ -26,7 +26,7 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 set errorformat+=%f
 
 set termguicolors
-call zek#set_colors()
+call zek#set_colorscheme()
 call zek#my_highlights()
 
 set statusline=%w%q

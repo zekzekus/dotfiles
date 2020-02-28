@@ -26,7 +26,7 @@ function! zek#custom_projections()
   endfor
 endfunction
 
-function! zek#set_colors()
+function! zek#set_colorscheme()
   if $ITERM_PROFILE =~? 'light'
     colorscheme vacme
   else
