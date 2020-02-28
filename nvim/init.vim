@@ -26,8 +26,7 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 set errorformat+=%f
 
 set termguicolors
-call zek#set_background()
-colorscheme two-firewatch
+call zek#set_colors()
 call zek#my_highlights()
 
 set statusline=%w%q
@@ -37,7 +36,7 @@ set statusline+=%{(&paste==0?'':'〖P〗')}
 set statusline+=\ 《\ %Y\ 》
 set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
 set statusline+=\ ┇\ %%%p\ ┇
-set statusline+=%{zek#listinfos()}
+set statusline+=\ %{zek#listinfos()}
 
 augroup general_au
   autocmd!

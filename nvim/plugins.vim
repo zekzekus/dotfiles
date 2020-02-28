@@ -20,7 +20,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose'
 
 " vim interface
-Plug 'shofel/vim-two-firewatch'
+Plug 'seesleestak/duo-mini'
+Plug 'olivertaylor/vacme'
 
 " programming
 Plug 'sheerun/vim-polyglot'

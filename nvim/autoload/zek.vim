@@ -13,14 +13,11 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  if !has("nvim")
-    highlight StatusLine cterm=none
-    highlight CursorLine cterm=none
-    highlight VertSplit cterm=none
-    highlight CursorLineNr cterm=none
+  if g:colors_name == 'vacme'
+    highlight PmenuSel guifg=#23272e guibg=#56b6c2
+    highlight StatusLine guifg=#23272e guibg=#56b6c2
   endif
-  highlight PmenuSel guifg=#23272e guibg=#56b6c2
-  highlight StatusLine guifg=#23272e guibg=#56b6c2
+  highlight StatusLineNC gui=underline
 endfunction
 
 function! zek#custom_projections()
@@ -29,8 +26,10 @@ function! zek#custom_projections()
   endfor
 endfunction
 
-function! zek#set_background()
+function! zek#set_colors()
   if $ITERM_PROFILE =~? 'light'
-    set background=light
+    colorscheme vacme
+  else
+    colorscheme duo-mini
   endif
 endfunction
