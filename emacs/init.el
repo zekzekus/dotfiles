@@ -9,7 +9,8 @@
 
 ;;; Commentary:
 
-;; My 1000th attempt to create an Emacs config from scratch
+;; My 1000th attempt to create an Emacs config from scratch.
+;; Which I believe this one worked well enough
 
 
 ;;; Code:
@@ -84,10 +85,14 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(use-package nord-theme
-  :ensure t
-  :init
-  (load-theme 'nord t))
+(use-package nordless-theme
+  :ensure t)
+
+;; (use-package parchment-theme
+;;   :ensure t)
+
+;; (use-package cloud-theme
+;;   :ensure t)
 
 (use-package ace-window
   :ensure t)
@@ -345,7 +350,7 @@
   :ensure t
   :config
   (setq org-log-done 'time)
-  (setq org-directory "~/Documents/org")
+  (setq org-directory "~/Library/Mobile\ Documents/iCloud\~com\~appsonthemove\~beorg/Documents/beorg")
   (setq org-agenda-files "agenda_files.list")
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
