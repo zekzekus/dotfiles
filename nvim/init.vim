@@ -51,6 +51,8 @@ if has('nvim')
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
+     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup END
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
