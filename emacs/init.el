@@ -88,11 +88,13 @@
 (use-package nordless-theme
   :ensure t)
 
-;; (use-package parchment-theme
-;;   :ensure t)
+(use-package parchment-theme
+  :ensure t
+  :defer t)
 
-;; (use-package cloud-theme
-;;   :ensure t)
+(use-package cloud-theme
+  :ensure t
+  :defer t)
 
 (use-package ace-window
   :ensure t)
