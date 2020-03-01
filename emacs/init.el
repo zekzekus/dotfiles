@@ -350,7 +350,7 @@
   :ensure t
   :config
   (setq org-log-done 'time)
-  (setq org-directory "~/Library/Mobile\ Documents/iCloud\~com\~appsonthemove\~beorg/Documents/beorg")
+  (setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/beorg")
   (setq org-agenda-files "agenda_files.list")
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
