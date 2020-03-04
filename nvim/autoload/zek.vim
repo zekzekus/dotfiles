@@ -13,19 +13,11 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  highlight StatusLineNC gui=underline
+  highlight StatusLineNC cterm=none guibg=#434c5e
 endfunction
 
 function! zek#custom_projections()
   for [root, value] in projectionist#query('suffixesadd')
     let &l:suffixesadd = value
   endfor
-endfunction
-
-function! zek#set_colorscheme()
-  if $ITERM_PROFILE =~? 'light'
-    colorscheme vacme
-  else
-    colorscheme duo-mini
-  endif
 endfunction
