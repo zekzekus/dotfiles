@@ -23,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'seesleestak/duo-mini'
+Plug 'ajgrf/parchment'
 
 " programming
 Plug 'sheerun/vim-polyglot'
