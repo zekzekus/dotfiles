@@ -47,7 +47,6 @@ augroup END
 
 if has('nvim')
   set inccommand=split
-  set clipboard+=unnamedplus
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
@@ -56,7 +55,6 @@ if has('nvim')
   augroup END
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
-  set clipboard+=unnamed
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   let &t_ZH="\e[3m"
