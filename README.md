@@ -113,32 +113,19 @@ for all plugins.
 
 ### Mac OS X
 
-- First install Homebrew
-
-        /usr/bin/ruby -e "$(curl -fsSL
-        https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-- Next, install the `tmux` and `reattach-to-user-namespace` packages using
+- Install the `tmux` and `reattach-to-user-namespace` packages using
   Homebrew
 
         $ brew install tmux
         $ brew install reattach-to-user-namespace
+
 - Create a symbolic link to `dotfiles/tmux/tmux.conf`
 
         ln -s /path/to/repo/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
-- ###### (Optional) Change the shell from `fish` to `zsh`
-    - Open `~/.tmux.conf` in your favorite editor and edit the `MYSHELL` and
-      `MYSHELL_PATH` variables in the file which defaults to `fish`
-
-            ...  3 # SHELL choice (zsh | fish) 4 MYSHELL=zsh 5
-            MYSHELL_PATH=/usr/local/bin/zsh ...
-
 - Run tmux
 
-    `~$ tmux`
-
-- ##### Et voilà!
+    `$ tmux`
 
 ### Debian/Ubuntu
 
@@ -149,24 +136,9 @@ for all plugins.
 
         ln -s /path/to/repo/dotfiles/tmux/tmux.ubuntu.conf ~/.tmux.conf
 
-- ###### (Optional) Change the shell from `fish` to `zsh`
-    - Open `~/.tmux.conf` in your favorite editor and edit the `MYSHELL` and
-      `MYSHELL_PATH` variables in the file which defaults to `fish`
-
-            ...  3 # SHELL choice (zsh | fish) 4 MYSHELL=zsh 5
-            MYSHELL_PATH=/usr/bin/zsh ...
-
 - Run tmux
 
-    `~$ tmux`
-
-- #### Troubleshooting :
-    - If you get an error regarding `ambiguous option: mouse` edit your
-      `~/.tmux.conf` and change the `set -g mouse on` to this
-
-            # set -g mouse on
-
-- ##### Et voilà!
+    `$ tmux`
 
 ## FISH Configuration
 
