@@ -29,8 +29,8 @@ set --export LC_NUMERIC "en_US.UTF-8"
 set --export LC_TIME "en_US.UTF-8"
 set --export LC_ALL "en_US.UTF-8"
 
-set --export EDITOR nvim
-set --export MANPAGER "nvim -c 'set ft=man' -"
+set --export EDITOR vim
+set --export MANPAGER "/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 set --export PGDATA /usr/local/var/postgres
 
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
