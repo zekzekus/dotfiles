@@ -18,8 +18,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
 
 " vim interface
 Plug 'seesleestak/duo-mini'
