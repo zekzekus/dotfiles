@@ -4,6 +4,7 @@ runtime! plugins.vim
 packadd cfilter
 
 set mouse=a
+set number
 set hidden
 set cursorline
 set nomodeline
