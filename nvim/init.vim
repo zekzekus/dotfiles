@@ -50,6 +50,8 @@ if has('nvim')
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
+     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup END
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
@@ -74,9 +76,5 @@ let g:LanguageClient_usePopupHover = 0
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
-
-let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
 
 runtime! keybindings.vim
