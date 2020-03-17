@@ -12,6 +12,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
+Plug 'godlygeek/tabular', {'on': 'Tabularize'}
 
 " navigating
 Plug 'tpope/vim-unimpaired'
