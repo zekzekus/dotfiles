@@ -26,7 +26,10 @@ set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,spa
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 
 set termguicolors
-colorscheme duo-mini
+let g:gruvbox_italic = 1
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_invert_tabline = 1
+colorscheme gruvbox
 call zek#my_highlights()
 
 set statusline=%w%q

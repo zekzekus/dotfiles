@@ -13,13 +13,6 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  if g:colors_name == 'duo-mini'
-    highlight StatusLineNC cterm=none guibg=#434c5e
-    highlight link clojureParen clojureComment
-  endif
-  if g:colors_name == 'parchment'
-    highlight clear VertSplit
-  endif
 endfunction
 
 function! zek#custom_projections()
