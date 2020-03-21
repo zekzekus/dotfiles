@@ -13,6 +13,15 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
+  highlight clear CursorLine
+endfunction
+
+function! zek#set_background()
+  if $ITERM_PROFILE =~? 'light'
+    set background=light
+  else
+    set background=dark
+  endif
 endfunction
 
 function! zek#custom_projections()

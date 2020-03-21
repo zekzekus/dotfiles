@@ -4,6 +4,7 @@ runtime! plugins.vim
 packadd cfilter
 
 set mouse=a
+set number
 set hidden
 set cursorline
 set nomodeline
@@ -28,6 +29,7 @@ set termguicolors
 let g:gruvbox_italic = 1
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_invert_tabline = 1
+call zek#set_background()
 colorscheme gruvbox
 call zek#my_highlights()
 
