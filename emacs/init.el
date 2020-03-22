@@ -284,7 +284,8 @@
   :ensure t
   :hook ((enh-ruby-mode python-mode haskell-mode go-mode rust-mode rjsx-mode) . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs '(enh-ruby-mode . ("solargraph" "stdio"))))
+  (add-to-list 'eglot-server-programs '(enh-ruby-mode . ("solargraph" "stdio")))
+  (add-to-list 'eglot-server-programs '(haskell-mode . ("ghcide" "--lsp"))))
 
 ;;; PL: Ruby
 (use-package enh-ruby-mode
