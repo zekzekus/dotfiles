@@ -29,6 +29,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
+Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -36,7 +37,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ 'for': ['python', 'haskell', 'rust', 'go', 'ruby'],
+    \ 'for': ['python', 'haskell', 'rust', 'go', 'ruby', 'javascript'],
     \ }
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}

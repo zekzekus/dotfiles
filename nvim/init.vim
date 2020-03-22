@@ -67,12 +67,13 @@ else
 endif
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'haskell': ['ghcide', '--lsp'],
-    \ 'go': ['gopls'],
-    \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-    \ }
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+      \ 'python': ['pyls'],
+      \ 'haskell': ['ghcide', '--lsp'],
+      \ 'go': ['gopls'],
+      \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
+      \ }
 let g:LanguageClient_diagnosticsList = 'location'
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
@@ -81,5 +82,6 @@ let g:LanguageClient_usePopupHover = 0
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
 
 runtime! keybindings.vim
