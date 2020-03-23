@@ -46,8 +46,10 @@ augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
+  autocmd QuickFixCmdPost lmake lwindow
   autocmd ColorScheme * call zek#my_highlights()
   autocmd User ProjectionistActivate call zek#custom_projections()
+  autocmd BufWritePost *.clj[s] silent lmake! <afile> | silent redraw!
 augroup END
 
 if has('nvim')
