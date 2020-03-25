@@ -87,8 +87,6 @@ let g:smartclose_set_default_mapping = 0
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
 let g:vimwiki_list = [
       \ {'path': '~/Documents/vimwiki/',
-      \  'path_html': '~/Documents/vimwiki_html/',
-      \  'syntax': 'markdown',
-      \  'ext': '.md'} ]
+      \  'path_html': '~/Documents/vimwiki_html/'} ]
 
 runtime! keybindings.vim
