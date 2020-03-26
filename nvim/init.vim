@@ -81,6 +81,7 @@ let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
 
+let g:fzf_preview_window = ''
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
