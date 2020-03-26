@@ -29,9 +29,9 @@ set termguicolors
 let g:gruvbox_italic = 1
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_invert_tabline = 1
-call zek#set_background()
+call zek#pre_colorscheme()
 colorscheme duo-mini
-call zek#my_highlights()
+call zek#post_colorscheme()
 
 set statusline=%w%q
 set statusline+=\ 【\ %f%M%R%H\ 】

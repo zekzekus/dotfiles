@@ -12,11 +12,12 @@ function! zek#lc_maps()
   nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
 endfunction
 
-function! zek#my_highlights()
+function! zek#post_colorscheme()
   highlight StatusLineNC guibg=#434c5e
+  highlight link clojureParen clojureComment
 endfunction
 
-function! zek#set_background()
+function! zek#pre_colorscheme()
 let g:duo_mini_bg = '#2e3340'
 endfunction
 
