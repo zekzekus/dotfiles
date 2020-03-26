@@ -21,7 +21,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose'
-Plug 'Shougo/denite.nvim'
+Plug 'Shougo/denite.nvim', {'do': function('zek#updateremote')}
 
 " vim interface
 Plug 'seesleestak/duo-mini'
