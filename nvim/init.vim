@@ -30,7 +30,7 @@ let g:gruvbox_italic = 1
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_invert_tabline = 1
 call zek#set_background()
-colorscheme gruvbox
+colorscheme duo-mini
 call zek#my_highlights()
 
 set statusline=%w%q

@@ -13,15 +13,11 @@ function! zek#lc_maps()
 endfunction
 
 function! zek#my_highlights()
-  highlight clear CursorLine
+  highlight StatusLineNC guibg=#434c5e
 endfunction
 
 function! zek#set_background()
-  if $ITERM_PROFILE =~? 'light'
-    set background=light
-  else
-    set background=dark
-  endif
+let g:duo_mini_bg = '#2e3340'
 endfunction
 
 function! zek#custom_projections()

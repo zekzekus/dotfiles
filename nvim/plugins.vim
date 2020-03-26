@@ -23,7 +23,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " vim interface
-Plug 'morhetz/gruvbox'
+Plug 'seesleestak/duo-mini'
 
 " programming
 Plug 'sheerun/vim-polyglot'
