@@ -50,6 +50,12 @@ augroup general_au
   autocmd ColorScheme * call zek#post_colorscheme()
   autocmd User ProjectionistActivate call zek#custom_projections()
   autocmd BufWritePost *.clj[s] silent lmake! <afile> | silent redraw!
+  autocmd WinEnter * if &filetype =~# '^denite'
+    \ |   highlight! link CursorLine Error
+    \ | endif
+  autocmd WinLeave * if &filetype ==# 'denite'
+    \ |   highlight! link CursorLine NONE
+    \ | endif
 augroup END
 
 if has('nvim')
@@ -57,8 +63,6 @@ if has('nvim')
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
-    autocmd  FileType fzf set laststatus=0 noshowmode noruler
-     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup END
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
@@ -81,7 +85,6 @@ let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
 
-let g:fzf_preview_window = ''
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
@@ -89,5 +92,20 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
 let g:vimwiki_list = [
       \ {'path': '~/Documents/vimwiki/',
       \  'path_html': '~/Documents/vimwiki_html/'} ]
+
+call denite#custom#option('_', {
+  \ 'prompt': '❯',
+  \ 'start_filter': 1,
+  \ 'smartcase': 1,
+  \ 'vertical_preview': 1,
+  \ 'highlight_matched_char': 'Underlined',
+  \ })
+
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--follow', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
 
 runtime! keybindings.vim
