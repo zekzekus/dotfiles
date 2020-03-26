@@ -31,7 +31,7 @@ Notable custom key bindings;
 
 * File based operations (starts with `<leader>f`)
     * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It shows
-      project files. You can switch between these with `C-n` and `C-p`.
+      project files. You can switch between these with `C-j` and `C-k`.
     * `<leader>fs` Save file in active buffer.
     * `<leader>fj` Fuzzy find junkfiles.
     * `<leader>fW` Remove trailing whitespace from whole buffer.
