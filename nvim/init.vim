@@ -26,9 +26,6 @@ set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,spa
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 
 set termguicolors
-let g:gruvbox_italic = 1
-let g:gruvbox_invert_selection = 0
-let g:gruvbox_invert_tabline = 1
 call zek#pre_colorscheme()
 colorscheme duo-mini
 call zek#post_colorscheme()
