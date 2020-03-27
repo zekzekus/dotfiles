@@ -164,12 +164,12 @@ hs.hotkey.bind(pushkey, "f", function() push(0,0,1,1) end)
 
 -- Move a window between monitors
 hs.hotkey.bind(pushkey,"1", function() moveToMonitor(1) end) -- Move to first monitor
-hs.hotkey.bind(shiftpushkey,"1", function() 											 -- Move to first monitor and fullscreen
+hs.hotkey.bind(shiftpushkey,"1", function() 	             -- Move to first monitor and fullscreen
   moveToMonitor(1)
   push(0,0,1,1)
 end)
 hs.hotkey.bind(pushkey,"2", function() moveToMonitor(2) end) -- Move to second monitor
-hs.hotkey.bind(shiftpushkey,"2", function() 											 -- Move to second monitor and fullscreen
+hs.hotkey.bind(shiftpushkey,"2", function() 		     -- Move to second monitor and fullscreen
   moveToMonitor(2)
   push(0,0,1,1)
 end)
@@ -179,13 +179,17 @@ hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 -- Application shortcuts
 hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Firefox") end)
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
-hs.hotkey.bind(hyper, "n", function() hs.application.launchOrFocus("NotePlan") end)
-hs.hotkey.bind(hyper, "r", function() hs.application.launchOrFocus("Slack") end)
+hs.hotkey.bind(hyper, "c", function() hs.application.launchOrFocus("BusyCal") end)
+hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Mail") end)
+hs.hotkey.bind(hyper, "g", function() hs.application.launchOrFocus("Things3") end)
+hs.hotkey.bind(hyper, "n", function() hs.application.launchOrFocus("Notebook") end)
 hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Firefox")
   hs.application.launchOrFocus("iTerm")
-  hs.application.launchOrFocus("NotePlan")
-  hs.application.launchOrFocus("Slack")
+  hs.application.launchOrFocus("BusyCal")
+  hs.application.launchOrFocus("Mail")
+  hs.application.launchOrFocus("Things3")
+  hs.application.launchOrFocus("Notebook")
 end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
