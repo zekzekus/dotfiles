@@ -49,3 +49,6 @@ if [ "${BASH_VERSINFO[0]}" -gt 4 ] || ([ "${BASH_VERSINFO[0]}" -eq 4 ] && [ "${B
 else
 	source /dev/stdin <<<"$("/usr/local/bin/starship" init bash --print-full-init)"
 fi
+
+export SDKMAN_DIR="/Users/zekus/.sdkman"
+[[ -s "/Users/zekus/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zekus/.sdkman/bin/sdkman-init.sh"
