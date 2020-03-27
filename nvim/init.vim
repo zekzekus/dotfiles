@@ -89,9 +89,6 @@ let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
-let g:vimwiki_list = [
-      \ {'path': '~/Documents/vimwiki/',
-      \  'path_html': '~/Documents/vimwiki_html/'} ]
 
 call denite#custom#option('_', {
   \ 'prompt': '❯',
