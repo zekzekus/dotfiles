@@ -85,7 +85,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(use-package gruvbox-theme
+(use-package nordless-theme
   :ensure t)
 
 (use-package ace-window
