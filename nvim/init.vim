@@ -94,8 +94,7 @@ call denite#custom#option('_', {
   \ 'vertical_preview': 1,
   \ 'highlight_matched_char': 'Underlined',
   \ })
-
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--follow', '--glob', '!.git'])
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'final_opts', [])
