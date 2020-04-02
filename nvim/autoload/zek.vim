@@ -15,7 +15,7 @@ function! zek#setup_cr()
 endfunction
 
 function! zek#lc_maps()
-  nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
+  nnoremap <C-p> :<C-u>Denite contextMenu<cr>
 endfunction
 
 function! zek#post_colorscheme()
@@ -24,7 +24,7 @@ function! zek#post_colorscheme()
 endfunction
 
 function! zek#pre_colorscheme()
-let g:duo_mini_bg = '#2e3340'
+  let g:duo_mini_bg = '#2e3340'
 endfunction
 
 function! zek#custom_projections()
