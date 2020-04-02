@@ -21,6 +21,7 @@ set tags+=,.git/tags
 set undodir=~/.nvimtmp
 set directory=~/.nvimtmp
 set completeopt=menuone,noinsert,noselect
+set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"
 

@@ -15,7 +15,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 Plug 'godlygeek/tabular',   {'on': 'Tabularize'}
-Plug 'junegunn/goyo.vim',   {'on': 'Goyo' }
 
 " navigating
 Plug 'tpope/vim-unimpaired'
