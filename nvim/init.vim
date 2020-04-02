@@ -100,6 +100,9 @@ call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
 
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default  = ['path', 'omni', 'keyn']
+let g:mucomplete#chains.vim      = ['path', 'keyn', 'cmd']
 let g:mucomplete#always_use_completeopt = 1
 
 runtime! keybindings.vim
