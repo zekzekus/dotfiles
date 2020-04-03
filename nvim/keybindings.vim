@@ -3,14 +3,14 @@ let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
 " files
-noremap <silent><leader>ff :<c-u>Denite file/rec<cr>
-nnoremap <silent><leader>fj :<c-u>Denite file/rec:~/.cache/junkfile<cr>
+noremap <silent><leader>ff :<c-u>Files<cr>
+nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
 nnoremap <leader>fs <ESC>:w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
 nnoremap <leader>bd :<c-u>bdelete<cr>
-nnoremap <silent><leader>bb :<c-u>Denite buffer<cr>
+nnoremap <silent><leader>bb :<c-u>Buffers<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
@@ -18,8 +18,8 @@ command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . 
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <BS> :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>Denite outline<cr>
-nnoremap <silent><leader>sl :<c-u>Denite line<cr>
+nnoremap <silent><leader>ss :<c-u>BTags<cr>
+nnoremap <silent><leader>sl :<c-u>BLines<cr>
 
 " for browsing the input history
 cnoremap <c-n> <down>
@@ -44,6 +44,4 @@ vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '
 augroup keybindings_au
   autocmd!
   autocmd FileType ruby,python,rust,haskell,go,javascript call zek#lc_maps()
-  autocmd FileType denite call zek#denite_settings()
-  autocmd FileType denite-filter call zek#denite_filter_settings()
 augroup END

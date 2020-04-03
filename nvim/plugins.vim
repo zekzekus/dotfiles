@@ -2,8 +2,6 @@ if !has('nvim')
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'tpope/vim-sensible'
   Plug 'sjl/vitality.vim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
 else
   call plug#begin('~/.config/nvim/plugged')
 endif
@@ -21,7 +19,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose'
-Plug 'Shougo/denite.nvim', {'do': function('zek#updateremote')}
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'seesleestak/duo-mini'
