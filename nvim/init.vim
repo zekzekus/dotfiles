@@ -65,19 +65,6 @@ else
   let &t_ZR="\e[23m"
 endif
 
-let g:LanguageClient_serverCommands = {
-      \ 'javascript': ['javascript-typescript-stdio'],
-      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-      \ 'python': ['pyls'],
-      \ 'haskell': ['ghcide', '--lsp'],
-      \ 'go': ['gopls'],
-      \ 'ruby': ['bundle', 'exec', 'solargraph', 'stdio'],
-      \ }
-let g:LanguageClient_diagnosticsList = 'location'
-let g:LanguageClient_useVirtualText = 'No'
-let g:LanguageClient_useFloatingHover = 0
-let g:LanguageClient_usePopupHover = 0
-
 let g:fzf_preview_window = ''
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3

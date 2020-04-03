@@ -33,11 +33,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do':     'bash install.sh',
-      \ 'for':    ['python', 'haskell', 'rust', 'go', 'ruby', 'javascript'],
-      \ }
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 

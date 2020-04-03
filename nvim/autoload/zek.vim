@@ -14,10 +14,6 @@ function! zek#setup_cr()
   nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
 endfunction
 
-function! zek#lc_maps()
-  nnoremap <C-p> :call LanguageClient_contextMenu()<cr>
-endfunction
-
 function! zek#post_colorscheme()
   highlight StatusLineNC guibg=#434c5e
   highlight link clojureParen clojureComment
