@@ -25,6 +25,10 @@ nnoremap <silent><leader>sl :<c-u>BLines<cr>
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_or_jump)
+
 nnoremap <silent><leader>qq :SmartClose<cr>
 
 " Select just pasted text.
