@@ -2,8 +2,6 @@ if !has('nvim')
   call plug#begin('~/.config/nvim/plugged_vim')
   Plug 'sjl/vitality.vim'
   Plug 'tpope/vim-sensible'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
 else
   call plug#begin('~/.config/nvim/plugged')
 endif
@@ -13,8 +11,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Shougo/neosnippet.vim', {'do': function('zek#updateremote')}
-Plug 'Shougo/neosnippet-snippets'
 Plug 'godlygeek/tabular',   {'on': 'Tabularize'}
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 

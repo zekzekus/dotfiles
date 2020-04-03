@@ -8,8 +8,6 @@ set number
 set hidden
 set cursorline
 set nomodeline
-set conceallevel=2
-set concealcursor=niv
 set splitbelow
 set splitright
 set wildignorecase
@@ -86,8 +84,8 @@ let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
 
 let g:mucomplete#chains = {}
-let g:mucomplete#chains.default  = ['path', 'omni', 'nsnp', 'keyn']
-let g:mucomplete#chains.vim      = ['path', 'keyn', 'cmd', 'nsnp']
+let g:mucomplete#chains.default  = ['path', 'omni', 'keyn']
+let g:mucomplete#chains.vim      = ['path', 'keyn', 'cmd']
 let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#cycle_with_trigger = 1
 
