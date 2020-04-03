@@ -33,7 +33,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do':     'bash install.sh',
