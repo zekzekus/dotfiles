@@ -2,22 +2,25 @@ nnoremap <space> <nop>
 let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
+" commands
+command! -nargs=1 -complete=command      -bar -range Zredir silent call zek#redir(<q-args>, <range>, <line1>, <line2>)
+command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+
 " files
-noremap <silent><leader>ff :<c-u>Files<cr>
-nnoremap <silent><leader>fj :<c-u>Files ~/.cache/junkfile<cr>
-nnoremap <leader>fs <ESC>:w<cr>
-nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <silent><leader>ff :Files<cr>
+nnoremap <silent><leader>fj :Files ~/.cache/junkfile<cr>
+nnoremap <leader>fs         :w<cr>
+nnoremap <leader>fW         :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap <leader>bd :<c-u>bdelete<cr>
-nnoremap <silent><leader>bb :<c-u>Buffers<cr>
-nnoremap <leader><tab> :b#<CR>
+nnoremap <leader>bd         :bdelete<cr>
+nnoremap <silent><leader>bb :Buffers<cr>
+nnoremap <leader><tab>      :b#<CR>
 
 " search
-command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap <BS> :nohlsearch<cr>
+nnoremap n                  nzzzv
+nnoremap N                  Nzzzv
+nnoremap <BS>               :nohlsearch<cr>
 nnoremap <silent><leader>ss :<c-u>BTags<cr>
 nnoremap <silent><leader>sl :<c-u>BLines<cr>
 
@@ -31,12 +34,12 @@ nnoremap <silent><leader>qq :SmartClose<cr>
 nnoremap <leader>V V`]
 
 let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
-nnoremap cn *``cgn
-nnoremap cN *``cgN
+nnoremap cn     *``cgn
+nnoremap cN     *``cgN
 vnoremap <expr> cn g:mc . "``cgn"
 vnoremap <expr> cN g:mc . "``cgN"
 
-nnoremap cq :call zek#setup_cr()<CR>*``qz
-nnoremap cQ :call zek#setup_cr()<CR>#``qz
-vnoremap <expr> cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
-vnoremap <expr> cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
+nnoremap cq       :call zek#setup_cr()<CR>*``qz
+nnoremap cQ       :call zek#setup_cr()<CR>#``qz
+vnoremap <expr>cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
+vnoremap <expr>cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"

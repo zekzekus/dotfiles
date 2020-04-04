@@ -26,6 +26,7 @@ Plug 'seesleestak/duo-mini'
 
 " programming
 Plug 'neomake/neomake'
+Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
