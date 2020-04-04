@@ -15,25 +15,24 @@ Plug 'godlygeek/tabular',   {'on': 'Tabularize'}
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
-Plug 'junegunn/fzf.vim'
-Plug 'szw/vim-smartclose'
-Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf.vim',   {'on': 'Files'}
+Plug '/usr/local/opt/fzf', {'on': 'Files'}
+Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
 Plug 'seesleestak/duo-mini'
 
 " programming
-Plug 'tpope/vim-dadbod'
+Plug 'neomake/neomake'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
-Plug 'neomake/neomake'
+Plug 'tpope/vim-dadbod', {'on': 'DB'}
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
