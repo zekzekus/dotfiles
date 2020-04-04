@@ -69,7 +69,6 @@ let g:fzf_preview_window = ''
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle=3
 let g:smartclose_set_default_mapping = 0
-
 call neomake#configure#automake('nrwi', 500)
 
 runtime! keybindings.vim
