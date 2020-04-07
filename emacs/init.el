@@ -418,20 +418,6 @@
    :states '(normal visual emacs)
    :prefix "SPC"
    "TAB" '(evil-switch-to-windows-last-buffer :which-key "last buffer")
-   "SPC" '(counsel-M-x :which-key "M-x")
-   "g"  '(:ignore t :which-key "git")
-   "gs" '(magit-status :which-key "git status")
-
-   "f"  '(:ignore t :which-key "files")
-   "ff" '(zek:find-file :which-key "find")
-   "fF" '(counsel-find-file :which-key "find")
-   "fs" '(evil-write :which-key "save")
-   "ft" '(treemacs :which-key "treemacs")
-
-   "b"  '(:ignore t :which-key "buffers")
-   "bd" '(evil-delete-buffer :which-key "delete")
-   ","  '(zek:find-buffer :which-key "buffers")
-   "bb" '(counsel-ibuffer :which-key "list")
 
    "s"  '(:ignore t :which-key "search")
    "sl" '(swiper :which-key "buffer")
@@ -440,32 +426,10 @@
 
    "/" '(zek:grep :which-key "grep")
 
-   "p" '(:ignore t :which-key "projects")
-   "pp" '(counsel-projectile-switch-project :which-key "switch project")
-   "pf" '(counsel-projectile-find-file :which-key "files")
-   "pb" '(zek:find-buffer :which-key "buffers")
-   "p/" '(counsel-projectile-rg :which-key "grep")
-   "pt" '(zek:projectile-shell-pop :which-key "terminal")
-   "pk" '(projectile-kill-buffers :which-key "kill buffers")
-
-   "t" '(:ignore t :which-key "toggles")
-   "tn" '(linum-mode :which-key "line numbers")
-   "tN" '(global-linum-mode :which-key "global line numbers")
-   "tc" '(company-mode :which-key "completion")
-   "tC" '(global-company-mode :which-key "global completion")
-   "tf" '(flycheck-mode :which-key "flycheck")
-   "tF" '(global-flycheck-mode :which-key "global flycheck")
-
    "a" '(:ignore t :which-key "applications")
    "at" '(zek:projectile-shell-pop :which-key "terminal")
 
-   "w" '(ace-window :which-key "ace-window")
-
-   "c" '(:ignore t :which-key "globals")
-   "cc" '(org-capture :which-key "capture")
-
-   "q" '(:ignore t :which-key "quit")
-   "qq" '(evil-quit-all :which-key "quit all"))
+   "w" '(ace-window :which-key "ace-window"))
 
   (general-define-key
    :states '(normal)
@@ -474,10 +438,8 @@
    "M-s" 'swiper
    "M-0" 'treemacs-select-window
    "C-," 'parinfer-toggle-mode
-   "] q" 'flycheck-next-error
-   "[ q" 'flycheck-previous-error
-   "] Q" 'flycheck-last-error
-   "[ Q" 'flycheck-first-error)
+   "C-c !" '(:keymap flycheck-command-map :package flycheck :which-key "flycheck")
+   "C-c p" '(:keymap projectile-command-map :package projectile :which-key "projectile"))
 
   (general-define-key
    :states '(normal visual emacs)
