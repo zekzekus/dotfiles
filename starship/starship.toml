@@ -24,3 +24,6 @@ disabled = true
 
 [git_branch]
 style = "bold cyan"
+
+[aws]
+symbol = "A:"
