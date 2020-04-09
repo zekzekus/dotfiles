@@ -26,4 +26,5 @@ disabled = true
 style = "bold cyan"
 
 [aws]
+disabled = true
 symbol = "A:"
