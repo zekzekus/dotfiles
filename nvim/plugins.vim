@@ -11,7 +11,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'godlygeek/tabular',   {'on': 'Tabularize'}
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
@@ -27,7 +26,6 @@ Plug 'seesleestak/duo-mini'
 
 " programming
 Plug 'neomake/neomake'
-Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
