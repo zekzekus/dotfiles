@@ -20,6 +20,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'junegunn/fzf.vim',   {'on': 'Files'}
 Plug '/usr/local/opt/fzf', {'on': 'Files'}
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
+Plug 'christoomey/vim-tmux-navigator'
 
 " vim interface
 Plug 'seesleestak/duo-mini'
