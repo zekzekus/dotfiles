@@ -37,6 +37,7 @@ set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
 
+eval (direnv hook fish)
 python3 -m virtualfish | source
 status --is-interactive; and source (nodenv init -|psub)
 # status --is-interactive; and source (rbenv init -|psub)
@@ -64,5 +65,9 @@ set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 
 set --export HOMEBREW_NO_INSTALL_CLEANUP 1
+
+if test -e ~/.nix-profile/etc/profile.d/nix.sh
+  bass source ~/.nix-profile/etc/profile.d/nix.sh
+end
 
 starship init fish | source
