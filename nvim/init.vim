@@ -8,6 +8,7 @@ set number
 set hidden
 set cursorline
 set nomodeline
+set nowrap
 set splitbelow
 set splitright
 set wildignorecase
