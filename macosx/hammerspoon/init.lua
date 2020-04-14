@@ -177,7 +177,7 @@ end)
 hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 
 -- Application shortcuts
-hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Firefox Developer Edition") end)
+hs.hotkey.bind(hyper, "b", function() hs.application.launchOrFocus("Firefox") end)
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("iTerm") end)
 hs.hotkey.bind(hyper, "c", function() hs.application.launchOrFocus("Calendar") end)
 hs.hotkey.bind(hyper, "m", function() hs.application.launchOrFocus("Slack") end)
@@ -185,7 +185,7 @@ hs.hotkey.bind(hyper, "g", function() hs.application.launchOrFocus("Things3") en
 hs.hotkey.bind(hyper, "n", function() hs.application.launchOrFocus("Evernote") end)
 hs.hotkey.bind(hyper, "s", function() hs.application.launchOrFocus("Spotify") end)
 hs.hotkey.bind(hyper, "a", function()
-  hs.application.launchOrFocus("Firefox Developer Edition")
+  hs.application.launchOrFocus("Firefox")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Calendar")
   hs.application.launchOrFocus("Slack")
