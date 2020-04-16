@@ -86,7 +86,9 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (use-package nordless-theme
-  :ensure t)
+  :ensure t
+  :init
+  (load-theme 'nordless t))
 
 (use-package ace-window
   :ensure t)
