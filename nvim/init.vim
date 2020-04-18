@@ -44,10 +44,8 @@ augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
-  autocmd QuickFixCmdPost lmake lwindow
   autocmd ColorScheme * call zek#post_colorscheme()
   autocmd User ProjectionistActivate call zek#custom_projections()
-  autocmd BufWritePost *.clj[s] silent lmake! <afile> | silent redraw!
 augroup END
 
 if has('nvim')
@@ -67,6 +65,13 @@ else
 endif
 
 let g:vitality_fix_focus = 0
+let g:neomake_virtualtext_current_error = 0
 call neomake#configure#automake('nrwi', 500)
+let g:neomake_clojure_enabled_makers = ['kondo']
+let g:neomake_clojure_kondo_maker = {
+      \ 'exe': 'clj-kondo',
+      \ 'args': ['--config', '.clj-kondo/config.edn', '--lint', '%'],
+      \ 'errorformat': '%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m',
+      \ }
 
 runtime! keybindings.vim
