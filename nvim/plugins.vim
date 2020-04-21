@@ -33,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
+Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 Plug 'tpope/vim-dadbod', {'on': 'DB'}
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
