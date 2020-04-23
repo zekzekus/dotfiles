@@ -48,6 +48,4 @@ Plug 'tpope/vim-rake',    {'for': 'ruby'}
 Plug 'tpope/vim-rails',   {'for': 'ruby'}
 Plug 'tpope/vim-bundler', {'for': 'ruby'}
 
-Plug 'vimwiki/vimwiki'
-
 call plug#end()

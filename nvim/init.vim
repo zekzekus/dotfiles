@@ -73,10 +73,5 @@ let g:neomake_clojure_kondo_maker = {
       \ 'args': ['--config', '.clj-kondo/config.edn', '--lint', '%'],
       \ 'errorformat': '%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m',
       \ }
-let g:netrw_liststyle=3
-let g:smartclose_set_default_mapping = 0
-let g:vimwiki_list = [
-      \ {'path': '~/Documents/vimwiki/',
-      \  'path_html': '~/Documents/vimwiki_html/'} ]
 
 runtime! keybindings.vim
