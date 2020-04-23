@@ -367,6 +367,12 @@
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U"))))
 
+(use-package org-roam
+  :ensure t
+  :after org
+  :hook (after-init . org-roam-mode)
+  :custom (org-roam-directory "~/roamorg"))
+
 (use-package evil-org
   :ensure t
   :after (org evil)

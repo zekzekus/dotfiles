@@ -92,3 +92,7 @@
 
 (after! projectile
   (setq projectile-completion-system 'ivy))
+
+(after! org-roam
+  (setq org-roam-directory "~/roaming")
+  (setq org-roam-completion-system 'ivy))
