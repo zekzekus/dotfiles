@@ -18,8 +18,6 @@ Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf.vim',   {'on': 'Files'}
-Plug '/usr/local/opt/fzf', {'on': 'Files'}
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface

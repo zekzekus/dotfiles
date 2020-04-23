@@ -5,24 +5,26 @@ let g:maplocalleader = '\'
 " commands
 command! -nargs=1 -complete=command      -bar -range Zredir silent call zek#redir(<q-args>, <range>, <line1>, <line2>)
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+                        -bar        Zfiles cgetexpr system('ff ' . shellescape(<q-args>) . ' .')
+command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
 " files
-nnoremap <silent><leader>ff :Files<cr>
-nnoremap <silent><leader>fj :Files ~/.cache/junkfile<cr>
-nnoremap <leader>fs         :w<cr>
-nnoremap <leader>fW         :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>ff :Zfiles<space>
+nnoremap <leader>fj :Zjunk<space>
+nnoremap <leader>fs :w<cr>
+nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap <leader>bd         :bdelete<cr>
-nnoremap <silent><leader>bb :Buffers<cr>
-nnoremap <leader><tab>      :b#<CR>
+nnoremap <leader>bd    :bdelete<cr>
+nnoremap <leader>bb    :b<space>
+nnoremap <leader><tab> :b#<CR>
 
 " search
 nnoremap n                  nzzzv
 nnoremap N                  Nzzzv
 nnoremap <BS>               :nohlsearch<cr>
-nnoremap <silent><leader>ss :<c-u>BTags<cr>
-nnoremap <silent><leader>sl :<c-u>BLines<cr>
+nnoremap <leader>/ :Zgrep<space>
+nnoremap <leader>* :Zgrep<space><c-r><c-w><cr>
 
 " for browsing the input history
 cnoremap <c-n> <down>

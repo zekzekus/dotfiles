@@ -17,6 +17,7 @@ set smartcase
 set hlsearch
 set foldmethod=indent
 set foldlevel=99
+set errorformat+=%f
 set undofile
 set tags+=,.git/tags
 set undodir=~/.nvimtmp
@@ -43,7 +44,7 @@ set statusline+=\ %{zek#listinfos()}
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
-  autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
+  autocmd QuickFixCmdPost cgetexpr,cexpr copen
   autocmd ColorScheme * call zek#post_colorscheme()
   autocmd User ProjectionistActivate call zek#custom_projections()
 augroup END
@@ -53,8 +54,6 @@ if has('nvim')
   augroup terminal_au
     autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
-    autocmd FileType fzf set laststatus=0 noshowmode noruler
-          \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup END
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
