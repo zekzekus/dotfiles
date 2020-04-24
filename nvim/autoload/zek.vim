@@ -57,3 +57,60 @@ function! zek#redir(cmd, rng, start, end) abort
   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
   call setline(1, output)
 endfunction
+
+function! zek#feedkeys(str) abort
+  call feedkeys(a:str, 'n')
+endfunction
+
+function! zek#autoreply() abort
+  if g:zek_has_replied
+    let g:zek_has_replied = v:false
+    return
+  endif
+
+  let g:zek_has_replied = v:true
+
+  let previous_cmdline  = getcmdline()
+  let previous_cmd      = split(previous_cmdline)[0]
+  let previous_args     = split(previous_cmdline)[1:]
+
+  let ignorecase    = &ignorecase
+  set noignorecase
+  let previous_cmd  = get(getcompletion(previous_cmd, 'command'), 0)
+  let &ignorecase   = ignorecase
+
+  if empty(previous_cmd)
+    return
+  endif
+
+  if previous_cmd ==# 'global'
+    call zek#feedkeys(':')
+  elseif previous_cmd ==# 'undolist'
+    call zek#feedkeys(':undo' . ' ')
+  elseif previous_cmd ==# 'oldfiles'
+    call zek#feedkeys(':edit #<')
+  elseif previous_cmd ==# 'marks'
+    call zek#feedkeys(':normal! `')
+  elseif previous_cmd ==# 'changes'
+    call zek#feedkeys(':normal! g;')
+    call zek#feedkeys("\<S-Left>")
+  elseif previous_cmd ==# 'jumps'
+    call zek#feedkeys(':normal!' . ' ')
+    call zek#feedkeys("\<C-O>\<S-Left>")
+  elseif previous_cmd ==# 'registers'
+    call zek#feedkeys(':normal! "p')
+    call zek#feedkeys("\<Left>")
+  elseif previous_cmd ==# 'tags'
+    call zek#feedkeys(':pop')
+    call zek#feedkeys("\<Home>")
+  elseif index(['ls', 'files', 'buffers'], previous_cmd) != -1
+    call zek#feedkeys(':buffer' . ' ')
+  elseif index(['clist', 'llist'], previous_cmd) != -1
+    call zek#feedkeys(':' . repeat(previous_cmd[0], 2) . ' ')
+  elseif index(['dlist', 'ilist'], previous_cmd) != -1
+    call zek#feedkeys(':' . previous_cmd[0] . 'jump' . ' ' . join(previous_args))
+    call zek#feedkeys("\<Home>\<S-Right>\<Space>")
+  else
+    let g:zek_has_replied = v:false
+  endif
+endfunction

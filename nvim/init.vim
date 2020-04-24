@@ -41,12 +41,14 @@ set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
 set statusline+=\ ┇\ %%%p\ ┇
 set statusline+=\ %{zek#listinfos()}
 
+let g:zek_has_replied = v:false
 augroup general_au
   autocmd!
   autocmd VimResized * :wincmd =
   autocmd QuickFixCmdPost cgetexpr,cexpr copen
   autocmd ColorScheme * call zek#post_colorscheme()
   autocmd User ProjectionistActivate call zek#custom_projections()
+  autocmd CmdlineLeave : call zek#autoreply()
 augroup END
 
 if has('nvim')
