@@ -156,6 +156,10 @@ hs.hotkey.bind(pushkey,"right", function() push(0.5,0,0.5,1) end)	-- right side
 hs.hotkey.bind(pushkey,"up", function()	push(0,0,1,0.5) end) 		-- top half
 hs.hotkey.bind(pushkey,"down", function()	push(0,0.5,1,0.5) end)	-- bottom half
 
+-- Push to screen edge 1/3 (approx)
+hs.hotkey.bind(shiftpushkey,"left", function() push(0,0,0.69,1) end)     -- left side
+hs.hotkey.bind(shiftpushkey,"right", function() push(0.69,0,0.31,1) end) -- right side
+
 -- Center window with some room to see the desktop
 hs.hotkey.bind(pushkey, "g", function() push(0.05,0.05,0.9,0.9) end)
 
