@@ -1,9 +1,9 @@
 if !has('nvim')
-  call plug#begin('~/.config/nvim/plugged_vim')
+  call plug#begin('~/.cache/plugged_vim')
   Plug 'sjl/vitality.vim'
   Plug 'tpope/vim-sensible'
 else
-  call plug#begin('~/.config/nvim/plugged')
+  call plug#begin('~/.cache/plugged_nvim')
 endif
 
 " editing
