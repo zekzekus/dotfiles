@@ -3,7 +3,7 @@ let g:mapleader = "\<space>"
 let g:maplocalleader = '\'
 
 " commands
-command! -nargs=1 -complete=command      -bar -range Zredir silent call zek#redir(<q-args>, <range>, <line1>, <line2>)
+command! -nargs=1 -complete=command      -bar -range Zredir call zek#redir(<q-args>, <range>, <line1>, <line2>)
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
 command! -nargs=+                        -bar        Zfiles cgetexpr system('ff ' . shellescape(<q-args>) . ' .')
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
@@ -16,7 +16,7 @@ nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
 nnoremap <leader>bd    :bdelete<cr>
-nnoremap <leader>bb    :b<space>
+nnoremap <leader>bb    :ls<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
