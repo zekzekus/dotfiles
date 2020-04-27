@@ -15,6 +15,7 @@ Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'tpope/vim-apathy'
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
