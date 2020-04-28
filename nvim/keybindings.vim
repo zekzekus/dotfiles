@@ -29,7 +29,7 @@ nnoremap <leader>* :Zgrep<space><c-r><c-w><cr>
 " for browsing the input history
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
-nmap <buffer> - <Plug>VinegarVerticalSplitUp
+nmap - <Plug>VinegarVerticalSplitUp
 
 nnoremap <silent><leader>qq :SmartClose<cr>
 
