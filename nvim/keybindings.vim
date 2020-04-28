@@ -25,6 +25,8 @@ nnoremap N                  Nzzzv
 nnoremap <BS>               :nohlsearch<cr>
 nnoremap <leader>/ :Zgrep<space>
 nnoremap <leader>* :Zgrep<space><c-r><c-w><cr>
+nnoremap <leader>ss :ilist<space>
+nnoremap <leader>sl :ilist //<Left>
 
 " for browsing the input history
 cnoremap <c-n> <down>

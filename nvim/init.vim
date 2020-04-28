@@ -44,11 +44,11 @@ set statusline+=\ %{zek#listinfos()}
 let g:zek_has_replied = v:false
 augroup general_au
   autocmd!
-  autocmd VimResized * :wincmd =
-  autocmd QuickFixCmdPost cgetexpr,cexpr copen
-  autocmd ColorScheme * call zek#post_colorscheme()
-  autocmd User ProjectionistActivate call zek#custom_projections()
-  autocmd CmdlineLeave : call zek#autoreply()
+  autocmd VimResized      *                     :wincmd =
+  autocmd ColorScheme     *                     call zek#post_colorscheme()
+  autocmd CmdlineLeave    :                     call zek#autoreply()
+  autocmd QuickFixCmdPost cgetexpr,cexpr        copen
+  autocmd User            ProjectionistActivate call zek#custom_projections()
 augroup END
 
 if has('nvim')
@@ -61,19 +61,19 @@ if has('nvim')
 else
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  let &t_ZH="\e[3m"
-  let &t_ZR="\e[23m"
+  let &t_ZH = "\e[3m"
+  let &t_ZR = "\e[23m"
 endif
 
 let g:vitality_fix_focus = 0
-let g:netrw_liststyle = 3
+let g:netrw_liststyle    = 3
 let g:neomake_virtualtext_current_error = 0
-call neomake#configure#automake('nrwi', 500)
-let g:neomake_clojure_enabled_makers = ['kondo']
-let g:neomake_clojure_kondo_maker = {
+let g:neomake_clojure_enabled_makers    = ['kondo']
+let g:neomake_clojure_kondo_maker       = {
       \ 'exe': 'clj-kondo',
       \ 'args': ['--config', '.clj-kondo/config.edn', '--lint', '%'],
       \ 'errorformat': '%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m',
       \ }
+call neomake#configure#automake('nrwi', 500)
 
 runtime! keybindings.vim
