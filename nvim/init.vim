@@ -27,11 +27,6 @@ set showbreak=↪\
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"\ --hidden\ --glob\ \"!.git\"
 
-set termguicolors
-call zek#pre_colorscheme()
-colorscheme duo-mini
-call zek#post_colorscheme()
-
 set statusline=%w%q
 set statusline+=\ 【\ %f%M%R%H\ 】
 set statusline+=%=
@@ -40,6 +35,11 @@ set statusline+=\ 《\ %Y\ 》
 set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
 set statusline+=\ ┇\ %%%p\ ┇
 set statusline+=\ %{zek#listinfos()}
+
+set termguicolors
+call zek#pre_colorscheme()
+colorscheme duo-mini
+call zek#post_colorscheme()
 
 let g:zek_has_replied = v:false
 augroup general_au
