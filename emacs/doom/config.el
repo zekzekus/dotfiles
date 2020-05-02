@@ -63,7 +63,7 @@
 
 (after! org
   (setq org-log-done 'time)
-  (setq org-directory "~/Documents/org")
+  (setq org-directory "~/roaming")
   (setq org-agenda-files "agenda_files.list")
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
@@ -95,4 +95,5 @@
 
 (after! org-roam
   (setq org-roam-directory "~/roaming")
+  (setq org-roam-index-file "index.org")
   (setq org-roam-completion-system 'ivy))
