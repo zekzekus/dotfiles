@@ -20,18 +20,17 @@ nnoremap <leader>bb    :ls<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
-nnoremap n                  nzzzv
-nnoremap N                  Nzzzv
-nnoremap <BS>               :nohlsearch<cr>
-nnoremap <leader>/ :Zgrep<space>
-nnoremap <leader>* :Zgrep<space><c-r><c-w><cr>
+nnoremap n          nzzzv
+nnoremap N          Nzzzv
+nnoremap <BS>       :nohlsearch<cr>
+nnoremap <leader>/  :Zgrep<space>
+nnoremap <leader>*  :Zgrep<space><c-r><c-w><cr>
 nnoremap <leader>ss :ilist<space>
 nnoremap <leader>sl :ilist //<Left>
 
-" for browsing the input history
+nmap     -     <Plug>VinegarVerticalSplitUp
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
-nmap - <Plug>VinegarVerticalSplitUp
 
 nnoremap <silent><leader>qq :SmartClose<cr>
 
