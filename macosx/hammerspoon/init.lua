@@ -151,8 +151,8 @@ hs.hotkey.bind(hyper, 'k', function() hs.window.focusedWindow():focusWindowNorth
 hs.hotkey.bind(hyper, 'j', function() hs.window.focusedWindow():focusWindowSouth() end)
 
 -- Push to screen edge
-hs.hotkey.bind(pushkey,"left", function() push(0,0,0.5,1) end) 		-- left side
-hs.hotkey.bind(pushkey,"right", function() push(0.5,0,0.5,1) end)	-- right side
+hs.hotkey.bind(pushkey,"left", function() push(0,0,0.488,1) end) 		-- left side
+hs.hotkey.bind(pushkey,"right", function() push(0.49,0,0.51,1) end)	-- right side
 hs.hotkey.bind(pushkey,"up", function()	push(0,0,1,0.5) end) 		-- top half
 hs.hotkey.bind(pushkey,"down", function()	push(0,0.5,1,0.5) end)	-- bottom half
 
