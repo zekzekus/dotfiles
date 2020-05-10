@@ -7,6 +7,7 @@ else
 endif
 
 " editing
+Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -19,6 +20,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
