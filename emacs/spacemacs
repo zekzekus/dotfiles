@@ -60,6 +60,7 @@ This function should only modify configuration layer settings."
           org-enable-org-journal-support t
           org-enable-sticky-header t
           org-enable-verb-support t)
+     org-roam
      emacs-lisp
      clojure
      ruby
@@ -494,8 +495,10 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (defalias 'forward-evil-word 'forward-evil-symbol)
   (spacemacs/toggle-truncate-lines-on)
-  (setq org-journal-dir "~/org/daily"))
-  
+  (setq org-journal-dir "~/org")
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-date-format "%A, %d %B %Y"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
