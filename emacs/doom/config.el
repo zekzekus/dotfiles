@@ -18,15 +18,15 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "PragmataPro" :size 15))
+(setq doom-font (font-spec :family "PragmataPro" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'nord)
+(setq doom-theme 'nordless)
 
 ;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/Documents/org/")
+(setq org-directory "~/org")
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
@@ -63,7 +63,7 @@
 
 (after! org
   (setq org-log-done 'time)
-  (setq org-directory "~/roaming")
+  (setq org-directory "~/org")
   (setq org-agenda-files "agenda_files.list")
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
@@ -81,7 +81,11 @@
                                  "* TODO %i%?")
                                 ("T" "Tickler" entry
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
-                                 "* %i%? \n %U"))))
+                                 "* %i%? \n %U")))
+  (setq org-journal-date-prefix "#+TITLE: ")
+  (setq org-journal-file-format "%Y-%m-%d.org")
+  (setq org-journal-dir "~/org/journal")
+  (setq org-journal-date-format "%A, %d %B %Y"))
 
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
@@ -94,6 +98,12 @@
   (setq projectile-completion-system 'ivy))
 
 (after! org-roam
-  (setq org-roam-directory "~/roaming")
+  (setq org-roam-directory "~/org")
   (setq org-roam-index-file "index.org")
   (setq org-roam-completion-system 'ivy))
+
+(after! deft
+  (setq deft-recursive t)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-default-extension "org")
+  (setq deft-directory "~/org"))

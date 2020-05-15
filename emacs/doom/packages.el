@@ -11,7 +11,7 @@
 ;;
 ;; Here are a couple examples:
 
-(package! nord-theme)
+(package! nordless-theme)
 
 ;; All of Doom's packages are pinned to a specific commit, and updated from
 ;; release to release. To un-pin all packages and live on the edge, do:
