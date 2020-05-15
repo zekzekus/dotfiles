@@ -19,7 +19,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim', {'on': ['CtrlP', 'CtrlPBuffer', 'CtrlPBufTag', 'CtrlPLine']}
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface

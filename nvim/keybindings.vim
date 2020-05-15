@@ -9,14 +9,14 @@ command! -nargs=+                        -bar        Zfiles cgetexpr system('ff 
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
 " files
-nnoremap <leader>ff :Zfiles<space>
-nnoremap <leader>fj :Zjunk<space>
+nnoremap <leader>ff :CtrlP<cr>
+nnoremap <leader>fj :CtrlP ~/.cache/junkfile<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
 nnoremap <leader>bd    :bdelete<cr>
-nnoremap <leader>bb    :ls<cr>
+nnoremap <leader>bb    :CtrlPBuffer<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
@@ -25,8 +25,8 @@ nnoremap N          Nzzzv
 nnoremap <BS>       :nohlsearch<cr>
 nnoremap <leader>/  :Zgrep<space>
 nnoremap <leader>*  :Zgrep<space><c-r><c-w><cr>
-nnoremap <leader>ss :ilist<space>
-nnoremap <leader>sl :ilist //<Left>
+nnoremap <leader>ss :CtrlPBufTag<cr>
+nnoremap <leader>sl :CtrlPLine<cr>
 
 nmap     -     <Plug>VinegarVerticalSplitUp
 cnoremap <c-n> <down>
