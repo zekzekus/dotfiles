@@ -11,6 +11,7 @@ set --export GOPATH $HOME/go
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH
 set --export PATH /usr/local/opt/go/libexec/bin $PATH
+set --export PATH $HOME/.gem/ruby/2.6.0/bin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $GOPATH/bin $PATH
 set --export PATH $HOME/.local/bin $PATH
@@ -39,26 +40,6 @@ alias mux='tmuxinator'
 
 eval (direnv hook fish)
 python3 -m virtualfish | source
-status --is-interactive; and source (nodenv init -|psub)
-# status --is-interactive; and source (rbenv init -|psub)
-rbenv init - | source
-set -gx PATH '/Users/zekus/.jenv/shims' $PATH
-set -gx JENV_SHELL fish
-set -gx JENV_LOADED 1
-set -e JAVA_HOME
-source '/usr/local/Cellar/jenv/0.5.2/libexec/libexec/../completions/jenv.fish'
-jenv rehash 2>/dev/null
-function jenv
-  set command $argv[1]
-  set -e argv[1]
-
-  switch "$command"
-  case enable-plugin rehash shell shell-options
-    source (jenv "sh-$command" $argv|psub)
-  case '*'
-    command jenv "$command" $argv
-  end
-end
 
 set --export FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
