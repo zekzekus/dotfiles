@@ -39,7 +39,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(set-frame-font "PragmataPro 15" nil t)
+(set-frame-font "PragmataPro 14" nil t)
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -85,10 +85,12 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(use-package nordless-theme
-  :ensure t
-  :init
-  (load-theme 'nordless t))
+(load-theme 'dichromacy t)
+
+;; (use-package nordless-theme
+;;   :ensure t
+;;   :init
+;;   (load-theme 'nordless t))
 
 (use-package ace-window
   :ensure t)
@@ -102,8 +104,7 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
-  (with-eval-after-load 'evil
-    (defalias #'forward-evil-word #'forward-evil-symbol)))
+  (defalias #'forward-evil-word #'forward-evil-symbol))
 
 (use-package evil-collection
   :after evil
@@ -233,16 +234,7 @@
     (if (eq (projectile-detect-project-type) 'python-pip)
       (pyvenv-workon (projectile-project-name))))
 
-  (defun zek:projectile-define-voice-service ()
-    (prodigy-define-service
-      :name "Voice Foreman"
-      :command "foreman"
-      :args '("start" "-p" "3000")
-      :cwd (projectile-project-root)
-      :env '(("WEB_CONCURRENCY" "1"))))
-
   (add-hook 'projectile-after-switch-project-hook 'zek:projectile-auto-venv-hook)
-  (add-hook 'projectile-after-switch-project-hook 'zek:projectile-define-voice-service)
 
   (defun zek:projectile-shell-pop ()
     (interactive)
@@ -256,9 +248,8 @@
   :after evil
   :ensure t
   :diminish evil-escape-mode
-  :init
-  (evil-escape-mode)
   :config
+  (evil-escape-mode)
   (setq-default evil-escape-key-sequence "C-["))
 
 (use-package paredit
@@ -275,7 +266,7 @@
 (use-package company
   :ensure t
   :diminish company-mode
-  :init
+  :config
   (global-company-mode)
   (setq company-tooltip-limit 20)
   (setq company-idle-delay .3)
@@ -339,15 +330,14 @@
 ;;; PL: Javascript (React)
 (use-package rjsx-mode
   :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode)))
+  :mode ("components\\/.*\\.js\\'" . rjsx-mode))
 
 (use-package org
   :mode ("\\.org\\'" . org-mode)
   :ensure t
   :config
   (setq org-log-done 'time)
-  (setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/beorg")
+  (setq org-directory "~/org")
   (setq org-agenda-files "agenda_files.list")
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
@@ -370,8 +360,8 @@
 (use-package org-roam
   :ensure t
   :after org
-  :hook (after-init . org-roam-mode)
-  :custom (org-roam-directory "~/roamorg"))
+  :hook (org-mode . org-roam-mode)
+  :custom (org-roam-directory "~/org"))
 
 (use-package evil-org
   :ensure t
@@ -394,7 +384,7 @@
 
 (use-package flycheck
   :ensure t
-  :init
+  :config
   (global-flycheck-mode)
   (setq flycheck-mode-line-prefix "F")
   (setq flycheck-ruby-rubocop-executable "bundle exec rubocop"))
@@ -404,7 +394,7 @@
 
 (use-package treemacs
   :ensure t
-  :defer t
+  :commands (treemacs)
   :config
   (setq treemacs-indentation-string (propertize " ⫶ " 'face 'font-lock-comment-face)
         treemacs-indentation 1)
