@@ -36,9 +36,6 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 alias mux="tmuxinator"
 
-eval "$(rbenv init -)"
-eval "$(nodenv init -)"
-eval "$(jenv init -)"
 eval "$(direnv hook bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -50,6 +47,3 @@ if [ "${BASH_VERSINFO[0]}" -gt 4 ] || ([ "${BASH_VERSINFO[0]}" -eq 4 ] && [ "${B
 else
 	source /dev/stdin <<<"$("/usr/local/bin/starship" init bash --print-full-init)"
 fi
-
-export SDKMAN_DIR="/Users/zekus/.sdkman"
-[[ -s "/Users/zekus/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zekus/.sdkman/bin/sdkman-init.sh"
