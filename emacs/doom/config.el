@@ -53,13 +53,6 @@
 (setq mac-command-modifier 'meta
       mac-option-modifier 'none)
 
-(after! prodigy
-  (prodigy-define-service
-    :name "Docker Compose"
-    :command "docker-compose"
-    :args '("up")
-    :cwd (projectile-project-root)))
-
 (after! org
   (setq org-log-done 'time)
   (setq org-directory "~/org")
