@@ -139,14 +139,14 @@
        nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
-        +dragndrop       ; drag & drop files/images into org buffers
-        ;;+hugo            ; use Emacs for hugo blogging
+        ;; +dragndrop       ; drag & drop files/images into org buffers
+        +hugo)            ; use Emacs for hugo blogging
         ;;+jupyter        ; ipython/jupyter support for babel
-        +roam
-        +journal
-        +pandoc          ; export-with-pandoc support
-        +pomodoro        ; be fruitful with the tomato technique
-        +present)        ; using org-mode for presentations
+        ;; +roam
+        ;; +journal
+        ;; +pandoc          ; export-with-pandoc support
+        ;; +pomodoro        ; be fruitful with the tomato technique
+        ;; +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
@@ -156,8 +156,8 @@
        ;;racket            ; a DSL for DSLs
        rest              ; Emacs as a REST client
        rst               ; ReST in peace
-       (ruby +rbenv +lsp)              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (ruby +rbenv +lsp) ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       (rust +lsp)        ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor

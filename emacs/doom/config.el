@@ -23,7 +23,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'nordless)
+(setq doom-theme 'doom-nord-light)
 
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/org")
@@ -73,11 +73,12 @@
                                  "* TODO %i%?")
                                 ("T" "Tickler" entry
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
-                                 "* %i%? \n %U")))
-  (setq org-journal-date-prefix "#+TITLE: ")
-  (setq org-journal-file-format "%Y-%m-%d.org")
-  (setq org-journal-dir "~/org/journal")
-  (setq org-journal-date-format "%A, %d %B %Y"))
+                                 "* %i%? \n %U"))))
+
+  ;; (setq org-journal-date-prefix "#+TITLE: ")
+  ;; (setq org-journal-file-format "%Y-%m-%d.org")
+  ;; (setq org-journal-dir "~/org/journal")
+  ;; (setq org-journal-date-format "%A, %d %B %Y"))
 
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
@@ -89,10 +90,9 @@
 (after! projectile
   (setq projectile-completion-system 'ivy))
 
-(after! org-roam
-  (setq org-roam-directory "~/org")
-  (setq org-roam-index-file "index.org")
-  (setq org-roam-completion-system 'ivy))
+;; (after! org-roam
+;;   (setq org-roam-directory "~/org")
+;;   (setq org-roam-completion-system 'ivy))
 
 (after! deft
   (setq deft-recursive t)
