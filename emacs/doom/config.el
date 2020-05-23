@@ -55,11 +55,10 @@
 
 (after! prodigy
   (prodigy-define-service
-    :name "Voice Foreman"
-    :command "foreman"
-    :args '("start" "-p" "3000")
-    :cwd (projectile-project-root)
-    :env '(("WEB_CONCURRENCY" "1"))))
+    :name "Docker Compose"
+    :command "docker-compose"
+    :args '("up")
+    :cwd (projectile-project-root)))
 
 (after! org
   (setq org-log-done 'time)
