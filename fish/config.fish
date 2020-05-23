@@ -38,6 +38,9 @@ set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
 
+set --export RUBY_CONFIGURE_OPTS --with-openssl-dir=(brew --prefix openssl@1.1)
+rbenv init - | source
+nodenv init - | source
 eval (direnv hook fish)
 python3 -m virtualfish | source
 

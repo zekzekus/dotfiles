@@ -37,6 +37,8 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 alias mux="tmuxinator"
 
 eval "$(direnv hook bash)"
+eval "$(rbenv init -)"
+eval "$(nodenv init -)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"

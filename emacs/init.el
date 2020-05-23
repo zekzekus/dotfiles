@@ -39,7 +39,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(set-frame-font "PragmataPro 14" nil t)
+(set-frame-font "PragmataPro 15" nil t)
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -85,12 +85,12 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(load-theme 'dichromacy t)
+;; (load-theme 'deeper-blue t)
 
-;; (use-package nordless-theme
-;;   :ensure t
-;;   :init
-;;   (load-theme 'nordless t))
+(use-package nordless-theme
+  :ensure t
+  :init
+  (load-theme 'nordless t))
 
 (use-package ace-window
   :ensure t)
