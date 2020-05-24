@@ -75,10 +75,11 @@
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U"))))
 
-  ;; (setq org-journal-date-prefix "#+TITLE: ")
-  ;; (setq org-journal-file-format "%Y-%m-%d.org")
-  ;; (setq org-journal-dir "~/org/journal")
-  ;; (setq org-journal-date-format "%A, %d %B %Y"))
+(add-hook! 'org-mode-hook (turn-off-smartparens-mode))
+
+(after! org-roam
+  (setq org-roam-directory "~/org")
+  (setq org-roam-completion-system 'ivy))
 
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
@@ -89,10 +90,6 @@
 
 (after! projectile
   (setq projectile-completion-system 'ivy))
-
-;; (after! org-roam
-;;   (setq org-roam-directory "~/org")
-;;   (setq org-roam-completion-system 'ivy))
 
 (after! deft
   (setq deft-recursive t)
