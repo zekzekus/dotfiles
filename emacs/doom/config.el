@@ -96,3 +96,46 @@
   (setq deft-use-filter-string-for-filename t)
   (setq deft-default-extension "org")
   (setq deft-directory "~/org"))
+
+(after! mu4e
+  (setq! mu4e-maildir (expand-file-name "~/Mail/zekpisano") ; the rest of the mu4e folders are RELATIVE to this one
+         mu4e-get-mail-command "offlineimap -a ZekPisano"
+         mu4e-index-update-in-background t
+         mu4e-compose-signature-auto-include t
+         mu4e-use-fancy-chars t
+         mu4e-view-show-addresses t
+         mu4e-view-show-images t
+         mu4e-compose-format-flowed t
+         ;mu4e-compose-in-new-frame t
+         mu4e-change-filenames-when-moving t ;; http://pragmaticemacs.com/emacs/fixing-duplicate-uid-errors-when-using-mbsync-and-mu4e/
+         mu4e-maildir-shortcuts
+         '( ("/Inbox" . ?i)
+            ("/All Mail" . ?a)
+            ("/Drafts" . ?d)
+            ("/Trash" . ?t)
+            ("/Sent Mail" . ?s))
+
+         ;; Message Formatting and sending
+         message-send-mail-function 'smtpmail-send-it
+         message-signature-file ""
+         message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n"
+         message-citation-line-function 'message-insert-formatted-citation-line
+         message-kill-buffer-on-exit t
+
+         ;; Org mu4e
+         org-mu4e-convert-to-html t))
+
+(set-email-account! "zekeriya.koc@pisano.co"
+                    '((user-mail-address      . "zekeriya.koc@pisano.co")
+                      (user-full-name         . "Zekeriya Koç")
+                      (smtpmail-smtp-server   . "")
+                      (smtpmail-smtp-service  . 587)
+                      (smtpmail-stream-type   . starttls)
+                      (smtpmail-debug-info    . t)
+                      (mu4e-drafts-folder     . "/Drafts")
+                      (mu4e-refile-folder     . "/All Mail")
+                      (mu4e-sent-folder       . "/Sent Mail")
+                      (mu4e-trash-folder      . "/Trash")
+                      (mu4e-update-interval   . 1800))
+                      ;(mu4e-sent-messages-behavior . 'delete)
+                    nil)

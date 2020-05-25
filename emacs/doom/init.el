@@ -83,7 +83,7 @@
 
        :tools
        ;;ansible
-       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
        editorconfig      ; let someone else argue about tabs vs spaces
@@ -167,9 +167,9 @@
        web               ; the tubes
 
        :email
-       ;;(mu4e +gmail)
-       ;;notmuch
-       ;;(wanderlust +gmail)
+       (mu4e +gmail)
+       notmuch
+       ;; (wanderlust +gmail)
 
        :app
        ;;calendar
