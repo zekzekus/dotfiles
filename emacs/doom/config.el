@@ -23,7 +23,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'parchment)
+(setq doom-theme 'doom-nord-light)
 
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/org")
@@ -74,7 +74,8 @@
                                 ("T" "Tickler" entry
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U")))
-  (setq org-journal-file-format "%Y-%m-%d.org"))
+  (setq org-journal-file-format "%Y-%m-%d.org")
+  (setq org-superstar-cycle-headline-bullets 2))
 
 (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
 
