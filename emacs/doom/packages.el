@@ -14,6 +14,7 @@
 (package! nordless-theme)
 (package! parchment-theme)
 (package! minimal-theme)
+(package! w3m)
 
 ;; All of Doom's packages are pinned to a specific commit, and updated from
 ;; release to release. To un-pin all packages and live on the edge, do:

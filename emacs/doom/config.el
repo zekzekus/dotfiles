@@ -53,6 +53,9 @@
 (setq mac-command-modifier 'meta
       mac-option-modifier 'none)
 
+;; (map! :leader :prefix ("M" . "Searcha"))
+;; (map! :leader :desc "Jump to char" "/c" #'avy-goto-char)
+
 (after! org
   (setq org-log-done 'time)
   (setq org-directory "~/org")
@@ -141,3 +144,6 @@
                       (mu4e-update-interval   . 1800))
                       ;(mu4e-sent-messages-behavior . 'delete)
                     nil)
+
+(use-package! w3m
+  :commands (w3m))
