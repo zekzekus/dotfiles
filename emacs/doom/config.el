@@ -147,3 +147,12 @@
 
 (use-package! w3m
   :commands (w3m))
+
+;; (custom-set-faces!
+;;   '(org-level-1 :height 1.1 :overline nil)
+;;   '(org-level-2 :height 1.0 :overline nil)
+;;   '(org-level-3 :height 1.0 :overline nil)
+;;   '(org-level-4 :height 1.0 :overline nil)
+;;   '(org-level-5 :height 1.0 :overline nil)
+;;   '(org-level-6 :height 1.0 :overline nil)
+;;   '(org-document-title :height 1.1))
