@@ -41,9 +41,9 @@
                        "#053837"    ; bg+
                        "#053837"    ; current-line
                        "#4C566A"    ; fade
-                       "#46606b"    ; fg
+                       "#357247"    ; fg
                        "#E5E9F0"    ; fg+
-                       "#357247"    ; primary
+                       "#46606b"    ; docs
                        "#873c30"    ; red
                        "#99875e"    ; orange
                        "#cec040"    ; yellow
