@@ -153,7 +153,7 @@
 (custom-theme-set-faces! 'nordless
   '(font-lock-string-face :background "#2E3440"))
 (custom-theme-set-faces! 'menguless
-  '(font-lock-string-face :background "#022120")
+  '(font-lock-string-face :background "#053330")
   '((font-lock-keyword-face
      font-lock-type-face
      font-lock-preprocessor-face

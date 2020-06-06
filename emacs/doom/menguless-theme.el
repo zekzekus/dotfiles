@@ -37,12 +37,12 @@
 (deftheme menguless "A mostly colorless theme")
 
 (colorless-themes-make menguless
-                       "#022120"    ; bg
-                       "#053837"    ; bg+
+                       "#053330"    ; bg
+                       "#022120"    ; bg+
                        "#053837"    ; current-line
-                       "#053837"    ; fade
-                       "#357247"    ; fg
-                       "#E5E9F0"    ; fg+
+                       "#477882"    ; fade
+                       "#f4eddc"    ; fg
+                       "#76929b"    ; fg+
                        "#46606b"    ; docs
                        "#873c30"    ; red
                        "#99875e"    ; orange
