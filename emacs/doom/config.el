@@ -149,6 +149,9 @@
 (use-package! w3m
   :commands (w3m))
 
+(custom-theme-set-faces! 'nordless
+  '(font-lock-string-face :background "#2E3440"))
+
 ;; (custom-set-faces!
 ;;   '(org-level-1 :height 1.1 :overline nil)
 ;;   '(org-level-2 :height 1.0 :overline nil)
