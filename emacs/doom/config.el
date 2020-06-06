@@ -18,14 +18,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Monoid HalfTight"
-                           :size 12
-                           :style "Retina"))
+(setq doom-font (font-spec :family "PragmataPro"
+                           :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'nordless)
+(setq doom-theme 'doom-nord-light)
 
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/org")
