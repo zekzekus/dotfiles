@@ -18,8 +18,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "PragmataPro"
-                           :size 15))
+(setq doom-font (font-spec :family "PragmataPro" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -103,6 +102,9 @@
   (setq deft-use-filter-string-for-filename t)
   (setq deft-default-extension "org")
   (setq deft-directory "~/org"))
+
+(after! writeroom-mode
+  (setq +zen-text-scale 0))
 
 (after! mu4e
   (setq! mu4e-maildir (expand-file-name "~/Mail/zekpisano") ; the rest of the mu4e folders are RELATIVE to this one
