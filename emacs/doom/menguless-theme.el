@@ -16,7 +16,7 @@
 ;; along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ;; Author: Zekeriya Koc <info@zeko.dev>
-;; URL: https://github.com/zekzekus/menguless-theme
+;; URL: https://github.com/zekzekus/dotfiles/tree/master/emacs/doom/menguless-theme.el
 ;; Version: 0.1
 ;; Package-Requires: ((colorless-themes "0.1"))
 ;; License: GPL-3
@@ -47,7 +47,7 @@
                        "#873c30"    ; red
                        "#99875e"    ; orange
                        "#cec040"    ; yellow
-                       "#357246")   ; green
+                       "#78f94d")    ; green
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)

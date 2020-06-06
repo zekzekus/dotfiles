@@ -152,6 +152,8 @@
 
 (custom-theme-set-faces! 'nordless
   '(font-lock-string-face :background "#2E3440"))
+(custom-theme-set-faces! 'menguless
+  '(font-lock-string-face :background "#022120"))
 
 ;; (custom-set-faces!
 ;;   '(org-level-1 :height 1.1 :overline nil)
