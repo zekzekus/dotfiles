@@ -118,7 +118,7 @@ ORANGE, YELLOW and GREEN are pretty self-explanatory."
       '(org-level-7 ((t (:weight bold))))
       '(org-level-8 ((t (:weight bold))))
       '(org-date ((t ())))
-      '(org-tag ((t (:foreground ,docs))))
+      '(org-tag ((t (:foreground ,fade))))
       '(org-todo ((t (:foreground ,yellow))))
       '(org-done ((t (:foreground ,green))))
       '(org-block ((t ())))
