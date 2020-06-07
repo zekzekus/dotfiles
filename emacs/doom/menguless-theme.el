@@ -18,7 +18,7 @@
 ;; Author: Zekeriya Koc <info@zeko.dev>
 ;; URL: https://github.com/zekzekus/dotfiles/tree/master/emacs/doom/menguless-theme.el
 ;; Version: 0.1
-;; Package-Requires: ((colorless-themes "0.1"))
+;; Package-Requires: ()
 ;; License: GPL-3
 ;; Keywords: faces theme
 
@@ -265,7 +265,7 @@ ORANGE, YELLOW and GREEN are pretty self-explanatory."
                        "#873c30"    ; red
                        "#99875e"    ; orange
                        "#cec040"    ; yellow
-                       "#78f94d")    ; green
+                       "#78f94d")   ; green
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
