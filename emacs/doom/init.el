@@ -131,7 +131,7 @@
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
-       ledger            ; an accounting system in Emacs
+       ;; ledger            ; an accounting system in Emacs
        lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
@@ -161,13 +161,13 @@
        ;;scheme            ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        ;;solidity          ; do you need a blockchain? No.
-       swift             ; who asked for emoji variables?
+       ;; swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web               ; the tubes
 
        :email
-       (mu4e +gmail)
-       notmuch
+       ;; (mu4e +gmail)
+       ;; notmuch
        ;; (wanderlust +gmail)
 
        :app
