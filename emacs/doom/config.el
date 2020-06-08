@@ -87,6 +87,15 @@
   (setq org-roam-directory "~/org")
   (setq org-roam-completion-system 'ivy))
 
+(after! deft
+  (setq deft-directory "~/zettel")
+  (setq deft-recursive t)
+  (setq deft-use-filename-as-title t)
+  (setq deft-file-naming-rules '( (noslash . "-")))
+  (use-package! zetteldeft
+    :config
+    (zetteldeft-set-classic-keybindings)))
+
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
   (map! :n "DEL" 'evil-ex-nohighlight))
@@ -96,12 +105,6 @@
 
 (after! projectile
   (setq projectile-completion-system 'ivy))
-
-(after! deft
-  (setq deft-recursive t)
-  (setq deft-use-filter-string-for-filename t)
-  (setq deft-default-extension "org")
-  (setq deft-directory "~/org"))
 
 (after! writeroom-mode
   (setq +zen-text-scale 0))
