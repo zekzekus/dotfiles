@@ -107,6 +107,8 @@
   (setq projectile-completion-system 'ivy))
 
 (after! writeroom-mode
+  (setq writeroom-mode-line t)
+  (setq writeroom-width 100)
   (setq +zen-text-scale 0))
 
 (use-package! w3m
