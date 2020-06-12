@@ -61,7 +61,7 @@ ORANGE, YELLOW and GREEN are pretty self-explanatory."
       '(powerline-active2 ((t (:background ,bg+))))
       '(powerline-inactive1 ((t (:background ,fade))))
       '(powerline-inactive2 ((t (:background ,fade))))
-      '(link ((t (:underline ,docs))))
+      '(link ((t (:underline ,fg+ :foreground ,fg+))))
       '(secondary-selection ((t ())))
       '(italic ((t (:slant italic))))
       '(shadow ((t ())))
