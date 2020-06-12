@@ -85,8 +85,7 @@
   (setq org-journal-time-prefix "* ")
   (setq org-journal-time-format "")
   (setq org-superstar-cycle-headline-bullets 2)
-  (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
-  (add-hook! 'org-mode-hook (writeroom-mode 1)))
+  (add-hook! 'org-mode-hook (turn-off-smartparens-mode)))
 
 (after! (org org-roam)
   (setq org-roam-directory "~/org")
@@ -96,10 +95,7 @@
   (setq deft-directory "~/org")
   (setq deft-recursive t)
   (setq deft-use-filename-as-title t)
-  (setq deft-file-naming-rules '( (noslash . "-")))
-  (use-package! zetteldeft
-    :config
-    (zetteldeft-set-classic-keybindings)))
+  (setq deft-file-naming-rules '( (noslash . "-"))))
 
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
