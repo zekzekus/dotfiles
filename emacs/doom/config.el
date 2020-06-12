@@ -57,10 +57,10 @@
 ;; (map! :leader :prefix ("M" . "Searcha"))
 ;; (map! :leader :desc "Jump to char" "/c" #'avy-goto-char)
 
+(setq org-directory "~/org")
 (after! org
   (setq org-log-done 'time)
-  (setq org-directory "~/org")
-  (setq org-agenda-files '(org-directory))
+  (setq org-agenda-files '("~/org"))
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
                              ("tickler.org" :maxlevel . 2)
@@ -70,7 +70,7 @@
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-tags-column -89)
   (setq org-todo-keywords
-        '((sequence "TODO" "STARTED" "FOLLOW" "WAITING" "|" "JIRA" "DONE" "CANCELLED")))
+        '((sequence "TODO(t)" "STARTED(s)" "FOLLOW(f)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                  (file+headline org-default-notes-file "Tasks")
@@ -78,13 +78,15 @@
                                 ("T" "Tickler" entry
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U")))
-  (setq org-journal-file-format "%Y-%m-%d.org")
+  (setq org-journal-dir "~/org")
+  (setq org-journal-file-format "journal-%Y-%m-%d.org")
   (setq org-journal-date-prefix "#+TITLE: ")
   (setq org-journal-date-format "%A, %B %d %Y")
   (setq org-journal-time-prefix "* ")
   (setq org-journal-time-format "")
   (setq org-superstar-cycle-headline-bullets 2)
-  (add-hook! 'org-mode-hook (turn-off-smartparens-mode)))
+  (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
+  (add-hook! 'org-mode-hook (writeroom-mode 1)))
 
 (after! (org org-roam)
   (setq org-roam-directory "~/org")
