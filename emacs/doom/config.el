@@ -25,14 +25,14 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
 (load! "menguless-theme")
-(setq doom-theme 'menguless)
 
-;; If you intend to use org, it is recommended you change this!
+(setq doom-theme 'menguless)
+(setq display-line-numbers-type nil)
+(setq mac-command-modifier 'meta
+      mac-option-modifier 'none)
 (setq org-directory "~/org")
 
-;; If you want to change the style of line numbers, change this to `relative' or
-;; `nil' to disable it:
-(setq display-line-numbers-type nil)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -50,16 +50,10 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-(setq mac-command-modifier 'meta
-      mac-option-modifier 'none)
-
 ;; (map! :leader :prefix ("M" . "Searcha"))
 ;; (map! :leader :desc "Jump to char" "/c" #'avy-goto-char)
 
 (after! org
-  (setq org-directory "~/org")
   (setq org-agenda-files '("~/org"))
   (setq org-log-done 'time)
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
