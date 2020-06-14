@@ -84,6 +84,7 @@
   (setq org-journal-file-format "journal-%Y-%m-%d.org")
   (setq org-journal-file-header "#+TITLE: %B %dth, %Y (W%W)")
   (setq org-journal-date-format "%A, %eth.")
+  (setq org-journal-carryover-items nil)
   (setq org-id-link-to-org-use-id t)
   (setq org-superstar-cycle-headline-bullets 2)
   (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
