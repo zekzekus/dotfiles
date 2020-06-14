@@ -58,10 +58,10 @@
 ;; (map! :leader :prefix ("M" . "Searcha"))
 ;; (map! :leader :desc "Jump to char" "/c" #'avy-goto-char)
 
-(setq org-directory "~/org")
 (after! org
-  (setq org-log-done 'time)
+  (setq org-directory "~/org")
   (setq org-agenda-files '("~/org"))
+  (setq org-log-done 'time)
   (setq org-refile-targets '(("work.org" :maxlevel . 2)
                              ("personal.org" :maxlevel . 2)
                              ("tickler.org" :maxlevel . 2)
