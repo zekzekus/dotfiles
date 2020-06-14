@@ -82,7 +82,7 @@
   (setq org-journal-dir "~/org")
   (setq org-journal-file-type 'weekly)
   (setq org-journal-file-format "journal-%Y-%m-%d.org")
-  (setq org-journal-file-header "#+TITLE: %Y %B, %dth. W%W")
+  (setq org-journal-file-header "#+TITLE: %B %dth, %Y (W%W)")
   (setq org-journal-date-format "%A, %eth.")
   (setq org-id-link-to-org-use-id t)
   (setq org-superstar-cycle-headline-bullets 2)
