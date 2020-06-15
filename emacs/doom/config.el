@@ -86,7 +86,13 @@
 
 (after! (org org-roam)
   (setq org-roam-directory "~/org")
-  (setq org-roam-completion-system 'ivy))
+  (setq org-roam-completion-system 'ivy)
+  (setq org-roam-capture-templates
+        '(("d" "default" plain #'org-roam-capture--get-point "%?"
+           :file-name "%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n"
+           :unnarrowed t
+           :immediate-finish t))))
 
 (after! deft
   (setq deft-directory "~/org")
