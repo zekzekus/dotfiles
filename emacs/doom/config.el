@@ -89,7 +89,7 @@
   (setq org-roam-capture-templates
         '(("d" "default" plain #'org-roam-capture--get-point "%?"
            :file-name "%<%Y%m%d%H%M%S>-${slug}"
-           :head "#+TITLE: ${title}\n"
+           :head "#+TITLE: ${title}\n#+STARTUP: content\n"
            :unnarrowed t
            :immediate-finish t)))
   (map! :map org-mode-map
@@ -100,6 +100,11 @@
   (setq deft-recursive t)
   (setq deft-use-filename-as-title t)
   (setq deft-file-naming-rules '( (noslash . "-"))))
+
+(after! deft
+  (use-package zetteldeft
+    :config
+    (zetteldeft-set-classic-keybindings)))
 
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
