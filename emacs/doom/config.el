@@ -101,11 +101,6 @@
   (setq deft-use-filename-as-title t)
   (setq deft-file-naming-rules '( (noslash . "-"))))
 
-(after! deft
-  (use-package zetteldeft
-    :config
-    (zetteldeft-set-classic-keybindings)))
-
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol)
   (map! :n "DEL" 'evil-ex-nohighlight))

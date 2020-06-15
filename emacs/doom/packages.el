@@ -12,7 +12,6 @@
 ;; Here are a couple examples:
 
 (package! w3m)
-(package! zetteldeft)
 (package! nordless-theme)
 
 ;; All of Doom's packages are pinned to a specific commit, and updated from
