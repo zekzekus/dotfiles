@@ -79,7 +79,7 @@
   (setq org-journal-file-header "#+TITLE: %B %dth, %Y (W%W)")
   (setq org-journal-date-format "%A, %eth.")
   (setq org-journal-carryover-items nil)
-  (setq org-id-link-to-org-use-id t)
+  (setq org-id-link-to-org-use-id 'create-if-interactive)
   (setq org-superstar-cycle-headline-bullets 2)
   (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
   (add-hook! 'org-mode-hook (writeroom-mode 1)))
@@ -92,7 +92,9 @@
            :file-name "%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}\n"
            :unnarrowed t
-           :immediate-finish t))))
+           :immediate-finish t)))
+  (map! :map org-mode-map
+        :i "C-c C-r" 'org-roam-insert))
 
 (after! deft
   (setq deft-directory "~/org")
