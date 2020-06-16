@@ -24,6 +24,7 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
 Plug 'seesleestak/duo-mini'
+Plug 'Lokaltog/vim-monotone'
 
 " programming
 Plug 'neomake/neomake'

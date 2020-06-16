@@ -38,7 +38,7 @@ set statusline+=\ %{zek#listinfos()}
 
 set termguicolors
 call zek#pre_colorscheme()
-colorscheme duo-mini
+colorscheme monotone
 call zek#post_colorscheme()
 
 let g:zek_has_replied = v:false
