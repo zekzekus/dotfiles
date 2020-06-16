@@ -63,7 +63,7 @@
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
-  (setq org-tags-column -89)
+  (setq org-tags-column -102)
   (setq org-todo-keywords
         '((sequence "TODO(t)" "STARTED(s)" "FOLLOW(f)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
