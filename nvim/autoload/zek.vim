@@ -15,8 +15,10 @@ function! zek#setup_cr() abort
 endfunction
 
 function! zek#post_colorscheme() abort
-  highlight StatusLineNC guibg=#434c5e
-  highlight link clojureParen clojureComment
+  if g:colors_name ==# 'duo-mini'
+    highlight StatusLineNC guibg=#434c5e
+    highlight link clojureParen clojureComment
+  endif
 endfunction
 
 function! zek#pre_colorscheme() abort
