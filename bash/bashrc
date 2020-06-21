@@ -12,16 +12,6 @@ export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/opt/icu4c/bin":$PATH
 export PATH="/usr/local/opt/icu4c/sbin":$PATH
 
-export EDITOR=nvim
-export MANPAGER="nvim -c 'set ft=man' -"
-export PGDATA=/usr/local/var/postgres
-
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
-
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-export FZF_ALT_C_COMMAND='bfs -type d -nohidden'
-
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -31,10 +21,20 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+export EDITOR=nvim
+export MANPAGER="nvim -c 'set ft=man' -"
+export PGDATA=/usr/local/var/postgres
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=(brew --prefix openssl@1.1)"
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux="tmuxinator"
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_ALT_C_COMMAND='bfs -type d -nohidden'
+
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 eval "$(direnv hook bash)"
 eval "$(rbenv init -)"
