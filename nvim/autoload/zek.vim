@@ -27,6 +27,14 @@ function! zek#pre_colorscheme() abort
   let g:duo_mini_bg = '#2e3340'
 endfunction
 
+function! zek#set_colorscheme() abort
+  if $ITERM_PROFILE =~? 'light'
+    colorscheme parchment
+  else
+    colorscheme duo-mini
+  endif
+endfunction
+
 function! zek#custom_projections() abort
   for [root, value] in projectionist#query('suffixesadd')
     let &l:suffixesadd = value
