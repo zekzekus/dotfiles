@@ -37,9 +37,7 @@ set statusline+=\ ┇\ %%%p\ ┇
 set statusline+=\ %{zek#listinfos()}
 
 set termguicolors
-call zek#pre_colorscheme()
 call zek#set_colorscheme()
-call zek#post_colorscheme()
 
 let g:zek_has_replied = v:false
 augroup general_au

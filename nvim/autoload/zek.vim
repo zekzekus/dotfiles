@@ -28,11 +28,13 @@ function! zek#pre_colorscheme() abort
 endfunction
 
 function! zek#set_colorscheme() abort
+  call zek#pre_colorscheme()
   if $ITERM_PROFILE =~? 'light'
     colorscheme parchment
   else
     colorscheme duo-mini
   endif
+  call zek#post_colorscheme()
 endfunction
 
 function! zek#custom_projections() abort
