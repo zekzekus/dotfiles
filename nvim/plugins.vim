@@ -7,6 +7,7 @@ else
 endif
 
 " editing
+Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
