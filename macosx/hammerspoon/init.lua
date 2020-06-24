@@ -191,7 +191,6 @@ hs.hotkey.bind(hyper, "s", function() hs.application.launchOrFocus("Spotify") en
 hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Firefox")
   hs.application.launchOrFocus("iTerm")
-  hs.application.launchOrFocus("Calendar")
   hs.application.launchOrFocus("Slack")
 end)
 
