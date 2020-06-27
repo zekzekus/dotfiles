@@ -26,7 +26,7 @@
 ;; `load-theme' function. These are the defaults.
 (load! "menguless-theme")
 
-(setq doom-theme 'menguless)
+(setq doom-theme 'doom-nord-light)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
       mac-option-modifier 'none)
