@@ -107,7 +107,7 @@
   (map! :n "DEL" 'evil-ex-nohighlight))
 
 (after! ivy
-  (setq ivy-use-virtual-buffers t))
+  (setq ivy-use-virtual-buffers nil))
 
 (after! projectile
   (setq projectile-completion-system 'ivy))
