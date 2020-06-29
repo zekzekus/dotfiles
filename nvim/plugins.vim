@@ -7,10 +7,8 @@ else
 endif
 
 " editing
-Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
-Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
