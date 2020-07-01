@@ -133,7 +133,7 @@
         [ "EndOfBuffer","NonText" ],
         [ "Comment", bg, fg_comment, "NONE" ],
         [ "Constant", bg, fg, "NONE" ],
-        [ "Error", bg, fg, "NONE" ],
+        [ "Error", bg, red, "NONE" ],
         [ "Identifier", bg, fg, "NONE" ],
         [ "Ignore", bg, fg, "NONE" ],
         [ "PreProc", bg, fg, "bold" ],
@@ -176,13 +176,13 @@
         [ "Search", green, fg, "NONE" ],
         [ "Directory", bg, fg, "NONE" ],
         [ "MatchParen", bg, fg, "NONE" ],
-        [ "SpellBad", bg, fg, "NONE", red ],
-        [ "SpellCap", bg, fg, "NONE", blue ],
-        [ "SpellLocal", bg, fg, "NONE", magenta ],
-        [ "SpellRare", bg, fg, "NONE", cyan ],
+        [ "SpellBad", bg, red, "underline", red ],
+        [ "SpellCap", bg, fg, "underline", blue ],
+        [ "SpellLocal", bg, fg, "underline", magenta ],
+        [ "SpellRare", bg, fg, "underline", cyan ],
         [ "ColorColumn", bg, fg, "NONE" ],
         [ "SignColumn", bg_current, fg, "NONE" ],
-        [ "ErrorMsg", bg, fg, "NONE" ],
+        [ "ErrorMsg", red, fg, "NONE" ],
         [ "ModeMsg", bg, fg, "NONE" ],
         [ "MoreMsg", bg, fg, "NONE" ],
         [ "Question", bg, fg, "NONE" ],
@@ -197,6 +197,9 @@
         [ "ToolbarButton", bg, fg, "NONE" ],
         [ "debugPC", bg, fg, "NONE" ],
         [ "debugBreakpoint", bg, fg, "NONE" ],
+
+        [ "diffAdded", "DiffAdd" ],
+        [ "diffRemoved", "DiffDelete" ],
     ]
 
     # Define the color palette used by :terminal when in GUI Vim

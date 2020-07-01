@@ -17,7 +17,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi NonText ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Comment ctermbg=0 ctermfg=7 cterm=NONE guibg=#053230 guifg=#5b7a80 gui=NONE
     hi Constant ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
-    hi Error ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
+    hi Error ctermbg=0 ctermfg=9 cterm=NONE guibg=#053230 guifg=#d33934 gui=NONE
     hi Identifier ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Ignore ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi PreProc ctermbg=0 ctermfg=15 cterm=bold guibg=#053230 guifg=#f8efd8 gui=bold
@@ -57,13 +57,13 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Search ctermbg=10 ctermfg=15 cterm=NONE guibg=#51a163 guifg=#f8efd8 gui=NONE
     hi Directory ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi MatchParen ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
-    hi SpellBad ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE guisp=#d33934
-    hi SpellCap ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE guisp=#3b80a1
-    hi SpellLocal ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE guisp=#ff00ff
-    hi SpellRare ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE guisp=#00ffff
+    hi SpellBad ctermbg=0 ctermfg=9 cterm=underline guibg=#053230 guifg=#d33934 gui=underline guisp=#d33934
+    hi SpellCap ctermbg=0 ctermfg=15 cterm=underline guibg=#053230 guifg=#f8efd8 gui=underline guisp=#3b80a1
+    hi SpellLocal ctermbg=0 ctermfg=15 cterm=underline guibg=#053230 guifg=#f8efd8 gui=underline guisp=#ff00ff
+    hi SpellRare ctermbg=0 ctermfg=15 cterm=underline guibg=#053230 guifg=#f8efd8 gui=underline guisp=#00ffff
     hi ColorColumn ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi SignColumn ctermbg=2 ctermfg=15 cterm=NONE guibg=#063a38 guifg=#f8efd8 gui=NONE
-    hi ErrorMsg ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
+    hi ErrorMsg ctermbg=9 ctermfg=15 cterm=NONE guibg=#d33934 guifg=#f8efd8 gui=NONE
     hi ModeMsg ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi MoreMsg ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Question ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
@@ -83,7 +83,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi NonText ctermbg=black ctermfg=white cterm=NONE
     hi Comment ctermbg=black ctermfg=gray cterm=NONE
     hi Constant ctermbg=black ctermfg=white cterm=NONE
-    hi Error ctermbg=black ctermfg=white cterm=NONE
+    hi Error ctermbg=black ctermfg=red cterm=NONE
     hi Identifier ctermbg=black ctermfg=white cterm=NONE
     hi Ignore ctermbg=black ctermfg=white cterm=NONE
     hi PreProc ctermbg=black ctermfg=white cterm=bold
@@ -123,13 +123,13 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Search ctermbg=green ctermfg=white cterm=NONE
     hi Directory ctermbg=black ctermfg=white cterm=NONE
     hi MatchParen ctermbg=black ctermfg=white cterm=NONE
-    hi SpellBad ctermbg=black ctermfg=white cterm=NONE
-    hi SpellCap ctermbg=black ctermfg=white cterm=NONE
-    hi SpellLocal ctermbg=black ctermfg=white cterm=NONE
-    hi SpellRare ctermbg=black ctermfg=white cterm=NONE
+    hi SpellBad ctermbg=black ctermfg=red cterm=underline
+    hi SpellCap ctermbg=black ctermfg=white cterm=underline
+    hi SpellLocal ctermbg=black ctermfg=white cterm=underline
+    hi SpellRare ctermbg=black ctermfg=white cterm=underline
     hi ColorColumn ctermbg=black ctermfg=white cterm=NONE
     hi SignColumn ctermbg=darkgreen ctermfg=white cterm=NONE
-    hi ErrorMsg ctermbg=black ctermfg=white cterm=NONE
+    hi ErrorMsg ctermbg=red ctermfg=white cterm=NONE
     hi ModeMsg ctermbg=black ctermfg=white cterm=NONE
     hi MoreMsg ctermbg=black ctermfg=white cterm=NONE
     hi Question ctermbg=black ctermfg=white cterm=NONE
@@ -150,6 +150,8 @@ hi link StatusLineTermNC StatusLineNC
 hi link WarningMsg Error
 hi link CursorIM Cursor
 hi link Terminal Normal
+hi link diffAdded DiffAdd
+hi link diffRemoved DiffDelete
 
 let g:terminal_ansi_colors = [
         \ '#000000',
