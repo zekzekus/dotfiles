@@ -35,7 +35,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi TabLineSel ctermbg=2 ctermfg=15 cterm=NONE guibg=#063a38 guifg=#f8efd8 gui=NONE
     hi Title ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi CursorLine ctermbg=2 ctermfg=NONE cterm=NONE guibg=#063a38 guifg=NONE gui=NONE
-    hi LineNr ctermbg=6 ctermfg=15 cterm=NONE guibg=#2d555a guifg=#f8efd8 gui=NONE
+    hi LineNr ctermbg=2 ctermfg=7 cterm=NONE guibg=#063a38 guifg=#5b7a80 gui=NONE
     hi CursorLineNr ctermbg=0 ctermfg=10 cterm=NONE guibg=#053230 guifg=#51a163 gui=NONE
     hi helpLeadBlank ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi helpNormal ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
@@ -101,7 +101,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi TabLineSel ctermbg=darkgreen ctermfg=white cterm=NONE
     hi Title ctermbg=black ctermfg=white cterm=NONE
     hi CursorLine ctermbg=darkgreen ctermfg=NONE cterm=NONE
-    hi LineNr ctermbg=darkcyan ctermfg=white cterm=NONE
+    hi LineNr ctermbg=darkgreen ctermfg=gray cterm=NONE
     hi CursorLineNr ctermbg=black ctermfg=green cterm=NONE
     hi helpLeadBlank ctermbg=black ctermfg=white cterm=NONE
     hi helpNormal ctermbg=black ctermfg=white cterm=NONE
@@ -152,6 +152,7 @@ hi link CursorIM Cursor
 hi link Terminal Normal
 hi link diffAdded DiffAdd
 hi link diffRemoved DiffDelete
+hi link clojureParen Comment
 
 let g:terminal_ansi_colors = [
         \ '#000000',

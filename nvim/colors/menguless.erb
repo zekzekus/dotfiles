@@ -154,7 +154,7 @@
         [ "TabLineSel", bg_current, fg, "NONE" ],
         [ "Title", bg, fg, "NONE" ],
         [ "CursorLine", bg_current, "NONE", "NONE" ],
-        [ "LineNr", bg_status, fg, "NONE" ],
+        [ "LineNr", bg_current, fg_comment, "NONE" ],
         [ "CursorLineNr", bg, green, "NONE" ],
         [ "helpLeadBlank", bg, fg, "NONE" ],
         [ "helpNormal", bg, fg, "NONE" ],
@@ -200,6 +200,8 @@
 
         [ "diffAdded", "DiffAdd" ],
         [ "diffRemoved", "DiffDelete" ],
+
+        [ "clojureParen", "Comment" ],
     ]
 
     # Define the color palette used by :terminal when in GUI Vim
