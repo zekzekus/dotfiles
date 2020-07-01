@@ -20,11 +20,11 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Error ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Identifier ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Ignore ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
-    hi PreProc ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
+    hi PreProc ctermbg=0 ctermfg=15 cterm=bold guibg=#053230 guifg=#f8efd8 gui=bold
     hi Special ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Statement ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi String ctermbg=0 ctermfg=8 cterm=NONE guibg=#053230 guifg=#76929b gui=NONE
-    hi Todo ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
+    hi Todo ctermbg=0 ctermfg=12 cterm=bold guibg=#053230 guifg=#3b80a1 gui=bold
     hi Type ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Underlined ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi StatusLine ctermbg=6 ctermfg=15 cterm=NONE guibg=#2d555a guifg=#f8efd8 gui=NONE
@@ -36,7 +36,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Title ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi CursorLine ctermbg=2 ctermfg=NONE cterm=NONE guibg=#063a38 guifg=NONE gui=NONE
     hi LineNr ctermbg=6 ctermfg=15 cterm=NONE guibg=#2d555a guifg=#f8efd8 gui=NONE
-    hi CursorLineNr ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
+    hi CursorLineNr ctermbg=0 ctermfg=10 cterm=NONE guibg=#053230 guifg=#51a163 gui=NONE
     hi helpLeadBlank ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi helpNormal ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Visual ctermbg=11 ctermfg=15 cterm=NONE guibg=#969c46 guifg=#f8efd8 gui=NONE
@@ -86,11 +86,11 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Error ctermbg=black ctermfg=white cterm=NONE
     hi Identifier ctermbg=black ctermfg=white cterm=NONE
     hi Ignore ctermbg=black ctermfg=white cterm=NONE
-    hi PreProc ctermbg=black ctermfg=white cterm=NONE
+    hi PreProc ctermbg=black ctermfg=white cterm=bold
     hi Special ctermbg=black ctermfg=white cterm=NONE
     hi Statement ctermbg=black ctermfg=white cterm=NONE
     hi String ctermbg=black ctermfg=darkgray cterm=NONE
-    hi Todo ctermbg=black ctermfg=white cterm=NONE
+    hi Todo ctermbg=black ctermfg=blue cterm=bold
     hi Type ctermbg=black ctermfg=white cterm=NONE
     hi Underlined ctermbg=black ctermfg=white cterm=NONE
     hi StatusLine ctermbg=darkcyan ctermfg=white cterm=NONE
@@ -102,7 +102,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Title ctermbg=black ctermfg=white cterm=NONE
     hi CursorLine ctermbg=darkgreen ctermfg=NONE cterm=NONE
     hi LineNr ctermbg=darkcyan ctermfg=white cterm=NONE
-    hi CursorLineNr ctermbg=black ctermfg=white cterm=NONE
+    hi CursorLineNr ctermbg=black ctermfg=green cterm=NONE
     hi helpLeadBlank ctermbg=black ctermfg=white cterm=NONE
     hi helpNormal ctermbg=black ctermfg=white cterm=NONE
     hi Visual ctermbg=yellow ctermfg=white cterm=NONE
