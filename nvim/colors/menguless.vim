@@ -2,7 +2,7 @@
 " Author:      Zekeriya Koc (info@zeko.dev)
 " Webpage:     https://github.com/zekzekus/dotfiles
 " Description: A nice color scheme
-" Last Change: 2020-06-30
+" Last Change: 2020-07-01
 
 hi clear
 
@@ -23,7 +23,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi PreProc ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Special ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Statement ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
-    hi String ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
+    hi String ctermbg=0 ctermfg=8 cterm=NONE guibg=#053230 guifg=#76929b gui=NONE
     hi Todo ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Type ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
     hi Underlined ctermbg=0 ctermfg=15 cterm=NONE guibg=#053230 guifg=#f8efd8 gui=NONE
@@ -89,7 +89,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi PreProc ctermbg=black ctermfg=white cterm=NONE
     hi Special ctermbg=black ctermfg=white cterm=NONE
     hi Statement ctermbg=black ctermfg=white cterm=NONE
-    hi String ctermbg=black ctermfg=white cterm=NONE
+    hi String ctermbg=black ctermfg=darkgray cterm=NONE
     hi Todo ctermbg=black ctermfg=white cterm=NONE
     hi Type ctermbg=black ctermfg=white cterm=NONE
     hi Underlined ctermbg=black ctermfg=white cterm=NONE

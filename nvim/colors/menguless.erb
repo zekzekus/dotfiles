@@ -83,12 +83,12 @@
     bg_status   = ["#2d555a", 6, "darkcyan"]
     fg          = ["#f8efd8", 15, "white"]
     fg_comment  = ["#5b7a80", 7, "gray"]
+    fg_string   = ["#76929b", 8, "darkgray"]
     yellow      = ["#969c46", 11, "yellow"]
     red         = ["#d33934", 9, "red"]
     blue        = ["#3b80a1", 12, "blue"]
     orange      = ["#83734e", 14, "cyan"]
     green       = ["#51a163", 10, "green"]
-    blue2       = ["#527481", 4, "darkblue"]
 
     # Step 4: highlights
     #
@@ -139,7 +139,7 @@
         [ "PreProc", bg, fg, "NONE" ],
         [ "Special", bg, fg, "NONE" ],
         [ "Statement", bg, fg, "NONE" ],
-        [ "String", bg, fg, "NONE" ],
+        [ "String", bg, fg_string, "NONE" ],
         [ "Number", "Constant" ],
         [ "Todo", bg, fg, "NONE" ],
         [ "Type", bg, fg, "NONE" ],
