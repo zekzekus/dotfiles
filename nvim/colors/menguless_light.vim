@@ -2,7 +2,7 @@
 " Author:      Zekeriya Koc (info@zeko.dev)
 " Webpage:     https://github.com/zekzekus/dotfiles
 " Description: A nice color scheme
-" Last Change: 2020-07-01
+" Last Change: 2020-07-04
 
 hi clear
 
@@ -15,34 +15,34 @@ let colors_name = "menguless"
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Normal ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi NonText ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi Comment ctermbg=15 ctermfg=2 cterm=NONE guibg=#f8efd8 guifg=#063a38 gui=NONE
-    hi Constant ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi Error ctermbg=15 ctermfg=9 cterm=NONE guibg=#f8efd8 guifg=#d33934 gui=NONE
-    hi Identifier ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi Ignore ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi PreProc ctermbg=15 ctermfg=0 cterm=bold guibg=#f8efd8 guifg=#053230 gui=bold
-    hi Special ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi Statement ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi String ctermbg=15 ctermfg=6 cterm=NONE guibg=#f8efd8 guifg=#2d555a gui=NONE
-    hi Todo ctermbg=15 ctermfg=12 cterm=bold guibg=#f8efd8 guifg=#3b80a1 gui=bold
-    hi Type ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi Underlined ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
+    hi Comment ctermbg=NONE ctermfg=2 cterm=NONE guibg=NONE guifg=#66848b gui=NONE
+    hi Constant ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi Error ctermbg=NONE ctermfg=9 cterm=NONE guibg=NONE guifg=#d33934 gui=NONE
+    hi Identifier ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi Ignore ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi PreProc ctermbg=NONE ctermfg=0 cterm=bold guibg=NONE guifg=#053230 gui=bold
+    hi Special ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi Statement ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi String ctermbg=NONE ctermfg=6 cterm=NONE guibg=NONE guifg=#2d555a gui=NONE
+    hi Todo ctermbg=NONE ctermfg=12 cterm=bold guibg=NONE guifg=#3b80a1 gui=bold
+    hi Type ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi Underlined ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
     hi StatusLine ctermbg=8 ctermfg=0 cterm=NONE guibg=#76929b guifg=#053230 gui=NONE
     hi StatusLineNC ctermbg=15 ctermfg=0 cterm=underline guibg=#f8efd8 guifg=#053230 gui=underline
     hi VertSplit ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi TabLine ctermbg=8 ctermfg=0 cterm=NONE guibg=#76929b guifg=#053230 gui=NONE
     hi TabLineFill ctermbg=8 ctermfg=0 cterm=NONE guibg=#76929b guifg=#053230 gui=NONE
-    hi TabLineSel ctermbg=7 ctermfg=0 cterm=NONE guibg=#e6c675 guifg=#053230 gui=NONE
+    hi TabLineSel ctermbg=7 ctermfg=0 cterm=NONE guibg=#d4d4d4 guifg=#053230 gui=NONE
     hi Title ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi CursorLine ctermbg=7 ctermfg=NONE cterm=NONE guibg=#e6c675 guifg=NONE gui=NONE
-    hi LineNr ctermbg=7 ctermfg=2 cterm=NONE guibg=#e6c675 guifg=#063a38 gui=NONE
+    hi CursorLine ctermbg=7 ctermfg=NONE cterm=NONE guibg=#d4d4d4 guifg=NONE gui=NONE
+    hi LineNr ctermbg=7 ctermfg=2 cterm=NONE guibg=#d4d4d4 guifg=#66848b gui=NONE
     hi CursorLineNr ctermbg=15 ctermfg=10 cterm=NONE guibg=#f8efd8 guifg=#51a163 gui=NONE
     hi helpLeadBlank ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi helpNormal ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi Visual ctermbg=11 ctermfg=0 cterm=NONE guibg=#969c46 guifg=#053230 gui=NONE
     hi VisualNOS ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi Pmenu ctermbg=8 ctermfg=0 cterm=NONE guibg=#76929b guifg=#053230 gui=NONE
-    hi PmenuSbar ctermbg=7 ctermfg=0 cterm=NONE guibg=#e6c675 guifg=#053230 gui=NONE
+    hi PmenuSbar ctermbg=7 ctermfg=0 cterm=NONE guibg=#d4d4d4 guifg=#053230 gui=NONE
     hi PmenuSel ctermbg=12 ctermfg=0 cterm=NONE guibg=#3b80a1 guifg=#053230 gui=NONE
     hi PmenuThumb ctermbg=10 ctermfg=0 cterm=NONE guibg=#51a163 guifg=#053230 gui=NONE
     hi FoldColumn ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
@@ -62,13 +62,13 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi SpellLocal ctermbg=15 ctermfg=0 cterm=underline guibg=#f8efd8 guifg=#053230 gui=underline guisp=#ff00ff
     hi SpellRare ctermbg=15 ctermfg=0 cterm=underline guibg=#f8efd8 guifg=#053230 gui=underline guisp=#00ffff
     hi ColorColumn ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi SignColumn ctermbg=7 ctermfg=0 cterm=NONE guibg=#e6c675 guifg=#053230 gui=NONE
+    hi SignColumn ctermbg=7 ctermfg=0 cterm=NONE guibg=#d4d4d4 guifg=#053230 gui=NONE
     hi ErrorMsg ctermbg=9 ctermfg=0 cterm=NONE guibg=#d33934 guifg=#053230 gui=NONE
     hi ModeMsg ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi MoreMsg ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi Question ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi Cursor ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
-    hi CursorColumn ctermbg=7 ctermfg=NONE cterm=NONE guibg=#e6c675 guifg=NONE gui=NONE
+    hi CursorColumn ctermbg=7 ctermfg=NONE cterm=NONE guibg=#d4d4d4 guifg=NONE gui=NONE
     hi QuickFixLine ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi Conceal ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi ToolbarLine ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
@@ -81,18 +81,18 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
 
     hi Normal ctermbg=white ctermfg=black cterm=NONE
     hi NonText ctermbg=white ctermfg=black cterm=NONE
-    hi Comment ctermbg=white ctermfg=darkgreen cterm=NONE
-    hi Constant ctermbg=white ctermfg=black cterm=NONE
-    hi Error ctermbg=white ctermfg=red cterm=NONE
-    hi Identifier ctermbg=white ctermfg=black cterm=NONE
-    hi Ignore ctermbg=white ctermfg=black cterm=NONE
-    hi PreProc ctermbg=white ctermfg=black cterm=bold
-    hi Special ctermbg=white ctermfg=black cterm=NONE
-    hi Statement ctermbg=white ctermfg=black cterm=NONE
-    hi String ctermbg=white ctermfg=darkcyan cterm=NONE
-    hi Todo ctermbg=white ctermfg=blue cterm=bold
-    hi Type ctermbg=white ctermfg=black cterm=NONE
-    hi Underlined ctermbg=white ctermfg=black cterm=NONE
+    hi Comment ctermbg=NONE ctermfg=darkgreen cterm=NONE
+    hi Constant ctermbg=NONE ctermfg=black cterm=NONE
+    hi Error ctermbg=NONE ctermfg=red cterm=NONE
+    hi Identifier ctermbg=NONE ctermfg=black cterm=NONE
+    hi Ignore ctermbg=NONE ctermfg=black cterm=NONE
+    hi PreProc ctermbg=NONE ctermfg=black cterm=bold
+    hi Special ctermbg=NONE ctermfg=black cterm=NONE
+    hi Statement ctermbg=NONE ctermfg=black cterm=NONE
+    hi String ctermbg=NONE ctermfg=darkcyan cterm=NONE
+    hi Todo ctermbg=NONE ctermfg=blue cterm=bold
+    hi Type ctermbg=NONE ctermfg=black cterm=NONE
+    hi Underlined ctermbg=NONE ctermfg=black cterm=NONE
     hi StatusLine ctermbg=darkgray ctermfg=black cterm=NONE
     hi StatusLineNC ctermbg=white ctermfg=black cterm=underline
     hi VertSplit ctermbg=white ctermfg=black cterm=NONE
