@@ -2,7 +2,7 @@
 " Author:      Zekeriya Koc (info@zeko.dev)
 " Webpage:     https://github.com/zekzekus/dotfiles
 " Description: A nice color scheme
-" Last Change: 2020-07-04
+" Last Change: 2020-07-06
 
 hi clear
 
@@ -69,7 +69,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Question ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi Cursor ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi CursorColumn ctermbg=7 ctermfg=NONE cterm=NONE guibg=#d4d4d4 guifg=NONE gui=NONE
-    hi QuickFixLine ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
+    hi QuickFixLine ctermbg=7 ctermfg=0 cterm=NONE guibg=#d4d4d4 guifg=#053230 gui=NONE
     hi Conceal ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi ToolbarLine ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
     hi ToolbarButton ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
@@ -135,7 +135,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Question ctermbg=white ctermfg=black cterm=NONE
     hi Cursor ctermbg=white ctermfg=black cterm=NONE
     hi CursorColumn ctermbg=gray ctermfg=NONE cterm=NONE
-    hi QuickFixLine ctermbg=white ctermfg=black cterm=NONE
+    hi QuickFixLine ctermbg=gray ctermfg=black cterm=NONE
     hi Conceal ctermbg=white ctermfg=black cterm=NONE
     hi ToolbarLine ctermbg=white ctermfg=black cterm=NONE
     hi ToolbarButton ctermbg=white ctermfg=black cterm=NONE
