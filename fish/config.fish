@@ -44,7 +44,6 @@ set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 rbenv init - | source
 nodenv init - | source
 eval (direnv hook fish)
-python3 -m virtualfish | source
 
 if test -e ~/.nix-profile/etc/profile.d/nix.sh
   bass source ~/.nix-profile/etc/profile.d/nix.sh
