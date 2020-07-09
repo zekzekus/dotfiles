@@ -23,7 +23,6 @@ Plug 'ctrlpvim/ctrlp.vim', {'on': ['CtrlP', 'CtrlPBuffer', 'CtrlPBufTag', 'CtrlP
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
-Plug 'seesleestak/duo-mini'
 Plug 'ajgrf/parchment'
 
 " programming
