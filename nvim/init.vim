@@ -78,12 +78,4 @@ let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 let g:ctrlp_user_caching = 0
 let g:ctrlp_working_path_mode = 'raw'
 
-let g:vimwiki_list = [
-      \ {'path':           '~/Documents/vimwiki/',
-      \  'diary_rel_path': 'daily/',
-      \  'auto_tags':      1,
-      \  'diary_index':    'daily_notes',
-      \  'diary_header':   'Daily Notes',
-      \  'path_html':      '~/Documents/vimwiki_html/'} ]
-
 runtime! keybindings.vim

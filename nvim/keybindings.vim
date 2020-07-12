@@ -11,20 +11,15 @@ command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff 
 " files
 nnoremap <leader>ff :CtrlP<cr>
 nnoremap <leader>fj :CtrlP ~/.cache/junkfile<cr>
-nnoremap <leader>fs :w<cr>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap <leader>bd    :bdelete<cr>
 nnoremap <leader>bb    :CtrlPBuffer<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
 nnoremap n          nzzzv
 nnoremap N          Nzzzv
-nnoremap <BS>       :nohlsearch<cr>
-nnoremap <leader>/  :Zgrep<space>
-nnoremap <leader>*  :Zgrep<space><c-r><c-w><cr>
 nnoremap <leader>ss :CtrlPBufTag<cr>
 nnoremap <leader>sl :CtrlPLine<cr>
 
