@@ -2,7 +2,7 @@
 " Author:      Zekeriya Koc (info@zeko.dev)
 " Webpage:     https://github.com/zekzekus/dotfiles
 " Description: A nice color scheme
-" Last Change: 2020-07-06
+" Last Change: 2020-07-14
 
 hi clear
 
@@ -26,7 +26,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi String ctermbg=NONE ctermfg=6 cterm=NONE guibg=NONE guifg=#2d555a gui=NONE
     hi Todo ctermbg=NONE ctermfg=12 cterm=bold guibg=NONE guifg=#3b80a1 gui=bold
     hi Type ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
-    hi Underlined ctermbg=NONE ctermfg=0 cterm=NONE guibg=NONE guifg=#053230 gui=NONE
+    hi Underlined ctermbg=NONE ctermfg=0 cterm=underline guibg=NONE guifg=#053230 gui=underline
     hi StatusLine ctermbg=8 ctermfg=0 cterm=NONE guibg=#76929b guifg=#053230 gui=NONE
     hi StatusLineNC ctermbg=15 ctermfg=0 cterm=underline guibg=#f8efd8 guifg=#053230 gui=underline
     hi VertSplit ctermbg=15 ctermfg=0 cterm=NONE guibg=#f8efd8 guifg=#053230 gui=NONE
@@ -92,7 +92,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi String ctermbg=NONE ctermfg=darkcyan cterm=NONE
     hi Todo ctermbg=NONE ctermfg=blue cterm=bold
     hi Type ctermbg=NONE ctermfg=black cterm=NONE
-    hi Underlined ctermbg=NONE ctermfg=black cterm=NONE
+    hi Underlined ctermbg=NONE ctermfg=black cterm=underline
     hi StatusLine ctermbg=darkgray ctermfg=black cterm=NONE
     hi StatusLineNC ctermbg=white ctermfg=black cterm=underline
     hi VertSplit ctermbg=white ctermfg=black cterm=NONE
