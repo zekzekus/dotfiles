@@ -30,7 +30,7 @@ set --export LC_ALL "en_US.UTF-8"
 set --export EDITOR nvim
 set --export MANPAGER "nvim -c 'set ft=man' -"
 set --export PGDATA /usr/local/var/postgres
-set --export RUBY_CONFIGURE_OPTS --with-openssl-dir=(brew --prefix openssl@1.1)
+set --export RUBY_CONFIGURE_OPTS --with-openssl-dir=/usr/local/opt/openssl@1.1
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
@@ -45,8 +45,8 @@ rbenv init - | source
 nodenv init - | source
 eval (direnv hook fish)
 
-if test -e ~/.nix-profile/etc/profile.d/nix.sh
-  bass source ~/.nix-profile/etc/profile.d/nix.sh
-end
+# if test -e ~/.nix-profile/etc/profile.d/nix.sh
+#   bass source ~/.nix-profile/etc/profile.d/nix.sh
+# end
 
 starship init fish | source
