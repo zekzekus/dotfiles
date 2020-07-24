@@ -5,12 +5,16 @@ then
     pkill plumber
 fi
 
-if pgrep -x "fontsrv" > /dev/null
-then
-    pkill fontsrv
-fi
-
 if pgrep -x "acme" > /dev/null
 then
     pkill acme
 fi
+
+echo "unmount acme"
+if mount | grep plan9 | grep acme > /dev/null
+then
+    umount `mount | grep plan9 | grep acme | awk '{print $1}'`
+fi
+
+echo "delete namespace"
+rm -rf `9 namespace`
