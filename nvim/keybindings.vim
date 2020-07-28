@@ -21,7 +21,7 @@ nnoremap <leader><tab> :b#<CR>
 nnoremap n          nzzzv
 nnoremap N          Nzzzv
 nnoremap <leader>ss :CtrlPBufTag<cr>
-nnoremap <leader>sl :CtrlPLine<cr>
+nnoremap <leader>sl :CtrlPLine %<cr>
 
 nmap     -     <Plug>VinegarVerticalSplitUp
 cnoremap <c-n> <down>
