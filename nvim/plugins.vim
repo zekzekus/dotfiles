@@ -21,8 +21,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim', {'on': ['CtrlP', 'CtrlPBuffer', 'CtrlPBufTag', 'CtrlPLine']}
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'zekzekus/menguless'

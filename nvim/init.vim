@@ -73,10 +73,6 @@ let g:neomake_clojure_kondo_maker       = {
       \ }
 call neomake#configure#automake('nrwi', 500)
 
-let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-let g:ctrlp_user_caching = 0
-let g:ctrlp_working_path_mode = 'raw'
-
 let g:vimwiki_list = [
       \ {'path':           '~/Google Drive/vimwiki/',
       \  'diary_rel_path': 'daily/',
