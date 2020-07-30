@@ -73,12 +73,4 @@ let g:neomake_clojure_kondo_maker       = {
       \ }
 call neomake#configure#automake('nrwi', 500)
 
-let g:vimwiki_list = [
-      \ {'path':           '~/Google Drive/vimwiki/',
-      \  'diary_rel_path': 'daily/',
-      \  'auto_tags':      1,
-      \  'diary_index':    'daily_notes',
-      \  'diary_header':   'Daily Notes',
-      \  'path_html':      '~/Google Drive/vimwiki_html/'} ]
-
 runtime! keybindings.vim
