@@ -73,4 +73,6 @@ let g:neomake_clojure_kondo_maker       = {
       \ }
 call neomake#configure#automake('nrwi', 500)
 
+let g:fzf_preview_window = ''
+
 runtime! keybindings.vim
