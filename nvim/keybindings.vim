@@ -20,6 +20,7 @@ nnoremap <leader><tab> :b#<CR>
 " search
 nnoremap n          nzzzv
 nnoremap N          Nzzzv
+nnoremap <BS>       :nohlsearch<cr>
 nnoremap <leader>ss :BTags<cr>
 nnoremap <leader>sl :BLines<cr>
 
