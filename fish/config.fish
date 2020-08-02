@@ -45,8 +45,8 @@ rbenv init - | source
 nodenv init - | source
 eval (direnv hook fish)
 
-# if test -e ~/.nix-profile/etc/profile.d/nix.sh
-#   bass source ~/.nix-profile/etc/profile.d/nix.sh
-# end
+if test -e ~/.nix-profile/etc/profile.d/nix.sh
+  bass source ~/.nix-profile/etc/profile.d/nix.sh
+end
 
 starship init fish | source
