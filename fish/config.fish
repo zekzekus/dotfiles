@@ -50,3 +50,4 @@ if test -e ~/.nix-profile/etc/profile.d/nix.sh
 end
 
 starship init fish | source
+set -g fish_user_paths "/usr/local/opt/openjdk@11/bin" $fish_user_paths
