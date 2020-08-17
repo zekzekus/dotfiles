@@ -96,18 +96,21 @@ packadd cfilter
 " ========== Plugin Settings =========="
 let g:smartclose_set_default_mapping = 0
 
+", '-vv', '--log-file', '~/pyls.log'"
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
     \ 'haskell': ['ghcide', '--lsp'],
     \ 'go': ['gopls'],
     \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
     \ 'scala': ['metals-vim'],
     \ 'ruby': ['rbenv', 'exec', 'solargraph', 'stdio'],
     \ }
+let g:LanguageClient_settingsPath = '~/.vim/settings.json'
 let g:LanguageClient_diagnosticsList = 'location'
-let g:LanguageClient_useVirtualText = 0
-let g:LanguageClient_useFloatingHover = 0
+let g:LanguageClient_useVirtualText = 'CodeLens'
+let g:LanguageClient_useFloatingHover = '0'
 let g:LanguageClient_diagnosticsMaxSeverity = 'Warning'
 
 let g:vista#renderer#enable_icon = 0
@@ -117,5 +120,11 @@ let g:vista_echo_cursor_strategy = 'floating_win'
 let g:UltiSnipsExpandTrigger='<C-j>'
 
 let g:localvimrc_ask = 0
+
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype php setlocal ts=2 sw=2 expandtab	autocmd Filetype php setlocal ts=2 sw=2 expandtab
+autocmd Filetype less setlocal ts=2 sw=2 expandtab	autocmd Filetype less setlocal ts=2 sw=2 expandtab
+autocmd Filetype dart setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
 runtime! keybindings.vim

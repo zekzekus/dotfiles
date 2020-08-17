@@ -16,7 +16,7 @@ Plug 'rbong/vim-flog', {'on': ['Flog', 'Flogsplit']}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'scala', 'go', 'ruby'],
+    \ 'for': ['python', 'haskell', 'rust', 'javascript', 'typescript', 'scala', 'go', 'ruby'],
     \ }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -54,6 +54,10 @@ Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
 " rust-lang
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
+
+" typescript
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'neoclide/coc.nvim', {'for': 'typescript', 'branch': 'release'}
 
 " ruby
 Plug 'tpope/vim-rails', {'for': 'ruby'}

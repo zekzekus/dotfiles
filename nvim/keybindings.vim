@@ -31,6 +31,10 @@ nnoremap <silent><leader>sL :<c-u>Lines<cr>
 nnoremap yom :match ErrorMsg /\%>80c/<cr>
 nnoremap yoM :match none /\%>80c/<cr>
 
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
 " for browsing the input history
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
@@ -55,5 +59,5 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 augroup keybindings_au
   autocmd!
 
-  autocmd FileType ruby,python,rust,haskell,go,javascript,scala call zek#lc_maps()
+  autocmd FileType ruby,python,rust,haskell,go,javascript,typescript,scala call zek#lc_maps()
 augroup END
