@@ -35,7 +35,7 @@ set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
 
-set --export FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
+set --export FZF_DEFAULT_COMMAND 'ag -l --nocolor --hidden -g ""'
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 
