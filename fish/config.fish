@@ -35,7 +35,7 @@ set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
 
-set --export FZF_DEFAULT_COMMAND 'ag -l --nocolor --hidden -g ""'
+set --export FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 
@@ -44,10 +44,6 @@ set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 rbenv init - | source
 nodenv init - | source
 eval (direnv hook fish)
-
-if test -e ~/.nix-profile/etc/profile.d/nix.sh
-  bass source ~/.nix-profile/etc/profile.d/nix.sh
-end
 
 starship init fish | source
 set -g fish_user_paths "/usr/local/opt/openjdk@11/bin" $fish_user_paths
