@@ -25,6 +25,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " vim interface
+Plug 'lifepillar/vim-solarized8'
 Plug 'zekzekus/menguless'
 Plug 'ajgrf/parchment'
 
