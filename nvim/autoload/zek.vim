@@ -30,9 +30,9 @@ endfunction
 function! zek#set_colorscheme() abort
   call zek#pre_colorscheme()
   if $ITERM_PROFILE =~? 'light'
-    colorscheme solarized8_flat
+    colorscheme parchment
   else
-    colorscheme solarized8_flat
+    colorscheme menguless
   endif
   call zek#post_colorscheme()
 endfunction
