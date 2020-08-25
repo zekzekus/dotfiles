@@ -15,16 +15,12 @@ function! zek#setup_cr() abort
 endfunction
 
 function! zek#post_colorscheme() abort
-  if g:colors_name ==# 'duo-mini'
-    highlight StatusLineNC guibg=#434c5e
-    highlight link clojureParen clojureComment
-  elseif g:colors_name ==# 'parchment'
+  if g:colors_name ==# 'parchment'
     highlight clear VertSplit
   endif
 endfunction
 
 function! zek#pre_colorscheme() abort
-  let g:duo_mini_bg = '#2e3340'
 endfunction
 
 function! zek#set_colorscheme() abort
