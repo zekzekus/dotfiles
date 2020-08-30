@@ -76,4 +76,6 @@ call neomake#configure#automake('nrwi', 500)
 
 let g:fzf_preview_window = ''
 
+let g:nv_search_paths = ['~/zettelkasten']
+
 runtime! keybindings.vim

@@ -12,7 +12,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
-Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
+Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
+Plug 'alok/notational-fzf-vim', {'on': 'NV'}
 
 " navigating
 Plug 'tpope/vim-apathy'
