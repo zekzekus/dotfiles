@@ -76,6 +76,7 @@ call neomake#configure#automake('nrwi', 500)
 
 let g:fzf_preview_window = ''
 
-let g:nv_search_paths = ['~/zettelkasten']
+let g:nv_default_extension = '.adoc'
+let g:nv_search_paths = ['~/wiki']
 
 runtime! keybindings.vim
