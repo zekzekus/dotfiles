@@ -12,7 +12,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
-Plug 'ratfactor/vviki',         {'for': 'asciidoc'}
 Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
 Plug 'alok/notational-fzf-vim', {'on': 'NV'}
 
