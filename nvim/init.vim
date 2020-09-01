@@ -6,6 +6,7 @@ packadd cfilter
 set mouse=a
 set number
 set hidden
+set signcolumn=number
 set cursorline
 set nomodeline
 set splitbelow
