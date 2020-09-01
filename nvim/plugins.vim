@@ -13,7 +13,6 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
 Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
-Plug 'alok/notational-fzf-vim', {'on': 'NV'}
 
 " navigating
 Plug 'tpope/vim-apathy'
@@ -37,7 +36,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
-Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-dadbod',         {'on': 'DB'}
 Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
 
