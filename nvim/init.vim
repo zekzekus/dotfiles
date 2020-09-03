@@ -66,14 +66,30 @@ endif
 let g:vitality_fix_focus = 0
 let g:netrw_liststyle    = 3
 let g:neomake_virtualtext_current_error = 0
+let g:neomake_rust_enabled_makers       = []
+let g:neomake_javascript_enabled_makers = []
+let g:neomake_python_enabled_makers     = []
+let g:neomake_ruby_enabled_makers       = []
+let g:neomake_haskell_enabled_makers    = []
 let g:neomake_clojure_enabled_makers    = ['kondo']
-let g:neomake_haskell_enabled_makers    = ['hlint']
 let g:neomake_clojure_kondo_maker       = {
       \ 'exe': 'clj-kondo',
       \ 'args': ['--config', '.clj-kondo/config.edn', '--lint', '%'],
       \ 'errorformat': '%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m',
       \ }
 call neomake#configure#automake('nrwi', 500)
+
+let g:LanguageClient_useFloatingHover = 0
+let g:LanguageClient_usePopupHover = 0
+let g:LanguageClient_selectionUIContextMenu = 1
+let g:LanguageClient_useVirtualText = 'No'
+let g:LanguageClient_serverCommands = {
+    \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
+    \ 'haskell':    ['haskell-language-server-wrapper', '--lsp'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'python':     ['pyls'],
+    \ 'ruby':       ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
 
 let g:fzf_preview_window = ''
 
