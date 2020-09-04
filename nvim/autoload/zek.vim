@@ -128,3 +128,7 @@ function! zek#autoreply() abort
     let g:zek_has_replied = v:false
   endif
 endfunction
+
+function zek#lsp_bindings() abort
+  nnoremap <silent><C-p> :call LanguageClient_contextMenu()<cr>
+endfunction

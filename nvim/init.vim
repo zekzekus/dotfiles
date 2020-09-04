@@ -81,6 +81,7 @@ call neomake#configure#automake('nrwi', 500)
 
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
+let g:LanguageClient_fzfContextMenu = 1
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
