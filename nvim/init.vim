@@ -81,14 +81,13 @@ call neomake#configure#automake('nrwi', 500)
 
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
-let g:LanguageClient_selectionUIContextMenu = 1
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
     \ 'haskell':    ['haskell-language-server-wrapper', '--lsp'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python':     ['pyls'],
-    \ 'ruby':       ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'ruby':       ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 
 let g:fzf_preview_window = ''
