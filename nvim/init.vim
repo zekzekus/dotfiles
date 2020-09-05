@@ -93,6 +93,6 @@ let g:LanguageClient_serverCommands = {
 
 let g:fzf_preview_window = ''
 
-let g:nv_search_paths = ['~/notes']
+let g:tmuxline_powerline_separators = 0
 
 runtime! keybindings.vim

@@ -32,7 +32,7 @@ function! zek#set_colorscheme() abort
   if $ITERM_PROFILE =~? 'light'
     colorscheme parchment
   else
-    colorscheme menguless
+    colorscheme nord
   endif
   call zek#post_colorscheme()
 endfunction
