@@ -28,7 +28,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'zekzekus/menguless'
 Plug 'ajgrf/parchment'
 Plug 'arcticicestudio/nord-vim'
-Plug 'edkolev/tmuxline.vim'
 
 " programming
 Plug 'neomake/neomake'
