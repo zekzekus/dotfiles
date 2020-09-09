@@ -18,12 +18,12 @@ Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
 " navigating
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-vinegar'
+Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
 
 " vim interface
 Plug 'zekzekus/menguless'
@@ -38,8 +38,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-dadbod',               {'on': 'DB'}
-Plug 'AndrewRadev/linediff.vim',       {'on': 'Linediff'}
+Plug 'tpope/vim-dadbod',               {'on':  'DB'}
+Plug 'AndrewRadev/linediff.vim',       {'on':  'Linediff'}
 Plug 'autozimu/LanguageClient-neovim', {'for': ['haskell', 'rust', 'python', 'javascript', 'ruby'],
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',

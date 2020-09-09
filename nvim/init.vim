@@ -63,8 +63,10 @@ else
   let &t_ZR = "\e[23m"
 endif
 
-let g:vitality_fix_focus = 0
 let g:netrw_liststyle    = 3
+let g:vitality_fix_focus = 0
+let g:fzf_preview_window = ''
+
 let g:neomake_virtualtext_current_error = 0
 let g:neomake_rust_enabled_makers       = []
 let g:neomake_javascript_enabled_makers = []
@@ -91,8 +93,5 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby':       ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 
-let g:fzf_preview_window = ''
-
-let g:tmuxline_powerline_separators = 0
 
 runtime! keybindings.vim
