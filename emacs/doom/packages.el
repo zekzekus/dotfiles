@@ -12,7 +12,7 @@
 ;; Here are a couple examples:
 
 (package! w3m)
-(package! nordless-theme)
+(package! nord-theme)
 (package! parchment-theme)
 
 ;; All of Doom's packages are pinned to a specific commit, and updated from
