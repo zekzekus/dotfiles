@@ -71,7 +71,6 @@ let g:neomake_virtualtext_current_error = 0
 let g:neomake_rust_enabled_makers       = []
 let g:neomake_javascript_enabled_makers = []
 let g:neomake_python_enabled_makers     = []
-let g:neomake_ruby_enabled_makers       = []
 let g:neomake_haskell_enabled_makers    = []
 let g:neomake_clojure_enabled_makers    = ['kondo']
 let g:neomake_clojure_kondo_maker       = {
@@ -90,7 +89,6 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell':    ['haskell-language-server-wrapper', '--lsp'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python':     ['pyls'],
-    \ 'ruby':       ['bundle', 'exec', 'solargraph', 'stdio'],
     \ }
 
 

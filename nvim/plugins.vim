@@ -40,7 +40,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dadbod',               {'on':  'DB'}
 Plug 'AndrewRadev/linediff.vim',       {'on':  'Linediff'}
-Plug 'autozimu/LanguageClient-neovim', {'for': ['haskell', 'rust', 'python', 'javascript', 'ruby'],
+Plug 'autozimu/LanguageClient-neovim', {'for': ['haskell', 'rust', 'python', 'javascript'],
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
