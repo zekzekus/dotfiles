@@ -28,3 +28,10 @@ style = "bold cyan"
 [aws]
 disabled = true
 symbol = "A:"
+
+[elixir]
+symbol = "Ex:"
+
+[erlang]
+symbol = "Er:"
+
