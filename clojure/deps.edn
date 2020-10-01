@@ -43,13 +43,14 @@
   :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}
                        cider/cider-nrepl {:mvn/version "RELEASE"}}
           :main-opts ["-m" "rebel-readline.main" "--middleware" "[cider.nrepl/cider-middleware]"]}
-  :cider-clj {:extra-deps {cider/cider-nrepl {:mvn/version "0.21.1"}}
+  :cider-clj {:extra-deps {org.clojure/clojure {:mvn/version "1.10.1"}
+                           cider/cider-nrepl {:mvn/version "0.25.3"}}
               :main-opts ["-m" "nrepl.cmdline" "--middleware" "[cider.nrepl/cider-middleware]"]}
 
-  :cider-cljs {:extra-deps {org.clojure/clojure {:mvn/version "1.9.0"}
+  :cider-cljs {:extra-deps {org.clojure/clojure {:mvn/version "1.10.1"}
                             org.clojure/clojurescript {:mvn/version "1.10.339"}
-                            cider/cider-nrepl {:mvn/version "0.21.1"}
-                            cider/piggieback {:mvn/version "0.4.0"}}
+                            cider/cider-nrepl {:mvn/version "0.25.3"}
+                            cider/piggieback {:mvn/version "0.4.1"}}
                :main-opts ["-m" "nrepl.cmdline" "--middleware"
                            "[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]"]}
 
