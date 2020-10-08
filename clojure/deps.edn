@@ -67,6 +67,13 @@
   ;;   - clj -A:test:runner # run the tests!
   :new {:extra-deps {seancorfield/clj-new {:mvn/version "RELEASE"}}
         :main-opts ["-m" "clj-new.create"]}
+  :rebl {:extra-deps {com.cognitect/rebl          {:mvn/version "0.9.242"}
+                      org.openjfx/javafx-fxml     {:mvn/version "15-ea+6"}
+                      org.openjfx/javafx-controls {:mvn/version "15-ea+6"}
+                      org.openjfx/javafx-swing    {:mvn/version "15-ea+6"}
+                      org.openjfx/javafx-base     {:mvn/version "15-ea+6"}
+                      org.openjfx/javafx-web      {:mvn/version "15-ea+6"}}
+         :main-opts ["-m" "cognitect.rebl"]}
 
   ;; uberjar building:
   ;; - see https://github.com/seancorfield/depstar for a minimalist approach:
