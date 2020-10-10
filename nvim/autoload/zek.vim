@@ -129,6 +129,6 @@ function! zek#autoreply() abort
   endif
 endfunction
 
-function zek#lsp_bindings() abort
+function! zek#lsp_bindings() abort
   nnoremap <silent><C-p> :call LanguageClient_contextMenu()<cr>
 endfunction
