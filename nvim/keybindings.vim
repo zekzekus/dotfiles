@@ -9,20 +9,20 @@ command! -nargs=+                        -bar        Zfiles cgetexpr system('ff 
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
 " files
-nnoremap <leader>ff :Files<cr>
-nnoremap <leader>fj :Files ~/.cache/junkfile<cr>
+nnoremap <leader>ff :Zfiles<space>
+nnoremap <leader>fj :Zjunk<space>
 nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
-nnoremap <leader>bb    :Buffers<cr>
+nnoremap <leader>bb    :ls<cr>
 nnoremap <leader><tab> :b#<CR>
 
 " search
 nnoremap n          nzzzv
 nnoremap N          Nzzzv
 nnoremap <BS>       :nohlsearch<cr>
-nnoremap <leader>ss :BTags<cr>
-nnoremap <leader>sl :BLines<cr>
+nnoremap <leader>ss :ilist<space>
+nnoremap <leader>sl :ilist<space>//<left>
 
 nmap     -     <Plug>VinegarVerticalSplitUp
 cnoremap <c-n> <down>

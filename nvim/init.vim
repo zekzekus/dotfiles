@@ -65,7 +65,6 @@ endif
 
 let g:netrw_liststyle    = 3
 let g:vitality_fix_focus = 0
-let g:fzf_preview_window = ''
 
 let g:neomake_virtualtext_current_error = 0
 let g:neomake_rust_enabled_makers       = []
@@ -82,7 +81,6 @@ call neomake#configure#automake('nrwi', 500)
 
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
-let g:LanguageClient_selectionUI = 'FZF'
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'stable', 'rls'],

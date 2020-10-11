@@ -18,8 +18,6 @@ Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
 " navigating
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf.vim'
-Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
