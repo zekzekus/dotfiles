@@ -11,7 +11,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/goyo.vim'
 Plug 'ihsanturk/neuron.vim'
 Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
 
@@ -24,9 +23,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
-Plug 'zekzekus/menguless'
-Plug 'ajgrf/parchment'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ajgrf/parchment'
 
 " programming
 Plug 'neomake/neomake'
