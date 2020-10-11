@@ -83,10 +83,10 @@ let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
 let g:LanguageClient_useVirtualText = 'No'
 let g:LanguageClient_serverCommands = {
-    \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
-    \ 'haskell':    ['haskell-language-server-wrapper', '--lsp'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'python':     ['pyls'],
-    \ }
+      \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
+      \ 'haskell':    ['haskell-language-server-wrapper', '--lsp'],
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'python':     ['pyls'],
+      \ }
 
 runtime! keybindings.vim
