@@ -51,3 +51,6 @@ end
 
 starship init fish | source
 set -g fish_user_paths "/usr/local/opt/openjdk@11/bin" $fish_user_paths
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+test -f /Users/zekus/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /Users/zekus/.ghcup/bin $PATH
