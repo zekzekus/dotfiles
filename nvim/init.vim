@@ -72,6 +72,7 @@ let g:neomake_rust_enabled_makers       = []
 let g:neomake_javascript_enabled_makers = []
 let g:neomake_python_enabled_makers     = []
 let g:neomake_haskell_enabled_makers    = []
+let g:neomake_scala_enabled_makers      = []
 let g:neomake_clojure_enabled_makers    = ['kondo']
 let g:neomake_clojure_kondo_maker       = {
       \ 'exe': 'clj-kondo',
@@ -89,6 +90,7 @@ let g:LanguageClient_serverCommands = {
       \ 'haskell':    ['haskell-language-server-wrapper', '--lsp'],
       \ 'javascript': ['javascript-typescript-stdio'],
       \ 'python':     ['pyls'],
+      \ 'scala':      ['metals-vim'],
       \ }
 
 runtime! keybindings.vim
