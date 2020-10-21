@@ -83,7 +83,7 @@
 
        :tools
        neuron
-       ;;ansible
+       ansible
        debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -173,8 +173,8 @@
        ;;solidity          ; do you need a blockchain? No.
        ;; swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ;;web               ; the tubes
-       ;;yaml              ; JSON, but readable
+       web               ; the tubes
+       yaml              ; JSON, but readable
 
        :email
        ;;(mu4e +gmail)
