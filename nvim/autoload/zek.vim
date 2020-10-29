@@ -128,3 +128,7 @@ endfunction
 function! zek#lsp_bindings() abort
   nnoremap <silent><C-p> :call LanguageClient_contextMenu()<cr>
 endfunction
+
+function! zek#grep(...) abort
+  return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+endfunction

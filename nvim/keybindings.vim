@@ -4,9 +4,11 @@ let g:maplocalleader = '\'
 
 " commands
 command! -nargs=1 -complete=command      -bar -range Zredir call zek#redir(<q-args>, <range>, <line1>, <line2>)
-command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f-args>)
 command! -nargs=+                        -bar        Zfiles cgetexpr system('ff ' . shellescape(<q-args>) . ' .')
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
+
+cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Zgrep' : 'grep'
 
 " files
 nnoremap <leader>ff :Files<cr>

@@ -45,7 +45,7 @@ augroup general_au
   autocmd VimResized      *                     :wincmd =
   autocmd ColorScheme     *                     call zek#post_colorscheme()
   autocmd CmdlineLeave    :                     call zek#autoreply()
-  autocmd QuickFixCmdPost cgetexpr,cexpr        copen
+  autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
   autocmd User            ProjectionistActivate call zek#custom_projections()
 augroup END
 
