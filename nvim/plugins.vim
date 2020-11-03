@@ -11,7 +11,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ihsanturk/neuron.vim'
 Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
 
 " navigating
