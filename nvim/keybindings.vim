@@ -8,8 +8,6 @@ command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f
 command! -nargs=+                        -bar        Zfiles cgetexpr system('ff ' . shellescape(<q-args>) . ' .')
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
-cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Zgrep' : 'grep'
-
 " files
 nnoremap <leader>ff :Files<cr>
 nnoremap <leader>fj :Files ~/.cache/junkfile<cr>
