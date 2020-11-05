@@ -81,7 +81,7 @@ let g:neomake_clojure_kondo_maker       = {
       \ }
 call neomake#configure#automake('nrwi', 500)
 
-let g:LanguageClient_diagnosticsList = "Location"
+let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_useFloatingHover = 0
 let g:LanguageClient_usePopupHover = 0
 let g:LanguageClient_selectionUI = 'FZF'
