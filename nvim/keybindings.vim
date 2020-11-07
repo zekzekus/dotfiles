@@ -1,19 +1,19 @@
 nnoremap <space> <nop>
-let g:mapleader = "\<space>"
+let g:mapleader      = "\<space>"
 let g:maplocalleader = '\'
 
 " commands
-command! -nargs=1 -complete=command      -bar -range Zredir call zek#redir(<q-args>, <range>, <line1>, <line2>)
+command! -nargs=1 -complete=command      -bar -range Zredir call     zek#redir(<q-args>, <range>, <line1>, <line2>)
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f-args>)
 command! -nargs=+                        -bar        Zfiles cgetexpr system('ff ' . shellescape(<q-args>) . ' .')
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
 " files
-nnoremap <leader>ff :Zfiles<space>
-nnoremap <leader><space> :Files<cr>
-nnoremap <leader>fj :Files ~/.cache/junkfile<cr>
-nnoremap <leader>fs :w<cr>
-nnoremap <leader>fW :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>ff       :Zfiles<space>
+nnoremap <leader><space>  :Files<cr>
+nnoremap <leader>fj       :Files ~/.cache/junkfile<cr>
+nnoremap <leader>fs       :w<cr>
+nnoremap <leader>fW       :%s/\s\+$//<cr>:let @/=''<CR>
 
 " buffers
 nnoremap <leader>bb    :Buffers<cr>
