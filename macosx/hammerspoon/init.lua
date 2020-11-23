@@ -182,10 +182,12 @@ hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 
 -- Application shortcuts
 hs.hotkey.bind(hyper, "a", function()
-  hs.application.launchOrFocus("Safari")
+  hs.application.launchOrFocus("Google Chrome")
+  hs.application.launchOrFocus("Roam Research")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Slack")
-  hs.application.launchOrFocus("Things3")
+  hs.application.launchOrFocus("Mail")
+  hs.application.launchOrFocus("Calendar")
 end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
