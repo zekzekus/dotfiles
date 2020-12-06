@@ -185,7 +185,7 @@ hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Google Chrome")
   hs.application.launchOrFocus("Roam Research")
   hs.application.launchOrFocus("iTerm")
-  hs.application.launchOrFocus("Slack")
+  hs.application.launchOrFocus("Microsoft Teams")
 end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
