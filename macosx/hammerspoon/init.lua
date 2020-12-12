@@ -182,8 +182,7 @@ hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 
 -- Application shortcuts
 hs.hotkey.bind(hyper, "a", function()
-  hs.application.launchOrFocus("Google Chrome")
-  hs.application.launchOrFocus("Roam Research")
+  hs.application.launchOrFocus("Safari")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Microsoft Teams")
 end)
