@@ -29,6 +29,7 @@ Plug 'ajgrf/parchment'
 
 " programming
 Plug 'neomake/neomake'
+Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
