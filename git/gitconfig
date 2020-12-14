@@ -42,3 +42,6 @@ required = true
 
 [github]
 user = zekzekus
+
+[pull]
+rebase = false
