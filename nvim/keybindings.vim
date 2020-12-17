@@ -33,6 +33,7 @@ nnoremap <leader>sl :BLines<cr>
 nmap     -     <Plug>VinegarVerticalSplitUp
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
+nmap <leader>K <Plug>DashSearch
 
 nnoremap <silent><leader>qq :SmartClose<cr>
 
