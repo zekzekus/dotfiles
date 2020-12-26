@@ -68,10 +68,6 @@ let g:vitality_fix_focus = 0
 let g:fzf_preview_window = ''
 
 let g:neomake_virtualtext_current_error = 0
-let g:neomake_rust_enabled_makers       = []
-let g:neomake_javascript_enabled_makers = []
-let g:neomake_python_enabled_makers     = []
-let g:neomake_scala_enabled_makers      = []
 let g:neomake_clojure_enabled_makers    = ['kondo']
 let g:neomake_clojure_kondo_maker       = {
       \ 'exe': 'clj-kondo',
@@ -79,17 +75,5 @@ let g:neomake_clojure_kondo_maker       = {
       \ 'errorformat': '%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m',
       \ }
 call neomake#configure#automake('nrwi', 500)
-
-let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_useFloatingHover = 0
-let g:LanguageClient_usePopupHover = 0
-let g:LanguageClient_selectionUI = 'FZF'
-let g:LanguageClient_useVirtualText = 'No'
-let g:LanguageClient_serverCommands = {
-      \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
-      \ 'javascript': ['javascript-typescript-stdio'],
-      \ 'python':     ['pyls'],
-      \ 'scala':      ['metals-vim'],
-      \ }
 
 runtime! keybindings.vim

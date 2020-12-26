@@ -50,8 +50,3 @@ nnoremap cq       :call zek#setup_cr()<CR>*``qz
 nnoremap cQ       :call zek#setup_cr()<CR>#``qz
 vnoremap <expr>cq ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz"
 vnoremap <expr>cQ ":\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
-
-augroup keybindings_au
-  autocmd!
-  autocmd FileType rust,javascript,python,ruby,scala call zek#lsp_bindings()
-augroup END

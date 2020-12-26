@@ -38,10 +38,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dadbod',               {'on':  'DB'}
 Plug 'AndrewRadev/linediff.vim',       {'on':  'Linediff'}
-Plug 'autozimu/LanguageClient-neovim', {'for': ['rust', 'python', 'javascript', 'scala'],
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
