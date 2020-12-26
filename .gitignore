@@ -20,3 +20,5 @@ emacs/network-security.data
 .local.env
 
 kakoune/plugins
+
+*/.cpcache/

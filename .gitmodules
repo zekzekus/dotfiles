@@ -1,3 +1,6 @@
 [submodule "fish/functions/rust.fish"]
 	path = fish/functions/rust.fish
 	url = https://github.com/bheesham/rust.fish.git
+[submodule "clojure/dot-clojure"]
+	path = clojure/dot-clojure
+	url = https://github.com/seancorfield/dot-clojure.git
