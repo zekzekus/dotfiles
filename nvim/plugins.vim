@@ -14,8 +14,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
 
 " navigating
-Plug 'tpope/vim-apathy'
-Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
@@ -25,10 +23,8 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
 Plug 'arcticicestudio/nord-vim'
-Plug 'ajgrf/parchment'
 
 " programming
-Plug 'neomake/neomake'
 Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'

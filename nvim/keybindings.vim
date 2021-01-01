@@ -30,7 +30,6 @@ nnoremap <leader>*  :Zgrep<space><c-r><c-w><cr>
 nnoremap <leader>ss :BTags<cr>
 nnoremap <leader>sl :BLines<cr>
 
-nmap     -     <Plug>VinegarVerticalSplitUp
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 nmap <leader>K <Plug>DashSearch

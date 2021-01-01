@@ -67,13 +67,4 @@ let g:netrw_liststyle    = 3
 let g:vitality_fix_focus = 0
 let g:fzf_preview_window = ''
 
-let g:neomake_virtualtext_current_error = 0
-let g:neomake_clojure_enabled_makers    = ['kondo']
-let g:neomake_clojure_kondo_maker       = {
-      \ 'exe': 'clj-kondo',
-      \ 'args': ['--config', '.clj-kondo/config.edn', '--lint', '%'],
-      \ 'errorformat': '%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m',
-      \ }
-call neomake#configure#automake('nrwi', 500)
-
 runtime! keybindings.vim
