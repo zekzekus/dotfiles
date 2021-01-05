@@ -11,7 +11,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Shougo/junkfile.vim',     {'on': 'JunkfileOpen'}
+Plug 'junegunn/goyo.vim',   {'on': 'Goyo'}
+Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'junegunn/fzf.vim'
