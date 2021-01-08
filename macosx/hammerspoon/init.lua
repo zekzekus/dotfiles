@@ -185,6 +185,8 @@ hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Safari")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Microsoft Teams")
+  hs.application.launchOrFocus("OmniFocus")
+  hs.application.launchOrFocus("Notes")
 end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
