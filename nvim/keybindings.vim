@@ -9,7 +9,7 @@ command! -nargs=+                        -bar        Zfiles cgetexpr system('ff 
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
 " files
-nnoremap <leader>ff       :Zfiles<space>
+nnoremap <leader>ff       :Files<cr>
 nnoremap <leader><space>  :Files<cr>
 nnoremap <leader>fj       :Files ~/.cache/junkfile<cr>
 nnoremap <leader>fs       :w<cr>
