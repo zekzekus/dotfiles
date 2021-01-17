@@ -4,3 +4,4 @@ acme.commands
 acme.dump
 Session.vim
 .ignore
+.nvimlog
