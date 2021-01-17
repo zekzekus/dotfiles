@@ -12,7 +12,7 @@ export PAGER=nobs
 
 export PLUMBFILE=$HOME/bin/plumbing
 export PLAN9=$HOME/plan9port
-export SHELL=$PLAN9/bin/rc
+export SHELL=/usr/local/bin/bash
 export PATH=$PLAN9/bin:$PATH
 export MANPATH=$MANPATH:$PLAN9/man
 
