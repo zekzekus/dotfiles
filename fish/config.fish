@@ -9,6 +9,7 @@ set --export PATH /usr/local/sbin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $HOME/.local/bin $PATH
 set --export PATH $HOME/.cabal/bin $PATH
+set --export PATH $HOME/go/bin $PATH
 set --export PATH $HOME/bin $PATH
 set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
