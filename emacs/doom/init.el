@@ -164,6 +164,8 @@
        rest              ; Emacs as a REST client
        rst               ; ReST in peace
        (ruby
+        +lsp
+        +rails
         +rbenv
         +rails)
        rust        ; Fe2O3.unwrap().unwrap().unwrap().unwrap()

@@ -22,7 +22,7 @@ tool = vimdiff
 gpgsign = true
 
 [gpg]
-program = gpg2
+program = /usr/local/MacGPG2/bin/gpg2
 
 [init]
 templatedir = ~/.git_template
