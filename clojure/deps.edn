@@ -17,31 +17,39 @@
         :exec-args {:template lib}}
 
   ;; uberjar building:
-  ;; - see https://github.com/seancorfield/depstar for a minimalist approach:
+  ;; - see https://github.com/seancorfield/depstar for more details:
   ;;   - clj -X:uberjar :jar result.jar :main-class mymain.namespace
   ;; - to run it:
   ;;   - java -jar result.jar
   ;; - build a library JAR:
   ;;   - clj -X:jar :jar result-lib.jar
-  :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+  :uberjar {:replace-deps {seancorfield/depstar {:mvn/version "2.0.165"}}
             :exec-fn hf.depstar/uberjar
             :exec-args {:aot true}}
-  :jar {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+  :jar {:replace-deps {seancorfield/depstar {:mvn/version "2.0.165"}}
         :exec-fn hf.depstar/jar
         :exec-args {}}
+  ;; this is for consistency with the alias shown in the depstar project:
+  :depstar {:replace-deps {seancorfield/depstar {:mvn/version "2.0.165"}}
+            :ns-default hf.depstar
+            :exec-args {}}
 
   ;; jar installation and deployment:
   ;; - see https://github.com/slipset/deps-deploy
-  ;;   - clj -M:install project.jar
-  ;;   - clj -M:deploy project.jar
+  ;;   - clj -X:install :artifact '"project.jar"'
+  ;;   - clj -X:deploy :artifact '"project.jar"'
   ;; - these rely on having a pom.xml file and, for deployment, these two
   ;;   environment variables: CLOJARS_USERNAME, CLOJARS_PASSWORD
-  :install {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
-            :main-opts ["-m" "deps-deploy.deps-deploy" "install"]}
-  :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
-           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy"]}
+  :install {:replace-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+            :exec-fn deps-deploy.deps-deploy/deploy
+            :exec-args {:installer :local}}
+  :deploy {:replace-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+           :exec-fn deps-deploy.deps-deploy/deploy
+           :exec-args {:installer :remote}}
 
-  ;; testing and debugging tools:
+  ;; testing and debugging tools (this would normally be overridden
+  ;; by a :test alias in the project deps.edn file -- but it's a
+  ;; useful default):
   :test {:extra-paths ["test" "src/test/clojure"]
          :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
   ;; - see https://github.com/cognitect-labs/test-runner
@@ -88,25 +96,30 @@
   {:jvm-opts ["-XX:+ShowCodeDetailsInExceptionMessages"]}
 
   ;; REPL-related tools:
-  ;; - start REBL or Reveal or Rebel Readline, with a socket REPL:
-  ;;   - clj -M:rebl:dev OR clj -M:reveal:dev OR clj -M:rebel:dev
-  :dev {:main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
+  ;; - start Figwheel or REBL or Reveal or Rebel Readline, with a socket REPL:
+  ;;   - clj -M:rebl:dev/repl OR clj -M:reveal:dev/repl OR clojure -M:rebel:dev/repl
+  ;;   - clojure -M:fig:build:dev/repl
+  ;; - recently renamed from :dev to be less likely to clash with project-specific
+  ;;   aliases (some projects already have a :dev alias):
+  :dev/repl {:jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
+             :main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
+  ;; - legacy spelling of this alias:
+  :dev {:jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
+        :main-opts ["-e" "(load-file,(str,(System/getProperty,\"user.home\"),\"/.clojure/dev.clj\"))"]}
   ;; - in case you need precompiled code on your classpath:
   :classes {:extra-paths ["classes"]}
-  ;; - start a modern nREPL server on a random available port:
+  ;; - start an nREPL server on a random available port:
   :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "RELEASE"}}
           :main-opts ["-m" "nrepl.cmdline"]}
-
   :cider-clj {:extra-deps {cider/cider-nrepl {:mvn/version "0.22.4"}}
               :main-opts ["-m" "nrepl.cmdline" "--middleware" "[cider.nrepl/cider-middleware]"]}
-
+  
   :cider-cljs {:extra-deps {org.clojure/clojurescript {:mvn/version "1.10.339"}
                             cider/cider-nrepl {:mvn/version "0.22.4"}
                             cider/piggieback {:mvn/version "0.5.1"}}
                :main-opts ["-m" "nrepl.cmdline" "--middleware"
                            "[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]"]}
-
-  ;; - start a Socket REPL on port 50505:
+  ;; - start a Socket REPL on port 50505 (not needed if you use the :dev/repl alias):
   :socket {:jvm-opts ["-Dclojure.server.repl={:address,\"0.0.0.0\",:port,50505,:accept,clojure.core.server/repl}"]}
   ;; - start a Socket REPL on an available port, and display that port:
   ;; - specify -r as well if you want a repl
@@ -125,7 +138,7 @@
   ;; - start a Rebel Readline REPL:
   :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}}
           :main-opts ["-m" "rebel-readline.main"]}
-  ;; - see https://github.com/jimpil/jedi-time
+  ;; see https://github.com/jimpil/jedi-time
   :jedi-time
   {:extra-deps {jedi-time/jedi-time {:mvn/version "0.2.0"}}}
   ;; - see https://github.com/stuarthalloway/reflector
@@ -178,12 +191,13 @@
   :1.7 {:override-deps {org.clojure/clojure {:mvn/version "1.7.0"}}}
   :1.8 {:override-deps {org.clojure/clojure {:mvn/version "1.8.0"}}}
   :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0"}}}
-  :1.10 {:override-deps {org.clojure/clojure {:mvn/version "1.10.0"}}}
+  ;; latest 1.10 is 1.10.2 but you can ask for earlier versions:
+  :1.10 {:override-deps {org.clojure/clojure {:mvn/version "1.10.2"}}}
+  :1.10.0 {:override-deps {org.clojure/clojure {:mvn/version "1.10.0"}}}
   :1.10.1 {:override-deps {org.clojure/clojure {:mvn/version "1.10.1"}}}
-  ;; latest release is alpha2:
-  :1.10.2 {:override-deps {org.clojure/clojure {:mvn/version "1.10.2-alpha2"}}}
-  ;; master is currently 1.10.2:
-  :master {:override-deps {org.clojure/clojure {:mvn/version "1.10.2-master-SNAPSHOT"}}}
+  :1.10.2 {:override-deps {org.clojure/clojure {:mvn/version "1.10.2"}}}
+  ;; master has just become 1.11:
+  :master {:override-deps {org.clojure/clojure {:mvn/version "1.11.0-master-SNAPSHOT"}}}
 
   :add-libs ; to get access to clojure.tools.deps.alpha.repl/add-libs
   ;; IMPORTANT NOTE: this is the new add-lib3 branch but is still a work
@@ -192,6 +206,9 @@
   ;; into either t.d.a or perhaps Clojure itself; in addition, the default
   ;; install of the Clojure CLI includes a :deps alias to the version of
   ;; t.d.a that is included in the install, so I renamed :deps to :add-lib!
+  ;; CAVEAT: since this is a git dependency, it doesn't bring in any of
+  ;; the compiled Java code so S3 Maven repos are not accessible via this
+  ;; alias (which the released t.d.a provides).
   ;; - now you can add new deps to a running REPL:
   ;; (require '[clojure.tools.deps.alpha.repl :refer [add-libs]])
   ;; (add-libs '{some/library {:mvn/version "RELEASE"}})
