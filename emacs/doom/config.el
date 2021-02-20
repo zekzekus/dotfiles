@@ -120,6 +120,9 @@
 (use-package! w3m
   :commands (w3m))
 
+(after! sly
+  (setq inferior-lisp-program "ros run"))
+
 (custom-theme-set-faces! 'menguless
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
   '(org-block-end-line :box (:color "#ccccbb" :line-width -1)))
