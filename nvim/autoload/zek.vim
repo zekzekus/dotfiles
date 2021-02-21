@@ -13,9 +13,6 @@ function! zek#setup_cr() abort
 endfunction
 
 function! zek#post_colorscheme() abort
-  if g:colors_name ==# 'parchment'
-    highlight clear VertSplit
-  endif
 endfunction
 
 function! zek#pre_colorscheme() abort
@@ -23,11 +20,7 @@ endfunction
 
 function! zek#set_colorscheme() abort
   call zek#pre_colorscheme()
-  if $ITERM_PROFILE =~? 'light'
-    colorscheme parchment
-  else
-    colorscheme nord
-  endif
+  colorscheme nord
   call zek#post_colorscheme()
 endfunction
 
