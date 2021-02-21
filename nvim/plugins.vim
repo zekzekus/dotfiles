@@ -20,7 +20,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'arcticicestudio/nord-vim'
 
 " programming
-Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
