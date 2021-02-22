@@ -20,8 +20,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'arcticicestudio/nord-vim'
 
 " programming
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
