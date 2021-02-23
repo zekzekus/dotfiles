@@ -20,12 +20,11 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'arcticicestudio/nord-vim'
 
 " programming
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-dadbod',               {'on':  'DB'}
 Plug 'AndrewRadev/linediff.vim',       {'on':  'Linediff'}
+Plug 'tpope/vim-dadbod',               {'on':  'DB'}
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
