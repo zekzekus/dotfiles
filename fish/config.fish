@@ -8,7 +8,7 @@ end
 #set --export GOPATH $HOME/go
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH
-#set --export PATH $HOME/.cargo/bin $PATH
+set --export PATH $HOME/.cargo/bin $PATH
 #set --export PATH $HOME/.local/bin $PATH
 #set --export PATH $HOME/.cabal/bin $PATH
 #set --export PATH $GPATH/bin $PATH
@@ -30,7 +30,7 @@ set --export EDITOR nvim
 set --export MANPAGER "nvim -c 'set ft=man' -"
 #set --export PGDATA /usr/local/var/postgres
 #set --export RUBY_CONFIGURE_OPTS --with-openssl-dir=/usr/local/opt/openssl@1.1
-#set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
+set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 alias mux='tmuxinator'
 
