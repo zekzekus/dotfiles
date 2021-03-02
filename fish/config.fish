@@ -41,7 +41,7 @@ set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 
 #rbenv init - | source
-#nodenv init - | source
+nodenv init - | source
 #direnv hook fish | source
 
 if test -e ~/.nix-profile/etc/profile.d/nix.sh
