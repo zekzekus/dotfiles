@@ -184,14 +184,15 @@ hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Safari")
   hs.application.launchOrFocus("iTerm")
-  hs.application.launchOrFocus("Microsoft Teams")
+  hs.application.launchOrFocus("Slack")
   hs.application.launchOrFocus("Roam Research")
+  hs.application.launchOrFocus("Mail")
 end)
-hs.hotkey.bind(hyper, "r", function() hs.application.launchOrFocus("Roam Research") end)
+-- hs.hotkey.bind(hyper, "r", function() hs.application.launchOrFocus("Roam Research") end)
 
 hs.hotkey.bind(hyper, "w", mouseHighlight)
 
 hs.hotkey.bind(hyper, "q", showHelp)
 
 --config reloading. manual (from getting started guide):
--- hs.hotkey.bind(hyper, "r", function() hs.reload() end)
+hs.hotkey.bind(hyper, "r", function() hs.reload() end)
