@@ -9,14 +9,15 @@ command! -nargs=+                        -bar        Zfiles cgetexpr system('ff 
 command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff ' . shellescape(<q-args>) . ' ~/.cache/junkfile')
 
 " files
-nnoremap <leader>ff       :Files<cr>
-nnoremap <leader><space>  :Files<cr>
+nnoremap <leader>ff       <cmd>Telescope find_files<cr>
+nnoremap <leader><space>  <cmd>Telescope find_files<cr>
 nnoremap <leader>fj       :Files ~/.cache/junkfile<cr>
 nnoremap <leader>fs       :w<cr>
 nnoremap <leader>fW       :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>ft       <cmd>NvimTreeToggle<cr>
 
 " buffers
-nnoremap <leader>bb    :Buffers<cr>
+nnoremap <leader>bb    <cmd>Telescope buffers<cr>
 nnoremap <leader>bd    :bdelete<cr>
 nnoremap <leader><tab> :b#<CR>
 nnoremap <leader>`     :b#<CR>

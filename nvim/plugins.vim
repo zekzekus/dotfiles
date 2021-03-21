@@ -28,4 +28,14 @@ Plug 'tpope/vim-dadbod',               {'on':  'DB'}
 
 Plug 'tpope/vim-jdaddy', {'for': 'json'}
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'TimUntersberger/neogit'
+Plug 'nvim-lua/completion-nvim'
+
 call plug#end()

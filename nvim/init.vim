@@ -47,6 +47,7 @@ augroup general_au
   autocmd CmdlineLeave    :                     call zek#autoreply()
   autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
   autocmd User            ProjectionistActivate call zek#custom_projections()
+  autocmd BufEnter * lua require'completion'.on_attach()
 augroup END
 
 set inccommand=split
@@ -59,5 +60,8 @@ let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 let g:netrw_liststyle    = 3
 let g:vitality_fix_focus = 0
 let g:fzf_preview_window = ''
+
+lua require'lspconfig'.tsserver.setup{}
+lua require'lspconfig'.vimls.setup{}
 
 runtime! keybindings.vim
