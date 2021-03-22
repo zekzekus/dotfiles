@@ -2,6 +2,8 @@ nnoremap <space> <nop>
 let g:mapleader      = "\<space>"
 let g:maplocalleader = '\'
 
+nnoremap <leader><space>  <cmd>Telescope<cr>
+
 " commands
 command! -nargs=1 -complete=command      -bar -range Zredir call     zek#redir(<q-args>, <range>, <line1>, <line2>)
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f-args>)
@@ -10,7 +12,6 @@ command! -nargs=?                        -bar        Zjunk  cgetexpr system('ff 
 
 " files
 nnoremap <leader>ff       <cmd>Telescope find_files<cr>
-nnoremap <leader><space>  <cmd>Telescope find_files<cr>
 nnoremap <leader>fj       :Files ~/.cache/junkfile<cr>
 nnoremap <leader>fs       :w<cr>
 nnoremap <leader>fW       :%s/\s\+$//<cr>:let @/=''<CR>
@@ -28,8 +29,8 @@ nnoremap N          Nzzzv
 nnoremap <BS>       :nohlsearch<cr>
 nnoremap <leader>/  :Zgrep<space>
 nnoremap <leader>*  :Zgrep<space><c-r><c-w><cr>
-nnoremap <leader>ss :BTags<cr>
-nnoremap <leader>sl :BLines<cr>
+nnoremap <leader>ss <cmd>Telescope current_buffer_tags<cr>
+nnoremap <leader>sl <cmd>Telescope current_buffer_fuzzy_find<cr>
 
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
