@@ -45,9 +45,9 @@ augroup general_au
   autocmd VimResized      *                     :wincmd =
   autocmd ColorScheme     *                     call zek#post_colorscheme()
   autocmd CmdlineLeave    :                     call zek#autoreply()
+  autocmd BufEnter        *                     lua require'completion'.on_attach()
   autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
   autocmd User            ProjectionistActivate call zek#custom_projections()
-  autocmd BufEnter * lua require'completion'.on_attach()
 augroup END
 
 set inccommand=split
