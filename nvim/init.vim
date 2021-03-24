@@ -64,4 +64,17 @@ let g:fzf_preview_window = ''
 lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.vimls.setup{}
 
+
+lua << EOF
+vim.g.completion_chain_complete_list = {
+  default = {
+    { complete_items = { 'lsp' } },
+    { complete_items = { 'buffers' } },
+    { complete_items = { 'tags' } },
+    { mode = { '<c-p>' } },
+    { mode = { '<c-n>' } }
+  },
+}
+EOF
+
 runtime! keybindings.vim

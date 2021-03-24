@@ -37,5 +37,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/completion-nvim'
+Plug 'steelsojka/completion-buffers'
+Plug 'kristijanhusak/completion-tags'
 
 call plug#end()

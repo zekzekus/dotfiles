@@ -41,6 +41,8 @@ nnoremap <silent><leader>qq :SmartClose<cr>
 " Select just pasted text.
 nnoremap <leader>V V`]
 
+imap <Tab> <Plug>(completion_next_source)
+
 let g:mc = 'y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>'
 nnoremap cn     *``cgn
 nnoremap cN     *``cgN
