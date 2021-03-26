@@ -63,6 +63,7 @@ let g:fzf_preview_window = ''
 
 lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.vimls.setup{}
+lua require'lspconfig'.gopls.setup{}
 
 
 lua << EOF

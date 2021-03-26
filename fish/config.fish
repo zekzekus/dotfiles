@@ -5,13 +5,13 @@ if not functions -q fisher
 end
 
 #set --export GOROOT /usr/local/opt/go/libexec
-#set --export GOPATH $HOME/go
+set --export GOPATH $HOME/go
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
 #set --export PATH $HOME/.local/bin $PATH
 #set --export PATH $HOME/.cabal/bin $PATH
-#set --export PATH $GPATH/bin $PATH
+set --export PATH $GOPATH/bin $PATH
 set --export PATH /usr/local/lib/ruby/gems/3.0.0/bin $PATH
 set --export PATH $HOME/bin $PATH
 #set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
