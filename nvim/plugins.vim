@@ -39,5 +39,7 @@ Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/completion-nvim'
 Plug 'steelsojka/completion-buffers'
 Plug 'kristijanhusak/completion-tags'
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
 
 call plug#end()
