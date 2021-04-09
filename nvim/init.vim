@@ -61,11 +61,6 @@ let g:netrw_liststyle    = 3
 let g:vitality_fix_focus = 0
 let g:fzf_preview_window = ''
 
-lua require'lspconfig'.tsserver.setup{}
-lua require'lspconfig'.vimls.setup{}
-lua require'lspconfig'.gopls.setup{}
-
-
 lua << EOF
 vim.g.completion_chain_complete_list = {
   default = {

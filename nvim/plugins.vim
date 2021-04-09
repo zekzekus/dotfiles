@@ -20,7 +20,7 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 Plug 'arcticicestudio/nord-vim'
 
 " programming
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'  # read something about it breaks thing together with treesitter
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'AndrewRadev/linediff.vim',       {'on':  'Linediff'}
