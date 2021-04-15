@@ -9,6 +9,7 @@ set hidden
 set signcolumn=number
 set cursorline
 set nomodeline
+set noshowmode
 set splitbelow
 set splitright
 set wildignorecase
@@ -63,7 +64,9 @@ vim.g.completion_chain_complete_list = {
   },
 }
 require('gitsigns').setup()
-require('feline').setup()
+require('feline').setup({
+  preset = 'noicon'
+})
 EOF
 
 runtime! keybindings.vim
