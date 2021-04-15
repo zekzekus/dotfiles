@@ -27,15 +27,6 @@ set showbreak=↪\
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ \"!tags\"\ --hidden\ --glob\ \"!.git\"
 
-set statusline=%w%q
-set statusline+=\ 【\ %f%M%R%H\ 】
-set statusline+=%=
-set statusline+=%{(&paste==0?'':'〖P〗')}
-set statusline+=\ 《\ %Y\ 》
-set statusline+=〔%l\ ↕\ %L\ ↕\ %c〕
-set statusline+=\ ┇\ %%%p\ ┇
-set statusline+=\ %{zek#listinfos()}
-
 set termguicolors
 call zek#set_colorscheme()
 
@@ -71,6 +62,8 @@ vim.g.completion_chain_complete_list = {
     { mode = { '<c-n>' } }
   },
 }
+require('gitsigns').setup()
+require('feline').setup()
 EOF
 
 runtime! keybindings.vim

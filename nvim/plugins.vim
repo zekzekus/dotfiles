@@ -39,5 +39,7 @@ Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/completion-nvim'
 Plug 'steelsojka/completion-buffers'
 Plug 'kristijanhusak/completion-tags'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'famiu/feline.nvim'
 
 call plug#end()
