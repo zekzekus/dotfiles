@@ -47,7 +47,6 @@ augroup general_au
   autocmd CmdlineLeave    :                     call zek#autoreply()
   autocmd BufEnter        *                     lua require'completion'.on_attach()
   autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
-  autocmd User            ProjectionistActivate call zek#custom_projections()
 augroup END
 
 set inccommand=split
