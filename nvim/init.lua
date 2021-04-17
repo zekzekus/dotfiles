@@ -19,10 +19,10 @@ vim.o.hlsearch = true
 vim.wo.foldmethod = "indent"
 vim.wo.foldlevel = 99
 vim.o.errorformat = vim.o.errorformat .. ",%f"
-vim.cmd[[set undofile]]
 vim.o.tags = vim.o.tags .. ",.git/tags"
-vim.o.undodir = "~/.nvimtmp"
-vim.o.directory = "~/.nvimtmp"
+vim.o.undodir = vim.fn.getenv("HOME") .. "/.nvimtmp"
+vim.o.directory = vim.fn.getenv("HOME") .. "/.nvimtmp"
+vim.cmd[[set undofile]]
 vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.showbreak = "↪ "
 vim.o.listchars  =  "tab:│ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅"
