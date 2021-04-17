@@ -32,12 +32,13 @@ vim.o.termguicolors = true
 vim.o.inccommand = "split"
 vim.cmd[[colorscheme nord]]
 
+vim.g.zek_has_replied = false
 vim.api.nvim_exec([[
 	augroup general_au
 		autocmd!
 		autocmd VimResized      *                     :wincmd =
 		" autocmd ColorScheme     *                     call zek#post_colorscheme()
-		" autocmd CmdlineLeave    :                     call zek#autoreply()
+		autocmd CmdlineLeave    :                     call zek#autoreply()
 		autocmd BufEnter        *                     lua require'completion'.on_attach()
 		autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
 		autocmd TermOpen * setlocal nonumber norelativenumber
