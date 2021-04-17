@@ -132,6 +132,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-lastplace"
   },
+  ["vim-polyglot"] = {
+    loaded = true,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-polyglot"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-repeat"

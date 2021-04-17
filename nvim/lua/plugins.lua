@@ -32,7 +32,7 @@ require('packer').startup(function()
 
 	use 'arcticicestudio/nord-vim'
 
-	-- use 'sheerun/vim-polyglot'  # read something about it breaks thing together with treesitter
+	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-commentary'
 	use 'AndrewRadev/linediff.vim'
