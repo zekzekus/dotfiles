@@ -72,10 +72,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/linediff.vim"
   },
-  neogit = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/neogit"
-  },
   ["nord-vim"] = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nord-vim"

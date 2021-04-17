@@ -47,7 +47,6 @@ require('packer').startup(function()
 	use 'nvim-telescope/telescope.nvim'
 	use 'neovim/nvim-lspconfig'
 	use 'kyazdani42/nvim-tree.lua'
-	use 'TimUntersberger/neogit'
 	use 'nvim-lua/completion-nvim'
 	use 'steelsojka/completion-buffers'
 	use 'kristijanhusak/completion-tags'
