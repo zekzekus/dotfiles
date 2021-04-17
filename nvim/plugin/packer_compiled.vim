@@ -61,16 +61,22 @@ _G.packer_plugins = {
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["goyo.vim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/goyo.vim"
+    commands = { "Goyo" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/goyo.vim"
   },
   ["junkfile.vim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/junkfile.vim"
+    commands = { "JunkfileOpen" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/junkfile.vim"
   },
   ["linediff.vim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/linediff.vim"
+    commands = { "Linediff" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/linediff.vim"
   },
   ["nord-vim"] = {
     loaded = true,
@@ -113,16 +119,19 @@ _G.packer_plugins = {
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-dadbod"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-dadbod"
+    commands = { "DB" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/vim-dadbod"
   },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-jdaddy"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-jdaddy"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/vim-jdaddy"
   },
   ["vim-lastplace"] = {
     loaded = true,
@@ -141,8 +150,10 @@ _G.packer_plugins = {
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-sleuth"
   },
   ["vim-smartclose"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-smartclose"
+    commands = { "SmartClose" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/vim-smartclose"
   },
   ["vim-surround"] = {
     loaded = true,
@@ -158,6 +169,19 @@ _G.packer_plugins = {
   }
 }
 
+
+-- Command lazy-loads
+vim.cmd [[command! -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file SmartClose lua require("packer.load")({'vim-smartclose'}, { cmd = "SmartClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file JunkfileOpen lua require("packer.load")({'junkfile.vim'}, { cmd = "JunkfileOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Linediff lua require("packer.load")({'linediff.vim'}, { cmd = "Linediff", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+vim.cmd [[au FileType json ++once lua require("packer.load")({'vim-jdaddy'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd("augroup END")
 END
 
 catch
