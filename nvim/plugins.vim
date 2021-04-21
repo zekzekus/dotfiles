@@ -23,6 +23,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
 Plug 'AndrewRadev/linediff.vim',       {'on':  'Linediff'}
 Plug 'tpope/vim-dadbod',               {'on':  'DB'}
 
