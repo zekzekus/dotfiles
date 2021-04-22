@@ -12,6 +12,7 @@ kmap('n', '<leader>fj',      [[<cmd>Files ~/.cache/junkfile<cr>]],  { noremap = 
 kmap('n', '<leader>fs',      [[<cmd>w<cr>]],                        { noremap = true, silent = false })
 kmap('n', '<leader>fW',      [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]], { noremap = true, silent = false })
 kmap('n', '<leader>ft',      [[<cmd>NvimTreeToggle<cr>]],           { noremap = true, silent = false })
+kmap('n', '<leader>fT',      [[<cmd>TagbarToggle<cr>]],             { noremap = true, silent = false })
 kmap('n', '<leader>bb',      [[<cmd>Telescope buffers<cr>]],        { noremap = true, silent = false })
 kmap('n', '<leader>bd',      [[<cmd>bdelete<cr>]],                  { noremap = true, silent = false })
 kmap('n', '<leader><tab>',   [[<cmd>b#<cr>]],                       { noremap = true, silent = false })

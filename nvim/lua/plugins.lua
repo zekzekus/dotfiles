@@ -79,4 +79,5 @@ require('packer').startup(function()
 	use 'steelsojka/completion-buffers'
 	use 'kristijanhusak/completion-tags'
 	use 'lewis6991/gitsigns.nvim'
+	use 'preservim/tagbar'
 end)
