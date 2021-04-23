@@ -20,8 +20,6 @@ set foldlevel=99
 set errorformat+=%f
 set undofile
 set tags+=,.git/tags
-set undodir=~/.nvimtmp
-set directory=~/.nvimtmp
 set completeopt=menuone,noinsert,noselect
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅
@@ -49,12 +47,23 @@ augroup general_au
   autocmd User            ProjectionistActivate call zek#custom_projections()
 augroup END
 
-set inccommand=split
-augroup terminal_au
-  autocmd!
-  autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
-let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+if has('nvim')
+  set undodir=~/.nvimtmp
+  set directory=~/.nvimtmp
+  set inccommand=split
+  augroup terminal_au
+    autocmd!
+    " autocmd TermOpen * setlocal nonumber norelativenumber
+  augroup END
+  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
+else
+  set undodir=~/.vimtmp
+  set directory=~/.vimtmp
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  let &t_ZH = "\e[3m"
+  let &t_ZR = "\e[23m"
+endif
 
 let g:netrw_liststyle    = 3
 let g:vitality_fix_focus = 0

@@ -1,4 +1,10 @@
-call plug#begin('~/.cache/plugged_nvim')
+if !has('nvim')
+  call plug#begin('~/.cache/plugged_vim')
+  Plug 'sjl/vitality.vim'
+  Plug 'tpope/vim-sensible'
+else
+  call plug#begin('~/.cache/plugged_nvim')
+endif
 
 " editing
 Plug 'tpope/vim-sleuth'
@@ -14,6 +20,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-vinegar'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
