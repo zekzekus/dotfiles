@@ -53,7 +53,7 @@ if has('nvim')
   set inccommand=split
   augroup terminal_au
     autocmd!
-    " autocmd TermOpen * setlocal nonumber norelativenumber
+    autocmd TermOpen * setlocal nonumber norelativenumber
   augroup END
   let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
 else
