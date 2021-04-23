@@ -1,5 +1,7 @@
 function! zek#updateremote(arg) abort
-  UpdateRemotePlugins
+  if has('nvim')
+    UpdateRemotePlugins
+  endif
 endfunction
 
 function! zek#listinfos() abort
