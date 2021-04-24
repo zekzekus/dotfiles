@@ -16,11 +16,11 @@ Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-vinegar'
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-vinegar'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
