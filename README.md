@@ -9,11 +9,8 @@ My very personal Vim configuration. Some more details below.
 * Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
 * Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
 * Basic language support comes from [vim-polyglot](https://github.com/sheerun/vim-polyglot/).
-* Advanced Language support is available via corresponding [Language Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/) except for `Clojure` and `Ruby`. 
-* Programming languages configured for LSP: `Python`, `Clojure`, `Haskell`, `Rust`, `Go`, `Javascript`, `Scala` and `Ruby`.
 * Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and buffer based shortcuts are under `<Leader>b`.
 * Leader key is `space`.  Local leader is `\`.
-* I am using [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim) as autocompletion and language client engine.
 
 ### Key bindings List
 
@@ -33,8 +30,6 @@ Notable custom key bindings;
     * `<BS>` executes `:nohlsearch<cr>`.
 * Other
     * `<leader>V` selects just pasted text.
-* Programming support bindings.
-    * `<C-p>` list supported LSP functionalities
 
 Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom keybindings. Filetype based keybindings (for haskell, python etc.) and configurations can be found in corresponding files under `nvim/after/ftplugin` directory.
 
@@ -52,7 +47,6 @@ Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugin
 
 * For Neovim it is recommended to use separated virtual python environments for editor's own needs (I use Fish shell and virtualfish). For any shell, these virtual environments must be located under `~/.virtualenvs/`.
 
-        $ vf new --python=python2 neovim2
         $ vf new --python=python3 neovim3
 
 * Clone repository to any place you prefer.
@@ -80,13 +74,6 @@ Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugin
 
         $ brew install universal-ctags ripgrep the_silver_searcher fzf
         $ brew install tavianator/tap/bfs
-
-* Install Language Servers for the languages you want work on.
-    * [Python Language Server](https://github.com/palantir/python-language-server)
-    * [Haskell IDE Engine](https://github.com/haskell/haskell-ide-engine)
-    * [Rust Language Server](https://github.com/rust-lang-nursery/rls)
-    * [Javascript/Typescript Language Server](https://github.com/sourcegraph/javascript-typescript-langserver)
-    * [Ruby](https://solargraph.org)
 
 ## TMUX Configuration
 
