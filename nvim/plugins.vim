@@ -25,6 +25,8 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+" Plug 'edkolev/tmuxline.vim'
 
 " programming
 Plug 'sheerun/vim-polyglot'
