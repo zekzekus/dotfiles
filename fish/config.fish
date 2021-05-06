@@ -30,7 +30,7 @@ set --export EDITOR nvim
 set --export MANPAGER "nvim -c 'set ft=man' -"
 #set --export PGDATA /usr/local/var/postgres
 #set --export RUBY_CONFIGURE_OPTS --with-openssl-dir=/usr/local/opt/openssl@1.1
-set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
+set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/library
 
 alias mux='tmuxinator'
 
