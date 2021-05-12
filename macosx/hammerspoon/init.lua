@@ -183,10 +183,10 @@ hs.hotkey.bind(hyper, "o", function() hs.application.launchOrFocus("Roam Researc
 
 -- Application shortcuts
 hs.hotkey.bind(hyper, "a", function()
-  hs.application.launchOrFocus("Safari")
+  hs.application.launchOrFocus("Google Chrome")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Slack")
-  -- hs.application.launchOrFocus("Roam Research")
+  hs.application.launchOrFocus("Roam Research")
   hs.application.launchOrFocus("Mail")
   hs.application.launchOrFocus("Things3")
 end)
