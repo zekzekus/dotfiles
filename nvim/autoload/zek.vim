@@ -22,7 +22,7 @@ endfunction
 
 function! zek#set_colorscheme() abort
   call zek#pre_colorscheme()
-  colorscheme gruvbox
+  colorscheme nord
   call zek#post_colorscheme()
 endfunction
 
