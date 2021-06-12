@@ -36,8 +36,8 @@ export FZF_ALT_C_COMMAND='bfs -type d -nohidden'
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
-eval "$(direnv hook bash)"
-eval "$(rbenv init -)"
+# eval "$(direnv hook bash)"
+# eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
