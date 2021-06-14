@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+tmuxgetir () {
+    SELECTED_PROJECT=$(ls -1 ~/devel/projects/getir/ |
+        tail -n +2 |
+        fzf --exit-0 --prompt="Project: " -1 -q "$1") || return $?
+
+    tmuxinator g "$SELECTED_PROJECT"
+}
+
+tmuxgetir "$@"
