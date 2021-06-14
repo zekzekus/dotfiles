@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# inspired and adapted from here: https://hschne.at/2020/04/25/creating-a-fuzzy-shell-with-fzf-and-friends.html
+# Inspired and adapted from here: https://github.com/junegunn/fzf/wiki/Examples#tmux
+tmuxkillf () {
+  local target_sessions
+  target_sessions=$(tmux ls | \
+    cut -d: -f1 | \
+    fzf --query="$1" --multi --exit-0) || return $?
+
+  for session in $target_sessions; do
+    session=${session%%:*}
+    tmux kill-session -t "$session"
+  done
+}
+
+tmuxkillf "$@"
