@@ -13,6 +13,7 @@ set --export PATH $HOME/.cargo/bin $PATH
 #set --export PATH $HOME/.cabal/bin $PATH
 set --export PATH $GOPATH/bin $PATH
 set --export PATH /usr/local/lib/ruby/gems/3.0.0/bin $PATH
+set --export PATH $HOME/Library/Application\ Support/Coursier/bin $PATH
 set --export PATH $HOME/bin $PATH
 #set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
 #set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
