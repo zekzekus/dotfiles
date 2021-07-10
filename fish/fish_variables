@@ -3,6 +3,8 @@
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/zekus/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/zekus/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher
 SETUVAR fish_color_autosuggestion:777777
 SETUVAR fish_color_cancel:normal
 SETUVAR fish_color_command:00FF00
