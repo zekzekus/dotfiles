@@ -11,13 +11,11 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'chiefnoah/neuron-v2.vim'
 Plug 'junegunn/goyo.vim',   {'on': 'Goyo'}
 Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 
 " navigating
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-vinegar'
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'farmergreg/vim-lastplace'
@@ -26,8 +24,6 @@ Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
 
 " vim interface
 Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
-" Plug 'edkolev/tmuxline.vim'
 
 " programming
 Plug 'sheerun/vim-polyglot'
@@ -37,11 +33,5 @@ Plug 'tpope/vim-commentary'
 Plug 'preservim/tagbar', 				 {'on': 'TagbarToggle'}
 Plug 'AndrewRadev/linediff.vim', {'on':  'Linediff'}
 Plug 'tpope/vim-dadbod',         {'on':  'DB'}
-
-" languages
-Plug 'tpope/vim-jdaddy',       {'for': 'json'}
-Plug 'tpope/vim-salve',        {'for': 'clojure'}
-Plug 'tpope/vim-fireplace',    {'for': 'clojure'}
-Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release', 'for': ['clojure', 'lisp']}
 
 call plug#end()

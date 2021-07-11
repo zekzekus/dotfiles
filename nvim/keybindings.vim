@@ -22,8 +22,6 @@ nnoremap <leader>bd    :bdelete<cr>
 nnoremap <leader><tab> :b#<CR>
 nnoremap <leader>`     :b#<CR>
 
-nmap - <Plug>VinegarVerticalSplitUp
-
 " search
 nnoremap n          nzzzv
 nnoremap N          Nzzzv
