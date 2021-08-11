@@ -34,4 +34,10 @@ Plug 'preservim/tagbar', 				 {'on': 'TagbarToggle'}
 Plug 'AndrewRadev/linediff.vim', {'on':  'Linediff'}
 Plug 'tpope/vim-dadbod',         {'on':  'DB'}
 
+" languages
+Plug 'tpope/vim-jdaddy',       {'for': 'json'}
+Plug 'tpope/vim-salve',        {'for': 'clojure'}
+Plug 'tpope/vim-fireplace',    {'for': 'clojure'}
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release', 'for': ['clojure', 'lisp']}
+
 call plug#end()
