@@ -46,23 +46,12 @@ augroup general_au
   autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
 augroup END
 
-if has('nvim')
-  set undodir=~/.nvimtmp
-  set directory=~/.nvimtmp
-  set inccommand=split
-  augroup terminal_au
-    autocmd!
-    autocmd TermOpen * setlocal nonumber norelativenumber
-  augroup END
-  let g:python3_host_prog = $HOME . '/.virtualenvs/neovim3/bin/python'
-else
-  set undodir=~/.vimtmp
-  set directory=~/.vimtmp
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  let &t_ZH = "\e[3m"
-  let &t_ZR = "\e[23m"
-endif
+set undodir=~/.vimtmp
+set directory=~/.vimtmp
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_ZH = "\e[3m"
+let &t_ZR = "\e[23m"
 
 let g:netrw_liststyle    = 3
 let g:vitality_fix_focus = 0
