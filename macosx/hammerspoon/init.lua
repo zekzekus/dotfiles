@@ -183,6 +183,7 @@ hs.hotkey.bind(shiftpushkey,"2", function() 		     -- Move to second monitor and
 end)
 
 hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
+hs.hotkey.bind(hyper, "o", function() hs.application.launchOrFocus("Roam Research") end)
 
 -- Application shortcuts
 hs.hotkey.bind(hyper, "a", function()
