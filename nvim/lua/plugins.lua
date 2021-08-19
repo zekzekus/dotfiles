@@ -57,7 +57,7 @@ require('packer').startup(function()
 		cmd = { 'SmartClose' }
 	}
 
-	use 'shaunsingh/nord.nvim'
+	use 'arcticicestudio/nord-vim'
 
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
