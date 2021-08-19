@@ -2,6 +2,12 @@
 
 ## VIM Configuration
 
+NOTE: I gave up on making config fully compatible with both Vim and Neovim
+because Neovim took a different path. So now Vim and Neovim configurations are
+maintained separately and Neovim part will be as much as possible in pure Lua.
+
+Some part of the information below might be outdated. I will try update it soon.
+
 My very personal Vim configuration. Some more details below.
 
 * Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
