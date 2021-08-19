@@ -26,6 +26,13 @@ require('packer').startup(function()
 			require "gitsigns".setup {}
 		end
 	}
+	use {
+		'TimUntersberger/neogit',
+		requires = 'nvim-lua/plenary.nvim',
+		config = function ()
+			require "neogit".setup {}
+		end
+  }
 
 	use 'jiangmiao/auto-pairs'
 	use {
@@ -50,7 +57,7 @@ require('packer').startup(function()
 		cmd = { 'SmartClose' }
 	}
 
-	use 'arcticicestudio/nord-vim'
+	use 'shaunsingh/nord.nvim'
 
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'

@@ -110,15 +110,24 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/junkfile.vim"
   },
+  kommentary = {
+    loaded = true,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
   ["linediff.vim"] = {
     commands = { "Linediff" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/linediff.vim"
   },
-  ["nord-vim"] = {
+  neogit = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogit\frequire\0" },
     loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nord-vim"
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/neogit"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nord.nvim"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -155,10 +164,6 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/telescope.nvim"
-  },
-  ["vim-commentary"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-dadbod"] = {
     commands = { "DB" },
@@ -212,6 +217,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: neogit
+time([[Config for neogit]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogit\frequire\0", "config", "neogit")
+time([[Config for neogit]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
@@ -220,10 +229,10 @@ time([[Config for gitsigns.nvim]], false)
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file SmartClose lua require("packer.load")({'vim-smartclose'}, { cmd = "SmartClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file JunkfileOpen lua require("packer.load")({'junkfile.vim'}, { cmd = "JunkfileOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Linediff lua require("packer.load")({'linediff.vim'}, { cmd = "Linediff", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file JunkfileOpen lua require("packer.load")({'junkfile.vim'}, { cmd = "JunkfileOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
