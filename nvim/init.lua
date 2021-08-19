@@ -58,6 +58,5 @@ vim.g.completion_chain_complete_list = {
     { mode = { '<c-n>' } }
   },
 }
-require('gitsigns').setup()
 
 require("keybindings")

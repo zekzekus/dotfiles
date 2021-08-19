@@ -19,6 +19,14 @@ require('packer').startup(function()
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
 	use 'tpope/vim-surround'
+
+	use {
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require "gitsigns".setup {}
+		end
+	}
+
 	use 'jiangmiao/auto-pairs'
 	use {
 		'junegunn/goyo.vim',
@@ -78,6 +86,5 @@ require('packer').startup(function()
 	use 'nvim-lua/completion-nvim'
 	use 'steelsojka/completion-buffers'
 	use 'kristijanhusak/completion-tags'
-	use 'lewis6991/gitsigns.nvim'
 	use 'preservim/tagbar'
 end)
