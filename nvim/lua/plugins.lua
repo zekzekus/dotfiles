@@ -60,6 +60,7 @@ require('packer').startup(function()
 	use 'arcticicestudio/nord-vim'
 	use 'fenetikm/falcon'
 	use 'mcchrish/zenbones.nvim'
+	use "rktjmp/lush.nvim"
 
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
