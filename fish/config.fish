@@ -3,7 +3,7 @@ set --export GOPATH $HOME/go
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
-#set --export PATH $HOME/.local/bin $PATH
+set --export PATH $HOME/.local/bin $PATH
 #set --export PATH $HOME/.cabal/bin $PATH
 set --export PATH $GOPATH/bin $PATH
 set --export PATH /usr/local/lib/ruby/gems/3.0.0/bin $PATH
