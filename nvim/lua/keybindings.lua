@@ -2,21 +2,38 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = false
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+local nest = prequire("nest")
+
+local files = {
+  name = "Files",
+  prefix = "<leader>f",
+  { "f", [[<cmd>Telescope find_files<cr>]] },
+  { "j", [[<cmd>Files ~/.cache/junkfile<cr>]] },
+  { "s", [[<cmd>w<cr>]] },
+  { "W", [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]] },
+  { "t", [[<cmd>NvimTreeToggle<cr>]] },
+  { "T", [[<cmd>TagbarToggle<cr>]] },
+}
+
+local buffers = {
+  name = "Buffers",
+  prefix = "<leader>",
+  { "bb",     [[<cmd>Telescope buffers<cr>]] },
+  { "bd",     [[<cmd>bdelete<cr>]] },
+  { "<tab>", [[<cmd>b#<cr>]] },
+  { "`",     [[<cmd>b#<cr>]] },
+}
+
+nest.applyKeymaps({
+    files,
+    buffers
+})
+
 vim.cmd[[command! -nargs=1 -complete=command -bar -range Zredir call zek#redir(<q-args>, <range>, <line1>, <line2>)]]
 vim.cmd[[command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr zek#grep(<f-args>)]]
 
 local kmap = vim.api.nvim_set_keymap
 kmap('n', '<leader><space>', [[<cmd>Telescope<cr>]],                { noremap = true, silent = false })
-kmap('n', '<leader>ff',      [[<cmd>Telescope find_files<cr>]],     { noremap = true, silent = false })
-kmap('n', '<leader>fj',      [[<cmd>Files ~/.cache/junkfile<cr>]],  { noremap = true, silent = false })
-kmap('n', '<leader>fs',      [[<cmd>w<cr>]],                        { noremap = true, silent = false })
-kmap('n', '<leader>fW',      [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]], { noremap = true, silent = false })
-kmap('n', '<leader>ft',      [[<cmd>NvimTreeToggle<cr>]],           { noremap = true, silent = false })
-kmap('n', '<leader>fT',      [[<cmd>TagbarToggle<cr>]],             { noremap = true, silent = false })
-kmap('n', '<leader>bb',      [[<cmd>Telescope buffers<cr>]],        { noremap = true, silent = false })
-kmap('n', '<leader>bd',      [[<cmd>bdelete<cr>]],                  { noremap = true, silent = false })
-kmap('n', '<leader><tab>',   [[<cmd>b#<cr>]],                       { noremap = true, silent = false })
-kmap('n', '<leader>`',       [[<cmd>b#<cr>]],                       { noremap = true, silent = false })
 kmap('n', 'n',               [[nzzzv]],                             { noremap = true, silent = false })
 kmap('n', 'N',               [[Nzzzv]],                             { noremap = true, silent = false })
 kmap('n', '<bs>',            [[<cmd>nohlsearch<cr>]],               { noremap = true, silent = false })

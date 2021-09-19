@@ -1,20 +1,10 @@
-local execute = vim.api.nvim_command
+local packer = prequire("config.packer")
 
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
+if not packer then
+    return
 end
 
-vim.api.nvim_exec([[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost plugins.lua PackerCompile
-  augroup end
-]], false)
-
-local use = require('packer').use
-require('packer').startup(function()
+packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
@@ -97,4 +87,5 @@ require('packer').startup(function()
 	use 'steelsojka/completion-buffers'
 	use 'kristijanhusak/completion-tags'
 	use 'preservim/tagbar'
+	use 'LionC/nest.nvim'
 end)
