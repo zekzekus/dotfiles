@@ -12,16 +12,12 @@ packer.startup(function(use)
 
 	use {
 		'lewis6991/gitsigns.nvim',
-		config = function()
-			require "gitsigns".setup {}
-		end
+		config = function() require('config.gitsigns') end,
 	}
 	use {
 		'TimUntersberger/neogit',
 		requires = 'nvim-lua/plenary.nvim',
-		config = function ()
-			require "neogit".setup {}
-		end
+		config = function () require('config.neogit') end,
   }
 
 	use 'jiangmiao/auto-pairs'
