@@ -15,7 +15,6 @@ opt.smartcase = true
 opt.hlsearch = true
 opt.foldmethod = "indent"
 opt.foldlevel = 99
-opt.errorformat:append("%f")
 opt.tags:append(".git/tags")
 opt.undodir = vim.fn.getenv("HOME") .. "/.nvimtmp"
 opt.directory = vim.fn.getenv("HOME") .. "/.nvimtmp"

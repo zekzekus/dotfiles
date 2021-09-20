@@ -29,9 +29,6 @@ nest.applyKeymaps({
     buffers
 })
 
-vim.cmd[[command! -nargs=1 -complete=command -bar -range Zredir call zek#redir(<q-args>, <range>, <line1>, <line2>)]]
-vim.cmd[[command! -nargs=+ -complete=file_in_path -bar Zgrep  cgetexpr zek#grep(<f-args>)]]
-
 local kmap = vim.api.nvim_set_keymap
 kmap('n', '<leader><space>', [[<cmd>Telescope<cr>]],                { noremap = true, silent = false })
 kmap('n', 'n',               [[nzzzv]],                             { noremap = true, silent = false })
