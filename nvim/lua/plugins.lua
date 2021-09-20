@@ -17,7 +17,7 @@ packer.startup(function(use)
 	use {
 		'TimUntersberger/neogit',
 		requires = 'nvim-lua/plenary.nvim',
-		config = function () require('config.neogit') end,
+		config = function() require('config.neogit') end,
   }
 
 	use 'jiangmiao/auto-pairs'
@@ -77,7 +77,10 @@ packer.startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
-	use 'neovim/nvim-lspconfig'
+	use {
+		'neovim/nvim-lspconfig',
+		config = function() require('config.lspconfig') end,
+	}
 	use 'kyazdani42/nvim-tree.lua'
 	use 'nvim-lua/completion-nvim'
 	use 'steelsojka/completion-buffers'
