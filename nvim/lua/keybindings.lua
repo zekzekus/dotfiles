@@ -24,33 +24,49 @@ local buffers = {
   { "`",     [[<cmd>b#<cr>]] },
 }
 
+local search = {
+  name = "Search",
+  prefix = "<leader>",
+  { "/",  [[:Zgrep<space>]] },
+  { "*",  [[:Zgrep<space><c-r><c-w><cr>]] },
+  { "ss", [[<cmd>Telescope current_buffer_tags<cr>]] },
+  { "sS", [[<cmd>BTags<cr>]] },
+  { "sl", [[<cmd>Telescope current_buffer_fuzzy_find<cr>]] },
+}
+
+local others = {
+  name = "Others",
+  prefix = "<leader>",
+  { "<space>", [[<cmd>Telescope<cr>]] },
+  { "qq",      [[<cmd>SmartClose<cr>]] },
+  { "V",       'V`]' },
+}
+
+local misc = {
+  name = "Misc.",
+  { "n",    [[nzzzv]] },
+  { "N",    [[Nzzzv]] },
+  { "<bs>", [[<cmd>nohlsearch<cr>]] },
+  { "cn",   [[*``cgn]] },
+  { "cN",   [[*``cgN]] },
+  { "cq",   [[:call zek#setup_cr()<CR>*``qz]] },
+  { "cQ",   [[:call zek#setup_cr()<CR>#``qz]] },
+  { mode = "i", options = { noremap = false }, { "<tab>", [[<Plug>(completion_next_source)]] } },
+  { mode = "v", options = { expr = true },     { "cn", [[g:mc . "``cgn"]] } },
+  { mode = "v", options = { expr = true },     { "cN", [[g:mc . "``cgN"]] } },
+  { mode = "v", options = { expr = true },     { "cq", [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz]] } },
+  { mode = "v", options = { expr = true },     { "cQ", [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz]] } },
+  { mode = "c", options = { silent = false },  { "<c-n>", [[<down>]] } },
+  { mode = "c", options = { silent = false },  { "<c-p>", [[<up>]] } },
+}
+
 nest.applyKeymaps({
     files,
-    buffers
+    buffers,
+    search,
+    others,
+    misc,
 })
-
-local kmap = vim.api.nvim_set_keymap
-kmap('n', '<leader><space>', [[<cmd>Telescope<cr>]],                { noremap = true, silent = false })
-kmap('n', 'n',               [[nzzzv]],                             { noremap = true, silent = false })
-kmap('n', 'N',               [[Nzzzv]],                             { noremap = true, silent = false })
-kmap('n', '<bs>',            [[<cmd>nohlsearch<cr>]],               { noremap = true, silent = false })
-kmap('n', '<leader>/',       [[:Zgrep<space>]],                     { noremap = true, silent = false })
-kmap('n', '<leader>*',       [[:Zgrep<space><c-r><c-w><cr>]],       { noremap = true, silent = false })
-kmap('n', '<leader>ss',      [[<cmd>Telescope current_buffer_tags<cr>]],       { noremap = true, silent = false })
-kmap('n', '<leader>sl',      [[<cmd>Telescope current_buffer_fuzzy_find<cr>]], { noremap = true, silent = false })
-kmap('c', '<c-n>',           [[<down>]],                            { noremap = true, silent = false })
-kmap('c', '<c-p>',           [[<up>]],                              { noremap = true, silent = false })
-kmap('n', '<leader>qq',      [[<cmd>SmartClose<cr>]],               { noremap = true, silent = true })
-kmap('n', '<leader>V',       'V`]',                                 { noremap = true, silent = false })
-kmap('i', '<tab>',           [[<Plug>(completion_next_source)]],    { noremap = false, silent = false })
-kmap('n', 'cn',              [[*``cgn]],                            { noremap = true, silent = false })
-kmap('n', 'cN',              [[*``cgN]],                            { noremap = true, silent = false })
-kmap('v', 'cn',              [[g:mc . "``cgn"]],                    { noremap = true, expr = true, silent = false })
-kmap('v', 'cN',              [[g:mc . "``cgN"]],                    { noremap = true, expr = true, silent = false })
-kmap('n', 'cq',              [[:call zek#setup_cr()<CR>*``qz]],     { noremap = true, silent = false })
-kmap('n', 'cQ',              [[:call zek#setup_cr()<CR>#``qz]],     { noremap = true, silent = false })
-kmap('v', 'cq',              [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz]],                            { noremap = true, expr = true, silent = false })
-kmap('v', 'cQ',              [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz]], { noremap = true, expr = true, silent = false })
 
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
