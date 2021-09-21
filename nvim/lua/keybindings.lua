@@ -27,7 +27,7 @@ local buffers = {
 local search = {
   name = "Search",
   prefix = "<leader>",
-  { "/",  [[:Zgrep<space>]] },
+  { "/", options = { silent = false }, [[:Zgrep<space>]] },
   { "*",  [[:Zgrep<space><c-r><c-w><cr>]] },
   { "ss", [[<cmd>Telescope current_buffer_tags<cr>]] },
   { "sS", [[<cmd>BTags<cr>]] },
