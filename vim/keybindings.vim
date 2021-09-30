@@ -14,7 +14,7 @@ nnoremap <leader><space>  :Files<cr>
 nnoremap <leader>fj       :Files ~/.cache/junkfile<cr>
 nnoremap <leader>fs       :w<cr>
 nnoremap <leader>fW       :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <leader>ft       :TagbarToggle<cr>
+nnoremap <leader>fT       :TagbarToggle<cr>
 
 " buffers
 nnoremap <leader>bb    :Buffers<cr>

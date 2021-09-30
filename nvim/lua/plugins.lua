@@ -72,7 +72,6 @@ packer.startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
-	use 'kyazdani42/nvim-web-devicons'
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
@@ -81,7 +80,11 @@ packer.startup(function(use)
 		'neovim/nvim-lspconfig',
 		config = function() require('config.lspconfig') end,
 	}
-	use 'kyazdani42/nvim-tree.lua'
+use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require('config.nvimtree') end,
+}
 	use 'nvim-lua/completion-nvim'
 	use 'steelsojka/completion-buffers'
 	use 'kristijanhusak/completion-tags'
