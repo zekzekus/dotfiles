@@ -1,7 +1,12 @@
 -- try to import lspconfig
 local lspconfig = prequire("lspconfig")
+local cmplsp = prequire("cmp_nvim_lsp")
+
 if not lspconfig then
     return
+end
+if not cmplsp then
+  return
 end
 
 -- do something on lsp attach
@@ -32,7 +37,10 @@ end
 
 local servers = { "vimls", "tsserver", "rust_analyzer", "metals"}
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup { on_attach = on_attach }
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
 end
 local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/lua-language-server"
 lspconfig.sumneko_lua.setup {

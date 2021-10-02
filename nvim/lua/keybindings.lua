@@ -51,7 +51,6 @@ local misc = {
   { "cN",   [[*``cgN]] },
   { "cq",   [[:call zek#setup_cr()<CR>*``qz]] },
   { "cQ",   [[:call zek#setup_cr()<CR>#``qz]] },
-  { mode = "i", options = { noremap = false }, { "<tab>", [[<Plug>(completion_next_source)]] } },
   { mode = "v", options = { expr = true },     { "cn", [[g:mc . "``cgn"]] } },
   { mode = "v", options = { expr = true },     { "cN", [[g:mc . "``cgN"]] } },
   { mode = "v", options = { expr = true },     { "cq", [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz]] } },

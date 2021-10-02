@@ -6,6 +6,7 @@ end
 
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
+
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
 	use 'tpope/vim-surround'
@@ -22,11 +23,6 @@ packer.startup(function(use)
 
 	use 'jiangmiao/auto-pairs'
 	use {
-		'junegunn/goyo.vim',
-		opt = true,
-		cmd = { 'Goyo' }
-	}
-	use {
 		'Shougo/junkfile.vim',
 		opt = true,
 		cmd = { 'JunkfileOpen' }
@@ -37,6 +33,7 @@ packer.startup(function(use)
 	use 'tpope/vim-unimpaired'
 	use 'farmergreg/vim-lastplace'
 	use 'christoomey/vim-tmux-navigator'
+
 	use {
 		'szw/vim-smartclose',
 		opt = true,
@@ -45,17 +42,17 @@ packer.startup(function(use)
 
 	use 'arcticicestudio/nord-vim'
 	use 'fenetikm/falcon'
-	use 'mcchrish/zenbones.nvim'
-	use "rktjmp/lush.nvim"
 
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-commentary'
+
 	use {
 		'AndrewRadev/linediff.vim',
 		opt = true,
 		cmd = { 'Linediff' }
 	}
+
 	use {
 		'tpope/vim-dadbod',
 		opt = true,
@@ -72,22 +69,32 @@ packer.startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
+
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
+
+	use {
+			'kyazdani42/nvim-tree.lua',
+			requires = 'kyazdani42/nvim-web-devicons',
+			config = function() require('config.nvimtree') end,
+	}
+
+	use 'preservim/tagbar'
+	use 'LionC/nest.nvim'
+
 	use {
 		'neovim/nvim-lspconfig',
 		config = function() require('config.lspconfig') end,
+		after = 'cmp-nvim-lsp',
 	}
-use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require('config.nvimtree') end,
-}
-	use 'nvim-lua/completion-nvim'
-	use 'steelsojka/completion-buffers'
-	use 'kristijanhusak/completion-tags'
-	use 'preservim/tagbar'
-	use 'LionC/nest.nvim'
+
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+				{ 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
+		},
+		config = function() require('config.cmp') end,
+	}
 end)

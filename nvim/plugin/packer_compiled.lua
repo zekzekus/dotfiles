@@ -73,17 +73,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
-  ["completion-buffers"] = {
+  ["cmp-nvim-lsp"] = {
+    after = { "nvim-lspconfig" },
+    after_files = { "/Users/zekus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
+    load_after = {},
     loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/completion-buffers"
-  },
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
-  ["completion-tags"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/completion-tags"
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp"
   },
   falcon = {
     loaded = true,
@@ -102,12 +98,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
-  ["goyo.vim"] = {
-    commands = { "Goyo" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/goyo.vim"
-  },
   ["junkfile.vim"] = {
     commands = { "JunkfileOpen" },
     loaded = false,
@@ -119,10 +109,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/linediff.vim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/lush.nvim"
   },
   neogit = {
     config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.neogit\frequire\0" },
@@ -137,10 +123,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nord-vim"
   },
+  ["nvim-cmp"] = {
+    after = { "cmp-nvim-lsp" },
+    loaded = true,
+    only_config = true
+  },
   ["nvim-lspconfig"] = {
     config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.lspconfig\frequire\0" },
+    load_after = {},
     loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    needs_bufread = false,
+    path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvimtree\frequire\0" },
@@ -227,10 +220,6 @@ _G.packer_plugins = {
   ["vim-unimpaired"] = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
-  },
-  ["zenbones.nvim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/zenbones.nvim"
   }
 }
 
@@ -247,18 +236,26 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for neogit]], true)
 try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.neogit\frequire\0", "config", "neogit")
 time([[Config for neogit]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.cmp\frequire\0", "config", "nvim-cmp")
+time([[Config for nvim-cmp]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd cmp-nvim-lsp ]]
+vim.cmd [[ packadd nvim-lspconfig ]]
+
 -- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.lspconfig\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
+
+time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SmartClose lua require("packer.load")({'vim-smartclose'}, { cmd = "SmartClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file JunkfileOpen lua require("packer.load")({'junkfile.vim'}, { cmd = "JunkfileOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Linediff lua require("packer.load")({'linediff.vim'}, { cmd = "Linediff", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SmartClose lua require("packer.load")({'vim-smartclose'}, { cmd = "SmartClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

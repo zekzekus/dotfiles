@@ -11,7 +11,6 @@ augroup general_au
 	autocmd VimResized      *                     :wincmd =
 	" autocmd ColorScheme     *                     call zek#post_colorscheme()
 	autocmd CmdlineLeave    :                     call zek#autoreply()
-	autocmd BufEnter        *                     lua require'completion'.on_attach()
 	autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
 	autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
