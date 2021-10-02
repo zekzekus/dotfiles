@@ -97,4 +97,26 @@ packer.startup(function(use)
 		},
 		config = function() require('config.cmp') end,
 	}
+
+	use 'tpope/vim-dispatch'
+	use 'radenling/vim-dispatch-neovim'
+
+	use {
+		'clojure-vim/vim-jack-in',
+		opt = true,
+		ft = { 'clojure' },
+	}
+	use {
+		'Olical/conjure',
+		opt = true,
+		ft = { 'clojure' },
+	}
+
+	use {
+		'eraserhd/parinfer-rust',
+		opt = true,
+		run = 'cargo build --release',
+		ft = { 'clojure' },
+	}
+
 end)
