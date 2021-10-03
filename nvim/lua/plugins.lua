@@ -42,6 +42,7 @@ packer.startup(function(use)
 
 	use 'arcticicestudio/nord-vim'
 	use 'fenetikm/falcon'
+	use 'zekzekus/menguless'
 
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
@@ -87,8 +88,10 @@ packer.startup(function(use)
 	use {
 		'neovim/nvim-lspconfig',
 		config = function() require('config.lspconfig') end,
-		after = 'cmp-nvim-lsp',
+		after = { 'cmp-nvim-lsp', 'nvim-lspinstall' },
 	}
+
+	use 'kabouzeid/nvim-lspinstall'
 
 	use {
 		'hrsh7th/nvim-cmp',

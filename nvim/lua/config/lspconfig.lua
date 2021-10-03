@@ -1,6 +1,7 @@
 -- try to import lspconfig
 local lspconfig = prequire("lspconfig")
 local cmplsp = prequire("cmp_nvim_lsp")
+local lspinstall = prequire("lspinstall")
 
 if not lspconfig then
     return
@@ -8,6 +9,10 @@ end
 if not cmplsp then
   return
 end
+if not lspinstall then
+  return
+end
+lspinstall.setup({})
 
 -- do something on lsp attach
 local function on_attach(_, bufnr)
@@ -35,35 +40,13 @@ local function on_attach(_, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_qflist()<CR>', opts)
 end
 
-local servers = { "vimls", "tsserver", "rust_analyzer", "metals"}
-for _, lsp in ipairs(servers) do
+local servers = lspinstall.installed_servers()
+for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
 end
-local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/lua-language-server"
-lspconfig.sumneko_lua.setup {
-  cmd = {sumneko_root_path.."/bin/macOS/lua-language-server", "-E", sumneko_root_path.."/main.lua" };
-  on_attach = on_attach,
-  settings = {
-      Lua = {
-          runtime = {
-              version = 'LuaJIT',
-              path = vim.split(package.path, ';'),
-          },
-          diagnostics = {
-              globals = {'vim'},
-          },
-          workspace = {
-              library = {
-                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-              },
-          },
-      },
-  },
-}
 vim.lsp.handlers["textDocument/hover"] =
   vim.lsp.with(
   vim.lsp.handlers.hover,
