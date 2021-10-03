@@ -43,6 +43,10 @@ packer.startup(function(use)
 	use 'arcticicestudio/nord-vim'
 	use 'fenetikm/falcon'
 	use 'zekzekus/menguless'
+	use {
+		'mcchrish/zenbones.nvim',
+		requires = { { 'rktjmp/lush.nvim' } },
+	}
 
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
