@@ -7,7 +7,7 @@ local nest = prequire("nest")
 local files = {
   name = "Files",
   prefix = "<leader>f",
-  { "f", [[<cmd>Telescope find_files<cr>]] },
+  { "f", [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
   { "j", [[<cmd>Files ~/.cache/junkfile<cr>]] },
   { "s", [[<cmd>w<cr>]] },
   { "W", [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]] },
@@ -18,7 +18,7 @@ local files = {
 local buffers = {
   name = "Buffers",
   prefix = "<leader>",
-  { "bb",     [[<cmd>Telescope buffers<cr>]] },
+  { "bb",     [[<cmd>Telescope buffers theme=dropdown previewer=false<cr>]] },
   { "bd",     [[<cmd>bdelete<cr>]] },
   { "<tab>", [[<cmd>b#<cr>]] },
   { "`",     [[<cmd>b#<cr>]] },
@@ -29,15 +29,15 @@ local search = {
   prefix = "<leader>",
   { "/", options = { silent = false }, [[:Zgrep<space>]] },
   { "*",  [[:Zgrep<space><c-r><c-w><cr>]] },
-  { "ss", [[<cmd>Telescope current_buffer_tags<cr>]] },
+  { "ss", [[<cmd>Telescope current_buffer_tags theme=dropdown previewer=false<cr>]] },
   { "sS", [[<cmd>BTags<cr>]] },
-  { "sl", [[<cmd>Telescope current_buffer_fuzzy_find<cr>]] },
+  { "sl", [[<cmd>Telescope current_buffer_fuzzy_find theme=dropdown previewer=false<cr>]] },
 }
 
 local others = {
   name = "Others",
   prefix = "<leader>",
-  { "<space>", [[<cmd>Telescope<cr>]] },
+  { "<space>", [[<cmd>Telescope theme=dropdown previewer=false<cr>]] },
   { "qq",      [[<cmd>SmartClose<cr>]] },
   { "V",       'V`]' },
 }
