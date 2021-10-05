@@ -24,7 +24,6 @@ packer.startup(function(use)
 	use 'jiangmiao/auto-pairs'
 	use {
 		'Shougo/junkfile.vim',
-		opt = true,
 		cmd = { 'JunkfileOpen' }
 	}
 
@@ -36,7 +35,6 @@ packer.startup(function(use)
 
 	use {
 		'szw/vim-smartclose',
-		opt = true,
 		cmd = { 'SmartClose' }
 	}
 
@@ -54,19 +52,16 @@ packer.startup(function(use)
 
 	use {
 		'AndrewRadev/linediff.vim',
-		opt = true,
 		cmd = { 'Linediff' }
 	}
 
 	use {
 		'tpope/vim-dadbod',
-		opt = true,
 		cmd = { 'DB' }
 	}
 
 	use {
 		'tpope/vim-jdaddy',
-		opt = true,
 		ft = { 'json' }
 	}
 
@@ -110,18 +105,15 @@ packer.startup(function(use)
 
 	use {
 		'clojure-vim/vim-jack-in',
-		opt = true,
 		ft = { 'clojure' },
 	}
 	use {
 		'Olical/conjure',
-		opt = true,
 		ft = { 'clojure' },
 	}
 
 	use {
 		'eraserhd/parinfer-rust',
-		opt = true,
 		run = 'cargo build --release',
 		ft = { 'clojure' },
 	}
