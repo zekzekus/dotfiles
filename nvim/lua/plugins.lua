@@ -10,45 +10,45 @@ packer.startup(function(use)
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
 	use 'tpope/vim-surround'
+	use 'jiangmiao/auto-pairs'
+	use 'junegunn/fzf.vim'
+	use '/usr/local/opt/fzf'
+	use 'tpope/vim-unimpaired'
+	use 'farmergreg/vim-lastplace'
+	use 'christoomey/vim-tmux-navigator'
+	use 'sheerun/vim-polyglot'
+	use 'tpope/vim-fugitive'
+	use 'tpope/vim-commentary'
+	use 'preservim/tagbar'
+	use 'LionC/nest.nvim'
+	use 'tpope/vim-dispatch'
+	use 'radenling/vim-dispatch-neovim'
 
 	use {
 		'lewis6991/gitsigns.nvim',
 		config = function() require('config.gitsigns') end,
 	}
+
 	use {
 		'TimUntersberger/neogit',
 		requires = 'nvim-lua/plenary.nvim',
 		config = function() require('config.neogit') end,
   }
 
-	use 'jiangmiao/auto-pairs'
 	use {
 		'Shougo/junkfile.vim',
 		cmd = { 'JunkfileOpen' }
 	}
-
-	use 'junegunn/fzf.vim'
-	use '/usr/local/opt/fzf'
-	use 'tpope/vim-unimpaired'
-	use 'farmergreg/vim-lastplace'
-	use 'christoomey/vim-tmux-navigator'
 
 	use {
 		'szw/vim-smartclose',
 		cmd = { 'SmartClose' }
 	}
 
-	use 'arcticicestudio/nord-vim'
-	use 'fenetikm/falcon'
-	use 'zekzekus/menguless'
 	use {
 		'mcchrish/zenbones.nvim',
 		requires = { { 'rktjmp/lush.nvim' } },
 	}
-
-	use 'sheerun/vim-polyglot'
-	use 'tpope/vim-fugitive'
-	use 'tpope/vim-commentary'
 
 	use {
 		'AndrewRadev/linediff.vim',
@@ -72,11 +72,13 @@ packer.startup(function(use)
 
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+		requires = {
+			{'nvim-lua/popup.nvim'},
+			{'nvim-lua/plenary.nvim'},
+			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+		},
 		config = function() require('config.telescope') end,
 	}
-
-	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	use {
 			'kyazdani42/nvim-tree.lua',
@@ -84,16 +86,12 @@ packer.startup(function(use)
 			config = function() require('config.nvimtree') end,
 	}
 
-	use 'preservim/tagbar'
-	use 'LionC/nest.nvim'
-
 	use {
 		'neovim/nvim-lspconfig',
 		config = function() require('config.lspconfig') end,
 		after = { 'cmp-nvim-lsp', 'nvim-lspinstall' },
+		requires = { { 'kabouzeid/nvim-lspinstall' } },
 	}
-
-	use 'kabouzeid/nvim-lspinstall'
 
 	use {
 		'hrsh7th/nvim-cmp',
@@ -102,9 +100,6 @@ packer.startup(function(use)
 		},
 		config = function() require('config.cmp') end,
 	}
-
-	use 'tpope/vim-dispatch'
-	use 'radenling/vim-dispatch-neovim'
 
 	use {
 		'clojure-vim/vim-jack-in',

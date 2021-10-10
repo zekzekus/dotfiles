@@ -86,10 +86,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/opt/conjure"
   },
-  falcon = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/falcon"
-  },
   fzf = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/fzf"
@@ -119,10 +115,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/lush.nvim"
   },
-  menguless = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/menguless"
-  },
   neogit = {
     config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.neogit\frequire\0" },
     loaded = true,
@@ -131,10 +123,6 @@ _G.packer_plugins = {
   ["nest.nvim"] = {
     loaded = true,
     path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nest.nvim"
-  },
-  ["nord-vim"] = {
-    loaded = true,
-    path = "/Users/zekus/.local/share/nvim/site/pack/packer/start/nord-vim"
   },
   ["nvim-cmp"] = {
     after = { "cmp-nvim-lsp" },
@@ -300,18 +288,18 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file JunkfileOpen lua require("packer.load")({'junkfile.vim'}, { cmd = "JunkfileOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Linediff lua require("packer.load")({'linediff.vim'}, { cmd = "Linediff", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SmartClose lua require("packer.load")({'vim-smartclose'}, { cmd = "SmartClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file JunkfileOpen lua require("packer.load")({'junkfile.vim'}, { cmd = "JunkfileOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SmartClose lua require("packer.load")({'vim-smartclose'}, { cmd = "SmartClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Linediff lua require("packer.load")({'linediff.vim'}, { cmd = "Linediff", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType clojure ++once lua require("packer.load")({'parinfer-rust', 'conjure', 'vim-jack-in'}, { ft = "clojure" }, _G.packer_plugins)]]
 vim.cmd [[au FileType json ++once lua require("packer.load")({'vim-jdaddy'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType clojure ++once lua require("packer.load")({'parinfer-rust', 'vim-jack-in', 'conjure'}, { ft = "clojure" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
