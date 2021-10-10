@@ -24,6 +24,17 @@ packer.startup(function(use)
 	use 'tpope/vim-dispatch'
 	use 'radenling/vim-dispatch-neovim'
 
+	use { 'Shougo/junkfile.vim', cmd = { 'JunkfileOpen' } }
+	use { 'szw/vim-smartclose', cmd = { 'SmartClose' } }
+	use { 'mcchrish/zenbones.nvim', requires = { { 'rktjmp/lush.nvim' } }, }
+	use { 'AndrewRadev/linediff.vim', cmd = { 'Linediff' } }
+	use { 'tpope/vim-dadbod', cmd = { 'DB' } }
+	use { 'tpope/vim-jdaddy', ft = { 'json' } }
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'clojure-vim/vim-jack-in', ft = { 'clojure' }, }
+	use { 'Olical/conjure', ft = { 'clojure' }, }
+	use { 'eraserhd/parinfer-rust', run = 'cargo build --release', ft = { 'clojure' }, }
+
 	use {
 		'lewis6991/gitsigns.nvim',
 		config = function() require('config.gitsigns') end,
@@ -34,41 +45,6 @@ packer.startup(function(use)
 		requires = 'nvim-lua/plenary.nvim',
 		config = function() require('config.neogit') end,
   }
-
-	use {
-		'Shougo/junkfile.vim',
-		cmd = { 'JunkfileOpen' }
-	}
-
-	use {
-		'szw/vim-smartclose',
-		cmd = { 'SmartClose' }
-	}
-
-	use {
-		'mcchrish/zenbones.nvim',
-		requires = { { 'rktjmp/lush.nvim' } },
-	}
-
-	use {
-		'AndrewRadev/linediff.vim',
-		cmd = { 'Linediff' }
-	}
-
-	use {
-		'tpope/vim-dadbod',
-		cmd = { 'DB' }
-	}
-
-	use {
-		'tpope/vim-jdaddy',
-		ft = { 'json' }
-	}
-
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
-	}
 
 	use {
 		'nvim-telescope/telescope.nvim',
@@ -99,21 +75,6 @@ packer.startup(function(use)
 				{ 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
 		},
 		config = function() require('config.cmp') end,
-	}
-
-	use {
-		'clojure-vim/vim-jack-in',
-		ft = { 'clojure' },
-	}
-	use {
-		'Olical/conjure',
-		ft = { 'clojure' },
-	}
-
-	use {
-		'eraserhd/parinfer-rust',
-		run = 'cargo build --release',
-		ft = { 'clojure' },
 	}
 
 end)
