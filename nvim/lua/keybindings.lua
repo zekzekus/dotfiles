@@ -31,7 +31,7 @@ local search = {
   { "*",  [[:Zgrep<space><c-r><c-w><cr>]] },
   { "ss", [[<cmd>Telescope current_buffer_tags theme=dropdown previewer=false<cr>]] },
   { "sS", [[<cmd>BTags<cr>]] },
-  { "sl", [[<cmd>Telescope current_buffer_fuzzy_find theme=dropdown previewer=false<cr>]] },
+  { "sl", [[<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>]] },
 }
 
 local others = {
