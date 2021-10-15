@@ -1,7 +1,7 @@
 packadd cfilter
 
 set undofile
-colorscheme neovim
+colorscheme neobones
 
 command! -nargs=1 -complete=command      -bar -range Zredir call     zek#redir(<q-args>, <range>, <line1>, <line2>)
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f-args>)
