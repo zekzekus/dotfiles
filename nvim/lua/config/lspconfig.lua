@@ -1,7 +1,7 @@
 -- try to import lspconfig
 local lspconfig = prequire("lspconfig")
 local cmplsp = prequire("cmp_nvim_lsp")
-local lspinstall = prequire("lspinstall")
+local lspinstall = prequire("nvim-lsp-installer")
 
 if not lspconfig then
     return
@@ -12,7 +12,6 @@ end
 if not lspinstall then
   return
 end
-lspinstall.setup({})
 
 -- do something on lsp attach
 local function on_attach(_, bufnr)
@@ -40,13 +39,22 @@ local function on_attach(_, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_qflist()<CR>', opts)
 end
 
-local servers = lspinstall.installed_servers()
-for _, lsp in pairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
-end
+lspinstall.on_server_ready(function(server)
+    local opts = {
+      on_attach = on_attach,
+      capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
+
 vim.lsp.handlers["textDocument/hover"] =
   vim.lsp.with(
   vim.lsp.handlers.hover,
