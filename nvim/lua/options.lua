@@ -25,3 +25,4 @@ opt.grepprg=[[rg --vimgrep --no-heading --smart-case --glob "!tags" --hidden --g
 opt.statusline = [[%w%q 【 %f%M%R%H 】%=%{(&paste==0?'':'〖P〗')} 《 %Y 》〔%l ↕ %L ↕ %c〕 ┇ %%%p ┇ %{zek#listinfos()}]]
 opt.termguicolors = true
 opt.inccommand = "split"
+opt.shortmess:remove("F")
