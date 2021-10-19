@@ -24,6 +24,7 @@ packer.startup(function(use)
 	use 'tpope/vim-dispatch'
 	use 'radenling/vim-dispatch-neovim'
 
+	use { 'ellisonleao/glow.nvim',            cmd = { 'Glow' }}
 	use { 'Shougo/junkfile.vim', 							cmd = { 'JunkfileOpen' } }
 	use { 'szw/vim-smartclose', 							cmd = { 'SmartClose' } }
 	use { 'AndrewRadev/linediff.vim', 				cmd = { 'Linediff' } }
