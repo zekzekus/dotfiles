@@ -32,7 +32,7 @@ packer.startup(function(use)
 	use { 'tpope/vim-jdaddy', 								ft  = { 'json' } }
 	use { 'nvim-treesitter/nvim-treesitter', 	run = ':TSUpdate' }
 	use { 'clojure-vim/vim-jack-in', 					ft  = { 'clojure' }, }
-	use { 'Olical/conjure', 									ft  = { 'clojure' }, }
+	use { 'tpope/vim-fireplace', 							ft  = { 'clojure' }, }
 	use { 'mcchrish/zenbones.nvim', 					requires = { { 'rktjmp/lush.nvim' } }, }
 	use { 'eraserhd/parinfer-rust', 					run = 'cargo build --release', ft = { 'clojure' }, }
 
