@@ -26,3 +26,4 @@ opt.statusline = [[%w%q 【 %f%M%R%H 】%=%{(&paste==0?'':'〖P〗')} 《 %Y 》
 opt.termguicolors = true
 opt.inccommand = "split"
 opt.shortmess:remove("F")
+opt.tabline = '%!v:lua.require\'luatab\'.tabline()'

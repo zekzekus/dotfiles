@@ -84,4 +84,6 @@ packer.startup(function(use)
 		config = function() require('config.nvim-metals') end,
 	}
 
+	use { 'alvarosevilla95/luatab.nvim', requires='kyazdani42/nvim-web-devicons' }
+
 end)
