@@ -29,12 +29,14 @@ packer.startup(function(use)
 	use { 'szw/vim-smartclose', 							cmd = { 'SmartClose' } }
 	use { 'AndrewRadev/linediff.vim', 				cmd = { 'Linediff' } }
 	use { 'tpope/vim-dadbod', 								cmd = { 'DB' } }
-	use { 'tpope/vim-jdaddy', 								ft  = { 'json' } }
 	use { 'nvim-treesitter/nvim-treesitter', 	run = ':TSUpdate' }
+	use { 'eraserhd/parinfer-rust', 					run = 'cargo build --release', ft = { 'clojure' }, }
 	use { 'clojure-vim/vim-jack-in', 					ft  = { 'clojure' }, }
+	use { 'tpope/vim-jdaddy', 								ft  = { 'json' } }
 	use { 'tpope/vim-fireplace', 							ft  = { 'clojure' }, }
 	use { 'mcchrish/zenbones.nvim', 					requires = { { 'rktjmp/lush.nvim' } }, }
-	use { 'eraserhd/parinfer-rust', 					run = 'cargo build --release', ft = { 'clojure' }, }
+	use { 'alvarosevilla95/luatab.nvim', 			requires = 'kyazdani42/nvim-web-devicons' }
+
 
 	use {
 		'lewis6991/gitsigns.nvim',
@@ -83,7 +85,5 @@ packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function() require('config.nvim-metals') end,
 	}
-
-	use { 'alvarosevilla95/luatab.nvim', requires='kyazdani42/nvim-web-devicons' }
 
 end)
