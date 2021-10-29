@@ -37,7 +37,7 @@ set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 
 #rbenv init - | source
-nodenv init - | source
+# nodenv init - | source
 #direnv hook fish | source
 
 if test -e ~/.nix-profile/etc/profile.d/nix.sh
@@ -50,3 +50,7 @@ set -g fish_user_paths "/usr/local/opt/openjdk@11/bin" $fish_user_paths
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 test -f /Users/zekus/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /Users/zekus/.ghcup/bin $PATH
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
+
+if test -e /usr/local/opt/asdf/libexec/asdf.fish
+  source /usr/local/opt/asdf/libexec/asdf.fish
+end
