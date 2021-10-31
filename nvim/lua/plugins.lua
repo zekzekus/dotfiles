@@ -19,34 +19,34 @@ packer.startup(function(use)
 	use 'sheerun/vim-polyglot'
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-commentary'
-	use 'preservim/tagbar'
 	use 'LionC/nest.nvim'
 	use 'tpope/vim-dispatch'
 	use 'radenling/vim-dispatch-neovim'
 
-	use { 'ellisonleao/glow.nvim',            cmd = { 'Glow' }}
-	use { 'Shougo/junkfile.vim', 							cmd = { 'JunkfileOpen' } }
-	use { 'szw/vim-smartclose', 							cmd = { 'SmartClose' } }
-	use { 'AndrewRadev/linediff.vim', 				cmd = { 'Linediff' } }
-	use { 'tpope/vim-dadbod', 								cmd = { 'DB' } }
-	use { 'nvim-treesitter/nvim-treesitter', 	run = ':TSUpdate' }
-	use { 'eraserhd/parinfer-rust', 					run = 'cargo build --release', ft = { 'clojure' }, }
-	use { 'clojure-vim/vim-jack-in', 					ft  = { 'clojure' }, }
-	use { 'tpope/vim-jdaddy', 								ft  = { 'json' } }
-	use { 'tpope/vim-fireplace', 							ft  = { 'clojure' }, }
-	use { 'mcchrish/zenbones.nvim', 					requires = { { 'rktjmp/lush.nvim' } }, }
-	use { 'alvarosevilla95/luatab.nvim', 			requires = 'kyazdani42/nvim-web-devicons' }
+	use { 'preservim/tagbar',									cmd 		 = { 'TagbarToggle' } }
+	use { 'ellisonleao/glow.nvim',            cmd 		 = { 'Glow' } }
+	use { 'Shougo/junkfile.vim', 							cmd 		 = { 'JunkfileOpen' } }
+	use { 'szw/vim-smartclose', 							cmd 		 = { 'SmartClose' } }
+	use { 'AndrewRadev/linediff.vim', 				cmd 		 = { 'Linediff' } }
+	use { 'tpope/vim-dadbod', 								cmd 		 = { 'DB' } }
+	use { 'nvim-treesitter/nvim-treesitter', 	run 		 = { ':TSUpdate' } }
+	use { 'eraserhd/parinfer-rust', 					run 		 = {  'cargo build --release' }, ft = { 'clojure' } }
+	use { 'clojure-vim/vim-jack-in', 					ft  		 = { 'clojure' } }
+	use { 'tpope/vim-jdaddy', 								ft  		 = { 'json' } }
+	use { 'tpope/vim-fireplace', 							ft  		 = { 'clojure' } }
+	use { 'mcchrish/zenbones.nvim', 					requires = { 'rktjmp/lush.nvim' } }
+	use { 'alvarosevilla95/luatab.nvim', 			requires = { 'kyazdani42/nvim-web-devicons' } }
 
 
 	use {
 		'lewis6991/gitsigns.nvim',
-		config = function() require('config.gitsigns') end,
+		config = function() default_config('gitsigns') end,
 	}
 
 	use {
 		'TimUntersberger/neogit',
 		requires = 'nvim-lua/plenary.nvim',
-		config = function() require('config.neogit') end,
+		config = function() default_config('neogit') end,
   }
 
 	use {
@@ -62,7 +62,7 @@ packer.startup(function(use)
 	use {
 			'kyazdani42/nvim-tree.lua',
 			requires = 'kyazdani42/nvim-web-devicons',
-			config = function() require('config.nvimtree') end,
+			config = function() default_config('nvim-tree') end,
 	}
 
 	use {

@@ -9,3 +9,11 @@ _G.prequire = function(plugin, verbose)
     end
     print(errmsg)
 end
+
+_G.default_config = function(plugin)
+    local plug = prequire(plugin)
+    if not plug then
+        return
+    end
+    plug.setup({})
+end
