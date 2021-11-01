@@ -22,3 +22,6 @@ emacs/network-security.data
 kakoune/plugins
 
 */.cpcache/
+
+clojure/.clj-kondo/
+clojure/.lsp/
