@@ -1,7 +1,7 @@
 local packer = prequire("config.packer")
 
 if not packer then
-    return
+  return
 end
 
 packer.startup(function(use)
