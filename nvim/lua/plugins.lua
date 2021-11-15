@@ -51,6 +51,7 @@ packer.startup(function(use)
     'TimUntersberger/neogit',
     requires = 'nvim-lua/plenary.nvim',
     config = function() default_config('neogit') end,
+    cmd = { 'Neogit' },
   }
 
   use {
@@ -61,12 +62,14 @@ packer.startup(function(use)
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     },
     config = function() require('config.telescope') end,
+    cmd = { 'Telescope' },
   }
 
   use {
       'kyazdani42/nvim-tree.lua',
       requires = 'kyazdani42/nvim-web-devicons',
       config = function() default_config('nvim-tree') end,
+      cmd = { 'NvimTreeToggle' },
   }
 
   use {
@@ -88,6 +91,7 @@ packer.startup(function(use)
     'scalameta/nvim-metals',
     requires = { "nvim-lua/plenary.nvim" },
     config = function() require('config.nvim-metals') end,
+    ft = { 'scala' },
   }
 
 end)
