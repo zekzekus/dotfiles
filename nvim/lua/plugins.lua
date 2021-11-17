@@ -91,7 +91,6 @@ packer.startup(function(use)
     'scalameta/nvim-metals',
     requires = { "nvim-lua/plenary.nvim" },
     config = function() require('config.nvim-metals') end,
-    ft = { 'scala' },
   }
 
 end)
