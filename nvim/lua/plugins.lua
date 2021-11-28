@@ -30,7 +30,7 @@ packer.startup(function(use)
   use { 'AndrewRadev/linediff.vim',         cmd      = { 'Linediff' } }
   use { 'tpope/vim-dadbod',                 cmd      = { 'DB' } }
   use { 'nvim-treesitter/nvim-treesitter',  run      = { ':TSUpdate' } }
-  use { 'eraserhd/parinfer-rust',           run      = { 'cargo build --release' }, ft = { 'clojure' } }
+  use { 'gpanders/nvim-parinfer',           ft       = { 'clojure' } }
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
