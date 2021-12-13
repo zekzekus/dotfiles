@@ -35,12 +35,12 @@ packer.startup(function(use)
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
   use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
+
   use {
     'alvarosevilla95/luatab.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() default_config('luatab') end,
   }
-
 
   use {
     'lewis6991/gitsigns.nvim',
