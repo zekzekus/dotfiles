@@ -41,14 +41,19 @@ end
 
 lspinstall.on_server_ready(function(server)
     local opts = {
+      autostart = false,
       on_attach = on_attach,
       capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
     }
 
     -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
+    if server.name == "tsserver" then
+      opts.root_dir = lspconfig.util.root_pattern("package.json")
+    end
+
+    if server.name == "denols" then
+      opts.root_dir = lspconfig.util.root_pattern("deno.json")
+    end
 
     -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
     server:setup(opts)
