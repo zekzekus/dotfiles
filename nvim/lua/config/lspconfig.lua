@@ -41,7 +41,6 @@ end
 
 lspinstall.on_server_ready(function(server)
     local opts = {
-      autostart = false,
       on_attach = on_attach,
       capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
     }
