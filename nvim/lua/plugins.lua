@@ -22,6 +22,7 @@ packer.startup(function(use)
   use 'LionC/nest.nvim'
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
+  use 'tpope/vim-projectionist'
 
   use { 'preservim/tagbar',                 cmd      = { 'TagbarToggle' } }
   use { 'ellisonleao/glow.nvim',            cmd      = { 'Glow' } }
@@ -35,6 +36,9 @@ packer.startup(function(use)
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
   use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
+  use { 'tpope/vim-bundler',                ft       = { 'ruby' } }
+  use { 'tpope/vim-rails',                  ft       = { 'ruby' }, }
+  use { 'tpope/vim-rake',                   ft       = { 'ruby' }, }
 
   use {
     'alvarosevilla95/luatab.nvim',
