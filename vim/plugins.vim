@@ -14,6 +14,7 @@ Plug 'Shougo/junkfile.vim', {'on': 'JunkfileOpen'}
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-projectionist'
 Plug 'farmergreg/vim-lastplace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-smartclose', {'on': 'SmartClose'}
@@ -36,5 +37,9 @@ Plug 'tpope/vim-jdaddy',       {'for': 'json'}
 Plug 'tpope/vim-salve',        {'for': 'clojure'}
 Plug 'tpope/vim-fireplace',    {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release', 'for': ['clojure', 'lisp']}
+
+Plug 'tpope/vim-bundler',      {'for': 'ruby' }
+Plug 'tpope/vim-rails',        {'for': 'ruby' }
+Plug 'tpope/vim-rake',         {'for': 'ruby' }
 
 call plug#end()
