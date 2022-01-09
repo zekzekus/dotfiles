@@ -8,6 +8,7 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'jiangmiao/auto-pairs'
+  use '/usr/local/opt/fzf'
   use 'junegunn/fzf.vim'
   use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
