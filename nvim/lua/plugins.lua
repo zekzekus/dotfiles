@@ -7,23 +7,23 @@ end
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'tpope/vim-sleuth'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
   use 'jiangmiao/auto-pairs'
   use 'junegunn/fzf.vim'
-  use '/usr/local/opt/fzf'
-  use 'tpope/vim-unimpaired'
   use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
   use 'sheerun/vim-polyglot'
+  use 'tpope/vim-sleuth'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-unimpaired'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
-  use 'LionC/nest.nvim'
+  use 'tpope/vim-projectionist'
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
-  use 'tpope/vim-projectionist'
+  use 'LionC/nest.nvim'
 
+  use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
   use { 'preservim/tagbar',                 cmd      = { 'TagbarToggle' } }
   use { 'ellisonleao/glow.nvim',            cmd      = { 'Glow' } }
   use { 'Shougo/junkfile.vim',              cmd      = { 'JunkfileOpen' } }
@@ -33,12 +33,11 @@ packer.startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter',  run      = { ':TSUpdate' } }
   use { 'gpanders/nvim-parinfer',           ft       = { 'clojure' } }
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
-  use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
-  use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
   use { 'tpope/vim-bundler',                ft       = { 'ruby' } }
   use { 'tpope/vim-rails',                  ft       = { 'ruby' }, }
   use { 'tpope/vim-rake',                   ft       = { 'ruby' }, }
+  use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
 
   use {
     'alvarosevilla95/luatab.nvim',
