@@ -12,13 +12,6 @@ telescope.setup({
 					["<C-k>"] = "move_selection_previous",
 				}
 			},
-			extensions = {
-				fzf = {
-					override_generic_sorter = true,
-					override_file_sorter = true,
-					case_mode = "smart",
-				}
-			}
 		}
 })
 
