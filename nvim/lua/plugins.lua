@@ -8,8 +8,6 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'jiangmiao/auto-pairs'
-  use '/usr/local/opt/fzf'
-  use 'junegunn/fzf.vim'
   use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
   use 'sheerun/vim-polyglot'
@@ -39,6 +37,12 @@ packer.startup(function(use)
   use { 'tpope/vim-rails',                  ft       = { 'ruby' }, }
   use { 'tpope/vim-rake',                   ft       = { 'ruby' }, }
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
+
+  use {
+    'junegunn/fzf.vim',
+    cmd = { 'Files', 'BTags' },
+    requires = { '/usr/local/opt/fzf' },
+  }
 
   use {
     'alvarosevilla95/luatab.nvim',
