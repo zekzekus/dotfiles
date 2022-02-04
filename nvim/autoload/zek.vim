@@ -14,16 +14,16 @@ function! zek#setup_cr() abort
   nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
 endfunction
 
-function! zek#post_colorscheme() abort
+function! s:zek_post_colorscheme() abort
 endfunction
 
-function! zek#pre_colorscheme() abort
+function! s:zek_pre_colorscheme() abort
 endfunction
 
 function! zek#set_colorscheme() abort
-  call zek#pre_colorscheme()
+  call s:zek_pre_colorscheme()
   colorscheme nord
-  call zek#post_colorscheme()
+  call s:zek_post_colorscheme()
 endfunction
 
 function! zek#custom_projections() abort
@@ -61,7 +61,7 @@ function! zek#redir(cmd, rng, start, end) abort
   call setline(1, output)
 endfunction
 
-function! zek#feedkeys(str) abort
+function! s:zek_feedkeys(str) abort
   call feedkeys(a:str, 'n')
 endfunction
 
@@ -87,32 +87,32 @@ function! zek#autoreply() abort
   endif
 
   if previous_cmd ==# 'global'
-    call zek#feedkeys(':')
+    call s:zek_feedkeys(':')
   elseif previous_cmd ==# 'undolist'
-    call zek#feedkeys(':undo' . ' ')
+    call s:zek_feedkeys(':undo' . ' ')
   elseif previous_cmd ==# 'oldfiles'
-    call zek#feedkeys(':edit #<')
+    call s:zek_feedkeys(':edit #<')
   elseif previous_cmd ==# 'marks'
-    call zek#feedkeys(':normal! `')
+    call s:zek_feedkeys(':normal! `')
   elseif previous_cmd ==# 'changes'
-    call zek#feedkeys(':normal! g;')
-    call zek#feedkeys("\<S-Left>")
+    call s:zek_feedkeys(':normal! g;')
+    call s:zek_feedkeys("\<S-Left>")
   elseif previous_cmd ==# 'jumps'
-    call zek#feedkeys(':normal!' . ' ')
-    call zek#feedkeys("\<C-O>\<S-Left>")
+    call s:zek_feedkeys(':normal!' . ' ')
+    call s:zek_feedkeys("\<C-O>\<S-Left>")
   elseif previous_cmd ==# 'registers'
-    call zek#feedkeys(':normal! "p')
-    call zek#feedkeys("\<Left>")
+    call s:zek_feedkeys(':normal! "p')
+    call s:zek_feedkeys("\<Left>")
   elseif previous_cmd ==# 'tags'
-    call zek#feedkeys(':pop')
-    call zek#feedkeys("\<Home>")
+    call s:zek_feedkeys(':pop')
+    call s:zek_feedkeys("\<Home>")
   elseif index(['ls', 'files', 'buffers'], previous_cmd) != -1
-    call zek#feedkeys(':buffer' . ' ')
+    call s:zek_feedkeys(':buffer' . ' ')
   elseif index(['clist', 'llist'], previous_cmd) != -1
-    call zek#feedkeys(':' . repeat(previous_cmd[0], 2) . ' ')
+    call s:zek_feedkeys(':' . repeat(previous_cmd[0], 2) . ' ')
   elseif index(['dlist', 'ilist'], previous_cmd) != -1
-    call zek#feedkeys(':' . previous_cmd[0] . 'jump' . ' ' . join(previous_args))
-    call zek#feedkeys("\<Home>\<S-Right>\<Space>")
+    call s:zek_feedkeys(':' . previous_cmd[0] . 'jump' . ' ' . join(previous_args))
+    call s:zek_feedkeys("\<Home>\<S-Right>\<Space>")
   else
     let g:zek_has_replied = v:false
   endif
