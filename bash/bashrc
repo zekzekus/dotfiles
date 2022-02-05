@@ -38,7 +38,7 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 # eval "$(direnv hook bash)"
 # eval "$(rbenv init -)"
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -57,3 +57,5 @@ else
 		source /dev/stdin <<<"$("/usr/local/bin/starship" init bash --print-full-init)"
 	fi
 fi
+
+[[ -r "/usr/local/opt/asdf/libexec/asdf.sh" ]] && . "/usr/local/opt/asdf/libexec/asdf.sh"
