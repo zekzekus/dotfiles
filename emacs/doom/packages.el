@@ -14,6 +14,7 @@
 (package! w3m)
 (package! nord-theme)
 (package! parchment-theme)
+(package! consult-projectile)
 
 ;; All of Doom's packages are pinned to a specific commit, and updated from
 ;; release to release. To un-pin all packages and live on the edge, do:

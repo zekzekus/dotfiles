@@ -29,8 +29,9 @@
 (setq doom-theme 'nord)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
-      mac-option-modifier 'none)
+      mac-option-modifier 'super)
 (setq org-directory "~/org")
+(setq resize-mini-windows nil)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -110,7 +111,8 @@
   (setq ivy-use-virtual-buffers nil))
 
 (after! projectile
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-tags-file-name ".git/tagse"))
 
 (after! writeroom-mode
   (setq writeroom-mode-line t)
