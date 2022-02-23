@@ -56,13 +56,6 @@ packer.startup(function(use)
   }
 
   use {
-    'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function() default_config('neogit') end,
-    cmd = { 'Neogit' },
-  }
-
-  use {
     'nvim-telescope/telescope.nvim',
     requires = {
       {'nvim-lua/popup.nvim'},
