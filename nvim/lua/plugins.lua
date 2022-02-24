@@ -10,7 +10,6 @@ packer.startup(function(use)
   use 'jiangmiao/auto-pairs'
   use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
-  use 'sheerun/vim-polyglot'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
