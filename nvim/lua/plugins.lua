@@ -28,7 +28,6 @@ packer.startup(function(use)
   use { 'szw/vim-smartclose',               cmd      = { 'SmartClose' } }
   use { 'AndrewRadev/linediff.vim',         cmd      = { 'Linediff' } }
   use { 'tpope/vim-dadbod',                 cmd      = { 'DB' } }
-  use { 'nvim-treesitter/nvim-treesitter',  run      = { ':TSUpdate' } }
   use { 'gpanders/nvim-parinfer',           ft       = { 'clojure' } }
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
@@ -89,6 +88,19 @@ packer.startup(function(use)
     'scalameta/nvim-metals',
     requires = { "nvim-lua/plenary.nvim" },
     config = function() require('config.nvim-metals') end,
+  }
+
+  use {
+      "nvim-neorg/neorg",
+      ft = "norg",
+      after = "nvim-treesitter",
+      config = function() require('config.neorg') end,
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function() require('config.treesitter') end,
+    run = { ':TSUpdate' }
   }
 
 end)
