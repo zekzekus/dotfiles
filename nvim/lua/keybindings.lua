@@ -8,7 +8,7 @@ local files = {
   name = "Files",
   prefix = "<leader>f",
   { "f", [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
-  { "j", [[<cmd>Files ~/.cache/junkfile<cr>]] },
+  { "j", [[<cmd>Telescope find_files cwd=~/.cache/junkfile prompt_title=Junkfiles<cr>]] },
   { "s", [[<cmd>w<cr>]] },
   { "W", [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]] },
   { "t", [[<cmd>NvimTreeToggle<cr>]] },
