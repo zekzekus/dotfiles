@@ -1,7 +1,7 @@
 local telescope = prequire("telescope")
 
 if not telescope then
-        return
+  return
 end
 
 telescope.setup({
