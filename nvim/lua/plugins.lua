@@ -38,12 +38,6 @@ packer.startup(function(use)
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
 
   use {
-    'junegunn/fzf.vim',
-    cmd = { 'Files', 'BTags' },
-    requires = { '/usr/local/opt/fzf' },
-  }
-
-  use {
     'alvarosevilla95/luatab.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() default_config('luatab') end,
@@ -59,6 +53,7 @@ packer.startup(function(use)
     requires = {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
+      {'fcying/telescope-ctags-outline.nvim'},
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     },
     config = function() require('config.telescope') end,

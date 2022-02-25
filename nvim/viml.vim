@@ -18,5 +18,4 @@ augroup general_au
 augroup END
 
 let g:netrw_liststyle = 3
-let g:fzf_preview_window = ''
 let g:zek_has_replied = v:false

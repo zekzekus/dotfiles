@@ -29,8 +29,7 @@ local search = {
   prefix = "<leader>",
   { "/", options = { silent = false }, [[:Zgrep<space>]] },
   { "*",  [[:Zgrep<space><c-r><c-w><cr>]] },
-  { "ss", [[<cmd>Telescope current_buffer_tags theme=dropdown previewer=false<cr>]] },
-  { "sS", [[<cmd>BTags<cr>]] },
+  { "ss", [[<cmd>Telescope ctags_outline outline<cr>]] },
   { "sl", [[<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>]] },
 }
 
