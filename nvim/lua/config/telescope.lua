@@ -16,7 +16,7 @@ telescope.setup({
   extensions = {
     ctags_outline = {
       ft_opt = {
-        javascript = '',
+        javascript = '--javascript-kinds=mf',
       }
     }
   }
