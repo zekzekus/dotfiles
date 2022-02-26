@@ -91,10 +91,10 @@ packer.startup(function(use)
   }
 
   use {
-      "nvim-neorg/neorg",
-      ft = "norg",
-      after = "nvim-treesitter",
-      config = function() require('config.neorg') end,
+    "nvim-neorg/neorg",
+    ft = "norg",
+    after = "nvim-treesitter",
+    config = function() require('config.neorg') end,
   }
 
   use {
