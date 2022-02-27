@@ -91,15 +91,8 @@ packer.startup(function(use)
   }
 
   use {
-    "nvim-neorg/neorg",
-    ft = "norg",
-    after = "nvim-treesitter",
-    config = function() require('config.neorg') end,
-  }
-
-  use {
     'nvim-treesitter/nvim-treesitter',
-    config = function() require('config.treesitter') end,
+    config = function() default_config('nvim-treesitter') end,
     run = { ':TSUpdate' }
   }
 
