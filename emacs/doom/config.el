@@ -32,6 +32,7 @@
       mac-option-modifier 'super)
 (setq org-directory "~/org")
 (setq resize-mini-windows nil)
+(global-auto-revert-mode 1)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
