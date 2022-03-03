@@ -25,8 +25,7 @@
        ;;ido               ; the other *other* search engine...
        ;; (ivy
        ;;  +prescient)
-       (vertico
-        +icons)           ; the search engine of the future
+       vertico           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
