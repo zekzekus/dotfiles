@@ -83,6 +83,15 @@
   (setq org-roam-directory "~/org")
   (setq org-roam-completion-system 'ivy)
   (setq org-roam-completion-everywhere nil)
+  (setq org-roam-capture-templates
+        '(("d" "default" plain
+           "%?"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n\n")
+           :unnarrowed t)
+          ("p" "project" plain
+           "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project\n\n")
+           :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
         '(("d" "default" entry "* %<%I:%M %p>: %?"
            :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
