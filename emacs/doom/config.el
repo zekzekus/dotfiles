@@ -108,11 +108,7 @@
   (defalias #'forward-evil-word #'forward-evil-symbol)
   (map! :n "DEL" 'evil-ex-nohighlight))
 
-(after! ivy
-  (setq ivy-use-virtual-buffers nil))
-
 (after! projectile
-  (setq projectile-completion-system 'ivy)
   (setq projectile-tags-file-name ".git/tagse"))
 
 (after! writeroom-mode
