@@ -55,19 +55,19 @@
 ;; (map! :leader :desc "Jump to char" "/c" #'avy-goto-char)
 
 (after! org
-  (setq org-agenda-files '("~/org"))
+  (setq org-agenda-files '("~/org" "~/org/daily"))
   (setq org-log-done 'time)
-  (setq org-refile-targets '(("work.org" :maxlevel . 2)
-                             ("personal.org" :maxlevel . 2)
-                             ("tickler.org" :maxlevel . 2)
-                             ("someday.org" :level . 1)))
+  (setq org-refile-targets '(("gtd_work.org" :maxlevel . 2)
+                             ("gtd_personal.org" :maxlevel . 2)
+                             ("gtd_tickler.org" :maxlevel . 2)
+                             ("gtd_someday.org" :level . 1)))
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-tags-column -102)
   (setq org-todo-keywords
         '((sequence "TODO(t)" "STARTED(s)" "FOLLOW(f)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
-  (setq org-default-notes-file (concat org-directory "/inbox.org"))
+  (setq org-default-notes-file (concat org-directory "/Inbox.org"))
   (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                  (file+headline org-default-notes-file "Tasks")
                                  "* TODO %i%?")
