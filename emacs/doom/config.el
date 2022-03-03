@@ -75,9 +75,9 @@
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U")))
   (setq org-id-link-to-org-use-id 'create-if-interactive)
-  (setq org-superstar-cycle-headline-bullets 2))
+  (setq org-superstar-cycle-headline-bullets 2)
   ;; (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
-  ;; (add-hook! 'org-mode-hook (writeroom-mode 1)))
+  (add-hook! 'org-mode-hook (writeroom-mode 1)))
 
 (after! (org org-roam)
   (setq org-roam-directory "~/org")
