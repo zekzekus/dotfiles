@@ -74,28 +74,20 @@
                                 ("T" "Tickler" entry
                                  (file+headline (concat org-directory "/tickler.org") "Tickler")
                                  "* %i%? \n %U")))
-  (setq org-journal-dir "~/org")
-  (setq org-journal-file-type 'weekly)
-  (setq org-journal-file-format "journal-%Y-%m-%d.org")
-  (setq org-journal-file-header "#+TITLE: %B %dth, %Y (W%W)")
-  (setq org-journal-date-format "%A, %eth.")
-  (setq org-journal-carryover-items nil)
   (setq org-id-link-to-org-use-id 'create-if-interactive)
-  (setq org-superstar-cycle-headline-bullets 2)
-  (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
-  (add-hook! 'org-mode-hook (writeroom-mode 1)))
+  (setq org-superstar-cycle-headline-bullets 2))
+  ;; (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
+  ;; (add-hook! 'org-mode-hook (writeroom-mode 1)))
 
 (after! (org org-roam)
   (setq org-roam-directory "~/org")
   (setq org-roam-completion-system 'ivy)
-  (setq org-roam-capture-templates
-        '(("d" "default" plain #'org-roam-capture--get-point "%?"
-           :file-name "%<%Y%m%d%H%M%S>-${slug}"
-           :head "#+TITLE: ${title}\n#+STARTUP: content\n"
-           :unnarrowed t
-           :immediate-finish t)))
+  (setq org-roam-completion-everywhere nil)
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry "* %<%I:%M %p>: %?"
+           :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
   (map! :map org-mode-map
-        :i "C-c C-r" 'org-roam-insert))
+        :i "C-c C-r" 'org-roam-node-insert))
 
 (after! deft
   (setq deft-directory "~/org")
