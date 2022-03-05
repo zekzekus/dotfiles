@@ -7,7 +7,9 @@
  '(neuron-default-zettelkasten-directory "/Users/zekus/zettelkasten")
  '(neuron-tag-specific-title-faces '(("stub" neuron-stub-face)))
  '(safe-local-variable-values
-   '((checkdoc-package-keywords-flag)
+   '((Base . 10)
+     (Syntax . ANSI-Common-Lisp)
+     (checkdoc-package-keywords-flag)
      (cider-cljs-repl-types
       (edge "(do (require 'dev-extras) ((resolve 'dev-extras/cljs-repl)))"))
      (cider-default-cljs-repl . edge)

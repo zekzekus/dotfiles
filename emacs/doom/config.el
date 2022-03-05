@@ -121,6 +121,7 @@
   :commands (w3m))
 
 (after! sly
+  (setq sly-command-switch-to-existing-lisp 'always)
   (setq inferior-lisp-program "sbcl"))
 
 (custom-theme-set-faces! 'menguless

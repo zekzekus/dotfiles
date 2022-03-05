@@ -85,6 +85,7 @@
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
+       neuron
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv

@@ -18,7 +18,7 @@
   "Search zettels by content."
   (interactive)
   (progn
-    (+ivy-file-search :in (neuron-zettelkasten) :recursive nil :prompt "Search Zettelkasten: ")
+    (consult-ripgrep (neuron-zettelkasten) "")
     (neuron-mode)))
 
 (defun find-file-in-zettelkasten ()
@@ -28,7 +28,9 @@
     (counsel-find-file)))
 
 (use-package! neuron-mode
-  :config
+  ; Enable link autocompletion globally
+  :hook (neuron-mode . company-neuron-setup)
+  :init
   (map! :leader
         (:prefix ("z" . "zettel")
           "z" #'neuron-new-zettel
@@ -40,8 +42,8 @@
           "j" #'neuron-open-daily-notes
           "t" #'neuron-query-tags
           "r" #'neuron-refresh
-          "c" #'neuron-edit-zettelkasten-configuration
-                 
+          "c" #'neuron-edit-zettelkasten-configuration))
+
           ;;; Alternatively, bind all rib commands in a separate prefix
           ;; (:prefix ("r" . "rib")
           ;;   "w" #'neuron-rib-watch
@@ -51,9 +53,9 @@
           ;;   "z" #'neuron-rib-open-z-index
           ;;   "k" #'neuron-rib-kill
           ;;   )
-          )
-        )
 
+
+  :config
   (map! :map neuron-mode-map
         :localleader
         ;; Override markdown-mode's default behavior to handle neuron links
@@ -70,10 +72,9 @@
           :ni "l" #'neuron-create-and-insert-zettel-link
           :v  "L" #'neuron-create-zettel-from-selection
           :ni "s" #'neuron-insert-static-link
-          :ni "c" #'neuron-toggle-connection-type
-          )
-        )
-              
-       (map! :leader "sz" #'search-zettelkasten)
-       (map! :leader "fz" #'find-file-in-zettelkasten)
-  )
+          :ni "c" #'neuron-toggle-connection-type))
+          
+        
+
+  (map! :leader "sz" #'search-zettelkasten)
+  (map! :leader "fz" #'find-file-in-zettelkasten))
