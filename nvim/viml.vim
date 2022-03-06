@@ -13,7 +13,7 @@ augroup general_au
 	autocmd CmdlineLeave    :                     call zek#autoreply()
 	autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
 	autocmd TermOpen * setlocal nonumber norelativenumber
-	autocmd FileType scala,sbt lua require("metals").initialize_or_attach({})
+	autocmd FileType scala,sbt lua require("config.nvim-metals").initialize_metals()
 
 augroup END
 
