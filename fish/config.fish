@@ -23,7 +23,7 @@ set --export LC_TIME "en_US.UTF-8"
 set --export LC_ALL "en_US.UTF-8"
 
 set --export EDITOR nvim
-set --export MANPAGER "nvim -c 'set ft=man' -"
+set --export MANPAGER "nvim +Man!"
 #set --export PGDATA /usr/local/var/postgres
 #set --export RUBY_CONFIGURE_OPTS --with-openssl-dir=/usr/local/opt/openssl@1.1
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/library
