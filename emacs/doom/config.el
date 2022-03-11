@@ -137,3 +137,9 @@
   '(org-level-6 :overline nil :background nil)
   '(org-document-title :height 1.1)
   '(org-agenda-structure :height 1.0))
+
+(after! sly
+  (set-company-backend! 'sly-mrepl-mode nil))
+
+(after! company
+  (setq company-idle-delay nil))
