@@ -36,7 +36,7 @@ local search = {
 local others = {
   name = "Others",
   prefix = "<leader>",
-  { "<space>", [[<cmd>Telescope theme=dropdown previewer=false<cr>]] },
+  { "<space>", [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
   { "qq",      [[<cmd>SmartClose<cr>]] },
   { "V",       'V`]' },
 }
