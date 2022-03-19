@@ -6,6 +6,7 @@ set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $HOME/.local/bin $PATH
 #set --export PATH $HOME/.cabal/bin $PATH
 set --export PATH $GOPATH/bin $PATH
+set --export PATH $HOME/.deno/bin $PATH
 set --export PATH /usr/local/lib/ruby/gems/3.0.0/bin $PATH
 set --export PATH $HOME/Library/Application\ Support/Coursier/bin $PATH
 set --export PATH /Applications/Sublime\ Text.app/Contents/SharedSupport/bin $PATH
