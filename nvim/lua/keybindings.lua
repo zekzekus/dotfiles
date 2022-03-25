@@ -11,8 +11,14 @@ local files = {
   { "j", [[<cmd>Telescope find_files cwd=~/.cache/junkfile prompt_title=Junkfiles<cr>]] },
   { "s", [[<cmd>w<cr>]] },
   { "W", [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]] },
-  { "t", [[<cmd>NvimTreeToggle<cr>]] },
+  { "t", [[<cmd>Neotree toggle<cr>]] },
   { "T", [[<cmd>TagbarToggle<cr>]] },
+}
+
+local floatings = {
+  name = "Floating",
+  prefix = "<leader>o",
+  { "p", [[<cmd>Neotree float toggle<cr>]] },
 }
 
 local buffers = {
@@ -60,6 +66,7 @@ local misc = {
 
 nest.applyKeymaps({
     files,
+    floatings,
     buffers,
     search,
     others,

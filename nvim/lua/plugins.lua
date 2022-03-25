@@ -60,13 +60,6 @@ packer.startup(function(use)
   }
 
   use {
-      'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons',
-      config = function() require('config.nvim-tree') end,
-      cmd = { 'NvimTreeToggle' },
-  }
-
-  use {
     'neovim/nvim-lspconfig',
     config = function() require('config.lspconfig') end,
     after = { 'cmp-nvim-lsp', 'nvim-lsp-installer' },
@@ -93,6 +86,17 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     config = function() default_config('nvim-treesitter') end,
     run = { ':TSUpdate' }
+  }
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "kyazdani42/nvim-web-devicons",
+        "MunifTanjim/nui.nvim"
+      },
+    config = function() default_config('neo-tree') end,
   }
 
 end)
