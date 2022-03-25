@@ -96,7 +96,7 @@ packer.startup(function(use)
         "kyazdani42/nvim-web-devicons",
         "MunifTanjim/nui.nvim"
       },
-    config = function() default_config('neo-tree') end,
+    config = function() require('config.neotree') end,
   }
 
 end)
