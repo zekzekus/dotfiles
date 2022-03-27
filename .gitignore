@@ -10,6 +10,7 @@ tags
 nvim/pack
 nvim/bundles
 nvim/sessions
+nvim/plugin/packer_compiled.lua
 
 flycheck_*.el
 
