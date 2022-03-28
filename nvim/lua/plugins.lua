@@ -43,6 +43,11 @@ packer.startup(function(use)
   }
 
   use {
+    'ojroques/nvim-hardline',
+    config = function() require('config.hardline') end,
+  }
+
+  use {
     'lewis6991/gitsigns.nvim',
     config = function() default_config('gitsigns') end,
   }

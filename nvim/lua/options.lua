@@ -22,7 +22,6 @@ opt.completeopt = "menuone,noinsert,noselect"
 opt.showbreak = "↪ "
 opt.listchars  =  "tab:│ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅"
 opt.grepprg=[[rg --vimgrep --no-heading --smart-case --glob "!tags" --hidden --glob "!.git"]]
-opt.statusline = [[%w%q 【 %f%M%R%H 】%=%{(&paste==0?'':'〖P〗')} 《 %Y 》〔%l ↕ %L ↕ %c〕 ┇ %%%p ┇ %{zek#listinfos()}]]
 opt.termguicolors = true
 opt.inccommand = "split"
 opt.shortmess:remove("F")
