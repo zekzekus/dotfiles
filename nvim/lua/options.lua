@@ -26,3 +26,4 @@ opt.termguicolors = true
 opt.inccommand = "split"
 opt.shortmess:remove("F")
 opt.laststatus = 3
+opt.updatetime = 1000
