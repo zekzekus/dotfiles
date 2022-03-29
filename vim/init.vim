@@ -3,6 +3,7 @@ set shell=/usr/bin/env\ bash
 runtime! plugins.vim
 packadd cfilter
 
+set updatetime=1000
 set mouse=a
 set number
 set hidden
