@@ -4,6 +4,27 @@ if not hardline then
   return
 end
 
+local vimfn = vim.fn
+local function listinfos()
+  local qflistlen = #vimfn.getqflist()
+  local qflist = ''
+  if qflistlen > 0 then
+    qflist = 'Q:' .. tostring(qflistlen)
+  end
+
+  local loclistlen = #vimfn.getloclist(vimfn.winnr())
+  local loclist = ''
+  if loclistlen > 0 then
+    loclist = 'L:' .. tostring(qflistlen)
+  end
+
+  if qflistlen > 0 and loclistlen > 0 then
+    return qflist .. ' ' .. loclist
+  else
+    return qflist .. loclist
+  end
+end
+
 hardline.setup {
   bufferline = false,  -- enable bufferline
   bufferline_settings = {
@@ -23,5 +44,6 @@ hardline.setup {
     {class = 'warning', item = require('hardline.parts.whitespace').get_item},
     {class = 'high', item = require('hardline.parts.filetype').get_item, hide = 60},
     {class = 'mode', item = require('hardline.parts.line').get_item},
+    {class = 'warning', item = listinfos},
   },
 }
