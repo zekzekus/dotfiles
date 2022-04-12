@@ -32,8 +32,8 @@ packer.startup(function(use)
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
   use { 'tpope/vim-bundler',                ft       = { 'ruby' } }
-  use { 'tpope/vim-rails',                  ft       = { 'ruby' }, }
-  use { 'tpope/vim-rake',                   ft       = { 'ruby' }, }
+  use { 'tpope/vim-rails',                  ft       = { 'ruby' } }
+  use { 'tpope/vim-rake',                   ft       = { 'ruby' } }
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
 
   use {
@@ -58,7 +58,7 @@ packer.startup(function(use)
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
       {'fcying/telescope-ctags-outline.nvim'},
-      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
     config = function() require('config.telescope') end,
     cmd = { 'Telescope' },
@@ -90,7 +90,7 @@ packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function() default_config('nvim-treesitter') end,
-    run = { ':TSUpdate' }
+    run = { ':TSUpdate' },
   }
 
   use {
@@ -99,7 +99,7 @@ packer.startup(function(use)
       requires = {
         "nvim-lua/plenary.nvim",
         "kyazdani42/nvim-web-devicons",
-        "MunifTanjim/nui.nvim"
+        "MunifTanjim/nui.nvim",
       },
     config = function() require('config.neotree') end,
   }
