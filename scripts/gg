@@ -2,7 +2,7 @@
 
 tmuxgetir () {
     SELECTED_PROJECT=$(ls -1 ~/devel/projects/getir/ |
-        tail -n +2 |
+        tail -n +1 |
         fzf --exit-0 --prompt="Project: " -1 -q "$1") || return $?
 
     tmuxinator g "$SELECTED_PROJECT"
