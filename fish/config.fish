@@ -1,5 +1,6 @@
 #set --export GOROOT /usr/local/opt/go/libexec
 set --export GOPATH $HOME/go
+set --export PATH /opt/homebrew/bin $PATH
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
@@ -52,6 +53,6 @@ set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 test -f /Users/zekus/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /Users/zekus/.ghcup/bin $PATH
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 
-if test -e /usr/local/opt/asdf/libexec/asdf.fish
-  source /usr/local/opt/asdf/libexec/asdf.fish
+if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
+  source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
