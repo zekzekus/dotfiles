@@ -1,8 +1,5 @@
 #!/bin/sh
 
-VARIABLE_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
-FIXED_PITCH_FONT='/mnt/font/PragmataPro/15a/font'
-
 export PAGER=nobs
 export MANPAGER=nobs
 export EDITOR=E2
@@ -28,4 +25,4 @@ plumber;
 
 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
 
-acme -l acme.dump -a -m $ACME_MPOINT -f "$VARIABLE_PITCH_FONT" -F "$FIXED_PITCH_FONT" &
+acme -l acme.dump -a -m $ACME_MPOINT
