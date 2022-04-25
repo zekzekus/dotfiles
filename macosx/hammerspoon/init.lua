@@ -7,6 +7,7 @@
 -- -----------------
 
 -- None of this animation shit:
+local hs = hs
 hs.window.animationDuration = 0
 -- Get list of screens and refresh that list whenever screens are plugged or unplugged:
 local screens = hs.screen.allScreens()
@@ -29,7 +30,7 @@ local shiftpushkey= {"ctrl", "cmd", "shift"}
 -- --------------------------------------------------------
 
 -- Move a window a number of pixels in x and y
-function nudge(xpos, ypos)
+local function nudge(xpos, ypos)
   local win = hs.window.focusedWindow()
   local f = win:frame()
   f.x = f.x + xpos
@@ -38,7 +39,7 @@ function nudge(xpos, ypos)
 end
 
 -- Resize a window by moving the bottom
-function yank(xpixels,ypixels)
+local function yank(xpixels,ypixels)
   local win = hs.window.focusedWindow()
   local f = win:frame()
 
@@ -50,7 +51,7 @@ end
 -- Resize window for chunk of screen.
 -- For x and y: use 0 to expand fully in that dimension, 0.5 to expand halfway
 -- For w and h: use 1 for full, 0.5 for half
-function push(x, y, w, h)
+local function push(x, y, w, h)
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -64,7 +65,7 @@ function push(x, y, w, h)
 end
 
 -- Move to monitor x. Checks to make sure monitor exists, if not moves to last monitor that exists
-function moveToMonitor(x)
+local function moveToMonitor(x)
   local win = hs.window.focusedWindow()
   local newScreen = nil
   while not newScreen do
@@ -80,7 +81,7 @@ end
 local mouseCircle = nil
 local mouseCircleTimer = nil
 
-function mouseHighlight()
+ local function mouseHighlight()
   -- Delete an existing highlight if it exists
   if mouseCircle then
     mouseCircle:delete()
@@ -89,7 +90,7 @@ function mouseHighlight()
     end
   end
   -- Get the current co-ordinates of the mouse pointer
-  mousepoint = hs.mouse.get()
+  local mousepoint = hs.mouse.get()
   -- Prepare a big red circle around the mouse pointer
   mouseCircle = hs.drawing.circle(hs.geometry.rect(mousepoint.x-40, mousepoint.y-40, 80, 80))
   mouseCircle:setStrokeColor({["red"]=1,["blue"]=0,["green"]=0,["alpha"]=1})
@@ -103,8 +104,8 @@ end
 
 -- Help. Lists shortcuts, etc.
 -- The terrible spacing looks fine when the alert is actually displayed
-function showHelp()
-  helpstr = [[Hyper                     ⌘⌥⌃⇧
+local function showHelp()
+  local helpstr = [[Hyper                     ⌘⌥⌃⇧
   Nudge                           ⌥⌃
   Yank                          ⌥⌃⇧
   Push                              ⌘⌃
@@ -114,8 +115,8 @@ function showHelp()
 end
 
 --and magic (from getting started guide):
-function reloadConfig(files)
-  doReload = false
+local function reloadConfig(files)
+  local doReload = false
   for _,file in pairs(files) do
     if file:sub(-4) == ".lua" then
       doReload = true
