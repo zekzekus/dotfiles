@@ -13,6 +13,8 @@ if not lspinstall then
   return
 end
 
+local vim = vim
+
 -- do something on lsp attach
 local function on_attach(_, bufnr)
   -- set mappings only in current buffer with lsp enabled
@@ -36,31 +38,25 @@ local function on_attach(_, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_qflist()<CR>', opts)
 end
 
-lspinstall.on_server_ready(function(server)
-    local opts = {
-      autostart = true,
-      on_attach = on_attach,
-      capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    }
+lspinstall.setup {}
 
-    -- (optional) Customize the options passed to the server
-    if server.name == "tsserver" then
-      opts.root_dir = lspconfig.util.root_pattern("package.json")
-    end
+local servers = { "denols", "gopls", "jdtls", "jsonls", "sumneko_lua", "tsserver", "hls", }
+local opts = {
+  autostart = true,
+  on_attach = on_attach,
+  capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
 
-    if server.name == "denols" then
-      opts.root_dir = lspconfig.util.root_pattern("deno.json")
-    end
+for _, server in pairs(servers) do
+  if server == "tsserver" then
+    opts.root_dir = lspconfig.util.root_pattern("package.json")
+  end
 
-    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-end)
+  if server == "denols" then
+    opts.root_dir = lspconfig.util.root_pattern("deno.json")
+  end
 
--- Enable clients not using lsp-installer plugin
-local servers = { 'hls' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-  }
+  lspconfig[server].setup(opts)
 end
+
+vim.cmd [[ do User LspAttachBuffers ]]
