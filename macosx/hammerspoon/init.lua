@@ -6,8 +6,8 @@
 -- Setup environment
 -- -----------------
 
--- None of this animation shit:
 local hs = hs
+-- None of this animation shit:
 hs.window.animationDuration = 0
 -- Get list of screens and refresh that list whenever screens are plugged or unplugged:
 local screens = hs.screen.allScreens()
@@ -191,9 +191,7 @@ hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Safari")
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Slack")
-  hs.application.launchOrFocus("Roam Research")
-  hs.application.launchOrFocus("Things")
-  hs.application.launchOrFocus("Craft")
+  hs.application.launchOrFocus("Logseq")
 end)
 -- hs.hotkey.bind(hyper, "r", function() hs.application.launchOrFocus("Roam Research") end)
 
