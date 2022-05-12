@@ -36,4 +36,5 @@ starship init fish | source
 
 if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
   source /opt/homebrew/opt/asdf/libexec/asdf.fish
+  source ~/.asdf/plugins/java/set-java-home.fish
 end
