@@ -41,22 +41,12 @@ end
 lspinstall.setup {}
 
 local servers = { "denols", "gopls", "jdtls", "jsonls", "sumneko_lua", "tsserver", "hls", }
-local opts = {
-  autostart = true,
-  on_attach = on_attach,
-  capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
-
 for _, server in pairs(servers) do
-  if server == "tsserver" then
-    opts.root_dir = lspconfig.util.root_pattern("package.json")
-  end
-
-  if server == "denols" then
-    opts.root_dir = lspconfig.util.root_pattern("deno.json")
-  end
-
-  lspconfig[server].setup(opts)
+  lspconfig[server].setup {
+    autostart = true,
+    on_attach = on_attach,
+    capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
 end
 
 vim.cmd [[ do User LspAttachBuffers ]]
