@@ -40,7 +40,7 @@ end
 
 lspinstall.setup {}
 
-local servers = { "denols", "gopls", "jdtls", "jsonls", "sumneko_lua", "tsserver", "hls", }
+local servers = { "denols", "gopls", "jdtls", "jsonls", "sumneko_lua", "tsserver", "hls", "pyright" }
 for _, server in pairs(servers) do
   lspconfig[server].setup {
     autostart = true,
