@@ -12,7 +12,7 @@ Plug 'ellisonleao/glow.nvim', {'on':  'Glow' }
 
 " navigating
 Plug 'junegunn/fzf.vim'
-Plug '/usr/local/opt/fzf'
+Plug '/opt/homebrew/opt/fzf'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-projectionist'
 Plug 'farmergreg/vim-lastplace'
