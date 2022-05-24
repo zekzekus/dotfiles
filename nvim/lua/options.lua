@@ -1,3 +1,4 @@
+local vim = vim
 local opt = vim.opt
 
 opt.shell = "/usr/bin/env bash"
