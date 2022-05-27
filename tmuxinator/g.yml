@@ -1,0 +1,11 @@
+# /Users/zekus/.config/tmuxinator/g.yml
+
+name: <%= @args[0] %>
+root: <%= ENV["ZEK_DEVEL_HOME"] %>/<%= @args[1] %>/<%= @args[0] %>
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim
+  - shell: clear; git fetch --all

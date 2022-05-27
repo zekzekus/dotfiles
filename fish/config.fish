@@ -1,3 +1,6 @@
+set --export ZEK_DEVEL_HOME $HOME/devel/projects
+set --export ZEK_DEVEL_WORK_HOME $ZEK_DEVEL_HOME/getir
+
 set --export PATH /opt/homebrew/bin $PATH
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH

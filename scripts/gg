@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tmuxgetir () {
-    SELECTED_PROJECT=$(ls -1 ~/devel/projects/${1:-getir}/ |
+    SELECTED_PROJECT=$(ls -1 $ZEK_DEVEL_HOME/${1:-getir}/ |
         tail -n +1 |
         fzf --exit-0 --prompt="Project: ") || return $?
 
