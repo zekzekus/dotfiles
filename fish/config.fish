@@ -21,7 +21,10 @@ set --export LC_ALL "en_US.UTF-8"
 
 set --export EDITOR nvim
 set --export MANPAGER "nvim +Man!"
-set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/library
+
+if command -sq rustc
+  set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/library
+end
 
 alias mux='tmuxinator'
 
@@ -35,7 +38,9 @@ if test -e ~/.nix-profile/etc/profile.d/nix.sh
   bass source ~/.nix-profile/etc/profile.d/nix.sh
 end
 
-starship init fish | source
+if command -sq starship
+  starship init fish | source
+end
 
 if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
   source /opt/homebrew/opt/asdf/libexec/asdf.fish
