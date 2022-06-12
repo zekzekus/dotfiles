@@ -1,3 +1,4 @@
+local vim = vim
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = false})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
