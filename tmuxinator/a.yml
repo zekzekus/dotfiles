@@ -1,0 +1,7 @@
+# /Users/zekus/.config/tmuxinator/a.yml
+
+name: a
+root: ~/
+
+windows:
+  - general:
