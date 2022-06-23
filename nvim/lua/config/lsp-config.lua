@@ -40,7 +40,21 @@ end
 
 lspinstall.setup {}
 
-local servers = { "denols", "gopls", "jdtls", "jsonls", "sumneko_lua", "tsserver", "hls", "pyright", "rust_analyzer" }
+lspconfig["tsserver"].setup {
+  autostart = true,
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
+lspconfig["denols"].setup {
+  autostart = true,
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json"),
+  capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
+local servers = { "gopls", "jdtls", "jsonls", "sumneko_lua", "hls", "pyright", "rust_analyzer" }
 for _, server in pairs(servers) do
   lspconfig[server].setup {
     autostart = true,
