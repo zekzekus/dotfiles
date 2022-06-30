@@ -13,6 +13,7 @@ set nomodeline
 set splitbelow
 set splitright
 set wildignorecase
+set wildoptions=pum
 set ignorecase
 set smartcase
 set hlsearch
