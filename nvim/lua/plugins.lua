@@ -89,7 +89,7 @@ packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function() default_config('nvim-treesitter') end,
+    config = function() require('config.treesitter') end,
     run = { ':TSUpdate' },
   }
 
