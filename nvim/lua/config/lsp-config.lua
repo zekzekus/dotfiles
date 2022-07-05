@@ -56,7 +56,7 @@ lspconfig["denols"].setup {
   capabilities = cmplsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 
-local servers = { "gopls", "jdtls", "jsonls", "sumneko_lua", "pyright", "rust_analyzer", "clojure_lsp", "elixirls" }
+local servers = { "gopls", "jdtls", "jsonls", "sumneko_lua", "pyright", "rust_analyzer", "elixirls" }
 for _, server in pairs(servers) do
   lspconfig[server].setup {
     autostart = true,
