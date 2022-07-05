@@ -8,7 +8,7 @@ local nest = prequire("nest")
 local files = {
   name = "Files",
   prefix = "<leader>f",
-  { "f", [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
+  { "f", [[<cmd>Telescope find_files previewer=false<cr>]] },
   { "j", [[<cmd>Telescope find_files cwd=~/.cache/junkfile prompt_title=Junkfiles<cr>]] },
   { "s", [[<cmd>w<cr>]] },
   { "W", [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]] },
@@ -25,7 +25,7 @@ local floatings = {
 local buffers = {
   name = "Buffers",
   prefix = "<leader>",
-  { "bb",     [[<cmd>Telescope buffers theme=dropdown previewer=false<cr>]] },
+  { "bb",     [[<cmd>Telescope buffers previewer=false<cr>]] },
   { "bd",     [[<cmd>bdelete<cr>]] },
   { "<tab>", [[<cmd>b#<cr>]] },
   { "`",     [[<cmd>b#<cr>]] },
@@ -43,7 +43,7 @@ local search = {
 local others = {
   name = "Others",
   prefix = "<leader>",
-  { "<space>", [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
+  { "<space>", [[<cmd>Telescope find_files previewer=false<cr>]] },
   { "qq",      [[<cmd>SmartClose<cr>]] },
   { "V",       'V`]' },
 }
