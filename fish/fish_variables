@@ -10,7 +10,8 @@ SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jethrokuan_2F_z_files:/Users/zekus/\x2econfig/fish/functions/__z\x2efish\x1e/Users/zekus/\x2econfig/fish/functions/__z_add\x2efish\x1e/Users/zekus/\x2econfig/fish/functions/__z_clean\x2efish\x1e/Users/zekus/\x2econfig/fish/functions/__z_complete\x2efish\x1e/Users/zekus/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/zekus/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/zekus/\x2econfig/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejethrokuan/z
+SETUVAR _fisher_lilyball_2F_nix_2D_env_2E_fish_files:/Users/zekus/\x2econfig/fish/conf\x2ed/nix\x2denv\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejethrokuan/z\x1elilyball/nix\x2denv\x2efish
 SETUVAR fish_color_autosuggestion:777777
 SETUVAR fish_color_cancel:normal
 SETUVAR fish_color_command:00FF00
