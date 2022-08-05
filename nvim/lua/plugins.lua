@@ -7,6 +7,8 @@ end
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  use 'github/copilot.vim'
+
   use 'jiangmiao/auto-pairs'
   use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
@@ -67,20 +69,11 @@ packer.startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     config = function() require('config.lsp-config') end,
-    after = { 'cmp-nvim-lsp', },
     requires = {
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
       { 'tami5/lspsaga.nvim' },
     },
-  }
-
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-        { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
-    },
-    config = function() require('config.cmp') end,
   }
 
   use {

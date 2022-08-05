@@ -1,7 +1,7 @@
 local cmp = prequire('cmp')
 
 if not cmp then
-	return
+  return
 end
 
 cmp.setup({
