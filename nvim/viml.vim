@@ -7,13 +7,12 @@ command! -nargs=1 -complete=command      -bar -range Zredir call     zek#redir(<
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f-args>)
 
 augroup general_au
-	autocmd!
-	autocmd VimResized      *                     :wincmd =
-	" autocmd ColorScheme     *                     call zek#post_colorscheme()
-	autocmd CmdlineLeave    :                     call zek#autoreply()
-	autocmd QuickFixCmdPost cgetexpr,cexpr        cwindow
-	autocmd TermOpen * setlocal nonumber norelativenumber
-	autocmd FileType scala,sbt lua require("config.nvim-metals").initialize_metals()
+    autocmd!
+    autocmd VimResized      *              :wincmd =
+    autocmd CmdlineLeave    :              call zek#autoreply()
+    autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
+    autocmd TermOpen        *              setlocal nonumber norelativenumber
+    autocmd FileType        scala,sbt      lua require("config.nvim-metals").initialize_metals()
 
 augroup END
 
