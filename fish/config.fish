@@ -7,6 +7,7 @@ set --export PATH /usr/local/sbin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
 set --export PATH $HOME/.local/bin $PATH
 set --export PATH $HOME/.deno/bin $PATH
+set --export PATH $HOME/.roswell/bin $PATH
 set --export PATH $HOME/Library/Application\ Support/Coursier/bin $PATH
 set --export PATH $HOME/bin $PATH
 
