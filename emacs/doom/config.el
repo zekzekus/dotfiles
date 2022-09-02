@@ -122,7 +122,7 @@
 
 (after! sly
   (setq sly-command-switch-to-existing-lisp 'always)
-  (setq inferior-lisp-program "sbcl"))
+  (setq inferior-lisp-program "ros -Q run"))
 
 (custom-theme-set-faces! 'menguless
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
