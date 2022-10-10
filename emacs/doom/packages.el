@@ -15,8 +15,8 @@
 (package! nord-theme)
 (package! parchment-theme)
 (package! consult-projectile)
-(use-package! lisp-markup
-  :load-path "~/quicklisp/dists/quicklisp/software/markup-20211020-git/")
+; (use-package! lisp-markup
+;   :load-path "~/quicklisp/dists/quicklisp/software/markup-20211020-git/")
 
 ;; All of Doom's packages are pinned to a specific commit, and updated from
 ;; release to release. To un-pin all packages and live on the edge, do:
