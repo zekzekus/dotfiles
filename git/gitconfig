@@ -19,7 +19,7 @@ path = nvim
 tool = vimdiff
 
 [commit]
-gpgsign = true
+gpgsign = false
 
 [gpg]
 program = /usr/local/MacGPG2/bin/gpg2
