@@ -2,6 +2,8 @@
 config/fish/fish_history
 config/fish/fishd.*
 
+tmux/plugins
+
 *~
 
 plugged
