@@ -51,3 +51,7 @@ end
 if test -e ~/.asdf/plugins/java/set-java-home.fish
   source ~/.asdf/plugins/java/set-java-home.fish
 end
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /Users/zekus/.ghcup/bin # ghcup-env
+
+fish_add_path /opt/homebrew/opt/llvm/bin
