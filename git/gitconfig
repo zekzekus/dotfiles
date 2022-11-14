@@ -2,12 +2,12 @@
 [user]
 # Please adapt and uncomment the following lines:
 me = Zekeriya Koc
-	email = zekeriya@hey.com
+email = zekzekus@gmail.com
 signingkey = 6716516470AD2D7A
 name = Zekeriya Koc
 
 [core]
-	excludesfile = /Users/zekus/.gitignore_global
+excludesFile = /Users/zekus/.gitignore_global
 
 [difftool]
 prompt = false
@@ -22,7 +22,7 @@ tool = vimdiff
 gpgsign = false
 
 [gpg]
-program = /opt/homebrew/bin/gpg
+program = /usr/local/MacGPG2/bin/gpg2
 
 [init]
 templatedir = ~/.git_template
@@ -45,9 +45,3 @@ user = zekzekus
 
 [pull]
 rebase = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
