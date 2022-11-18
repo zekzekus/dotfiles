@@ -62,7 +62,7 @@ lspconfig["denols"].setup {
 
 local servers = { "gopls", "jdtls", "jsonls", "sumneko_lua", "pyright",
                   "rust_analyzer", "hls", "html", "clojure_lsp", "vimls",
-                  "marksman"}
+                  "marksman", "rnix"}
 for _, server in pairs(servers) do
   lspconfig[server].setup {
     autostart = true,
