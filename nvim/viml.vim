@@ -13,7 +13,6 @@ augroup general_au
     autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
     autocmd TermOpen        *              setlocal nonumber norelativenumber
     autocmd FileType        scala,sbt      lua require("config.nvim-metals").initialize_metals()
-
 augroup END
 
 let g:netrw_liststyle = 3
