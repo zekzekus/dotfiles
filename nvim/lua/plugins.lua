@@ -65,25 +65,6 @@ packer.startup(function(use)
   }
 
   use {
-    'neovim/nvim-lspconfig',
-    config = function() require('config.lsp-config') end,
-    after = { 'cmp-nvim-lsp', },
-    requires = {
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-      { 'tami5/lspsaga.nvim' },
-    },
-  }
-
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-        { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
-    },
-    config = function() require('config.cmp') end,
-  }
-
-  use {
     'scalameta/nvim-metals',
     requires = { "nvim-lua/plenary.nvim" },
   }
@@ -103,6 +84,27 @@ packer.startup(function(use)
         "MunifTanjim/nui.nvim",
       },
     config = function() require('config.neotree') end,
+  }
+
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    config = function() require('config.lsp-zero') end,
+    requires = {
+      {'neovim/nvim-lspconfig'},
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
+      { 'tami5/lspsaga.nvim' },
+
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'saadparwaiz1/cmp_luasnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-nvim-lua'},
+
+      {'L3MON4D3/LuaSnip'},
+      {'rafamadriz/friendly-snippets'},
+    }
   }
 
 end)
