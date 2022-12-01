@@ -19,7 +19,8 @@ lsp.configure("denols", {
   root_dir = lspconfig.util.root_pattern("deno.json")
 })
 lsp.set_preferences({
-  set_lsp_keymaps = false
+  set_lsp_keymaps = false,
+  configure_diagnostics = false,
 })
 lsp.on_attach(function(_, bufnr)
   -- set mappings only in current buffer with lsp enabled
