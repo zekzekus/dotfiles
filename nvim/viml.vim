@@ -9,7 +9,7 @@ command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f
 augroup general_au
     autocmd!
     autocmd VimResized      *              :wincmd =
-    autocmd CmdlineLeave    :              call zek#autoreply()
+    " autocmd CmdlineLeave    :              call zek#autoreply()
     autocmd QuickFixCmdPost cgetexpr,cexpr cwindow
     autocmd TermOpen        *              setlocal nonumber norelativenumber
     autocmd FileType        scala,sbt      lua require("config.nvim-metals").initialize_metals()

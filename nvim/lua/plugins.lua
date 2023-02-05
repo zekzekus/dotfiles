@@ -31,9 +31,6 @@ packer.startup(function(use)
   use { 'gpanders/nvim-parinfer',           ft       = { 'clojure' } }
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
-  use { 'tpope/vim-bundler',                ft       = { 'ruby' } }
-  use { 'tpope/vim-rails',                  ft       = { 'ruby' } }
-  use { 'tpope/vim-rake',                   ft       = { 'ruby' } }
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
 
   use {
