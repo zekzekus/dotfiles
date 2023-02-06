@@ -39,8 +39,4 @@ Plug 'tpope/vim-fireplace',     {'for': 'clojure'}
 Plug 'eraserhd/parinfer-rust',  {'do': 'cargo build --release', 'for': ['clojure', 'lisp']}
 Plug 'clojure-vim/vim-jack-in', {'for': 'clojure' }
 
-Plug 'tpope/vim-bundler',      {'for': 'ruby' }
-Plug 'tpope/vim-rails',        {'for': 'ruby' }
-Plug 'tpope/vim-rake',         {'for': 'ruby' }
-
 call plug#end()
