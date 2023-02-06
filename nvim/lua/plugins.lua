@@ -23,7 +23,6 @@ packer.startup(function(use)
 
   use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
   use { 'preservim/tagbar',                 cmd      = { 'TagbarToggle' } }
-  use { 'ellisonleao/glow.nvim',            cmd      = { 'Glow' } }
   use { 'Shougo/junkfile.vim',              cmd      = { 'JunkfileOpen' } }
   use { 'szw/vim-smartclose',               cmd      = { 'SmartClose' } }
   use { 'AndrewRadev/linediff.vim',         cmd      = { 'Linediff' } }
@@ -32,6 +31,11 @@ packer.startup(function(use)
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
+  use {
+    'ellisonleao/glow.nvim',
+    cmd = { 'Glow' },
+    config = function() default_config('glow') end,
+  }
 
   use {
     'alvarosevilla95/luatab.nvim',
