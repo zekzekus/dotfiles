@@ -5,7 +5,7 @@ _G.prequire = function(plugin, verbose)
   end
   local errmsg = string.format("Could not load %s", plugin)
   if verbose then
-    errmsg = string.format("%s\nError:%s", plug)
+    errmsg = string.format("\nError:%s", plug)
   end
   print(errmsg)
 end
