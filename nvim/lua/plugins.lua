@@ -38,14 +38,12 @@ packer.startup(function(use)
   }
 
   use {
-    'alvarosevilla95/luatab.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function() default_config('luatab') end,
+    "rebelot/heirline.nvim",
+    config = function() require('config.heirline') end,
   }
 
   use {
     'ojroques/nvim-hardline',
-    config = function() require('config.hardline') end,
   }
 
   use {
