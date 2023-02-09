@@ -1,6 +1,9 @@
 local heirline = prequire('heirline')
 local conditions = prequire('heirline.conditions')
-local fmt = string.format
+local common = prequire('hardline.common')
+local main_theme = prequire('hardline.themes.default')
+
+local vim = vim
 
 if not heirline then
   return
@@ -8,57 +11,44 @@ end
 
 local Align = { provider = "%=" }
 local Space = { provider = " " }
--- local Separator = { provider = "|" }
 
-local set_hlgroups = function()
-  local theme = require('hardline.themes.default')
-  for class, attr in pairs(theme) do
-    for state, args in pairs(attr) do
-      local hlgroup = fmt('Hardline_%s_%s', class, state)
-      local a = {}
-      for k, v in pairs(args) do
-        table.insert(a, fmt('%s=%s', k, v))
-      end
-      a = table.concat(a, ' ')
-      vim.cmd(fmt('autocmd VimEnter,ColorScheme * hi %s %s', hlgroup, a))
-    end
-  end
-end
-
-set_hlgroups()
-
-local merge_hl = function (hl, item_fn)
+local create_part = function(item_fn, class)
   return {
-    provider = function()
-      return fmt('%%#%s#%s%%*', hl, item_fn())
+    provider = item_fn,
+    init = function(self)
+      self.mode = common.modes[vim.fn.mode()] or common.modes['?']
+    end,
+    hl = function(self)
+      local state = 'active'
+      if class == 'mode' then
+        state = self.mode.state
+      end
+      if conditions.is_active() then
+        return {
+          fg = main_theme[class][state]['guifg'],
+          bg = main_theme[class][state]['guibg'],
+        }
+      else
+        return {
+          fg = main_theme[class]['inactive']['guifg'],
+          bg = main_theme[class]['inactive']['guibg'],
+        }
+      end
     end
   }
 end
-
-local Mode = merge_hl('Hardline_mode_normal', require('hardline.parts.mode').get_item)
-local Git = merge_hl('Hardline_high_active', require('hardline.parts.git').get_item)
-local Filename = merge_hl('Hardline_med_active', require('hardline.parts.filename').get_item)
-local WordCount = merge_hl('Hardline_med_active', require('hardline.parts.wordcount').get_item)
-local LspError = merge_hl('Hardline_warning_active', require('hardline.parts.lsp').get_error)
-local LspWarning = merge_hl('Hardline_warning_active', require('hardline.parts.lsp').get_warning)
-local Whitespace = merge_hl('Hardline_warning_active', require('hardline.parts.whitespace').get_item)
-local Filetype = merge_hl('Hardline_high_active', require('hardline.parts.filetype').get_item)
-local Lines = merge_hl('Hardline_warning_active', require('hardline.parts.line').get_item)
-local ListInfos = merge_hl('Hardline_mode_normal', listinfos)
-
-local ModeInactive = merge_hl('Hardline_mode_inactive', require('hardline.parts.mode').get_item)
-local GitInactive = merge_hl('Hardline_high_inactive', require('hardline.parts.git').get_item)
-local FilenameInactive = merge_hl('Hardline_med_inactive', require('hardline.parts.filename').get_item)
-local WordCountInactive = merge_hl('Hardline_med_inactive', require('hardline.parts.wordcount').get_item)
-local LspErrorInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.lsp').get_error)
-local LspWarningInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.lsp').get_warning)
-local WhitespaceInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.whitespace').get_item)
-local FiletypeInactive = merge_hl('Hardline_high_inactive', require('hardline.parts.filetype').get_item)
-local LinesInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.line').get_item)
-local ListInfosInactive = merge_hl('Hardline_mode_inactive', listinfos)
+local Mode = create_part(require('hardline.parts.mode').get_item, 'mode')
+local Git = create_part(require('hardline.parts.git').get_item, 'high')
+local Filename = create_part(require('hardline.parts.filename').get_item, 'med')
+local WordCount = create_part(require('hardline.parts.wordcount').get_item, 'med')
+local LspError = create_part(require('hardline.parts.lsp').get_error, 'warning')
+local LspWarning = create_part(require('hardline.parts.lsp').get_warning, 'warning')
+local Whitespace = create_part(require('hardline.parts.whitespace').get_item, 'warning')
+local Filetype = create_part(require('hardline.parts.filetype').get_item, 'high')
+local Lines = create_part(require('hardline.parts.line').get_item, 'warning')
+local ListInfos = create_part(listinfos, 'warning')
 
 local Statusline = {
-  condition = conditions.is_active,
   Mode,
   Space,
   Git,
@@ -80,32 +70,6 @@ local Statusline = {
   ListInfos,
   }
 
-local StatuslineInactive = {
-  condition = conditions.is_not_active,
-  ModeInactive,
-  Space,
-  GitInactive,
-  Space,
-  FilenameInactive,
-  Align,
-  WordCountInactive,
-  Space,
-  LspErrorInactive,
-  Space,
-  LspWarningInactive,
-  Space,
-  WhitespaceInactive,
-  Space,
-  FiletypeInactive,
-  Space,
-  LinesInactive,
-  Space,
-  ListInfosInactive,
-  }
-
-local Statuslines = {
-  StatuslineInactive, Statusline
-}
 heirline.setup({
-  statusline = {Statuslines}
+  statusline = {Statusline}
 })
