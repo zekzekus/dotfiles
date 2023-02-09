@@ -12,6 +12,44 @@ end
 
 local Align = { provider = "%=" }
 
+local function get_name(part)
+  if part == 'file' then
+    return vim.fn.expand('%:~:.')
+  end
+  if part == 'dir' then
+    return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
+  end
+end
+
+local function get_readonly()
+  if vim.bo.readonly then
+    return '[RO]'
+  end
+  return ''
+end
+
+local function get_modified()
+  if vim.bo.modified then
+    return '[+]'
+  end
+  if not vim.bo.modifiable then
+    return '[-]'
+  end
+  return ''
+end
+
+local function get_filename(part)
+  local item = function()
+    local name = get_name(part)
+    local flags = table.concat({get_readonly(), get_modified()})
+    if flags ~= '' then
+      flags = ' ' .. flags
+    end
+    return table.concat({name, flags})
+  end
+  return item
+end
+
 local create_part = function(item_fn, class)
   return {
     provider = function()
@@ -45,7 +83,8 @@ local create_part = function(item_fn, class)
 end
 local Mode = create_part(require('hardline.parts.mode').get_item, 'mode')
 local Git = create_part(require('hardline.parts.git').get_item, 'high')
-local Filename = create_part(require('hardline.parts.filename').get_item, 'med')
+local Filename = create_part(get_filename('file'), 'med')
+local Dirname = create_part(get_filename('dir'), 'med')
 local WordCount = create_part(require('hardline.parts.wordcount').get_item, 'med')
 local LspError = create_part(require('hardline.parts.lsp').get_error, 'warning')
 local LspWarning = create_part(require('hardline.parts.lsp').get_warning, 'warning')
@@ -57,6 +96,7 @@ local ListInfos = create_part(listinfos, 'warning')
 local Statusline = {
   Mode,
   Git,
+  Dirname,
   Align,
   WordCount,
   LspError,
