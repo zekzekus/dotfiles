@@ -1,5 +1,4 @@
 local heirline = prequire('heirline')
-local hardline = prequire('hardline')
 local fmt = string.format
 
 if not heirline then
@@ -10,8 +9,22 @@ local Align = { provider = "%=" }
 local Space = { provider = " " }
 -- local Separator = { provider = "|" }
 
-hardline.set_theme()
-hardline.set_hlgroups()
+local set_hlgroups = function()
+  local theme = require('hardline.themes.default')
+  for class, attr in pairs(theme) do
+    for state, args in pairs(attr) do
+      local hlgroup = fmt('Hardline_%s_%s', class, state)
+      local a = {}
+      for k, v in pairs(args) do
+        table.insert(a, fmt('%s=%s', k, v))
+      end
+      a = table.concat(a, ' ')
+      vim.cmd(fmt('autocmd VimEnter,ColorScheme * hi %s %s', hlgroup, a))
+    end
+  end
+end
+
+set_hlgroups()
 
 local merge_hl = function (hl, item_fn)
   return {
