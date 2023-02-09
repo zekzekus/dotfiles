@@ -1,4 +1,5 @@
 local heirline = prequire('heirline')
+local conditions = prequire('heirline.conditions')
 local fmt = string.format
 
 if not heirline then
@@ -45,26 +46,66 @@ local Filetype = merge_hl('Hardline_high_active', require('hardline.parts.filety
 local Lines = merge_hl('Hardline_warning_active', require('hardline.parts.line').get_item)
 local ListInfos = merge_hl('Hardline_mode_normal', listinfos)
 
-heirline.setup({
-  statusline = {
-    Mode,
-    Space,
-    Git,
-    Space,
-    Filename,
-    Align,
-    WordCount,
-    Space,
-    LspError,
-    Space,
-    LspWarning,
-    Space,
-    Whitespace,
-    Space,
-    Filetype,
-    Space,
-    Lines,
-    Space,
-    ListInfos,
+local ModeInactive = merge_hl('Hardline_mode_inactive', require('hardline.parts.mode').get_item)
+local GitInactive = merge_hl('Hardline_high_inactive', require('hardline.parts.git').get_item)
+local FilenameInactive = merge_hl('Hardline_med_inactive', require('hardline.parts.filename').get_item)
+local WordCountInactive = merge_hl('Hardline_med_inactive', require('hardline.parts.wordcount').get_item)
+local LspErrorInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.lsp').get_error)
+local LspWarningInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.lsp').get_warning)
+local WhitespaceInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.whitespace').get_item)
+local FiletypeInactive = merge_hl('Hardline_high_inactive', require('hardline.parts.filetype').get_item)
+local LinesInactive = merge_hl('Hardline_warning_inactive', require('hardline.parts.line').get_item)
+local ListInfosInactive = merge_hl('Hardline_mode_inactive', listinfos)
+
+local Statusline = {
+  condition = conditions.is_active,
+  Mode,
+  Space,
+  Git,
+  Space,
+  Filename,
+  Align,
+  WordCount,
+  Space,
+  LspError,
+  Space,
+  LspWarning,
+  Space,
+  Whitespace,
+  Space,
+  Filetype,
+  Space,
+  Lines,
+  Space,
+  ListInfos,
   }
+
+local StatuslineInactive = {
+  condition = conditions.is_not_active,
+  ModeInactive,
+  Space,
+  GitInactive,
+  Space,
+  FilenameInactive,
+  Align,
+  WordCountInactive,
+  Space,
+  LspErrorInactive,
+  Space,
+  LspWarningInactive,
+  Space,
+  WhitespaceInactive,
+  Space,
+  FiletypeInactive,
+  Space,
+  LinesInactive,
+  Space,
+  ListInfosInactive,
+  }
+
+local Statuslines = {
+  StatuslineInactive, Statusline
+}
+heirline.setup({
+  statusline = {Statuslines}
 })
