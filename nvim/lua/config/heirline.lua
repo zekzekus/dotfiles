@@ -57,7 +57,6 @@ local ListInfos = create_part(listinfos, 'warning')
 local Statusline = {
   Mode,
   Git,
-  Filename,
   Align,
   WordCount,
   LspError,
@@ -68,6 +67,11 @@ local Statusline = {
   ListInfos,
   }
 
+local Winbar = {
+  Filename,
+}
+
 heirline.setup({
-  statusline = {Statusline}
+  statusline = {Statusline},
+  winbar = {Winbar},
 })
