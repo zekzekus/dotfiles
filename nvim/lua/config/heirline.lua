@@ -2,6 +2,7 @@ local heirline = prequire('heirline')
 local conditions = prequire('heirline.conditions')
 local common = prequire('hardline.common')
 local main_theme = prequire('hardline.themes.default')
+local fmt = string.format
 
 local vim = vim
 
@@ -10,11 +11,16 @@ if not heirline then
 end
 
 local Align = { provider = "%=" }
-local Space = { provider = " " }
 
 local create_part = function(item_fn, class)
   return {
-    provider = item_fn,
+    provider = function()
+      local item = item_fn()
+      if item == '' then
+        return item
+      end
+      return fmt(' %s ', item_fn())
+    end,
     init = function(self)
       self.mode = common.modes[vim.fn.mode()] or common.modes['?']
     end,
@@ -50,23 +56,15 @@ local ListInfos = create_part(listinfos, 'warning')
 
 local Statusline = {
   Mode,
-  Space,
   Git,
-  Space,
   Filename,
   Align,
   WordCount,
-  Space,
   LspError,
-  Space,
   LspWarning,
-  Space,
   Whitespace,
-  Space,
   Filetype,
-  Space,
   Lines,
-  Space,
   ListInfos,
   }
 
