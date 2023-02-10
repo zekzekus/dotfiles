@@ -35,15 +35,6 @@ local function get_modified()
   return ''
 end
 
-local function get_fileinfo()
-  local name = get_filename()
-  local flags = table.concat({get_readonly(), get_modified()})
-  if flags ~= '' then
-    flags = ' ' .. flags
-  end
-  return table.concat({name, flags})
-end
-
 local create_part = function(item_fn, class)
   return {
     provider = function()
@@ -76,10 +67,14 @@ local create_part = function(item_fn, class)
   }
 end
 
+local FileInfo = create_part(get_filename, 'warning')
+local Readonly = create_part(get_readonly, 'warning')
+local Modified = create_part(get_modified, 'warning')
+
 local Align = { provider = "%=" }
 local Mode = create_part(require('hardline.parts.mode').get_item, 'mode')
 local Git = create_part(require('hardline.parts.git').get_item, 'high')
-local Filename = create_part(get_fileinfo, 'warning')
+local Filename = { FileInfo, Readonly, Modified }
 local Dirname = create_part(get_dirname, 'med')
 local WordCount = create_part(require('hardline.parts.wordcount').get_item, 'med')
 local LspError = create_part(require('hardline.parts.lsp').get_error, 'warning')
