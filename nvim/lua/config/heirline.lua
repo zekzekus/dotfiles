@@ -105,6 +105,11 @@ local Winbar = {
   Context,
 }
 
+heirline.setup({
+  statusline = {Statusline},
+  winbar = {Winbar},
+})
+
 vim.api.nvim_create_autocmd("User", {
   pattern = 'HeirlineInitWinbar',
   callback = function(args)
@@ -124,7 +129,3 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-heirline.setup({
-  statusline = {Statusline},
-  winbar = {Winbar},
-})
