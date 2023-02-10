@@ -19,4 +19,4 @@ let g:netrw_liststyle = 3
 let g:zek_has_replied = v:false
 let g:neo_tree_remove_legacy_commands = 1
 
-highlight Winbar guibg='20303a'
+highlight Winbar guibg='#2C323C'

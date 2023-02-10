@@ -83,7 +83,7 @@ local create_part = function(item_fn, class)
 end
 local Mode = create_part(require('hardline.parts.mode').get_item, 'mode')
 local Git = create_part(require('hardline.parts.git').get_item, 'high')
-local Filename = create_part(get_filename('file'), 'med')
+local Filename = create_part(get_filename('file'), 'warning')
 local Dirname = create_part(get_filename('dir'), 'med')
 local WordCount = create_part(require('hardline.parts.wordcount').get_item, 'med')
 local LspError = create_part(require('hardline.parts.lsp').get_error, 'warning')
@@ -92,6 +92,7 @@ local Whitespace = create_part(require('hardline.parts.whitespace').get_item, 'w
 local Filetype = create_part(require('hardline.parts.filetype').get_item, 'high')
 local Lines = create_part(require('hardline.parts.line').get_item, 'warning')
 local ListInfos = create_part(listinfos, 'warning')
+local Context = create_part(require('hardline.parts.treesitter-context').get_item, 'warning')
 
 local Statusline = {
   Mode,
@@ -109,6 +110,8 @@ local Statusline = {
 
 local Winbar = {
   Filename,
+  Align,
+  Context,
 }
 
 heirline.setup({
