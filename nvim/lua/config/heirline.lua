@@ -10,8 +10,6 @@ if not heirline then
   return
 end
 
-local Align = { provider = "%=" }
-
 local function get_name(part)
   if part == 'file' then
     return vim.fn.expand('%:~:.')
@@ -81,6 +79,8 @@ local create_part = function(item_fn, class)
     end
   }
 end
+
+local Align = { provider = "%=" }
 local Mode = create_part(require('hardline.parts.mode').get_item, 'mode')
 local Git = create_part(require('hardline.parts.git').get_item, 'high')
 local Filename = create_part(get_filename('file'), 'warning')
@@ -106,7 +106,7 @@ local Statusline = {
   Filetype,
   Lines,
   ListInfos,
-  }
+}
 
 local Winbar = {
   Filename,
@@ -115,22 +115,22 @@ local Winbar = {
 }
 
 vim.api.nvim_create_autocmd("User", {
-    pattern = 'HeirlineInitWinbar',
-    callback = function(args)
-      local buf = args.buf
-      local buftypes = { "prompt", "nofile", "help", "quickfix" }
-      local buftype = vim.tbl_contains(
-        buftypes,
-        vim.bo[buf].buftype
-      )
+  pattern = 'HeirlineInitWinbar',
+  callback = function(args)
+    local buf = args.buf
+    local buftypes = { "prompt", "nofile", "help", "quickfix" }
+    local buftype = vim.tbl_contains(
+      buftypes,
+      vim.bo[buf].buftype
+    )
 
-      local filetypes = { "gitcommit", "fugitive", "fugitiveblame" }
-      local filetype = vim.tbl_contains(filetypes, vim.bo[buf].filetype)
+    local filetypes = { "gitcommit", "fugitive", "fugitiveblame" }
+    local filetype = vim.tbl_contains(filetypes, vim.bo[buf].filetype)
 
-      if buftype or filetype then
-        vim.opt_local.winbar = nil
-      end
-    end,
+    if buftype or filetype then
+      vim.opt_local.winbar = nil
+    end
+  end,
 })
 
 heirline.setup({
