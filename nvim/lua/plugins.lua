@@ -40,10 +40,7 @@ packer.startup(function(use)
   use {
     "rebelot/heirline.nvim",
     config = function() require('config.heirline') end,
-  }
-
-  use {
-    'ojroques/nvim-hardline',
+    requires = { 'ojroques/nvim-hardline' },
   }
 
   use {
