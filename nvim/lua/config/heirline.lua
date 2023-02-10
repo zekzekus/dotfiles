@@ -10,13 +10,12 @@ if not heirline then
   return
 end
 
-local function get_name(part)
-  if part == 'file' then
-    return vim.fn.expand('%:~:.')
-  end
-  if part == 'dir' then
-    return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
-  end
+local function get_filename()
+  return vim.fn.expand('%:~:.')
+end
+
+local function get_dirname()
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
 end
 
 local function get_readonly()
@@ -36,16 +35,13 @@ local function get_modified()
   return ''
 end
 
-local function get_filename(part)
-  local item = function()
-    local name = get_name(part)
-    local flags = table.concat({get_readonly(), get_modified()})
-    if flags ~= '' then
-      flags = ' ' .. flags
-    end
-    return table.concat({name, flags})
+local function get_fileinfo()
+  local name = get_filename()
+  local flags = table.concat({get_readonly(), get_modified()})
+  if flags ~= '' then
+    flags = ' ' .. flags
   end
-  return item
+  return table.concat({name, flags})
 end
 
 local create_part = function(item_fn, class)
@@ -83,8 +79,8 @@ end
 local Align = { provider = "%=" }
 local Mode = create_part(require('hardline.parts.mode').get_item, 'mode')
 local Git = create_part(require('hardline.parts.git').get_item, 'high')
-local Filename = create_part(get_filename('file'), 'warning')
-local Dirname = create_part(get_filename('dir'), 'med')
+local Filename = create_part(get_fileinfo, 'warning')
+local Dirname = create_part(get_dirname, 'med')
 local WordCount = create_part(require('hardline.parts.wordcount').get_item, 'med')
 local LspError = create_part(require('hardline.parts.lsp').get_error, 'warning')
 local LspWarning = create_part(require('hardline.parts.lsp').get_warning, 'warning')
