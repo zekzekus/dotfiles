@@ -101,6 +101,18 @@ local Statusline = {
 }
 
 local Winbar = {
+  fallthrough = false,
+  {
+    condition = function()
+      return conditions.buffer_matches({
+        buftype = { "prompt", "nofile", "help", "quickfix", "terminal" },
+        filetype = { "gitcommit", "fugitive", "fugitiveblame" }
+      })
+    end,
+    init = function()
+      vim.opt_local.winbar = nil
+    end
+  },
   Filename,
   Align,
   Context,
@@ -156,9 +168,9 @@ local TablineFileNameBlock = {
 }
 
 heirline.setup({
-  statusline = {Statusline},
-  winbar = {Winbar},
-  tabline = {utils.make_tablist(TablineFileNameBlock)}
+  statusline = { Statusline },
+  winbar = { Winbar },
+  tabline = { utils.make_tablist(TablineFileNameBlock) }
 })
 
 vim.api.nvim_create_autocmd("User", {
