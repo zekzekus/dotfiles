@@ -1,5 +1,6 @@
 local heirline = prequire('heirline')
 local conditions = prequire('heirline.conditions')
+local utils = prequire('heirline.utils')
 local common = prequire('hardline.common')
 local main_theme = prequire('hardline.themes.default')
 local fmt = string.format
@@ -105,9 +106,59 @@ local Winbar = {
   Context,
 }
 
+local TablineFileName = {
+  provider = function(self)
+    local buflist = vim.fn.tabpagebuflist(self.tabnr)
+    local winnr = vim.fn.tabpagewinnr(self.tabnr)
+    local bufnr = buflist[winnr]
+
+    local file = vim.fn.bufname(bufnr)
+    local buftype = vim.fn.getbufvar(bufnr, '&buftype')
+    local filetype = vim.fn.getbufvar(bufnr, '&filetype')
+
+    local retval = ""
+    if buftype == 'help' then
+      retval = 'help:' .. vim.fn.fnamemodify(file, ':t:r')
+    elseif buftype == 'quickfix' then
+      retval = 'quickfix'
+    elseif filetype == 'TelescopePrompt' then
+      retval = 'Telescope'
+    elseif filetype == 'git' then
+      retval = 'Git'
+    elseif filetype == 'fugitive' then
+      retval = 'Fugitive'
+    elseif file:sub(file:len()-2, file:len()) == 'FZF' then
+      retval = 'FZF'
+    elseif buftype == 'terminal' then
+      local _, mtch = string.match(file, "term:(.*):(%a+)")
+      retval = mtch ~= nil and mtch or vim.fn.fnamemodify(vim.env.SHELL, ':t')
+    elseif file == '' then
+      retval = '[No Name]'
+    else
+      retval = vim.fn.pathshorten(vim.fn.fnamemodify(file, ':p:~:t'))
+    end
+    return fmt(" %s ", retval)
+  end,
+  hl = function(self)
+    return { bold = self.is_active or self.is_visible, italic = true }
+  end,
+}
+
+local TablineFileNameBlock = {
+  hl = function(self)
+    if self.is_active then
+      return "CurSearch"
+    else
+      return "TabLine"
+    end
+  end,
+  TablineFileName,
+}
+
 heirline.setup({
   statusline = {Statusline},
   winbar = {Winbar},
+  tabline = {utils.make_tablist(TablineFileNameBlock)}
 })
 
 vim.api.nvim_create_autocmd("User", {
