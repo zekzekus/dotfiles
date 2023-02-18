@@ -42,7 +42,6 @@ local Statusline = {
 }
 
 local Winbar = {
-  fallthrough = false,
   {
     condition = function()
       return conditions.buffer_matches({
