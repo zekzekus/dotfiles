@@ -13,7 +13,8 @@ end
 lsp.preset("recommended")
 
 lsp.configure("tsserver", {
-  root_dir = lspconfig.util.root_pattern("package.json")
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  single_file_support = false
 })
 lsp.configure("denols", {
   root_dir = lspconfig.util.root_pattern("deno.json")
