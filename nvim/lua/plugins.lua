@@ -6,6 +6,7 @@ end
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'LionC/nest.nvim'
 
   use 'jiangmiao/auto-pairs'
   use 'farmergreg/vim-lastplace'
@@ -19,7 +20,6 @@ packer.startup(function(use)
   use 'tpope/vim-projectionist'
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
-  use 'LionC/nest.nvim'
 
   use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
   use { 'preservim/tagbar',                 cmd      = { 'TagbarToggle' } }
