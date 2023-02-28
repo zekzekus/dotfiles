@@ -1,6 +1,8 @@
 local common = prequire('hardline.common')
-local conditions = prequire('heirline.conditions')
 local main_theme = prequire('hardline.themes.default')
+
+local conditions = prequire('heirline.conditions')
+
 local fmt = string.format
 
 local M = {}

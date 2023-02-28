@@ -1,6 +1,7 @@
 local heirline = prequire('heirline')
 local conditions = prequire('heirline.conditions')
 local utils = prequire('heirline.utils')
+
 local p = prequire('config.heirline.parts')
 
 local vim = vim
@@ -9,23 +10,25 @@ if not heirline then
   return
 end
 
-local FileInfo = p.create_part(p.get_filename, 'warning')
-local Readonly = p.create_part(p.get_readonly, 'warning')
-local Modified = p.create_part(p.get_modified, 'warning')
+local Align       = { provider = "%=" }
 
-local Align = { provider = "%=" }
-local Mode = p.create_part(require('hardline.parts.mode').get_item, 'mode')
-local Git = p.create_part(require('hardline.parts.git').get_item, 'high')
-local Filename = { FileInfo, Readonly, Modified }
-local Dirname = p.create_part(p.get_dirname, 'med')
-local WordCount = p.create_part(require('hardline.parts.wordcount').get_item, 'med')
-local LspError = p.create_part(require('hardline.parts.lsp').get_error, 'warning')
-local LspWarning = p.create_part(require('hardline.parts.lsp').get_warning, 'warning')
-local Whitespace = p.create_part(require('hardline.parts.whitespace').get_item, 'warning')
-local Filetype = p.create_part(require('hardline.parts.filetype').get_item, 'high')
-local Lines = p.create_part(require('hardline.parts.line').get_item, 'warning')
-local ListInfos = p.create_part(listinfos, 'warning')
-local Context = p.create_part(require('hardline.parts.treesitter-context').get_item, 'warning')
+local FileInfo    = p.create_part(p.get_filename, 'warning')
+local Readonly    = p.create_part(p.get_readonly, 'warning')
+local Modified    = p.create_part(p.get_modified, 'warning')
+local Filename    = { FileInfo, Readonly, Modified }
+
+local Mode        = p.create_part(require('hardline.parts.mode').get_item, 'mode')
+local Git         = p.create_part(require('hardline.parts.git').get_item, 'high')
+
+local Dirname     = p.create_part(p.get_dirname, 'med')
+local WordCount   = p.create_part(require('hardline.parts.wordcount').get_item, 'med')
+local LspError    = p.create_part(require('hardline.parts.lsp').get_error, 'warning')
+local LspWarning  = p.create_part(require('hardline.parts.lsp').get_warning, 'warning')
+local Whitespace  = p.create_part(require('hardline.parts.whitespace').get_item, 'warning')
+local Filetype    = p.create_part(require('hardline.parts.filetype').get_item, 'high')
+local Lines       = p.create_part(require('hardline.parts.line').get_item, 'warning')
+local ListInfos   = p.create_part(listinfos, 'warning')
+local Context     = p.create_part(require('hardline.parts.treesitter-context').get_item, 'warning')
 
 local Statusline = {
   Mode,
