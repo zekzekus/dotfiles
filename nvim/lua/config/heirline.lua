@@ -1,6 +1,6 @@
-local heirline = prequire('heirline')
-local conditions = prequire('heirline.conditions')
-local utils = prequire('heirline.utils')
+local heirline    = prequire('heirline')
+local conditions  = prequire('heirline.conditions')
+local utils       = prequire('heirline.utils')
 
 local p = prequire('config.heirline.parts')
 

@@ -1,5 +1,6 @@
-local lsp = prequire("lsp-zero")
+local lsp       = prequire("lsp-zero")
 local lspconfig = prequire("lspconfig")
+
 local vim = vim
 
 if not lsp then

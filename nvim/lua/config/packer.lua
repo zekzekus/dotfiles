@@ -1,4 +1,5 @@
 local packer = prequire("packer")
+
 if not packer then
     print("Packer was not found")
 
