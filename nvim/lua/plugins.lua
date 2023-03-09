@@ -8,7 +8,6 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'LionC/nest.nvim'
 
-  use 'jiangmiao/auto-pairs'
   use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
   use 'tpope/vim-sleuth'
@@ -106,6 +105,11 @@ packer.startup(function(use)
       {'L3MON4D3/LuaSnip'},
       {'rafamadriz/friendly-snippets'},
     }
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function() default_config('nvim-autopairs') end,
   }
 
 end)
