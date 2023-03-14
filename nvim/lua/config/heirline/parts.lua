@@ -40,9 +40,13 @@ M.get_tabline_filename = function(tabnr)
   elseif file == '' then
     retval = '[No Name]'
   else
-    retval = vim.fn.pathshorten(vim.fn.fnamemodify(file, ':p:~:t'))
+    if #buflist > 1 then
+      retval = fmt("buffers (%s)", #buflist)
+    else
+      retval = vim.fn.pathshorten(vim.fn.fnamemodify(file, ':p:~:t'))
+    end
   end
-  return fmt(" %s ", retval)
+  return fmt(" [%s] %s ", tabnr, retval)
 end
 
 M.get_dirname = function()
