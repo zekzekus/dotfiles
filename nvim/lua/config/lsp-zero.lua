@@ -49,7 +49,7 @@ end)
 lsp.setup()
 
 local cmp           = prequire('cmp')
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp_autopairs = prequire('nvim-autopairs.completion.cmp')
 
 cmp.event:on(
   'confirm_done',
