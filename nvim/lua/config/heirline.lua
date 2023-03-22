@@ -1,5 +1,4 @@
 local heirline    = prequire('heirline')
-local conditions  = prequire('heirline.conditions')
 local utils       = prequire('heirline.utils')
 
 local p = prequire('config.heirline.parts')
@@ -45,17 +44,6 @@ local Statusline = {
 }
 
 local Winbar = {
-  {
-    condition = function()
-      return conditions.buffer_matches({
-        buftype = { "prompt", "nofile", "help", "quickfix", "terminal" },
-        filetype = { "gitcommit", "fugitive", "fugitiveblame" }
-      })
-    end,
-    init = function()
-      vim.opt_local.winbar = nil
-    end
-  },
   Filename,
   Align,
   Context,
@@ -84,24 +72,13 @@ local TablineFileNameBlock = {
 heirline.setup({
   statusline = { Statusline },
   winbar = { Winbar },
-  tabline = { utils.make_tablist(TablineFileNameBlock) }
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = 'HeirlineInitWinbar',
-  callback = function(args)
-    local buf = args.buf
-    local buftypes = { "prompt", "nofile", "help", "quickfix" }
-    local buftype = vim.tbl_contains(
-      buftypes,
-      vim.bo[buf].buftype
-    )
-
-    local filetypes = { "gitcommit", "fugitive", "fugitiveblame" }
-    local filetype = vim.tbl_contains(filetypes, vim.bo[buf].filetype)
-
-    if buftype or filetype then
-      vim.opt_local.winbar = nil
-    end
-  end,
+  tabline = { utils.make_tablist(TablineFileNameBlock) },
+  opts = {
+    disable_winbar_cb = function(args)
+      local buf = args.buf
+      local buftype = vim.tbl_contains({ "prompt", "nofile", "help", "quickfix", "terminal", }, vim.bo[buf].buftype)
+      local filetype = vim.tbl_contains({ "gitcommit", "fugitive", "Trouble", "packer", "fugitiveblame", }, vim.bo[buf].filetype)
+      return buftype or filetype
+    end,
+  },
 })
