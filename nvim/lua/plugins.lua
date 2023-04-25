@@ -8,7 +8,6 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'LionC/nest.nvim'
 
-  use 'farmergreg/vim-lastplace'
   use 'christoomey/vim-tmux-navigator'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-repeat'
@@ -30,6 +29,12 @@ packer.startup(function(use)
   use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
   use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
   use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
+
+  use {
+    'ethanholz/nvim-lastplace',
+    config = function() default_config('nvim-lastplace') end,
+  }
+
   use {
     'ellisonleao/glow.nvim',
     cmd = { 'Glow' },
