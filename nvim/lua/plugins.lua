@@ -76,9 +76,8 @@ packer.startup(function(use)
   }
 
   use {
-    "SmiteshP/nvim-gps",
-    requires = "nvim-treesitter/nvim-treesitter",
-    config = function() default_config('nvim-gps') end,
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig",
   }
 
   use {

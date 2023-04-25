@@ -27,7 +27,7 @@ local Whitespace  = p.create_part(require('hardline.parts.whitespace').get_item,
 local Filetype    = p.create_part(require('hardline.parts.filetype').get_item, 'high')
 local Lines       = p.create_part(require('hardline.parts.line').get_item, 'warning')
 local ListInfos   = p.create_part(listinfos, 'warning')
-local Context     = p.create_part(require('hardline.parts.treesitter-context').get_item, 'warning')
+local Context     = p.create_part(require('nvim-navic').get_location, 'warning')
 
 local Statusline = {
   Mode,

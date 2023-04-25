@@ -1,5 +1,6 @@
 local lsp       = prequire("lsp-zero")
 local lspconfig = prequire("lspconfig")
+local navic     = prequire("nvim-navic")
 
 local vim = vim
 
@@ -8,6 +9,10 @@ if not lsp then
 end
 
 if not lspconfig then
+  return
+end
+
+if not navic then
   return
 end
 
@@ -24,10 +29,14 @@ lsp.set_preferences({
   set_lsp_keymaps = false,
   configure_diagnostics = false,
 })
-lsp.on_attach(function(_, bufnr)
+lsp.on_attach(function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+
   -- set mappings only in current buffer with lsp enabled
   local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
 
   local opts = { noremap = true, silent = true }
