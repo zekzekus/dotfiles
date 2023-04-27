@@ -15,6 +15,7 @@ packer.startup(function(use)
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
+  use 'tpope/vim-projectionist'
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
 
