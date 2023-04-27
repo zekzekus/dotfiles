@@ -102,4 +102,42 @@ M.create_part = function(item_fn, class)
   }
 end
 
+local function get_diagnostic(prefix, severity)
+  local count
+  if vim.fn.has('nvim-0.6') == 0 then
+    count = vim.lsp.diagnostic.get_count(0, severity)
+  else
+    local severities = {
+      ['Warning'] = vim.diagnostic.severity.WARN,
+      ['Error'] = vim.diagnostic.severity.ERROR,
+    }
+    count = #vim.diagnostic.get(0, {severity=severities[severity]})
+  end
+  if count < 1 then
+    return ''
+  end
+  return fmt('%s:%d', prefix, count)
+end
+
+M.get_lsp_errors = function()
+  return get_diagnostic('E', 'Error')
+end
+
+M.get_lsp_warnings = function()
+  return get_diagnostic('W', 'Warning')
+end
+
+M.get_lsp_clients = function()
+  local clients = vim.lsp.buf_get_clients()
+  if next(clients) == nil then
+    return "none"
+  end
+
+  local c = {}
+  for _, client in pairs(clients) do
+    table.insert(c, client.name)
+  end
+  return table.concat(c, "|")
+end
+
 return M

@@ -20,9 +20,8 @@ local Mode        = p.create_part(require('hardline.parts.mode').get_item, 'mode
 local Git         = p.create_part(require('hardline.parts.git').get_item, 'high')
 
 local Dirname     = p.create_part(p.get_dirname, 'med')
-local WordCount   = p.create_part(require('hardline.parts.wordcount').get_item, 'med')
-local LspError    = p.create_part(require('hardline.parts.lsp').get_error, 'warning')
-local LspWarning  = p.create_part(require('hardline.parts.lsp').get_warning, 'warning')
+local LspError    = p.create_part(p.get_lsp_errors, 'warning')
+local LspWarning  = p.create_part(p.get_lsp_warnings, 'warning')
 local Whitespace  = p.create_part(require('hardline.parts.whitespace').get_item, 'warning')
 local Filetype    = p.create_part(require('hardline.parts.filetype').get_item, 'high')
 local Lines       = p.create_part(require('hardline.parts.line').get_item, 'warning')
@@ -34,7 +33,6 @@ local Statusline = {
   Git,
   Dirname,
   Align,
-  WordCount,
   LspError,
   LspWarning,
   Whitespace,
