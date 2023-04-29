@@ -19,16 +19,16 @@ packer.startup(function(use)
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
 
-  use { 'mcchrish/zenbones.nvim',           requires = { 'rktjmp/lush.nvim' } }
-  use { 'preservim/tagbar',                 cmd      = { 'TagbarToggle' } }
-  use { 'Shougo/junkfile.vim',              cmd      = { 'JunkfileOpen' } }
-  use { 'szw/vim-smartclose',               cmd      = { 'SmartClose' } }
-  use { 'AndrewRadev/linediff.vim',         cmd      = { 'Linediff' } }
-  use { 'tpope/vim-dadbod',                 cmd      = { 'DB' } }
-  use { 'gpanders/nvim-parinfer',           ft       = { 'clojure' } }
-  use { 'clojure-vim/vim-jack-in',          ft       = { 'clojure' } }
-  use { 'tpope/vim-fireplace',              ft       = { 'clojure' } }
-  use { 'tpope/vim-jdaddy',                 ft       = { 'json' } }
+  use { 'mcchrish/zenbones.nvim',   requires = { 'rktjmp/lush.nvim' } }
+  use { 'preservim/tagbar',         cmd      = { 'TagbarToggle' } }
+  use { 'Shougo/junkfile.vim',      cmd      = { 'JunkfileOpen' } }
+  use { 'szw/vim-smartclose',       cmd      = { 'SmartClose' } }
+  use { 'AndrewRadev/linediff.vim', cmd      = { 'Linediff' } }
+  use { 'tpope/vim-dadbod',         cmd      = { 'DB' } }
+  use { 'gpanders/nvim-parinfer',   ft       = { 'clojure' } }
+  use { 'clojure-vim/vim-jack-in',  ft       = { 'clojure' } }
+  use { 'tpope/vim-fireplace',      ft       = { 'clojure' } }
+  use { 'tpope/vim-jdaddy',         ft       = { 'json' } }
 
   use {
     'ethanholz/nvim-lastplace',
