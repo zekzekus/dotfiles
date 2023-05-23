@@ -117,12 +117,16 @@
   (setq writeroom-width 100)
   (setq +zen-text-scale 0))
 
-(use-package! w3m
-  :commands (w3m))
-
 (after! sly
   (setq sly-command-switch-to-existing-lisp 'always)
-  (setq inferior-lisp-program "ros -Q run"))
+  (setq inferior-lisp-program "ros -Q run")
+  (set-company-backend! 'sly-mrepl-mode nil))
+
+(after! company
+  (setq company-idle-delay nil))
+
+(use-package! w3m
+  :commands (w3m))
 
 (custom-theme-set-faces! 'menguless
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
@@ -137,9 +141,3 @@
   '(org-level-6 :overline nil :background nil)
   '(org-document-title :height 1.1)
   '(org-agenda-structure :height 1.0))
-
-(after! sly
-  (set-company-backend! 'sly-mrepl-mode nil))
-
-(after! company
-  (setq company-idle-delay nil))
