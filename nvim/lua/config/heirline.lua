@@ -1,5 +1,6 @@
 local heirline    = prequire('heirline')
 local utils       = prequire('heirline.utils')
+local conditions  = prequire('heirline.conditions')
 
 local p = prequire('config.heirline.parts')
 
@@ -73,10 +74,10 @@ heirline.setup({
   tabline = { utils.make_tablist(TablineFileNameBlock) },
   opts = {
     disable_winbar_cb = function(args)
-      local buf = args.buf
-      local buftype = vim.tbl_contains({ "prompt", "nofile", "help", "quickfix", "terminal", }, vim.bo[buf].buftype)
-      local filetype = vim.tbl_contains({ "gitcommit", "fugitive", "Trouble", "packer", "fugitiveblame", }, vim.bo[buf].filetype)
-      return buftype or filetype
+      return conditions.buffer_matches({
+        buftype = { "nofile", "prompt", "help", "quickfix", "terminal", },
+        filetype = { "^git.*", "fugitive", "Trouble", "packer", "fugitiveblame", },
+      }, args.buf)
     end,
   },
 })
