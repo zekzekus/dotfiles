@@ -98,7 +98,7 @@ packer.startup(function(use)
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
-      { 'tami5/lspsaga.nvim' },
+      { 'nvimdev/lspsaga.nvim' },
 
       {'hrsh7th/nvim-cmp'},
       {'hrsh7th/cmp-path'},

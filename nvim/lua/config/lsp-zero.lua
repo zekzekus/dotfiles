@@ -1,6 +1,10 @@
-local lsp       = prequire("lsp-zero")
-local lspconfig = prequire("lspconfig")
-local navic     = prequire("nvim-navic")
+local lsp           = prequire("lsp-zero")
+local lspconfig     = prequire("lspconfig")
+local navic         = prequire("nvim-navic")
+local lspsaga       = prequire("lspsaga")
+local cmp           = prequire('cmp')
+local cmp_autopairs = prequire('nvim-autopairs.completion.cmp')
+
 
 local vim = vim
 
@@ -13,6 +17,10 @@ if not lspconfig then
 end
 
 if not navic then
+  return
+end
+
+if not lspsaga then
   return
 end
 
@@ -57,10 +65,13 @@ end)
 
 lsp.setup()
 
-local cmp           = prequire('cmp')
-local cmp_autopairs = prequire('nvim-autopairs.completion.cmp')
-
 cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+
+lspsaga.setup({
+  symbol_in_winbar = {
+    enable = false,
+  }
+})
