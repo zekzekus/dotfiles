@@ -24,14 +24,37 @@ if not lspsaga then
   return
 end
 
+local function custom_root_pattern(opt)
+  local root = opt.root
+  local not_root_pattern = opt.not_root
+
+  local function matches(path, pattern)
+    return 0 < #vim.fn.glob(lspconfig.util.path.join(path, pattern))
+  end
+
+  return function(startpath)
+    local not_root = lspconfig.util.search_ancestors(startpath, function(path)
+      return matches(path, not_root_pattern)
+    end)
+    if not_root ~= nil then
+      -- if this is a valid root dir for the given not_root pattern thendo
+      -- do not try given root and do not attach this server at all
+      return false
+    end
+    return lspconfig.util.search_ancestors(startpath, function(path)
+      return matches(path, root)
+    end)
+  end
+end
+
 lsp.preset("recommended")
 
 lsp.configure("tsserver", {
-  root_dir = lspconfig.util.root_pattern("package.json"),
+  root_dir = custom_root_pattern({root="package.json", not_root="deno.json?"}),
   single_file_support = false
 })
 lsp.configure("denols", {
-  root_dir = lspconfig.util.root_pattern("deno.json")
+  root_dir = lspconfig.util.root_pattern("deno.json?")
 })
 lsp.set_preferences({
   set_lsp_keymaps = false,
