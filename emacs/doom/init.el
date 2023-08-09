@@ -88,6 +88,7 @@
        neuron
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
+       ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -174,10 +175,9 @@
        rest              ; Emacs as a REST client
        rst               ; ReST in peace
        (ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       (scala             ; java, but good
-        +lsp)
-       ;;scheme            ; a fully conniving family of lisps
+       (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (scala +lsp)      ; java, but good
+       ;;(scheme +guile) ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
