@@ -45,3 +45,6 @@ user = zekzekus
 
 [pull]
 rebase = false
+
+[url "ssh://git@bitbucket.org/"]
+	insteadOf = https://bitbucket.org/
