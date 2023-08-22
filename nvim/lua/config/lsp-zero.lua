@@ -75,11 +75,12 @@ lsp.on_attach(function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>Lspsaga hover_doc<cr>', opts)
+  buf_set_keymap('n', 'gp', '<cmd>Lspsaga peek_definition<cr>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-s>', '<cmd>Lspsaga signature_help<cr>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>Lspsaga rename<cr>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>Lspsaga show_line_diagnostics<cr>', opts)
   buf_set_keymap('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', opts)
   buf_set_keymap('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', opts)
@@ -113,5 +114,15 @@ cmp.event:on(
 lspsaga.setup({
   symbol_in_winbar = {
     enable = false,
+  },
+  lightbulb = {
+    enable = false,
+  },
+  finder = {
+    keys = {
+      vsplit = "v",
+      split = "s",
+      toggle_or_open = "<cr>",
+    }
   }
 })
