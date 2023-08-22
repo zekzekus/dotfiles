@@ -21,7 +21,7 @@ set foldmethod=indent
 set foldlevel=99
 set errorformat+=%f
 set undofile
-set tags+=,.git/tags
+set tags+=,.git/tags_file
 set completeopt=menuone,noinsert,noselect
 set showbreak=↪\ 
 set listchars=tab:\│\ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅

@@ -3,4 +3,4 @@ set -e
 dir="`git rev-parse --git-dir`"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files --recurse-submodules | ctags --tag-relative -L - -f"$dir/$$.tags"
-mv "$dir/$$.tags" "$dir/tags"
+mv "$dir/$$.tags" "$dir/tags_file"
