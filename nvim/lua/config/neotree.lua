@@ -103,7 +103,7 @@ neotree.setup({
       }
     },
     filtered_items = {
-      visible = true,
+      visible = false,
       hide_dotfiles = true,
       hide_gitignored = true,
       hide_by_name = {
