@@ -11,10 +11,13 @@ return {
   'tpope/vim-dispatch',
   'radenling/vim-dispatch-neovim',
 
-  {'mcchrish/zenbones.nvim',
-   dependencies = { 'rktjmp/lush.nvim' },
-   lazy = false,
-   priority = 1000 },
+  {
+    'mcchrish/zenbones.nvim',
+    dependencies = { 'rktjmp/lush.nvim' },
+    lazy = false,
+    priority = 1000
+  },
+
   { 'preservim/tagbar',         cmd      = { 'TagbarToggle' } },
   { 'Shougo/junkfile.vim',      cmd      = { 'JunkfileOpen' } },
   { 'szw/vim-smartclose',       cmd      = { 'SmartClose' } },
@@ -25,70 +28,71 @@ return {
   { 'tpope/vim-fireplace',      ft       = { 'clojure' } },
   { 'tpope/vim-jdaddy',         ft       = { 'json' } },
 
-  -- use {
-  --   'ethanholz/nvim-lastplace',
-  --   config = function() default_config('nvim-lastplace') end,
-  -- }
-
-  {'ellisonleao/glow.nvim',
-   cmd = { 'Glow' },
-   config = function() default_config('glow') end,
+  {
+    'ethanholz/nvim-lastplace',
+    config = function() default_config('nvim-lastplace') end,
   },
 
-  -- use {
-  --   "rebelot/heirline.nvim",
-  --   config = function() require('config.heirline') end,
-  --   requires = { 'ojroques/nvim-hardline' },
-  -- }
+  {
+    'ellisonleao/glow.nvim',
+    cmd = { 'Glow' },
+    config = function() default_config('glow') end,
+  },
 
-  -- use {
-  --   'lewis6991/gitsigns.nvim',
-  --   config = function() default_config('gitsigns') end,
-  -- }
+  {
+    "rebelot/heirline.nvim",
+    config = function() require('config.heirline') end,
+    dependencies = { 'ojroques/nvim-hardline' },
+  },
 
-  -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   requires = {
-  --     {'nvim-lua/popup.nvim'},
-  --     {'nvim-lua/plenary.nvim'},
-  --     {'fcying/telescope-ctags-outline.nvim'},
-  --     {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-  --   },
-  --   config = function() require('config.telescope') end,
-  --   cmd = { 'Telescope' },
-  -- }
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function() default_config('gitsigns') end,
+  },
 
-  -- use {
-  --   'scalameta/nvim-metals',
-  --   requires = { "nvim-lua/plenary.nvim" },
-  -- }
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+      {'fcying/telescope-ctags-outline.nvim'},
+      {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    },
+    config = function() require('config.telescope') end,
+    cmd = { 'Telescope' },
+  },
 
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   config = function() require('config.treesitter') end,
-  --   run = { ':TSUpdate' },
-  -- }
+  {
+    'scalameta/nvim-metals',
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 
-  -- use {
-  --   "SmiteshP/nvim-navic",
-  --   requires = "neovim/nvim-lspconfig",
-  -- }
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function() require('config.treesitter') end,
+    build = { ':TSUpdate' },
+  },
 
-  -- use {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --     branch = "v3.x",
-  --     requires = {
-  --       "nvim-lua/plenary.nvim",
-  --       "kyazdani42/nvim-web-devicons",
-  --       "MunifTanjim/nui.nvim",
-  --     },
-  --   config = function() require('config.neotree') end,
-  -- }
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = "neovim/nvim-lspconfig",
+  },
 
-  -- use {
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function() require('config.neotree') end,
+  },
+
+  -- {
   --   'VonHeikemen/lsp-zero.nvim',
   --   config = function() require('config.lsp-zero') end,
-  --   requires = {
+  --   dependencies = {
   --     {'neovim/nvim-lspconfig'},
   --     {'williamboman/mason.nvim'},
   --     {'williamboman/mason-lspconfig.nvim'},
@@ -103,11 +107,11 @@ return {
   --     {'L3MON4D3/LuaSnip'},
   --     {'rafamadriz/friendly-snippets'},
   --   }
-  -- }
+  -- },
 
-  -- use {
-  --   'windwp/nvim-autopairs',
-  --   config = function() default_config('nvim-autopairs') end,
-  -- }
+  {
+    'windwp/nvim-autopairs',
+    config = function() default_config('nvim-autopairs') end,
+  },
 
 }

@@ -1,6 +1,4 @@
 require("utils")
--- require("plugins")
-require("config.packer")
 require("options")
 require("keybindings")
 vim.cmd("source ~/.config/nvim/viml.vim")
