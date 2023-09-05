@@ -15,7 +15,10 @@ return {
     'mcchrish/zenbones.nvim',
     dependencies = { 'rktjmp/lush.nvim' },
     lazy = false,
-    priority = 1000
+    priority = 1000,
+    config = function()
+      vim.cmd[[colorscheme neobones]]
+    end
   },
 
   { 'preservim/tagbar',         cmd      = { 'TagbarToggle' } },
@@ -89,25 +92,25 @@ return {
     config = function() require('config.neotree') end,
   },
 
-  -- {
-  --   'VonHeikemen/lsp-zero.nvim',
-  --   config = function() require('config.lsp-zero') end,
-  --   dependencies = {
-  --     {'neovim/nvim-lspconfig'},
-  --     {'williamboman/mason.nvim'},
-  --     {'williamboman/mason-lspconfig.nvim'},
-  --     { 'nvimdev/lspsaga.nvim' },
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    config = function() require('config.lsp-zero') end,
+    dependencies = {
+      {'neovim/nvim-lspconfig'},
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
+      { 'nvimdev/lspsaga.nvim' },
 
-  --     {'hrsh7th/nvim-cmp'},
-  --     {'hrsh7th/cmp-path'},
-  --     {'saadparwaiz1/cmp_luasnip'},
-  --     {'hrsh7th/cmp-nvim-lsp'},
-  --     {'hrsh7th/cmp-nvim-lua'},
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-path'},
+      {'saadparwaiz1/cmp_luasnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-nvim-lua'},
 
-  --     {'L3MON4D3/LuaSnip'},
-  --     {'rafamadriz/friendly-snippets'},
-  --   }
-  -- },
+      {'L3MON4D3/LuaSnip'},
+      {'rafamadriz/friendly-snippets'},
+    }
+  },
 
   {
     'windwp/nvim-autopairs',
