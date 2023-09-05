@@ -90,10 +90,12 @@ return {
       "MunifTanjim/nui.nvim",
     },
     config = function() require('config.neotree') end,
+    cmd = { 'Neotree' },
   },
 
   {
     'VonHeikemen/lsp-zero.nvim',
+    event = { 'VeryLazy' },
     config = function() require('config.lsp-zero') end,
     dependencies = {
       {'neovim/nvim-lspconfig'},
