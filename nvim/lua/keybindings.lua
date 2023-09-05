@@ -7,7 +7,7 @@ local files = {
   { "j", [[<cmd>Telescope find_files theme=dropdown cwd=~/.cache/junkfile prompt_title=Junkfiles<cr>]] },
   { "s", [[<cmd>w<cr>]] },
   { "W", [[<cmd>%s/\s\+$//<cr>:let @/=''<cr>]] },
-  { "t", [[<cmd>Neotree toggle<cr>]] },
+  { "t", [[<cmd>Neotree left toggle<cr>]] },
   { "T", [[<cmd>TagbarToggle<cr>]] },
 }
 
