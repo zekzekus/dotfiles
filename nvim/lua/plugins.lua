@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
   'LionC/nest.nvim',
   'christoomey/vim-tmux-navigator',
@@ -8,8 +10,12 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
   'tpope/vim-projectionist',
-  'tpope/vim-dispatch',
-  'radenling/vim-dispatch-neovim',
+
+  {
+    'radenling/vim-dispatch-neovim',
+    dependencies = { 'tpope/vim-dispatch' },
+    cmd = { 'Dispatch', 'Start', },
+  },
 
   {
     'mcchrish/zenbones.nvim',
@@ -68,6 +74,7 @@ return {
   {
     'scalameta/nvim-metals',
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = { 'VeryLazy' },
   },
 
   {
