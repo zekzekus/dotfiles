@@ -74,7 +74,7 @@ return {
   {
     'scalameta/nvim-metals',
     dependencies = { "nvim-lua/plenary.nvim" },
-    event = { 'VeryLazy' },
+    ft = { 'scala', 'sbt' },
   },
 
   {
