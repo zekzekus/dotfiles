@@ -109,9 +109,6 @@
   (defalias #'forward-evil-word #'forward-evil-symbol)
   (map! :n "DEL" 'evil-ex-nohighlight))
 
-(after! projectile
-  (setq projectile-tags-file-name ".git/tagse"))
-
 (after! writeroom-mode
   (setq writeroom-mode-line t)
   (setq writeroom-width 100)
