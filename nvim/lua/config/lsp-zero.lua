@@ -54,7 +54,7 @@ lsp.configure("tsserver", {
   single_file_support = false
 })
 lsp.configure("denols", {
-  root_dir = lspconfig.util.root_pattern("deno.json?")
+  root_dir = lspconfig.util.root_pattern("deno.json")
 })
 lsp.set_preferences({
   set_lsp_keymaps = false,
