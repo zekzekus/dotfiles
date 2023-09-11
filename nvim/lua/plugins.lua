@@ -9,7 +9,6 @@ return {
   'tpope/vim-unimpaired',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
-  'tpope/vim-projectionist',
 
   {
     'radenling/vim-dispatch-neovim',
@@ -31,7 +30,6 @@ return {
   { 'Shougo/junkfile.vim',      cmd      = { 'JunkfileOpen' } },
   { 'szw/vim-smartclose',       cmd      = { 'SmartClose' } },
   { 'AndrewRadev/linediff.vim', cmd      = { 'Linediff' } },
-  { 'tpope/vim-dadbod',         cmd      = { 'DB' } },
   { 'gpanders/nvim-parinfer',   ft       = { 'clojure' } },
   { 'clojure-vim/vim-jack-in',  ft       = { 'clojure' } },
   { 'tpope/vim-fireplace',      ft       = { 'clojure' } },
