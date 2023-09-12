@@ -1,49 +1,24 @@
 # My Personal Configuration Files
 
-## VIM Configuration
+## NEOVIM
 
-NOTE: I gave up on making config fully compatible with both Vim and Neovim
-because Neovim took a different path. So now Vim and Neovim configurations are
-maintained separately and Neovim part will be as much as possible in pure Lua.
+* Fully (almost) configured with lua
+* I always use latest HEAD build of Neovim
+* Package manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
+* Main static language support comes from builtin treesitter (WARNING: tries to build [ALL parsers](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/config/treesitter.lua#L8)!)
+* Dynamic language support comes from builtin LSP client
+* [Mason](https://github.com/williamboman/mason.nvim) to install language servers (any language server installed with mason will be initialized when needed)
+* [Keybindings](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/keybindings.lua)
+* [Plugins](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/plugins.lua)
 
-Some part of the information below might be outdated. I will try update it soon.
+## VIM
 
-My very personal Vim configuration. Some more details below.
+* Much simpler compared to my Neovim configuration
+* I always use latest HEAD build of Neovim
+* Package manager: [vim.plug](https://github.com/junegunn/vim-plug)
+* Static language support comes from [polyglot](https://github.com/sheerun/vim-polyglot)
 
-* Compatible with both [Vim >=8](https://www.vim.org/) and [Neovim](https://neovim.io/).
-* Some plugins might not support vanilla Vim if not compiled with python3.
-* Recommended environment includes [iTerm nightly](https://www.iterm2.com/downloads/nightly) and [tmux](https://tmux.github.io/).
-* Plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
-* Basic language support comes from [vim-polyglot](https://github.com/sheerun/vim-polyglot/).
-* Mnemonic keyboard shortcuts. E.g. file based actions under `<Leader>f` and buffer based shortcuts are under `<Leader>b`.
-* Leader key is `space`.  Local leader is `\`.
-
-### Key bindings List
-
-Notable custom key bindings;
-
-* File based operations (starts with `<leader>f`)
-    * `<leader>ff` Find files. Fuzzy search UI populated with ripgrep. It shows project files. You can switch between these with `C-j` and `C-k`.
-    * `<leader>fs` Save file in active buffer.
-    * `<leader>fj` Fuzzy find junkfiles.
-    * `<leader>fW` Remove trailing whitespace from whole buffer.
-* Buffer based operations (starts with `<leader>b`)
-    * `<leader>bb` List open buffers and prompt with fuzzy search to jump.
-    * `<leader>bd` Delete current buffer. (runs `:bdelete`)
-    * `<leader><tab>` Switch to previous buffer. Equivalent to `:b#<cr>`.
-* Search based operations
-    * `n` mapped to `nzzzv` to keep matching line in the middle of the screen.
-    * `<BS>` executes `:nohlsearch<cr>`.
-* Other
-    * `<leader>V` selects just pasted text.
-
-Check [keybindings.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/keybindings.vim) for all custom keybindings. Filetype based keybindings (for haskell, python etc.) and configurations can be found in corresponding files under `nvim/after/ftplugin` directory.
-
-### Plugins List
-
-Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugins.vim) for all plugins. 
-
-### Installation
+### Installation (might be outdated or missing information)
 
 #### MacOS
 
@@ -54,6 +29,7 @@ Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugin
 * For Neovim it is recommended to use separated virtual python environments for editor's own needs (I use Fish shell and virtualfish). For any shell, these virtual environments must be located under `~/.virtualenvs/`.
 
         $ vf new --python=python3 neovim3
+        (neovim3) $ pip install pynvim
 
 * Clone repository to any place you prefer.
 
@@ -74,7 +50,7 @@ Check [plugins.vim](https://github.com/zekzekus/dotfiles/blob/master/nvim/plugin
 
         $ nvim
 
-* For each editor execute `:PlugInstall` command.
+* execute `:Lazy install` command.
 
 * Install necessary OS packages.
 
