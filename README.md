@@ -9,7 +9,7 @@
 * Dynamic language support comes from builtin LSP client
 * [Mason](https://github.com/williamboman/mason.nvim) to install language servers (any language server installed with mason will be initialized when needed)
 * [Keybindings](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/keybindings.lua)
-* Additional keybindings when a LSP client attached: [https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/config/lsp-zero.lua](here).
+* Additional keybindings when a LSP client attached: [https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/config/lsp-zero.lua](here)
 * [Plugins](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/plugins.lua)
 
 ## VIM
