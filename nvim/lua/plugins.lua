@@ -13,7 +13,6 @@ return {
   {
     'radenling/vim-dispatch-neovim',
     dependencies = { 'tpope/vim-dispatch' },
-    cmd = { 'Dispatch', 'Start', },
   },
 
   {
