@@ -1,20 +1,6 @@
 local vim = vim
 
 return {
-  'LionC/nest.nvim',
-  'christoomey/vim-tmux-navigator',
-  'tpope/vim-sleuth',
-  'tpope/vim-repeat',
-  'tpope/vim-surround',
-  'tpope/vim-unimpaired',
-  'tpope/vim-fugitive',
-  'tpope/vim-commentary',
-
-  {
-    'radenling/vim-dispatch-neovim',
-    dependencies = { 'tpope/vim-dispatch' },
-  },
-
   {
     'mcchrish/zenbones.nvim',
     dependencies = { 'rktjmp/lush.nvim' },
@@ -23,6 +9,21 @@ return {
     config = function()
       vim.cmd[[colorscheme neobones]]
     end
+  },
+
+  'LionC/nest.nvim',
+  'christoomey/vim-tmux-navigator',
+  'tpope/vim-sleuth',
+  'tpope/vim-repeat',
+  'tpope/vim-surround',
+  'tpope/vim-unimpaired',
+  'tpope/vim-fugitive',
+  'tpope/vim-commentary',
+  'Olical/conjure',
+
+  {
+    'radenling/vim-dispatch-neovim',
+    dependencies = { 'tpope/vim-dispatch' },
   },
 
   { 'preservim/tagbar',         cmd      = { 'TagbarToggle' } },
@@ -66,12 +67,6 @@ return {
     },
     config = function() require('config.telescope') end,
     cmd = { 'Telescope' },
-  },
-
-  {
-    'scalameta/nvim-metals',
-    dependencies = { "nvim-lua/plenary.nvim" },
-    ft = { 'scala', 'sbt' },
   },
 
   {
