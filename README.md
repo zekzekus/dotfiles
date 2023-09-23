@@ -15,7 +15,7 @@
 ## VIM
 
 * Much simpler compared to my Neovim configuration
-* I always use latest HEAD build of Neovim
+* I always use latest HEAD build of Vim
 * Package manager: [vim.plug](https://github.com/junegunn/vim-plug)
 * Static language support comes from [polyglot](https://github.com/sheerun/vim-polyglot)
 

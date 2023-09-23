@@ -21,11 +21,6 @@ return {
   'tpope/vim-commentary',
   'Olical/conjure',
 
-  {
-    'radenling/vim-dispatch-neovim',
-    dependencies = { 'tpope/vim-dispatch' },
-  },
-
   { 'preservim/tagbar',         cmd      = { 'TagbarToggle' } },
   { 'Shougo/junkfile.vim',      cmd      = { 'JunkfileOpen' } },
   { 'szw/vim-smartclose',       cmd      = { 'SmartClose' } },
@@ -34,6 +29,16 @@ return {
   { 'clojure-vim/vim-jack-in',  ft       = { 'clojure' } },
   { 'tpope/vim-fireplace',      ft       = { 'clojure' } },
   { 'tpope/vim-jdaddy',         ft       = { 'json' } },
+
+  {
+    'radenling/vim-dispatch-neovim',
+    dependencies = { 'tpope/vim-dispatch' },
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    config = function() default_config('nvim-autopairs') end,
+  },
 
   {
     'ethanholz/nvim-lastplace',
@@ -112,10 +117,4 @@ return {
       {'rafamadriz/friendly-snippets'},
     }
   },
-
-  {
-    'windwp/nvim-autopairs',
-    config = function() default_config('nvim-autopairs') end,
-  },
-
 }
