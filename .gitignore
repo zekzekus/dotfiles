@@ -29,3 +29,5 @@ kakoune/plugins
 clojure/.clj-kondo/
 clojure/.lsp/
 nvim/lazy-lock.json
+.clj-kondo/
+.lsp/
