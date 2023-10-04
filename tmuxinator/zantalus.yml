@@ -1,0 +1,18 @@
+# /Users/zekus/.config/tmuxinator/zantalus.yml
+
+name: zantalus
+root: <%= ENV["ZEK_DEVEL_PERSONAL_HOME"] %>/zantalus
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim
+  - shells:
+      layout: main-horizontal
+      panes:
+        - git fetch -a
+        - repl:
+          - clj -M:dev:cider
+          - (go)
+        - npx shadow-cljs compile app; npx shadow-cljs watch app

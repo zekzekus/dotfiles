@@ -1,0 +1,17 @@
+# /Users/zekus/.config/tmuxinator/lazinana.yml
+
+name: lazinana
+root: <%= ENV["ZEK_DEVEL_PERSONAL_HOME"] %>/lazinana
+
+pre_window: vf activate lazinana
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim
+  - server:
+      layout: main-horizontal
+      panes:
+        - git fetch -a
+        - python manage.py runserver
