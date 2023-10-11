@@ -21,14 +21,20 @@ return {
   'tpope/vim-commentary',
   'Olical/conjure',
 
-  { 'preservim/tagbar',         cmd      = { 'TagbarToggle' } },
-  { 'Shougo/junkfile.vim',      cmd      = { 'JunkfileOpen' } },
-  { 'szw/vim-smartclose',       cmd      = { 'SmartClose' } },
-  { 'AndrewRadev/linediff.vim', cmd      = { 'Linediff' } },
-  { 'gpanders/nvim-parinfer',   ft       = { 'clojure' } },
-  { 'clojure-vim/vim-jack-in',  ft       = { 'clojure' } },
-  { 'tpope/vim-fireplace',      ft       = { 'clojure' } },
-  { 'tpope/vim-jdaddy',         ft       = { 'json' } },
+
+  {'tpope/vim-dadbod',          cmd = { 'DB' } },
+  { 'preservim/tagbar',         cmd = { 'TagbarToggle' } },
+  { 'Shougo/junkfile.vim',      cmd = { 'JunkfileOpen' } },
+  { 'szw/vim-smartclose',       cmd = { 'SmartClose' } },
+  { 'AndrewRadev/linediff.vim', cmd = { 'Linediff' } },
+  { 'gpanders/nvim-parinfer',   ft  = { 'clojure' } },
+  { 'clojure-vim/vim-jack-in',  ft  = { 'clojure' } },
+  { 'tpope/vim-fireplace',      ft  = { 'clojure' } },
+  { 'tpope/vim-rails',          ft  = { 'ruby' } },
+  { 'tpope/vim-rake',           ft  = { 'ruby' } },
+  { 'tpope/vim-bundler',        ft  = { 'ruby' } },
+  { 'tpope/vim-endwise',        ft  = { 'ruby' } },
+  { 'tpope/vim-jdaddy',         ft  = { 'json' } },
 
   {
     'radenling/vim-dispatch-neovim',

@@ -15,4 +15,4 @@ windows:
         - repl:
           - clj -M:dev:cider
           - (go)
-        - npx shadow-cljs compile app; npx shadow-cljs watch app
+        - npx shadow-cljs compile app turbo; npx shadow-cljs watch app turbo
