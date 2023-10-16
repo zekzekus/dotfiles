@@ -19,10 +19,9 @@ return {
   'tpope/vim-unimpaired',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
-  'Olical/conjure',
 
 
-  {'tpope/vim-dadbod',          cmd = { 'DB' } },
+  { 'tpope/vim-dadbod',         cmd = { 'DB' } },
   { 'preservim/tagbar',         cmd = { 'TagbarToggle' } },
   { 'Shougo/junkfile.vim',      cmd = { 'JunkfileOpen' } },
   { 'szw/vim-smartclose',       cmd = { 'SmartClose' } },
