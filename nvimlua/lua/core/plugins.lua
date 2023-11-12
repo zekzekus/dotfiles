@@ -19,16 +19,25 @@ return require('packer').startup(function(use)
   use 'shaunsingh/nord.nvim'
   use 'LionC/nest.nvim'
 
+  -- snippets
   use 'SirVer/ultisnips'
   use 'honza/vim-snippets'
+  use 'quangnguyen30192/cmp-nvim-ultisnips'
+
+  -- completion
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  -- use 'L3MON4D3/LuaSnip'
 
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+
   -- use 'nvim-tree/nvim-tree.lua'
   -- use 'nvim-tree/nvim-web-devicons'
+
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 

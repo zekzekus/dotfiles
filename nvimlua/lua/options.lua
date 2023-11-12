@@ -2,6 +2,7 @@ local vim = vim
 local opt = vim.opt
 
 -- opt.shell = "/usr/bin/env bash"
+vim.g.python3_host_prog = '$HOME/.virtualenvs/neovim3/bin/python'
 
 -- opt.mouse = "a"
 opt.number = true
@@ -34,5 +35,7 @@ opt.clipboard = "unnamedplus"
 
 vim.g.smartclose_set_default_mapping = 0
 vim.g.UltiSnipsExpandTrigger='<C-j>'
+vim.g.UltiSnipsJumpForwardTrigger="<C-j>"
+vim.g.UltiSnipsJumpBackwardTrigger="<C-k>"
 
 -- vim.cmd([[ ]])
