@@ -1,4 +1,6 @@
-require("mason").setup()
+require("mason").setup({
+  ensure_installed = { "debugpy" }
+})
 require("mason-lspconfig").setup({
 	-- ensure_installed = { "lua_ls", "pylsp", "pyright" }
   ensure_installed = { "lua_ls", "pylsp" }
@@ -30,6 +32,10 @@ require("lspconfig").pylsp.setup {
   capabilities = capabilities,
   filetypes = {"python"},
 }
+
+-- require("neodev").setup({
+--   library = { plugins = { "nvim-dap-ui" }, types = true },
+-- })
 
 -- require("lspconfig").pyright.setup {
 --   on_attach = on_attach,

@@ -13,11 +13,31 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+
+  -- Navigation like tmux
   use 'christoomey/vim-tmux-navigator'
+
+  -- Self explanatory (<leader>Q)
   use 'szw/vim-smartclose'
+
+  -- Colorschemes
   use 'ellisonleao/gruvbox.nvim'
   use 'shaunsingh/nord.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
+
+  -- Nest keybindings
   use 'LionC/nest.nvim'
+
+  -- Commenting
+  use 'tpope/vim-commentary'
+
+  -- Auto brackets, parentheses and quotes
+  use 'jiangmiao/auto-pairs'
+  -- Quickly change brackets, parens, quotes
+  use 'tpope/vim-surround'
+
+  -- Open VIM at last cursor position
+  use 'farmergreg/vim-lastplace'
 
   -- snippets
   use 'SirVer/ultisnips'
@@ -28,6 +48,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   -- use 'L3MON4D3/LuaSnip'
+
+  use 'mfussenegger/nvim-dap'
+  use 'mfussenegger/nvim-dap-python'
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" }
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
