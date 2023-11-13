@@ -40,11 +40,12 @@ lspconfig.pylsp.setup {
       plugins = {
           -- formatter options
           black = { enabled = false },
-          autopep8 = { enabled = true },
+          autopep8 = { enabled = false },
           yapf = { enabled = false },
           -- linter options
-          pylint = { enabled = true, executable = "pylint" },
-          flake8 = { enabled = true, config = "~/.flake8" },
+          pylint = { enabled = false, executable = "pylint" },
+          flake8 = { enabled = false, config = "~/.flake8" },
+          pyflakes = { enabled = true },
           pycodestyle = { enabled = false },
           -- type checker
           pylsp_mypy = { enabled = true },
@@ -60,12 +61,14 @@ lspconfig.pylsp.setup {
   },
 }
 
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-formatting = null_ls.builtins.formatting
+local formatting = null_ls.builtins.formatting
 null_ls.setup({
     sources = {
       formatting.black,
-      formatting.isort
+      formatting.isort,
+      -- null_ls.builtins.diagnostics.flake8,
     },
     -- you can reuse a shared lspconfig on_attach callback here
     on_attach = function(client, bufnr)

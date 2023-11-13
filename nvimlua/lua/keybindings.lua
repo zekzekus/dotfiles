@@ -58,6 +58,12 @@ local misc = {
   { "<bs>", [[<cmd>nohlsearch<cr>]] },
   { "cn",   [[*``cgn]] },
   { "cN",   [[*``cgN]] },
+
+  -- Move to errors and warnings
+  { "gne", [[<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>]] },
+  { "gpe", [[<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<cr>]] },
+  { "gnw", [[<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })<cr>]] },
+  { "gpw", [[<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })<cr>]] },
   -- { "cq",   [[:call zek#setup_cr()<CR>*``qz]] },
   -- { "cQ",   [[:call zek#setup_cr()<CR>#``qz]] },
   { mode = "v", options = { expr = true },     { "cn", [[g:mc . "``cgn"]] } },
