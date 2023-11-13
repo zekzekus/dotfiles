@@ -12,6 +12,9 @@ nvim/pack
 nvim/bundles
 nvim/sessions
 nvim/plugins
+nvim/plugin
+nvimlua/plugins
+nvimlua/plugin
 
 flycheck_*.el
 

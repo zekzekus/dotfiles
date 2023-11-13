@@ -1,6 +1,11 @@
 -- require("core.plugin_config.gruvbox")
 -- require("core.plugin_config.nord")
+if os.getenv("OPENAI_API_KEY") ~= nil then
+  require("core.plugin_config.chatgpt")
+end
 require("core.plugin_config.catpuccin")
+require("core.plugin_config.swenv")
+require("core.plugin_config.neotree")
 require("core.plugin_config.lualine")
 require("core.plugin_config.treesitter")
 require("core.plugin_config.telescope")

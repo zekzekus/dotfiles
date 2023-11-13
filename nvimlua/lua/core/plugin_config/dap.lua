@@ -14,7 +14,7 @@ end
 
 local pythonPath = '~/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python'
 -- local venvPath = vim.fn.getcwd() .. '/venv/Scripts/python'
-local venvPath = function()
+local localVenvPath = function()
   -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
   -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
   -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
@@ -34,11 +34,38 @@ local venvPath = function()
   end
 end
 
+local venvPath = function()
+  -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+  -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+  -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+  local curenvObj = require('swenv.api').get_current_venv()
+  if curenvObj then
+    local curenv = curenvObj.path
+    if vim.fn.executable(curenv .. "/bin/python") == 1 then
+      return curenv .. "/bin/python"
+    elseif vim.fn.executable(curenv .. "/Scripts/python") == 1 then
+      return curenv .. "/Scripts/python"
+    elseif vim.fn.executable("/Program Files/Python39/python") == 1 then
+      return "/Program Files/Python39/python"
+    else
+      return "/usr/bin/python"
+    end
+  else
+    return "/usr/bin/python"
+  end
+end
+
 
 require('dap-python').setup(pythonPath)
 -- local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
 -- dapui.setup()
 -- require('dap-python').setup(path)
+
+dap.adapters.localvenvpython = {
+    type = 'executable';
+    command = localVenvPath();
+    args = { '-m', 'debugpy.adapter' };
+}
 
 dap.adapters.venvpython = {
     type = 'executable';
@@ -48,15 +75,21 @@ dap.adapters.venvpython = {
 
 dap.configurations.python = {
   {
-    type = "venvpython",
+    type = "localvenvpython",
     request = "launch",
     name = "Run Venv run_app_resul",
     program = vim.fn.getcwd() .. '/gtcm/demo/run_app_resul.py',
   },
   {
+    type = "localvenvpython",
+    request = "launch",
+    name = "Run Local Venv File",
+    program = "${file}", -- This configuration will launch the current file if used.
+  },
+  {
     type = "venvpython",
     request = "launch",
-    name = "Run Venv App",
+    name = "Run virtualenv File",
     program = "${file}", -- This configuration will launch the current file if used.
   },
 }

@@ -19,8 +19,8 @@ opt.hlsearch = true
 opt.foldmethod = "indent"
 opt.foldlevel = 99
 opt.tags:append(".git/tags_file")
-opt.undodir = vim.fn.getenv("HOME") .. "/.nvimtmp"
-opt.directory = vim.fn.getenv("HOME") .. "/.nvimtmp"
+opt.undodir = vim.fn.getenv("HOME") .. "/.nvim_tmp"
+opt.directory = vim.fn.getenv("HOME") .. "/.nvim_tmp"
 opt.completeopt = "menuone,noinsert,noselect"
 opt.showbreak = "↪ "
 opt.listchars  =  "tab:│ ,eol:↵,nbsp:␣,trail:⋅,extends:⟩,precedes:⟨,space:⋅"
@@ -32,6 +32,11 @@ opt.laststatus = 3
 opt.updatetime = 1000
 opt.wrap = false
 opt.clipboard = "unnamedplus"
+
+-- opt.tabstop = 4
+-- opt.shiftwidth = 4
+-- opt.softtabstop = 4
+-- opt.expandtab = true
 
 vim.g.smartclose_set_default_mapping = 0
 vim.g.UltiSnipsExpandTrigger='<C-j>'

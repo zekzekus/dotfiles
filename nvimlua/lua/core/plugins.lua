@@ -20,10 +20,28 @@ return require('packer').startup(function(use)
   -- Self explanatory (<leader>Q)
   use 'szw/vim-smartclose'
 
+  if os.getenv("OPENAI_API_KEY") ~= nil then
+    -- AI
+    use({
+      "jackMort/ChatGPT.nvim",
+        config = function()
+          require("chatgpt").setup()
+        end,
+        requires = {
+          "MunifTanjim/nui.nvim",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim"
+        }
+    })
+  end
+
   -- Colorschemes
   use 'ellisonleao/gruvbox.nvim'
   use 'shaunsingh/nord.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
+
+  -- venv Selector
+  use 'AckslD/swenv.nvim'
 
   -- Nest keybindings
   use 'LionC/nest.nvim'
@@ -56,22 +74,38 @@ return require('packer').startup(function(use)
     requires = { "mfussenegger/nvim-dap" }
   }
 
+  -- Navigation
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = {
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+      {'fcying/telescope-ctags-outline.nvim'},
+      {'nvim-telescope/telescope-fzf-native.nvim'},
+    }
   }
+  use 'fcying/telescope-ctags-outline.nvim'
+  use 'nvim-lua/popup.nvim'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
   -- use 'nvim-tree/nvim-tree.lua'
   -- use 'nvim-tree/nvim-web-devicons'
 
   use 'nvim-lualine/lualine.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+  use { "yioneko/nvim-yati", tag = "*", requires = "nvim-treesitter/nvim-treesitter" }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  }
 
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+    "jose-elias-alvarez/null-ls.nvim",
+    "jay-babu/mason-null-ls.nvim",
   }
 
   use {
