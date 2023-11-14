@@ -105,7 +105,8 @@ return {
   {
     'VonHeikemen/lsp-zero.nvim',
     event = { 'VeryLazy' },
-    config = function() require('config.lsp-zero') end,
+    branch = 'v3.x',
+    config = function() require('config.lsp-zero-3') end,
     dependencies = {
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
