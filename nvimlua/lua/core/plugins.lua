@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
   -- Self explanatory (<leader>Q)
   use 'szw/vim-smartclose'
 
+  use 'tpope/vim-fugitive'
+
   if os.getenv("OPENAI_API_KEY") ~= nil then
     -- AI
     use({
@@ -93,6 +95,8 @@ return require('packer').startup(function(use)
   -- use 'nvim-tree/nvim-web-devicons'
 
   use 'nvim-lualine/lualine.nvim'
+
+  use 'mbbill/undotree'
 
   use { "yioneko/nvim-yati", tag = "*", requires = "nvim-treesitter/nvim-treesitter" }
   use {

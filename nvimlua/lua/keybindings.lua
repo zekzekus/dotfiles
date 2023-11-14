@@ -53,11 +53,18 @@ local others = {
 
 local misc = {
   name = "Misc.",
+  { "<C-u>",    [[<C-u>zz]] },
+  { "<C-d>",    [[<C-d>zz]] },
+  { "<C-f>",    [[<C-f>zz]] },
+  { "<C-b>",    [[<C-b>zz]] },
   { "n",    [[nzzzv]] },
   { "N",    [[Nzzzv]] },
   { "<bs>", [[<cmd>nohlsearch<cr>]] },
   { "cn",   [[*``cgn]] },
   { "cN",   [[*``cgN]] },
+
+  -- greatest remap ever
+  { mode = "x", { "<leader>p", [["_dP]] } },
 
   -- Move to errors and warnings
   { "gne", [[<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>]] },
