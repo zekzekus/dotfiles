@@ -29,9 +29,10 @@ local buffers = {
   prefix = "<leader>",
   { "bb",     [[<cmd>Telescope buffers theme=dropdown previewer=false<cr>]] },
   { "bd",     [[<cmd>bdelete<cr>]] },
-  { "<tab>", [[<cmd>b#<cr>]] },
-  { "`",     [[<cmd>b#<cr>]] },
-  { "Q",     [[<cmd>SmartClose<cr>]] },
+  { "<tab>",  [[<cmd>b#<cr>]] },
+  { "`",      [[<cmd>b#<cr>]] },
+  { "Q",      [[<cmd>SmartClose<cr>]] },
+  { "=",      [[<cmd>lua vim.lsp.buf.format({ async = false, timeout_ms = 4000 })<CR>]] },
 }
 
 local search = {
@@ -57,6 +58,8 @@ local misc = {
   { "<C-d>",    [[<C-d>zz]] },
   { "<C-f>",    [[<C-f>zz]] },
   { "<C-b>",    [[<C-b>zz]] },
+  { "<C-o>",    [[<C-o>zz]] },
+  { "<C-i>",    [[<C-i>zz]] },
   { "n",    [[nzzzv]] },
   { "N",    [[Nzzzv]] },
   { "<bs>", [[<cmd>nohlsearch<cr>]] },
@@ -75,6 +78,8 @@ local misc = {
   -- { "cQ",   [[:call zek#setup_cr()<CR>#``qz]] },
   { mode = "v", options = { expr = true },     { "cn", [[g:mc . "``cgn"]] } },
   { mode = "v", options = { expr = true },     { "cN", [[g:mc . "``cgN"]] } },
+  -- { mode = "v", { "J", [[:m '>+1<CR>gv=gv]] } },
+  -- { mode = "v", { "K", [[:m '<-2<CR>gv=gv]] } },
   -- { mode = "v", options = { expr = true },     { "cq", [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . g:mc . "``qz]] } },
   -- { mode = "v", options = { expr = true },     { "cQ", [[:\<C-u>call zek#setup_cr()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz]] } },
   { mode = "c", options = { silent = false },  { "<c-n>", [[<down>]] } },

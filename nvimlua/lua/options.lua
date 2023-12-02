@@ -32,11 +32,27 @@ opt.laststatus = 3
 opt.updatetime = 1000
 opt.wrap = false
 opt.clipboard = "unnamedplus"
+opt.scrolloff = 4
 
 -- opt.tabstop = 4
--- opt.shiftwidth = 4
 -- opt.softtabstop = 4
+-- opt.shiftwidth = 4
 -- opt.expandtab = true
+
+opt.backspace = '2'
+opt.showcmd = true
+opt.laststatus = 2
+opt.autowrite = true
+opt.cursorline = true
+opt.autoread = true
+
+-- use spaces for tabs and whatnot
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.shiftround = true
+opt.expandtab = true
+
+opt.colorcolumn = "100"
 
 vim.g.smartclose_set_default_mapping = 0
 vim.g.UltiSnipsExpandTrigger='<C-j>'

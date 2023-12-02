@@ -1,3 +1,5 @@
+-- require 'nvim-treesitter.install'.compilers = { 'clang' }
+
 local tsitter = prequire("nvim-treesitter.configs")
 
 if not tsitter then
@@ -13,6 +15,7 @@ tsitter.setup {
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   auto_install = true,
+  ignore_install = { "yaml" },
 
   highlight = {
     enable = true,
@@ -40,6 +43,6 @@ tsitter.setup {
   },
   indent = {
     enable = true,
-    disable = { "yaml", "python" },
+    -- disable = { "yaml", "python" },
   },
 }

@@ -5,6 +5,7 @@ if os.getenv("OPENAI_API_KEY") ~= nil then
 end
 require("core.plugin_config.catpuccin")
 require("core.plugin_config.swenv")
+require("core.plugin_config.fugitive")
 require("core.plugin_config.neotree")
 require("core.plugin_config.lualine")
 require("core.plugin_config.treesitter")
