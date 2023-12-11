@@ -7,7 +7,7 @@ signingkey = 6716516470AD2D7A
 name = Zekeriya Koc
 
 [core]
-excludesFile = /Users/zekus/.gitignore_global
+excludesFile = /Users/zekeriyakoc/.gitignore_global
 
 [difftool]
 prompt = false
@@ -19,7 +19,7 @@ path = nvim
 tool = vimdiff
 
 [commit]
-gpgsign = false
+gpgsign = true
 
 [gpg]
 program = /usr/local/MacGPG2/bin/gpg2
@@ -46,5 +46,4 @@ user = zekzekus
 [pull]
 rebase = false
 
-[url "ssh://git@bitbucket.org/"]
-	insteadOf = https://bitbucket.org/
+[url "ssh://git@bitbucket.org/"] insteadOf = https://bitbucket.org/
