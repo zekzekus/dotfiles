@@ -5,7 +5,7 @@ tmuxgetir () {
         tail -n +1 |
         fzf --exit-0 --prompt="Project: ") || return $?
 
-    tmuxinator g "$SELECTED_PROJECT" "${1:-getir}"
+    tmuxinator g "$SELECTED_PROJECT" "${1:-teknasyon}"
 }
 
 tmuxgetir "$@"
