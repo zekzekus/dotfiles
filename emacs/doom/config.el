@@ -99,6 +99,8 @@
   (map! :map org-mode-map
         :i "C-c C-r" 'org-roam-node-insert))
 
+(setq flymake-allowed-file-name-masks nil)
+
 (after! deft
   (setq deft-directory "~/org")
   (setq deft-recursive t)
