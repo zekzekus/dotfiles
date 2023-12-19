@@ -8,6 +8,8 @@ local cmp = prequire('cmp')
 local cmp_autopairs = prequire('nvim-autopairs.completion.cmp')
 local cmp_action = lsp_zero.cmp_action()
 local lspconfig = prequire('lspconfig')
+local copilot = prequire('copilot')
+local copilot_cmp = prequire('copilot_cmp')
 
 local function custom_root_pattern(opt)
   local root = opt.root
@@ -79,8 +81,15 @@ mason_lspconfig.setup({
   }
 })
 
+copilot.setup({
+  suggestion = {enabled = false},
+  panel = {enabled = false},
+})
+copilot_cmp.setup()
+
 cmp.setup({
   sources = {
+    {name = 'copilot'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
     {name = 'luasnip'},
@@ -89,7 +98,10 @@ cmp.setup({
     ['<Tab>'] = cmp_action.tab_complete(),
     ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
 
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<CR>'] = cmp.mapping.confirm({
+      select = false,
+      behavior = cmp.ConfirmBehavior.Replace,
+    }),
 
     ['<C-Space>'] = cmp.mapping.complete(),
 
