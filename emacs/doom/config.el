@@ -30,7 +30,6 @@
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
       mac-option-modifier 'super)
-(setq org-directory "~/org")
 (setq resize-mini-windows nil)
 (global-auto-revert-mode 1)
 
@@ -56,6 +55,7 @@
 ;; (map! :leader :desc "Jump to char" "/c" #'avy-goto-char)
 
 (after! org
+  (setq org-directory "~/org")
   (setq org-agenda-files '("~/org" "~/org/daily"))
   (setq org-log-done 'time)
   (setq org-refile-targets '(("gtd_work.org" :maxlevel . 2)
@@ -118,7 +118,7 @@
 
 (after! sly
   (setq sly-command-switch-to-existing-lisp 'always)
-  (setq inferior-lisp-program "ros -Q run")
+  (setq inferior-lisp-program "sbcl")
   (set-company-backend! 'sly-mrepl-mode nil))
 
 ;; (after! company
