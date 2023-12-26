@@ -3,6 +3,7 @@ set --export ZEK_DEVEL_WORK_HOME $ZEK_DEVEL_HOME/teknasyon
 set --export ZEK_DEVEL_PERSONAL_HOME $ZEK_DEVEL_HOME/personal
 
 set --export PATH /opt/homebrew/bin $PATH
+set --export PATH /opt/homebrew/opt/grep/libexec/gnubin $PATH
 set --export PATH /usr/local/bin $PATH
 set --export PATH /usr/local/sbin $PATH
 set --export PATH $HOME/.cargo/bin $PATH
