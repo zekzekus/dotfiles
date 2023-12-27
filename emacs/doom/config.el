@@ -29,7 +29,7 @@
 (setq doom-theme 'nord)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
-      mac-option-modifier 'super)
+      mac-option-modifier 'meta)
 (setq resize-mini-windows nil)
 (setq shell-file-name (executable-find "bash"))
 (setq-default vterm-shell (executable-find "fish"))
