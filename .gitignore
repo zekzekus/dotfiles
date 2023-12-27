@@ -31,3 +31,4 @@ clojure/.lsp/
 nvim/lazy-lock.json
 .clj-kondo/
 .lsp/
+/.DS_Store
