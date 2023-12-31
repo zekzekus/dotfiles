@@ -18,15 +18,15 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Berkeley Mono" :size 15))
-(setq doom-variable-pitch-font (font-spec :family "Berkeley Mono" :size 15))
+(setq doom-font (font-spec :family "Berkeley Mono" :size 14))
+(setq doom-variable-pitch-font (font-spec :family "Berkeley Mono" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
 (load! "menguless-theme")
 
-(setq doom-theme 'nord)
+(setq doom-theme 'parchment)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
       mac-option-modifier 'meta)
@@ -138,12 +138,12 @@
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
   '(org-block-end-line :box (:color "#ccccbb" :line-width -1)))
 
-(custom-theme-set-faces! 'parchment
-  '(org-level-1 :overline nil :background nil :height 1.1)
-  '(org-level-2 :overline nil :background nil)
-  '(org-level-3 :overline nil :background nil)
-  '(org-level-4 :overline nil :background nil)
-  '(org-level-5 :overline nil :background nil)
-  '(org-level-6 :overline nil :background nil)
-  '(org-document-title :height 1.1)
-  '(org-agenda-structure :height 1.0))
+;; (custom-theme-set-faces! 'parchment
+;;   '(org-level-1 :overline nil :background nil :height 1.1)
+;;   '(org-level-2 :overline nil :background nil)
+;;   '(org-level-3 :overline nil :background nil)
+;;   '(org-level-4 :overline nil :background nil)
+;;   '(org-level-5 :overline nil :background nil)
+;;   '(org-level-6 :overline nil :background nil)
+;;   '(org-document-title :height 1.1)
+;;   '(org-agenda-structure :height 1.0))
