@@ -14,15 +14,15 @@ export SHELL=/opt/homebrew/bin/bash
 export PATH=$PLAN9/bin:$PATH
 export MANPATH=$MANPATH:$PLAN9/man
 
-export NAMESPACE=`mktemp -d -t plan9`
-export PLAN9_MPOINT=/tmp/`basename $NAMESPACE`
+# export NAMESPACE=`mktemp -d -t plan9`
+# export PLAN9_MPOINT=/tmp/`basename $NAMESPACE`
 
-export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
+# export ACME_MPOINT=`echo $PLAN9_MPOINT`_acme
 
-mkdir -p $ACME_MPOINT
+# mkdir -p $ACME_MPOINT
 
 plumber;
 
 cat $PLUMBFILE $PLAN9/plumb/initial.plumbing | 9 9p write plumb/rules
 
-acme -l acme.dump -a -m $ACME_MPOINT
+acme -f /mnt/font/BerkeleyMono-Regular/15a/font -l acme.dump -a
