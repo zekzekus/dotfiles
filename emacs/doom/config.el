@@ -139,6 +139,8 @@
   '(org-block-end-line :box (:color "#ccccbb" :line-width -1)))
 
 (custom-theme-set-faces! 'parchment
+  '(org-level-1 :height 1.1 :weight bold :overline t :foreground "#000000" :background "#eaeaea")
+  '(org-agenda-structure :height 1.3))
 ;;   '(org-level-1 :overline nil :background nil :height 1.1)
 ;;   '(org-level-2 :overline nil :background nil)
 ;;   '(org-level-3 :overline nil :background nil)
@@ -146,4 +148,3 @@
 ;;   '(org-level-5 :overline nil :background nil)
 ;;   '(org-level-6 :overline nil :background nil)
 ;;   '(org-document-title :height 1.1)
-  '(org-agenda-structure :height 1.3))
