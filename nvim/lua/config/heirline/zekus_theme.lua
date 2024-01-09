@@ -100,8 +100,8 @@ return {
   },
   warning = {
     active = {
-      guifg = colors.grey_comment.gui,
-      guibg = colors.blue.gui,
+      guifg = colors.black.gui,
+      guibg = colors.yellow.gui,
       ctermfg = colors.black.cterm,
       ctermbg = colors.yellow.cterm,
     },
