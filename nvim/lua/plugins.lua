@@ -20,7 +20,6 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
 
-
   { 'tpope/vim-dadbod',         cmd = { 'DB' } },
   { 'preservim/tagbar',         cmd = { 'TagbarToggle' } },
   { 'Shougo/junkfile.vim',      cmd = { 'JunkfileOpen' } },
