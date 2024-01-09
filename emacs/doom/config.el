@@ -141,6 +141,7 @@
 
 (custom-theme-set-faces! 'parchment
   '(org-level-1 :height 1.1 :weight bold :overline t :foreground "#000000" :background "#eaeaea")
+  '(org-document-title :height 1.5 :weight bold :foreground "#000000")
   '(org-agenda-structure :height 1.3))
 ;;   '(org-level-1 :overline nil :background nil :height 1.1)
 ;;   '(org-level-2 :overline nil :background nil)
@@ -148,4 +149,3 @@
 ;;   '(org-level-4 :overline nil :background nil)
 ;;   '(org-level-5 :overline nil :background nil)
 ;;   '(org-level-6 :overline nil :background nil)
-;;   '(org-document-title :height 1.1)
