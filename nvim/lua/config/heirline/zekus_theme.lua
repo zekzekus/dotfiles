@@ -1,6 +1,6 @@
 local colors = {
   black = {gui = '#282C34', cterm = '235', cterm16 = '0'},
-  blue = {gui = '#61AFEF', cterm = '39', cterm16 = '4'},
+  blue = {gui = '#88C0D0', cterm = '39', cterm16 = '4'},
   cyan = { gui = '#56B6C2', cterm = '38', cterm16 = '6'},
   green = {gui = '#98C379', cterm = '114', cterm16 = '2'},
   grey_comment = {gui = '#5C6370', cterm = '59', cterm16 = '15'},
@@ -80,6 +80,15 @@ return {
     },
     inactive = inactive,
   },
+  file = {
+    active = {
+      guifg = colors.white.gui,
+      guibg = colors.grey_menu.gui,
+      ctermfg = colors.white.cterm,
+      ctermbg = colors.grey_menu.cterm,
+    },
+    inactive = inactive,
+  },
   error = {
     active = {
       guifg = colors.black.gui,
@@ -91,7 +100,7 @@ return {
   },
   warning = {
     active = {
-      guifg = colors.grey_menu.gui,
+      guifg = colors.grey_comment.gui,
       guibg = colors.blue.gui,
       ctermfg = colors.black.cterm,
       ctermbg = colors.yellow.cterm,

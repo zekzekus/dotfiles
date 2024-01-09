@@ -12,9 +12,9 @@ end
 
 local Align       = { provider = "%=" }
 
-local FileInfo    = p.create_part(p.get_filename, 'warning')
-local Readonly    = p.create_part(p.get_readonly, 'warning')
-local Modified    = p.create_part(p.get_modified, 'warning')
+local FileInfo    = p.create_part(p.get_filename, 'file')
+local Readonly    = p.create_part(p.get_readonly, 'file')
+local Modified    = p.create_part(p.get_modified, 'file')
 local Filename    = { FileInfo, Readonly, Modified }
 
 local Mode        = p.create_part(require('hardline.parts.mode').get_item, 'mode')
@@ -27,7 +27,7 @@ local Whitespace  = p.create_part(require('hardline.parts.whitespace').get_item,
 local Filetype    = p.create_part(require('hardline.parts.filetype').get_item, 'high')
 local Lines       = p.create_part(require('hardline.parts.line').get_item, 'warning')
 local ListInfos   = p.create_part(listinfos, 'warning')
-local Context     = p.create_part(require('nvim-navic').get_location, 'warning')
+local Context     = p.create_part(require('nvim-navic').get_location, 'file')
 
 local Statusline = {
   Mode,
