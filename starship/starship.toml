@@ -37,3 +37,4 @@ symbol = "Er:"
 
 [gcloud]
 format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+disabled = true
