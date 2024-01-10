@@ -15,6 +15,8 @@
 (package! nord-theme)
 (package! parchment-theme)
 (package! consult-projectile)
+(unpin! org-roam)
+(package! org-roam-ui)
 ; (use-package! lisp-markup
 ;   :load-path "~/quicklisp/dists/quicklisp/software/markup-20211020-git/")
 

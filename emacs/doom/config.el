@@ -135,6 +135,17 @@
 (use-package! w3m
   :commands (w3m))
 
+(use-package! websocket
+  :after org-roam-ui)
+
+(use-package! org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
 (custom-theme-set-faces! 'menguless
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
   '(org-block-end-line :box (:color "#ccccbb" :line-width -1)))
