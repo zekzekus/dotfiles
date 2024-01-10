@@ -26,7 +26,7 @@
 ;; `load-theme' function. These are the defaults.
 (load! "menguless-theme")
 
-(setq doom-theme 'parchment)
+(setq doom-theme 'nord)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
       mac-option-modifier 'meta)
@@ -150,10 +150,17 @@
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
   '(org-block-end-line :box (:color "#ccccbb" :line-width -1)))
 
+(custom-theme-set-faces! 'nord
+  '(org-level-1 :height 1.1 :weight extrabold :overline t :foreground "#8FBCBB" :extend t :background "#3B4252")
+  '(org-document-title :height 1.5 :weight bold :foreground "#88C0D0")
+  '(org-agenda-structure :height 1.3 :weight bold :foreground "#81A1C1")
+  '(org-todo :weight bold :box (:line-width (1 . -1) :color nil :style nil)))
+;;
+
 (custom-theme-set-faces! 'parchment
   '(org-level-1 :height 1.1 :weight bold :overline t :foreground "#000000" :background "#eaeaea")
   '(org-document-title :height 1.5 :weight bold :foreground "#000000")
-  '(org-agenda-structure :height 1.3))
+  '(org-agenda-structure :height 1.3 :weight bold))
 ;;   '(org-level-1 :overline nil :background nil :height 1.1)
 ;;   '(org-level-2 :overline nil :background nil)
 ;;   '(org-level-3 :overline nil :background nil)
