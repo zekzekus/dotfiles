@@ -62,10 +62,6 @@
   (setq org-agenda-files '("~/org" "~/org/daily"))
   (setq org-log-done 'time)
   (setq org-use-tag-inheritance nil)
-  (setq org-refile-targets '(("gtd_work.org" :maxlevel . 2)
-                             ("gtd_personal.org" :maxlevel . 2)
-                             ("gtd_tickler.org" :maxlevel . 2)
-                             ("gtd_someday.org" :level . 1)))
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
@@ -156,7 +152,6 @@
   '(org-document-title :height 1.5 :weight bold :foreground "#88C0D0")
   '(org-agenda-structure :height 1.3 :weight bold :foreground "#81A1C1")
   '(org-todo :weight bold :box (:line-width (1 . -1) :color nil :style nil)))
-;;
 
 (custom-theme-set-faces! 'parchment
   '(org-level-1 :height 1.1 :weight bold :overline t :foreground "#000000" :background "#eaeaea")
