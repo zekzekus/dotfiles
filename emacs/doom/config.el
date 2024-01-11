@@ -26,7 +26,7 @@
 ;; `load-theme' function. These are the defaults.
 (load! "menguless-theme")
 
-(setq doom-theme 'nord)
+(setq doom-theme 'parchment)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
       mac-option-modifier 'meta)
@@ -61,6 +61,7 @@
   (setq org-directory "~/org")
   (setq org-agenda-files '("~/org" "~/org/daily"))
   (setq org-log-done 'time)
+  (setq org-use-tag-inheritance nil)
   (setq org-refile-targets '(("gtd_work.org" :maxlevel . 2)
                              ("gtd_personal.org" :maxlevel . 2)
                              ("gtd_tickler.org" :maxlevel . 2)
