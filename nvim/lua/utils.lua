@@ -3,9 +3,9 @@ _G.prequire = function(plugin, verbose)
   if present then
     return plug
   end
-  local errmsg = string.format("Could not load %s", plugin)
+  local errmsg = string.format('Could not load %s', plugin)
   if verbose then
-    errmsg = string.format("\nError:%s", plug)
+    errmsg = string.format('\nError:%s', plug)
   end
   print(errmsg)
 end

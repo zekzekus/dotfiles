@@ -35,18 +35,18 @@ M.get_tabline_filename = function(tabnr)
   elseif file:sub(file:len()-2, file:len()) == 'FZF' then
     retval = 'FZF'
   elseif buftype == 'terminal' then
-    local _, mtch = string.match(file, "term:(.*):(%a+)")
+    local _, mtch = string.match(file, 'term:(.*):(%a+)')
     retval = mtch ~= nil and mtch or vim.fn.fnamemodify(vim.env.SHELL, ':t')
   elseif file == '' then
     retval = '[No Name]'
   else
     if #buflist > 1 then
-      retval = fmt("buffers (%s)", #buflist)
+      retval = fmt('buffers (%s)', #buflist)
     else
       retval = vim.fn.pathshorten(vim.fn.fnamemodify(file, ':p:~:t'))
     end
   end
-  return fmt(" [%s] %s ", tabnr, retval)
+  return fmt(' [%s] %s ', tabnr, retval)
 end
 
 M.get_dirname = function()
@@ -130,14 +130,14 @@ end
 M.get_lsp_clients = function()
   local clients = vim.lsp.buf_get_clients()
   if next(clients) == nil then
-    return "none"
+    return 'none'
   end
 
   local c = {}
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return table.concat(c, "|")
+  return table.concat(c, '|')
 end
 
 return M

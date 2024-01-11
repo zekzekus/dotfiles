@@ -69,13 +69,13 @@ mason_lspconfig.setup({
     lsp_zero.default_setup,
     tsserver = function()
       lspconfig.tsserver.setup({
-        root_dir = custom_root_pattern({root="package.json", not_root="deno.json?"}),
+        root_dir = custom_root_pattern({root='package.json', not_root='deno.json?'}),
         single_file_support = false
       })
     end,
     denols = function()
       lspconfig.denols.setup({
-        root_dir = lspconfig.util.root_pattern("deno.json")
+        root_dir = lspconfig.util.root_pattern('deno.json')
       })
     end,
   }
@@ -131,9 +131,9 @@ lspsaga.setup({
   },
   finder = {
     keys = {
-      vsplit = "v",
-      split = "s",
-      toggle_or_open = "<cr>",
+      vsplit = 'v',
+      split = 's',
+      toggle_or_open = '<cr>',
     }
   }
 })

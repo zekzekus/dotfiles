@@ -1,4 +1,4 @@
-local telescope = prequire("telescope")
+local telescope = prequire('telescope')
 
 if not telescope then
   return
@@ -8,8 +8,8 @@ telescope.setup({
   defaults = {
     mappings = {
       i = {
-        ["<C-j>"] = "move_selection_next",
-        ["<C-k>"] = "move_selection_previous",
+        ['<C-j>'] = 'move_selection_next',
+        ['<C-k>'] = 'move_selection_previous',
       }
     },
   },
@@ -22,5 +22,5 @@ telescope.setup({
   }
 })
 
-telescope.load_extension("fzf")
-telescope.load_extension("ctags_outline")
+telescope.load_extension('fzf')
+telescope.load_extension('ctags_outline')

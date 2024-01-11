@@ -1,11 +1,11 @@
-local tsitter = prequire("nvim-treesitter.configs")
+local tsitter = prequire('nvim-treesitter.configs')
 
 if not tsitter then
   return
 end
 
 tsitter.setup {
-  ensure_installed = "all",
+  ensure_installed = 'all',
   highlight = {
     enable = true,
   },

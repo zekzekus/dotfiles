@@ -10,7 +10,7 @@ if not heirline then
   return
 end
 
-local Align       = { provider = "%=" }
+local Align       = { provider = '%=' }
 
 local FileInfo    = p.create_part(p.get_filename, 'file')
 local Readonly    = p.create_part(p.get_readonly, 'file')
@@ -60,9 +60,9 @@ local TablineFileName = {
 local TablineFileNameBlock = {
   hl = function(self)
     if self.is_active then
-      return "CurSearch"
+      return 'CurSearch'
     else
-      return "TabLine"
+      return 'TabLine'
     end
   end,
   TablineFileName,
@@ -75,8 +75,8 @@ heirline.setup({
   opts = {
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
-        buftype = { "nofile", "prompt", "help", "quickfix", "terminal", },
-        filetype = { "^git.*", "fugitive", "Trouble", "packer", "fugitiveblame", },
+        buftype = { 'nofile', 'prompt', 'help', 'quickfix', 'terminal', },
+        filetype = { '^git.*', 'fugitive', 'Trouble', 'packer', 'fugitiveblame', },
       }, args.buf)
     end,
   },
