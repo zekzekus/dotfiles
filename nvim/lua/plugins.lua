@@ -56,7 +56,7 @@ return {
   },
 
   {
-    "rebelot/heirline.nvim",
+    'rebelot/heirline.nvim',
     config = function() require('config.heirline') end,
     dependencies = { 'ojroques/nvim-hardline' },
   },
@@ -85,17 +85,17 @@ return {
   },
 
   {
-    "SmiteshP/nvim-navic",
-    dependencies = "neovim/nvim-lspconfig",
+    'SmiteshP/nvim-navic',
+    dependencies = 'neovim/nvim-lspconfig',
   },
 
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
     },
     config = function() require('config.neotree') end,
     cmd = { 'Neotree' },
@@ -124,30 +124,4 @@ return {
       {'rafamadriz/friendly-snippets'},
     }
   },
-  {
-    'nvim-orgmode/orgmode',
-    dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', lazy = true },
-    },
-    event = 'VeryLazy',
-    config = function()
-      -- Load treesitter grammar for org
-      require('orgmode').setup_ts_grammar()
-
-      -- Setup treesitter
-      require('nvim-treesitter.configs').setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { 'org' },
-        },
-        ensure_installed = { 'org' },
-      })
-
-      -- Setup orgmode
-      require('orgmode').setup({
-        org_agenda_files = '~/org/**/*',
-        org_default_notes_file = '~/org/refile.org',
-      })
-    end,
-  }
 }
