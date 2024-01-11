@@ -28,3 +28,5 @@ opt.shortmess:remove("F")
 opt.laststatus = 3
 opt.updatetime = 1000
 opt.wrap = false
+opt.conceallevel = 2
+opt.concealcursor = "niv"
