@@ -37,9 +37,9 @@ set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 
 set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 
-# if test -e ~/.nix-profile/etc/profile.d/nix.sh
-#   bass source ~/.nix-profile/etc/profile.d/nix.sh
-# end
+if test -e ~/.nix-profile/etc/profile.d/nix.sh
+  bass source ~/.nix-profile/etc/profile.d/nix.sh
+end
 
 if command -sq starship
   starship init fish | source
