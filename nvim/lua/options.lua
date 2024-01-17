@@ -30,3 +30,10 @@ opt.updatetime = 1000
 opt.wrap = false
 opt.conceallevel = 2
 opt.concealcursor = 'niv'
+
+vim.g.wiki_root = '~/wiki'
+vim.g.wiki_select_method = {
+  pages = require("wiki.telescope").pages,
+  tags = require("wiki.telescope").tags,
+  toc = require("wiki.telescope").toc,
+}
