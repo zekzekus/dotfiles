@@ -77,11 +77,11 @@
                                  "* %i%? \n %U")))
   (setq org-id-link-to-org-use-id 'create-if-interactive)
   (setq org-superstar-cycle-headline-bullets 2)
-  (setq org-agenda-prefix-format
-        '((agenda . " %i %?-12t% s")
-          (todo . " %i ")
-          (tags . " %i ")
-          (search . " %i ")))
+  ;; (setq org-agenda-prefix-format
+  ;;       '((agenda . " %i %?-12t% s")
+  ;;         (todo . " %i ")
+  ;;         (tags . " %i ")
+  ;;         (search . " %i ")))
   ;; (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
   (add-hook! 'org-mode-hook (writeroom-mode 1)))
 
@@ -92,11 +92,11 @@
   (setq org-roam-capture-templates
         '(("d" "default" plain
            "%?"
-           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n\n")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: %(substring \"${title}\" 0 (min 30 (length \"${title}\")))\n\n")
            :unnarrowed t)
           ("p" "project" plain
            "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
-           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project\n\n")
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category %(substring \"${title}\" 0 (min 30 (length \"${title}\")))\n#+filetags: Project\n\n")
            :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
         '(("d" "default" entry "* %<%I:%M %p>: %?"
