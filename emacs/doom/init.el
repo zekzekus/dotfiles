@@ -158,15 +158,15 @@
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         ;; +dragndrop       ; drag & drop files/images into org buffers
-        +pretty
+        ;; +pretty
         +hugo            ; use Emacs for hugo blogging
         ;; +jupyter        ; ipython/jupyter support for babel
         +roam2
         ;; +journal
         +pandoc          ; export-with-pandoc support
         ;; +pomodoro        ; be fruitful with the tomato technique
-        +noter)
-        ;; +present)        ; using org-mode for presentations
+        +noter
+        +present)        ; using org-mode for presentations
        (php
         +tree-sitter)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
