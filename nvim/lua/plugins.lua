@@ -19,10 +19,7 @@ return {
   'tpope/vim-unimpaired',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
-
-  {
-    'lervag/wiki.vim'
-  },
+  'lervag/wiki.vim',
 
   { 'tpope/vim-dadbod',         cmd = { 'DB' } },
   { 'preservim/tagbar',         cmd = { 'TagbarToggle' } },
