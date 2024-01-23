@@ -77,12 +77,6 @@
                                  "* %i%? \n %U")))
   (setq org-id-link-to-org-use-id 'create-if-interactive)
   (setq org-superstar-cycle-headline-bullets 2)
-  ;; (setq org-agenda-prefix-format
-  ;;       '((agenda . " %i %?-12t% s")
-  ;;         (todo . " %i ")
-  ;;         (tags . " %i ")
-  ;;         (search . " %i ")))
-  ;; (add-hook! 'org-mode-hook (turn-off-smartparens-mode))
   (add-hook! 'org-mode-hook (writeroom-mode 1)))
 
 (after! (org org-roam)
@@ -126,9 +120,6 @@
   (setq inferior-lisp-program "sbcl")
   (set-company-backend! 'sly-mrepl-mode nil))
 
-;; (after! company
-;;   (setq company-idle-delay nil))
-
 (use-package! w3m
   :commands (w3m))
 
@@ -157,9 +148,3 @@
   '(org-level-1 :height 1.1 :weight bold :overline t :foreground "#000000" :background "#eaeaea")
   '(org-document-title :height 1.5 :weight bold :foreground "#000000")
   '(org-agenda-structure :height 1.3 :weight bold))
-;;   '(org-level-1 :overline nil :background nil :height 1.1)
-;;   '(org-level-2 :overline nil :background nil)
-;;   '(org-level-3 :overline nil :background nil)
-;;   '(org-level-4 :overline nil :background nil)
-;;   '(org-level-5 :overline nil :background nil)
-;;   '(org-level-6 :overline nil :background nil)
