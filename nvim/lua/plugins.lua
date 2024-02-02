@@ -11,6 +11,8 @@ return {
     end
   },
 
+  { dir = '~/devel/tools/koka/support/vim'},
+
   'LionC/nest.nvim',
   'christoomey/vim-tmux-navigator',
   'tpope/vim-sleuth',
