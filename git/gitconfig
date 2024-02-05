@@ -7,7 +7,11 @@ signingkey = 6716516470AD2D7A
 name = Zekeriya Koc
 
 [core]
+pager = delta
 excludesFile = /Users/zekeriyakoc/.gitignore_global
+
+[interactive]
+diffFilter = delta --color-only
 
 [difftool]
 prompt = false
@@ -17,6 +21,10 @@ path = nvim
 
 [diff]
 tool = vimdiff
+colorMoved = default
+
+[merge]
+conflictStyle = diff3
 
 [commit]
 gpgsign = true
@@ -46,4 +54,9 @@ user = zekzekus
 [pull]
 rebase = false
 
-[url "ssh://git@bitbucket.org/"] insteadOf = https://bitbucket.org/
+[url "ssh://git@bitbucket.org/"]
+insteadOf = https://bitbucket.org/
+
+[delta]
+navigate = true
+light = false
