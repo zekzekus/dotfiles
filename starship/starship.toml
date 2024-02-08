@@ -1,24 +1,6 @@
 [package]
 disabled = true
 
-[golang]
-symbol = "G:"
-
-[java]
-symbol = "J:"
-
-[nodejs]
-symbol = "N:"
-
-[python]
-symbol = "P:"
-
-[ruby]
-symbol = "R:"
-
-[rust]
-symbol = "RS:"
-
 [cmd_duration]
 disabled = true
 
@@ -27,14 +9,10 @@ style = "bold cyan"
 
 [aws]
 disabled = true
-symbol = "A:"
-
-[elixir]
-symbol = "Ex:"
-
-[erlang]
-symbol = "Er:"
 
 [gcloud]
 format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+disabled = true
+
+[docker_context]
 disabled = true
