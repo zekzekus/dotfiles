@@ -36,6 +36,9 @@ return {
   { 'tpope/vim-bundler',        ft  = { 'ruby' } },
   { 'tpope/vim-endwise',        ft  = { 'ruby' } },
   { 'tpope/vim-jdaddy',         ft  = { 'json' } },
+  { 'windwp/nvim-autopairs',    config = true, },
+  { 'ethanholz/nvim-lastplace', config = true, },
+  { 'lewis6991/gitsigns.nvim',  config = true, },
 
   {
     'radenling/vim-dispatch-neovim',
@@ -43,30 +46,15 @@ return {
   },
 
   {
-    'windwp/nvim-autopairs',
-    config = function() default_config('nvim-autopairs') end,
-  },
-
-  {
-    'ethanholz/nvim-lastplace',
-    config = function() default_config('nvim-lastplace') end,
-  },
-
-  {
     'ellisonleao/glow.nvim',
     cmd = { 'Glow' },
-    config = function() default_config('glow') end,
+    config = true,
   },
 
   {
     'rebelot/heirline.nvim',
     config = function() require('config.heirline') end,
     dependencies = { 'ojroques/nvim-hardline' },
-  },
-
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function() default_config('gitsigns') end,
   },
 
   {
@@ -128,4 +116,15 @@ return {
       {'rafamadriz/friendly-snippets'},
     }
   },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true
+  }
 }
