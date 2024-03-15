@@ -22,10 +22,10 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
   'lervag/wiki.vim',
+  'Shougo/junkfile.vim',
 
   { 'tpope/vim-dadbod',               cmd = 'DB' },
   { 'preservim/tagbar',               cmd = 'TagbarToggle' },
-  { 'Shougo/junkfile.vim',            cmd = 'JunkfileOpen' },
   { 'szw/vim-smartclose',             cmd = 'SmartClose' },
   { 'AndrewRadev/linediff.vim',       cmd = 'Linediff' },
   { 'gpanders/nvim-parinfer',         ft  = 'clojure' },
