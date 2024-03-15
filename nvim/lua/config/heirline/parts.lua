@@ -1,3 +1,5 @@
+local prequire = require('utils').prequire
+
 local common      = prequire('hardline.common')
 local main_theme  = prequire('config.heirline.zekus_theme')
 local conditions  = prequire('heirline.conditions')

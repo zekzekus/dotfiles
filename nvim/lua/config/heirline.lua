@@ -1,3 +1,6 @@
+local prequire    = require('utils').prequire
+local listinfos   = require('utils').listinfos
+
 local heirline    = prequire('heirline')
 local utils       = prequire('heirline.utils')
 local conditions  = prequire('heirline.conditions')

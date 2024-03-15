@@ -1,3 +1,5 @@
+local prequire = require('utils').prequire
+
 local vim = vim
 local lsp_zero = prequire('lsp-zero')
 local mason = prequire('mason')

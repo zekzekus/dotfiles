@@ -1,4 +1,3 @@
-require('utils')
 require('lazynvim')
 require('options')
 require('keybindings')

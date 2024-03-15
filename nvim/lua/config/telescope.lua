@@ -1,3 +1,5 @@
+local prequire = require('utils').prequire
+
 local telescope = prequire('telescope')
 
 if not telescope then

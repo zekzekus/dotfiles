@@ -1,3 +1,5 @@
+local prequire = require('utils').prequire
+
 local tsitter = prequire('nvim-treesitter.configs')
 
 if not tsitter then

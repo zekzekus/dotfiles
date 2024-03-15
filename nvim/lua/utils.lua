@@ -1,4 +1,6 @@
-_G.prequire = function(plugin, verbose)
+local M = {}
+
+M.prequire = function(plugin, verbose)
   local present, plug = pcall(require, plugin)
   if present then
     return plug
@@ -10,8 +12,8 @@ _G.prequire = function(plugin, verbose)
   print(errmsg)
 end
 
-_G.default_config = function(plugin)
-  local plug = prequire(plugin)
+M.default_config = function(plugin)
+  local plug = M.prequire(plugin)
   if not plug then
     return
   end
@@ -19,7 +21,7 @@ _G.default_config = function(plugin)
 end
 
 local vimfn = vim.fn
-_G.listinfos =  function()
+M.listinfos =  function()
   local qflistlen = #vimfn.getqflist()
   local qflist = ''
   if qflistlen > 0 then
@@ -39,3 +41,4 @@ _G.listinfos =  function()
   end
 end
 
+return M

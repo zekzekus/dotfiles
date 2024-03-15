@@ -1,3 +1,5 @@
+local prequire = require('utils').prequire
+
 local neotree = prequire('neo-tree')
 
 if not neotree then
