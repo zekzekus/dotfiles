@@ -23,33 +23,25 @@ return {
   'tpope/vim-commentary',
   'lervag/wiki.vim',
 
-  { 'tpope/vim-dadbod',         cmd = { 'DB' } },
-  { 'preservim/tagbar',         cmd = { 'TagbarToggle' } },
-  { 'Shougo/junkfile.vim',      cmd = { 'JunkfileOpen' } },
-  { 'szw/vim-smartclose',       cmd = { 'SmartClose' } },
-  { 'AndrewRadev/linediff.vim', cmd = { 'Linediff' } },
-  { 'gpanders/nvim-parinfer',   ft  = { 'clojure' } },
-  { 'clojure-vim/vim-jack-in',  ft  = { 'clojure' } },
-  { 'tpope/vim-fireplace',      ft  = { 'clojure' } },
-  { 'tpope/vim-rails',          ft  = { 'ruby' } },
-  { 'tpope/vim-rake',           ft  = { 'ruby' } },
-  { 'tpope/vim-bundler',        ft  = { 'ruby' } },
-  { 'tpope/vim-endwise',        ft  = { 'ruby' } },
-  { 'tpope/vim-jdaddy',         ft  = { 'json' } },
-  { 'windwp/nvim-autopairs',    config = true, },
-  { 'ethanholz/nvim-lastplace', config = true, },
-  { 'lewis6991/gitsigns.nvim',  config = true, },
-
-  {
-    'radenling/vim-dispatch-neovim',
-    dependencies = { 'tpope/vim-dispatch' },
-  },
-
-  {
-    'ellisonleao/glow.nvim',
-    cmd = { 'Glow' },
-    config = true,
-  },
+  { 'tpope/vim-dadbod',               cmd = 'DB' },
+  { 'preservim/tagbar',               cmd = 'TagbarToggle' },
+  { 'Shougo/junkfile.vim',            cmd = 'JunkfileOpen' },
+  { 'szw/vim-smartclose',             cmd = 'SmartClose' },
+  { 'AndrewRadev/linediff.vim',       cmd = 'Linediff' },
+  { 'gpanders/nvim-parinfer',         ft  = 'clojure' },
+  { 'clojure-vim/vim-jack-in',        ft  = 'clojure' },
+  { 'tpope/vim-fireplace',            ft  = 'clojure' },
+  { 'tpope/vim-rails',                ft  = 'ruby' },
+  { 'tpope/vim-rake',                 ft  = 'ruby' },
+  { 'tpope/vim-bundler',              ft  = 'ruby' },
+  { 'tpope/vim-endwise',              ft  = 'ruby' },
+  { 'tpope/vim-jdaddy',               ft  = 'json' },
+  { 'windwp/nvim-autopairs',          config = true, },
+  { 'ethanholz/nvim-lastplace',       config = true, },
+  { 'lewis6991/gitsigns.nvim',        config = true, },
+  { 'ellisonleao/glow.nvim',          config = true, },
+  { 'radenling/vim-dispatch-neovim',  dependencies = 'tpope/vim-dispatch', },
+  { 'SmiteshP/nvim-navic',            dependencies = 'neovim/nvim-lspconfig', },
 
   {
     'rebelot/heirline.nvim',
@@ -74,11 +66,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
     config = function() require('config.treesitter') end,
     build = { ':TSUpdate' },
-  },
-
-  {
-    'SmiteshP/nvim-navic',
-    dependencies = 'neovim/nvim-lspconfig',
   },
 
   {
