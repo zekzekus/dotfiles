@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tmuxgetir () {
+tmuxgg () {
     SELECTED_PROJECT=$(ls -1 $ZEK_DEVEL_HOME/${1:-teknasyon}/ |
         tail -n +1 |
         fzf --exit-0 --prompt="Project: ") || return $?
@@ -8,4 +8,4 @@ tmuxgetir () {
     tmuxinator g "$SELECTED_PROJECT" "${1:-teknasyon}"
 }
 
-tmuxgetir "$@"
+tmuxgg "$@"
