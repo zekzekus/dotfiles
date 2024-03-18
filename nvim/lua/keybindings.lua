@@ -13,6 +13,12 @@ local files = {
   { 'T', [[<cmd>TagbarToggle<cr>]] },
 }
 
+local git = {
+  name = 'Git',
+  prefix = '<leader>g',
+  { 'g', [[<cmd>Neogit<cr>]]}
+}
+
 local floatings = {
   name = 'Floating',
   prefix = '<leader>o',
@@ -64,6 +70,7 @@ local misc = {
 
 nest.applyKeymaps({
     files,
+    git,
     floatings,
     buffers,
     search,
