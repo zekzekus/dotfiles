@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+tmuxopennvim () {
+    SELECTED_PROJECT=$(ls -1 $ZEK_DEVEL_HOME/${1:-teknasyon}/ |
+        tail -n +1 |
+        fzf --exit-0 --prompt="Project: ") || return $?
+
+    tmux split-window -h
+    tmux send-keys "cd $ZEK_DEVEL_HOME/${1:-teknasyon}/$SELECTED_PROJECT" C-m
+    tmux send-keys "nvim" C-m
+}
+
+tmuxopennvim "$@"
