@@ -1,5 +1,6 @@
 set --export ZEK_DEVEL_HOME $HOME/devel/projects
-set --export ZEK_DEVEL_WORK_HOME $ZEK_DEVEL_HOME/teknasyon
+set --export ZEK_DEVEL_DEFAULT_DIR teknasyon
+set --export ZEK_DEVEL_WORK_HOME $ZEK_DEVEL_HOME/$ZEK_DEVEL_DEFAULT_DIR
 set --export ZEK_DEVEL_PERSONAL_HOME $ZEK_DEVEL_HOME/personal
 
 set --export PATH /opt/homebrew/bin $PATH
