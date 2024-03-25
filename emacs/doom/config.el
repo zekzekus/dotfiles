@@ -145,6 +145,8 @@
   '(org-todo :weight bold :box (:line-width (1 . -1) :color nil :style nil)))
 
 (custom-theme-set-faces! 'parchment
-  '(org-level-1 :height 1.1 :weight bold :overline t :foreground "#000000" :background "#eaeaea")
+  '(org-level-1 :height 1.1 :weight bold :overline nil :foreground "#000000" :background "#eaeaea" :extend t)
+  '(org-level-2 :weight bold :foreground "#004488" :background "#eaffff" :extend t)
+  '(org-level-3 :weight bold :foreground "#005500" :background "#eaffea" :extend t)
   '(org-document-title :height 1.5 :weight bold :foreground "#000000")
-  '(org-agenda-structure :height 1.3 :weight bold))
+  '(org-agenda-structure :height 1.3 :weight bold :foreground "#007777"))
