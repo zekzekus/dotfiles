@@ -80,6 +80,16 @@ mason_lspconfig.setup({
         root_dir = lspconfig.util.root_pattern('deno.json')
       })
     end,
+    hls = function()
+      lspconfig.hls.setup({
+        cmd = {"ghcup", "run", "haskell-language-server-wrapper", "--", "--lsp"},
+      })
+    end,
+    rust_analyzer = function()
+      lspconfig.rust_analyzer.setup({
+        cmd = { "rustup", "run", "stable", "rust-analyzer" },
+      })
+    end,
   }
 })
 
