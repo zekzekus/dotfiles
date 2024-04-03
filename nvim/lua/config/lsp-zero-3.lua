@@ -82,12 +82,12 @@ mason_lspconfig.setup({
     end,
     hls = function()
       lspconfig.hls.setup({
-        cmd = {"ghcup", "run", "haskell-language-server-wrapper", "--", "--lsp"},
+        cmd = {'ghcup', 'run', 'haskell-language-server-wrapper', '--', '--lsp'},
       })
     end,
     rust_analyzer = function()
       lspconfig.rust_analyzer.setup({
-        cmd = { "rustup", "run", "stable", "rust-analyzer" },
+        cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
       })
     end,
   }
