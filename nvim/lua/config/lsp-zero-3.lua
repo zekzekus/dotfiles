@@ -94,14 +94,18 @@ mason_lspconfig.setup({
 })
 
 copilot.setup({
-  suggestion = {enabled = false},
+  suggestion = {
+    enabled = true,
+  },
   panel = {enabled = false},
 })
 copilot_cmp.setup()
 
 cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
   sources = {
-    {name = 'copilot'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
     {name = 'luasnip'},
