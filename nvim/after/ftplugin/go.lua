@@ -1,4 +1,4 @@
-local opt = vim.bo
+local opt = vim.opt
 
 opt.expandtab = false
 opt.shiftwidth = 4
