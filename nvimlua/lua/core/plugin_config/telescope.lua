@@ -11,6 +11,7 @@ if not telescope then
   return
 end
 
+
 telescope.setup({
   defaults = {
     mappings = {
@@ -18,6 +19,13 @@ telescope.setup({
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
       }
+    },
+  },
+  pickers = {
+    buffers = {
+      ignore_current_buffer = false,
+      -- sort_lastused = true,
+      sort_mru = true,
     },
   },
   extensions = {

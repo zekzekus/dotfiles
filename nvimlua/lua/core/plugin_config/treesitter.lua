@@ -27,7 +27,7 @@ tsitter.setup {
 
   -- YATI Indenter
   yati = {
-    enable = true,
+    enable = false,
     -- Disable by languages, see `Supported languages`
     disable = { "php" },
 

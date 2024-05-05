@@ -5,8 +5,7 @@ require("mason-null-ls").setup({
   ensure_installed = { "debugpy", "black", "isort" }
 })
 require("mason-lspconfig").setup({
-	-- ensure_installed = { "lua_ls", "pylsp", "pyright" }
-  ensure_installed = { "lua_ls", "pylsp" }
+  ensure_installed = { "lua_ls", "pylsp", "volar" }
 })
 
 local vim = vim
@@ -61,6 +60,32 @@ lspconfig.pylsp.setup {
   },
 }
 
+-- lspconfig.tsserver.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     completions = {
+--       completeFunctionCalls = true
+--     }
+--   }
+-- })
+
+lspconfig.volar.setup {
+  settings = { },
+  init_options = {
+    vue = {
+      hybridMode = false,
+    },
+    typescript = {
+      -- tsdk = '/path/to/.npm/lib/node_modules/typescript/lib'
+      tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+      -- Alternative location if installed as root:
+      -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
+    }
+  },
+  on_attach = on_attach,
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+}
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local formatting = null_ls.builtins.formatting

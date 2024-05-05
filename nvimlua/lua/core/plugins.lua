@@ -62,6 +62,7 @@ return require('packer').startup(function(use)
   -- snippets
   use 'SirVer/ultisnips'
   use 'honza/vim-snippets'
+  use 'voronkovich/ultisnips-vue'
   use 'quangnguyen30192/cmp-nvim-ultisnips'
 
   -- completion
@@ -71,10 +72,10 @@ return require('packer').startup(function(use)
 
   use 'mfussenegger/nvim-dap'
   use 'mfussenegger/nvim-dap-python'
-  use {
-    "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" }
-  }
+  -- use {
+  --   "rcarriga/nvim-dap-ui",
+  --   requires = { "mfussenegger/nvim-dap" }
+  -- }
 
   -- Navigation
   use {
@@ -98,7 +99,7 @@ return require('packer').startup(function(use)
 
   use 'mbbill/undotree'
 
-  use { "yioneko/nvim-yati", tag = "*", requires = "nvim-treesitter/nvim-treesitter" }
+  -- use { "yioneko/nvim-yati", tag = "*", requires = "nvim-treesitter/nvim-treesitter" }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -112,6 +113,7 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
     "jose-elias-alvarez/null-ls.nvim",
     "jay-babu/mason-null-ls.nvim",
+    "folke/neoconf.nvim",
   }
 
   use {
