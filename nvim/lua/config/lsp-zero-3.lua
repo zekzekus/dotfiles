@@ -10,8 +10,8 @@ local cmp = prequire('cmp')
 local cmp_autopairs = prequire('nvim-autopairs.completion.cmp')
 local cmp_action = lsp_zero.cmp_action()
 local lspconfig = prequire('lspconfig')
-local copilot = prequire('copilot')
-local copilot_cmp = prequire('copilot_cmp')
+-- local copilot = prequire('copilot')
+-- local copilot_cmp = prequire('copilot_cmp')
 
 local function custom_root_pattern(opt)
   local root = opt.root
@@ -93,13 +93,13 @@ mason_lspconfig.setup({
   }
 })
 
-copilot.setup({
-  suggestion = {
-    enabled = true,
-  },
-  panel = {enabled = false},
-})
-copilot_cmp.setup()
+-- copilot.setup({
+--   suggestion = {
+--     enabled = true,
+--   },
+--   panel = {enabled = false},
+-- })
+-- copilot_cmp.setup()
 
 cmp.setup({
   completion = {
