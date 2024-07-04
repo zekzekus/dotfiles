@@ -1,5 +1,5 @@
 set --export ZEK_DEVEL_HOME $HOME/devel/projects
-set --export ZEK_DEFAULT_PROJECT_DIR teknasyon
+set --export ZEK_DEFAULT_PROJECT_DIR sendcloud
 set --export ZEK_DEVEL_WORK_HOME $ZEK_DEVEL_HOME/$ZEK_DEVEL_DEFAULT_DIR
 set --export ZEK_DEVEL_PERSONAL_HOME $ZEK_DEVEL_HOME/personal
 
