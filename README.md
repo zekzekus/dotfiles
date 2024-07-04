@@ -3,7 +3,7 @@
 ## NEOVIM
 
 * Fully (almost) configured with lua
-* I always use latest HEAD build of Neovim
+* I use latest HEAD build of Neovim
 * Package manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
 * Main static language support comes from builtin treesitter (WARNING: tries to build [ALL parsers](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/config/treesitter.lua#L8)!)
 * Dynamic language support comes from builtin LSP client
