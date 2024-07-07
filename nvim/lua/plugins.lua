@@ -20,7 +20,6 @@ return {
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'tpope/vim-fugitive',
-  'tpope/vim-commentary',
   'lervag/wiki.vim',
   'Shougo/junkfile.vim',
 
