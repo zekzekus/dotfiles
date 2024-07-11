@@ -149,4 +149,5 @@
   '(org-level-2 :weight bold :foreground "#004488" :background "#eaffff" :extend t)
   '(org-level-3 :weight bold :foreground "#005500" :background "#eaffea" :extend t)
   '(org-document-title :height 1.5 :weight bold :foreground "#000000")
-  '(org-agenda-structure :height 1.3 :weight bold :foreground "#007777"))
+  '(org-agenda-structure :height 1.3 :weight bold :foreground "#007777")
+  '(cursor :background "#cb8f6d"))
