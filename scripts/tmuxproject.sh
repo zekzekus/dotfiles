@@ -83,9 +83,22 @@ tmuxgp() {
     tmux send-keys "nvim" C-m
 }
 
+# Command to split tmux window and open a project in nvim
+tmuxsp() {
+    local selected_project
+    selected_project=$(select_project "$@") || return $?
+
+    tmux split-window -h
+    tmux send-keys "cd $ZEK_DEVEL_HOME/${1:-$ZEK_DEFAULT_PROJECT_DIR}/$selected_project" C-m
+    tmux send-keys "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
+    tmux send-keys "vf activate $selected_project" C-m
+    tmux send-keys "nvim" C-m
+}
+
 # Execute the appropriate command based on the script name
 case $(basename "$0") in
     "ss") tmuxss "$@" ;;
+    "sp") tmuxsp "$@" ;;
     "gg") tmuxgg "$@" ;;
     "gk") tmuxkillf "$@" ;;
     "gp") tmuxgp "$@" ;;
