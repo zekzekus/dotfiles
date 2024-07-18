@@ -2,7 +2,7 @@ packadd cfilter
 
 set undofile
 
-highlight Winbar guibg='#2C323C'
+highlight Winbar guibg='#bdbdbd'
 
 command! -nargs=1 -complete=command      -bar -range Zredir call     zek#redir(<q-args>, <range>, <line1>, <line2>)
 command! -nargs=+ -complete=file_in_path -bar        Zgrep  cgetexpr zek#grep(<f-args>)
