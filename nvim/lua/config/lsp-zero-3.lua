@@ -90,6 +90,11 @@ mason_lspconfig.setup({
         cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
       })
     end,
+    pyright = function()
+      lspconfig.pyright.setup({
+        cmd = { 'poetry', 'run', 'pyright-langserver', '--stdio'}
+      })
+    end
   }
 })
 

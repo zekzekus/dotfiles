@@ -24,11 +24,9 @@ tmuxss() {
     tmux new-session -d -s "$session_name" -c "$ZEK_DEVEL_HOME/$project_dir/$selected_project"
     tmux rename-window -t "$session_name:$TMUX_WINDOW_START_INDEX" "editor"
     tmux send-keys -t "$session_name:$TMUX_WINDOW_START_INDEX" "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
-    tmux send-keys -t "$session_name:$TMUX_WINDOW_START_INDEX" "vf activate $selected_project" C-m
     tmux send-keys -t "$session_name:$TMUX_WINDOW_START_INDEX" 'nvim' C-m
     tmux new-window -t "$session_name" -n "shell" -c "$ZEK_DEVEL_HOME/$project_dir/$selected_project"
     tmux send-keys -t "$session_name:$((TMUX_WINDOW_START_INDEX + 1))" "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
-    tmux send-keys -t "$session_name:$((TMUX_WINDOW_START_INDEX + 1))" "vf activate $selected_project" C-m
     tmux send-keys -t "$session_name:$((TMUX_WINDOW_START_INDEX + 1))" 'clear; git fetch --all' C-m
 
     if [ -n "$TMUX" ]; then
@@ -91,7 +89,6 @@ tmuxsp() {
     tmux split-window -h
     tmux send-keys "cd $ZEK_DEVEL_HOME/${1:-$ZEK_DEFAULT_PROJECT_DIR}/$selected_project" C-m
     tmux send-keys "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
-    tmux send-keys "vf activate $selected_project" C-m
     tmux send-keys "nvim" C-m
 }
 
