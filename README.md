@@ -5,7 +5,7 @@
 * Fully (almost) configured with lua
 * I use latest HEAD build of Neovim
 * Package manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
-* Main static language support comes from builtin treesitter (WARNING: tries to build [ALL parsers](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/config/treesitter.lua#L8)!)
+* Main static language support comes from builtin treesitter (WARNING: Installs for no language. Do not forget to install for your favorite languages)
 * Dynamic language support comes from builtin LSP client
 * [Mason](https://github.com/williamboman/mason.nvim) to install language servers (any language server installed with mason will be initialized when needed)
 * [Keybindings](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/keybindings.lua)
