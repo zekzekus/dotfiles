@@ -10,3 +10,6 @@ style = "bold cyan"
 [gcloud]
 format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
 disabled = true
+
+[docker_context]
+disabled = true
