@@ -36,3 +36,5 @@ vim.g.wiki_select_method = {
   toc = require('wiki.telescope').toc,
   links = require('wiki.telescope').links,
 }
+
+vim.diagnostic.config({ virtual_text = false })
