@@ -72,9 +72,9 @@ data set $dir
 plumb start bash -c 'cd '$dir'; open $(git remote get-url origin | sed "s/\.git//")/issues/'$1
 
 type is	text
-data matches 'POLAR-([0-9]*)'
+data matches 'DSF-([0-9]*)'
 plumb to web
-plumb start web  'https://metglobal.atlassian.net/browse/POLAR-'$1''
+plumb start web  'https://sendcloud.atlassian.net/browse/DSF-'$1''
 
 # declarations of ports without rules
 plumb to lsp
