@@ -1,3 +1,5 @@
+win
+
 ff acme
 
 rg+ remap
@@ -8,7 +10,7 @@ git status
 
 git commit -va
 
-POLAR-1212
+DSF-1212
 
 git diff
 
