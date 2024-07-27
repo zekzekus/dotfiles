@@ -13,6 +13,8 @@ local lspconfig = prequire('lspconfig')
 -- local copilot = prequire('copilot')
 -- local copilot_cmp = prequire('copilot_cmp')
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local function custom_root_pattern(opt)
   local root = opt.root
   local not_root_pattern = opt.not_root
