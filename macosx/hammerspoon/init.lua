@@ -192,6 +192,7 @@ hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("iTerm")
   hs.application.launchOrFocus("Slack")
   hs.application.launchOrFocus("Logseq")
+  hs.application.launchOrFocus("Things")
 end)
 -- hs.hotkey.bind(hyper, "r", function() hs.application.launchOrFocus("Roam Research") end)
 
