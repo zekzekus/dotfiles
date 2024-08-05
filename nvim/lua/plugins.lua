@@ -20,7 +20,6 @@ return {
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'tpope/vim-fugitive',
-  'lervag/wiki.vim',
   'Shougo/junkfile.vim',
 
   { 'tpope/vim-dadbod',               cmd = 'DB' },
