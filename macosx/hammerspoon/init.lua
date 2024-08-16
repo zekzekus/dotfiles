@@ -187,6 +187,12 @@ hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
 hs.hotkey.bind(hyper, "o", function() hs.application.launchOrFocus("Roam Research") end)
 
 -- Application shortcuts
+hs.hotkey.bind(yankkey, "b", function() hs.application.launchOrFocus("Arc") end)
+hs.hotkey.bind(yankkey, "t", function() hs.application.launchOrFocus("iTerm") end)
+hs.hotkey.bind(yankkey, "m", function() hs.application.launchOrFocus("Slack") end)
+hs.hotkey.bind(yankkey, "n", function() hs.application.launchOrFocus("Logseq") end)
+hs.hotkey.bind(yankkey, "o", function() hs.application.launchOrFocus("Things3") end)
+
 hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Arc")
   hs.application.launchOrFocus("iTerm")
