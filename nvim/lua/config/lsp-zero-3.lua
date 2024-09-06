@@ -71,8 +71,8 @@ mason_lspconfig.setup({
   ensure_installed = {},
   handlers = {
     lsp_zero.default_setup,
-    tsserver = function()
-      lspconfig.tsserver.setup({
+    ts_ls = function()
+      lspconfig.ts_ls.setup({
         root_dir = custom_root_pattern({root='package.json', not_root='deno.json?'}),
         single_file_support = false
       })
