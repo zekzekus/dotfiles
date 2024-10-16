@@ -10,8 +10,8 @@ local cmp = prequire('cmp')
 local cmp_autopairs = prequire('nvim-autopairs.completion.cmp')
 local cmp_action = lsp_zero.cmp_action()
 local lspconfig = prequire('lspconfig')
--- local copilot = prequire('copilot')
--- local copilot_cmp = prequire('copilot_cmp')
+local copilot = prequire('copilot')
+local copilot_cmp = prequire('copilot_cmp')
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -97,19 +97,20 @@ lspconfig.hls.setup({
   cmd = {'ghcup', 'run', 'haskell-language-server-wrapper', '--', '--lsp'},
 })
 
--- copilot.setup({
---   suggestion = {
---     enabled = true,
---   },
---   panel = {enabled = false},
--- })
--- copilot_cmp.setup()
+copilot.setup({
+  suggestion = {
+    enabled = true,
+  },
+  panel = {enabled = false},
+})
+copilot_cmp.setup()
 
 cmp.setup({
   completion = {
     autocomplete = false,
   },
   sources = {
+    {name = 'copilot'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
     {name = 'luasnip'},

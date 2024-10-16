@@ -124,7 +124,8 @@ return {
       'MunifTanjim/nui.nvim',
 
       'nvim-tree/nvim-web-devicons',
-      -- 'zbirenbaum/copilot.lua',
+      'zbirenbaum/copilot.lua',
+      'zbirenbaum/copilot-cmp',
       {
         'HakonHarnes/img-clip.nvim',
         event = 'VeryLazy',
