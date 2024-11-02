@@ -43,7 +43,7 @@ avante.setup({
       insert = "<C-s>",
     },
   },
-  hints = { enabled = true },
+  hints = { enabled = false },
   windows = {
     ---@type "right" | "left" | "top" | "bottom"
     position = "right", -- the position of the sidebar
