@@ -7,6 +7,7 @@
 // custom settings, run the `zed: Open Default Settings` command
 // from the command palette
 {
+  // assistant settings
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
@@ -14,14 +15,17 @@
     },
     "version": "2"
   },
+
+  // editor settings
   "vim_mode": true,
   "git": {
-    "git_gutter": null,
-    "gutter_debounce": null,
     "inline_blame": {
-      "enabled": false
+      "enabled": true
     }
   },
+  "format_on_save": "off",
+
+  // UI settings
   "ui_font_size": 15,
   "buffer_font_family": "Berkeley Mono",
   "buffer_font_size": 15,
