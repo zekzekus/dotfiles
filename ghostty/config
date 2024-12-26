@@ -5,3 +5,7 @@ font-family-bold = "Berkeley Mono Bold"
 font-family-italic = "Berkeley Mono Italic" 
 font-family-bold-italic = "Berkeley Mono Bold  Italic"
 font-size = 15
+font-thicken = true
+
+shell-integration-features = no-cursor
+quit-after-last-window-closed = true
