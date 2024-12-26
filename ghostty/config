@@ -1,0 +1,7 @@
+theme = vimbones
+
+font-family = "Berkeley Mono Nerd"
+font-family-bold = "Berkeley Mono Bold" 
+font-family-italic = "Berkeley Mono Italic" 
+font-family-bold-italic = "Berkeley Mono Bold  Italic"
+font-size = 15
