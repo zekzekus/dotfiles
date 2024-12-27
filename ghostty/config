@@ -1,9 +1,9 @@
 theme = vimbones
 
-font-family = "Berkeley Mono Nerd"
-font-family-bold = "Berkeley Mono Bold" 
-font-family-italic = "Berkeley Mono Italic" 
-font-family-bold-italic = "Berkeley Mono Bold  Italic"
+font-family = "TX-02 Regular"
+font-family-bold = "TX-02 Bold"
+font-family-italic = "TX-02 Oblique"
+font-family-bold-italic = "TX-02 Bold Oplique"
 font-size = 15
 font-thicken = true
 
