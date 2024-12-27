@@ -97,6 +97,10 @@ lspconfig.hls.setup({
   cmd = {'ghcup', 'run', 'haskell-language-server-wrapper', '--', '--lsp'},
 })
 
+lspconfig.koka.setup({
+  cmd = { 'koka', '--language-server', '--lsstdio' },
+})
+
 copilot.setup({
   suggestion = {
     enabled = true,
