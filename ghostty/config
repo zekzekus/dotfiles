@@ -1,9 +1,6 @@
 theme = vimbones
 
-font-family = "TX-02 Regular"
-font-family-bold = "TX-02 Bold"
-font-family-italic = "TX-02 Oblique"
-font-family-bold-italic = "TX-02 Bold Oplique"
+font-family = "TX-02"
 font-size = 15
 font-thicken = true
 
