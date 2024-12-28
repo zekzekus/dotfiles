@@ -9,7 +9,13 @@ window-padding-balance = true
 shell-integration-features = no-cursor
 quit-after-last-window-closed = true
 
-keybind = super+ctrl+j=resize_split:down,20
-keybind = super+ctrl+h=resize_split:left,20
-keybind = super+ctrl+k=resize_split:up,20
-keybind = super+ctrl+l=resize_split:right,20
+keybind = super+ctrl+j=goto_split:bottom
+keybind = super+ctrl+h=goto_split:left
+keybind = super+ctrl+k=goto_split:top
+keybind = super+ctrl+l=goto_split:right
+keybind = ctrl+alt+j=resize_split:down,20
+keybind = ctrl+alt+h=resize_split:left,20
+keybind = ctrl+alt+k=resize_split:up,20
+keybind = ctrl+alt+l=resize_split:right,20
+
+macos-option-as-alt = left
