@@ -27,7 +27,7 @@
 
   // UI settings
   "ui_font_size": 15,
-  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_family": "TX-02",
   "buffer_font_size": 15,
   "buffer_line_height": {
     "custom": 1.25
