@@ -195,7 +195,7 @@ hs.hotkey.bind(yankkey, "o", function() hs.application.launchOrFocus("Things3") 
 
 hs.hotkey.bind(hyper, "a", function()
   hs.application.launchOrFocus("Safari")
-  hs.application.launchOrFocus("iTerm")
+  hs.application.launchOrFocus("Ghostty")
   hs.application.launchOrFocus("Slack")
   hs.application.launchOrFocus("Logseq")
   hs.application.launchOrFocus("Things3")
