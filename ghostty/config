@@ -6,6 +6,7 @@ font-thicken = true
 
 window-padding-balance = true
 
+adjust-cursor-thickness = 3
 shell-integration-features = no-cursor
 quit-after-last-window-closed = true
 
