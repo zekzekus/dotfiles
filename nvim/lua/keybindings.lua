@@ -23,6 +23,7 @@ local floatings = {
   name = 'Floating',
   prefix = '<leader>o',
   { 'p', [[<cmd>Neotree float toggle<cr>]] },
+  { 't', [[<cmd>Lspsaga term_toggle<cr>]] },
 }
 
 local buffers = {
