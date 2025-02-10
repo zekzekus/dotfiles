@@ -8,6 +8,9 @@
 // from the command palette
 {
   // assistant settings
+  "outline_panel": {
+    "dock": "right"
+  },
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
@@ -26,9 +29,9 @@
   "format_on_save": "off",
 
   // UI settings
-  "ui_font_size": 15,
+  "ui_font_size": 16,
   "buffer_font_family": "TX-02",
-  "buffer_font_size": 15,
+  "buffer_font_size": 16,
   "buffer_line_height": {
     "custom": 1.25
   },
