@@ -1,5 +1,5 @@
 set --export ZEK_DEVEL_HOME $HOME/devel/projects
-set --export ZEK_DEFAULT_PROJECT_DIR sendcloud
+set --export ZEK_DEFAULT_PROJECT_DIR personal
 set --export ZEK_DEVEL_WORK_HOME $ZEK_DEVEL_HOME/$ZEK_DEVEL_DEFAULT_DIR
 set --export ZEK_DEVEL_PERSONAL_HOME $ZEK_DEVEL_HOME/personal
 
@@ -38,7 +38,7 @@ set --export FZF_ALT_C_COMMAND 'bfs -type d -nohidden'
 set --export HOMEBREW_NO_INSTALL_CLEANUP 1
 
 if test -e ~/.nix-profile/etc/profile.d/nix.sh
-  bass source ~/.nix-profile/etc/profile.d/nix.sh
+  source ~/.nix-profile/etc/profile.d/nix.fish
 end
 
 if command -sq starship

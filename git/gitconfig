@@ -8,7 +8,7 @@ name = Zekeriya Koc
 
 [core]
 pager = delta
-excludesFile = /Users/zekeriyakoc/.gitignore_global
+excludesFile = /home/ubunti/.gitignore_global
 
 [interactive]
 diffFilter = delta --color-only
@@ -26,8 +26,8 @@ colorMoved = default
 [merge]
 conflictStyle = diff3
 
-[commit]
-gpgsign = true
+# [commit]
+# gpgsign = true
 
 [gpg]
 program = /usr/local/MacGPG2/bin/gpg2
