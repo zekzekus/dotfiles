@@ -35,6 +35,11 @@ return {
   { 'radenling/vim-dispatch-neovim',  dependencies = 'tpope/vim-dispatch', },
   { 'SmiteshP/nvim-navic',            dependencies = 'neovim/nvim-lspconfig', },
 
+  { 'tpope/vim-rails',               ft = { 'ruby', 'eruby', 'haml', 'slim' } },
+  { 'tpope/vim-rake',                ft = 'ruby' },
+  { 'tpope/vim-bundler',             ft = 'ruby' },
+  { 'tpope/vim-endwise',             ft = 'ruby' },
+
   {
     'rebelot/heirline.nvim',
     config = function() require('config.heirline') end,
