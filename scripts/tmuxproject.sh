@@ -14,29 +14,6 @@ select_project() {
         fzf --exit-0 --prompt="Project: "
 }
 
-# Command to start a new tmux session for a project and run 'vf activate'
-tmuxss() {
-    local selected_project
-    selected_project=$(select_project "$@") || return $?
-    local project_dir="${1:-$ZEK_DEFAULT_PROJECT_DIR}"
-    local session_name="${selected_project}"
-
-    tmux new-session -d -s "$session_name" -c "$ZEK_DEVEL_HOME/$project_dir/$selected_project"
-    tmux rename-window -t "$session_name:$TMUX_WINDOW_START_INDEX" "editor"
-    tmux send-keys -t "$session_name:$TMUX_WINDOW_START_INDEX" "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
-    tmux send-keys -t "$session_name:$TMUX_WINDOW_START_INDEX" 'nvim' C-m
-    tmux new-window -t "$session_name" -n "shell" -c "$ZEK_DEVEL_HOME/$project_dir/$selected_project"
-    tmux send-keys -t "$session_name:$((TMUX_WINDOW_START_INDEX + 1))" "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
-    tmux send-keys -t "$session_name:$((TMUX_WINDOW_START_INDEX + 1))" 'clear; git fetch --all' C-m
-
-    if [ -n "$TMUX" ]; then
-        tmux switch-client -t "$session_name"
-    else
-        tmux attach-session -t "$session_name"
-    fi
-    tmux select-window -t "$session_name:$TMUX_WINDOW_START_INDEX"
-}
-
 # Command to start a new tmux session for a project
 tmuxgg() {
     local selected_project
@@ -78,17 +55,6 @@ tmuxgp() {
 
     tmux split-window -h
     tmux send-keys "cd $ZEK_DEVEL_HOME/${1:-$ZEK_DEFAULT_PROJECT_DIR}/$selected_project" C-m
-    tmux send-keys "nvim" C-m
-}
-
-# Command to split tmux window and open a project in nvim
-tmuxsp() {
-    local selected_project
-    selected_project=$(select_project "$@") || return $?
-
-    tmux split-window -h
-    tmux send-keys "cd $ZEK_DEVEL_HOME/${1:-$ZEK_DEFAULT_PROJECT_DIR}/$selected_project" C-m
-    tmux send-keys "aws-sso exec -a $AWS_SSO_ROLE_ARN" C-m
     tmux send-keys "nvim" C-m
 }
 
