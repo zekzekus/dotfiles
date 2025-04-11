@@ -94,10 +94,8 @@ tmuxsp() {
 
 # Execute the appropriate command based on the script name
 case $(basename "$0") in
-    "ss") tmuxss "$@" ;;
-    "sp") tmuxsp "$@" ;;
     "gg") tmuxgg "$@" ;;
     "gk") tmuxkillf "$@" ;;
     "gp") tmuxgp "$@" ;;
-    *) echo "Usage: ss | gg | gk | gp" >&2; exit 1 ;;
+    *) echo "Usage: gg | gk | gp" >&2; exit 1 ;;
 esac
