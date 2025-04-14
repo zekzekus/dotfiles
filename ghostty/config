@@ -5,6 +5,7 @@ font-size = 16
 font-thicken = true
 
 window-padding-balance = true
+font-feature = -calt, -liga, -dlig
 
 adjust-cursor-thickness = 3
 shell-integration-features = no-cursor
