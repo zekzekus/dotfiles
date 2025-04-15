@@ -32,11 +32,15 @@ in
   ];
 
   home.file = {
-    ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
     ".ctags".source = "${dotfilesDir}/ctags/ctags";
-    "${homeDir}/bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
-    "${homeDir}/bin/gk".source = "${dotfilesDir}/scripts/tmuxproject.sh";
-    "${homeDir}/bin/gp".source = "${dotfilesDir}/scripts/tmuxproject.sh";
+    ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
+
+    ".config/ghostty".source = "${dotfilesDir}/ghostty";
+    ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
+
+    "bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
+    "bin/gk".source = "${dotfilesDir}/scripts/tmuxproject.sh";
+    "bin/gp".source = "${dotfilesDir}/scripts/tmuxproject.sh";
   };
 
   home.sessionVariables = {
