@@ -26,10 +26,13 @@ in
     extract_url
 
     fish
+    starship
+
     clojure
   ];
 
   home.file = {
+    ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
     ".ctags".source = "${dotfilesDir}/ctags/ctags";
     "${homeDir}/bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
     "${homeDir}/bin/gk".source = "${dotfilesDir}/scripts/tmuxproject.sh";
