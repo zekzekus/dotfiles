@@ -25,6 +25,8 @@ set --export LC_ALL "en_US.UTF-8"
 set --export EDITOR nvim
 set --export MANPAGER "nvim +Man!"
 
+set --export TMUX_FZF_LAUNCH_KEY "o"
+
 if command -sq rustc
   set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/library
 end
