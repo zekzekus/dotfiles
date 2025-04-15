@@ -12,6 +12,8 @@ in
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
+    # packages waiting: neovim
+    # files waiting: neovim, tmux, fish, git
     ripgrep
     fzf
     bfs
@@ -34,6 +36,7 @@ in
   home.file = {
     ".ctags".source = "${dotfilesDir}/ctags/ctags";
     ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
+    ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
 
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
     ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
