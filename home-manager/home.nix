@@ -13,7 +13,7 @@ in
 
   home.packages = with pkgs; [
     # packages waiting: neovim
-    # files waiting: neovim, tmux, fish, git
+    # files waiting: tmux, fish, git
     ripgrep
     fzf
     bfs
@@ -39,6 +39,7 @@ in
     ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
 
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
+    ".config/nvim".source = "${dotfilesDir}/nvim";
     ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
 
     "bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
