@@ -13,7 +13,7 @@ in
 
   home.packages = with pkgs; [
     # packages waiting: neovim
-    # files waiting: tmux, fish, git
+    # files waiting: tmux, fish, neovim
     ripgrep
     fzf
     bfs
@@ -37,9 +37,11 @@ in
     ".ctags".source = "${dotfilesDir}/ctags/ctags";
     ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
     ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
+    ".gitconfig".source = "${dotfilesDir}/git/gitconfig";
+    ".git_template".source = "${dotfilesDir}/git/git_template";
+    ".gitignore_global".source = "${dotfilesDir}/git/gitignore_global";
 
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
-    ".config/nvim".source = "${dotfilesDir}/nvim";
     ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
 
     "bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
