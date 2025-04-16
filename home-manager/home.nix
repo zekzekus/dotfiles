@@ -35,6 +35,12 @@ in
     fish
     starship
 
+    python313
+    python313Packages.pip
+    poetry
+
+    ruby_3_4
+    nodejs_23
     clojure
     rustup
   ];
