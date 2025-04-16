@@ -36,6 +36,7 @@ in
     starship
 
     clojure
+    rustup
   ];
 
   home.file = {
