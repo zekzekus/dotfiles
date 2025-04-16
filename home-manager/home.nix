@@ -16,8 +16,9 @@ in
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    # packages waiting: neovim
     # files waiting: tmux, fish, neovim
+    neovim
+
     ripgrep
     fzf
     bfs
@@ -45,6 +46,7 @@ in
     ".git_template".source = "${dotfilesDir}/git/git_template";
     ".gitignore_global".source = "${dotfilesDir}/git/gitignore_global";
 
+    ".config/nvim".source = "${dotfilesDir}/nvim";
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
     ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
 
