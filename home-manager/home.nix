@@ -16,7 +16,7 @@ in
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    # files waiting: tmux, fish, neovim
+    # files waiting: tmux, fish
     neovim
 
     ripgrep
