@@ -40,6 +40,8 @@ in
     poetry
 
     ruby_3_4
+    tmuxinator
+
     nodejs_23
     clojure
     rustup
