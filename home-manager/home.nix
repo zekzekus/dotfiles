@@ -45,6 +45,8 @@ in
     nodejs_23
     clojure
     rustup
+    deno
+    zig
   ];
 
   home.file = {
