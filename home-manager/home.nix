@@ -101,7 +101,7 @@ in
     shellAliases = {
       mux = "tmuxinator";
     };
-    plugins = 
+    plugins =
     [
       {
         name = "nix-env";
