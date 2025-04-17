@@ -16,28 +16,32 @@ in
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
+    # my editor
     neovim
 
+    # terminal tools
     ripgrep
     fzf
     bfs
     universal-ctags
     silver-searcher
 
+    # version control
     git
     tig
 
+    # programming languages
+    clojure
+    deno
+    nodejs_23
     python313
+    ruby_3_4
+    rustup
+    zig
+
+    # programming language tools
     python313Packages.pip
     poetry
-
-    ruby_3_4
-
-    nodejs_23
-    clojure
-    rustup
-    deno
-    zig
   ];
 
   home.file = {
