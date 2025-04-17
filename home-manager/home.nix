@@ -27,7 +27,6 @@ in
 
     git
     tig
-    delta
 
     tmux
     extract_url
@@ -50,13 +49,11 @@ in
     ".ctags".source = "${dotfilesDir}/ctags/ctags";
     ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
     ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
-    ".gitconfig".source = "${dotfilesDir}/git/gitconfig";
     ".git_template".source = "${dotfilesDir}/git/git_template";
     ".gitignore_global".source = "${dotfilesDir}/git/gitignore_global";
 
     ".config/nvim".source = "${dotfilesDir}/nvim";
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
-    ".config/starship.toml".source = "${dotfilesDir}/starship/starship.toml";
 
     "bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
     "bin/gk".source = "${dotfilesDir}/scripts/tmuxproject.sh";
@@ -95,6 +92,33 @@ in
   };
 
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Zekeriya Koc";
+    userEmail = "zekzekus@gmail.com";
+    signing.key = "6716516470AD2D7A";
+    signing.signByDefault = false;
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        light = false;
+      };
+    };
+
+    extraConfig = {
+      core = {
+        excludesFile = "${homeDir}/.gitignore_global";
+      };
+      init = {
+        templateDir = "${homeDir}/.git_template";
+      };
+      push = {
+        default = "current";
+      };
+    };
+  };
 
   programs.fish = {
     enable = true;
