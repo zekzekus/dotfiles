@@ -63,6 +63,10 @@ in
     "bin/gp".source = "${dotfilesDir}/scripts/tmuxproject.sh";
   };
 
+  home.sessionPath = [
+    "$HOME/bin"
+  ];
+
   home.sessionVariables = {
     ZEK_DEVEL_HOME = "${develHome}";
     ZEK_DEFAULT_PROJECT_DIR  = "personal";
