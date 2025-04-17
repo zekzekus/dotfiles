@@ -151,5 +151,8 @@ in
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    settings = {
+      cmd_duration.disabled = true;
+    };
   };
 }
