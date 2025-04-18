@@ -30,18 +30,12 @@ in
     git
     tig
 
-    # programming languages
-    clojure
-    deno
+    # language runtimes
     nodejs_23
     python313
     ruby_3_4
     rustup
-    zig
 
-    # programming language tools
-    python313Packages.pip
-    poetry
   ];
 
   home.file = {
