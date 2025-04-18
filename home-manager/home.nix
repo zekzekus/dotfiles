@@ -29,6 +29,7 @@ in
     # version control
     git
     tig
+    gh
 
     # language runtimes
     nodejs_23
