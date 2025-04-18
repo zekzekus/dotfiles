@@ -20,16 +20,16 @@ in
     neovim
 
     # terminal tools
-    ripgrep
-    fzf
     bfs
-    universal-ctags
+    fzf
+    ripgrep
     silver-searcher
+    universal-ctags
 
     # version control
+    gh
     git
     tig
-    gh
 
     # language runtimes
     nodejs_23
