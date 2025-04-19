@@ -35,7 +35,10 @@ in
     nodejs_23
     python313
     ruby_3_4
-    rustup
+
+    # nix tools
+    nil
+    nixd
 
   ];
 
@@ -48,6 +51,8 @@ in
 
     ".config/nvim".source = "${dotfilesDir}/nvim";
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
+    ".config/zed/settings.json".source = "${dotfilesDir}/zed/settings.json";
+    ".config/zed/themes".source = "${dotfilesDir}/zed/themes";
 
     "bin/gg".source = "${dotfilesDir}/scripts/tmuxproject.sh";
     "bin/gk".source = "${dotfilesDir}/scripts/tmuxproject.sh";
