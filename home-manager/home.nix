@@ -46,8 +46,6 @@ in
     ".ctags".source = "${dotfilesDir}/ctags/ctags";
     ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
     ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
-    ".git_template".source = "${dotfilesDir}/git/git_template";
-    ".gitignore_global".source = "${dotfilesDir}/git/gitignore_global";
 
     ".config/nvim".source = "${dotfilesDir}/nvim";
     ".config/ghostty".source = "${dotfilesDir}/ghostty";
@@ -108,10 +106,10 @@ in
 
     extraConfig = {
       core = {
-        excludesFile = "${homeDir}/.gitignore_global";
+        excludesFile = "${dotfilesDir}/git/gitignore_global";
       };
       init = {
-        templateDir = "${homeDir}/.git_template";
+        templateDir = "${dotfilesDir}/git/git_template";
       };
       push = {
         default = "current";
@@ -173,22 +171,22 @@ in
       tmux-fzf
     ];
     extraConfig = ''
-set -g default-command "${pkgs.fish}/bin/fish"
-set -g visual-activity on
-setw -g pane-base-index 1
-setw -g monitor-activity on
-unbind C-b
-bind C-s send-prefix
-bind C-l send-keys 'C-l'
-bind C-h send-keys 'C-h'
-bind C-a last-window
-bind-key Escape copy-mode
-bind-key p paste-buffer
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'V' send -X select-line
-bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
-bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
-if-shell "test -f ${dotfilesDir}/tmux/tmuxline.gruvbox.conf" "source ${dotfilesDir}/tmux/tmuxline.gruvbox.conf"
+      set -g default-command "${pkgs.fish}/bin/fish"
+      set -g visual-activity on
+      setw -g pane-base-index 1
+      setw -g monitor-activity on
+      unbind C-b
+      bind C-s send-prefix
+      bind C-l send-keys 'C-l'
+      bind C-h send-keys 'C-h'
+      bind C-a last-window
+      bind-key Escape copy-mode
+      bind-key p paste-buffer
+      bind-key -T copy-mode-vi 'v' send -X begin-selection
+      bind-key -T copy-mode-vi 'V' send -X select-line
+      bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
+      bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
+      if-shell "test -f ${dotfilesDir}/tmux/tmuxline.gruvbox.conf" "source ${dotfilesDir}/tmux/tmuxline.gruvbox.conf"
     '';
   };
 }
