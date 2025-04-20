@@ -85,22 +85,6 @@ mason_lspconfig.setup({
   }
 })
 
-lspconfig.rust_analyzer.setup({
-  cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
-})
-
-lspconfig.pyright.setup({
-  cmd = { 'poetry', 'run', 'pyright-langserver', '--stdio'}
-})
-
-lspconfig.hls.setup({
-  cmd = {'ghcup', 'run', 'haskell-language-server-wrapper', '--', '--lsp'},
-})
-
-lspconfig.koka.setup({
-  cmd = { 'koka', '--language-server', '--lsstdio' },
-})
-
 copilot.setup({
   suggestion = {
     enabled = true,
