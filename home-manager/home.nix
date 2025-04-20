@@ -89,6 +89,7 @@ in
   };
 
   programs.home-manager.enable = true;
+  programs.bash.enable = true;
 
   programs.git = {
     enable = true;
@@ -148,6 +149,7 @@ in
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableBashIntegration = true;
     settings = {
       cmd_duration.disabled = true;
     };
