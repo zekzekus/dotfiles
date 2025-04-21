@@ -16,7 +16,7 @@ in
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    # my editor
+    # editors
     neovim
 
     # terminal tools
