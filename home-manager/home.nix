@@ -65,15 +65,6 @@ in
       ZEK_DEVEL_WORK_HOME = "${workHome}";
       ZEK_DEVEL_PERSONAL_HOME = "${personalHome}";
 
-      LANG = "en_US.UTF-8";
-      LC_COLLATE = "en_US.UTF-8";
-      LC_CTYPE = "en_US.UTF-8";
-      LC_MESSAGES = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
-      LC_ALL = "en_US.UTF-8";
-
       EDITOR = "nvim";
       MANPAGER = "nvim +Man!";
 
