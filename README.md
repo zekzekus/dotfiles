@@ -1,5 +1,18 @@
 # My Personal Configuration Files
 
+## Nix
+
+Now I am trying to manage my dotfiles using [Nix](https://nix.dev) and [Home Manager](https://nix-community.github.io/home-manager/index.xhtml)!
+
+In theory, it supposed to be a single command after installing Nix successfully. I am using [Determinated Nix](https://determinate.systems/nix) but vanilla Nix should work just fine.
+
+        $ cd home-manager
+        $ nix run .#homeConfigurations.zekus.activationPackage switch --impure
+
+After first run, after every config change:
+
+        $ home-manager switch --impure
+
 ## NEOVIM
 
 * Fully (almost) configured with lua
