@@ -57,6 +57,7 @@ in
 
     sessionPath = [
       "$HOME/bin"
+      "/opt/homebrew/bin"
     ];
 
     sessionVariables = {
