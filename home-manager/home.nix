@@ -30,6 +30,7 @@ in
       # version control
       gh
       git
+      git-extras
       tig
 
       # language runtimes
