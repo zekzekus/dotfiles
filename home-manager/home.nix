@@ -34,6 +34,7 @@ in
       tig
 
       # language runtimes
+      go
       nodejs_23
       python313
       ruby_3_4
