@@ -34,6 +34,7 @@ in
       tig
 
       # language runtimes, compilers, interpreters, CLIs
+      clojure
       deno
       go
       nodejs_23
