@@ -33,7 +33,8 @@ in
       git-extras
       tig
 
-      # language runtimes
+      # language runtimes, compilers, interpreters, CLIs
+      deno
       go
       nodejs_23
       python313
