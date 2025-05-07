@@ -85,6 +85,11 @@ mason_lspconfig.setup({
   }
 })
 
+lspconfig.hls.setup({
+  cmd = {'nix', 'run', '.#hls', '--', '--lsp'},
+})
+
+
 copilot.setup({
   suggestion = {
     enabled = true,
