@@ -42,6 +42,9 @@ in
       ruby_3_4
       cargo
 
+      # development tools
+      devenv
+
     ];
 
     file = {
