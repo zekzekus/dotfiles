@@ -45,6 +45,8 @@ in
 
       # development tools
       devenv
+      nil
+      nixd
 
     ];
 
