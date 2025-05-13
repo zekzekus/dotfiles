@@ -22,10 +22,12 @@ in
 
       # terminal tools
       bfs
+      fd
       fzf
       ripgrep
       silver-searcher
       universal-ctags
+      wget
 
       # version control
       gh
@@ -35,18 +37,20 @@ in
 
       # language runtimes, compilers, interpreters, CLIs
       babashka
+      cargo
       clojure
       deno
       go
       nodejs_23
       python313
       ruby_3_4
-      cargo
+      uv
 
       # development tools
       devenv
       nil
       nixd
+      tree-sitter
 
     ];
 
