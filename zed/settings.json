@@ -7,6 +7,9 @@
 // custom settings, run the `zed: Open Default Settings` command
 // from the command palette
 {
+  "project_panel": {
+    "hide_gitignore": true
+  },
   // assistant settings
   "outline_panel": {
     "dock": "right"
