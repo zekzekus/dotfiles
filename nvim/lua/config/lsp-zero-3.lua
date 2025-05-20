@@ -89,6 +89,9 @@ lspconfig.hls.setup({
   cmd = {'nix', 'run', '.#hls', '--', '--lsp'},
 })
 
+lspconfig.rust_analyzer.setup({
+  cmd = { 'rust-analyzer' },
+})
 
 copilot.setup({
   suggestion = {
