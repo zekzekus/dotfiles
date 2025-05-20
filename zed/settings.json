@@ -11,9 +11,6 @@
     "hide_gitignore": true
   },
   // assistant settings
-  "outline_panel": {
-    "dock": "right"
-  },
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
