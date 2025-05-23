@@ -41,7 +41,7 @@ in
       clojure
       deno
       go
-      nodejs_23
+      nodejs_24
       python313
       ruby_3_4
       uv
