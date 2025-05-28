@@ -24,6 +24,7 @@ in
       bfs
       fd
       fzf
+      pngpaste
       ripgrep
       silver-searcher
       universal-ctags
@@ -33,6 +34,8 @@ in
       gh
       git
       git-extras
+      mercurial
+      jujutsu
       tig
 
       # language runtimes, compilers, interpreters, CLIs
@@ -43,6 +46,7 @@ in
       go
       nodejs_24
       python313
+      python313Packages.pip
       ruby_3_4
       uv
 
