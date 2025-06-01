@@ -19,6 +19,7 @@ in
     packages = with pkgs; [
       # editors
       neovim
+      emacs
 
       # terminal tools
       bfs
@@ -60,11 +61,12 @@ in
 
     file = {
       ".ctags".source = "${dotfilesDir}/ctags/ctags";
+      ".doom.d".source = "${dotfilesDir}/emacs/doom";
       ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
       ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
 
-      ".config/nvim".source = "${dotfilesDir}/nvim";
       ".config/ghostty".source = "${dotfilesDir}/ghostty";
+      ".config/nvim".source = "${dotfilesDir}/nvim";
       ".config/zed/settings.json".source = "${dotfilesDir}/zed/settings.json";
       ".config/zed/themes".source = "${dotfilesDir}/zed/themes";
 
