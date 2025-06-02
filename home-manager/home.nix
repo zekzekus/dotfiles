@@ -52,7 +52,9 @@ in
       uv
 
       # development tools
+      cmake
       devenv
+      glibtool
       nil
       nixd
       tree-sitter
