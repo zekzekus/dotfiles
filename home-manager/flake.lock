@@ -7,10 +7,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1748618703,
+        "lastModified": 1748830238,
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d800d198b8376ffb6d8f34f12242600308b785ee",
+        "rev": "c7fdb7e90bff1a51b79c1eed458fb39e6649a82a",
         "type": "github"
       },
       "original": {
@@ -21,10 +21,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1748460289,
+        "lastModified": 1748693115,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "96ec055edbe5ee227f28cdbc3f1ddf1df5965102",
+        "rev": "910796cabe436259a29a72e8d3f5e180fc6dfacc",
         "type": "github"
       },
       "original": {
