@@ -217,13 +217,24 @@ in
           "-c"
           "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
         ];
+        on-window-detected = [
+          {
+            check-further-callbacks = false;
+            "if" = {
+              app-id = "com.mitchellh.ghostty";
+            };
+            run = [
+              "layout floating"
+            ];
+          }
+        ];
         gaps = {
-          inner.horizontal = 8;
-          inner.vertical = 8;
-          outer.left = 8;
-          outer.bottom = 40;
-          outer.top = 8;
-          outer.right = 8;
+          inner.horizontal = 10;
+          inner.vertical = 10;
+          outer.left = 10;
+          outer.bottom = 42;
+          outer.top = 10;
+          outer.right = 10;
         };
         mode.main.binding = {
           alt-slash = "layout tiles horizontal vertical";
