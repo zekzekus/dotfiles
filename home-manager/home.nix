@@ -298,8 +298,8 @@ in
       settings = {
         style = "round";
         width = 6.0;
-        hidpi = "off";
-        active_color = "0xff494d64";
+        hidpi = "on";
+        active_color = "0xfff7768e";
         inactive_color = "0xffe1e3e4";
       };
     };
