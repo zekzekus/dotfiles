@@ -58,7 +58,7 @@ in
       nil
       nixd
       tree-sitter
-      
+
     ];
 
     file = {
@@ -209,13 +209,21 @@ in
     aerospace = {
       enable = true;
       userSettings = {
+        after-startup-command = [
+          "exec-and-forget sketchybar"
+        ];
+        exec-on-workspace-change = [
+          "/bin/bash"
+          "-c"
+          "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+        ];
         gaps = {
-          inner.horizontal = 5;
-          inner.vertical = 5;
-          outer.left = 5;
-          outer.bottom = 5;
-          outer.top = 5;
-          outer.right = 5;
+          inner.horizontal = 8;
+          inner.vertical = 8;
+          outer.left = 8;
+          outer.bottom = 40;
+          outer.top = 8;
+          outer.right = 8;
         };
         mode.main.binding = {
           alt-slash = "layout tiles horizontal vertical";
@@ -265,10 +273,14 @@ in
     };
 
     sketchybar = {
-      enable = false;
+      enable = true;
+      config = {
+        source = "${dotfilesDir}/sketchybar";
+        recursive = true;
+      };
     };
   };
-  
+
   services = {
     jankyborders = {
       enable = true;

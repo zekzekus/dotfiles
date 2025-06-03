@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+sketchybar --bar \
+    height=32 \
+    color=0x66494d64 \
+    margin=0 \
+    sticky=on \
+    padding_left=0 \
+    padding_right=0 \
+    notch_width=188 \
+    position=botton \
+    display=main
+
+
+sketchybar --add item current_space left
+sketchybar --set current_space label="$(date '+%a %b %-d %-H:%M')"
+
+sketchbar --update
