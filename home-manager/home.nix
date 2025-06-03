@@ -59,9 +59,6 @@ in
       nixd
       tree-sitter
       
-      # Applications
-      aerospace
-
     ];
 
     file = {
@@ -70,7 +67,6 @@ in
       ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
       ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
 
-      ".config/aerospace/aerospace.toml".source = "${dotfilesDir}/aerospace/aerospace.toml";
       ".config/ghostty".source = "${dotfilesDir}/ghostty";
       ".config/nvim".source = "${dotfilesDir}/nvim";
       ".config/zed/settings.json".source = "${dotfilesDir}/zed/settings.json";
@@ -208,6 +204,20 @@ in
         bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
         if-shell "test -f ${dotfilesDir}/tmux/tmuxline.gruvbox.conf" "source ${dotfilesDir}/tmux/tmuxline.gruvbox.conf"
       '';
+    };
+
+    aerospace = {
+      enable = true;
+    };
+
+    sketchybar = {
+      enable = true;
+    };
+  };
+  
+  services = {
+    jankyborders = {
+      enable = true;
     };
   };
 }
