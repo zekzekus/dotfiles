@@ -58,6 +58,9 @@ in
       nil
       nixd
       tree-sitter
+      
+      # Applications
+      aerospace
 
     ];
 
@@ -67,6 +70,7 @@ in
       ".hammerspoon".source = "${dotfilesDir}/macosx/hammerspoon";
       ".tmuxinator".source = "${dotfilesDir}/tmuxinator";
 
+      ".config/aerospace/aerospace.toml".source = "${dotfilesDir}/aerospace/aerospace.toml";
       ".config/ghostty".source = "${dotfilesDir}/ghostty";
       ".config/nvim".source = "${dotfilesDir}/nvim";
       ".config/zed/settings.json".source = "${dotfilesDir}/zed/settings.json";
