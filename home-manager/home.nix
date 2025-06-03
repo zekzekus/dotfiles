@@ -265,13 +265,20 @@ in
     };
 
     sketchybar = {
-      enable = true;
+      enable = false;
     };
   };
   
   services = {
     jankyborders = {
       enable = true;
+      settings = {
+        style = "round";
+        width = 6.0;
+        hidpi = "off";
+        active_color = "0xff494d64";
+        inactive_color = "0xffe1e3e4";
+      };
     };
   };
 }
