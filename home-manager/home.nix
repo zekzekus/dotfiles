@@ -232,7 +232,7 @@ in
           inner.horizontal = 10;
           inner.vertical = 10;
           outer.left = 10;
-          outer.bottom = 42;
+          outer.bottom = 10;
           outer.top = 10;
           outer.right = 10;
         };
@@ -284,7 +284,7 @@ in
     };
 
     sketchybar = {
-      enable = true;
+      enable = false;
       config = {
         source = "${dotfilesDir}/sketchybar";
         recursive = true;
