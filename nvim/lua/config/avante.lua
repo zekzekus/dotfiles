@@ -4,11 +4,15 @@ local avante = prequire("avante")
 avante.setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
   provider = "copilot", -- Recommend using Claude
-  claude = {
-    endpoint = "https://api.anthropic.com",
-    model = "claude-3-5-sonnet-20240620",
-    temperature = 0,
-    max_tokens = 4096,
+  providers = {
+    claude = {
+      endpoint = "https://api.anthropic.com",
+      model = "claude-3-5-sonnet-20240620",
+      extra_request_body = {
+        temperature = 0,
+        max_tokens = 4096,
+      },
+    },
   },
   behaviour = {
     auto_suggestions = false, -- Experimental stage
