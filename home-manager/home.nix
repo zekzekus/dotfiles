@@ -228,6 +228,7 @@ in
             ];
           }
         ];
+        accordion-padding = 50;
         gaps = {
           inner.horizontal = 10;
           inner.vertical = 10;
