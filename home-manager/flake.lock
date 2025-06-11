@@ -7,10 +7,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1749483884,
+        "lastModified": 1749649116,
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "74d196c9943a67908d1883f61154e594d03863e5",
+        "rev": "02040b7777f65342b96c7f826a5c6aef95585057",
         "type": "github"
       },
       "original": {
