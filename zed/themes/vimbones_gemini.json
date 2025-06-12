@@ -109,13 +109,13 @@
             "color": "#353535"
           },
           "type": {
-            "color": "#88507D"
+            "color": "#353535"
           },
           "type.builtin": {
-            "color": "#88507D"
+            "color": "#353535"
           },
           "constructor": {
-            "color": "#88507D"
+            "color": "#353535"
           },
           "variable": {
             "color": "#353535"
@@ -133,10 +133,10 @@
             "color": "#3B8992"
           },
           "operator": {
-            "color": "#A8334C"
+            "color": "#353535"
           },
           "preproc": {
-            "color": "#A8334C"
+            "color": "#4F6C31"
           },
           "tag": {
             "color": "#4F6C31"
