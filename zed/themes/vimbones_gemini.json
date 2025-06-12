@@ -109,13 +109,13 @@
             "color": "#353535"
           },
           "type": {
-            "color": "#353535"
+            "color": "#5C5C5C",
           },
           "type.builtin": {
-            "color": "#353535"
+            "color": "#5C5C5C",
           },
           "constructor": {
-            "color": "#353535"
+            "color": "#5C5C5C",
           },
           "variable": {
             "color": "#353535"
@@ -127,22 +127,29 @@
             "color": "#286486"
           },
           "property": {
-            "color": "#353535"
+            "color": "#5C5C5C",
           },
           "punctuation": {
-            "color": "#3B8992"
+            "color": "#5C5C5C"
+          },
+          "punctuation.bracket": {
+            "color": "#5C5C5C"
+          },
+          "punctuation.delimiter": {
+            "color": "#5C5C5C"
           },
           "operator": {
             "color": "#353535"
           },
           "preproc": {
-            "color": "#4F6C31"
+            "color": "#5C5C5C"
           },
           "tag": {
             "color": "#4F6C31"
           },
           "attribute": {
-            "color": "#944927"
+            "color": "#5C5C5C",
+            "font_weight": 700
           },
           "title": {
             "color": "#4F6C31",
