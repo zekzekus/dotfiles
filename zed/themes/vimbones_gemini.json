@@ -109,13 +109,13 @@
             "color": "#353535"
           },
           "type": {
-            "color": "#5C5C5C",
+            "color": "#353535",
           },
           "type.builtin": {
-            "color": "#5C5C5C",
+            "color": "#353535",
           },
           "constructor": {
-            "color": "#5C5C5C",
+            "color": "#353535",
           },
           "variable": {
             "color": "#353535"
@@ -127,7 +127,7 @@
             "color": "#286486"
           },
           "property": {
-            "color": "#5C5C5C",
+            "color": "#353535",
           },
           "punctuation": {
             "color": "#5C5C5C"
@@ -149,7 +149,6 @@
           },
           "attribute": {
             "color": "#5C5C5C",
-            "font_weight": 700
           },
           "title": {
             "color": "#4F6C31",
