@@ -27,6 +27,9 @@
     }
   },
   "format_on_save": "off",
+  "edit_predictions": {
+    "mode": "subtle"
+  },
 
   // UI settings
   "ui_font_size": 16,
