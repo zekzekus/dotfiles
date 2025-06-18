@@ -25,7 +25,6 @@ in
       bfs
       fd
       fzf
-      pngpaste
       ripgrep
       silver-searcher
       universal-ctags
