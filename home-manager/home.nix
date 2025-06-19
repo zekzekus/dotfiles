@@ -51,6 +51,7 @@ in
       uv
 
       # development tools
+      claude-code
       cmake
       devenv
       glibtool
