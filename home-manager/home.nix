@@ -83,6 +83,8 @@ in
     ];
 
     sessionVariables = {
+      NIXPKGS_ALLOW_UNFREE=1;
+
       ZEK_DEVEL_HOME = "${develHome}";
       ZEK_DEFAULT_PROJECT_DIR  = "personal";
       ZEK_DEVEL_WORK_HOME = "${workHome}";
