@@ -1,4 +1,5 @@
 theme = vimbones
+auto-update-channel = tip
 
 font-family = "TX-02"
 font-size = 16
