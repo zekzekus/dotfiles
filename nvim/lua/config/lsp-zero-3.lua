@@ -93,6 +93,10 @@ lspconfig.rust_analyzer.setup({
   cmd = { 'rust-analyzer' },
 })
 
+lspconfig.gopls.setup({
+  cmd = { 'gopls' },
+})
+
 copilot.setup({
   suggestion = {
     enabled = true,
