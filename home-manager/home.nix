@@ -210,14 +210,10 @@ in
 
     aerospace = {
       enable = true;
+      launchd.enable = true;
       userSettings = {
         after-startup-command = [
-          "exec-and-forget sketchybar"
-        ];
-        exec-on-workspace-change = [
-          "/bin/bash"
-          "-c"
-          "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+          "exec-and-forget borders"
         ];
         on-window-detected = [
           {
