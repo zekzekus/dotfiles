@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  jankyborders = import ./jankyborders.nix { };
+}
