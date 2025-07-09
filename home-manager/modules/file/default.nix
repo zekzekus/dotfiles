@@ -6,7 +6,6 @@ in
 {
   ".ctags".source = "${common.dotfilesDir}/ctags/ctags";
   ".doom.d".source = "${common.dotfilesDir}/emacs/doom";
-  ".hammerspoon".source = "${common.dotfilesDir}/macosx/hammerspoon";
   ".tmuxinator".source = "${common.dotfilesDir}/tmuxinator";
 
   ".config/ghostty".source = "${common.dotfilesDir}/ghostty";
