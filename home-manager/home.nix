@@ -5,9 +5,10 @@ let
 in
 {
   home = {
+    stateVersion = "24.11";
+
     username = "${common.username}";
     homeDirectory = "${common.homeDir}";
-    stateVersion = "24.11";
 
     packages = import ./modules/packages { inherit pkgs; };
     file = import ./modules/file { };
