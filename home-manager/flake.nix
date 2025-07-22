@@ -7,16 +7,25 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, ... }:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [
+        neovim-nightly-overlay.overlays.default
+      ];
     in {
       homeConfigurations."zekus" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [
+          {
+            nixpkgs.overlays = overlays;
+          }
+          ./home.nix
+        ];
       };
     };
 }
