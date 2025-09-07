@@ -3,7 +3,7 @@
 with pkgs; [
   # editors
   neovim
-  emacs
+  # emacs
 
   # terminal tools
   bfs
