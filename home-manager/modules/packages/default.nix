@@ -29,6 +29,7 @@ with pkgs; [
   deno
   go
   nodejs_24
+  pnpm
   python313
   python313Packages.pip
   ruby_3_4
