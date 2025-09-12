@@ -19,7 +19,7 @@ with pkgs; [
   git
   git-extras
   mercurial
-  jujutsu
+  # jujutsu
   tig
 
   # language runtimes, compilers, interpreters, CLIs
@@ -36,7 +36,7 @@ with pkgs; [
   uv
 
   # development tools
-  claude-code
+  # claude-code
   cmake
   devenv
   glibtool
