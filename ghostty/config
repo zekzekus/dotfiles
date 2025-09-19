@@ -1,9 +1,7 @@
-theme = vimbones
-auto-update-channel = tip
+theme = Vimbones
 
 font-family = "TX-02"
-font-size = 16
-font-thicken = true
+font-size = 12
 
 macos-titlebar-style = "tabs"
 window-padding-balance = true

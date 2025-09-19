@@ -2,7 +2,7 @@
 
 let
   username = "zekus";
-  homeDir = "/Users/${username}";
+  homeDir = "/home/${username}";
   dotfilesDir = "${homeDir}/devel/tools/dotfiles";
   develHome = "${homeDir}/devel/projects";
   defaultProjectDir = "personal";

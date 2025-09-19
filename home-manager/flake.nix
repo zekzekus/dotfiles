@@ -12,7 +12,7 @@
 
   outputs = { nixpkgs, home-manager, neovim-nightly-overlay, ... }:
     let
-      system = "aarch64-darwin";
+      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       overlays = [
         neovim-nightly-overlay.overlays.default
