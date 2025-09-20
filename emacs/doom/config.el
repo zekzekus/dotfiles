@@ -34,7 +34,7 @@
 (setq shell-file-name (executable-find "bash"))
 (setq-default vterm-shell (executable-find "fish"))
 (global-auto-revert-mode 1)
-(rainbow-delimiters-mode -1)
+;; (rainbow-delimiters-mode -1)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
