@@ -7,7 +7,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd[[colorscheme vimbones]]
+      vim.cmd[[colorscheme neobones]]
     end
   },
 

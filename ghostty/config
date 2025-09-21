@@ -1,4 +1,4 @@
-theme = Vimbones
+config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 font-family = "TX-02"
 font-size = 12
