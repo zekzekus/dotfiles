@@ -20,11 +20,11 @@ local function custom_root_pattern(opt)
   local not_root_pattern = opt.not_root
 
   local function matches(path, pattern)
-    return 0 < #vim.fn.glob(lspconfig.util.path.join(path, pattern))
+    return 0 < #vim.fn.glob(vim.lsp.config.util.path.join(path, pattern))
   end
 
   return function(startpath)
-    local not_root = lspconfig.util.search_ancestors(startpath, function(path)
+    local not_root = vim.lsp.config.util.search_ancestors(startpath, function(path)
       return matches(path, not_root_pattern)
     end)
     if not_root ~= nil then
@@ -32,7 +32,7 @@ local function custom_root_pattern(opt)
       -- do not try given root and do not attach this server at all
       return false
     end
-    return lspconfig.util.search_ancestors(startpath, function(path)
+    return vim.lsp.config.util.search_ancestors(startpath, function(path)
       return matches(path, root)
     end)
   end
@@ -72,28 +72,28 @@ mason_lspconfig.setup({
   handlers = {
     lsp_zero.default_setup,
     ts_ls = function()
-      lspconfig.ts_ls.setup({
+      vim.lsp.config('ts_ls', {
         root_dir = custom_root_pattern({root='package.json', not_root='deno.json?'}),
         single_file_support = false
       })
     end,
     denols = function()
-      lspconfig.denols.setup({
-        root_dir = lspconfig.util.root_pattern('deno.json')
+      vim.lsp.config('denols', {
+        root_dir = vim.lsp.config.util.root_pattern('deno.json')
       })
     end,
   }
 })
 
-lspconfig.hls.setup({
+vim.lsp.config('hls', {
   cmd = {'nix', 'run', '.#hls', '--', '--lsp'},
 })
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
   cmd = { 'rust-analyzer' },
 })
 
-lspconfig.gopls.setup({
+vim.lsp.config('gopls', {
   cmd = { 'gopls' },
 })
 
