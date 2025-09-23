@@ -28,5 +28,3 @@ opt.shortmess:remove('F')
 opt.laststatus = 3
 opt.updatetime = 1000
 opt.wrap = false
-
-vim.diagnostic.config({ virtual_text = false })

@@ -73,30 +73,6 @@ return {
   },
 
   {
-    'VonHeikemen/lsp-zero.nvim',
-    event = { 'VeryLazy' },
-    branch = 'v3.x',
-    config = function() require('config.lsp-zero-3') end,
-    dependencies = {
-      {'neovim/nvim-lspconfig'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
-      { 'nvimdev/lspsaga.nvim' },
-
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
-      {'zbirenbaum/copilot-cmp'},
-      {'zbirenbaum/copilot.lua'},
-
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
-    }
-  },
-
-  {
     'NeogitOrg/neogit',
     branch = 'master',
     dependencies = {
