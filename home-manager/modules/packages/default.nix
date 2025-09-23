@@ -19,7 +19,7 @@ with pkgs; [
   git
   git-extras
   mercurial
-  # jujutsu
+  jujutsu
   tig
 
   # language runtimes, compilers, interpreters, CLIs
