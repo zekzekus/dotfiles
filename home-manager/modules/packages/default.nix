@@ -40,8 +40,10 @@ with pkgs; [
   cmake
   devenv
   glibtool
+  tree-sitter
+
+  # language servers
   lua-language-server
   nil
   nixd
-  tree-sitter
 ]
