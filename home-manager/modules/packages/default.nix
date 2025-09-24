@@ -3,6 +3,7 @@
 with pkgs; [
   # editors
   neovim
+  helix
   # emacs
 
   # terminal tools
