@@ -84,4 +84,21 @@ return {
     config = true
   },
 
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'rafamadriz/friendly-snippets',
+      'zbirenbaum/copilot-cmp',
+      'zbirenbaum/copilot.lua',
+    },
+    config = function() require('config.cmp') end,
+  }
+
 }
