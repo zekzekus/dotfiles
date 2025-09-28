@@ -85,20 +85,25 @@ return {
   },
 
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
-      'rafamadriz/friendly-snippets',
-      'zbirenbaum/copilot-cmp',
-      'zbirenbaum/copilot.lua',
+    'saghen/blink.cmp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    version = '1.*',
+    opts = {
+      keymap = { preset = 'default' },
+
+      appearance = {
+        nerd_font_variant = 'mono'
+      },
+
+      completion = { documentation = { auto_show = false } },
+
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-    config = function() require('config.cmp') end,
-  }
+    opts_extend = { "sources.default" }
+  },
 
 }
