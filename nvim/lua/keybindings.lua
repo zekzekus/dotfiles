@@ -53,8 +53,8 @@ local others = {
   name = 'Others',
   prefix = '<leader>',
   { '<space>', [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
-  { 'dd',      [[<cmd>lua vim.diagnostic.config({virtual_text = false})<cr>]]},
-  { 'de',      [[<cmd>lua vim.diagnostic.config({virtual_text = true})<cr>]]},
+  { 'dd',      [[<cmd>Telescope diagnostics bufnr=0 previewer=false<cr>]]},
+  { 'dD',      [[<cmd>Telescope diagnostics<cr>]]},
   { 'qq',      [[<cmd>SmartClose<cr>]] },
   { 'V',       'V`]' },
 }
