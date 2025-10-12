@@ -52,7 +52,7 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Vimbones Gemini",
-    "dark": "Vimbones Gemini"
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark"
   }
 }
