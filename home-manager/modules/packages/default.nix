@@ -33,6 +33,7 @@ with pkgs; [
   pnpm
   python313
   python313Packages.pip
+  python313Packages.pynvim
   ruby_3_4
   uv
 

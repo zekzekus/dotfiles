@@ -28,3 +28,4 @@ opt.shortmess:remove('F')
 opt.laststatus = 3
 opt.updatetime = 1000
 opt.wrap = false
+opt.pumborder = 'single'
