@@ -7,6 +7,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      vim.g.neobones = { italic_strings = false, italic_comments = false }
       vim.cmd[[colorscheme neobones]]
     end
   },
