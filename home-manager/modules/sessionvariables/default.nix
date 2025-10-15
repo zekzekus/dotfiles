@@ -1,7 +1,7 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
-  common = import ../common.nix { };
+  common = import ../common.nix { inherit pkgs; };
 in
 {
   NIXPKGS_ALLOW_UNFREE = 1;

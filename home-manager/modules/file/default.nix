@@ -1,7 +1,7 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
-  common = import ../common.nix { };
+  common = import ../common.nix { inherit pkgs; };
 in
 {
   ".ctags".source = "${common.dotfilesDir}/ctags/ctags";

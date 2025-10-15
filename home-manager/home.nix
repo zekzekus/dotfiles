@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  common = import ./modules/common.nix { };
+  common = import ./modules/common.nix { inherit pkgs; };
 in
 {
   home = {
@@ -11,9 +11,9 @@ in
     homeDirectory = "${common.homeDir}";
 
     packages = import ./modules/packages { inherit pkgs; };
-    file = import ./modules/file { };
+    file = import ./modules/file { inherit pkgs; };
     sessionPath = import ./modules/sessionpath { };
-    sessionVariables = import ./modules/sessionvariables { };
+    sessionVariables = import ./modules/sessionvariables { inherit pkgs; };
   };
 
   programs = import ./modules/programs { inherit pkgs; };

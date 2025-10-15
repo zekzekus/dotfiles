@@ -1,0 +1,218 @@
+#!/usr/bin/env bash
+# Home Manager convenience wrapper script
+# Usage: ./hm [command] [host]
+
+set -euo pipefail
+
+# Configuration
+FLAKE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEFAULT_USER="zekus"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Helper functions
+print_info() {
+    echo -e "${BLUE}ℹ${NC} $1"
+}
+
+print_success() {
+    echo -e "${GREEN}✓${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}✗${NC} $1"
+}
+
+print_usage() {
+    cat << EOF
+Home Manager Wrapper Script
+
+Usage: $0 <command> [host]
+
+Commands:
+    switch [host]       Switch to configuration (activate changes)
+    build [host]        Build configuration without activating
+    check               Validate flake configuration
+    update              Update flake inputs (nixpkgs, home-manager, etc.)
+    generations         List all generations
+    rollback            Rollback to previous generation
+    gc [days]           Garbage collect (default: 7 days)
+    list                List available host configurations
+    help                Show this help message
+
+Hosts:
+    linux-machine       Linux configuration
+    mac-machine         macOS configuration
+    auto                Auto-detect based on current hostname (default)
+
+Examples:
+    $0 switch                    # Auto-detect host and switch
+    $0 switch linux-machine      # Switch to linux-machine config
+    $0 build mac-machine         # Build mac config without activating
+    $0 update                    # Update all flake inputs
+    $0 gc 30                     # Remove generations older than 30 days
+
+Environment Variables:
+    HM_HOST             Override host detection (e.g., HM_HOST=linux-machine)
+    HM_USER             Override username (default: $DEFAULT_USER)
+
+EOF
+}
+
+# Detect current host
+detect_host() {
+    local current_hostname
+    current_hostname=$(hostname -s 2>/dev/null || hostname)
+    
+    # Check if hostname matches a known configuration
+    if [[ -f "$FLAKE_DIR/hosts/${current_hostname}.nix" ]]; then
+        echo "$current_hostname"
+    else
+        # Default based on OS
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            echo "mac-machine"
+        else
+            echo "linux-machine"
+        fi
+    fi
+}
+
+# Get host configuration
+get_host() {
+    local host="${1:-}"
+    
+    # Check environment variable
+    if [[ -n "${HM_HOST:-}" ]]; then
+        echo "$HM_HOST"
+        return
+    fi
+    
+    # Check argument
+    if [[ -n "$host" && "$host" != "auto" ]]; then
+        echo "$host"
+        return
+    fi
+    
+    # Auto-detect
+    detect_host
+}
+
+# Get user
+get_user() {
+    echo "${HM_USER:-$DEFAULT_USER}"
+}
+
+# Build flake reference
+build_flake_ref() {
+    local host="$1"
+    local user="$2"
+    echo "${FLAKE_DIR}#${user}@${host}"
+}
+
+# List available configurations
+list_hosts() {
+    print_info "Available host configurations:"
+    echo
+    
+    for host_file in "$FLAKE_DIR/hosts"/*.nix; do
+        if [[ -f "$host_file" ]]; then
+            local host
+            host=$(basename "$host_file" .nix)
+            
+            # Determine platform
+            local platform="unknown"
+            if grep -q "platform/linux.nix" "$host_file" 2>/dev/null; then
+                platform="Linux"
+            elif grep -q "platform/darwin.nix" "$host_file" 2>/dev/null; then
+                platform="macOS"
+            fi
+            
+            echo "  • $host ($platform)"
+        fi
+    done
+    echo
+    
+    print_info "Current auto-detected host: $(detect_host)"
+}
+
+# Main command handling
+case "${1:-help}" in
+    switch)
+        host=$(get_host "${2:-}")
+        user=$(get_user)
+        flake_ref=$(build_flake_ref "$host" "$user")
+        
+        print_info "Switching to configuration: $user@$host"
+        home-manager switch --flake "$flake_ref"
+        print_success "Successfully switched to $user@$host"
+        ;;
+        
+    build)
+        host=$(get_host "${2:-}")
+        user=$(get_user)
+        flake_ref=$(build_flake_ref "$host" "$user")
+        
+        print_info "Building configuration: $user@$host"
+        home-manager build --flake "$flake_ref"
+        print_success "Successfully built $user@$host"
+        ;;
+        
+    check)
+        print_info "Checking flake configuration..."
+        cd "$FLAKE_DIR"
+        nix flake check
+        print_success "Flake configuration is valid"
+        ;;
+        
+    update)
+        print_info "Updating flake inputs..."
+        cd "$FLAKE_DIR"
+        nix flake update
+        print_success "Flake inputs updated"
+        print_warning "Run '$0 switch' to apply updates"
+        ;;
+        
+    generations)
+        print_info "Home Manager generations:"
+        home-manager generations
+        ;;
+        
+    rollback)
+        print_warning "Rolling back to previous generation..."
+        home-manager switch --rollback
+        print_success "Rolled back to previous generation"
+        ;;
+        
+    gc)
+        days="${2:-7}"
+        print_warning "Removing generations older than $days days..."
+        home-manager expire-generations "-${days} days"
+        print_info "Running garbage collection..."
+        nix-collect-garbage -d
+        print_success "Garbage collection complete"
+        ;;
+        
+    list)
+        list_hosts
+        ;;
+        
+    help|--help|-h)
+        print_usage
+        ;;
+        
+    *)
+        print_error "Unknown command: $1"
+        echo
+        print_usage
+        exit 1
+        ;;
+esac
