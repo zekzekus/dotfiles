@@ -8,7 +8,6 @@ in
   ".doom.d".source = "${common.dotfilesDir}/emacs/doom";
   ".tmuxinator".source = "${common.dotfilesDir}/tmuxinator";
 
-  ".config/ghostty".source = "${common.dotfilesDir}/ghostty";
   ".config/nvim".source = "${common.dotfilesDir}/nvim";
   ".config/zed/settings.json".source = "${common.dotfilesDir}/zed/settings.json";
   ".config/zed/themes".source = "${common.dotfilesDir}/zed/themes";

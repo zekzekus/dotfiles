@@ -1,26 +1,25 @@
 { pkgs, ... }:
 
+let
+  common = import ../common.nix { inherit pkgs; };
+in
 {
-  # Linux-specific home-manager configuration
-
-  # Programs that are Linux-only or have Linux-specific configuration
   programs = {
-    # bash is disabled on Linux (fish is primary shell)
     bash.enable = false;
   };
 
-  # Linux-specific packages
-  home.packages = with pkgs; [
-    # Add Linux-specific packages here if needed
-  ];
+  home = {
+    packages = with pkgs; [
+    ];
 
-  # Linux-specific services
-  services = {
-    # systemd user services can be defined here
+    file = {
+      ".config/ghostty".source = "${common.dotfilesDir}/ghostty";
+    };
   };
 
-  # Linux-specific environment
+  services = {
+  };
+
   home.sessionVariables = {
-    # Linux-specific environment variables
   };
 }
