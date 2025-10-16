@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 with pkgs; [
   # editors
@@ -48,7 +48,4 @@ with pkgs; [
   lua-language-server
   nil
   nixd
-]
-++ lib.optionals stdenv.isDarwin [
-  glibtool
 ]

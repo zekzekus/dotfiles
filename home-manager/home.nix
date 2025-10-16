@@ -1,10 +1,10 @@
-{ pkgs, common, lib, ... }:
+{ pkgs, common, ... }:
 
 {
   home = {
     stateVersion = "24.11";
 
-    packages = import ./modules/packages { inherit pkgs lib; };
+    packages = import ./modules/packages { inherit pkgs; };
   };
 
   home.file = import ./modules/file { inherit common; };
