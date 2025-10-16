@@ -20,15 +20,26 @@
         let
           pkgs = import nixpkgs {
             inherit system;
+            overlays = overlays;
             config.allowUnfree = true;
+          };
+          homeDir = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+          common = {
+            inherit username homeDir;
+            dotfilesDir = "${homeDir}/devel/tools/dotfiles";
+            develHome = "${homeDir}/devel/projects";
+            defaultProjectDir = "personal";
+            workHome = "${homeDir}/devel/projects/personal";
+            personalHome = "${homeDir}/devel/projects/personal";
           };
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { inherit common; };
           modules = [
             {
-              nixpkgs.overlays = overlays;
-              nixpkgs.config.allowUnfree = true;
+              home.username = common.username;
+              home.homeDirectory = common.homeDir;
             }
             ./hosts/${hostname}.nix
           ];

@@ -1,15 +1,12 @@
-{ pkgs, ... }:
+{ common, ... }:
 
-let
-  common = import ../common.nix { inherit pkgs; };
-in
 {
   NIXPKGS_ALLOW_UNFREE = 1;
 
-  ZEK_DEVEL_HOME = "${common.develHome}";
+  ZEK_DEVEL_HOME = common.develHome;
   ZEK_DEFAULT_PROJECT_DIR = "personal";
-  ZEK_DEVEL_WORK_HOME = "${common.workHome}";
-  ZEK_DEVEL_PERSONAL_HOME = "${common.personalHome}";
+  ZEK_DEVEL_WORK_HOME = common.workHome;
+  ZEK_DEVEL_PERSONAL_HOME = common.personalHome;
 
   EDITOR = "nvim";
   MANPAGER = "nvim +Man!";

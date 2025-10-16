@@ -1,8 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, common, ... }:
 
-let
-  common = import ../common.nix { inherit pkgs; };
-in
 {
   programs = {
     bash.enable = false;

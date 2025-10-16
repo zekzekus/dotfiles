@@ -1,22 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, common, lib, ... }:
 
-let
-  common = import ./modules/common.nix { inherit pkgs; };
-in
 {
   home = {
     stateVersion = "24.11";
 
-    username = "${common.username}";
-    homeDirectory = "${common.homeDir}";
-
-    packages = import ./modules/packages { inherit pkgs; };
-    file = import ./modules/file { inherit pkgs; };
-    sessionPath = import ./modules/sessionpath { };
-    sessionVariables = import ./modules/sessionvariables { inherit pkgs; };
+    packages = import ./modules/packages { inherit pkgs lib; };
   };
 
-  programs = import ./modules/programs { inherit pkgs; };
+  home.file = import ./modules/file { inherit common; };
+  home.sessionPath = import ./modules/sessionpath { inherit common; };
+  home.sessionVariables = import ./modules/sessionvariables { inherit common; };
+
+  programs = import ./modules/programs { inherit pkgs common; };
 
   services = import ./modules/services { };
 }

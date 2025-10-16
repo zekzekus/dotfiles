@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, common, ... }:
 
 {
   programs = {
     bash.enable = true;
     
-    aerospace = import ../programs/aerospace.nix { inherit pkgs; };
-    sketchybar = import ../programs/sketchybar.nix { inherit pkgs; };
+    aerospace = import ../programs/aerospace.nix { inherit pkgs common; };
+    sketchybar = import ../programs/sketchybar.nix { inherit pkgs common; };
   };
 
   home = {
@@ -14,7 +14,7 @@
   };
 
   services = {
-    jankyborders = import ../services/jankyborders.nix { inherit pkgs; };
+    jankyborders = import ../services/jankyborders.nix { inherit pkgs common; };
   };
 
   home.sessionVariables = {

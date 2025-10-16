@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 with pkgs; [
   # editors
@@ -42,11 +42,13 @@ with pkgs; [
   # claude-code
   cmake
   devenv
-  glibtool
   tree-sitter
 
   # language servers
   lua-language-server
   nil
   nixd
+]
+++ lib.optionals stdenv.isDarwin [
+  glibtool
 ]
