@@ -7,7 +7,12 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.neobones = { italic_strings = false, italic_comments = false }
+      vim.g.neobones = {
+        italic_strings = false,
+        italic_comments = false,
+        solid_line_nr = true,
+        solid_float_border = true,
+      }
       vim.cmd[[colorscheme neobones]]
     end
   },
@@ -109,7 +114,7 @@ return {
 
   {
     "sourcegraph/amp.nvim",
-    branch = "main", 
+    branch = "main",
     lazy = false,
     opts = { auto_start = true, log_level = "info" },
   },
