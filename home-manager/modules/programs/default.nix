@@ -8,4 +8,14 @@
   fish = import ./fish.nix { inherit pkgs common; };
   starship = import ./starship.nix { inherit pkgs common; };
   tmux = import ./tmux.nix { inherit pkgs common; };
+
+  zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  nix-your-shell = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }
