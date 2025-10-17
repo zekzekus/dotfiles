@@ -7,11 +7,12 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.zenwritten = {
+      vim.g.neobones = {
         solid_line_nr = true,
         solid_float_border = true,
+        italic_strings = false,
       }
-      vim.cmd[[colorscheme zenwritten]]
+      vim.cmd[[colorscheme neobones]]
     end
   },
 
