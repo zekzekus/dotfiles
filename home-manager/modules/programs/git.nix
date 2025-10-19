@@ -3,7 +3,7 @@
 {
   enable = true;
   signing.key = "6716516470AD2D7A";
-  signing.signByDefault = true;
+  signing.signByDefault = false;
 
   settings = {
     user.name = "Zekeriya Koc";
