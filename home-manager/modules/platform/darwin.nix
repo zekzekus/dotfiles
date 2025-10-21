@@ -11,7 +11,7 @@
       enable = true;
       package = pkgs.ghostty-bin;
       settings = {
-        theme = "vimbones";
+        theme = "light:Neobones Light,dark:Neobones Dark";
         font-family = "TX-02";
         font-size = 16;
         font-thicken = true;
