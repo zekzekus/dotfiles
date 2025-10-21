@@ -1,9 +1,9 @@
-{ common, ... }:
+{ pkgs, common, ... }:
 
 {
   enable = true;
   signing.key = "6716516470AD2D7A";
-  signing.signByDefault = true;
+  signing.signByDefault = if pkgs.stdenv.isDarwin then false else true;
 
   settings = {
     user.name = "Zekeriya Koc";
