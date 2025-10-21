@@ -31,6 +31,10 @@
     packages = with pkgs; [
       glibtool
     ];
+
+    file = {
+      ".config/karabiner".source = "${common.dotfilesDir}/misc/macosx/karabiner";
+    };
   };
 
   services = {
