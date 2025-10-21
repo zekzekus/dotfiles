@@ -11,6 +11,7 @@
       enable = true;
       package = pkgs.ghostty-bin;
       settings = {
+        theme = "vimbones";
         font-family = "TX-02";
         font-size = 16;
         macos-titlebar-style = "tabs";
