@@ -4,6 +4,7 @@
   enable = true;
   package = pkgs.ghostty-bin;
   settings = {
+    auto-update-channel = "tip";
     theme = "light:Neobones Light,dark:Neobones Dark";
     font-family = "TX-02";
     font-size = 17;
