@@ -48,4 +48,7 @@ with pkgs; [
   lua-language-server
   nil
   nixd
+
+  chafa
+  viu
 ]
