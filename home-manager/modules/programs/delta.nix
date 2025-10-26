@@ -2,7 +2,7 @@
 
 {
   enable = true;
-  enableGitIntegration = true;
+  # enableGitIntegration = true;
   options = {
     navigate = true;
     light = false;
