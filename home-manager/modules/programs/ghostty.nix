@@ -7,7 +7,7 @@
     auto-update-channel = "tip";
     theme = "light:Neobones Light,dark:Neobones Dark";
     font-family = "TX-02";
-    font-size = 17;
+    font-size = 16;
     font-thicken = true;
     macos-titlebar-style = "tabs";
     window-padding-balance = true;
