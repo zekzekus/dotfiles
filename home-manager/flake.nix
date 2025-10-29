@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, ... }:
+  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, ... }:
     let
       overlays = [
         neovim-nightly-overlay.overlays.default
@@ -70,6 +71,7 @@
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            determinate.nixosModules.default
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
