@@ -49,6 +49,16 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  # GNOME settings
+  programs.dconf.enable = true;
+  programs.dconf.profiles.user.databases = [{
+    settings = {
+      "org/gnome/mutter" = {
+        experimental-features = [ "scale-monitor-framebuffer" ];
+      };
+    };
+  }];
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "tr";
