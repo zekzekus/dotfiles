@@ -1,10 +1,8 @@
 { common, ... }:
 
 {
-  NIXPKGS_ALLOW_UNFREE = 1;
-
   ZEK_DEVEL_HOME = common.develHome;
-  ZEK_DEFAULT_PROJECT_DIR = "personal";
+  ZEK_DEFAULT_PROJECT_DIR = common.defaultProjectDir;
   ZEK_DEVEL_WORK_HOME = common.workHome;
   ZEK_DEVEL_PERSONAL_HOME = common.personalHome;
 
