@@ -1,7 +1,7 @@
 .PHONY: help home home-build nixos nixos-build update check clean
 
 USER := $(shell whoami)
-HOST := $(shell hostname)
+HOST := $(shell hostname -s)
 FLAKE := ./home-manager
 
 help:
