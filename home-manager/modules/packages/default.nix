@@ -10,6 +10,7 @@ with pkgs; [
   bfs
   fd
   fzf
+  gnupg
   ripgrep
   silver-searcher
   universal-ctags
