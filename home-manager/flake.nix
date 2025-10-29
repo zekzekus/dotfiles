@@ -44,8 +44,10 @@
               home.username = common.username;
               home.homeDirectory = common.homeDir;
             }
+            ./home.nix
             ./hosts/${hostname}
-          ];
+          ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./modules/platform/darwin.nix
+            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./modules/platform/linux.nix;
         };
 
     in
