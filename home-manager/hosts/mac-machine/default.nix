@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../home.nix
-    ../modules/platform/darwin.nix
+    ../../home.nix
+    ../../modules/platform/darwin.nix
   ];
 
   # Host-specific overrides can go here
