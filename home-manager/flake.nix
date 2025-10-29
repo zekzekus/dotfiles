@@ -41,7 +41,7 @@
               home.username = common.username;
               home.homeDirectory = common.homeDir;
             }
-            ./hosts/${hostname}.nix
+            ./hosts/${hostname}
           ];
         };
 
@@ -58,6 +58,37 @@
           hostname = "mac-machine";
         };
 
+        "zekus@nixos" = mkHomeConfiguration {
+          system = "x86_64-linux";
+          hostname = "nixos";
+        };
+      };
+
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              nixpkgs.overlays = overlays;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.zekus = import ./hosts/nixos;
+              home-manager.extraSpecialArgs = {
+                common = {
+                  username = "zekus";
+                  homeDir = "/home/zekus";
+                  dotfilesDir = "/home/zekus/devel/tools/dotfiles";
+                  develHome = "/home/zekus/devel/projects";
+                  defaultProjectDir = "personal";
+                  workHome = "/home/zekus/devel/projects/personal";
+                  personalHome = "/home/zekus/devel/projects/personal";
+                };
+              };
+            }
+          ];
+        };
       };
     };
 }
