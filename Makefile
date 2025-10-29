@@ -22,7 +22,7 @@ help:
 
 home:
 	@echo "Switching home-manager for $(USER)@$(HOST)..."
-	home-manager switch --flake $(FLAKE)#$(USER)@$(HOST) --impure
+	home-manager switch --impure --flake $(FLAKE)#$(USER)@$(HOST)
 
 home-build:
 	@echo "Building home-manager for $(USER)@$(HOST)..."
@@ -31,7 +31,7 @@ home-build:
 nixos:
 	@if [ -f /etc/NIXOS ]; then \
 		echo "Rebuilding NixOS system $(HOST)..."; \
-		sudo nixos-rebuild switch --flake $(FLAKE)#$(HOST); \
+		sudo nixos-rebuild switch --impure --flake $(FLAKE)#$(HOST); \
 	else \
 		echo "Error: Not a NixOS system"; \
 		exit 1; \
