@@ -56,6 +56,9 @@
       "org/gnome/mutter" = {
         experimental-features = [ "scale-monitor-framebuffer" ];
       };
+      "org/gnome/desktop/peripherals/mouse" = {
+        natural-scroll = true;
+      };
     };
   }];
 

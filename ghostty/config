@@ -22,3 +22,5 @@ keybind = ctrl+alt+l=resize_split:right,20
 
 macos-option-as-alt = left
 macos-shortcuts = allow
+
+maximize = true
