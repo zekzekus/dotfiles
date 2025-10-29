@@ -11,4 +11,5 @@
   #   home.packages = with pkgs; [ virt-manager ];
   #   programs.git.userEmail = "nixos@example.com";
   #   home.sessionVariables.NIXOS_MACHINE = "true";
+  programs.chromium.enable = true;
 }
