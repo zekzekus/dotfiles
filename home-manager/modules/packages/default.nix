@@ -39,6 +39,7 @@ with pkgs; [
   uv
 
   # development tools
+  gcc
   amp-cli
   # claude-code
   cmake
