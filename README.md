@@ -18,13 +18,14 @@ This repository manages configurations for multiple machines using a unified Nix
 │   ├── flake.nix              # Main flake configuration
 │   ├── home.nix               # Shared home-manager config
 │   ├── hosts/
-│   │   ├── mac-machine.nix    # macOS host
-│   │   ├── zomarchy.nix       # Linux host
-│   │   └── nixos/             # NixOS host
+│   │   ├── mac-machine/       # macOS host configuration
+│   │   ├── zomarchy/          # Linux host configuration
+│   │   └── nixos/             # NixOS host configuration
 │   │       ├── configuration.nix
 │   │       ├── hardware-configuration.nix
 │   │       └── default.nix
-│   └── modules/               # Shared modules
+│   ├── modules/               # Shared modules
+│   └── darwin/                # macOS-specific modules
 └── Makefile                   # Convenience commands
 ```
 
@@ -109,11 +110,26 @@ The Makefile auto-detects your username and hostname:
 - `make check` - Check flake validity
 - `make clean` - Clean build artifacts
 
+## Flake Configuration Details
+
+The flake uses:
+- `nixpkgs` (nixos-unstable)
+- `home-manager` from nix-community
+- `neovim-nightly-overlay` for latest Neovim builds
+- `determinate` for Determinate Systems integration (NixOS)
+
+Available configurations:
+- `homeConfigurations."zekus@mac-machine"` - macOS (aarch64-darwin)
+- `homeConfigurations."zekus@zomarchy"` - Linux (x86_64-linux)
+- `homeConfigurations."zekus@nixos"` - NixOS home-manager integration (x86_64-linux)
+- `nixosConfigurations.nixos` - Full NixOS system (x86_64-linux)
+
 ## Adding a New Host
 
 1. For macOS/Linux:
    ```bash
-   cp home-manager/hosts/zomarchy.nix home-manager/hosts/<hostname>.nix
+   mkdir -p home-manager/hosts/<hostname>
+   # Add your configuration files
    ```
 
 2. For NixOS:
