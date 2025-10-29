@@ -17,5 +17,6 @@
     quit-after-last-window-closed = true;
     macos-option-as-alt = "left";
     macos-shortcuts = "allow";
+    maximize = true;
   };
 }
