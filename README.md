@@ -1,109 +1,140 @@
-# My Personal Configuration Files
+# Dotfiles
 
-## Nix
+Multi-machine configuration using Nix flakes and Home Manager.
 
-Now I am trying to manage my dotfiles using [Nix](https://nix.dev) and [Home Manager](https://nix-community.github.io/home-manager/index.xhtml)!
+## Overview
 
-In theory, it supposed to be a single command after installing Nix successfully. I am using [Determinated Nix](https://determinate.systems/nix) but vanilla Nix should work just fine.
+This repository manages configurations for multiple machines using a unified Nix flake:
 
-        $ cd home-manager
-        $ nix run .#homeConfigurations.zekus.activationPackage switch --impure
+- **macOS** - Home Manager standalone
+- **Linux** - Home Manager standalone  
+- **NixOS** - Full system + Home Manager integration
 
-After first run, after every config change:
+## Structure
 
-        $ home-manager switch --impure
+```
+.
+├── home-manager/
+│   ├── flake.nix              # Main flake configuration
+│   ├── home.nix               # Shared home-manager config
+│   ├── hosts/
+│   │   ├── mac-machine.nix    # macOS host
+│   │   ├── zomarchy.nix       # Linux host
+│   │   └── nixos/             # NixOS host
+│   │       ├── configuration.nix
+│   │       ├── hardware-configuration.nix
+│   │       └── default.nix
+│   └── modules/               # Shared modules
+└── Makefile                   # Convenience commands
+```
 
-## NEOVIM
+## Setup Instructions
 
-* Fully (almost) configured with lua
-* I use latest HEAD build of Neovim
-* Package manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
-* Main static language support comes from builtin treesitter (WARNING: Installs for no language. Do not forget to install for your favorite languages)
-* Dynamic language support comes from builtin LSP client
-* [Mason](https://github.com/williamboman/mason.nvim) to install language servers (any language server installed with mason will be initialized when needed)
-* [Keybindings](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/keybindings.lua)
-* Additional keybindings when a LSP client attached: [here](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/config/lsp-zero.lua)
-* [Plugins](https://github.com/zekzekus/dotfiles/blob/master/nvim/lua/plugins.lua)
+### macOS
 
-## VIM
+1. Install Nix:
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   ```
 
-* Much simpler compared to my Neovim configuration
-* I always use latest HEAD build of Vim
-* Package manager: [vim.plug](https://github.com/junegunn/vim-plug)
-* Static language support comes from [polyglot](https://github.com/sheerun/vim-polyglot)
+2. Clone this repository:
+   ```bash
+   git clone <repo-url> ~/devel/tools/dotfiles
+   cd ~/devel/tools/dotfiles
+   ```
 
-### Installation (might be outdated or missing information)
+3. Apply configuration:
+   ```bash
+   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@mac-machine
+   ```
 
-#### MacOS
+4. Subsequent updates:
+   ```bash
+   make home
+   ```
 
-* Install `Neovim` (I prefer HEAD).
-        
-        $ brew install neovim --HEAD
+### Linux (non-NixOS)
 
-* For Neovim it is recommended to use separated virtual python environments for editor's own needs (I use Fish shell and virtualfish). For any shell, these virtual environments must be located under `~/.virtualenvs/`.
+1. Install Nix:
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   ```
 
-        $ vf new --python=python3 neovim3
-        (neovim3) $ pip install pynvim
+2. Clone this repository:
+   ```bash
+   git clone <repo-url> ~/devel/tools/dotfiles
+   cd ~/devel/tools/dotfiles
+   ```
 
-* Clone repository to any place you prefer.
+3. Apply configuration:
+   ```bash
+   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@zomarchy
+   ```
 
-        $ git clone https://github.com/zekzekus/dotfiles.git
+4. Subsequent updates:
+   ```bash
+   make home
+   ```
 
-* Create symbolic links.
+### NixOS
 
-        $ cd $HOME
-        $ cd .config
-        $ ln -s /path/to/dotfiles/nvim .
+1. Clone this repository:
+   ```bash
+   git clone <repo-url> ~/devel/tools/dotfiles
+   cd ~/devel/tools/dotfiles
+   ```
 
-* Create necessary directories.
+2. Rebuild system:
+   ```bash
+   sudo nixos-rebuild switch --impure --flake ./home-manager#nixos
+   ```
+   
+   Or use the Makefile:
+   ```bash
+   make nixos
+   ```
 
-        $ cd $HOME
-        $ mkdir .nvimtmp
+3. Home Manager is integrated automatically via the NixOS module.
 
-* First run will give errors. Ignore them.
+## Makefile Commands
 
-        $ nvim
+The Makefile auto-detects your username and hostname:
 
-* execute `:Lazy install` command.
+- `make` or `make help` - Show available commands
+- `make home` - Switch home-manager configuration
+- `make home-build` - Build home-manager (dry-run)
+- `make nixos` - Rebuild NixOS system (NixOS only)
+- `make nixos-build` - Build NixOS without switching
+- `make update` - Update flake inputs
+- `make check` - Check flake validity
+- `make clean` - Clean build artifacts
 
-* Install necessary OS packages.
+## Adding a New Host
 
-        $ brew install universal-ctags ripgrep the_silver_searcher fzf
-        $ brew install tavianator/tap/bfs
+1. For macOS/Linux:
+   ```bash
+   cp home-manager/hosts/zomarchy.nix home-manager/hosts/<hostname>.nix
+   ```
 
-## TMUX Configuration
+2. For NixOS:
+   ```bash
+   mkdir -p home-manager/hosts/<hostname>
+   # Add configuration.nix, hardware-configuration.nix, and default.nix
+   ```
 
-### Mac OS X
+3. Update `home-manager/flake.nix` to add the new host configuration.
 
-- Install the `tmux` and `reattach-to-user-namespace` packages using Homebrew
+## Directory Paths
 
-        $ brew install tmux
-        $ brew install reattach-to-user-namespace
+Default paths used in configurations (customizable in `flake.nix`):
 
-- Create a symbolic link to `dotfiles/tmux/tmux.conf`
+- `dotfilesDir`: `~/devel/tools/dotfiles`
+- `develHome`: `~/devel/projects`
+- `workHome`: `~/devel/projects/personal`
+- `personalHome`: `~/devel/projects/personal`
 
-        ln -s /path/to/repo/dotfiles/tmux/tmux.conf ~/.tmux.conf
+## Current Hosts
 
-- Run tmux
-
-    `$ tmux`
-
-### Debian/Ubuntu
-
-- Install the `xsel` and `tmux` packages
-
-        sudo apt-get install xsel tmux
-
-- Create a symbolic link to `dotfiles/tmux/tmux.ubuntu.conf`
-
-        ln -s /path/to/repo/dotfiles/tmux/tmux.ubuntu.conf ~/.tmux.conf
-
-- Run tmux
-
-    `$ tmux`
-
-## FISH Configuration
-
-## CTAGS
-
-## MACOSX
+- **mac-machine** (aarch64-darwin) - macOS
+- **zomarchy** (x86_64-linux) - Linux
+- **nixos** (x86_64-linux) - NixOS
