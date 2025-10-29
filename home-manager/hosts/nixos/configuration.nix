@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -59,8 +59,16 @@
       "org/gnome/desktop/peripherals/mouse" = {
         natural-scroll = true;
       };
+      "org/gnome/desktop/interface" = {
+        scaling-factor = lib.gvariant.mkUint32 2;
+      };
     };
   }];
+
+  # Environment variables for display scaling
+  environment.sessionVariables = {
+    GDK_SCALE = "1.75";
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
