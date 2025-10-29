@@ -58,9 +58,9 @@
               home.homeDirectory = common.homeDir;
             }
             ./home.nix
-            ./hosts/${hostname}
           ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./modules/platform/darwin.nix
-            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./modules/platform/linux.nix;
+            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./modules/platform/linux.nix
+            ++ [ ./hosts/${hostname} ];
         };
 
     in
@@ -93,7 +93,13 @@
               nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.zekus = import ./hosts/nixos;
+              home-manager.users.zekus = { ... }: {
+                imports = [
+                  ./home.nix
+                  ./modules/platform/linux.nix
+                  ./hosts/nixos
+                ];
+              };
               home-manager.extraSpecialArgs = {
                 common = mkCommon {
                   username = "zekus";
