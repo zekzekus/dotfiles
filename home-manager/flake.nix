@@ -16,6 +16,15 @@
         neovim-nightly-overlay.overlays.default
       ];
 
+      mkCommon = { username, homeDir }: {
+        inherit username homeDir;
+        dotfilesDir = "${homeDir}/devel/tools/dotfiles";
+        develHome = "${homeDir}/devel/projects";
+        defaultProjectDir = "personal";
+        workHome = "${homeDir}/devel/projects/personal";
+        personalHome = "${homeDir}/devel/projects/personal";
+      };
+
       mkHomeConfiguration = { system, hostname, username ? "zekus" }:
         let
           pkgs = import nixpkgs {
@@ -24,14 +33,7 @@
             config.allowUnfree = true;
           };
           homeDir = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
-          common = {
-            inherit username homeDir;
-            dotfilesDir = "${homeDir}/devel/tools/dotfiles";
-            develHome = "${homeDir}/devel/projects";
-            defaultProjectDir = "personal";
-            workHome = "${homeDir}/devel/projects/personal";
-            personalHome = "${homeDir}/devel/projects/personal";
-          };
+          common = mkCommon { inherit username homeDir; };
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -76,14 +78,9 @@
               home-manager.useUserPackages = true;
               home-manager.users.zekus = import ./hosts/nixos;
               home-manager.extraSpecialArgs = {
-                common = {
+                common = mkCommon {
                   username = "zekus";
                   homeDir = "/home/zekus";
-                  dotfilesDir = "/home/zekus/devel/tools/dotfiles";
-                  develHome = "/home/zekus/devel/projects";
-                  defaultProjectDir = "personal";
-                  workHome = "/home/zekus/devel/projects/personal";
-                  personalHome = "/home/zekus/devel/projects/personal";
                 };
               };
             }
