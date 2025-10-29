@@ -29,6 +29,10 @@
     jankyborders = import ../services/jankyborders.nix { inherit pkgs common; };
   };
 
+  home.sessionPath = [
+    "/opt/homebrew/bin"
+  ];
+
   home.sessionVariables = {
   };
 }
