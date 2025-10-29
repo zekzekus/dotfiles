@@ -44,12 +44,25 @@ This repository manages configurations for multiple machines using a unified Nix
    cd ~/devel/tools/dotfiles
    ```
 
-3. Apply configuration:
+3. Configure trusted users for binary caches:
+   ```bash
+   # Add trusted user configuration
+   sudo mkdir -p /etc/nix/nix.conf.d
+   echo "trusted-users = root zekus" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
+   
+   # Restart Nix daemon
+   sudo launchctl kickstart -k system/systems.determinate.nix-daemon
+   
+   # Verify
+   nix show-config | grep trusted-users
+   ```
+
+4. Apply configuration:
    ```bash
    nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@mac-machine
    ```
 
-4. Subsequent updates:
+5. Subsequent updates:
    ```bash
    make home
    ```
@@ -67,12 +80,25 @@ This repository manages configurations for multiple machines using a unified Nix
    cd ~/devel/tools/dotfiles
    ```
 
-3. Apply configuration:
+3. Configure trusted users for binary caches:
+   ```bash
+   # Add trusted user configuration
+   sudo mkdir -p /etc/nix/nix.conf.d
+   echo "trusted-users = root zekus" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
+   
+   # Restart Nix daemon
+   sudo systemctl restart nix-daemon
+   
+   # Verify
+   nix show-config | grep trusted-users
+   ```
+
+4. Apply configuration:
    ```bash
    nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@zomarchy
    ```
 
-4. Subsequent updates:
+5. Subsequent updates:
    ```bash
    make home
    ```
@@ -97,6 +123,8 @@ This repository manages configurations for multiple machines using a unified Nix
 
 3. Home Manager is integrated automatically via the NixOS module.
 
+> **Note:** Trusted users for binary caches are already configured in `configuration.nix`.
+
 ## Makefile Commands
 
 The Makefile auto-detects your username and hostname:
@@ -117,6 +145,15 @@ The flake uses:
 - `home-manager` from nix-community
 - `neovim-nightly-overlay` for latest Neovim builds
 - `determinate` for Determinate Systems integration (NixOS)
+
+### Binary Caches
+
+This configuration uses the following binary caches for faster builds:
+- **FlakeHub** (`cache.flakehub.com`) - For Determinate Systems packages
+- **nix-community** (`nix-community.cachix.org`) - For community packages like neovim-nightly
+- **garnix** (`cache.garnix.io`) - Additional community cache
+
+To use these caches, you must configure trusted users as shown in the setup instructions above.
 
 Available configurations:
 - `homeConfigurations."zekus@mac-machine"` - macOS (aarch64-darwin)

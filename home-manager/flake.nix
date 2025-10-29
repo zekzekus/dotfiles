@@ -1,6 +1,19 @@
 {
   description = "Home Manager configuration of zekus";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.flakehub.com"
+      "https://nix-community.cachix.org"
+      "https://cache.garnix.io"
+    ];
+    extra-trusted-public-keys = [
+      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
