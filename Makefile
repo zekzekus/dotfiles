@@ -48,7 +48,7 @@ nixos-build:
 
 update:
 	@echo "Updating flake inputs..."
-	nix flake update $(FLAKE)
+	cd $(FLAKE) && nix flake update
 
 check:
 	@echo "Checking flake..."
