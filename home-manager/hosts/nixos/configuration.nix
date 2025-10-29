@@ -104,7 +104,11 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.fish.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    extra-substituters = [ "https://install.determinate.systems" ];
+    extra-trusted-public-keys = [ "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" ];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
