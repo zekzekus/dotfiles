@@ -1,7 +1,7 @@
 { common ? null, ... }:
 
 {
-  enable = true;
+  enable = false;
   settings = {
     style = "round";
     width = 6.0;

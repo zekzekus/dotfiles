@@ -1,7 +1,7 @@
 { common ? null, ... }:
 
 {
-  enable = true;
+  enable = false;
   launchd.enable = true;
   userSettings = {
     after-startup-command = [
