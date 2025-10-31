@@ -13,5 +13,6 @@
   tmux = import ./tmux.nix { inherit pkgs common; };
   zoxide = import ./zoxide.nix { inherit pkgs common; };
   nix-your-shell = import ./nix-your-shell.nix { inherit pkgs common; };
+  zed-editor = import ./zed-editor.nix { inherit pkgs common; };
 
 }
