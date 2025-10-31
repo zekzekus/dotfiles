@@ -29,6 +29,7 @@ with pkgs; [
   cargo
   clojure
   deno
+  gcc
   go
   nodejs_24
   pnpm
@@ -39,7 +40,6 @@ with pkgs; [
   uv
 
   # development tools
-  gcc
   amp-cli
   # claude-code
   cmake

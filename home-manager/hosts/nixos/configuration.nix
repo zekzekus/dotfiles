@@ -49,6 +49,9 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  services.desktopManager.plasma6.enable = true;
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
+
   # GNOME settings
   programs.dconf.enable = true;
   programs.dconf.profiles.user.databases = [{
