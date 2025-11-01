@@ -1,10 +1,6 @@
 { pkgs, common, ... }:
 
 {
-  imports = [
-    ../programs/hyprland.nix
-  ];
-
   programs = {
     bash.enable = false;
   };
