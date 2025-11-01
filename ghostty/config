@@ -1,7 +1,7 @@
-config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+theme = "light:Vimbones,dark:Neobones Dark"
 
 font-family = "TX-02"
-font-size = 12
+font-size = 14
 
 macos-titlebar-style = "tabs"
 window-padding-balance = true

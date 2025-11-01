@@ -12,7 +12,18 @@ return {
         solid_float_border = true,
         italic_strings = false,
       }
-      vim.cmd[[colorscheme neobones]]
+      
+      local function set_colorscheme()
+        local colorscheme = vim.o.background == 'dark' and 'neobones' or 'vimbones'
+        vim.cmd('colorscheme ' .. colorscheme)
+      end
+      
+      vim.api.nvim_create_autocmd('OptionSet', {
+        pattern = 'background',
+        callback = set_colorscheme,
+      })
+      
+      set_colorscheme()
     end
   },
 
