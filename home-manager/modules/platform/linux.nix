@@ -1,6 +1,10 @@
-{ pkgs, common, ... }:
+{ pkgs, common, lib, ... }:
 
 {
+  imports = [
+    ./gnome.nix
+  ];
+
   programs = {
     bash.enable = false;
   };
@@ -19,5 +23,6 @@
   };
 
   home.sessionVariables = {
+    GDK_SCALE = "1.50";
   };
 }

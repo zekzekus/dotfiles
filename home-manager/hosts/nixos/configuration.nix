@@ -49,31 +49,9 @@
     pulse.enable = true;
   };
 
-  programs.firefox.enable = true;
-  programs.fish.enable = true;
   programs.dconf.enable = true;
-  programs.dconf.profiles.user.databases = [{
-    settings = {
-      "org/gnome/mutter" = {
-        experimental-features = [ "scale-monitor-framebuffer" ];
-        overlay-key = "";
-      };
-      "org/gnome/desktop/peripherals/mouse" = {
-        natural-scroll = true;
-      };
-      "org/gnome/desktop/interface" = {
-        scaling-factor = lib.gvariant.mkUint32 2;
-      };
-      "org/gnome/shell/keybindings" = {
-        toggle-overview = [ "<Super>space" ];
-      };
-    };
-  }];
 
-  environment.sessionVariables = {
-    GDK_SCALE = "1.50";
-  };
-
+  programs.fish.enable = true;
   users.users.zekus = {
     isNormalUser = true;
     description = "Zekeriya Koc";
