@@ -16,4 +16,6 @@
   FZF_DEFAULT_OPTS = "--style full";
 
   HOMEBREW_NO_INSTALL_CLEANUP = 1;
+
+  PNPM_HOME = "$HOME/.local/share/pnpm";
 }
