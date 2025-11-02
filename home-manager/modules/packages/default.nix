@@ -3,25 +3,15 @@
 with pkgs; [
   # editors
   neovim
-  helix
-  # emacs
 
   # terminal tools
   bfs
-  fd
-  fzf
-  gnupg
-  ripgrep
   silver-searcher
   universal-ctags
   wget
 
   # version control
-  gh
-  git
   git-extras
-  mercurial
-  jujutsu
   tig
 
   # language runtimes, compilers, interpreters, CLIs

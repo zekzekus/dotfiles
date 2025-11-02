@@ -4,6 +4,12 @@
   home-manager.enable = true;
   java.enable = true;
   nushell.enable = true;
+  fd.enable = true;
+  fzf.enable = true;
+  gpg.enable = true;
+  ripgrep.enable = true;
+  gh.enable = true;
+  jujutsu.enable = true;
   
   git = import ./git.nix { inherit pkgs common; };
   delta = import ./delta.nix { inherit pkgs common; };
