@@ -5,7 +5,7 @@
   package = pkgs.ghostty-bin;
   settings = {
     auto-update-channel = "tip";
-    theme = "light:Neobones Light,dark:Neobones Dark";
+    theme = "light:Vimbones,dark:Neobones Dark";
     font-family = "TX-02";
     font-size = 16;
     font-thicken = true;
@@ -17,5 +17,6 @@
     quit-after-last-window-closed = true;
     macos-option-as-alt = "left";
     macos-shortcuts = "allow";
+    maximize = true;
   };
 }
