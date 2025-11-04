@@ -9,6 +9,7 @@ with pkgs; [
   silver-searcher
   universal-ctags
   wget
+  tree
 
   # version control
   git-extras

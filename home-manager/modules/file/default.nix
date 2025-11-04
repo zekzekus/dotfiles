@@ -2,7 +2,6 @@
 
 {
   ".ctags".source = "${common.dotfilesDir}/ctags/ctags";
-  ".doom.d".source = "${common.dotfilesDir}/emacs/doom";
   ".tmuxinator".source = "${common.dotfilesDir}/tmuxinator";
 
   ".config/nvim".source = "${common.dotfilesDir}/nvim";
