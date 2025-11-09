@@ -2,14 +2,15 @@
 
 {
   home-manager.enable = true;
-  java.enable = true;
-  nushell.enable = true;
+  btop.enable = true;
   fd.enable = true;
   fzf.enable = true;
-  gpg.enable = true;
-  ripgrep.enable = true;
   gh.enable = true;
+  gpg.enable = true;
+  java.enable = true;
   jujutsu.enable = true;
+  nushell.enable = true;
+  ripgrep.enable = true;
   
   git = import ./git.nix { inherit pkgs common; };
   delta = import ./delta.nix { inherit pkgs common; };
