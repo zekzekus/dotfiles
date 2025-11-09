@@ -49,6 +49,8 @@
     pulse.enable = true;
   };
 
+  programs.hyprland.enable = true;
+
   programs.dconf.enable = true;
 
   programs.fish.enable = true;
@@ -75,6 +77,7 @@
     unzip
     gnumake
     home-manager
+    kitty
   ];
 
   system.stateVersion = "25.05";
