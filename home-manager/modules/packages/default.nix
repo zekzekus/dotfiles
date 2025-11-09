@@ -32,15 +32,17 @@ with pkgs; [
 
   # development tools
   # claude-code
+  chafa
   cmake
   devenv
   tree-sitter
+  viu
 
   # language servers
   lua-language-server
   nil
   nixd
 
-  chafa
-  viu
+  # apps
+  localsend
 ]
