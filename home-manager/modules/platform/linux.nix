@@ -18,6 +18,8 @@
     packages = with pkgs; [
       ghostty
       nautilus
+      pavucontrol
+      wireplumber
     ];
 
     file = {
