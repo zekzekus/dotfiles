@@ -3,10 +3,10 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://hyprland.cachix.org"
-      "https://cache.flakehub.com"
       "https://nix-community.cachix.org"
       "https://cache.garnix.io"
+      "https://hyprland.cachix.org"
+      "https://cache.flakehub.com"
     ];
     extra-trusted-public-keys = [
       "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
