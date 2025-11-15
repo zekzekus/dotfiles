@@ -35,6 +35,7 @@
       libnotify
       hypridle
       hyprlock
+      hyprpaper
       cliphist
       brightnessctl
       networkmanagerapplet
@@ -53,6 +54,12 @@
         default-timeout=5000
         ignore-timeout=1
         layer=overlay
+      '';
+      ".config/hypr/hyprpaper.conf".text = ''
+        preload = ~/Pictures/wallpaper.png
+        wallpaper = ,~/Pictures/wallpaper.png
+        splash = false
+        ipc = off
       '';
     };
   };
@@ -135,6 +142,21 @@
       };
       Service = {
         ExecStart = "${pkgs.mako}/bin/mako";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "hyprland-session.target" ];
+      };
+    };
+
+    hyprpaper = {
+      Unit = {
+        Description = "Hyprland wallpaper daemon";
+        After = [ "hyprland-session.target" ];
+        PartOf = [ "hyprland-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
         Restart = "on-failure";
       };
       Install = {

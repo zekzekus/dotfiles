@@ -35,6 +35,12 @@
       "scrolltouchpad 0.2, class:com.mitchellh.ghostty"
     ];
 
+    windowrulev2 = [
+      "opacity 0.90 0.85, class:com.mitchellh.ghostty"
+      "opacity 0.90 0.85, class:(kitty|Alacritty)"
+      "opacity 0.95 0.90, class:(Code|code-url-handler)"
+    ];
+
     general = {
       gaps_in = 5;
       gaps_out = 10;
