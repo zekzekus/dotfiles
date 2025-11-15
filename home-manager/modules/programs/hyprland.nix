@@ -36,8 +36,8 @@
     ];
 
     windowrulev2 = [
-      "opacity 0.90 0.85, class:com.mitchellh.ghostty"
-      "opacity 0.90 0.85, class:(kitty|Alacritty)"
+      "opacity 0.95 0.90, class:com.mitchellh.ghostty"
+      "opacity 0.95 0.90, class:(kitty|Alacritty)"
       "opacity 0.95 0.90, class:(Code|code-url-handler)"
     ];
 
@@ -93,8 +93,8 @@
       "$mod, E, exec, nautilus"
       "$mod, A, exec, pavucontrol"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-      "$mod CTRL, M, exit"
-      "$mod CTRL, L, exec, hyprlock"
+      "$mod SHIFT CTRL, M, exit"
+      "$mod SHIFT CTRL, L, exec, hyprlock"
 
       # Audio control
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
