@@ -27,6 +27,7 @@
     LC_TIME = "tr_TR.UTF-8";
   };
 
+  console.keyMap = "trq";
   services.xserver = {
     enable = true;
     xkb = {
@@ -34,18 +35,14 @@
       variant = "alt";
     };
   };
-  console.keyMap = "trq";
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.gnome.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
-
   services.printing.enable = true;
   services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -53,6 +50,7 @@
     pulse.enable = true;
   };
 
+  services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -63,9 +61,6 @@
       };
     };
   };
-  services.blueman.enable = true;
-
-  programs.hyprland.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -74,9 +69,13 @@
     xdgOpenUsePortal = true;
   };
 
+  programs.hyprland.enable = true;
   programs.dconf.enable = true;
-
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
   programs.fish.enable = true;
+
+  security.rtkit.enable = true;
+
   users.users.zekus = {
     isNormalUser = true;
     description = "Zekeriya Koc";
