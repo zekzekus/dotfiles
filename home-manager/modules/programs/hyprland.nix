@@ -81,6 +81,7 @@
       "$mod, E, exec, nautilus"
       "$mod, Space, exec, $launcher"
       "$mod, A, exec, pavucontrol"
+      "$mod CTRL, L, exec, swaylock -f"
 
       # Audio control
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"

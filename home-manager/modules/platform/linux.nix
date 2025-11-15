@@ -24,6 +24,8 @@
       slurp
       wl-clipboard
       libnotify
+      swaylock
+      swayidle
     ];
 
     file = {
@@ -44,6 +46,14 @@
         ignore-timeout = true;
         layer = "overlay";
       };
+    };
+
+    swayidle = {
+      enable = true;
+      timeouts = [
+        { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+        { timeout = 600; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off"; resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on"; }
+      ];
     };
   };
 
