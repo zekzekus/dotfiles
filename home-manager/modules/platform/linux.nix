@@ -9,9 +9,18 @@
 
   programs = {
     bash.enable = false;
-    
     waybar = import ../programs/waybar.nix { inherit pkgs; };
     rofi = import ../programs/rofi.nix { inherit pkgs; };
+    hyprlock = import ../programs/hyprlock.nix { inherit pkgs; };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
+  xdg.configFile = {
   };
 
   home = {
@@ -24,12 +33,13 @@
       slurp
       wl-clipboard
       libnotify
-      swaylock
-      swayidle
+      hypridle
+      hyprlock
       cliphist
       brightnessctl
       networkmanagerapplet
       polkit_gnome
+
     ];
 
     file = {
@@ -48,13 +58,26 @@
   };
 
   services = {
-
-    swayidle = {
+    hypridle = {
       enable = true;
-      timeouts = [
-        { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-        { timeout = 600; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off"; resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on"; }
-      ];
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 600;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
+      };
     };
   };
 
@@ -62,70 +85,75 @@
     nm-applet = {
       Unit = {
         Description = "NetworkManager Applet";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
+        After = [ "hyprland-session.target" ];
+        PartOf = [ "hyprland-session.target" ];
       };
       Service = {
         ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
         Restart = "on-failure";
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = [ "hyprland-session.target" ];
       };
     };
 
     cliphist-store = {
       Unit = {
         Description = "Clipboard history store";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
+        After = [ "hyprland-session.target" ];
+        PartOf = [ "hyprland-session.target" ];
       };
       Service = {
         ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
         Restart = "always";
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = [ "hyprland-session.target" ];
       };
     };
 
     polkit-gnome = {
       Unit = {
         Description = "Polkit GNOME authentication agent";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
+        After = [ "hyprland-session.target" ];
+        PartOf = [ "hyprland-session.target" ];
       };
       Service = {
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = [ "hyprland-session.target" ];
       };
     };
 
     mako-custom = {
       Unit = {
         Description = "Mako notification daemon";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
+        After = [ "hyprland-session.target" ];
+        PartOf = [ "hyprland-session.target" ];
       };
       Service = {
         ExecStart = "${pkgs.mako}/bin/mako";
         Restart = "on-failure";
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = [ "hyprland-session.target" ];
       };
     };
+
   };
 
   home.sessionVariables = {
-    GDK_SCALE = "1.50";
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     SDL_VIDEODRIVER = "wayland";
+    GTK_USE_PORTAL = "1";
+    XCURSOR_THEME = "Adwaita";
+    XCURSOR_SIZE = "24";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 }

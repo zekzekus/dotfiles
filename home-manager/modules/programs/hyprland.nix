@@ -2,8 +2,7 @@
 
 {
   enable = true;
-  package = null;
-  portalPackage = null;
+  systemd.enable = true;
   settings = {
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
@@ -71,6 +70,15 @@
       preserve_split = true;
     };
 
+    xwayland = {
+      force_zero_scaling = true;
+    };
+
+    misc = {
+      vfr = true;
+      disable_hyprland_logo = true;
+    };
+
     bind = [
       "$mod, Return, exec, $terminal"
       "$mod, B, exec, $browser"
@@ -79,7 +87,7 @@
       "$mod, E, exec, nautilus"
       "$mod, Space, exec, $launcher"
       "$mod, A, exec, pavucontrol"
-      "$mod CTRL, L, exec, swaylock -f"
+      "$mod CTRL, L, exec, hyprlock"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 
       # Audio control

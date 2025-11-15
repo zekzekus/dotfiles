@@ -57,15 +57,9 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ 
-      xdg-desktop-portal-hyprland 
-      xdg-desktop-portal-gtk 
-    ];
-    config = {
-      hyprland.default = [ "hyprland" "gtk" ];
-      gnome.default = [ "gnome" "gtk" ];
-      kde.default = [ "kde" ];
-    };
+    configPackages = [ pkgs.hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
   };
 
   programs.dconf.enable = true;
