@@ -36,9 +36,9 @@
     ];
 
     windowrulev2 = [
-      "opacity 0.95 0.90, class:com.mitchellh.ghostty"
-      "opacity 0.95 0.90, class:(kitty|Alacritty)"
-      "opacity 0.95 0.90, class:(Code|code-url-handler)"
+      "opacity 0.98 0.90, class:com.mitchellh.ghostty"
+      "opacity 0.98 0.90, class:(kitty|Alacritty)"
+      "opacity 0.98 0.90, class:(Code|code-url-handler)"
     ];
 
     general = {
