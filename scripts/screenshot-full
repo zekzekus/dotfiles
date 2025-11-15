@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Screenshot full screen with annotation
+
+FILENAME="$HOME/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
+
+grim "$FILENAME"
+
+# Open in satty for annotation
+if [ -f "$FILENAME" ]; then
+    satty --filename "$FILENAME" \
+          --output-filename "$FILENAME" \
+          --early-exit \
+          --copy-command wl-copy \
+          --initial-tool arrow
+fi

@@ -6,7 +6,7 @@
     ./hyprland-integration.nix
   ];
 
-  wayland.windowManager.hyprland = import ../programs/hyprland.nix { inherit pkgs; };
+  wayland.windowManager.hyprland = import ../programs/hyprland.nix { inherit pkgs common; };
 
   programs = {
     bash.enable = false;

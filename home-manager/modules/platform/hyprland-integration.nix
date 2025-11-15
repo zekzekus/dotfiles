@@ -10,6 +10,8 @@
       brightnessctl
       grim
       slurp
+      satty
+      kooha
       wl-clipboard
       libnotify
       networkmanagerapplet

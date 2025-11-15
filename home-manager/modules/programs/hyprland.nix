@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, common, ... }:
 
 {
   enable = true;
@@ -107,8 +107,11 @@
       ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
       # Screenshots
-      "$mod SHIFT CTRL, 3, exec, grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
-      "$mod SHIFT CTRL, 4, exec, grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
+      "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
+      "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
+      
+      # Screen recording with GUI
+      "$mod SHIFT CTRL, 5, exec, kooha"
 
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"
