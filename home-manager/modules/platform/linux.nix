@@ -12,15 +12,6 @@
     bash.enable = false;
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
-  xdg.configFile = {
-  };
-
   home = {
     packages = with pkgs; [
       ghostty
