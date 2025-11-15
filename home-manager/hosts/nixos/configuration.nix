@@ -36,8 +36,12 @@
   };
   console.keyMap = "trq";
 
-  services.displayManager.gdm.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.gnome.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
 
   services.printing.enable = true;
   services.pulseaudio.enable = false;

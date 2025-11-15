@@ -12,4 +12,7 @@
   #   programs.git.userEmail = "nixos@example.com";
   #   home.sessionVariables.NIXOS_MACHINE = "true";
   programs.chromium.enable = true;
+  programs.chromium.nativeMessagingHosts = [
+    pkgs.kdePackages.plasma-browser-integration
+  ];
 }
