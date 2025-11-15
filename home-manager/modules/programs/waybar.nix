@@ -13,7 +13,7 @@
       height = 30;
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "hyprland/window" ];
-      modules-right = [ "tray" "pulseaudio" "battery" "clock" ];
+      modules-right = [ "tray" "bluetooth" "pulseaudio" "battery" "clock" ];
 
       "hyprland/workspaces" = {
         format = "{id}";
@@ -21,6 +21,16 @@
 
       "hyprland/window" = {
         max-length = 50;
+      };
+
+      bluetooth = {
+        format = " {status}";
+        format-disabled = "";
+        format-connected = " {num_connections}";
+        tooltip-format = "{controller_alias}\t{controller_address}";
+        tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+        tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+        on-click = "blueman-manager";
       };
 
       pulseaudio = {
@@ -73,7 +83,7 @@
       background-color: rgba(137, 180, 250, 0.2);
     }
 
-    #window, #pulseaudio, #battery, #clock, #tray {
+    #window, #bluetooth, #pulseaudio, #battery, #clock, #tray {
       padding: 0 10px;
       margin: 0 3px;
       border-radius: 5px;

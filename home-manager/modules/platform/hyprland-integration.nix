@@ -14,6 +14,7 @@
       libnotify
       networkmanagerapplet
       polkit_gnome
+      blueman
     ];
 
     file = {
