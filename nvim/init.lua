@@ -1,4 +1,5 @@
 require('lazynvim')
 require('options')
 require('keybindings')
+require('config.lsp-auto')
 vim.cmd('source ~/.config/nvim/viml.vim')
