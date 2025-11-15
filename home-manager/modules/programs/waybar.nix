@@ -9,7 +9,7 @@
       height = 30;
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "hyprland/window" ];
-      modules-right = [ "network" "pulseaudio" "battery" "clock" ];
+      modules-right = [ "tray" "network" "pulseaudio" "battery" "clock" ];
 
       "hyprland/workspaces" = {
         format = "{id}";
@@ -43,6 +43,10 @@
         format = " {:%H:%M}";
         format-alt = " {:%Y-%m-%d}";
       };
+
+      tray = {
+        spacing = 10;
+      };
     };
   };
   style = ''
@@ -71,7 +75,7 @@
       background-color: rgba(137, 180, 250, 0.2);
     }
 
-    #window, #network, #pulseaudio, #battery, #clock {
+    #window, #network, #pulseaudio, #battery, #clock, #tray {
       padding: 0 10px;
       margin: 0 3px;
       border-radius: 5px;
