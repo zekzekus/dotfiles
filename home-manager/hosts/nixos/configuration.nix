@@ -55,6 +55,19 @@
 
   programs.hyprland.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ 
+      xdg-desktop-portal-hyprland 
+      xdg-desktop-portal-gtk 
+    ];
+    config = {
+      hyprland.default = [ "hyprland" "gtk" ];
+      gnome.default = [ "gnome" "gtk" ];
+      kde.default = [ "kde" ];
+    };
+  };
+
   programs.dconf.enable = true;
 
   programs.fish.enable = true;

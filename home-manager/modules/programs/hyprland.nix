@@ -13,10 +13,6 @@
     monitor = ",preferred,auto,1.5";
 
     exec-once = [
-      "waybar"
-      "mako"
-      "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store"
-      "nm-applet --indicator"
     ];
 
     input = {
