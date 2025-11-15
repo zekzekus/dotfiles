@@ -1,4 +1,4 @@
-theme = "Neobones Dark"
+theme = "light:Vimbones,dark:Neobones Dark"
 
 font-family = "TX-02"
 font-size = 14
