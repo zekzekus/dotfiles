@@ -14,6 +14,7 @@
 
     exec-once = [
       "waybar"
+      "mako"
     ];
 
     input = {

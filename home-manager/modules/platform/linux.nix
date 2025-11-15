@@ -23,6 +23,7 @@
       grim
       slurp
       wl-clipboard
+      libnotify
     ];
 
     file = {
@@ -31,6 +32,19 @@
   };
 
   services = {
+    mako = {
+      enable = true;
+      settings = {
+        background-color = "#1a1b26";
+        text-color = "#cdd6f4";
+        border-color = "#89b4fa";
+        border-radius = 5;
+        border-size = 2;
+        default-timeout = 5000;
+        ignore-timeout = true;
+        layer = "overlay";
+      };
+    };
   };
 
   home.sessionVariables = {
