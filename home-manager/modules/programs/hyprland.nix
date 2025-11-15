@@ -87,6 +87,10 @@
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
+      # Screenshots
+      "$mod SHIFT CTRL, 3, exec, grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
+      "$mod SHIFT CTRL, 4, exec, grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
+
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"
       "$mod, k, movefocus, u"

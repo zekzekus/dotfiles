@@ -20,6 +20,9 @@
       nautilus
       pavucontrol
       wireplumber
+      grim
+      slurp
+      wl-clipboard
     ];
 
     file = {
