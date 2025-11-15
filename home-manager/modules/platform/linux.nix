@@ -11,7 +11,7 @@
     bash.enable = false;
     
     waybar = import ../programs/waybar.nix { inherit pkgs; };
-    wofi = import ../programs/wofi.nix { inherit pkgs; };
+    rofi = import ../programs/rofi.nix { inherit pkgs; };
   };
 
   home = {
@@ -27,6 +27,7 @@
       swaylock
       swayidle
       cliphist
+      brightnessctl
     ];
 
     file = {

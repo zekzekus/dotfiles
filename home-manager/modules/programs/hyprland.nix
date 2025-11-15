@@ -8,7 +8,7 @@
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
     "$browser" = "chromium";
-    "$launcher" = "wofi --show drun";
+    "$launcher" = "rofi -show drun";
 
     monitor = ",preferred,auto,1.5";
 
@@ -83,13 +83,17 @@
       "$mod, Space, exec, $launcher"
       "$mod, A, exec, pavucontrol"
       "$mod CTRL, L, exec, swaylock -f"
-      "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+      "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 
       # Audio control
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+      # Brightness control
+      ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+      ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
       # Screenshots
       "$mod SHIFT CTRL, 3, exec, grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
