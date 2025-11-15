@@ -9,7 +9,7 @@
       height = 30;
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "hyprland/window" ];
-      modules-right = [ "tray" "network" "pulseaudio" "battery" "clock" ];
+      modules-right = [ "tray" "pulseaudio" "battery" "clock" ];
 
       "hyprland/workspaces" = {
         format = "{id}";
@@ -17,12 +17,6 @@
 
       "hyprland/window" = {
         max-length = 50;
-      };
-
-      network = {
-        format-wifi = " {essid}";
-        format-ethernet = " {ifname}";
-        format-disconnected = "⚠ Disconnected";
       };
 
       pulseaudio = {
@@ -75,7 +69,7 @@
       background-color: rgba(137, 180, 250, 0.2);
     }
 
-    #window, #network, #pulseaudio, #battery, #clock, #tray {
+    #window, #pulseaudio, #battery, #clock, #tray {
       padding: 0 10px;
       margin: 0 3px;
       border-radius: 5px;

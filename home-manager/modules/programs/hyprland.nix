@@ -85,7 +85,6 @@
       "$mod, A, exec, pavucontrol"
       "$mod CTRL, L, exec, swaylock -f"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-      "$mod, N, exec, networkmanager_dmenu"
 
       # Audio control
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"

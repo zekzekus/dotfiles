@@ -29,7 +29,6 @@
       cliphist
       brightnessctl
       networkmanagerapplet
-      networkmanager_dmenu
     ];
 
     file = {
