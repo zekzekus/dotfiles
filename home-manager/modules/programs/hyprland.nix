@@ -80,15 +80,15 @@
     };
 
     bind = [
+      "$mod, Space, exec, $launcher"
       "$mod, Return, exec, $terminal"
       "$mod, B, exec, $browser"
       "$mod, Q, killactive"
-      "$mod, M, exit"
       "$mod, E, exec, nautilus"
-      "$mod, Space, exec, $launcher"
       "$mod, A, exec, pavucontrol"
-      "$mod CTRL, L, exec, hyprlock"
       "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+      "$mod CTRL, M, exit"
+      "$mod CTRL, L, exec, hyprlock"
 
       # Audio control
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
