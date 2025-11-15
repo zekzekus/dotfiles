@@ -26,6 +26,7 @@
       libnotify
       swaylock
       swayidle
+      cliphist
     ];
 
     file = {

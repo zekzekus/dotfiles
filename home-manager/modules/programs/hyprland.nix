@@ -15,6 +15,7 @@
     exec-once = [
       "waybar"
       "mako"
+      "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store"
     ];
 
     input = {
@@ -82,6 +83,7 @@
       "$mod, Space, exec, $launcher"
       "$mod, A, exec, pavucontrol"
       "$mod CTRL, L, exec, swaylock -f"
+      "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
       # Audio control
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
