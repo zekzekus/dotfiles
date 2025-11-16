@@ -93,6 +93,8 @@
     bind = [
       "$mod, Space, exec, uwsm-app -- vicinae toggle"
       "$mod, Return, exec, uwsm-app -- $terminal"
+      "$mod, TAB, workspace, e+1"
+      "$mod SHIFT, TAB, workspace, e-1"
       "$mod, B, exec, uwsm-app $browser"
       "$mod, Q, killactive"
       "$mod, E, exec, uwsm-app -- nautilus"
