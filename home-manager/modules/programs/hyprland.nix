@@ -2,7 +2,6 @@
 
 {
   enable = true;
-  systemd.enable = true;
   settings = {
     "$mod" = "SUPER";
     "$terminal" = "ghostty";

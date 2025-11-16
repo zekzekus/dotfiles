@@ -69,7 +69,10 @@
     xdgOpenUsePortal = true;
   };
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
   programs.dconf.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
   programs.fish.enable = true;

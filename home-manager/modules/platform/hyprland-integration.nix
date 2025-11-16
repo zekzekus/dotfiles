@@ -70,96 +70,64 @@
     };
   };
 
-  systemd.user.services = {
-    nm-applet = {
-      Unit = {
-        Description = "NetworkManager Applet";
-        After = [ "hyprland-session.target" ];
-        PartOf = [ "hyprland-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "hyprland-session.target" ];
-      };
-    };
+  home.file = {
+    ".config/autostart/nm-applet.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=NetworkManager Applet
+      Comment=Manage network connections
+      Exec=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+      Icon=network-manager
+      Categories=System;
+      NoDisplay=true
+    '';
 
-    cliphist-store = {
-      Unit = {
-        Description = "Clipboard history store";
-        After = [ "hyprland-session.target" ];
-        PartOf = [ "hyprland-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
-        Restart = "always";
-      };
-      Install = {
-        WantedBy = [ "hyprland-session.target" ];
-      };
-    };
+    ".config/autostart/cliphist-store.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Clipboard history store
+      Comment=Store clipboard history
+      Exec=${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store
+      NoDisplay=true
+    '';
 
-    polkit-gnome = {
-      Unit = {
-        Description = "Polkit GNOME authentication agent";
-        After = [ "hyprland-session.target" ];
-        PartOf = [ "hyprland-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "hyprland-session.target" ];
-      };
-    };
+    ".config/autostart/polkit-gnome.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Polkit GNOME
+      Comment=Polkit GNOME authentication agent
+      Exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+      Icon=dialog-password
+      Categories=System;
+      NoDisplay=true
+    '';
 
-    mako-custom = {
-      Unit = {
-        Description = "Mako notification daemon";
-        After = [ "hyprland-session.target" ];
-        PartOf = [ "hyprland-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.mako}/bin/mako";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "hyprland-session.target" ];
-      };
-    };
+    ".config/autostart/mako.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Mako notification daemon
+      Comment=Lightweight notification daemon for Wayland
+      Exec=${pkgs.mako}/bin/mako
+      NoDisplay=true
+    '';
 
-    hyprpaper = {
-      Unit = {
-        Description = "Hyprland wallpaper daemon";
-        After = [ "hyprland-session.target" ];
-        PartOf = [ "hyprland-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "hyprland-session.target" ];
-      };
-    };
+    ".config/autostart/hyprpaper.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Hyprland wallpaper daemon
+      Comment=Wallpaper setter for Hyprland
+      Exec=${pkgs.hyprpaper}/bin/hyprpaper
+      NoDisplay=true
+    '';
 
-    vicinae = {
-      Unit = {
-        Description = "Vicinae launcher daemon";
-        After = [ "hyprland-session.target" ];
-        PartOf = [ "hyprland-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.vicinae}/bin/vicinae server";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "hyprland-session.target" ];
-      };
-    };
+    ".config/autostart/vicinae.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Vicinae launcher daemon
+      Comment=Application launcher
+      Exec=${pkgs.vicinae}/bin/vicinae server
+      NoDisplay=true
+    '';
   };
 
   home.sessionVariables = {

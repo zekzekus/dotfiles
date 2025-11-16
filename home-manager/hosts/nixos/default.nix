@@ -12,9 +12,6 @@
   #   programs.git.userEmail = "nixos@example.com";
   #   home.sessionVariables.NIXOS_MACHINE = "true";
   programs.chromium.enable = true;
-  programs.chromium.commandLineArgs = [
-    "--force-device-scale-factor=1.666667"
-  ];
   programs.chromium.nativeMessagingHosts = [
     pkgs.kdePackages.plasma-browser-integration
   ];
