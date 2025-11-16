@@ -9,6 +9,7 @@
       vicinae
       cliphist
       brightnessctl
+      playerctl
       grim
       slurp
       satty
