@@ -9,7 +9,7 @@
     "$browser" = "chromium";
     "$launcher" = "rofi -show drun";
 
-    monitor = ",preferred,auto,1.5";
+    monitor = ",preferred,auto,1.666667";
 
     exec-once = [
     ];
