@@ -5,7 +5,7 @@
   settings = {
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
-    "$browser" = "chromium";
+    "$browser" = "firefox";
     "$launcher" = "rofi -show drun";
 
     monitor = ",preferred,auto,1.666667";
@@ -32,6 +32,15 @@
     windowrule = [
       "scrolltouchpad 1.5, class:(Alacritty|kitty)"
       "scrolltouchpad 0.2, class:com.mitchellh.ghostty"
+      
+      "tag +pip, title:(Picture.?in.?[Pp]icture)"
+      "float, tag:pip"
+      "pin, tag:pip"
+      "size 600 338, tag:pip"
+      "keepaspectratio, tag:pip"
+      "noborder, tag:pip"
+      "opacity 1 1, tag:pip"
+      "move 100%-w-40 4%, tag:pip"
     ];
 
     windowrulev2 = [
