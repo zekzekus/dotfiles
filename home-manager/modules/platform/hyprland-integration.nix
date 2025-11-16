@@ -6,6 +6,7 @@
       hypridle
       hyprlock
       hyprpaper
+      vicinae
       cliphist
       brightnessctl
       grim
@@ -138,6 +139,21 @@
       };
       Service = {
         ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "hyprland-session.target" ];
+      };
+    };
+
+    vicinae = {
+      Unit = {
+        Description = "Vicinae launcher daemon";
+        After = [ "hyprland-session.target" ];
+        PartOf = [ "hyprland-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.vicinae}/bin/vicinae server";
         Restart = "on-failure";
       };
       Install = {

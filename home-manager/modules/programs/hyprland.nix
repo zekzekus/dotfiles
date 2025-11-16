@@ -85,8 +85,14 @@
       disable_hyprland_logo = true;
     };
 
+    layerrule = [
+      "blur, vicinae"
+      "ignorealpha 0, vicinae"
+      "noanim, vicinae"
+    ];
+
     bind = [
-      "$mod, Space, exec, $launcher"
+      "$mod, Space, exec, vicinae toggle"
       "$mod, Return, exec, $terminal"
       "$mod, B, exec, $browser"
       "$mod, Q, killactive"
