@@ -32,7 +32,7 @@
     windowrule = [
       "scrolltouchpad 1.5, class:(Alacritty|kitty)"
       "scrolltouchpad 0.2, class:com.mitchellh.ghostty"
-      
+
       "tag +pip, title:(Picture.?in.?[Pp]icture)"
       "float, tag:pip"
       "pin, tag:pip"
@@ -128,7 +128,7 @@
       # Screenshots (one-shot utilities)
       "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
       "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
-      
+
       # Screen recording with GUI
       "$mod SHIFT CTRL, 5, exec, uwsm-app -- kooha"
 
