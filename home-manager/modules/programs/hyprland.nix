@@ -91,32 +91,32 @@
     ];
 
     bind = [
-      "$mod, Space, exec, vicinae toggle"
-      "$mod, Return, exec, $terminal"
-      "$mod, B, exec, $browser"
+      "$mod, Space, exec, uwsm-app -- vicinae toggle"
+      "$mod, Return, exec, uwsm-app -- $terminal"
+      "$mod, B, exec, uwsm-app $browser"
       "$mod, Q, killactive"
-      "$mod, E, exec, nautilus"
-      "$mod, A, exec, pavucontrol"
-      "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+      "$mod, E, exec, uwsm-app -- nautilus"
+      "$mod, A, exec, uwsm-app -- pavucontrol"
+      "$mod, V, exec, uwsm-app -- cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$mod SHIFT CTRL, M, exit"
       "$mod SHIFT CTRL, L, exec, hyprlock"
 
-      # Audio control
+      # Audio control (one-shot utilities)
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
-      # Brightness control
+      # Brightness control (one-shot utilities)
       ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
       ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
-      # Screenshots
+      # Screenshots (one-shot utilities)
       "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
       "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
       
       # Screen recording with GUI
-      "$mod SHIFT CTRL, 5, exec, kooha"
+      "$mod SHIFT CTRL, 5, exec, uwsm-app -- kooha"
 
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"

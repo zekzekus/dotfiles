@@ -128,6 +128,15 @@
       Exec=${pkgs.vicinae}/bin/vicinae server
       NoDisplay=true
     '';
+
+    ".config/autostart/waybar.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Waybar
+      Comment=Status bar for Wayland
+      Exec=${pkgs.waybar}/bin/waybar
+      NoDisplay=true
+    '';
   };
 
   home.sessionVariables = {
