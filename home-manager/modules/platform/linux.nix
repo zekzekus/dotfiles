@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./gnome.nix
     ./hyprland-integration.nix
   ];
 
@@ -15,9 +14,6 @@
   home = {
     packages = with pkgs; [
       ghostty
-      nautilus
-      pavucontrol
-      wireplumber
     ];
 
     file = {

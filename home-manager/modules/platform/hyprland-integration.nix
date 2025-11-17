@@ -19,6 +19,10 @@
       networkmanagerapplet
       polkit_gnome
       blueman
+      orchis-theme
+      nemo
+      pavucontrol
+      wireplumber
     ];
 
     file = {
