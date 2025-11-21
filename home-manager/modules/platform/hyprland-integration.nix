@@ -156,6 +156,14 @@
     '';
   };
 
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    x11.enable = true;
+    gtk.enable = true;
+  };
+
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
@@ -165,8 +173,6 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     SDL_VIDEODRIVER = "wayland";
     GTK_USE_PORTAL = "1";
-    XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 }
