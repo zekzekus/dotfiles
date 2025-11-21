@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Explicitly set Dark Mode
-
-STATE_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/theme_state"
-
 # Define Theme Variables
 GTK_THEME="Adwaita-dark"
 ICON_THEME="Papirus-Dark"

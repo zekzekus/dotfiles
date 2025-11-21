@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Explicitly set Light Mode
-
-STATE_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/theme_state"
-
 # Define Theme Variables
 GTK_THEME="Adwaita"
 ICON_THEME="Papirus-Light"
