@@ -58,9 +58,9 @@
   };
 
   programs = {
-    waybar = import ../programs/waybar.nix { inherit pkgs; };
-    rofi = import ../programs/rofi.nix { inherit pkgs; };
-    hyprlock = import ../programs/hyprlock.nix { inherit pkgs; };
+    waybar = import ../../modules/programs/waybar.nix { inherit pkgs; };
+    rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
+    hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
   };
 
   services = {
