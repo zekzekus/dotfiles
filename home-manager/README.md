@@ -12,11 +12,11 @@ home-manager/
 ├── hosts/                   # Host-specific configurations
 │   ├── linux-machine.nix   # Linux machine config
 │   └── mac-machine.nix     # macOS machine config
+├── platforms/               # Platform-specific configurations
+│   ├── linux.nix          # Linux settings (generic)
+│   └── darwin.nix         # macOS settings
 └── modules/
     ├── common.nix          # Platform-aware common variables
-    ├── platform/           # Platform-specific configurations
-    │   ├── linux.nix      # Linux-only settings
-    │   └── darwin.nix     # macOS-only settings
     ├── packages/          # Package definitions
     ├── programs/          # Program configurations
     ├── services/          # Service configurations
@@ -81,7 +81,7 @@ home-manager switch --flake .#zekus@$(hostname)
    {
      imports = [
        ../home.nix
-       ../modules/platform/darwin.nix  # or linux.nix
+       ../platforms/darwin.nix  # or linux.nix
      ];
      
      # Host-specific overrides
@@ -116,8 +116,8 @@ Contains settings common to all machines:
 - Common environment variables
 
 ### Platform-Specific Modules
-- `modules/platform/linux.nix`: Linux-only configurations
-- `modules/platform/darwin.nix`: macOS-only configurations
+- `platforms/linux.nix`: Linux-only configurations
+- `platforms/darwin.nix`: macOS-only configurations
 
 ### Host-Specific Files
 Individual machine configurations in `hosts/` can override or extend:
@@ -131,15 +131,15 @@ Individual machine configurations in `hosts/` can override or extend:
 Edit `modules/packages/default.nix` to add packages available on all platforms.
 
 For platform-specific packages, edit:
-- `modules/platform/linux.nix` for Linux-only packages
-- `modules/platform/darwin.nix` for macOS-only packages
+- `platforms/linux.nix` for Linux-only packages
+- `platforms/darwin.nix` for macOS-only packages
 
 ### Configuring Programs
 Program configurations are in `modules/programs/`. Platform-specific programs are imported by platform modules.
 
 ### Environment Variables
 - Common variables: `modules/sessionvariables/`
-- Platform-specific: Add to `modules/platform/{linux,darwin}.nix`
+- Platform-specific: Add to `platforms/{linux,darwin}.nix`
 
 ## Troubleshooting
 
