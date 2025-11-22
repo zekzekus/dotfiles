@@ -29,5 +29,12 @@ THEME_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty_theme"
 # mkdir -p "$(dirname "$THEME_FILE")" # .config usually exists
 echo "theme = Neobones Dark" > "$THEME_FILE"
 
+# Restart Waybar to apply GTK theme changes
+if systemctl --user is-active --quiet waybar; then
+    systemctl --user restart waybar
+else
+    killall -SIGUSR2 waybar # Fallback to reload style
+fi
+
 # Notify User
 notify-send "Theme Changed" "Switched to Dark mode"
