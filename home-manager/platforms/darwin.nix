@@ -9,9 +9,9 @@
   programs = {
     bash.enable = true;
     
-    aerospace = import ../programs/aerospace.nix { inherit pkgs common; };
-    sketchybar = import ../programs/sketchybar.nix { inherit pkgs common; };
-    ghostty = import ../programs/ghostty.nix { inherit pkgs; };
+    aerospace = import ../modules/programs/aerospace.nix { inherit pkgs common; };
+    sketchybar = import ../modules/programs/sketchybar.nix { inherit pkgs common; };
+    ghostty = import ../modules/programs/ghostty.nix { inherit pkgs; };
 
   };
 
@@ -26,7 +26,7 @@
   };
 
   services = {
-    jankyborders = import ../services/jankyborders.nix { inherit pkgs common; };
+    jankyborders = import ../modules/services/jankyborders.nix { inherit pkgs common; };
   };
 
   home.sessionPath = [
