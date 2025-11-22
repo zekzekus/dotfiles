@@ -34,6 +34,9 @@
       papirus-icon-theme
       nordic
       kora-icon-theme
+      
+      # Portal
+      xdg-desktop-portal-gtk
     ];
 
     file = {
