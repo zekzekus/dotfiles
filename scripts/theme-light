@@ -6,6 +6,10 @@ ICON_THEME="Papirus-Light"
 COLOR_SCHEME="prefer-light"
 KVANTUM_THEME="KvGnome"
 
+# Export to systemd environment so Waybar and its children (pavucontrol) see it
+export GTK_THEME
+systemctl --user import-environment GTK_THEME
+
 # Apply GTK Settings (Live)
 gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
 gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
