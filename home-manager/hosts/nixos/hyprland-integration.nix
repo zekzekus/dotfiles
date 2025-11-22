@@ -32,6 +32,8 @@
       libsForQt5.qtstyleplugin-kvantum
       gnome-themes-extra
       papirus-icon-theme
+      nordic
+      kora-icon-theme
     ];
 
     file = {

@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Define Theme Variables
-GTK_THEME="Adwaita-dark"
-ICON_THEME="Papirus-Dark"
+GTK_THEME="Nordic"
+ICON_THEME="kora"
 COLOR_SCHEME="prefer-dark"
 KVANTUM_THEME="KvGnomeDark"
 
