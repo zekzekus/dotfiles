@@ -56,8 +56,8 @@
               home.homeDirectory = common.homeDir;
             }
             ./home.nix
-          ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./modules/platform/darwin.nix
-            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./modules/platform/linux.nix
+          ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin.nix
+            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux.nix
             ++ [ ./hosts/${hostname} ];
         };
 
@@ -94,7 +94,7 @@
               home-manager.users.zekus = { ... }: {
                 imports = [
                   ./home.nix
-                  ./modules/platform/linux.nix
+                  ./platforms/linux.nix
                   ./hosts/nixos
                 ];
               };

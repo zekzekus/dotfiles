@@ -1,10 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, common, ... }:
 
 {
+  imports = [
+    ./hyprland-integration.nix
+  ];
+
+  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
+
   # Host-specific configuration for nixos
   # 
   # This file is for overrides specific to this machine only.
-  # Common Linux settings are in modules/platform/linux.nix
+  # Common Linux settings are in platforms/linux.nix
   # System-level NixOS config is in configuration.nix
   #
   # Examples:
@@ -16,4 +22,3 @@
     pkgs.kdePackages.plasma-browser-integration
   ];
 }
-

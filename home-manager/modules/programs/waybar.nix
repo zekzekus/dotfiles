@@ -9,7 +9,19 @@
       height = 30;
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "hyprland/window" ];
-      modules-right = [ "tray" "bluetooth" "pulseaudio" "battery" "clock" ];
+      modules-right = [ "custom/theme-light" "custom/theme-dark" "tray" "bluetooth" "pulseaudio" "battery" "clock" ];
+
+      "custom/theme-light" = {
+        format = " Light ";
+        on-click = "theme-light";
+        tooltip = false;
+      };
+
+      "custom/theme-dark" = {
+        format = " Dark ";
+        on-click = "theme-dark";
+        tooltip = false;
+      };
 
       "hyprland/workspaces" = {
         format = "{id}";
@@ -101,7 +113,9 @@
     #bluetooth,
     #pulseaudio,
     #battery,
-    #clock {
+    #clock,
+    #custom-theme-light,
+    #custom-theme-dark {
       background: rgba(30, 30, 46, 0.8);
       margin: 5px 2px;
       padding: 0px 12px;

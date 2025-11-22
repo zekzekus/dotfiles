@@ -19,9 +19,25 @@
       networkmanagerapplet
       polkit_gnome
       blueman
+      orchis-theme
+      nemo
+      pavucontrol
+      wireplumber
+
+      # theme-switch dependencies
+      glib
+      gsettings-desktop-schemas
+      libsForQt5.qt5ct
+      kdePackages.qt6ct
+      libsForQt5.qtstyleplugin-kvantum
+      gnome-themes-extra
+      papirus-icon-theme
     ];
 
     file = {
+      "bin/theme-dark".source = "${common.dotfilesDir}/scripts/theme-dark";
+      "bin/theme-light".source = "${common.dotfilesDir}/scripts/theme-light";
+
       ".config/hypr/hyprpaper.conf".text = ''
         preload = ~/Pictures/wallpaper.png
         wallpaper = ,~/Pictures/wallpaper.png
@@ -42,9 +58,9 @@
   };
 
   programs = {
-    waybar = import ../programs/waybar.nix { inherit pkgs; };
-    rofi = import ../programs/rofi.nix { inherit pkgs; };
-    hyprlock = import ../programs/hyprlock.nix { inherit pkgs; };
+    waybar = import ../../modules/programs/waybar.nix { inherit pkgs; };
+    rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
+    hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
   };
 
   services = {
@@ -140,16 +156,23 @@
     '';
   };
 
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    x11.enable = true;
+    gtk.enable = true;
+  };
+
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
     QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     SDL_VIDEODRIVER = "wayland";
     GTK_USE_PORTAL = "1";
-    XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 }

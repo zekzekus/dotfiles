@@ -25,7 +25,7 @@ This repository manages configurations for multiple machines using a unified Nix
 │   │       ├── hardware-configuration.nix
 │   │       └── default.nix
 │   ├── modules/               # Shared modules
-│   └── darwin/                # macOS-specific modules
+│   └── platforms/             # Platform-specific configs (linux/darwin)
 └── Makefile                   # Convenience commands
 ```
 

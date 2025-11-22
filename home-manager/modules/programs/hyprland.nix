@@ -106,7 +106,7 @@
       "$mod SHIFT, TAB, workspace, e-1"
       "$mod, B, exec, uwsm-app $browser"
       "$mod, Q, killactive"
-      "$mod, E, exec, uwsm-app -- nautilus"
+      "$mod, E, exec, uwsm-app -- nemo"
       "$mod, A, exec, uwsm-app -- pavucontrol"
       "$mod, V, exec, uwsm-app -- cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$mod SHIFT CTRL, M, exit"

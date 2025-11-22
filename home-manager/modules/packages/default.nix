@@ -43,6 +43,4 @@ with pkgs; [
   nil
   nixd
 
-  # apps
-  localsend
 ]

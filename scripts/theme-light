@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Define Theme Variables
+GTK_THEME="Adwaita"
+ICON_THEME="Papirus-Light"
+COLOR_SCHEME="prefer-light"
+KVANTUM_THEME="KvGnome"
+
+# Apply GTK Settings (Live)
+gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
+gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
+gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME"
+
+# Apply Legacy GTK (GTK3/GTK2)
+GTK_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+if [ -f "$GTK_CONF" ]; then
+    sed -i "s/gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" "$GTK_CONF"
+    sed -i "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=$ICON_THEME/" "$GTK_CONF"
+    sed -i "s/gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=false/" "$GTK_CONF"
+fi
+
+# Apply Qt Settings (via Kvantum)
+if command -v kvantummanager >/dev/null 2>&1; then
+    kvantummanager --set "$KVANTUM_THEME"
+fi
+
+# Apply Ghostty Theme (Omarchy Style)
+THEME_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty_theme"
+# mkdir -p "$(dirname "$THEME_FILE")" # .config usually exists
+echo "theme = Vimbones" > "$THEME_FILE"
+
+# Notify User
+notify-send "Theme Changed" "Switched to Light mode"
