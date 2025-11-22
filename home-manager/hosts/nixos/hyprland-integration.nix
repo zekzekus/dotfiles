@@ -162,8 +162,8 @@
   };
 
   home.pointerCursor = {
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
+    name = "volantes_cursors";
+    package = pkgs.volantes-cursors;
     size = 24;
     x11.enable = true;
     gtk.enable = true;
