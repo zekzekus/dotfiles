@@ -55,7 +55,7 @@
       border_size = 2;
       "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
       "col.inactive_border" = "rgba(595959aa)";
-      layout = "dwindle";
+      layout = "master";
     };
 
     decoration = {
@@ -82,6 +82,11 @@
     dwindle = {
       pseudotile = true;
       preserve_split = true;
+    };
+
+    master = {
+      new_status = "slave";
+      mfact = 0.60;
     };
 
     xwayland = {
