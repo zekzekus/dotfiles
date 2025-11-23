@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Define Theme Variables
-GTK_THEME="Nordic"
-ICON_THEME="kora"
+GTK_THEME="Graphite-Dark"
+ICON_THEME="Tela-circle-dark"
 CURSOR_THEME="volantes_cursors"
 COLOR_SCHEME="prefer-dark"
-KVANTUM_THEME="KvGnomeDark"
+KVANTUM_THEME="Graphite-Dark"
 
 # Export to systemd environment so Waybar and its children (pavucontrol) see it
 export GTK_THEME

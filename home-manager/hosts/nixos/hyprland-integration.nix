@@ -19,7 +19,6 @@
       networkmanagerapplet
       polkit_gnome
       blueman
-      orchis-theme
       nemo
       pavucontrol
       wireplumber
@@ -30,10 +29,12 @@
       libsForQt5.qt5ct
       kdePackages.qt6ct
       libsForQt5.qtstyleplugin-kvantum
+
+      # themes
       gnome-themes-extra
-      papirus-icon-theme
-      nordic
-      kora-icon-theme
+      orchis-theme
+      graphite-gtk-theme
+      tela-circle-icon-theme
       
       # Portal
       xdg-desktop-portal-gtk
