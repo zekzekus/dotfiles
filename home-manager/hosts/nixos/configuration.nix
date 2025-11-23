@@ -27,6 +27,27 @@
     LC_TIME = "tr_TR.UTF-8";
   };
 
+  fonts = {
+    enableDefaultPackages = true;
+    fontconfig = {
+      enable = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        style = "slight";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
+    };
+    packages = with pkgs; [
+      jetbrains-mono
+      nerd-fonts.jetbrains-mono
+      inter
+    ];
+  };
+
   console.keyMap = "trq";
   services.xserver = {
     enable = true;
