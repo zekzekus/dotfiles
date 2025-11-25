@@ -1,47 +1,15 @@
 #!/bin/sh
 
 # Define Theme Variables
-GTK_THEME="Graphite-Light"
-ICON_THEME="Tela-circle-light"
-CURSOR_THEME="volantes_light_cursors"
 COLOR_SCHEME="prefer-light"
-KVANTUM_THEME="Graphite-Light"
-
-# Export to systemd environment so Waybar and its children (pavucontrol) see it
-export GTK_THEME
-systemctl --user import-environment GTK_THEME
 
 # Apply GTK Settings (Live)
-gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
-gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
-gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME"
 gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME"
-
-# Apply Legacy GTK (GTK3/GTK2)
-GTK_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
-if [ -f "$GTK_CONF" ]; then
-    sed -i "s/gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" "$GTK_CONF"
-    sed -i "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=$ICON_THEME/" "$GTK_CONF"
-    sed -i "s/gtk-cursor-theme-name=.*/gtk-cursor-theme-name=$CURSOR_THEME/" "$GTK_CONF"
-    sed -i "s/gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=false/" "$GTK_CONF"
-fi
-
-# Apply Qt Settings (via Kvantum)
-if command -v kvantummanager >/dev/null 2>&1; then
-    kvantummanager --set "$KVANTUM_THEME"
-fi
 
 # Apply Ghostty Theme (Omarchy Style)
 THEME_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty_theme"
 # mkdir -p "$(dirname "$THEME_FILE")" # .config usually exists
 echo "theme = Vimbones" > "$THEME_FILE"
 
-# Restart Waybar to apply GTK theme changes
-if systemctl --user is-active --quiet waybar; then
-    systemctl --user restart waybar
-else
-    killall -SIGUSR2 waybar # Fallback to reload style
-fi
-
 # Notify User
-notify-send "Theme Changed" "Switched to Light mode"
+notify-send "Prefer Light Mode"
