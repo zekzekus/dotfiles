@@ -31,6 +31,8 @@
       rofi.enable = true;
       gtk.enable = true;
       fzf.enable = true;
+      fish.enable = true;
+      tmux.enable = true;
       firefox = {
         enable = true;
         profileNames = [ "default" ];

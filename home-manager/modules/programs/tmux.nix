@@ -18,6 +18,11 @@
     tmux-fzf
   ];
   extraConfig = ''
+    set -g status-justify "left"
+    set -g status "on"
+    set -g status-right-length "100"
+    set -g status-left-length "100"
+    setw -g window-status-separator ""
     set -g default-command "${pkgs.fish}/bin/fish"
     set -g visual-activity on
     setw -g pane-base-index 1
@@ -33,6 +38,5 @@
     bind-key -T copy-mode-vi 'V' send -X select-line
     bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
     bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
-    if-shell "test -f ${common.dotfilesDir}/tmux/tmuxline.gruvbox.conf" "source ${common.dotfilesDir}/tmux/tmuxline.gruvbox.conf"
   '';
 }
