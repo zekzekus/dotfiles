@@ -19,6 +19,9 @@
     };
 
     targets = {
+      hyprland.enable = true;
+      hyprlock.enable = true;
+      hyprpaper.enable = true;
       vicinae.enable = true;
       qt.enable = true;
       lazygit.enable = true;
