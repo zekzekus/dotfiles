@@ -162,14 +162,6 @@
     '';
   };
 
-  home.pointerCursor = {
-    name = "volantes_cursors";
-    package = pkgs.volantes-cursors;
-    size = 24;
-    x11.enable = true;
-    gtk.enable = true;
-  };
-
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";

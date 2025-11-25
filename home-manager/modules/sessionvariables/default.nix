@@ -13,7 +13,6 @@
   FZF_DEFAULT_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
   FZF_CTRL_T_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
   FZF_ALT_C_COMMAND = "bfs -type d -nohidden";
-  FZF_DEFAULT_OPTS = "--style full";
 
   PNPM_HOME = "$HOME/.local/share/pnpm";
 }

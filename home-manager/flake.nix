@@ -20,9 +20,10 @@
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, ... }:
+  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, stylix, ... }:
     let
       overlays = [
         neovim-nightly-overlay.overlays.default
@@ -87,6 +88,7 @@
             determinate.nixosModules.default
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
+            stylix.nixosModules.stylix
             {
               nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
