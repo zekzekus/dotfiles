@@ -19,20 +19,24 @@
     };
 
     targets = {
+      btop.enable = true;
+      fish.enable = true;
+      fzf.enable = true;
+      lazygit.enable = true;
+      tmux.enable = true;
+
+      gtk.enable = true;
+      qt.enable = true;
+
       hyprland.enable = true;
       hyprlock.enable = true;
       hyprpaper.enable = true;
-      vicinae.enable = true;
-      qt.enable = true;
-      lazygit.enable = true;
-      btop.enable = true;
-      waybar.enable = true;
       mako.enable = true;
       rofi.enable = true;
-      gtk.enable = true;
-      fzf.enable = true;
-      fish.enable = true;
-      tmux.enable = true;
+      waybar.enable = true;
+
+      vicinae.enable = true;
+
       firefox = {
         enable = true;
         profileNames = [ "default" ];
@@ -50,7 +54,7 @@
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
 
   # Host-specific configuration for nixos
-  # 
+  #
   # This file is for overrides specific to this machine only.
   # Common Linux settings are in platforms/linux.nix
   # System-level NixOS config is in configuration.nix
