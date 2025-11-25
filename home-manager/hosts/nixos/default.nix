@@ -18,11 +18,20 @@
       size = 24;
     };
 
-    targets.gtk.enable = true;
-    targets.fzf.enable = true;
-    targets.firefox = {
-      enable = true;
-      profileNames = [ "default" ];
+    targets = {
+      vicinae.enable = true;
+      qt.enable = true;
+      lazygit.enable = true;
+      btop.enable = true;
+      waybar.enable = true;
+      mako.enable = true;
+      rofi.enable = true;
+      gtk.enable = true;
+      fzf.enable = true;
+      firefox = {
+        enable = true;
+        profileNames = [ "default" ];
+      };
     };
   };
 

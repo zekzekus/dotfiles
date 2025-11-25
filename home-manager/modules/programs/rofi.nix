@@ -2,7 +2,6 @@
 
 {
   enable = true;
-  theme = "Arc-Dark";
   extraConfig = {
     modi = "drun,run,window";
     show-icons = true;

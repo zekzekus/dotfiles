@@ -5,7 +5,7 @@
   settings = {
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
-    "$browser" = "chromium";
+    "$browser" = "firefox";
     "$launcher" = "rofi -show drun";
 
     monitor = ",preferred,auto,1.5";
