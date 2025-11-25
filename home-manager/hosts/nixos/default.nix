@@ -1,12 +1,36 @@
-{ pkgs, common, ... }:
+{ pkgs, lib, common, ... }:
 
 {
   imports = [
     ./hyprland-integration.nix
   ];
 
-  stylix.targets = {
-    fzf.enable = true;
+  stylix = {
+    enable = true;
+    autoEnable = false;
+
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    polarity = "dark";
+
+    cursor = {
+      package = pkgs.volantes-cursors;
+      name = "volantes_cursors";
+      size = 24;
+    };
+
+    targets.gtk.enable = true;
+    targets.fzf.enable = true;
+    targets.firefox = {
+      enable = true;
+      profileNames = [ "default" ];
+    };
+  };
+
+  specialisation = {
+    light.configuration = {
+      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/gruvbox-light-hard.yaml";
+      stylix.polarity = lib.mkForce "light";
+    };
   };
 
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };

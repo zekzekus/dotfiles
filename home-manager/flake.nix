@@ -56,6 +56,7 @@
               home.username = common.username;
               home.homeDirectory = common.homeDir;
             }
+            stylix.homeModules.stylix
             ./home.nix
           ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin.nix
             ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux.nix
@@ -88,13 +89,13 @@
             determinate.nixosModules.default
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
-            stylix.nixosModules.stylix
             {
               nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.zekus = { ... }: {
                 imports = [
+                  stylix.homeModules.stylix
                   ./home.nix
                   ./platforms/linux.nix
                   ./hosts/nixos

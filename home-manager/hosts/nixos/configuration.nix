@@ -27,34 +27,6 @@
     LC_TIME = "tr_TR.UTF-8";
   };
 
-  stylix = {
-    enable = true;
-    autoEnable = false; # Still "surgical mode"
-
-    # Chromium is a System Target, so it WORKS here!
-    targets.chromium.enable = true;
-
-    # (Optional) Theme your bootloader and console too
-    targets.console.enable = true; 
-
-    # Define the Scheme & Polarity here
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    polarity = "dark";
-
-    cursor = {
-      package = pkgs.volantes-cursors;
-      name = "volantes_cursors";
-      size = 24;
-    };
-  };
-
-  specialisation = {
-    light.configuration = {
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/gruvbox-light-hard.yaml";
-      stylix.polarity = lib.mkForce "light";
-    };
-  };
-
   fonts = {
     enableDefaultPackages = true;
     fontconfig = {
