@@ -110,8 +110,9 @@
     description = "Zekeriya Koc";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      nushell
     ];
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
   };
 
   nixpkgs.config.allowUnfree = true;

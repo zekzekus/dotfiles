@@ -17,6 +17,7 @@
     targets = {
       btop.enable = true;
       fish.enable = true;
+      nushell.enable = true;
       fzf.enable = true;
       lazygit.enable = true;
       tmux.enable = true;
