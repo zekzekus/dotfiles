@@ -58,8 +58,8 @@
             }
             stylix.homeModules.stylix
             ./home.nix
-          ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin.nix
-            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux.nix
+          ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
+            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux
             ++ [ ./hosts/${hostname} ];
         };
 
@@ -97,7 +97,7 @@
                 imports = [
                   stylix.homeModules.stylix
                   ./home.nix
-                  ./platforms/linux.nix
+                  ./platforms/linux
                   ./hosts/nixos
                 ];
               };
