@@ -9,6 +9,15 @@
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
   wayland.systemd.target = "hyprland-session.target";
 
+  home.packages = with pkgs; [
+    ghostty
+    localsend
+  ];
+
+  home.file = {
+    ".config/ghostty".source = "${common.dotfilesDir}/ghostty";
+  };
+
   programs = {
     chromium.enable = true;
 

@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  programs = {
+    bash.enable = false;
+  };
+
   # Host-specific configuration for zomarchy
   # 
   # This file is for overrides specific to this machine only.
