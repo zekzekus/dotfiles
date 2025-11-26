@@ -1,57 +1,13 @@
-{ pkgs, lib, common, ... }:
+{ pkgs, common, ... }:
 
 {
   imports = [
     ./hyprland-integration.nix
+    ./stylix.nix
   ];
 
-  stylix = {
-    enable = true;
-    autoEnable = false;
-
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    polarity = "dark";
-
-    cursor = {
-      package = pkgs.volantes-cursors;
-      name = "volantes_cursors";
-      size = 24;
-    };
-
-    targets = {
-      btop.enable = true;
-      fish.enable = true;
-      fzf.enable = true;
-      lazygit.enable = true;
-      tmux.enable = true;
-
-      gtk.enable = true;
-      qt.enable = true;
-
-      hyprland.enable = true;
-      hyprlock.enable = true;
-      hyprpaper.enable = true;
-      mako.enable = true;
-      rofi.enable = true;
-      waybar.enable = true;
-
-      vicinae.enable = true;
-
-      firefox = {
-        enable = true;
-        profileNames = [ "default" ];
-      };
-    };
-  };
-
-  specialisation = {
-    light.configuration = {
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/gruvbox-light-hard.yaml";
-      stylix.polarity = lib.mkForce "light";
-    };
-  };
-
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
+  programs.chromium.enable = true;
 
   # Host-specific configuration for nixos
   #
@@ -63,5 +19,4 @@
   #   home.packages = with pkgs; [ virt-manager ];
   #   programs.git.userEmail = "nixos@example.com";
   #   home.sessionVariables.NIXOS_MACHINE = "true";
-  programs.chromium.enable = true;
 }

@@ -50,16 +50,6 @@
         splash = false
         ipc = off
       '';
-      ".config/mako/config".text = ''
-        background-color=#1a1b26
-        text-color=#cdd6f4
-        border-color=#89b4fa
-        border-radius=5
-        border-size=2
-        default-timeout=5000
-        ignore-timeout=1
-        layer=overlay
-      '';
     };
   };
 

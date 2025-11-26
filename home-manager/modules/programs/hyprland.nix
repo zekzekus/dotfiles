@@ -1,4 +1,4 @@
-{ pkgs, common, ... }:
+{ common, ... }:
 
 {
   enable = true;
