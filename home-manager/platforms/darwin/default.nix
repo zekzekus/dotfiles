@@ -6,6 +6,24 @@
 # defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 # set group by windows for aerospace
 {
+  home = {
+    packages = with pkgs; [
+      glibtool
+    ];
+
+    file = {
+      ".config/karabiner".source = "${common.dotfilesDir}/misc/macosx/karabiner";
+    };
+
+    sessionPath = [
+      "/opt/homebrew/bin"
+    ];
+
+    sessionVariables = {
+      HOMEBREW_NO_INSTALL_CLEANUP = 1;
+    };
+  };
+
   programs = {
     bash.enable = true;
     
@@ -15,25 +33,7 @@
 
   };
 
-  home = {
-    packages = with pkgs; [
-      glibtool
-    ];
-
-    file = {
-      ".config/karabiner".source = "${common.dotfilesDir}/misc/macosx/karabiner";
-    };
-  };
-
   services = {
     jankyborders = import ../modules/services/jankyborders.nix { inherit pkgs common; };
-  };
-
-  home.sessionPath = [
-    "/opt/homebrew/bin"
-  ];
-
-  home.sessionVariables = {
-    HOMEBREW_NO_INSTALL_CLEANUP = 1;
   };
 }
