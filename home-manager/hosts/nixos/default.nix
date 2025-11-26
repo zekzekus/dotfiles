@@ -7,6 +7,7 @@
   ];
 
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
+  wayland.systemd.target = "hyprland-session.target";
 
   programs = {
     chromium.enable = true;
@@ -18,7 +19,6 @@
     vicinae = {
       enable = true;
       systemd.enable = true;
-      systemd.target = "hyprland-session.target";
     };
   };
 
@@ -26,7 +26,6 @@
     network-manager-applet.enable = true;
     cliphist = {
       enable = true;
-      systemdTargets = [ "hyprland-session.target" ];
     };
 
     polkit-gnome.enable = true;
@@ -42,7 +41,6 @@
     };
     hypridle = {
       enable = true;
-      systemdTarget = "hyprland-session.target";
       settings = {
         general = {
           lock_cmd = "pidof hyprlock || hyprlock";
