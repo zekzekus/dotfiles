@@ -2,6 +2,8 @@
 
 {
   enable = true;
+  systemd.enable = true;
+  systemd.target = "hyprland-session.target";
   settings = {
     mainBar = {
       layer = "top";

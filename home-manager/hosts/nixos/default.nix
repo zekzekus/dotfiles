@@ -7,7 +7,62 @@
   ];
 
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
-  programs.chromium.enable = true;
+
+  programs = {
+    chromium.enable = true;
+
+    waybar = import ../../modules/programs/waybar.nix { inherit pkgs; };
+    rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
+    hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
+
+    vicinae = {
+      enable = true;
+      systemd.enable = true;
+      systemd.target = "hyprland-session.target";
+    };
+  };
+
+  services = {
+    network-manager-applet.enable = true;
+    cliphist = {
+      enable = true;
+      systemdTargets = [ "hyprland-session.target" ];
+    };
+
+    polkit-gnome.enable = true;
+    mako.enable = true;
+    hyprpaper = {
+      enable = true;
+      settings = {
+        preload = "~/Pictures/wallpaper.jpg";
+        wallpaper = ",~/Pictures/wallpaper.jpg";
+        splash = false;
+        ipc = "off";
+      };
+    };
+    hypridle = {
+      enable = true;
+      systemdTarget = "hyprland-session.target";
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 600;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
+      };
+    };
+  };
 
   # Host-specific configuration for nixos
   #
