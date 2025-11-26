@@ -11,6 +11,7 @@
   jujutsu.enable = true;
   nushell.enable = true;
   ripgrep.enable = true;
+  lazygit.enable = true;
   
   git = import ./git.nix { inherit pkgs common; };
   delta = import ./delta.nix { inherit pkgs common; };
