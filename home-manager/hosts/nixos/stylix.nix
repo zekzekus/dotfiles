@@ -16,9 +16,11 @@
     };
 
     targets = {
+      bat.enable = true;
       btop.enable = true;
       fish.enable = true;
       fzf.enable = true;
+      "go DiskUsage()".enable = true;
       lazygit.enable = true;
       tmux.enable = true;
 

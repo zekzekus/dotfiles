@@ -2,6 +2,7 @@
 
 {
   home-manager.enable = true;
+  bat.enable = true;
   btop.enable = true;
   fd.enable = true;
   fzf.enable = true;

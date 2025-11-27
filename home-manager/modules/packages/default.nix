@@ -6,6 +6,7 @@ with pkgs; [
 
   # terminal tools
   bfs
+  gdu
   silver-searcher
   universal-ctags
   wget
