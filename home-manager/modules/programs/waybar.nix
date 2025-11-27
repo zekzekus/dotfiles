@@ -10,7 +10,7 @@
       height = 30;
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "hyprland/window" ];
-      modules-right = [ "custom/theme-light" "custom/theme-dark" "tray" "bluetooth" "pulseaudio" "battery" "clock" ];
+      modules-right = [ "custom/theme-light" "custom/theme-dark" "tray" "pulseaudio" "battery" "clock" ];
 
       "custom/theme-light" = {
         format = " Light ";
@@ -59,6 +59,7 @@
       clock = {
         format = " {:%H:%M}";
         format-alt = " {:%Y-%m-%d}";
+        tooltip = false;
       };
 
       tray = {
