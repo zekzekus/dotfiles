@@ -1,4 +1,0 @@
-policies:
-  # Disable a violation
-  ProhibitMissingScriptEncoding:
-    enabled: false
