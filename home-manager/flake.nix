@@ -20,7 +20,10 @@
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, stylix, ... }:

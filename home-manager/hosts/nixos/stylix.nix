@@ -4,6 +4,7 @@
   stylix = {
     enable = true;
     autoEnable = false;
+    enableReleaseChecks = false;
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     polarity = "dark";
