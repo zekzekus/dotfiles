@@ -39,7 +39,6 @@ home-manager/
 - Home directory: `/Users/zekus`
 - Bash: enabled
 - Window managers: Aerospace
-- Status bar: Sketchybar
 - Window borders: JankyBorders
 
 ## Usage

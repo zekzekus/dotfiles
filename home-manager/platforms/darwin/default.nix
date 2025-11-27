@@ -28,7 +28,6 @@
     bash.enable = true;
     
     aerospace = import ../modules/programs/aerospace.nix { inherit pkgs common; };
-    sketchybar = import ../modules/programs/sketchybar.nix { inherit pkgs common; };
     ghostty = import ../modules/programs/ghostty.nix { inherit pkgs; };
 
   };
