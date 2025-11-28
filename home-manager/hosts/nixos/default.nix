@@ -40,7 +40,14 @@
     };
 
     polkit-gnome.enable = true;
-    mako.enable = true;
+    mako = {
+      enable = true;
+      settings = {
+        default-timeout = 3000;
+        layer = "overlay";
+        anchor = "top-right";
+      };
+    };
     hyprpaper = {
       enable = true;
       settings = {
