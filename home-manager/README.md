@@ -6,20 +6,21 @@ A flake-based Home Manager configuration for managing user environments across m
 
 ```
 home-manager/
-├── flake.nix                 # Main flake with multi-host configurations
-├── flake.lock               # Locked dependencies
-├── home.nix                 # Shared base configuration
-├── hosts/                   # Host-specific configurations
-│   ├── linux-machine.nix   # Linux machine config
-│   └── mac-machine.nix     # macOS machine config
-├── platforms/               # Platform-specific configurations
-│   ├── linux.nix          # Linux settings (generic)
-│   └── darwin.nix         # macOS settings
+├── flake.nix               # Main flake with multi-host configurations
+├── flake.lock              # Locked dependencies
+├── home.nix                # Shared base configuration
+├── hosts/                  # Host-specific configurations
+│   ├── nixos               # Nixos Linux machine config
+│   ├── zomarchy            # Omarchy Linux machine config
+│   └── mac-machine         # macOS machine config
+├── platforms/              # Platform-specific configurations
+│   ├── linux               # Linux settings (generic)
+│   └── darwin              # macOS settings
 └── modules/
     ├── common.nix          # Platform-aware common variables
-    ├── packages/          # Package definitions
-    ├── programs/          # Program configurations
-    ├── services/          # Service configurations
+    ├── packages/           # Package definitions
+    ├── programs/           # Program configurations
+    ├── services/           # Service configurations
     └── ...
 ```
 
