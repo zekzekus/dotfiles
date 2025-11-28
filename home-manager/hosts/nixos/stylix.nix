@@ -19,6 +19,7 @@
       bat.enable = true;
       btop.enable = true;
       fish.enable = true;
+      nushell.enable = true;
       fzf.enable = true;
       "go DiskUsage()".enable = true;
       lazygit.enable = true;
