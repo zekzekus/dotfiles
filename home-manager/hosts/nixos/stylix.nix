@@ -34,6 +34,7 @@
       rofi.enable = true;
       waybar.enable = true;
 
+      ghostty.enable = true;
       vicinae.enable = true;
 
       firefox = {
