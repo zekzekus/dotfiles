@@ -27,12 +27,12 @@
   programs = {
     bash.enable = true;
     
-    aerospace = import ../modules/programs/aerospace.nix { inherit pkgs common; };
-    ghostty = import ../modules/programs/ghostty.nix { inherit pkgs; };
+    aerospace = import ../../modules/programs/aerospace.nix { inherit pkgs common; };
+    ghostty = import ../../modules/programs/ghostty.nix { inherit pkgs; };
 
   };
 
   services = {
-    jankyborders = import ../modules/services/jankyborders.nix { inherit pkgs common; };
+    jankyborders = import ../../modules/services/jankyborders.nix { inherit pkgs common; };
   };
 }
