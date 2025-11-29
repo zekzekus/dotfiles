@@ -75,7 +75,7 @@ make home      # Home Manager only
 make nixos     # NixOS full system rebuild
 ```
 
-See [this](./home-manager/README.md) for all available commands.
+See [this](./home-manager/README.md) for more detail on installation.
 
 ---
 
