@@ -1,168 +1,116 @@
 # Home Manager Configuration
 
-A flake-based Home Manager configuration for managing user environments across multiple machines (Linux and macOS).
+Flake-based Home Manager configuration for managing user environments across multiple machines.
 
-## Structure
-
-```
-home-manager/
-├── flake.nix               # Main flake with multi-host configurations
-├── flake.lock              # Locked dependencies
-├── home.nix                # Shared base configuration
-├── hosts/                  # Host-specific configurations
-│   ├── nixos               # Nixos Linux machine config
-│   ├── zomarchy            # Omarchy Linux machine config
-│   └── mac-machine         # macOS machine config
-├── platforms/              # Platform-specific configurations
-│   ├── linux               # Linux settings (generic)
-│   └── darwin              # macOS settings
-└── modules/
-    ├── common.nix          # Platform-aware common variables
-    ├── packages/           # Package definitions
-    ├── programs/           # Program configurations
-    ├── services/           # Service configurations
-    └── ...
-```
-
-## Supported Platforms
-
-- **Linux**: `x86_64-linux`
-- **macOS**: `aarch64-darwin` (Apple Silicon) or `x86_64-darwin` (Intel)
-
-## Platform Differences
-
-### Linux
-- Home directory: `/home/zekus`
-- Bash: disabled (fish is the primary shell)
-- Window managers: Standard Linux tools
+## Installation
 
 ### macOS
-- Home directory: `/Users/zekus`
-- Bash: enabled
-- Window managers: Aerospace
-- Window borders: JankyBorders
 
-## Usage
+1. **Install Nix** (Determinate Systems installer):
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   ```
 
-### Initial Setup
+2. **Clone the repository**:
+   ```bash
+   git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
+   cd ~/devel/tools/dotfiles
+   ```
 
-1. Install Nix with flakes enabled
-2. Clone this repository
-3. Run Home Manager for your machine
+3. **Configure trusted users** (required for binary caches):
+   ```bash
+   sudo mkdir -p /etc/nix/nix.conf.d
+   echo "trusted-users = root $(whoami)" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
+   sudo launchctl kickstart -k system/systems.determinate.nix-daemon
+   ```
 
-### Switching Configurations
+4. **Apply configuration**:
+   ```bash
+   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@mac-machine
+   ```
 
-**On Linux:**
-```bash
-home-manager switch --flake .#zekus@linux-machine
-```
+5. **Subsequent updates**:
+   ```bash
+   home-manager switch --impure --flake ./home-manager#zekus@mac-machine
+   ```
 
-**On macOS:**
-```bash
-home-manager switch --flake .#zekus@mac-machine
-```
+### Linux (non-NixOS)
 
-**Backwards compatible (existing Linux setup):**
-```bash
-home-manager switch --flake .#zekus
-```
+1. **Install Nix** (Determinate Systems installer):
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   ```
 
-**With automatic hostname detection:**
-```bash
-home-manager switch --flake .#zekus@$(hostname)
-```
+2. **Clone the repository**:
+   ```bash
+   git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
+   cd ~/devel/tools/dotfiles
+   ```
 
-### Adding a New Machine
+3. **Configure trusted users** (required for binary caches):
+   ```bash
+   sudo mkdir -p /etc/nix/nix.conf.d
+   echo "trusted-users = root $(whoami)" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
+   sudo systemctl restart nix-daemon
+   ```
 
-1. Create a new host file in `hosts/` (e.g., `hosts/work-laptop.nix`)
-2. Import the base configuration and appropriate platform module:
+4. **Apply configuration**:
+   ```bash
+   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@zomarchy
+   ```
+
+5. **Subsequent updates**:
+   ```bash
+   home-manager switch --impure --flake ./home-manager#zekus@zomarchy
+   ```
+
+### NixOS
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
+   cd ~/devel/tools/dotfiles
+   ```
+
+2. **Rebuild system** (includes Home Manager):
+   ```bash
+   sudo nixos-rebuild switch --impure --flake ./home-manager#nixos
+   ```
+
+> Trusted users are configured in `configuration.nix`. Home Manager is integrated via the NixOS module.
+
+## Adding a New Host
+
+1. Create host directory:
+   ```bash
+   mkdir -p home-manager/hosts/<hostname>
+   ```
+
+2. Create `default.nix`:
    ```nix
    { pkgs, ... }:
+
    {
-     imports = [
-       ../home.nix
-       ../platforms/darwin.nix  # or linux.nix
-     ];
-     
-     # Host-specific overrides
+     # Host-specific overrides here
    }
    ```
-3. Add the configuration to `flake.nix`:
+
+3. Add to `flake.nix`:
    ```nix
-   "zekus@work-laptop" = mkHomeConfiguration {
-     system = "aarch64-darwin";
-     hostname = "work-laptop";
+   "zekus@<hostname>" = mkHomeConfiguration {
+     system = "x86_64-linux";  # or "aarch64-darwin"
+     hostname = "<hostname>";
    };
    ```
 
-### Updating Dependencies
+## Updating Dependencies
 
 ```bash
-nix flake update
+cd home-manager && nix flake update
 ```
-
-### Building Without Switching
-
-```bash
-home-manager build --flake .#zekus@linux-machine
-```
-
-## Configuration Organization
-
-### Shared Configuration (`home.nix`)
-Contains settings common to all machines:
-- Base packages
-- Shared program configurations
-- Common environment variables
-
-### Platform-Specific Modules
-- `platforms/linux.nix`: Linux-only configurations
-- `platforms/darwin.nix`: macOS-only configurations
-
-### Host-Specific Files
-Individual machine configurations in `hosts/` can override or extend:
-- Shared settings
-- Platform defaults
-- Add machine-specific packages or configurations
-
-## Customization
-
-### Adding Packages
-Edit `modules/packages/default.nix` to add packages available on all platforms.
-
-For platform-specific packages, edit:
-- `platforms/linux.nix` for Linux-only packages
-- `platforms/darwin.nix` for macOS-only packages
-
-### Configuring Programs
-Program configurations are in `modules/programs/`. Platform-specific programs are imported by platform modules.
-
-### Environment Variables
-- Common variables: `modules/sessionvariables/`
-- Platform-specific: Add to `platforms/{linux,darwin}.nix`
 
 ## Troubleshooting
 
-### Build Errors
-Check diagnostics with:
 ```bash
-nix flake check
+nix flake check ./home-manager --impure
 ```
-
-### Platform Detection Issues
-The configuration automatically detects the platform using `pkgs.stdenv.isDarwin`. Ensure you're using the correct system architecture in `flake.nix`.
-
-### Path Issues
-Ensure all relative imports start from the correct directory. The `common.nix` module automatically adjusts paths based on platform.
-
-## Dependencies
-
-- [nixpkgs](https://github.com/nixos/nixpkgs): unstable channel
-- [home-manager](https://github.com/nix-community/home-manager): Follows nixpkgs
-- [neovim-nightly-overlay](https://github.com/nix-community/neovim-nightly-overlay): Latest Neovim builds
-
-## State Version
-
-Current state version: `24.11`
-
-When updating, check the [Home Manager release notes](https://github.com/nix-community/home-manager/blob/master/docs/release-notes/rl-2411.adoc) for breaking changes.
