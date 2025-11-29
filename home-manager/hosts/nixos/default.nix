@@ -11,8 +11,10 @@
 
   home = {
     packages = with pkgs; [
+      appimage-run
       ghostty
       localsend
+      (import ../../modules/packages/helium.nix { inherit pkgs; })
     ];
 
     file = {

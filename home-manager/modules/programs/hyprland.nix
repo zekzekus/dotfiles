@@ -5,7 +5,7 @@
   settings = {
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
-    "$browser" = "chromium";
+    "$browser" = "helium";
     "$launcher" = "rofi -show drun";
 
     monitor = ",preferred,auto,1.5";
@@ -107,7 +107,7 @@
       "$mod, Return, exec, uwsm-app -- $terminal +new-window"
       "$mod, TAB, workspace, e+1"
       "$mod SHIFT, TAB, workspace, e-1"
-      "$mod, B, exec, uwsm-app $browser"
+      "$mod, B, exec, uwsm-app -- $browser"
       "$mod, Q, killactive"
       "$mod, E, exec, uwsm-app -- nemo"
       "$mod, A, exec, uwsm-app -- pavucontrol"
