@@ -53,8 +53,8 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "~/Pictures/wallpaper.jpg";
-        wallpaper = ",~/Pictures/wallpaper.jpg";
+        preload = "~/Pictures/wallpaper.png";
+        wallpaper = ",~/Pictures/wallpaper.png";
         splash = false;
         ipc = "off";
       };
