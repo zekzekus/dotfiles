@@ -119,18 +119,34 @@ See `make help` for all available commands.
 
 ## 📦 What's Included
 
-**Development**
+**Shared** *(all platforms)*
 - Neovim (nightly) with Lazy.nvim, LSP, Treesitter
-- Git with custom templates and global ignores
-- Universal Ctags
-
-**Terminal**
 - Ghostty terminal
-- tmux with status line themes (Gruvbox, Nord)
-- tmuxinator project templates
+- Fish & Nushell with Starship prompt
+- tmux with Gruvbox/Nord themes
+- Git with delta/difftastic, lazygit, jujutsu
+- Go, Rust, Python, Node.js, Ruby, Clojure, Deno
+- fzf, ripgrep, fd, bat, zoxide
 
-**Utilities**
-- Custom scripts (`em`, `ff`, `rg+`, theme switchers)
+**Darwin** *(macOS)*
+- Aerospace tiling window manager
+- JankyBorders for window highlights
+- Karabiner-Elements key remapping
+
+**Linux** *(all Linux hosts)*
+- *(currently inherits shared config)*
+
+**NixOS Host**
+- Hyprland compositor with waybar, rofi, hyprlock
+- Stylix system-wide theming
+- Pipewire audio, Bluetooth, SDDM
+- Mako notifications, cliphist clipboard
+
+**Non-NixOS Linux Host** *(zomarchy)*
+- Minimal overrides — relies on host system services
+
+**Mac Host** *(mac-machine)*
+- Minimal overrides — machine-specific tweaks only
 
 ---
 
