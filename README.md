@@ -1,193 +1,139 @@
-# Dotfiles
+# ⚙️ Dotfiles
 
-Multi-machine configuration using Nix flakes and Home Manager.
+> Declarative, reproducible, multi-platform development environment powered by **Nix Flakes** and **Home Manager**.
 
-## Overview
+One config to rule them all — macOS, Linux, and NixOS.
 
-This repository manages configurations for multiple machines using a unified Nix flake:
+---
 
-- **macOS** - Home Manager standalone
-- **Linux** - Home Manager standalone  
-- **NixOS** - Full system + Home Manager integration
+## ✨ Highlights
 
-## Structure
+- 🔄 **Declarative** — Entire environment defined in code, version controlled, reproducible
+- 🖥️ **Multi-platform** — Single flake manages macOS (Apple Silicon), Linux, and NixOS
+- 🏠 **Multi-host** — Per-machine configurations with shared modules and platform abstractions
+- 🎨 **Stylix** — Consistent theming across applications
+- 🚀 **Neovim Nightly** — Always on the bleeding edge via nix-community overlay
+- ⚡ **Make-driven** — Simple commands that auto-detect your host
+
+---
+
+## 🗂️ Structure
 
 ```
 .
-├── home-manager/
-│   ├── flake.nix              # Main flake configuration
-│   ├── home.nix               # Shared home-manager config
-│   ├── hosts/
-│   │   ├── mac-machine/       # macOS host configuration
-│   │   ├── zomarchy/          # Linux host configuration
-│   │   └── nixos/             # NixOS host configuration
-│   │       ├── configuration.nix
-│   │       ├── hardware-configuration.nix
-│   │       └── default.nix
-│   ├── modules/               # Shared modules
-│   └── platforms/             # Platform-specific configs (linux/darwin)
+├── home-manager/              # Nix flake & Home Manager configs
+│   ├── flake.nix              # Main flake entry point
+│   ├── home.nix               # Shared home configuration
+│   ├── hosts/                 # Per-machine configurations
+│   │   ├── mac-machine/       #   └── macOS (aarch64-darwin)
+│   │   ├── zomarchy/          #   └── Linux (x86_64-linux)
+│   │   └── nixos/             #   └── NixOS (full system + home)
+│   ├── modules/               # Reusable Home Manager modules
+│   │   ├── file/              #   └── File symlinks
+│   │   ├── packages/          #   └── Package sets
+│   │   ├── programs/          #   └── Program configurations
+│   │   ├── services/          #   └── User services
+│   │   ├── sessionpath/       #   └── PATH management
+│   │   └── sessionvariables/  #   └── Environment variables
+│   └── platforms/             # Platform-specific configs
+│       ├── darwin/            #   └── macOS-only settings
+│       └── linux/             #   └── Linux-only settings
+│
+├── nvim/                      # Neovim configuration (Lua)
+├── ghostty/                   # Ghostty terminal config
+├── tmux/                      # tmux configurations & themes
+├── tmuxinator/                # tmuxinator project templates
+├── git/                       # Git config & templates
+├── scripts/                   # Utility scripts
+├── ctags/                     # Universal Ctags config
+├── misc/                      # Legacy configs (archived)
+│
 └── Makefile                   # Convenience commands
 ```
 
-## Setup Instructions
+---
 
-### macOS
+## 🖥️ Supported Hosts
 
-1. Install Nix:
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-   ```
+| Host | Platform | Architecture | Description |
+|------|----------|--------------|-------------|
+| `mac-machine` | macOS | aarch64-darwin | Apple Silicon Mac |
+| `zomarchy` | Linux | x86_64-linux | Non-NixOS Linux |
+| `nixos` | NixOS | x86_64-linux | Full NixOS system |
 
-2. Clone this repository:
-   ```bash
-   git clone <repo-url> ~/devel/tools/dotfiles
-   cd ~/devel/tools/dotfiles
-   ```
+---
 
-3. Configure trusted users for binary caches:
-   ```bash
-   # Add trusted user configuration
-   sudo mkdir -p /etc/nix/nix.conf.d
-   echo "trusted-users = root zekus" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
-   
-   # Restart Nix daemon
-   sudo launchctl kickstart -k system/systems.determinate.nix-daemon
-   
-   # Verify
-   nix show-config | grep trusted-users
-   ```
+## 🚀 Quick Start
 
-4. Apply configuration:
-   ```bash
-   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@mac-machine
-   ```
+```bash
+# Clone
+git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
+cd ~/devel/tools/dotfiles
 
-5. Subsequent updates:
-   ```bash
-   make home
-   ```
+# Apply (auto-detects host)
+make home      # Home Manager only
+make nixos     # NixOS full system rebuild
+```
 
-### Linux (non-NixOS)
+See `make help` for all available commands.
 
-1. Install Nix:
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-   ```
+---
 
-2. Clone this repository:
-   ```bash
-   git clone <repo-url> ~/devel/tools/dotfiles
-   cd ~/devel/tools/dotfiles
-   ```
+## 🧩 Philosophy
 
-3. Configure trusted users for binary caches:
-   ```bash
-   # Add trusted user configuration
-   sudo mkdir -p /etc/nix/nix.conf.d
-   echo "trusted-users = root zekus" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
-   
-   # Restart Nix daemon
-   sudo systemctl restart nix-daemon
-   
-   # Verify
-   nix show-config | grep trusted-users
-   ```
+```
+                    ┌───────────┐       ┌─────────────┐
+                    │  modules  │       │  home.nix   │
+                    │ (shared)  │       │  (shared)   │
+                    └─────┬─────┘       └──────┬──────┘
+                          │                    │
+                          └─────────┬──────────┘
+                                    │
+┌─────────────────────────────────────────────────────────────────┐
+│                         flake.nix                               │
+│                    (single source of truth)                     │
+└───────────────────────────┬─────────────────────────────────────┘
+                            │
+              ┌─────────────┴─────────────┐
+              ▼                           ▼
+        ┌───────────┐               ┌───────────┐
+        │  darwin   │               │   linux   │
+        │ platform  │               │ platform  │
+        └─────┬─────┘               └─────┬─────┘
+              │                           │
+              ▼                     ┌─────┴─────┐
+        ┌───────────┐               ▼           ▼
+        │ mac-host  │         ┌───────────┐ ┌───────────┐
+        └───────────┘         │linux-host │ │nixos-host │
+                              └───────────┘ └───────────┘
+```
 
-4. Apply configuration:
-   ```bash
-   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@zomarchy
-   ```
+**Layered configuration:**
+1. **Flake** — Defines inputs, outputs, and wires everything together
+2. **Platforms** — Darwin vs Linux specifics
+3. **Hosts** — Machine-specific overrides and hardware config
+4. **Modules** — Shared, reusable building blocks
+5. **External configs** — Neovim, tmux, etc. symlinked via Home Manager
 
-5. Subsequent updates:
-   ```bash
-   make home
-   ```
+---
 
-### NixOS
+## 📦 What's Included
 
-1. Clone this repository:
-   ```bash
-   git clone <repo-url> ~/devel/tools/dotfiles
-   cd ~/devel/tools/dotfiles
-   ```
+**Development**
+- Neovim (nightly) with Lazy.nvim, LSP, Treesitter
+- Git with custom templates and global ignores
+- Universal Ctags
 
-2. Rebuild system:
-   ```bash
-   sudo nixos-rebuild switch --impure --flake ./home-manager#nixos
-   ```
-   
-   Or use the Makefile:
-   ```bash
-   make nixos
-   ```
+**Terminal**
+- Ghostty terminal
+- tmux with status line themes (Gruvbox, Nord)
+- tmuxinator project templates
 
-3. Home Manager is integrated automatically via the NixOS module.
+**Utilities**
+- Custom scripts (`em`, `ff`, `rg+`, theme switchers)
 
-> **Note:** Trusted users for binary caches are already configured in `configuration.nix`.
+---
 
-## Makefile Commands
+## 📄 License
 
-The Makefile auto-detects your username and hostname:
-
-- `make` or `make help` - Show available commands
-- `make home` - Switch home-manager configuration
-- `make home-build` - Build home-manager (dry-run)
-- `make nixos` - Rebuild NixOS system (NixOS only)
-- `make nixos-build` - Build NixOS without switching
-- `make update` - Update flake inputs
-- `make check` - Check flake validity
-- `make clean` - Clean build artifacts
-
-## Flake Configuration Details
-
-The flake uses:
-- `nixpkgs` (nixos-unstable)
-- `home-manager` from nix-community
-- `neovim-nightly-overlay` for latest Neovim builds
-- `determinate` for Determinate Systems integration (NixOS)
-
-### Binary Caches
-
-This configuration uses the following binary caches for faster builds:
-- **FlakeHub** (`cache.flakehub.com`) - For Determinate Systems packages
-- **nix-community** (`nix-community.cachix.org`) - For community packages like neovim-nightly
-- **garnix** (`cache.garnix.io`) - Additional community cache
-
-To use these caches, you must configure trusted users as shown in the setup instructions above.
-
-Available configurations:
-- `homeConfigurations."zekus@mac-machine"` - macOS (aarch64-darwin)
-- `homeConfigurations."zekus@zomarchy"` - Linux (x86_64-linux)
-- `homeConfigurations."zekus@nixos"` - NixOS home-manager integration (x86_64-linux)
-- `nixosConfigurations.nixos` - Full NixOS system (x86_64-linux)
-
-## Adding a New Host
-
-1. For macOS/Linux:
-   ```bash
-   mkdir -p home-manager/hosts/<hostname>
-   # Add your configuration files
-   ```
-
-2. For NixOS:
-   ```bash
-   mkdir -p home-manager/hosts/<hostname>
-   # Add configuration.nix, hardware-configuration.nix, and default.nix
-   ```
-
-3. Update `home-manager/flake.nix` to add the new host configuration.
-
-## Directory Paths
-
-Default paths used in configurations (customizable in `flake.nix`):
-
-- `dotfilesDir`: `~/devel/tools/dotfiles`
-- `develHome`: `~/devel/projects`
-- `workHome`: `~/devel/projects/personal`
-- `personalHome`: `~/devel/projects/personal`
-
-## Current Hosts
-
-- **mac-machine** (aarch64-darwin) - macOS
-- **zomarchy** (x86_64-linux) - Linux
-- **nixos** (x86_64-linux) - NixOS
+MIT — fork it, break it, make it yours.

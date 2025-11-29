@@ -12,7 +12,7 @@
     ];
 
     file = {
-      ".config/karabiner".source = "${common.dotfilesDir}/misc/macosx/karabiner";
+      ".config/karabiner".source = "${common.dotfilesDir}/macosx/karabiner";
     };
 
     sessionPath = [
