@@ -16,19 +16,10 @@
       pavucontrol
       wireplumber
 
-      # theme-switch dependencies
+      # theme-switch dependencies (gsettings for live gtk switching)
       glib
       gsettings-desktop-schemas
-      libsForQt5.qt5ct
-      kdePackages.qt6ct
-      libsForQt5.qtstyleplugin-kvantum
 
-      # themes
-      gnome-themes-extra
-      orchis-theme
-      graphite-gtk-theme
-      tela-circle-icon-theme
-      
       # Portal
       xdg-desktop-portal-gtk
     ];
@@ -43,7 +34,6 @@
       MOZ_ENABLE_WAYLAND = "1";
       QT_QPA_PLATFORM = "wayland";
       GDK_BACKEND = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       SDL_VIDEODRIVER = "wayland";

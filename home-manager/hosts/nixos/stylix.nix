@@ -15,6 +15,13 @@
       size = 24;
     };
 
+    icons = {
+      enable = true;
+      package = pkgs.tela-circle-icon-theme;
+      dark = "Tela-circle-dark";
+      light = "Tela-circle-light";
+    };
+
     targets = {
       bat.enable = true;
       btop.enable = true;
