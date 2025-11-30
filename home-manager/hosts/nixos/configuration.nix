@@ -104,6 +104,15 @@
     enable = true;
     withUWSM = true;
   };
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+  programs.gamescope.enable = true;
+  programs.gamemode.enable = true;
   programs.dconf.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
 
@@ -126,6 +135,10 @@
     trusted-users = [ "root" "zekus" ];
     extra-substituters = [ "https://install.determinate.systems" ];
     extra-trusted-public-keys = [ "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" ];
+  };
+
+  environment.sessionVariables = {
+    STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
   };
 
   environment.systemPackages = with pkgs; [
