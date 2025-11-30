@@ -1,10 +1,9 @@
-{ pkgs, compositor, ... }:
+{ pkgs, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
-      ./compositors/${compositor}/system.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -87,6 +86,24 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+      };
+    };
+  };
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
   programs.dconf.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
 

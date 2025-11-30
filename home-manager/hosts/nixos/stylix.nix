@@ -35,6 +35,13 @@
       gtk.enable = true;
       qt.enable = true;
 
+      hyprland.enable = true;
+      hyprlock.enable = true;
+      hyprpaper.enable = true;
+      mako.enable = true;
+      rofi.enable = true;
+      waybar.enable = true;
+
       ghostty.enable = true;
       vicinae.enable = true;
 
@@ -51,4 +58,5 @@
       stylix.polarity = lib.mkForce "light";
     };
   };
+
 }

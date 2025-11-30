@@ -32,8 +32,6 @@
         neovim-nightly-overlay.overlays.default
       ];
 
-      compositor = "hyprland";
-
       mkCommon = { username, homeDir }: {
         inherit username homeDir;
         dotfilesDir = "${homeDir}/devel/tools/dotfiles";
@@ -90,7 +88,6 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit compositor; };
           modules = [
             determinate.nixosModules.default
             ./hosts/nixos/configuration.nix
@@ -108,7 +105,6 @@
                 ];
               };
               home-manager.extraSpecialArgs = {
-                inherit compositor;
                 common = mkCommon {
                   username = "zekus";
                   homeDir = "/home/zekus";
