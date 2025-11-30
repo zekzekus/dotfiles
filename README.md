@@ -28,6 +28,9 @@ One config to rule them all — macOS, Linux, and NixOS.
 │   │   ├── mac-machine/       #   └── macOS (aarch64-darwin)
 │   │   ├── zomarchy/          #   └── Linux (x86_64-linux)
 │   │   └── nixos/             #   └── NixOS (full system + home)
+│   │       └── compositors/   #       └── Swappable compositor configs
+│   │           ├── common/    #           └── Shared wayland/desktop
+│   │           └── hyprland/  #           └── Hyprland-specific
 │   ├── modules/               # Reusable Home Manager modules
 │   │   ├── file/              #   └── File symlinks
 │   │   ├── packages/          #   └── Package sets
