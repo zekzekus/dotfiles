@@ -24,7 +24,7 @@
     };
     error_style = "plain";
     table = {
-      mode = "reinforced";
+      mode = "default";
     };
   };
 
