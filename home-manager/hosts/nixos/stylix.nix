@@ -28,7 +28,7 @@
       fish.enable = true;
       nushell.enable = true;
       fzf.enable = true;
-      "go DiskUsage()".enable = true;
+      gdu.enable = true;
       lazygit.enable = true;
       tmux.enable = true;
 
