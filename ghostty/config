@@ -1,4 +1,3 @@
-theme = "Gruvbox Dark Hard"
 font-family = "TX-02"
 font-size = 13
 
@@ -23,3 +22,5 @@ macos-option-as-alt = left
 macos-shortcuts = allow
 
 maximize = true
+
+config-file = ?~/.config/ghostty_theme
