@@ -1,9 +1,9 @@
-{ pkgs, common, ... }:
+{ pkgs, common, compositor, ... }:
 
 {
   imports = [
     ./stylix.nix
-    ./compositors/hyprland
+    ./compositors/${compositor}
   ];
 
   home = {

@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, compositor, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
-      ./compositors/hyprland/system.nix
+      ./compositors/${compositor}/system.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
