@@ -3,7 +3,7 @@
 {
   imports = [
     ./stylix.nix
-    ./compositors/hyprland  # ← swap this to switch compositors
+    ./compositors/hyprland
   ];
 
   home = {

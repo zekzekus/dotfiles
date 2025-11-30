@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./compositors/hyprland/system.nix  # ← swap this to switch compositors
+      ./compositors/hyprland/system.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
