@@ -22,7 +22,6 @@
     completions = {
       algorithm = "fuzzy";
     };
-    error_style = "plain";
     table = {
       mode = "default";
     };
