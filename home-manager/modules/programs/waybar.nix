@@ -77,7 +77,7 @@
     }
 
     window#waybar {
-      background-color: #181825;
+      background-color: #1d2021;
       transition-property: background-color;
       transition-duration: 0.5s;
     }
