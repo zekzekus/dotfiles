@@ -54,8 +54,8 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "~/Pictures/wallpapers/w11black.jpg";
-        wallpaper = ",~/Pictures/wallpapers/w11black.jpg";
+        preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
+        wallpaper = ",~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
         splash = false;
         ipc = "off";
       };
