@@ -3,7 +3,7 @@
 {
   enable = false;
   launchd.enable = true;
-  userSettings = {
+  settings = {
     after-startup-command = [
       "exec-and-forget borders"
     ];
