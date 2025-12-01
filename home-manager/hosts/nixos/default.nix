@@ -36,6 +36,7 @@
   };
 
   services = {
+    tailscale-systray.enable = true;
     network-manager-applet.enable = true;
     cliphist = {
       enable = true;

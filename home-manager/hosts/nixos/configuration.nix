@@ -16,6 +16,7 @@
       networkmanager-openvpn
     ];
   };
+  services.tailscale.enable = true;
 
   time.timeZone = "Europe/Istanbul";
 
