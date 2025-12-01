@@ -66,6 +66,8 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {

@@ -1,4 +1,4 @@
-{ common, ... }:
+{ common, useNoctalia ? true, ... }:
 
 {
   enable = true;
@@ -103,7 +103,7 @@
     ];
 
     bind = [
-      "$mod, Space, exec, uwsm-app -- vicinae toggle"
+      "$mod, Space, exec, ${if useNoctalia then "noctalia-shell ipc call launcher toggle" else "$launcher"}"
       "$mod, Return, exec, uwsm-app -- $terminal +new-window"
       "$mod, TAB, workspace, e+1"
       "$mod SHIFT, TAB, workspace, e-1"

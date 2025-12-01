@@ -1,12 +1,15 @@
-{ pkgs, common, ... }:
+{ pkgs, lib, common, ... }:
 
+let
+  useNoctalia = true;
+in
 {
   imports = [
     ./hyprland-integration.nix
     ./stylix.nix
   ];
 
-  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common; };
+  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common useNoctalia; };
   wayland.systemd.target = "hyprland-session.target";
 
   home = {
@@ -25,14 +28,19 @@
   programs = {
     chromium.enable = true;
 
-    waybar = import ../../modules/programs/waybar.nix { inherit pkgs; };
+    waybar = import ../../modules/programs/waybar.nix { inherit pkgs; } // {
+      enable = !useNoctalia;
+      systemd.enable = !useNoctalia;
+    };
     rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
     hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
 
     vicinae = {
       enable = true;
-      systemd.enable = true;
+      systemd.enable = !useNoctalia;
     };
+
+    noctalia-shell = lib.mkIf useNoctalia (import ../../modules/programs/noctalia-shell.nix { inherit common; });
   };
 
   services = {
@@ -44,7 +52,7 @@
 
     polkit-gnome.enable = true;
     mako = {
-      enable = true;
+      enable = !useNoctalia;
       settings = {
         default-timeout = 3000;
         layer = "overlay";
