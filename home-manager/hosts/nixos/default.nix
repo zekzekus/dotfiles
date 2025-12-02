@@ -1,7 +1,10 @@
 { pkgs, lib, common, ... }:
 
 let
-  useNoctalia = true;
+  # "default" uses classic setup (waybar, mako, vicinae)
+  # Other options: "noctalia"
+  shellMode = "noctalia";
+  useDefaultShell = shellMode == "default";
 in
 {
   imports = [
@@ -9,7 +12,7 @@ in
     ./stylix.nix
   ];
 
-  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common useNoctalia; };
+  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common shellMode; };
   wayland.systemd.target = "hyprland-session.target";
 
   home = {
@@ -29,18 +32,18 @@ in
     chromium.enable = true;
 
     waybar = import ../../modules/programs/waybar.nix { inherit pkgs; } // {
-      enable = !useNoctalia;
-      systemd.enable = !useNoctalia;
+      enable = useDefaultShell;
+      systemd.enable = useDefaultShell;
     };
     rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
     hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
 
     vicinae = {
       enable = true;
-      systemd.enable = !useNoctalia;
+      systemd.enable = useDefaultShell;
     };
-
-    noctalia-shell = lib.mkIf useNoctalia (import ../../modules/programs/noctalia-shell.nix { inherit common; });
+  } // lib.optionalAttrs (!useDefaultShell) {
+    "${shellMode}-shell" = import ../../modules/programs/${shellMode}-shell.nix { inherit common; };
   };
 
   services = {
@@ -52,7 +55,7 @@ in
 
     polkit-gnome.enable = true;
     mako = {
-      enable = !useNoctalia;
+      enable = useDefaultShell;
       settings = {
         default-timeout = 3000;
         layer = "overlay";

@@ -1,4 +1,11 @@
-{ common, useNoctalia ? true, ... }:
+{ common, shellMode ? "default", ... }:
+
+let
+  launcherCmd = {
+    "default" = "$launcher";
+    "noctalia" = "noctalia-shell ipc call launcher toggle";
+  }.${shellMode} or "$launcher";
+in
 
 {
   enable = true;
@@ -103,7 +110,7 @@
     ];
 
     bind = [
-      "$mod, Space, exec, ${if useNoctalia then "noctalia-shell ipc call launcher toggle" else "$launcher"}"
+      "$mod, Space, exec, ${launcherCmd}"
       "$mod, Return, exec, uwsm-app -- $terminal +new-window"
       "$mod, TAB, workspace, e+1"
       "$mod SHIFT, TAB, workspace, e-1"
