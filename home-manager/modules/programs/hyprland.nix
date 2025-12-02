@@ -3,9 +3,7 @@
 let
   launcherCmd = {
     "default" = "$launcher";
-    "noctalia" = "noctalia-shell ipc call launcher toggle";
     "dms" = "dms ipc spotlight toggle";
-    "hyprpanel" = "hyprpanel t dashboardmenu";
   }.${shellMode} or "$launcher";
 in
 
@@ -53,9 +51,22 @@ in
     ];
 
     windowrulev2 = [
+      # Opacity for inactive windows
+      "opacity 0.9 0.9, floating:0, focus:0"
       "opacity 0.95 0.90, class:com.mitchellh.ghostty"
       "opacity 0.95 0.90, class:(kitty|Alacritty)"
       "opacity 0.95 0.90, class:(Code|code-url-handler)"
+
+      # GNOME apps
+      "rounding 5, class:^(org\\.gnome\\.)"
+
+      # Floating windows
+      "float, class:^(gnome-calculator)$"
+      "float, class:^(blueman-manager)$"
+      "float, class:^(org\\.gnome\\.Nautilus)$"
+
+      # Open DMS windows as floating by default
+      "float, class:^(org.quickshell)$"
     ];
 
     general = {
@@ -67,6 +78,12 @@ in
 
     decoration = {
       rounding = 5;
+      shadow = {
+          enabled = true;
+          range = 30;
+          render_power = 5;
+          offset = "0 5";
+      };
       blur = {
         enabled = true;
         size = 3;
@@ -109,6 +126,7 @@ in
       "blur, vicinae"
       "ignorealpha 0, vicinae"
       "noanim, vicinae"
+      "noanim, ^(dms)$"
     ];
 
     bind = [
@@ -119,22 +137,22 @@ in
       "$mod, B, exec, uwsm-app -- $browser"
       "$mod, Q, killactive"
       "$mod, E, exec, uwsm-app -- nemo"
-      "$mod, V, exec, uwsm-app -- cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+      "$mod, V, exec, dms ipc call clipboard toggle"
       "$mod SHIFT CTRL, M, exit"
-      "$mod SHIFT CTRL, L, exec, hyprlock"
+      "$mod SHIFT CTRL, L, exec, dms ipc call lock lock"
 
       # Audio control (one-shot utilities)
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioMute, exec, dms ipc call audio mute"
+      ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+      ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
 
       # Brightness control (one-shot utilities)
-      ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
-      ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+      ", XF86MonBrightnessUp, exec, dms ipc call brightnessctl increment 5"
+      ", XF86MonBrightnessDown, exec, dms ipc call brightnessctl decrement 5"
 
       # Screenshots (one-shot utilities)
       "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
