@@ -25,6 +25,7 @@ in
 
     file = {
       ".config/ghostty".source = "${common.dotfilesDir}/ghostty";
+      ".config/DankMaterialShell/settings.json".source = "${common.dotfilesDir}/dms/settings.json";
     };
   };
 
