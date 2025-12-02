@@ -2,8 +2,8 @@
 
 let
   # "default" uses classic setup (waybar, mako, vicinae)
-  # Other options: "noctalia"
-  shellMode = "noctalia";
+  # Other options: "noctalia", "dms"
+  shellMode = "dms";
   useDefaultShell = shellMode == "default";
 in
 {
@@ -42,8 +42,10 @@ in
       enable = true;
       systemd.enable = useDefaultShell;
     };
-  } // lib.optionalAttrs (!useDefaultShell) {
-    "${shellMode}-shell" = import ../../modules/programs/${shellMode}-shell.nix { inherit common; };
+  } // lib.optionalAttrs (shellMode == "noctalia") {
+    noctalia-shell = import ../../modules/programs/noctalia-shell.nix { inherit common; };
+  } // lib.optionalAttrs (shellMode == "dms") {
+    dankMaterialShell = import ../../modules/programs/dms-shell.nix { inherit common; };
   };
 
   services = {

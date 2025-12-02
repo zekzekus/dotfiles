@@ -28,9 +28,13 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, stylix, noctalia, ... }:
+  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, stylix, noctalia, dms, ... }:
     let
       overlays = [
         neovim-nightly-overlay.overlays.default
@@ -87,14 +91,17 @@
         "zekus@nixos" = mkHomeConfiguration {
           system = "x86_64-linux";
           hostname = "nixos";
-          extraModules = [ noctalia.homeModules.default ];
+          extraModules = [
+            noctalia.homeModules.default
+            dms.homeModules.dankMaterialShell.default
+          ];
         };
       };
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit noctalia; };
+          specialArgs = { };
           modules = [
             determinate.nixosModules.default
             noctalia.nixosModules.default
@@ -109,6 +116,7 @@
                 imports = [
                   stylix.homeModules.stylix
                   noctalia.homeModules.default
+                  dms.homeModules.dankMaterialShell.default
                   ./home.nix
                   ./platforms/linux
                   ./hosts/nixos

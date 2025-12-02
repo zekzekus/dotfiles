@@ -4,6 +4,7 @@ let
   launcherCmd = {
     "default" = "$launcher";
     "noctalia" = "noctalia-shell ipc call launcher toggle";
+    "dms" = "dms ipc spotlight toggle";
   }.${shellMode} or "$launcher";
 in
 
