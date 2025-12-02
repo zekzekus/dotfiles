@@ -5,6 +5,7 @@ let
     "default" = "$launcher";
     "noctalia" = "noctalia-shell ipc call launcher toggle";
     "dms" = "dms ipc spotlight toggle";
+    "hyprpanel" = "hyprpanel t dashboardmenu";
   }.${shellMode} or "$launcher";
 in
 

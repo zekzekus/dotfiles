@@ -2,7 +2,7 @@
 
 let
   # "default" uses classic setup (waybar, mako, vicinae)
-  # Other options: "noctalia", "dms"
+  # Other options: "noctalia", "dms", "hyprpanel"
   shellMode = "dms";
   useDefaultShell = shellMode == "default";
 in
@@ -46,6 +46,8 @@ in
     noctalia-shell = import ../../modules/programs/noctalia-shell.nix { inherit common; };
   } // lib.optionalAttrs (shellMode == "dms") {
     dankMaterialShell = import ../../modules/programs/dms-shell.nix { inherit common; };
+  } // lib.optionalAttrs (shellMode == "hyprpanel") {
+    hyprpanel = import ../../modules/programs/hyprpanel-shell.nix { inherit common; };
   };
 
   services = {
