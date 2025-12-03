@@ -58,7 +58,7 @@ in
       "opacity 0.95 0.90, class:(Code|code-url-handler)"
 
       # GNOME apps
-      "rounding 5, class:^(org\\.gnome\\.)"
+      "rounding 10, class:^(org\\.gnome\\.)"
 
       # Floating windows
       "float, class:^(gnome-calculator)$"
@@ -77,7 +77,7 @@ in
     };
 
     decoration = {
-      rounding = 5;
+      rounding = 10;
       shadow = {
           enabled = true;
           range = 30;
