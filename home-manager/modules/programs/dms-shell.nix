@@ -2,9 +2,12 @@
 
 {
   enable = true;
-  systemd.enable = true;
+  systemd = {
+    enable = true;
+    restartIfChanged = true;
+  };
   enableClipboard = true;
-  enableAudioWavelength = false;
+  enableAudioWavelength = true;
   enableSystemMonitoring = true;
   enableDynamicTheming = true;
   enableBrightnessControl = true;
