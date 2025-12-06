@@ -6,9 +6,9 @@
 }:
 
 let
-  # Available modes: "default", "dms", "caelestia"
+  # Available modes: "default", "dms", "caelestia", "noctalia"
   # See ../../modules/shell-modes.nix to add more
-  shellMode = "caelestia";
+  shellMode = "noctalia";
   shellModes = import ../../modules/shell-modes.nix;
   shell = shellModes.${shellMode} or shellModes.default;
 in
@@ -61,7 +61,15 @@ in
       systemd.enable = true;
       settings = {
         use24HourClock = true;
-        paths.wallpaperDir = "~/Pictures/wallpapers";
+      };
+    };
+  }
+  // lib.optionalAttrs shell.noctalia.enable {
+    noctalia-shell = {
+      enable = true;
+      systemd.enable = true;
+      settings = {
+        use24HourClock = true;
       };
     };
   };

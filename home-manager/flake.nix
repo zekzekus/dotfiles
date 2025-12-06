@@ -37,6 +37,10 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -48,6 +52,7 @@
       stylix,
       dms,
       caelestia-shell,
+      noctalia,
       ...
     }:
     let
@@ -118,6 +123,7 @@
           extraModules = [
             dms.homeModules.dankMaterialShell.default
             caelestia-shell.homeManagerModules.default
+            noctalia.homeModules.default
           ];
         };
       };
@@ -141,6 +147,7 @@
                     stylix.homeModules.stylix
                     dms.homeModules.dankMaterialShell.default
                     caelestia-shell.homeManagerModules.default
+                    noctalia.homeModules.default
                     ./home.nix
                     ./platforms/linux
                     ./hosts/nixos

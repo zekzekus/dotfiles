@@ -18,6 +18,7 @@
     hyprpaper.enable = true;
     dankMaterialShell.enable = false;
     caelestia.enable = false;
+    noctalia.enable = false;
   };
 
   dms = {
@@ -38,6 +39,7 @@
     hyprpaper.enable = true;
     dankMaterialShell.enable = true;
     caelestia.enable = false;
+    noctalia.enable = false;
   };
 
   caelestia = {
@@ -60,11 +62,28 @@
     hyprpaper.enable = false; # caelestia manages wallpapers
     dankMaterialShell.enable = false;
     caelestia.enable = true;
+    noctalia.enable = false;
   };
 
-  # Add more shells here, e.g.:
-  # ags = {
-  #   launcher = "ags -t launcher";
-  #   ...
-  # };
+  noctalia = {
+    # Noctalia uses IPC commands via noctalia-shell
+    launcher = "noctalia-shell ipc call launcher toggle";
+    clipboard = "noctalia-shell ipc call launcher clipboard";
+    lock = "noctalia-shell ipc call lockScreen lock";
+    volumeMute = "noctalia-shell ipc call volume muteOutput";
+    volumeDown = "noctalia-shell ipc call volume decrease";
+    volumeUp = "noctalia-shell ipc call volume increase";
+    brightnessUp = "noctalia-shell ipc call brightness increase";
+    brightnessDown = "noctalia-shell ipc call brightness decrease";
+
+    bindType = "exec";
+
+    waybar.enable = false;
+    mako.enable = false;
+    vicinae.systemd = false;
+    hyprpaper.enable = false; # noctalia manages wallpapers
+    dankMaterialShell.enable = false;
+    caelestia.enable = false;
+    noctalia.enable = true;
+  };
 }

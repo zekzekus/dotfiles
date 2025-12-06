@@ -9,6 +9,7 @@ let
   shell = shellModes.${shellMode} or shellModes.default;
 
   isCaelestia = shellMode == "caelestia";
+  isNoctalia = shellMode == "noctalia";
 
   mkBind = key: cmd:
     if cmd == null then null
@@ -229,6 +230,29 @@ in
       # Session/notifications
       "$mod SHIFT, Escape, global, caelestia:session"
       "$mod, Delete, global, caelestia:clearNotifs"
+    ] else [])
+
+    # Noctalia-specific bindings
+    ++ (if isNoctalia then [
+      # Control center and settings
+      "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
+      "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
+
+      # Session menu and notifications
+      "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
+      "$mod, Delete, exec, noctalia-shell ipc call notifications dismissAll"
+      "$mod SHIFT, Delete, exec, noctalia-shell ipc call notifications clear"
+
+      # Dark mode toggle
+      "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
+
+      # Wallpaper selector
+      "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
+
+      # Media controls via noctalia
+      ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
+      ", XF86AudioNext, exec, noctalia-shell ipc call media next"
+      ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
     ] else []);
 
     bindm = [
