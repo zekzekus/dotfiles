@@ -9,10 +9,15 @@
     brightnessUp = "brightnessctl set +5%";
     brightnessDown = "brightnessctl set 5%-";
 
+    # Use "exec" bind type for direct commands
+    bindType = "exec";
+
     waybar.enable = true;
     mako.enable = true;
     vicinae.systemd = true;
+    hyprpaper.enable = true;
     dankMaterialShell.enable = false;
+    caelestia.enable = false;
   };
 
   dms = {
@@ -25,16 +30,41 @@
     brightnessUp = "dms ipc call brightnessctl increment 5";
     brightnessDown = "dms ipc call brightnessctl decrement 5";
 
+    bindType = "exec";
+
     waybar.enable = false;
     mako.enable = false;
     vicinae.systemd = false;
+    hyprpaper.enable = true;
     dankMaterialShell.enable = true;
+    caelestia.enable = false;
+  };
+
+  caelestia = {
+    # Caelestia uses Hyprland global shortcuts instead of exec commands
+    launcher = "caelestia:launcher";
+    clipboard = null; # handled via Super+V -> caelestia clipboard command
+    lock = "caelestia:lock";
+    volumeMute = null; # uses wpctl directly
+    volumeDown = null;
+    volumeUp = null;
+    brightnessUp = "caelestia:brightnessUp";
+    brightnessDown = "caelestia:brightnessDown";
+
+    # Use "global" bind type for Hyprland global shortcuts
+    bindType = "global";
+
+    waybar.enable = false;
+    mako.enable = false;
+    vicinae.systemd = false;
+    hyprpaper.enable = false; # caelestia manages wallpapers
+    dankMaterialShell.enable = false;
+    caelestia.enable = true;
   };
 
   # Add more shells here, e.g.:
   # ags = {
   #   launcher = "ags -t launcher";
-  #   clipboard = "ags -t clipboard";
   #   ...
   # };
 }

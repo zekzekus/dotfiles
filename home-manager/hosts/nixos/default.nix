@@ -6,9 +6,9 @@
 }:
 
 let
-  # Available modes: "default", "dms"
+  # Available modes: "default", "dms", "caelestia"
   # See ../../modules/shell-modes.nix to add more
-  shellMode = "dms";
+  shellMode = "caelestia";
   shellModes = import ../../modules/shell-modes.nix;
   shell = shellModes.${shellMode} or shellModes.default;
 in
@@ -54,6 +54,15 @@ in
   }
   // lib.optionalAttrs shell.dankMaterialShell.enable {
     dankMaterialShell = import ../../modules/programs/dms-shell.nix { inherit common; };
+  }
+  // lib.optionalAttrs shell.caelestia.enable {
+    caelestia = {
+      enable = true;
+      systemd.enable = true;
+      settings = {
+        use24HourClock = true;
+      };
+    };
   };
 
   services = {
@@ -73,7 +82,7 @@ in
       };
     };
     hyprpaper = {
-      enable = true;
+      enable = shell.hyprpaper.enable;
       settings = {
         preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
         wallpaper = ",~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";

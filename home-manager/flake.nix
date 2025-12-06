@@ -33,6 +33,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.dgop.follows = "dgop";
     };
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -43,6 +47,7 @@
       determinate,
       stylix,
       dms,
+      caelestia-shell,
       ...
     }:
     let
@@ -112,6 +117,7 @@
           hostname = "nixos";
           extraModules = [
             dms.homeModules.dankMaterialShell.default
+            caelestia-shell.homeManagerModules.default
           ];
         };
       };
@@ -134,6 +140,7 @@
                   imports = [
                     stylix.homeModules.stylix
                     dms.homeModules.dankMaterialShell.default
+                    caelestia-shell.homeManagerModules.default
                     ./home.nix
                     ./platforms/linux
                     ./hosts/nixos

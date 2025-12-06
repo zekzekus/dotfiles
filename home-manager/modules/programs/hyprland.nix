@@ -7,6 +7,15 @@
 let
   shellModes = import ../shell-modes.nix;
   shell = shellModes.${shellMode} or shellModes.default;
+
+  isCaelestia = shellMode == "caelestia";
+
+  mkBind = key: cmd:
+    if cmd == null then null
+    else if shell.bindType == "global" then "${key}, global, ${cmd}"
+    else "${key}, exec, ${cmd}";
+
+  filterNull = builtins.filter (x: x != null);
 in
 
 {
@@ -67,7 +76,7 @@ in
       "float, class:^(blueman-manager)$"
       "float, class:^(org\\.gnome\\.Nautilus)$"
 
-      # Open DMS windows as floating by default
+      # Open Quickshell windows as floating by default
       "float, class:^(org.quickshell)$"
     ];
 
@@ -131,38 +140,42 @@ in
       "noanim, ^(dms)$"
     ];
 
-    bind = [
-      "$mod, Space, exec, ${shell.launcher}"
+    bind = filterNull [
+      # Shell-specific bindings
+      (mkBind "$mod, Space" shell.launcher)
+      (mkBind "$mod, V" shell.clipboard)
+      (mkBind "$mod SHIFT CTRL, L" shell.lock)
+
+      # Audio control
+      (mkBind ", XF86AudioMute" shell.volumeMute)
+      (mkBind ", XF86AudioLowerVolume" shell.volumeDown)
+      (mkBind ", XF86AudioRaiseVolume" shell.volumeUp)
+
+      # Brightness control
+      (mkBind ", XF86MonBrightnessUp" shell.brightnessUp)
+      (mkBind ", XF86MonBrightnessDown" shell.brightnessDown)
+    ] ++ [
+      # Common bindings (always exec)
       "$mod, Return, exec, uwsm-app -- $terminal +new-window"
       "$mod, TAB, workspace, e+1"
       "$mod SHIFT, TAB, workspace, e-1"
       "$mod, B, exec, uwsm-app -- $browser"
       "$mod, Q, killactive"
       "$mod, E, exec, uwsm-app -- nemo"
-      "$mod, V, exec, ${shell.clipboard}"
       "$mod SHIFT CTRL, M, exit"
-      "$mod SHIFT CTRL, L, exec, ${shell.lock}"
 
-      # Audio control (one-shot utilities)
-      ", XF86AudioMute, exec, ${shell.volumeMute}"
-      ", XF86AudioLowerVolume, exec, ${shell.volumeDown}"
-      ", XF86AudioRaiseVolume, exec, ${shell.volumeUp}"
+      # Audio (always exec - not shell-specific)
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
 
-      # Brightness control (one-shot utilities)
-      ", XF86MonBrightnessUp, exec, ${shell.brightnessUp}"
-      ", XF86MonBrightnessDown, exec, ${shell.brightnessDown}"
-
-      # Screenshots (one-shot utilities)
+      # Screenshots
       "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
       "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
-
-      # Screen recording with GUI
       "$mod SHIFT CTRL, 5, exec, uwsm-app -- kooha"
 
+      # Window management
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"
       "$mod, k, movefocus, u"
@@ -177,6 +190,7 @@ in
       "ALT, P, pseudo"
       "ALT, V, togglefloating"
 
+      # Workspaces
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
       "$mod, 3, workspace, 3"
@@ -201,7 +215,21 @@ in
 
       "$mod, mouse_down, workspace, e+1"
       "$mod, mouse_up, workspace, e-1"
-    ];
+    ]
+    # Caelestia-specific bindings (uses global shortcuts)
+    ++ (if isCaelestia then [
+      # Clipboard via caelestia command (not global shortcut)
+      "$mod, V, exec, pkill fuzzel || caelestia clipboard"
+
+      # Volume fallback (caelestia doesn't override these)
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-"
+      ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%+"
+
+      # Session/notifications
+      "$mod SHIFT, Escape, global, caelestia:session"
+      "$mod, Delete, global, caelestia:clearNotifs"
+    ] else []);
 
     bindm = [
       "$mod, mouse:272, movewindow"
