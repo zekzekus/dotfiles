@@ -5,12 +5,8 @@
 }:
 
 let
-  launcherCmd =
-    {
-      "default" = "$launcher";
-      "dms" = "dms ipc spotlight toggle";
-    }
-    .${shellMode} or "$launcher";
+  shellModes = import ../shell-modes.nix;
+  shell = shellModes.${shellMode} or shellModes.default;
 in
 
 {
@@ -136,29 +132,29 @@ in
     ];
 
     bind = [
-      "$mod, Space, exec, ${launcherCmd}"
+      "$mod, Space, exec, ${shell.launcher}"
       "$mod, Return, exec, uwsm-app -- $terminal +new-window"
       "$mod, TAB, workspace, e+1"
       "$mod SHIFT, TAB, workspace, e-1"
       "$mod, B, exec, uwsm-app -- $browser"
       "$mod, Q, killactive"
       "$mod, E, exec, uwsm-app -- nemo"
-      "$mod, V, exec, dms ipc call clipboard toggle"
+      "$mod, V, exec, ${shell.clipboard}"
       "$mod SHIFT CTRL, M, exit"
-      "$mod SHIFT CTRL, L, exec, dms ipc call lock lock"
+      "$mod SHIFT CTRL, L, exec, ${shell.lock}"
 
       # Audio control (one-shot utilities)
-      ", XF86AudioMute, exec, dms ipc call audio mute"
-      ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
-      ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+      ", XF86AudioMute, exec, ${shell.volumeMute}"
+      ", XF86AudioLowerVolume, exec, ${shell.volumeDown}"
+      ", XF86AudioRaiseVolume, exec, ${shell.volumeUp}"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
 
       # Brightness control (one-shot utilities)
-      ", XF86MonBrightnessUp, exec, dms ipc call brightnessctl increment 5"
-      ", XF86MonBrightnessDown, exec, dms ipc call brightnessctl decrement 5"
+      ", XF86MonBrightnessUp, exec, ${shell.brightnessUp}"
+      ", XF86MonBrightnessDown, exec, ${shell.brightnessDown}"
 
       # Screenshots (one-shot utilities)
       "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"

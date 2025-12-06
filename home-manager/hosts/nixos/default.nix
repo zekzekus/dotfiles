@@ -6,10 +6,11 @@
 }:
 
 let
-  # "default" uses classic setup (waybar, mako, vicinae)
-  # "dms" uses DankMaterialShell
-  shellMode = "default";
-  useDefaultShell = shellMode == "default";
+  # Available modes: "default", "dms"
+  # See ../../modules/shell-modes.nix to add more
+  shellMode = "dms";
+  shellModes = import ../../modules/shell-modes.nix;
+  shell = shellModes.${shellMode} or shellModes.default;
 in
 {
   imports = [
@@ -40,18 +41,18 @@ in
     chromium.enable = true;
 
     waybar = import ../../modules/programs/waybar.nix { inherit pkgs; } // {
-      enable = useDefaultShell;
-      systemd.enable = useDefaultShell;
+      enable = shell.waybar.enable;
+      systemd.enable = shell.waybar.enable;
     };
     rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
     hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
 
     vicinae = {
       enable = true;
-      systemd.enable = useDefaultShell;
+      systemd.enable = shell.vicinae.systemd;
     };
   }
-  // lib.optionalAttrs (shellMode == "dms") {
+  // lib.optionalAttrs shell.dankMaterialShell.enable {
     dankMaterialShell = import ../../modules/programs/dms-shell.nix { inherit common; };
   };
 
@@ -64,7 +65,7 @@ in
 
     polkit-gnome.enable = true;
     mako = {
-      enable = useDefaultShell;
+      enable = shell.mako.enable;
       settings = {
         default-timeout = 3000;
         layer = "overlay";
