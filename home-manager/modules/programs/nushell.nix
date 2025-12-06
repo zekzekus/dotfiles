@@ -58,7 +58,7 @@
         asdf => $fish_completer
         mvn => $fish_completer
         tailscale => $fish_completer
-        
+
         # Default to Carapace for everything else
         _ => $carapace_completer
       } | do $in $spans

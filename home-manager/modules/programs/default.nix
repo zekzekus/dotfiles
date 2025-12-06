@@ -12,7 +12,7 @@
   jujutsu.enable = true;
   ripgrep.enable = true;
   lazygit.enable = true;
-  
+
   carapace = import ./carapace.nix { inherit pkgs common; };
   git = import ./git.nix { inherit pkgs common; };
   delta = import ./delta.nix { inherit pkgs common; };

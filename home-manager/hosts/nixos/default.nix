@@ -1,9 +1,14 @@
-{ pkgs, lib, common, ... }:
+{
+  pkgs,
+  lib,
+  common,
+  ...
+}:
 
 let
   # "default" uses classic setup (waybar, mako, vicinae)
   # "dms" uses DankMaterialShell
-  shellMode = "dms";
+  shellMode = "default";
   useDefaultShell = shellMode == "default";
 in
 {
@@ -12,7 +17,9 @@ in
     ./stylix.nix
   ];
 
-  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix { inherit pkgs common shellMode; };
+  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix {
+    inherit pkgs common shellMode;
+  };
   wayland.systemd.target = "hyprland-session.target";
 
   home = {
@@ -43,7 +50,8 @@ in
       enable = true;
       systemd.enable = useDefaultShell;
     };
-  } // lib.optionalAttrs (shellMode == "dms") {
+  }
+  // lib.optionalAttrs (shellMode == "dms") {
     dankMaterialShell = import ../../modules/programs/dms-shell.nix { inherit common; };
   };
 

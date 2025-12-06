@@ -1,10 +1,16 @@
-{ common, shellMode ? "default", ... }:
+{
+  common,
+  shellMode ? "default",
+  ...
+}:
 
 let
-  launcherCmd = {
-    "default" = "$launcher";
-    "dms" = "dms ipc spotlight toggle";
-  }.${shellMode} or "$launcher";
+  launcherCmd =
+    {
+      "default" = "$launcher";
+      "dms" = "dms ipc spotlight toggle";
+    }
+    .${shellMode} or "$launcher";
 in
 
 {
@@ -13,7 +19,7 @@ in
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
     "$browser" = "helium";
-    "$launcher" = "rofi -show drun";
+    "$launcher" = "vicinae toggle";
 
     monitor = ",preferred,auto,1.5";
 
@@ -79,10 +85,10 @@ in
     decoration = {
       rounding = 10;
       shadow = {
-          enabled = true;
-          range = 30;
-          render_power = 5;
-          offset = "0 5";
+        enabled = true;
+        range = 30;
+        render_power = 5;
+        offset = "0 5";
       };
       blur = {
         enabled = true;

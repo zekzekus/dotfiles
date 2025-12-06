@@ -35,22 +35,39 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, determinate, stylix, dms, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      neovim-nightly-overlay,
+      determinate,
+      stylix,
+      dms,
+      ...
+    }:
     let
       overlays = [
         neovim-nightly-overlay.overlays.default
       ];
 
-      mkCommon = { username, homeDir }: {
-        inherit username homeDir;
-        dotfilesDir = "${homeDir}/devel/tools/dotfiles";
-        develHome = "${homeDir}/devel/projects";
-        defaultProjectDir = "personal";
-        workHome = "${homeDir}/devel/projects/personal";
-        personalHome = "${homeDir}/devel/projects/personal";
-      };
+      mkCommon =
+        { username, homeDir }:
+        {
+          inherit username homeDir;
+          dotfilesDir = "${homeDir}/devel/tools/dotfiles";
+          develHome = "${homeDir}/devel/projects";
+          defaultProjectDir = "personal";
+          workHome = "${homeDir}/devel/projects/personal";
+          personalHome = "${homeDir}/devel/projects/personal";
+        };
 
-      mkHomeConfiguration = { system, hostname, username ? "zekus", extraModules ? [] }:
+      mkHomeConfiguration =
+        {
+          system,
+          hostname,
+          username ? "zekus",
+          extraModules ? [ ],
+        }:
         let
           pkgs = import nixpkgs {
             inherit system;
@@ -70,10 +87,11 @@
             }
             stylix.homeModules.stylix
             ./home.nix
-          ] ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
-            ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux
-            ++ extraModules
-            ++ [ ./hosts/${hostname} ];
+          ]
+          ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
+          ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux
+          ++ extraModules
+          ++ [ ./hosts/${hostname} ];
         };
 
     in
@@ -110,15 +128,17 @@
               nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.zekus = { ... }: {
-                imports = [
-                  stylix.homeModules.stylix
-                  dms.homeModules.dankMaterialShell.default
-                  ./home.nix
-                  ./platforms/linux
-                  ./hosts/nixos
-                ];
-              };
+              home-manager.users.zekus =
+                { ... }:
+                {
+                  imports = [
+                    stylix.homeModules.stylix
+                    dms.homeModules.dankMaterialShell.default
+                    ./home.nix
+                    ./platforms/linux
+                    ./hosts/nixos
+                  ];
+                };
               home-manager.extraSpecialArgs = {
                 common = mkCommon {
                   username = "zekus";

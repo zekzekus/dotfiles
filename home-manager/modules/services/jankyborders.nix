@@ -1,4 +1,7 @@
-{ common ? null, ... }:
+{
+  common ? null,
+  ...
+}:
 
 {
   enable = false;
