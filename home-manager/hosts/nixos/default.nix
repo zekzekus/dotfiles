@@ -61,6 +61,7 @@ in
       systemd.enable = true;
       settings = {
         use24HourClock = true;
+        paths.wallpaperDir = "~/Pictures/wallpapers";
       };
     };
   };
