@@ -95,7 +95,6 @@
               home.username = common.username;
               home.homeDirectory = common.homeDir;
             }
-            stylix.homeModules.stylix
             ./home.nix
           ]
           ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
@@ -121,6 +120,7 @@
           system = "x86_64-linux";
           hostname = "nixos";
           extraModules = [
+            stylix.homeModules.stylix
             dms.homeModules.dankMaterialShell.default
             caelestia-shell.homeManagerModules.default
             noctalia.homeModules.default
