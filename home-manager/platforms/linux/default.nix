@@ -6,6 +6,6 @@
 
 {
   programs = {
-    firefox = import ../../modules/firefox.nix { inherit pkgs common; };
+    firefox = import ../../modules/programs/firefox.nix { inherit pkgs common; };
   };
 }
