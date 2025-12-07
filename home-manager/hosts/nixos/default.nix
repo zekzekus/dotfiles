@@ -61,13 +61,7 @@
     };
   }
   // lib.optionalAttrs shell.noctalia.enable {
-    noctalia-shell = {
-      enable = true;
-      systemd.enable = true;
-      settings = {
-        use24HourClock = true;
-      };
-    };
+    noctalia-shell = import ../../modules/programs/noctalia-shell.nix { };
   };
 
   services = {
