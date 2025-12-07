@@ -30,11 +30,11 @@
     };
 
     bar = {
-      backgroundOpacity = 1;
-      capsuleOpacity = 1;
-      density = "default";
+      backgroundOpacity = 0.75;
+      capsuleOpacity = 0.85;
+      density = "comfortable";
       exclusive = true;
-      floating = false;
+      floating = true;
       marginHorizontal = 0.25;
       marginVertical = 0.25;
       monitors = [ ];
@@ -56,7 +56,7 @@
             hideMode = "alwaysExpanded";
             icon = "rocket";
             id = "CustomButton";
-            leftClickExec = "qs -c noctalia-shell ipc call launcher toggle";
+            leftClickExec = "noctalia-shell ipc call launcher toggle";
             leftClickUpdateText = false;
             maxTextLength = {
               horizontal = 10;
@@ -203,7 +203,7 @@
         { enabled = true; id = "weather-card"; }
         { enabled = true; id = "media-sysmon-card"; }
       ];
-      position = "close_to_bar_button";
+      position = "top_center";
       shortcuts = {
         left = [
           { id = "WiFi"; }
