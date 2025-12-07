@@ -17,7 +17,6 @@
   git = import ./git.nix { inherit pkgs common; };
   delta = import ./delta.nix { inherit pkgs common; };
   difftastic = import ./difftastic.nix { inherit pkgs common; };
-  firefox = import ./firefox.nix { inherit pkgs common; };
   fish = import ./fish.nix { inherit pkgs common; };
   nushell = import ./nushell.nix { inherit pkgs common; };
   starship = import ./starship.nix { inherit pkgs common; };

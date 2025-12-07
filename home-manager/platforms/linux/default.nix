@@ -1,9 +1,11 @@
 {
   pkgs,
   common,
-  lib,
   ...
 }:
 
 {
+  programs = {
+    firefox = import ../../modules/firefox.nix { inherit pkgs common; };
+  };
 }
