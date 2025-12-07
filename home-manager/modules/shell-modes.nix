@@ -12,6 +12,9 @@
     # Use "exec" bind type for direct commands
     bindType = "exec";
 
+    # Command for hypridle to lock the screen
+    idleLockCmd = "pidof hyprlock || hyprlock";
+
     waybar.enable = true;
     mako.enable = true;
     vicinae.systemd = true;
@@ -32,6 +35,8 @@
     brightnessDown = "dms ipc call brightnessctl decrement 5";
 
     bindType = "exec";
+
+    idleLockCmd = "dms ipc call lock lock";
 
     waybar.enable = false;
     mako.enable = false;
@@ -56,6 +61,9 @@
     # Use "global" bind type for Hyprland global shortcuts
     bindType = "global";
 
+    # Caelestia lock via CLI (global shortcuts can't be triggered from hypridle)
+    idleLockCmd = "caelestia shell -s lock";
+
     waybar.enable = false;
     mako.enable = false;
     vicinae.systemd = false;
@@ -77,6 +85,8 @@
     brightnessDown = "noctalia-shell ipc call brightness decrease";
 
     bindType = "exec";
+
+    idleLockCmd = "noctalia-shell ipc call lockScreen lock";
 
     waybar.enable = false;
     mako.enable = false;
