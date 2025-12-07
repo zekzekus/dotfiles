@@ -221,10 +221,10 @@
     };
 
     dock = {
+      enabled = false;
       backgroundOpacity = 1;
       colorizeIcons = false;
       displayMode = "auto_hide";
-      enabled = true;
       floatingRatio = 1;
       monitors = [ ];
       onlySameOutput = true;
@@ -256,8 +256,8 @@
     };
 
     hooks = {
-      darkModeChange = "";
       enabled = false;
+      darkModeChange = "";
       wallpaperChange = "";
     };
 
@@ -279,9 +279,9 @@
     };
 
     nightLight = {
+      enabled = false;
       autoSchedule = true;
       dayTemp = "6500";
-      enabled = false;
       forced = false;
       manualSunrise = "06:30";
       manualSunset = "18:30";
@@ -289,10 +289,10 @@
     };
 
     notifications = {
+      enabled = true;
       backgroundOpacity = 1;
       criticalUrgencyDuration = 15;
       enableKeyboardLayoutToast = true;
-      enabled = true;
       location = "top_right";
       lowUrgencyDuration = 3;
       monitors = [ ];
@@ -302,9 +302,9 @@
     };
 
     osd = {
+      enabled = true;
       autoHideMs = 2000;
       backgroundOpacity = 1;
-      enabled = true;
       enabledTypes = [ 0 1 2 ];
       location = "top_right";
       monitors = [ ];
@@ -394,9 +394,9 @@
     };
 
     wallpaper = {
+      enabled = true;
       directory = "~/Pictures/Wallpapers";
       enableMultiMonitorDirectories = false;
-      enabled = true;
       fillColor = "#000000";
       fillMode = "crop";
       hideWallpaperFilenames = false;
