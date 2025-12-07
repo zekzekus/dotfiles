@@ -44,18 +44,33 @@
       widgets = {
         center = [
           {
-            characterCount = 2;
-            followFocusedScreen = false;
-            hideUnoccupied = false;
-            id = "Workspace";
-            labelMode = "index";
+            id = "ActiveWindow";
+            colorizeIcons = false;
+            hideMode = "hidden";
+            maxWidth = 145;
+            scrollingMode = "hover";
+            showIcon = true;
+            useFixedWidth = false;
+          }
+          {
+            id = "MediaMini";
+            hideMode = "hidden";
+            hideWhenIdle = false;
+            maxWidth = 145;
+            scrollingMode = "hover";
+            showAlbumArt = false;
+            showArtistFirst = true;
+            showProgressRing = true;
+            showVisualizer = false;
+            useFixedWidth = false;
+            visualizerType = "linear";
           }
         ];
         left = [
           {
+            id = "CustomButton";
             hideMode = "alwaysExpanded";
             icon = "rocket";
-            id = "CustomButton";
             leftClickExec = "noctalia-shell ipc call launcher toggle";
             leftClickUpdateText = false;
             maxTextLength = {
@@ -81,16 +96,22 @@
             wheelUpdateText = false;
           }
           {
-            customFont = "";
-            formatHorizontal = "HH:mm ddd, MMM dd";
-            formatVertical = "HH mm - dd MM";
-            id = "Clock";
-            useCustomFont = false;
-            usePrimaryColor = false;
+            id = "Workspace";
+            characterCount = 2;
+            followFocusedScreen = false;
+            hideUnoccupied = false;
+            labelMode = "index";
+          }
+        ];
+        right = [
+          {
+            id = "NotificationHistory";
+            hideWhenZero = true;
+            showUnreadBadge = true;
           }
           {
-            diskPath = "/";
             id = "SystemMonitor";
+            diskPath = "/";
             showCpuTemp = true;
             showCpuUsage = true;
             showDiskUsage = false;
@@ -100,65 +121,46 @@
             usePrimaryColor = false;
           }
           {
-            colorizeIcons = false;
-            hideMode = "hidden";
-            id = "ActiveWindow";
-            maxWidth = 145;
-            scrollingMode = "hover";
-            showIcon = true;
-            useFixedWidth = false;
+            id = "ScreenRecorder";
           }
           {
-            hideMode = "hidden";
-            hideWhenIdle = false;
-            id = "MediaMini";
-            maxWidth = 145;
-            scrollingMode = "hover";
-            showAlbumArt = false;
-            showArtistFirst = true;
-            showProgressRing = true;
-            showVisualizer = false;
-            useFixedWidth = false;
-            visualizerType = "linear";
-          }
-        ];
-        right = [
-          { id = "ScreenRecorder"; }
-          {
+            id = "Tray";
             blacklist = [ ];
             colorizeIcons = false;
             drawerEnabled = true;
-            id = "Tray";
             pinned = [ ];
           }
           {
-            hideWhenZero = true;
-            id = "NotificationHistory";
-            showUnreadBadge = true;
-          }
-          {
+            id = "Battery";
             deviceNativePath = "";
             displayMode = "onhover";
-            id = "Battery";
             showNoctaliaPerformance = false;
             showPowerProfiles = false;
             warningThreshold = 30;
           }
           {
-            displayMode = "onhover";
             id = "Volume";
-          }
-          {
             displayMode = "onhover";
-            id = "Brightness";
           }
           {
+            id = "Brightness";
+            displayMode = "onhover";
+          }
+          {
+            id = "Clock";
+            customFont = "";
+            formatHorizontal = "HH:mm ddd, MMM dd";
+            formatVertical = "HH mm - dd MM";
+            useCustomFont = false;
+            usePrimaryColor = false;
+          }
+          {
+            id = "ControlCenter";
             colorizeDistroLogo = false;
             colorizeSystemIcon = "none";
             customIconPath = "";
             enableColorization = false;
             icon = "noctalia";
-            id = "ControlCenter";
             useDistroLogo = false;
           }
         ];
