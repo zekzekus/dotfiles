@@ -104,13 +104,13 @@ in
       settings = {
         general = {
           lock_cmd = shell.idleLockCmd;
-          before_sleep_cmd = "loginctl lock-session";
+          before_sleep_cmd = shell.idleLockCmd;
           after_sleep_cmd = "hyprctl dispatch dpms on";
         };
         listener = [
           {
             timeout = 300;
-            on-timeout = "loginctl lock-session";
+            on-timeout = shell.idleLockCmd;
           }
           {
             timeout = 600;
