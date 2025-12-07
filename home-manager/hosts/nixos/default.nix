@@ -2,24 +2,20 @@
   pkgs,
   lib,
   common,
+  shell,
   ...
 }:
 
-let
-  # Available modes: "default", "dms", "caelestia", "noctalia"
-  # See ../../modules/shell-modes.nix to add more
-  shellMode = "noctalia";
-  shellModes = import ../../modules/shell-modes.nix;
-  shell = shellModes.${shellMode} or shellModes.default;
-in
 {
   imports = [
     ./hyprland-integration.nix
     ./stylix.nix
   ];
 
+  shell.mode = "noctalia";
+
   wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix {
-    inherit pkgs common shellMode;
+    inherit pkgs common shell;
   };
   wayland.systemd.target = "hyprland-session.target";
 

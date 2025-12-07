@@ -1,6 +1,10 @@
 { pkgs, common, ... }:
 
 {
+  imports = [
+    ./modules/shell.nix
+  ];
+
   home = {
     stateVersion = "24.11";
     enableNixpkgsReleaseCheck = false;

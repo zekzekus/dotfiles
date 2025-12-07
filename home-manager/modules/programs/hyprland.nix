@@ -1,15 +1,12 @@
 {
   common,
-  shellMode ? "default",
+  shell,
   ...
 }:
 
 let
-  shellModes = import ../shell-modes.nix;
-  shell = shellModes.${shellMode} or shellModes.default;
-
-  isCaelestia = shellMode == "caelestia";
-  isNoctalia = shellMode == "noctalia";
+  isCaelestia = shell.caelestia.enable;
+  isNoctalia = shell.noctalia.enable;
 
   mkBind = key: cmd:
     if cmd == null then null
@@ -63,21 +60,17 @@ in
     ];
 
     windowrulev2 = [
-      # Opacity for inactive windows
       "opacity 0.9 0.9, floating:0, focus:0"
       "opacity 0.95 0.90, class:com.mitchellh.ghostty"
       "opacity 0.95 0.90, class:(kitty|Alacritty)"
       "opacity 0.95 0.90, class:(Code|code-url-handler)"
 
-      # GNOME apps
       "rounding 10, class:^(org\\.gnome\\.)"
 
-      # Floating windows
       "float, class:^(gnome-calculator)$"
       "float, class:^(blueman-manager)$"
       "float, class:^(org\\.gnome\\.Nautilus)$"
 
-      # Open Quickshell windows as floating by default
       "float, class:^(org.quickshell)$"
     ];
 
@@ -142,21 +135,17 @@ in
     ];
 
     bind = filterNull [
-      # Shell-specific bindings
       (mkBind "$mod, Space" shell.launcher)
       (mkBind "$mod, V" shell.clipboard)
       (mkBind "$mod SHIFT CTRL, L" shell.lock)
 
-      # Audio control
       (mkBind ", XF86AudioMute" shell.volumeMute)
       (mkBind ", XF86AudioLowerVolume" shell.volumeDown)
       (mkBind ", XF86AudioRaiseVolume" shell.volumeUp)
 
-      # Brightness control
       (mkBind ", XF86MonBrightnessUp" shell.brightnessUp)
       (mkBind ", XF86MonBrightnessDown" shell.brightnessDown)
     ] ++ [
-      # Common bindings (always exec)
       "$mod, Return, exec, uwsm-app -- $terminal +new-window"
       "$mod, TAB, workspace, e+1"
       "$mod SHIFT, TAB, workspace, e-1"
@@ -165,18 +154,15 @@ in
       "$mod, E, exec, uwsm-app -- nemo"
       "$mod SHIFT CTRL, M, exit"
 
-      # Audio (always exec - not shell-specific)
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
 
-      # Screenshots
       "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
       "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
       "$mod SHIFT CTRL, 5, exec, uwsm-app -- kooha"
 
-      # Window management
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"
       "$mod, k, movefocus, u"
@@ -191,7 +177,6 @@ in
       "ALT, P, pseudo"
       "ALT, V, togglefloating"
 
-      # Workspaces
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
       "$mod, 3, workspace, 3"
@@ -217,39 +202,28 @@ in
       "$mod, mouse_down, workspace, e+1"
       "$mod, mouse_up, workspace, e-1"
     ]
-    # Caelestia-specific bindings (uses global shortcuts)
     ++ (if isCaelestia then [
-      # Clipboard via caelestia command (not global shortcut)
       "$mod, V, exec, pkill fuzzel || caelestia clipboard"
 
-      # Volume fallback (caelestia doesn't override these)
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-"
       ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%+"
 
-      # Session/notifications
       "$mod SHIFT, Escape, global, caelestia:session"
       "$mod, Delete, global, caelestia:clearNotifs"
     ] else [])
-
-    # Noctalia-specific bindings
     ++ (if isNoctalia then [
-      # Control center and settings
       "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
       "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
 
-      # Session menu and notifications
       "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
       "$mod, Delete, exec, noctalia-shell ipc call notifications dismissAll"
       "$mod SHIFT, Delete, exec, noctalia-shell ipc call notifications clear"
 
-      # Dark mode toggle
       "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
 
-      # Wallpaper selector
       "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
 
-      # Media controls via noctalia
       ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
       ", XF86AudioNext, exec, noctalia-shell ipc call media next"
       ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
