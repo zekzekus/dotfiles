@@ -122,6 +122,7 @@
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
 
   security.rtkit.enable = true;
+  security.polkit.enable = true;
 
   users.users.zekus = {
     isNormalUser = true;
@@ -129,6 +130,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "input"
     ];
     packages = with pkgs; [
       fish

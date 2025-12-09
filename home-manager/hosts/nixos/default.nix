@@ -25,6 +25,7 @@
       ghostty
       localsend
       (import ../../modules/packages/helium.nix { inherit pkgs; })
+      showmethekey
     ];
 
     file = {

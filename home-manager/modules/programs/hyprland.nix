@@ -72,6 +72,11 @@ in
       "float, class:^(org\\.gnome\\.Nautilus)$"
 
       "float, class:^(org.quickshell)$"
+      "float,class:^(one.alynx.showmethekey)$"
+      "float,class:^(showmethekey-gtk)$"
+      "pin,class:^(showmethekey-gtk)$"
+      "noshadow, class:^(showmethekey-gtk)$"
+      "move 100%-w-20 100%-w-20, class:^(showmethekey-gtk)$"
     ];
 
     general = {
