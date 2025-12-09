@@ -182,17 +182,13 @@
       ];
     };
 
-    changelog = {
-      lastSeenVersion = "";
-    };
-
     colorSchemes = {
       darkMode = true;
       generateTemplatesForPredefined = true;
       manualSunrise = "06:30";
       manualSunset = "18:30";
       matugenSchemeType = "scheme-tonal-spot";
-      predefinedScheme = "Noctalia (default)";
+      predefinedScheme = "Gruvbox";
       schedulingMode = "off";
       useWallpaperColors = true;
     };
@@ -226,11 +222,14 @@
       enabled = false;
       backgroundOpacity = 1;
       colorizeIcons = false;
+      deadOpacity = 0.6;
       displayMode = "auto_hide";
       floatingRatio = 1;
+      inactiveIndicators = false;
       monitors = [ ];
       onlySameOutput = true;
       pinnedApps = [ ];
+      pinnedStatic = false;
       size = 1;
     };
 
