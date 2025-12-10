@@ -8,6 +8,7 @@
 
 {
   imports = [
+    ../../modules/shell.nix
     ./hyprland-integration.nix
     ./stylix.nix
     ../../modules/programs/hyprland.nix

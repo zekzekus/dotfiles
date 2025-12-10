@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./modules/shell.nix
     ./modules/packages
     ./modules/file
     ./modules/sessionpath
