@@ -114,10 +114,10 @@
             diskPath = "/";
             showCpuTemp = true;
             showCpuUsage = true;
-            showDiskUsage = false;
-            showMemoryAsPercent = false;
+            showDiskUsage = true;
+            showMemoryAsPercent = true;
             showMemoryUsage = true;
-            showNetworkStats = false;
+            showNetworkStats = true;
             usePrimaryColor = false;
           }
           {
@@ -128,7 +128,9 @@
             blacklist = [ ];
             colorizeIcons = false;
             drawerEnabled = true;
-            pinned = [ ];
+            pinned = [
+              "1Password"
+            ];
           }
           {
             id = "Battery";
@@ -254,6 +256,7 @@
       shadowOffsetY = 3;
       showHibernateOnLockScreen = false;
       showScreenCorners = false;
+      showSessionButtonsOnLockScreen = true;
     };
 
     hooks = {
@@ -300,6 +303,15 @@
       normalUrgencyDuration = 8;
       overlayLayer = true;
       respectExpireTimeout = false;
+      sounds = {
+        enabled = false;
+        criticalSoundFile = "";
+        excludedApps = "discord,firefox,chrome,chromium,edge";
+        lowSoundFile = "";
+        normalSoundFile = "";
+        separateSounds = false;
+        volume = 0.5;
+      };
     };
 
     osd = {
