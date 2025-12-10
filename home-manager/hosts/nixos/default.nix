@@ -10,13 +10,17 @@
   imports = [
     ./hyprland-integration.nix
     ./stylix.nix
+    ../../modules/programs/hyprland.nix
+    ../../modules/programs/waybar.nix
+    ../../modules/programs/rofi.nix
+    ../../modules/programs/hyprlock.nix
+    ../../modules/programs/dms-shell.nix
+    ../../modules/programs/caelestia-shell.nix
+    ../../modules/programs/noctalia-shell.nix
   ];
 
   shell.mode = "noctalia";
 
-  wayland.windowManager.hyprland = import ../../modules/programs/hyprland.nix {
-    inherit pkgs common shell;
-  };
   wayland.systemd.target = "hyprland-session.target";
 
   home = {
@@ -37,52 +41,30 @@
   programs = {
     chromium.enable = true;
 
-    waybar = import ../../modules/programs/waybar.nix { inherit pkgs; } // {
-      enable = shell.waybar.enable;
-      systemd.enable = shell.waybar.enable;
-    };
-    rofi = import ../../modules/programs/rofi.nix { inherit pkgs; };
-    hyprlock = import ../../modules/programs/hyprlock.nix { inherit pkgs; };
-
     vicinae = {
       enable = true;
       systemd.enable = shell.vicinae.systemd;
     };
-  }
-  // lib.optionalAttrs shell.dankMaterialShell.enable {
-    dankMaterialShell = import ../../modules/programs/dms-shell.nix { inherit common; };
-  }
-  // lib.optionalAttrs shell.caelestia.enable {
-    caelestia = {
-      enable = true;
-      systemd.enable = true;
-      settings = {
-        use24HourClock = true;
-      };
-    };
-  }
-  // lib.optionalAttrs shell.noctalia.enable {
-    noctalia-shell = import ../../modules/programs/noctalia-shell.nix { };
   };
 
   services = {
     tailscale-systray.enable = true;
     network-manager-applet.enable = true;
-    cliphist = {
-      enable = true;
-    };
+    cliphist.enable = true;
 
     polkit-gnome.enable = true;
-    mako = {
-      enable = shell.mako.enable;
+
+    mako = lib.mkIf shell.mako.enable {
+      enable = true;
       settings = {
         default-timeout = 3000;
         layer = "overlay";
         anchor = "top-right";
       };
     };
-    hyprpaper = {
-      enable = shell.hyprpaper.enable;
+
+    hyprpaper = lib.mkIf shell.hyprpaper.enable {
+      enable = true;
       settings = {
         preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
         wallpaper = ",~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
@@ -90,6 +72,7 @@
         ipc = "off";
       };
     };
+
     hypridle = {
       enable = true;
       settings = {
