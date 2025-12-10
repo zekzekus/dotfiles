@@ -1,48 +1,47 @@
 { pkgs, ... }:
 
-with pkgs;
-[
-  # editors
-  neovim
+{
+  home.packages = with pkgs; [
+    # editors
+    neovim
 
-  # terminal tools
-  bfs
-  gdu
-  silver-searcher
-  universal-ctags
-  wget
-  tree
+    # terminal tools
+    bfs
+    gdu
+    silver-searcher
+    universal-ctags
+    wget
+    tree
 
-  # version control
-  git-extras
-  tig
+    # version control
+    git-extras
+    tig
 
-  # language runtimes, compilers, interpreters, CLIs
-  babashka
-  cargo
-  clojure
-  deno
-  gcc
-  go
-  nodejs_24
-  pnpm
-  python313
-  python313Packages.pip
-  python313Packages.pynvim
-  ruby_3_4
-  uv
+    # language runtimes, compilers, interpreters, CLIs
+    babashka
+    cargo
+    clojure
+    deno
+    gcc
+    go
+    nodejs_24
+    pnpm
+    python313
+    python313Packages.pip
+    python313Packages.pynvim
+    ruby_3_4
+    uv
 
-  # development tools
-  # claude-code
-  chafa
-  cmake
-  devenv
-  tree-sitter
-  viu
+    # development tools
+    chafa
+    cmake
+    devenv
+    tree-sitter
+    viu
 
-  # language servers
-  lua-language-server
-  nil
-  nixd
-
-]
+    # language servers
+    lua-language-server
+    nil
+    nixd
+  ];
+}

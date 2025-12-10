@@ -1,13 +1,12 @@
-{
-  common ? null,
-  ...
-}:
+{ ... }:
 
 {
-  enable = true;
-  enableFishIntegration = true;
-  enableBashIntegration = true;
-  settings = {
-    cmd_duration.disabled = true;
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    settings = {
+      cmd_duration.disabled = true;
+    };
   };
 }

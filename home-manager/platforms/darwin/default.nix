@@ -6,6 +6,12 @@
 # defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 # set group by windows for aerospace
 {
+  imports = [
+    ../../modules/programs/aerospace.nix
+    ../../modules/programs/ghostty.nix
+    ../../modules/services/jankyborders.nix
+  ];
+
   home = {
     packages = with pkgs; [
       glibtool
@@ -24,15 +30,5 @@
     };
   };
 
-  programs = {
-    bash.enable = true;
-
-    aerospace = import ../../modules/programs/aerospace.nix { inherit pkgs common; };
-    ghostty = import ../../modules/programs/ghostty.nix { inherit pkgs; };
-
-  };
-
-  services = {
-    jankyborders = import ../../modules/services/jankyborders.nix { inherit pkgs common; };
-  };
+  programs.bash.enable = true;
 }
