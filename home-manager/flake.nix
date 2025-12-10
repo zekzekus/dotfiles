@@ -60,6 +60,13 @@
         neovim-nightly-overlay.overlays.default
       ];
 
+      nixosExtraModules = [
+        stylix.homeModules.stylix
+        dms.homeModules.dankMaterialShell.default
+        caelestia-shell.homeManagerModules.default
+        noctalia.homeModules.default
+      ];
+
       mkCommon =
         { username, homeDir }:
         {
@@ -91,10 +98,6 @@
           inherit pkgs;
           extraSpecialArgs = { inherit common; };
           modules = [
-            {
-              home.username = common.username;
-              home.homeDirectory = common.homeDir;
-            }
             ./home.nix
           ]
           ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
@@ -119,12 +122,7 @@
         "zekus@nixos" = mkHomeConfiguration {
           system = "x86_64-linux";
           hostname = "nixos";
-          extraModules = [
-            stylix.homeModules.stylix
-            dms.homeModules.dankMaterialShell.default
-            caelestia-shell.homeManagerModules.default
-            noctalia.homeModules.default
-          ];
+          extraModules = nixosExtraModules;
         };
       };
 
@@ -143,11 +141,7 @@
               home-manager.users.zekus =
                 { ... }:
                 {
-                  imports = [
-                    stylix.homeModules.stylix
-                    dms.homeModules.dankMaterialShell.default
-                    caelestia-shell.homeManagerModules.default
-                    noctalia.homeModules.default
+                  imports = nixosExtraModules ++ [
                     ./home.nix
                     ./platforms/linux
                     ./hosts/nixos
