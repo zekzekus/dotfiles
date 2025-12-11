@@ -11,10 +11,7 @@
     enableAudioWavelength = true;
     enableSystemMonitoring = true;
     enableDynamicTheming = true;
-    enableBrightnessControl = true;
-    enableColorPicker = true;
     enableVPN = true;
     enableCalendarEvents = false;
-    enableSystemSound = true;
   };
 }
