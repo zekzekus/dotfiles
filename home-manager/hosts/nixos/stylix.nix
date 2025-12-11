@@ -52,11 +52,4 @@
     };
   };
 
-  specialisation = {
-    light.configuration = {
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/gruvbox-light-hard.yaml";
-      stylix.polarity = lib.mkForce "light";
-    };
-  };
-
 }
