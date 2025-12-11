@@ -43,5 +43,6 @@
     lua-language-server
     nil
     nixd
+    nixfmt
   ];
 }

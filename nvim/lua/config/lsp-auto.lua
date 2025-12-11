@@ -7,4 +7,6 @@ vim.lsp.enable({
   'gopls',
   'rust_analyzer',
   'hls',
+  'nil_ls',
+  'nixd'
 })
