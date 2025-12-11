@@ -31,8 +31,8 @@
       };
 
       bar = {
-        backgroundOpacity = 0.75;
-        capsuleOpacity = 0.85;
+        backgroundOpacity = 0.25;
+        capsuleOpacity = 1;
         density = "comfortable";
         exclusive = true;
         floating = true;
