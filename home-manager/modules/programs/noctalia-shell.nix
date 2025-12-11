@@ -8,11 +8,11 @@
       appLauncher = {
         customLaunchPrefix = "uwsm-app --";
         customLaunchPrefixEnabled = true;
-        enableClipPreview = true;
-        enableClipboardHistory = false;
+        enableClipPreview = false;
+        enableClipboardHistory = true;
         pinnedExecs = [ ];
         position = "center";
-        showCategories = true;
+        showCategories = false;
         sortByMostUsed = true;
         terminalCommand = "ghostty -e";
         useApp2Unit = false;
