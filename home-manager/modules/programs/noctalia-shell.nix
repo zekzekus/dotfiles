@@ -172,7 +172,7 @@
 
       brightness = {
         brightnessStep = 5;
-        enableDdcSupport = false;
+        enableDdcSupport = true;
         enforceMinimum = true;
       };
 
@@ -284,7 +284,7 @@
       };
 
       nightLight = {
-        enabled = false;
+        enabled = true;
         autoSchedule = true;
         dayTemp = "6500";
         forced = false;
