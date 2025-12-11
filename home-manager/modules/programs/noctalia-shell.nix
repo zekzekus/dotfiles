@@ -375,23 +375,23 @@
 
       templates = {
         alacritty = false;
-        cava = false;
+        cava = true;
         code = false;
         discord = false;
         emacs = false;
         enableUserTemplates = false;
         foot = false;
         fuzzel = false;
-        ghostty = false;
-        gtk = false;
-        kcolorscheme = false;
+        ghostty = true;
+        gtk = true;
+        kcolorscheme = true;
         kitty = false;
         niri = false;
         pywalfox = false;
-        qt = false;
+        qt = true;
         spicetify = false;
         telegram = false;
-        vicinae = false;
+        vicinae = true;
         walker = false;
         wezterm = false;
       };
