@@ -170,7 +170,6 @@
     fallback = true;
 
     # Additional performance tweaks
-    allow-import-from-derivation = false;
     http-connections = 50;
     max-substitution-jobs = 32;
     fsync-metadata = false;
