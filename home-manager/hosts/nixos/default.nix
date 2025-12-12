@@ -43,6 +43,7 @@
 
   programs = {
     chromium.enable = true;
+    fastfetch.enable = true;
 
     vicinae = {
       enable = true;
