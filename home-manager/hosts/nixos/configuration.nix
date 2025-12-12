@@ -166,7 +166,6 @@
     keep-outputs = true;
     keep-derivations = true;
     auto-optimise-store = true;
-    connect-timeout = 5;
     download-attempts = 3;
     fallback = true;
 
