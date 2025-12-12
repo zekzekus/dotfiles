@@ -144,7 +144,6 @@
     experimental-features = [
       "nix-command"
       "flakes"
-      "pipe-operators"
     ];
     trusted-users = [
       "root"
@@ -170,6 +169,12 @@
     connect-timeout = 5;
     download-attempts = 3;
     fallback = true;
+
+    # Additional performance tweaks
+    allow-import-from-derivation = false;
+    http-connections = 50;
+    max-substitution-jobs = 32;
+    fsync-metadata = false;
   };
 
   nix.gc = {
