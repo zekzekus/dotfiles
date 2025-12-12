@@ -19,6 +19,7 @@
     ../../modules/programs/caelestia-shell.nix
     ../../modules/programs/noctalia-shell.nix
     ../../modules/programs/nix-helper.nix
+    ../../modules/programs/yazi.nix
   ];
 
   shell.mode = "noctalia";
