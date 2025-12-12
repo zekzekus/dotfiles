@@ -144,13 +144,38 @@
     experimental-features = [
       "nix-command"
       "flakes"
+      "pipe-operators"
     ];
     trusted-users = [
       "root"
       "zekus"
     ];
-    extra-substituters = [ "https://install.determinate.systems" ];
-    extra-trusted-public-keys = [ "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" ];
+    extra-substituters = [
+      "https://install.determinate.systems"
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
+
+    # Performance optimizations
+    cores = 0;
+    eval-cores = 0;
+    keep-outputs = true;
+    keep-derivations = true;
+    auto-optimise-store = true;
+    connect-timeout = 5;
+    download-attempts = 3;
+    fallback = true;
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
   };
 
   environment.sessionVariables = {
