@@ -7,7 +7,6 @@
       enable = true;
       restartIfChanged = true;
     };
-    enableClipboard = true;
     enableAudioWavelength = true;
     enableSystemMonitoring = true;
     enableDynamicTheming = true;
