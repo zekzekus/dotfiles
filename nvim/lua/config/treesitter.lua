@@ -7,9 +7,7 @@ if not tsitter then
 end
 
 tsitter.setup {
-  -- Comment it to make first installation easier.
-  -- One can put favorite languages here or install manually.
-  -- ensure_installed = 'all',
+  auto_install = false,
   highlight = {
     enable = true,
   },

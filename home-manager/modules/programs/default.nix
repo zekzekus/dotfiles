@@ -7,6 +7,7 @@
     ./difftastic.nix
     ./fish.nix
     ./git.nix
+    ./neovim.nix
     ./nix-your-shell.nix
     ./nushell.nix
     ./starship.nix

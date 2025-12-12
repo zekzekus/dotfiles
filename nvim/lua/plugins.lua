@@ -71,12 +71,7 @@ return {
     cmd = { 'Telescope' },
   },
 
-  {
-    'nvim-treesitter/nvim-treesitter',
-    branch = 'main',
-    lazy = false,
-    build = ":TSUpdate"
-  },
+
 
   {
     'nvim-neo-tree/neo-tree.nvim',

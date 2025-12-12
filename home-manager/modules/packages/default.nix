@@ -2,9 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # editors
-    neovim
-
     # terminal tools
     bfs
     gdu
@@ -17,32 +14,15 @@
     git-extras
     tig
 
-    # language runtimes, compilers, interpreters, CLIs
-    babashka
-    cargo
-    clojure
-    deno
-    gcc
-    go
+    # development tools
+    devenv
+
+    # becuase i want amp to be at the edge
     nodejs_24
     pnpm
-    python313
-    python313Packages.pip
-    python313Packages.pynvim
-    ruby_3_4
-    uv
 
-    # development tools
+    # terminal image viewers
     chafa
-    cmake
-    devenv
-    tree-sitter
     viu
-
-    # language servers
-    lua-language-server
-    nil
-    nixd
-    nixfmt
   ];
 }
