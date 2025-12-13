@@ -102,8 +102,8 @@
               characterCount = 2;
               followFocusedScreen = false;
               hideUnoccupied = false;
-              labelMode = "index";
-              showApplications = false;
+              labelMode = "none";
+              showApplications = true;
               showLabelsOnlyWhenOccupied = true;
             }
           ];
