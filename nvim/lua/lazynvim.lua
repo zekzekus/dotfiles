@@ -25,4 +25,7 @@ require('lazy').setup({
   change_detection = {
     notify = false,
   },
+  performance = {
+    reset_packpath = false,
+  },
 })
