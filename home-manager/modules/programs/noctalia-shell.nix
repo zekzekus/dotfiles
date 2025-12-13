@@ -98,10 +98,13 @@
             }
             {
               id = "Workspace";
+              colorizeIcons = false;
               characterCount = 2;
               followFocusedScreen = false;
               hideUnoccupied = false;
               labelMode = "index";
+              showApplications = false;
+              showLabelsOnlyWhenOccupied = true;
             }
           ];
           right = [
@@ -352,7 +355,7 @@
         showHeader = true;
       };
 
-      settingsVersion = 26;
+      settingsVersion = 28;
 
       systemMonitor = {
         cpuCriticalThreshold = 90;
@@ -394,6 +397,7 @@
         vicinae = false;
         walker = false;
         wezterm = false;
+        yazi = false;
       };
 
       ui = {
@@ -403,7 +407,7 @@
         fontFixedScale = 1;
         panelBackgroundOpacity = 1;
         panelsAttachedToBar = true;
-        settingsPanelAttachToBar = false;
+        settingsPanelMode = "centered";
         tooltipsEnabled = true;
       };
 
