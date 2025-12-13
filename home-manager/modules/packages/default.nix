@@ -5,7 +5,6 @@
     # terminal tools
     bfs
     gdu
-    silver-searcher
     universal-ctags
     wget
     tree
