@@ -9,7 +9,7 @@
     };
     enableAudioWavelength = true;
     enableSystemMonitoring = true;
-    enableDynamicTheming = false;
+    enableDynamicTheming = true;
     enableVPN = true;
     enableCalendarEvents = false;
   };

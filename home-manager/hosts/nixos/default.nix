@@ -53,9 +53,9 @@
   services = {
     tailscale-systray.enable = true;
     network-manager-applet.enable = true;
-    cliphist.enable = true;
 
-    polkit-gnome.enable = true;
+    cliphist.enable = lib.mkIf shell.cliphist.enable true;
+    polkit-gnome.enable = lib.mkIf shell.polkit.enable true;
 
     mako = lib.mkIf shell.mako.enable {
       enable = true;
@@ -76,7 +76,7 @@
       };
     };
 
-    hypridle = {
+    hypridle = lib.mkIf shell.hypridle.enable {
       enable = true;
       settings = {
         general = {

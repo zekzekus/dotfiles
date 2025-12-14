@@ -22,6 +22,10 @@
     dankMaterialShell.enable = false;
     caelestia.enable = false;
     noctalia.enable = false;
+
+    polkit.enable = true;
+    cliphist.enable = true;
+    hypridle.enable = true;
   };
 
   dms = {
@@ -41,40 +45,44 @@
     waybar.enable = false;
     mako.enable = false;
     vicinae.systemd = false;
-    hyprpaper.enable = true;
+    hyprpaper.enable = false;
     dankMaterialShell.enable = true;
     caelestia.enable = false;
     noctalia.enable = false;
+
+    polkit.enable = false;
+    cliphist.enable = false;
+    hypridle.enable = false;
   };
 
   caelestia = {
-    # Caelestia uses Hyprland global shortcuts instead of exec commands
     launcher = "caelestia:launcher";
-    clipboard = null; # handled via Super+V -> caelestia clipboard command
+    clipboard = null;
     lock = "caelestia:lock";
-    volumeMute = null; # uses wpctl directly
+    volumeMute = null;
     volumeDown = null;
     volumeUp = null;
     brightnessUp = "caelestia:brightnessUp";
     brightnessDown = "caelestia:brightnessDown";
 
-    # Use "global" bind type for Hyprland global shortcuts
     bindType = "global";
 
-    # Caelestia lock via CLI (global shortcuts can't be triggered from hypridle)
     idleLockCmd = "caelestia shell -s lock";
 
     waybar.enable = false;
     mako.enable = false;
     vicinae.systemd = false;
-    hyprpaper.enable = false; # caelestia manages wallpapers
+    hyprpaper.enable = false;
     dankMaterialShell.enable = false;
     caelestia.enable = true;
     noctalia.enable = false;
+
+    polkit.enable = true;
+    cliphist.enable = true;
+    hypridle.enable = true;
   };
 
   noctalia = {
-    # Noctalia uses IPC commands via noctalia-shell
     launcher = "noctalia-shell ipc call launcher toggle";
     clipboard = "noctalia-shell ipc call launcher clipboard";
     lock = "noctalia-shell ipc call lockScreen lock";
@@ -91,9 +99,13 @@
     waybar.enable = false;
     mako.enable = false;
     vicinae.systemd = false;
-    hyprpaper.enable = false; # noctalia manages wallpapers
+    hyprpaper.enable = false;
     dankMaterialShell.enable = false;
     caelestia.enable = false;
     noctalia.enable = true;
+
+    polkit.enable = true;
+    cliphist.enable = true;
+    hypridle.enable = true;
   };
 }
