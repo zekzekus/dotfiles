@@ -40,7 +40,7 @@
   "controlCenterShowBluetoothIcon": true,
   "controlCenterShowAudioIcon": true,
   "controlCenterShowVpnIcon": false,
-  "controlCenterShowBrightnessIcon": false,
+  "controlCenterShowBrightnessIcon": true,
   "controlCenterShowMicIcon": false,
   "controlCenterShowBatteryIcon": false,
   "controlCenterShowPrinterIcon": false,
