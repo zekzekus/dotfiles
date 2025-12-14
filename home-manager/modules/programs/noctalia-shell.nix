@@ -103,7 +103,7 @@
               followFocusedScreen = false;
               hideUnoccupied = false;
               labelMode = "none";
-              showApplications = true;
+              showApplications = false;
               showLabelsOnlyWhenOccupied = true;
             }
           ];
@@ -119,9 +119,10 @@
               showCpuTemp = true;
               showCpuUsage = true;
               showDiskUsage = true;
+              showGpuTemp = false;
               showMemoryAsPercent = true;
               showMemoryUsage = true;
-              showNetworkStats = true;
+              showNetworkStats = false;
               usePrimaryColor = false;
             }
             {
@@ -365,6 +366,9 @@
         diskCriticalThreshold = 90;
         diskPollingInterval = 3000;
         diskWarningThreshold = 80;
+        gpuCriticalThreshold = 90;
+        gpuPollingInterval =  3000;
+        gpuWarningThreshold =  80;
         memCriticalThreshold = 90;
         memPollingInterval = 3000;
         memWarningThreshold = 80;
