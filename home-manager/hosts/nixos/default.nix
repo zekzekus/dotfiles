@@ -36,7 +36,7 @@
     ];
 
     file = {
-      ".config/ghostty".source = "${common.dotfilesDir}/ghostty";
+      ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/ghostty";
       ".config/DankMaterialShell/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/dms/settings.json";
     };
   };
