@@ -9,10 +9,8 @@
     brightnessUp = "brightnessctl set +5%";
     brightnessDown = "brightnessctl set 5%-";
 
-    # Use "exec" bind type for direct commands
     bindType = "exec";
 
-    # Command for hypridle to lock the screen
     idleLockCmd = "pidof hyprlock || hyprlock";
 
     waybar.enable = true;
@@ -52,7 +50,7 @@
 
     polkit.enable = false;
     cliphist.enable = false;
-    hypridle.enable = false;
+    hypridle.enable = true;
   };
 
   caelestia = {
