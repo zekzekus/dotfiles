@@ -22,7 +22,7 @@
     ../../modules/programs/nix-helper.nix
   ];
 
-  shell.mode = "noctalia";
+  shell.mode = "dms";
 
   wayland.systemd.target = "hyprland-session.target";
 

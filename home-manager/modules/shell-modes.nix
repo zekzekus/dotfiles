@@ -36,7 +36,7 @@
 
     bindType = "exec";
 
-    idleLockCmd = "dms ipc call lock lock";
+    idleLockCmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
 
     waybar.enable = false;
     mako.enable = false;
