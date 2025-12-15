@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zed-editor = {
@@ -14,5 +14,10 @@
         dark = "Gruvbox Dark";
       };
     };
+    extraPackages = with pkgs; [
+      # LSPs
+      nil
+      nixd
+    ];
   };
 }
