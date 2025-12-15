@@ -23,4 +23,5 @@ macos-shortcuts = allow
 
 maximize = true
 
-config-file = ?~/.config/ghostty/config-dankcolors
+# config-file = ?~/.config/ghostty/config-dankcolors
+theme = "dark:Neobones Dark,light:Vimbones"
