@@ -8,6 +8,7 @@
     ./fish.nix
     ./git.nix
     ./neovim.nix
+    ./nix-helper.nix
     ./nix-your-shell.nix
     ./nushell.nix
     ./starship.nix

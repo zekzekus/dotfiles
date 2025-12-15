@@ -19,7 +19,6 @@
     ../../modules/programs/dms-shell.nix
     ../../modules/programs/caelestia-shell.nix
     ../../modules/programs/noctalia-shell.nix
-    ../../modules/programs/nix-helper.nix
   ];
 
   shell.mode = "dms";
