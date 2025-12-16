@@ -108,7 +108,7 @@
   "keyboardLayoutNameCompactMode": false,
   "runningAppsCurrentWorkspace": false,
   "runningAppsGroupByApp": false,
-  "centeringMode": "index",
+  "centeringMode": "geometric",
   "clockDateFormat": "",
   "lockDateFormat": "",
   "mediaSize": 1,
@@ -253,6 +253,7 @@
   "displayNameMode": "system",
   "screenPreferences": {},
   "showOnLastDisplay": {},
+  "niriOutputSettings": {},
   "barConfigs": [
     {
       "id": "default",
