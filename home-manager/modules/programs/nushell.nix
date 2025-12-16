@@ -35,6 +35,10 @@
     '';
 
     extraConfig = ''
+      def nixinit [target: string] {
+        nix flake init --template $"https://flakehub.com/f/the-nix-way/dev-templates/*#($target)"
+      }
+
       let fish_completer = {|spans|
         # This effectively passes the cursor position and command to fish
         ${pkgs.fish}/bin/fish --command $'complete "--do-complete=($spans | str join " ")"'
