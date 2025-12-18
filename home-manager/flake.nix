@@ -62,7 +62,7 @@
 
       nixosExtraModules = [
         stylix.homeModules.stylix
-        dms.homeModules.dankMaterialShell.default
+        dms.homeModules.dank-material-shell
         caelestia-shell.homeManagerModules.default
         noctalia.homeModules.default
       ];
