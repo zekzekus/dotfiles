@@ -13,7 +13,6 @@
     ./nushell.nix
     ./starship.nix
     # ./tmux.nix
-    ./zed-editor.nix
     ./zoxide.nix
     ./yazi.nix
   ];
