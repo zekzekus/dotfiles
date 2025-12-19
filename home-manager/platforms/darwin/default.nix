@@ -1,10 +1,5 @@
 { pkgs, common, ... }:
 
-# some tricks for macos installations
-# need to install raycast and karabiner-elements from their downloads
-# set keyboard repeating settings
-# defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
-# set group by windows for aerospace
 {
   imports = [
     ../../modules/programs/aerospace.nix

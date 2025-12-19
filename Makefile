@@ -1,8 +1,9 @@
-.PHONY: help home home-build nixos nixos-build update check clean
+.PHONY: help home home-build darwin darwin-build nixos nixos-build update check clean
 
 USER := $(shell whoami)
 HOST := $(shell hostname -s)
 FLAKE := ./home-manager
+UNAME := $(shell uname)
 
 help:
 	@echo "Dotfiles Management"
@@ -11,8 +12,10 @@ help:
 	@echo "Detected: $(USER)@$(HOST)"
 	@echo ""
 	@echo "Available commands:"
-	@echo "  make home          - Switch home-manager configuration"
+	@echo "  make home          - Switch home-manager configuration (standalone)"
 	@echo "  make home-build    - Build home-manager configuration (dry-run)"
+	@echo "  make darwin        - Rebuild nix-darwin system (macOS)"
+	@echo "  make darwin-build  - Build nix-darwin system without switching"
 	@echo "  make nixos         - Rebuild NixOS system (requires NixOS)"
 	@echo "  make nixos-build   - Build NixOS system without switching"
 	@echo "  make update        - Update flake inputs"
@@ -27,6 +30,24 @@ home:
 home-build:
 	@echo "Building home-manager for $(USER)@$(HOST)..."
 	nix build --impure --dry-run $(FLAKE)#homeConfigurations.\"$(USER)@$(HOST)\".activationPackage
+
+darwin:
+	@if [ "$(UNAME)" = "Darwin" ]; then \
+		echo "Rebuilding nix-darwin for $(HOST)..."; \
+		darwin-rebuild switch --impure --flake $(FLAKE)#$(HOST); \
+	else \
+		echo "Error: Not a macOS system"; \
+		exit 1; \
+	fi
+
+darwin-build:
+	@if [ "$(UNAME)" = "Darwin" ]; then \
+		echo "Building nix-darwin for $(HOST)..."; \
+		nix build --impure $(FLAKE)#darwinConfigurations.$(HOST).system; \
+	else \
+		echo "Error: Not a macOS system"; \
+		exit 1; \
+	fi
 
 nixos:
 	@if [ -f /etc/NIXOS ]; then \

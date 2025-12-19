@@ -1,4 +1,4 @@
-{ common, ... }:
+{ lib, common, ... }:
 
 {
   imports = [
@@ -14,6 +14,6 @@
     enableNixpkgsReleaseCheck = false;
 
     username = common.username;
-    homeDirectory = common.homeDir;
+    homeDirectory = lib.mkForce common.homeDir;
   };
 }

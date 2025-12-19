@@ -20,6 +20,11 @@
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,6 +54,8 @@
       home-manager,
       neovim-nightly-overlay,
       determinate,
+      nix-darwin,
+      nix-homebrew,
       stylix,
       dms,
       caelestia-shell,
@@ -123,6 +130,46 @@
           system = "x86_64-linux";
           hostname = "nixos";
           extraModules = nixosExtraModules;
+        };
+      };
+
+      darwinConfigurations = {
+        "mac-machine" = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
+                user = "zekus";
+                autoMigrate = true;
+              };
+            }
+            ./hosts/mac-machine/darwin.nix
+            home-manager.darwinModules.home-manager
+            (
+              let
+                common = mkCommon {
+                  username = "zekus";
+                  homeDir = "/Users/zekus";
+                };
+              in
+              {
+                nixpkgs.overlays = overlays;
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit common; };
+                home-manager.users.zekus = {
+                  imports = [
+                    ./home.nix
+                    ./platforms/darwin
+                    ./hosts/mac-machine
+                  ];
+                };
+              }
+            )
+          ];
         };
       };
 
