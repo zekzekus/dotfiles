@@ -4,7 +4,7 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 ## Installation
 
-### macOS
+### macOS (nix-darwin)
 
 1. **Install Nix** (Determinate Systems installer):
    ```bash
@@ -17,22 +17,27 @@ Flake-based Home Manager configuration for managing user environments across mul
    cd ~/devel/tools/dotfiles
    ```
 
-3. **Configure trusted users** (required for binary caches):
+3. **Bootstrap nix-darwin** (first time only):
    ```bash
-   sudo mkdir -p /etc/nix/nix.conf.d
-   echo "trusted-users = root $(whoami)" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
-   sudo launchctl kickstart -k system/systems.determinate.nix-daemon
+   nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --impure --flake ./home-manager#mac-machine
+   ```
+   
+   You may be prompted to:
+   - Create `/run` symlink (say yes)
+   - Back up `/etc/bashrc`, `/etc/zshrc`, etc. (say yes)
+   - Migrate existing Homebrew (uses `autoMigrate`)
+
+4. **Subsequent updates**:
+   ```bash
+   make darwin
    ```
 
-4. **Apply configuration**:
+5. **Change default shell** (after first successful switch):
    ```bash
-   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@mac-machine
+   chsh -s /run/current-system/sw/bin/fish
    ```
 
-5. **Subsequent updates**:
-   ```bash
-   home-manager switch --impure --flake ./home-manager#zekus@mac-machine
-   ```
+> **Note:** nix-darwin manages Home Manager, Homebrew casks, and macOS system defaults declaratively. See `hosts/mac-machine/darwin.nix` for configuration.
 
 ### Linux (non-NixOS)
 
