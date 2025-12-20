@@ -109,8 +109,8 @@
             ./hosts/mac-machine/configuration.nix
             home-manager.darwinModules.home-manager
             (mkHmModule {
-              homeDir = "/Users/${defaultUsername}";
               username = defaultUsername;
+              homeDir = "/Users/${defaultUsername}";
               platformPath = ./platforms/darwin;
               hostPath = ./hosts/mac-machine;
             })
@@ -126,8 +126,8 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             (mkHmModule {
-              homeDir = "/home/${defaultUsername}";
               username = defaultUsername;
+              homeDir = "/home/${defaultUsername}";
               platformPath = ./platforms/linux;
               hostPath = ./hosts/nixos;
               extraImports = nixosExtraModules;
