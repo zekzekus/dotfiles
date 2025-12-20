@@ -63,8 +63,6 @@
       ...
     }:
     let
-      defaultUsername = "zekus";
-
       overlays = [
         neovim-nightly-overlay.overlays.default
       ];
@@ -76,70 +74,12 @@
         noctalia.homeModules.default
       ];
 
-      # Use flake-relative path so it works during cross-platform evaluation
-      dotfilesDir = toString ./..;
+      lib = import ./lib.nix {
+        inherit nixpkgs home-manager overlays;
+        dotfilesDir = ./..;
+      };
 
-      mkCommon =
-        { username, homeDir }:
-        {
-          inherit username homeDir dotfilesDir;
-          develHome = "${homeDir}/devel/projects";
-          defaultProjectDir = "personal";
-          workHome = "${homeDir}/devel/projects/personal";
-          personalHome = "${homeDir}/devel/projects/personal";
-        };
-
-      mkHomeDir = { system, username }:
-        if (builtins.elem system [ "aarch64-darwin" "x86_64-darwin" ])
-        then "/Users/${username}"
-        else "/home/${username}";
-
-      mkHmModule =
-        { homeDir, username, platformPath, hostPath, extraImports ? [] }:
-        {
-          nixpkgs.overlays = overlays;
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${username} =
-            { ... }:
-            {
-              imports = extraImports ++ [
-                ./home.nix
-                platformPath
-                hostPath
-              ];
-            };
-          home-manager.extraSpecialArgs = {
-            common = mkCommon { inherit username homeDir; };
-          };
-        };
-
-      mkHomeConfiguration =
-        {
-          system,
-          hostname,
-          username ? defaultUsername,
-          extraModules ? [],
-        }:
-        let
-          pkgs = import nixpkgs {
-            inherit system overlays;
-            config.allowUnfree = true;
-          };
-          homeDir = mkHomeDir { inherit system username; };
-          common = mkCommon { inherit username homeDir; };
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit common; };
-          modules = [
-            ./home.nix
-          ]
-          ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
-          ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux
-          ++ extraModules
-          ++ [ ./hosts/${hostname} ];
-        };
+      inherit (lib) defaultUsername mkHmModule mkHomeConfiguration;
 
     in
     {
