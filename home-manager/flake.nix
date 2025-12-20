@@ -63,6 +63,8 @@
       ...
     }:
     let
+      defaultUsername = "zekus";
+
       overlays = [
         neovim-nightly-overlay.overlays.default
       ];
@@ -74,31 +76,57 @@
         noctalia.homeModules.default
       ];
 
+      # Use flake-relative path so it works during cross-platform evaluation
+      dotfilesDir = toString ./..;
+
       mkCommon =
         { username, homeDir }:
         {
-          inherit username homeDir;
-          dotfilesDir = "${homeDir}/devel/tools/dotfiles";
+          inherit username homeDir dotfilesDir;
           develHome = "${homeDir}/devel/projects";
           defaultProjectDir = "personal";
           workHome = "${homeDir}/devel/projects/personal";
           personalHome = "${homeDir}/devel/projects/personal";
         };
 
+      mkHomeDir = { system, username }:
+        if (builtins.elem system [ "aarch64-darwin" "x86_64-darwin" ])
+        then "/Users/${username}"
+        else "/home/${username}";
+
+      mkHmModule =
+        { homeDir, username, platformPath, hostPath, extraImports ? [] }:
+        {
+          nixpkgs.overlays = overlays;
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${username} =
+            { ... }:
+            {
+              imports = extraImports ++ [
+                ./home.nix
+                platformPath
+                hostPath
+              ];
+            };
+          home-manager.extraSpecialArgs = {
+            common = mkCommon { inherit username homeDir; };
+          };
+        };
+
       mkHomeConfiguration =
         {
           system,
           hostname,
-          username ? "zekus",
-          extraModules ? [ ],
+          username ? defaultUsername,
+          extraModules ? [],
         }:
         let
           pkgs = import nixpkgs {
-            inherit system;
-            overlays = overlays;
+            inherit system overlays;
             config.allowUnfree = true;
           };
-          homeDir = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+          homeDir = mkHomeDir { inherit system username; };
           common = mkCommon { inherit username homeDir; };
         in
         home-manager.lib.homeManagerConfiguration {
@@ -136,31 +164,16 @@
       darwinConfigurations = {
         "mac-machine" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = { };
           modules = [
             nix-homebrew.darwinModules.nix-homebrew
             ./hosts/mac-machine/configuration.nix
             home-manager.darwinModules.home-manager
-            {
-              nixpkgs.overlays = overlays;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.zekus =
-              { ... }:
-              {
-                imports = [
-                  ./home.nix
-                  ./platforms/darwin
-                  ./hosts/mac-machine
-                ];
-              };
-              home-manager.extraSpecialArgs = {
-                common = mkCommon {
-                  username = "zekus";
-                  homeDir = "/Users/zekus";
-                };
-              };
-            }
+            (mkHmModule {
+              homeDir = "/Users/${defaultUsername}";
+              username = defaultUsername;
+              platformPath = ./platforms/darwin;
+              hostPath = ./hosts/mac-machine;
+            })
           ];
         };
       };
@@ -168,31 +181,17 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { };
           modules = [
             determinate.nixosModules.default
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
-            {
-              nixpkgs.overlays = overlays;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.zekus =
-                { ... }:
-                {
-                  imports = nixosExtraModules ++ [
-                    ./home.nix
-                    ./platforms/linux
-                    ./hosts/nixos
-                  ];
-                };
-              home-manager.extraSpecialArgs = {
-                common = mkCommon {
-                  username = "zekus";
-                  homeDir = "/home/zekus";
-                };
-              };
-            }
+            (mkHmModule {
+              homeDir = "/home/${defaultUsername}";
+              username = defaultUsername;
+              platformPath = ./platforms/linux;
+              hostPath = ./hosts/nixos;
+              extraImports = nixosExtraModules;
+            })
           ];
         };
       };
