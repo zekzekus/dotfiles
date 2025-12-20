@@ -14,6 +14,13 @@
     "/opt/homebrew/sbin"
   ];
 
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = true;
+    user = "zekus";
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
     onActivation = {

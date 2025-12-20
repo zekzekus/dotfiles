@@ -136,39 +136,31 @@
       darwinConfigurations = {
         "mac-machine" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
+          specialArgs = { };
           modules = [
             nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                enable = true;
-                enableRosetta = true;
-                user = "zekus";
-                autoMigrate = true;
-              };
-            }
-            ./hosts/mac-machine/darwin.nix
+            ./hosts/mac-machine/configuration.nix
             home-manager.darwinModules.home-manager
-            (
-              let
+            {
+              nixpkgs.overlays = overlays;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.zekus =
+              { ... }:
+              {
+                imports = [
+                  ./home.nix
+                  ./platforms/darwin
+                  ./hosts/mac-machine
+                ];
+              };
+              home-manager.extraSpecialArgs = {
                 common = mkCommon {
                   username = "zekus";
                   homeDir = "/Users/zekus";
                 };
-              in
-              {
-                nixpkgs.overlays = overlays;
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit common; };
-                home-manager.users.zekus = {
-                  imports = [
-                    ./home.nix
-                    ./platforms/darwin
-                    ./hosts/mac-machine
-                  ];
-                };
-              }
-            )
+              };
+            }
           ];
         };
       };
