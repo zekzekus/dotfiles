@@ -183,6 +183,7 @@
   "matugenTemplateKitty": true,
   "matugenTemplateFoot": true,
   "matugenTemplateAlacritty": true,
+  "matugenTemplateNeovim": false,
   "matugenTemplateWezterm": true,
   "matugenTemplateDgop": true,
   "matugenTemplateKcolorscheme": true,
@@ -382,5 +383,6 @@
   ],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {},
+  "desktopWidgetGridSettings": {},
   "configVersion": 3
 }
