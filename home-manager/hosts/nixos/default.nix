@@ -3,13 +3,13 @@
   lib,
   config,
   common,
-  shell,
+  desktop,
   ...
 }:
 
 {
   imports = [
-    ../../modules/shell.nix
+    ../../modules/desktop.nix
     ./hyprland-integration.nix
     ./stylix.nix
     ../../modules/programs/hyprland.nix
@@ -21,7 +21,7 @@
     ../../modules/programs/noctalia-shell.nix
   ];
 
-  shell.mode = "dms";
+  desktop.shell.mode = "dms";
 
   wayland.systemd.target = "hyprland-session.target";
 
@@ -45,7 +45,7 @@
 
     vicinae = {
       enable = true;
-      systemd.enable = shell.vicinae.systemd;
+      systemd.enable = desktop.shell.current.vicinae.systemd;
     };
   };
 
@@ -53,10 +53,10 @@
     tailscale-systray.enable = true;
     network-manager-applet.enable = true;
 
-    cliphist.enable = lib.mkIf shell.cliphist.enable true;
-    polkit-gnome.enable = lib.mkIf shell.polkit.enable true;
+    cliphist.enable = lib.mkIf desktop.shell.current.cliphist.enable true;
+    polkit-gnome.enable = lib.mkIf desktop.shell.current.polkit.enable true;
 
-    mako = lib.mkIf shell.mako.enable {
+    mako = lib.mkIf desktop.shell.current.mako.enable {
       enable = true;
       settings = {
         default-timeout = 3000;
@@ -65,7 +65,7 @@
       };
     };
 
-    hyprpaper = lib.mkIf shell.hyprpaper.enable {
+    hyprpaper = lib.mkIf desktop.shell.current.hyprpaper.enable {
       enable = true;
       settings = {
         preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
@@ -75,18 +75,18 @@
       };
     };
 
-    hypridle = lib.mkIf shell.hypridle.enable {
+    hypridle = lib.mkIf desktop.shell.current.hypridle.enable {
       enable = true;
       settings = {
         general = {
-          lock_cmd = shell.idleLockCmd;
-          before_sleep_cmd = shell.idleLockCmd;
+          lock_cmd = desktop.shell.current.idleLockCmd;
+          before_sleep_cmd = desktop.shell.current.idleLockCmd;
           after_sleep_cmd = "hyprctl dispatch dpms on";
         };
         listener = [
           {
             timeout = 300;
-            on-timeout = shell.idleLockCmd;
+            on-timeout = desktop.shell.current.idleLockCmd;
           }
           {
             timeout = 600;

@@ -1,7 +1,7 @@
-{ lib, shell, ... }:
+{ lib, desktop, ... }:
 
 {
-  programs.noctalia-shell = lib.mkIf shell.noctalia.enable {
+  programs.noctalia-shell = lib.mkIf desktop.shell.current.noctalia.enable {
     enable = true;
     systemd.enable = true;
     settings = {

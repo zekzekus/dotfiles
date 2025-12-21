@@ -1,6 +1,7 @@
-{ common, shell, ... }:
+{ common, desktop, ... }:
 
 let
+  shell = desktop.shell.current;
   isCaelestia = shell.caelestia.enable;
   isNoctalia = shell.noctalia.enable;
 
