@@ -9,7 +9,7 @@
 
 {
   imports = [
-    ../../modules/desktop.nix
+    ../../modules/options.nix
     ./hyprland-integration.nix
     ./stylix.nix
     ../../modules/programs/hyprland.nix
