@@ -7,6 +7,7 @@
     ./difftastic.nix
     ./fish.nix
     ./git.nix
+    ./jujutsu.nix
     ./neovim.nix
     ./nix-helper.nix
     ./nix-your-shell.nix
@@ -31,7 +32,6 @@
     gh.enable = true;
     gpg.enable = true;
     java.enable = true;
-    jujutsu.enable = true;
     ripgrep.enable = true;
     lazygit.enable = true;
   };
