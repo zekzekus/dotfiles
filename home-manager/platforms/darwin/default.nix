@@ -14,6 +14,7 @@
 
     file = {
       ".config/karabiner".source = "${common.dotfilesDir}/macosx/karabiner";
+      ".hammerspoon/init.lua".source = "${common.dotfilesDir}/macosx/hammerspoon/init.lua";
     };
 
     sessionPath = [

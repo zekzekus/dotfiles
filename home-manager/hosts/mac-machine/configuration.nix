@@ -31,6 +31,7 @@
       "zed"
       "raycast"
       "karabiner-elements"
+      "hammerspoon"
     ];
   };
 
