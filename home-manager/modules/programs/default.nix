@@ -21,10 +21,6 @@
   programs = {
     home-manager.enable = true;
     bat.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
     btop.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
