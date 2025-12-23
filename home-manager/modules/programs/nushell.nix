@@ -32,6 +32,7 @@
     extraEnv = ''
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/pnpm')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/bin')
+      $env.GPG_TTY = (tty | str trim)
     '';
 
     extraConfig = ''

@@ -126,6 +126,11 @@
   programs.gamemode.enable = true;
   programs.dconf.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
+  services.pcscd.enable = true;
 
   security.rtkit.enable = true;
   security.polkit.enable = true;

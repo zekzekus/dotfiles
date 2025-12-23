@@ -1,10 +1,10 @@
-{ pkgs, common, ... }:
+{ common, ... }:
 
 {
   programs.git = {
     enable = true;
     signing.key = "6716516470AD2D7A";
-    signing.signByDefault = if pkgs.stdenv.isDarwin then false else false;
+    signing.signByDefault = true;
 
     settings = {
       user.name = "Zekeriya Koc";
