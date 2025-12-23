@@ -28,6 +28,7 @@
     gh.enable = true;
     gpg.enable = true;
     java.enable = true;
+    jjui.enable = true;
     ripgrep.enable = true;
     lazygit.enable = true;
   };
