@@ -16,6 +16,7 @@
     # ./tmux.nix
     ./zoxide.nix
     ./yazi.nix
+    ./gpg.nix
   ];
 
   programs = {
@@ -26,7 +27,6 @@
     fd.enable = true;
     fzf.enable = true;
     gh.enable = true;
-    gpg.enable = true;
     java.enable = true;
     jjui.enable = true;
     ripgrep.enable = true;
