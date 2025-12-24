@@ -1,6 +1,6 @@
 # ⚙️ Dotfiles
 
-> Declarative, reproducible, multi-platform development environment powered by **Nix Flakes** and **Home Manager**.
+> Declarative, reproducible, multi-platform development environment powered by **Nix Flakes**, **Home Manager**, and **nix-darwin**.
 
 One config to rule them all — macOS, Linux, and NixOS.
 
@@ -9,9 +9,10 @@ One config to rule them all — macOS, Linux, and NixOS.
 ## ✨ Highlights
 
 - 🔄 **Declarative** — Entire environment defined in code, version controlled, reproducible
-- 🖥️ **Multi-platform** — Single flake manages macOS (Apple Silicon), Linux, and NixOS
+- 🖥️ **Multi-platform** — Single flake manages macOS (via nix-darwin), Linux, and NixOS
 - 🏠 **Multi-host** — Per-machine configurations with shared modules and platform abstractions
 - 🎨 **Stylix** — Consistent theming across applications
+- 🐚 **Desktop Shells** — AGS-based shells (DMS default) for NixOS/Hyprland
 - 🚀 **Neovim Nightly** — Always on the bleeding edge via nix-community overlay
 - ⚡ **Make-driven** — Simple commands that auto-detect your host
 
@@ -25,7 +26,7 @@ One config to rule them all — macOS, Linux, and NixOS.
 │   ├── flake.nix              # Main flake entry point
 │   ├── home.nix               # Shared home configuration
 │   ├── hosts/                 # Per-machine configurations
-│   │   ├── mac-machine/       #   └── macOS (aarch64-darwin)
+│   │   ├── mac-machine/       #   └── macOS (aarch64-darwin) + nix-darwin
 │   │   ├── zomarchy/          #   └── Linux (x86_64-linux)
 │   │   └── nixos/             #   └── NixOS (full system + home)
 │   ├── modules/               # Reusable Home Manager modules
@@ -55,11 +56,11 @@ One config to rule them all — macOS, Linux, and NixOS.
 
 ## 🖥️ Supported Hosts
 
-| Host | Platform | Architecture | Description |
-|------|----------|--------------|-------------|
-| `mac-machine` | macOS | aarch64-darwin | Apple Silicon Mac |
-| `zomarchy` | Linux | x86_64-linux | Non-NixOS Linux |
-| `nixos` | NixOS | x86_64-linux | Full NixOS system |
+| Host | Platform | Architecture | Management |
+|------|----------|--------------|------------|
+| `mac-machine` | macOS | aarch64-darwin | nix-darwin + Home Manager |
+| `zomarchy` | Linux | x86_64-linux | Home Manager (standalone) |
+| `nixos` | NixOS | x86_64-linux | NixOS + Home Manager |
 
 ---
 
@@ -71,11 +72,12 @@ git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
 cd ~/devel/tools/dotfiles
 
 # Apply (auto-detects host)
-make home      # Home Manager only
+make darwin    # macOS (nix-darwin + Home Manager)
 make nixos     # NixOS full system rebuild
+make home      # Standalone Home Manager only
 ```
 
-See [this](./home-manager/README.md) for more detail on installation.
+See [home-manager/README.md](./home-manager/README.md) for detailed installation instructions.
 
 ---
 
@@ -97,8 +99,8 @@ See [this](./home-manager/README.md) for more detail on installation.
               ▼                     ┌─────┴─────┐
         ┌───────────┐               ▼           ▼
         │ mac-host  │         ┌───────────┐ ┌───────────┐
-        └───────────┘         │linux-host │ │nixos-host │
-                              └───────────┘ └───────────┘
+        │(nix-darwin│         │linux-host │ │nixos-host │
+        └───────────┘         └───────────┘ └───────────┘
 
               ┌───────────┐       ┌─────────────┐
               │  modules  │       │  home.nix   │
@@ -126,25 +128,21 @@ See [this](./home-manager/README.md) for more detail on installation.
 - Go, Rust, Python, Node.js, Ruby, Clojure, Deno
 - fzf, ripgrep, fd, bat, zoxide
 
-**Darwin** *(macOS)*
+**Darwin** *(macOS via nix-darwin)*
 - Aerospace tiling window manager
 - JankyBorders for window highlights
 - Karabiner-Elements key remapping
-
-**Linux** *(all Linux hosts)*
-- *(currently inherits shared config)*
+- Homebrew integration via nix-homebrew
 
 **NixOS Host**
-- Hyprland compositor with waybar, rofi, hyprlock
+- Hyprland compositor with AGS-based desktop shells
+- DankMaterialShell (default), Caelestia, Noctalia available
 - Stylix system-wide theming
 - Pipewire audio, Bluetooth, SDDM
 - Mako notifications, cliphist clipboard
 
 **Non-NixOS Linux Host** *(zomarchy)*
 - Minimal overrides — relies on host system services
-
-**Mac Host** *(mac-machine)*
-- Minimal overrides — machine-specific tweaks only
 
 ---
 
