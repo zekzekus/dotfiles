@@ -6,7 +6,11 @@
     settings = {
       ui = {
         default-command = "log";
-        diff.diff-formatter = ["difft" "--color=always" "$left" "$right"];
+        diff-formatter = "difft";
+      };
+      merge-tools.difft = {
+        program = "difft";
+        diff-args = ["--color=always" "$left" "$right"];
       };
       user = {
         email = "zekzekus@gmail.com";
