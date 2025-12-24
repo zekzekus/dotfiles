@@ -42,7 +42,7 @@
       rofi.enable = true;
       waybar.enable = true;
 
-      ghostty.enable = true;
+      ghostty.enable = false;
       vicinae.enable = true;
 
       firefox = {
