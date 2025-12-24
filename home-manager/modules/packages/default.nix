@@ -12,6 +12,7 @@
     # version control
     git-extras
     tig
+    lazyjj
 
     # development tools
     devenv
