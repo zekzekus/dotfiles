@@ -17,6 +17,9 @@
         behavior = "own";
         key = "6716516470AD2D7A";
       };
+      revsets = {
+        log = "present(@) | ancestors(immutable_heads().., 5) | present(trunk())";
+      };
     };
   };
 }
