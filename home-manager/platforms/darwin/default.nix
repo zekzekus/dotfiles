@@ -3,7 +3,6 @@
 {
   imports = [
     ../../modules/programs/aerospace.nix
-    ../../modules/programs/ghostty.nix
     ../../modules/services/jankyborders.nix
   ];
 

@@ -28,14 +28,12 @@
   home = {
     packages = with pkgs; [
       appimage-run
-      ghostty
       localsend
       (import ../../modules/packages/helium.nix { inherit pkgs; })
       showmethekey
     ];
 
     file = {
-      ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/ghostty";
       ".config/DankMaterialShell/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/dms/settings.json";
     };
   };

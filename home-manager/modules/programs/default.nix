@@ -6,6 +6,7 @@
     ./delta.nix
     ./difftastic.nix
     ./fish.nix
+    ./ghostty.nix
     ./git.nix
     ./jujutsu.nix
     ./neovim.nix
