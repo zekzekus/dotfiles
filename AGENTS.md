@@ -1,30 +1,46 @@
 # AGENTS.md
 
+## Shell Environment
+
+User runs **Nushell** as default shell. When executing commands:
+- Avoid shell-specific syntax like `&&`, `;`, or `&` for chaining/backgrounding
+- Avoid output redirections like `2>&1` or `> /dev/null` (use nushell: `out>`, `err>`, `out+err>`)
+- Run commands separately instead of chaining
+- Use `| complete` if you need to capture both stdout and stderr
+- For complex shell commands, wrap with `bash -c "..."` to use bash syntax directly
+
 ## Commands
 
 ```bash
 make check        # Validate flake
 make home         # Apply home-manager config (auto-detects host)
 make home-build   # Dry-run build
+make darwin       # Rebuild nix-darwin system (macOS only)
 make nixos        # Rebuild NixOS system (NixOS only)
 make update       # Update flake inputs
 ```
 
 ## Architecture
 
-- **home-manager/** — Nix flake entry point (`flake.nix`), shared config (`home.nix`), per-host configs in `hosts/`, reusable modules in `modules/`, platform abstractions in `platforms/`
-- **nvim/** — Neovim config (Lua), symlinked via Home Manager
-- **ghostty/, tmux/, git/, ctags/, scripts/** — App configs symlinked via Home Manager
+```
+home-manager/
+├── flake.nix        # Main entry point: inputs, outputs, host definitions
+├── lib.nix          # Helper functions for configuration builders
+├── home.nix         # Shared config imported by all hosts
+├── hosts/           # Per-machine configurations
+├── modules/         # Reusable Home Manager modules
+└── platforms/       # Platform-specific abstractions (darwin/, linux/)
+```
+
+External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Manager.
 
 ## Code Style
 
-- Nix: Use `inherit` when possible, group imports at top, prefer modules over inline config
-- Lua (nvim): Follow existing patterns in `lua/`, use `require()` for imports
-- Keep host-specific code in `hosts/`, shared code in `modules/`
-- Platform-specific settings go in `platforms/darwin/` or `platforms/linux/`
+- **Nix**: Use `inherit` when possible, group imports at top, prefer modules over inline config
+- **Lua**: Follow existing patterns, use `require()` for imports
+- Host-specific code → `hosts/`, shared code → `modules/`, platform code → `platforms/`
 
 ## Principles
 
-- Keep home-manager setup modern, safe, performant, idiomatic, easy to reason about and easy to extend
-- Leave checking home manager setup to me if I didn't ask otherwise
-
+- Keep setup modern, safe, performant, idiomatic, easy to reason about and extend
+- Leave checking home manager setup to me unless I ask otherwise
