@@ -274,25 +274,58 @@
       "leftWidgets": [
         "launcherButton",
         "workspaceSwitcher",
-        "focusedWindow"
+        {
+          "id": "music",
+          "enabled": true
+        }
       ],
       "centerWidgets": [
-        "music",
-        "clock",
-        "weather",
         {
           "id": "wallpaperDiscovery",
+          "enabled": true
+        },
+        {
+          "id": "focusedWindow",
           "enabled": true
         }
       ],
       "rightWidgets": [
-        "systemTray",
-        "clipboard",
-        "cpuUsage",
-        "memUsage",
-        "notificationButton",
-        "battery",
-        "controlCenterButton"
+        {
+          "id": "systemTray",
+          "enabled": true
+        },
+        {
+          "id": "clipboard",
+          "enabled": true
+        },
+        {
+          "id": "cpuUsage",
+          "enabled": true
+        },
+        {
+          "id": "memUsage",
+          "enabled": true
+        },
+        {
+          "id": "notificationButton",
+          "enabled": true
+        },
+        {
+          "id": "battery",
+          "enabled": true
+        },
+        {
+          "id": "controlCenterButton",
+          "enabled": true
+        },
+        {
+          "id": "weather",
+          "enabled": true
+        },
+        {
+          "id": "clock",
+          "enabled": true
+        }
       ],
       "spacing": 4,
       "innerPadding": 4,
