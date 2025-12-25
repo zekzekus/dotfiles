@@ -2,9 +2,10 @@
 
 let
   darwinPathSetup = ''
-    $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.nix-profile/bin')
-    $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
+    # Order: last prepend = highest priority
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.nix-profile/bin')
   '';
 in
 {
