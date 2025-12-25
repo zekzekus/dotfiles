@@ -76,7 +76,6 @@
 
       lib = import ./lib.nix {
         inherit nixpkgs home-manager overlays;
-        dotfilesDir = ./..;
       };
 
       inherit (lib) defaultUsername mkHmModule mkHomeConfiguration;

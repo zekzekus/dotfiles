@@ -2,7 +2,6 @@
   nixpkgs,
   home-manager,
   overlays,
-  dotfilesDir,
 }:
 let
   defaultUsername = "zekus";
@@ -10,7 +9,8 @@ let
   mkCommon =
     { username, homeDir }:
     {
-      inherit username homeDir dotfilesDir;
+      inherit username homeDir;
+      dotfilesDir = "${homeDir}/devel/tools/dotfiles";
       develHome = "${homeDir}/devel/projects";
       defaultProjectDir = "personal";
       workHome = "${homeDir}/devel/projects/personal";
