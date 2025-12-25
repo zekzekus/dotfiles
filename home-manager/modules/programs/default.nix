@@ -5,6 +5,7 @@
     ./carapace.nix
     ./delta.nix
     ./difftastic.nix
+    ./direnv.nix
     ./fish.nix
     ./ghostty.nix
     ./git.nix
