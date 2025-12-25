@@ -17,7 +17,8 @@
 
       ui = {
         default-command = "log";
-        diff-formatter = "difft";
+        pager = "delta";
+        diff-formatter = ":git";
         log-synthetic-elided-nodes = true;
       };
 
@@ -99,6 +100,7 @@
       };
 
       aliases = {
+        difft = ["diff" "--tool" "difft"];
         tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
         gut = ["rebase" "-d" "trunk()"];
 
