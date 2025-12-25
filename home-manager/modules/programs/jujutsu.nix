@@ -101,10 +101,15 @@
       aliases = {
         tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
         gut = ["rebase" "-d" "trunk()"];
+
         lstk = ["log" "-r" "stack()"];
         ltb = ["log" "-r" "ahead_behind(trunk(), @)"];
+
         ll = ["log" "-T" "builtin_log_compact"];
         ld = ["log" "-T" "builtin_log_detailed"];
+
+        fetch = ["git" "fetch"];
+        push = ["git" "push"];
       };
     };
   };
