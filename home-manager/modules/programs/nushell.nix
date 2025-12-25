@@ -1,5 +1,12 @@
 { pkgs, common, ... }:
 
+let
+  darwinPathSetup = ''
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.nix-profile/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
+  '';
+in
 {
   programs.nushell = {
     enable = true;
@@ -30,10 +37,7 @@
     };
 
     extraEnv = ''
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.nix-profile/bin')
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
-
+      ${if pkgs.stdenv.isDarwin then darwinPathSetup else ""}
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/pnpm')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/bin')
       $env.GPG_TTY = (tty | str trim)
