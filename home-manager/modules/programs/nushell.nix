@@ -30,6 +30,10 @@
     };
 
     extraEnv = ''
+      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.nix-profile/bin')
+      $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
+      $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
+
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/pnpm')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/bin')
       $env.GPG_TTY = (tty | str trim)
