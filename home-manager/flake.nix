@@ -88,11 +88,6 @@
           hostname = "zomarchy";
         };
 
-        "zekus@mac-machine" = mkHomeConfiguration {
-          system = "aarch64-darwin";
-          hostname = "mac-machine";
-        };
-
         "zekus@nixos" = mkHomeConfiguration {
           system = "x86_64-linux";
           hostname = "nixos";
