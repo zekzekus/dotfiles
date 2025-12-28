@@ -34,6 +34,7 @@
               concat(
                 separate(" ",
                   format_short_change_id_with_hidden_and_divergent_info(self),
+                  label("commit_id", format_short_id(commit_id)),
                   if(empty, label("empty", "(empty)")),
                   if(description, description.first_line(), label(if(empty, "empty"), description_placeholder)),
                   bookmarks,
