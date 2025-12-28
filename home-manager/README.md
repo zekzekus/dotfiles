@@ -39,36 +39,6 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 > **Note:** nix-darwin manages Home Manager, Homebrew casks, and macOS system defaults declaratively. See `hosts/mac-machine/darwin.nix` for configuration.
 
-### Linux (non-NixOS)
-
-1. **Install Nix** (Determinate Systems installer):
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-   ```
-
-2. **Clone the repository**:
-   ```bash
-   git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
-   cd ~/devel/tools/dotfiles
-   ```
-
-3. **Configure trusted users** (required for binary caches):
-   ```bash
-   sudo mkdir -p /etc/nix/nix.conf.d
-   echo "trusted-users = root $(whoami)" | sudo tee /etc/nix/nix.conf.d/trusted-users.conf
-   sudo systemctl restart nix-daemon
-   ```
-
-4. **Apply configuration**:
-   ```bash
-   nix run home-manager/main -- switch --impure --flake ./home-manager#zekus@zomarchy
-   ```
-
-5. **Subsequent updates**:
-   ```bash
-   home-manager switch --impure --flake ./home-manager#zekus@zomarchy
-   ```
-
 ### NixOS
 
 1. **Clone the repository**:

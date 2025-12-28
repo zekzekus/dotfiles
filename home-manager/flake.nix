@@ -83,11 +83,6 @@
     in
     {
       homeConfigurations = {
-        "zekus@zomarchy" = mkHomeConfiguration {
-          system = "x86_64-linux";
-          hostname = "zomarchy";
-        };
-
         "zekus@nixos" = mkHomeConfiguration {
           system = "x86_64-linux";
           hostname = "nixos";

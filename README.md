@@ -27,7 +27,6 @@ One config to rule them all — macOS, Linux, and NixOS.
 │   ├── home.nix               # Shared home configuration
 │   ├── hosts/                 # Per-machine configurations
 │   │   ├── mac-machine/       #   └── macOS (aarch64-darwin) + nix-darwin
-│   │   ├── zomarchy/          #   └── Linux (x86_64-linux)
 │   │   └── nixos/             #   └── NixOS (full system + home)
 │   ├── modules/               # Reusable Home Manager modules
 │   │   ├── file/              #   └── File symlinks
@@ -59,7 +58,6 @@ One config to rule them all — macOS, Linux, and NixOS.
 | Host | Platform | Architecture | Management |
 |------|----------|--------------|------------|
 | `mac-machine` | macOS | aarch64-darwin | nix-darwin + Home Manager |
-| `zomarchy` | Linux | x86_64-linux | Home Manager (standalone) |
 | `nixos` | NixOS | x86_64-linux | NixOS + Home Manager |
 
 ---
@@ -140,9 +138,6 @@ See [home-manager/README.md](./home-manager/README.md) for detailed installation
 - Stylix system-wide theming
 - Pipewire audio, Bluetooth, SDDM
 - Mako notifications, cliphist clipboard
-
-**Non-NixOS Linux Host** *(zomarchy)*
-- Minimal overrides — relies on host system services
 
 ---
 
