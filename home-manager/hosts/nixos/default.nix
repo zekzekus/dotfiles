@@ -28,7 +28,6 @@
   home = {
     packages = with pkgs; [
       appimage-run
-      localsend
       (import ../../modules/packages/helium.nix { inherit pkgs; })
       showmethekey
     ];
@@ -39,8 +38,6 @@
   };
 
   programs = {
-    chromium.enable = true;
-
     vicinae = {
       enable = true;
       systemd.enable = desktop.shell.current.vicinae.systemd;

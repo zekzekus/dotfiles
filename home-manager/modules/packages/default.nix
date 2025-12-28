@@ -24,5 +24,8 @@
     # terminal image viewers
     chafa
     viu
+
+    # apps
+    localsend
   ];
 }
