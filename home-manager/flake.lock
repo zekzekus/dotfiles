@@ -196,11 +196,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1767066453,
-        "narHash": "sha256-eiyhTt2qE6U29lz9KrTlGkYhkowGhnUePZlCZsxVpVc=",
+        "lastModified": 1767113340,
+        "narHash": "sha256-j2yy6VDDyHsm6CmG0zb97IjZO7rbv4uqGcQjaSCRLiA=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "45ba64ab0292fdf797d886ca8ba762bd7edd2aad",
+        "rev": "97a07c399a274b78f466d3401a7b75089f04b32b",
         "type": "github"
       },
       "original": {
@@ -372,11 +372,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767048910,
-        "narHash": "sha256-KLFTeA/xquN+F3XHLAXcserk0L0nijbhzuldxNDF1eE=",
+        "lastModified": 1767104570,
+        "narHash": "sha256-GKgwu5//R+cLdKysZjGqvUEEOGXXLdt93sNXeb2M/Lk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d99b4ca5debaa082c7d76015aa2b7f3fc7e8b5f7",
+        "rev": "e4e78a2cbeaddd07ab7238971b16468cc1d14daf",
         "type": "github"
       },
       "original": {
@@ -579,11 +579,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767096776,
-        "narHash": "sha256-rgrq61W4p0QEZ0CowMo9YqjqOfxytUxrG5j9T59R7yo=",
+        "lastModified": 1767122280,
+        "narHash": "sha256-3WsC2qJ4QPViFH4IsCOH4bjDDs1uJbBu+ZiHGVMzetM=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "e623698b3f77b3c62a747f5785d1987242d732f9",
+        "rev": "e92e5b4bb5a78d9400a64c2288cf42c72fc32129",
         "type": "github"
       },
       "original": {
