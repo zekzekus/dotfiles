@@ -53,7 +53,7 @@
     ];
   };
 
-  console.keyMap = "trq";
+  console.useXkbConfig = true;
   services.xserver = {
     enable = true;
     xkb = {
