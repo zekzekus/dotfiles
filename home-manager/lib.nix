@@ -13,7 +13,7 @@ let
       dotfilesDir = "${homeDir}/devel/tools/dotfiles";
       develHome = "${homeDir}/devel/projects";
       defaultProjectDir = "personal";
-      workHome = "${homeDir}/devel/projects/personal";
+      workHome = "${homeDir}/devel/projects/work";
       personalHome = "${homeDir}/devel/projects/personal";
     };
 
