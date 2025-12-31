@@ -84,7 +84,7 @@
       };
 
       revsets = {
-        log = "present(@) | ancestors(immutable_heads().., 5) | present(trunk())";
+        log = "present(@) | ancestors(immutable_heads().., 10) | present(trunk())";
       };
 
       revset-aliases = {
