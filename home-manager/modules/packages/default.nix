@@ -27,5 +27,8 @@
 
     # apps
     localsend
+
+    # LLM
+    ollama-cpu
   ];
 }
