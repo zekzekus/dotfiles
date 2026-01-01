@@ -29,17 +29,14 @@
       appimage-run
       (import ../../modules/packages/helium.nix { inherit pkgs; })
       showmethekey
+    ] ++ lib.optionals desktop.shell.current.hyprlauncher.enable [
+      hyprlauncher
+    ] ++ lib.optionals desktop.shell.current.hyprpolkitagent.enable [
+      hyprpolkitagent
     ];
 
     file = {
       ".config/DankMaterialShell/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/dms/settings.json";
-    };
-  };
-
-  programs = {
-    vicinae = {
-      enable = true;
-      systemd.enable = desktop.shell.current.vicinae.systemd;
     };
   };
 
@@ -48,7 +45,6 @@
     network-manager-applet.enable = true;
 
     cliphist.enable = lib.mkIf desktop.shell.current.cliphist.enable true;
-    polkit-gnome.enable = lib.mkIf desktop.shell.current.polkit.enable true;
 
     mako = lib.mkIf desktop.shell.current.mako.enable {
       enable = true;
@@ -89,6 +85,36 @@
           }
         ];
       };
+    };
+  };
+
+  systemd.user.services = {
+    hyprpolkitagent = lib.mkIf desktop.shell.current.hyprpolkitagent.enable {
+      Unit = {
+        Description = "Hyprland Polkit Authentication Agent";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+        Restart = "on-failure";
+        RestartSec = 1;
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
+
+    hyprlauncher = lib.mkIf desktop.shell.current.hyprlauncher.enable {
+      Unit = {
+        Description = "Hyprlauncher daemon";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.hyprlauncher}/bin/hyprlauncher -d";
+        Restart = "on-failure";
+        RestartSec = 1;
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
     };
   };
 }

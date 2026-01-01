@@ -1,6 +1,6 @@
 {
   default = {
-    launcher = "$launcher";
+    launcher = "hyprlauncher";
     clipboard = "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
     lock = "hyprlock";
     volumeMute = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -15,13 +15,13 @@
 
     waybar.enable = true;
     mako.enable = true;
-    vicinae.systemd = true;
+    hyprlauncher.enable = true;
     hyprpaper.enable = true;
     dankMaterialShell.enable = false;
     caelestia.enable = false;
     noctalia.enable = false;
 
-    polkit.enable = true;
+    hyprpolkitagent.enable = true;
     cliphist.enable = true;
     hypridle.enable = true;
   };
@@ -42,13 +42,13 @@
 
     waybar.enable = false;
     mako.enable = false;
-    vicinae.systemd = false;
+    hyprlauncher.enable = false;
     hyprpaper.enable = false;
     dankMaterialShell.enable = true;
     caelestia.enable = false;
     noctalia.enable = false;
 
-    polkit.enable = false;
+    hyprpolkitagent.enable = false;
     cliphist.enable = false;
     hypridle.enable = true;
   };
@@ -69,13 +69,13 @@
 
     waybar.enable = false;
     mako.enable = false;
-    vicinae.systemd = false;
+    hyprlauncher.enable = false;
     hyprpaper.enable = false;
     dankMaterialShell.enable = false;
     caelestia.enable = true;
     noctalia.enable = false;
 
-    polkit.enable = true;
+    hyprpolkitagent.enable = true;
     cliphist.enable = true;
     hypridle.enable = true;
   };
@@ -96,13 +96,13 @@
 
     waybar.enable = false;
     mako.enable = false;
-    vicinae.systemd = false;
+    hyprlauncher.enable = false;
     hyprpaper.enable = false;
     dankMaterialShell.enable = false;
     caelestia.enable = false;
     noctalia.enable = true;
 
-    polkit.enable = true;
+    hyprpolkitagent.enable = true;
     cliphist.enable = true;
     hypridle.enable = true;
   };

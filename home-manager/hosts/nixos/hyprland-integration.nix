@@ -20,8 +20,6 @@
       glib
       gsettings-desktop-schemas
 
-      # Portal
-      xdg-desktop-portal-gtk
     ];
 
     file = {

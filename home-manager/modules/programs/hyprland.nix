@@ -21,7 +21,6 @@ in
       "$mod" = "SUPER";
       "$terminal" = "ghostty";
       "$browser" = "helium";
-      "$launcher" = "vicinae toggle";
 
       monitor = ",preferred,auto,1.5";
 
@@ -129,9 +128,6 @@ in
       };
 
       layerrule = [
-        "blur true, match:namespace vicinae"
-        "ignore_alpha 0, match:namespace vicinae"
-        "no_anim true, match:namespace vicinae"
         "no_anim true, match:namespace ^(dms)$"
       ];
 
