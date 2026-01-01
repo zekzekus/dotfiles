@@ -13,6 +13,7 @@
     ./hyprland-integration.nix
     ./stylix.nix
     ../../modules/programs/hyprland.nix
+    ../../modules/programs/hyprland-plugins.nix
     ../../modules/programs/waybar.nix
     ../../modules/programs/rofi.nix
     ../../modules/programs/hyprlock.nix

@@ -147,7 +147,6 @@ in
         (mkBind ", XF86MonBrightnessDown" shell.brightnessDown)
       ] ++ [
         "$mod, Return, exec, uwsm-app -- $terminal +new-window"
-        "$mod, TAB, workspace, e+1"
         "$mod SHIFT, TAB, workspace, e-1"
         "$mod, B, exec, uwsm-app -- $browser"
         "$mod, Q, killactive"
