@@ -24,8 +24,6 @@
 
   desktop.shell.mode = "dms";
 
-  wayland.systemd.target = "hyprland-session.target";
-
   home = {
     packages = with pkgs; [
       appimage-run
