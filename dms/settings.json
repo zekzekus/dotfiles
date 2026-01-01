@@ -127,8 +127,6 @@
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
   "niriOverviewOverlayEnabled": true,
-  "weatherLocation": "İstanbul, Marmara Bölgesi",
-  "weatherCoordinates": "41.0576091,29.3156426",
   "useAutoLocation": true,
   "weatherEnabled": true,
   "networkPreference": "auto",
@@ -432,5 +430,5 @@
   "desktopWidgetPositions": {},
   "desktopWidgetGridSettings": {},
   "desktopWidgetInstances": [],
-  "configVersion": 4
+  "configVersion": 5
 }
