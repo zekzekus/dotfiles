@@ -44,37 +44,34 @@ in
       };
 
       windowrule = [
-        "scrolltouchpad 1.5, class:(Alacritty|kitty)"
-        "scrolltouchpad 0.2, class:com.mitchellh.ghostty"
+        "scroll_touchpad 1.5, match:class (Alacritty|kitty)"
+        "scroll_touchpad 0.2, match:class com.mitchellh.ghostty"
 
-        "tag +pip, title:(Picture.?in.?[Pp]icture)"
-        "float, tag:pip"
-        "pin, tag:pip"
-        "size 600 338, tag:pip"
-        "keepaspectratio, tag:pip"
-        "noborder, tag:pip"
-        "opacity 1 1, tag:pip"
-        "move 100%-w-40 4%, tag:pip"
-      ];
+        "tag +pip, match:title (Picture.?in.?[Pp]icture)"
+        "float true, match:tag pip"
+        "pin true, match:tag pip"
+        "size 600 338, match:tag pip"
+        "keep_aspect_ratio true, match:tag pip"
+        "border_size 0, match:tag pip"
+        "opacity 1 1, match:tag pip"
+        "move (monitor_w-window_w-40) (monitor_h*0.04), match:tag pip"
 
-      windowrulev2 = [
-        "opacity 0.9 0.9, floating:0, focus:0"
-        "opacity 0.95 0.90, class:com.mitchellh.ghostty"
-        "opacity 0.95 0.90, class:(kitty|Alacritty)"
-        "opacity 0.95 0.90, class:(Code|code-url-handler)"
+        "opacity 0.9 0.9, match:float false, match:focus false"
+        "opacity 0.95 0.90, match:class com.mitchellh.ghostty"
+        "opacity 0.95 0.90, match:class (kitty|Alacritty)"
+        "opacity 0.95 0.90, match:class (Code|code-url-handler)"
 
-        "rounding 10, class:^(org\\.gnome\\.)"
+        "rounding 10, match:class ^(org\\.gnome\\.)"
+        "float true, match:class ^(gnome-calculator)$"
+        "float true, match:class ^(blueman-manager)$"
+        "float true, match:class ^(org\\.gnome\\.Nautilus)$"
 
-        "float, class:^(gnome-calculator)$"
-        "float, class:^(blueman-manager)$"
-        "float, class:^(org\\.gnome\\.Nautilus)$"
-
-        "float, class:^(org.quickshell)$"
-        "float,class:^(one.alynx.showmethekey)$"
-        "float,class:^(showmethekey-gtk)$"
-        "pin,class:^(showmethekey-gtk)$"
-        "noshadow, class:^(showmethekey-gtk)$"
-        "move 100%-w-20 100%-w-20, class:^(showmethekey-gtk)$"
+        "float true, match:class ^(org.quickshell)$"
+        "float true, match:class ^(one.alynx.showmethekey)$"
+        "float true, match:class ^(showmethekey-gtk)$"
+        "pin true, match:class ^(showmethekey-gtk)$"
+        "no_shadow true, match:class ^(showmethekey-gtk)$"
+        "move 100%-w-20 100%-w-20, match:class ^(showmethekey-gtk)$"
       ];
 
       general = {
@@ -131,10 +128,10 @@ in
       };
 
       layerrule = [
-        "blur, vicinae"
-        "ignorealpha 0, vicinae"
-        "noanim, vicinae"
-        "noanim, ^(dms)$"
+        "blur true, match:namespace vicinae"
+        "ignore_alpha 0, match:namespace vicinae"
+        "no_anim true, match:namespace vicinae"
+        "no_anim true, match:namespace ^(dms)$"
       ];
 
       bind = filterNull [
