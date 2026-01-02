@@ -43,6 +43,10 @@ in
         };
       };
 
+      layerrule = [
+        "no_anim true, match:namespace ^(dms)$"
+      ];
+
       windowrule = [
         "scroll_touchpad 1.5, match:class (Alacritty|kitty)"
         "scroll_touchpad 0.2, match:class com.mitchellh.ghostty"
@@ -71,7 +75,7 @@ in
         "float true, match:class ^(showmethekey-gtk)$"
         "pin true, match:class ^(showmethekey-gtk)$"
         "no_shadow true, match:class ^(showmethekey-gtk)$"
-        "move 100%-w-20 100%-w-20, match:class ^(showmethekey-gtk)$"
+        "move ((monitor_w*1)-window_w-20) ((monitor_h*1)-window_h-20), match:class ^(showmethekey-gtk)$"
       ];
 
       general = {
@@ -126,10 +130,6 @@ in
         vfr = true;
         disable_hyprland_logo = true;
       };
-
-      layerrule = [
-        "no_anim true, match:namespace ^(dms)$"
-      ];
 
       bind = filterNull [
         (mkBind "$mod, Space" shell.launcher)

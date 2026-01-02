@@ -9,7 +9,8 @@
     settings = {
       plugin = {
         hyprexpo = {
-          columns = 3;
+          skip_empty = true;
+          columns = 2;
           gap_size = 40;
           bg_col = "rgb(111111)";
           workspace_method = "first 1";
