@@ -22,7 +22,7 @@
     ../../modules/programs/noctalia-shell.nix
   ];
 
-  desktop.shell.mode = "noctalia";
+  desktop.shell.mode = "dms";
 
   home = {
     packages = with pkgs; [

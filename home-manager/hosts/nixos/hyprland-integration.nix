@@ -8,7 +8,7 @@
       grim
       slurp
       satty
-      kooha
+      gpu-screen-recorder-gtk
       wl-clipboard
       libnotify
       blueman

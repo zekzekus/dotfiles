@@ -161,7 +161,7 @@ in
 
         "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
         "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
-        "$mod SHIFT CTRL, 5, exec, uwsm-app -- kooha"
+        "$mod SHIFT CTRL, 5, exec, uwsm-app -- gpu-screen-recorder-gtk"
 
         "$mod, h, movefocus, l"
         "$mod, j, movefocus, d"
