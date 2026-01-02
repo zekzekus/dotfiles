@@ -32,11 +32,11 @@
       };
 
       bar = {
-        backgroundOpacity = 0.25;
-        capsuleOpacity = 1;
+        backgroundOpacity = 0.6;
+        capsuleOpacity = 0.75;
         density = "comfortable";
         exclusive = true;
-        floating = true;
+        floating = false;
         marginHorizontal = 0.25;
         marginVertical = 0.25;
         monitors = [ ];
@@ -44,7 +44,7 @@
         position = "top";
         showCapsule = true;
         showOutline = false;
-        useSeparateOpacity = false;
+        useSeparateOpacity = true;
         widgets = {
           center = [
             {
@@ -117,7 +117,7 @@
           right = [
             {
               id = "NotificationHistory";
-              hideWhenZero = true;
+              hideWhenZero = false;
               showUnreadBadge = true;
             }
             {
@@ -220,6 +220,7 @@
           { enabled = true; id = "audio-card"; }
           { enabled = true; id = "weather-card"; }
           { enabled = true; id = "media-sysmon-card"; }
+          { enabled = false; id = "brightness-card"; }
         ];
         position = "top_center";
         shortcuts = {
