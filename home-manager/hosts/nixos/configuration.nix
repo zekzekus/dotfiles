@@ -108,6 +108,13 @@
           "gtk"
         ];
       };
+
+      start-hyprland = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+      };
     };
   };
 
