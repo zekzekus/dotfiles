@@ -11,9 +11,6 @@
 
       monitor = ",preferred,auto,1.5";
 
-      exec-once = [
-      ];
-
       input = {
         kb_layout = "tr";
         kb_variant = "alt";
@@ -122,6 +119,7 @@
         ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
         ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
         ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
         ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
         ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
@@ -130,15 +128,11 @@
         ", XF86AudioNext, exec, noctalia-shell ipc call media next"
         ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
 
-        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
-        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
-
-        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
-        "$mod, Delete, exec, noctalia-shell ipc call notifications dismissAll"
-        "$mod SHIFT, Delete, exec, noctalia-shell ipc call notifications clear"
-
         "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
         "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
+        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
+        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
+        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
 
         "$mod, Return, exec, uwsm-app -- $terminal +new-window"
         "$mod SHIFT, TAB, workspace, e-1"
@@ -146,8 +140,6 @@
         "$mod, Q, killactive"
         "$mod, E, exec, uwsm-app -- nemo"
         "$mod SHIFT CTRL, M, exit"
-
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
         "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
         "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
@@ -172,22 +164,12 @@
         "$mod, 3, workspace, 3"
         "$mod, 4, workspace, 4"
         "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        "$mod, 0, workspace, 10"
 
         "$mod SHIFT, 1, movetoworkspace, 1"
         "$mod SHIFT, 2, movetoworkspace, 2"
         "$mod SHIFT, 3, movetoworkspace, 3"
         "$mod SHIFT, 4, movetoworkspace, 4"
         "$mod SHIFT, 5, movetoworkspace, 5"
-        "$mod SHIFT, 6, movetoworkspace, 6"
-        "$mod SHIFT, 7, movetoworkspace, 7"
-        "$mod SHIFT, 8, movetoworkspace, 8"
-        "$mod SHIFT, 9, movetoworkspace, 9"
-        "$mod SHIFT, 0, movetoworkspace, 10"
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
