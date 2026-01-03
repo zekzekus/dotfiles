@@ -206,7 +206,6 @@
     unzip
     gnumake
     home-manager
-    kitty
   ];
 
   system.stateVersion = "25.05";

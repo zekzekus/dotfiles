@@ -32,7 +32,6 @@
       ];
 
       windowrule = [
-        "scroll_touchpad 1.5, match:class (Alacritty|kitty)"
         "scroll_touchpad 0.2, match:class com.mitchellh.ghostty"
 
         "tag +pip, match:title (Picture.?in.?[Pp]icture)"
@@ -46,13 +45,9 @@
 
         "opacity 0.9 0.9, match:float false, match:focus false"
         "opacity 0.95 0.90, match:class com.mitchellh.ghostty"
-        "opacity 0.95 0.90, match:class (kitty|Alacritty)"
-        "opacity 0.95 0.90, match:class (Code|code-url-handler)"
 
-        "rounding 10, match:class ^(org\\.gnome\\.)"
-        "float true, match:class ^(gnome-calculator)$"
-        "float true, match:class ^(blueman-manager)$"
-        "float true, match:class ^(org\\.gnome\\.Nautilus)$"
+        "float true, match:class .blueman-manager-wrapped"
+        "float true, match:class nemo"
 
         "float true, match:class ^(one.alynx.showmethekey)$"
         "float true, match:class ^(showmethekey-gtk)$"
