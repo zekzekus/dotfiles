@@ -1,250 +1,91 @@
-{ pkgs }:
+{ pkgs, mkOutOfStoreSymlink, dotfilesDir }:
 
 let
-  graphicalSessionTarget = [ "graphical-session.target" ];
+  mediaBinds = [
+    ", XF86AudioPlay, exec, playerctl play-pause"
+    ", XF86AudioNext, exec, playerctl next"
+    ", XF86AudioPrev, exec, playerctl previous"
+  ];
 in
 {
-  default = let
-    idleLockCmd = "pidof hyprlock || hyprlock";
-  in {
-    launcher = "hyprlauncher";
-    clipboard = "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
-    lock = "hyprlock";
-    volumeMute = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-    volumeDown = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-";
-    volumeUp = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+";
-    brightnessUp = "brightnessctl set +5%";
+  default = {
+    launcher       = "hyprlauncher";
+    clipboard      = "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
+    lock           = "hyprlock";
+    volumeMute     = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    volumeDown     = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-";
+    volumeUp       = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+";
+    brightnessUp   = "brightnessctl set +5%";
     brightnessDown = "brightnessctl set 5%-";
 
-    bindType = "exec";
-
-    inherit idleLockCmd;
-
-    waybar.enable = true;
-    dankMaterialShell.enable = false;
-    caelestia.enable = false;
-    noctalia.enable = false;
+    bindType    = "exec";
+    idleLockCmd = "pidof hyprlock || hyprlock";
+    extraBinds  = mediaBinds;
 
     packages = with pkgs; [ hyprlauncher hyprpolkitagent ];
+    homeFiles = {};
 
-    homeFiles = _: {};
+    enableWaybar            = true;
+    enableDankMaterialShell = false;
+    enableCaelestia         = false;
+    enableNoctalia          = false;
 
-    services = {
-      cliphist.enable = true;
+    enableCliphist  = true;
+    enableMako      = true;
+    enableHyprpaper = true;
+    enableHypridle  = true;
 
-      mako = {
-        enable = true;
-        settings = {
-          default-timeout = 3000;
-          layer = "overlay";
-          anchor = "top-right";
-        };
-      };
-
-      hyprpaper = {
-        enable = true;
-        settings = {
-          preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
-          wallpaper = ",~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
-          splash = false;
-          ipc = "off";
-        };
-      };
-
-      hypridle = {
-        enable = true;
-        settings = {
-          general = {
-            lock_cmd = idleLockCmd;
-            before_sleep_cmd = idleLockCmd;
-            after_sleep_cmd = "hyprctl dispatch dpms on";
-          };
-          listener = [
-            {
-              timeout = 300;
-              on-timeout = idleLockCmd;
-            }
-            {
-              timeout = 600;
-              on-timeout = "hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-          ];
-        };
-      };
-    };
-
-    systemdServices = {
-      hyprpolkitagent = {
-        Unit = {
-          Description = "Hyprland Polkit Authentication Agent";
-          PartOf = graphicalSessionTarget;
-          After = graphicalSessionTarget;
-        };
-        Service = {
-          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
-          Restart = "on-failure";
-          RestartSec = 1;
-        };
-        Install.WantedBy = graphicalSessionTarget;
-      };
-
-      hyprlauncher = {
-        Unit = {
-          Description = "Hyprlauncher daemon";
-          PartOf = graphicalSessionTarget;
-          After = graphicalSessionTarget;
-        };
-        Service = {
-          ExecStart = "${pkgs.hyprlauncher}/bin/hyprlauncher -d";
-          Restart = "on-failure";
-          RestartSec = 1;
-        };
-        Install.WantedBy = graphicalSessionTarget;
-      };
-    };
-
-    hyprland.extraBinds = [
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPrev, exec, playerctl previous"
-    ];
+    enableHyprpolkitagent    = true;
+    enableHyprlauncherDaemon = true;
   };
 
-  dms = let
-    idleLockCmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
-  in {
-    launcher = "dms ipc spotlight toggle";
-    clipboard = "dms ipc call clipboard toggle";
-    lock = "dms ipc call lock lock";
-    volumeMute = "dms ipc call audio mute";
-    volumeDown = "dms ipc call audio decrement 3";
-    volumeUp = "dms ipc call audio increment 3";
-    brightnessUp = "dms ipc call brightnessctl increment 5";
+  dms = {
+    launcher       = "dms ipc spotlight toggle";
+    clipboard      = "dms ipc call clipboard toggle";
+    lock           = "dms ipc call lock lock";
+    volumeMute     = "dms ipc call audio mute";
+    volumeDown     = "dms ipc call audio decrement 3";
+    volumeUp       = "dms ipc call audio increment 3";
+    brightnessUp   = "dms ipc call brightnessctl increment 5";
     brightnessDown = "dms ipc call brightnessctl decrement 5";
 
-    bindType = "exec";
-
-    inherit idleLockCmd;
-
-    waybar.enable = false;
-    dankMaterialShell.enable = true;
-    caelestia.enable = false;
-    noctalia.enable = false;
+    bindType    = "exec";
+    idleLockCmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
+    extraBinds  = mediaBinds;
 
     packages = [];
-
-    homeFiles = { mkOutOfStoreSymlink, dotfilesDir }: {
-      ".config/DankMaterialShell/settings.json".source = mkOutOfStoreSymlink "${dotfilesDir}/dms/settings.json";
+    homeFiles = {
+      ".config/DankMaterialShell/settings.json".source =
+        mkOutOfStoreSymlink "${dotfilesDir}/dms/settings.json";
     };
 
-    services = {
-      cliphist.enable = false;
-      mako.enable = false;
-      hyprpaper.enable = false;
+    enableWaybar            = false;
+    enableDankMaterialShell = true;
+    enableCaelestia         = false;
+    enableNoctalia          = false;
 
-      hypridle = {
-        enable = true;
-        settings = {
-          general = {
-            lock_cmd = idleLockCmd;
-            before_sleep_cmd = idleLockCmd;
-            after_sleep_cmd = "hyprctl dispatch dpms on";
-          };
-          listener = [
-            {
-              timeout = 300;
-              on-timeout = idleLockCmd;
-            }
-            {
-              timeout = 600;
-              on-timeout = "hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-          ];
-        };
-      };
-    };
+    enableCliphist  = false;
+    enableMako      = false;
+    enableHyprpaper = false;
+    enableHypridle  = true;
 
-    systemdServices = {};
-
-    hyprland.extraBinds = [
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPrev, exec, playerctl previous"
-    ];
+    enableHyprpolkitagent    = false;
+    enableHyprlauncherDaemon = false;
   };
 
-  caelestia = let
-    idleLockCmd = "caelestia shell -s lock";
-  in {
-    launcher = "caelestia:launcher";
-    clipboard = null;
-    lock = "caelestia:lock";
-    volumeMute = null;
-    volumeDown = null;
-    volumeUp = null;
-    brightnessUp = "caelestia:brightnessUp";
+  caelestia = {
+    launcher       = "caelestia:launcher";
+    clipboard      = null;
+    lock           = "caelestia:lock";
+    volumeMute     = null;
+    volumeDown     = null;
+    volumeUp       = null;
+    brightnessUp   = "caelestia:brightnessUp";
     brightnessDown = "caelestia:brightnessDown";
 
-    bindType = "global";
-
-    inherit idleLockCmd;
-
-    waybar.enable = false;
-    dankMaterialShell.enable = false;
-    caelestia.enable = true;
-    noctalia.enable = false;
-
-    packages = with pkgs; [ hyprpolkitagent ];
-
-    homeFiles = _: {};
-
-    services = {
-      cliphist.enable = true;
-      mako.enable = false;
-      hyprpaper.enable = false;
-
-      hypridle = {
-        enable = true;
-        settings = {
-          general = {
-            lock_cmd = idleLockCmd;
-            before_sleep_cmd = idleLockCmd;
-            after_sleep_cmd = "hyprctl dispatch dpms on";
-          };
-          listener = [
-            {
-              timeout = 300;
-              on-timeout = idleLockCmd;
-            }
-            {
-              timeout = 600;
-              on-timeout = "hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-          ];
-        };
-      };
-    };
-
-    systemdServices = {
-      hyprpolkitagent = {
-        Unit = {
-          Description = "Hyprland Polkit Authentication Agent";
-          PartOf = graphicalSessionTarget;
-          After = graphicalSessionTarget;
-        };
-        Service = {
-          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
-          Restart = "on-failure";
-          RestartSec = 1;
-        };
-        Install.WantedBy = graphicalSessionTarget;
-      };
-    };
-
-    hyprland.extraBinds = [
+    bindType    = "global";
+    idleLockCmd = "caelestia shell -s lock";
+    extraBinds  = [
       "$mod, V, exec, pkill fuzzel || caelestia clipboard"
 
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -258,78 +99,37 @@ in
       "$mod SHIFT, Escape, global, caelestia:session"
       "$mod, Delete, global, caelestia:clearNotifs"
     ];
-  };
-
-  noctalia = let
-    idleLockCmd = "noctalia-shell ipc call lockScreen lock";
-  in {
-    launcher = "noctalia-shell ipc call launcher toggle";
-    clipboard = "noctalia-shell ipc call launcher clipboard";
-    lock = "noctalia-shell ipc call lockScreen lock";
-    volumeMute = "noctalia-shell ipc call volume muteOutput";
-    volumeDown = "noctalia-shell ipc call volume decrease";
-    volumeUp = "noctalia-shell ipc call volume increase";
-    brightnessUp = "noctalia-shell ipc call brightness increase";
-    brightnessDown = "noctalia-shell ipc call brightness decrease";
-
-    bindType = "exec";
-
-    inherit idleLockCmd;
-
-    waybar.enable = false;
-    dankMaterialShell.enable = false;
-    caelestia.enable = false;
-    noctalia.enable = true;
 
     packages = with pkgs; [ hyprpolkitagent ];
+    homeFiles = {};
 
-    homeFiles = _: {};
+    enableWaybar            = false;
+    enableDankMaterialShell = false;
+    enableCaelestia         = true;
+    enableNoctalia          = false;
 
-    services = {
-      cliphist.enable = true;
-      mako.enable = false;
-      hyprpaper.enable = false;
+    enableCliphist  = true;
+    enableMako      = false;
+    enableHyprpaper = false;
+    enableHypridle  = true;
 
-      hypridle = {
-        enable = true;
-        settings = {
-          general = {
-            lock_cmd = idleLockCmd;
-            before_sleep_cmd = idleLockCmd;
-            after_sleep_cmd = "hyprctl dispatch dpms on";
-          };
-          listener = [
-            {
-              timeout = 300;
-              on-timeout = idleLockCmd;
-            }
-            {
-              timeout = 600;
-              on-timeout = "hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-          ];
-        };
-      };
-    };
+    enableHyprpolkitagent    = true;
+    enableHyprlauncherDaemon = false;
+  };
 
-    systemdServices = {
-      hyprpolkitagent = {
-        Unit = {
-          Description = "Hyprland Polkit Authentication Agent";
-          PartOf = graphicalSessionTarget;
-          After = graphicalSessionTarget;
-        };
-        Service = {
-          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
-          Restart = "on-failure";
-          RestartSec = 1;
-        };
-        Install.WantedBy = graphicalSessionTarget;
-      };
-    };
+  noctalia = {
+    launcher       = "noctalia-shell ipc call launcher toggle";
+    clipboard      = "noctalia-shell ipc call launcher clipboard";
+    lock           = "noctalia-shell ipc call lockScreen lock";
+    volumeMute     = "noctalia-shell ipc call volume muteOutput";
+    volumeDown     = "noctalia-shell ipc call volume decrease";
+    volumeUp       = "noctalia-shell ipc call volume increase";
+    brightnessUp   = "noctalia-shell ipc call brightness increase";
+    brightnessDown = "noctalia-shell ipc call brightness decrease";
 
-    hyprland.extraBinds = [
+    bindType    = "exec";
+    idleLockCmd = "noctalia-shell ipc call lockScreen lock";
+    extraBinds  = [
       ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
       ", XF86AudioNext, exec, noctalia-shell ipc call media next"
       ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
@@ -344,5 +144,21 @@ in
       "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
       "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
     ];
+
+    packages = with pkgs; [ hyprpolkitagent ];
+    homeFiles = {};
+
+    enableWaybar            = false;
+    enableDankMaterialShell = false;
+    enableCaelestia         = false;
+    enableNoctalia          = true;
+
+    enableCliphist  = true;
+    enableMako      = false;
+    enableHyprpaper = false;
+    enableHypridle  = true;
+
+    enableHyprpolkitagent    = true;
+    enableHyprlauncherDaemon = false;
   };
 }

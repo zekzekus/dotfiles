@@ -1,10 +1,59 @@
 { config, lib, pkgs, common, ... }:
 
 let
-  inherit (lib) mkOption mkIf mkMerge types;
-  shellModes = import ./shell-modes-defs.nix { inherit pkgs; };
+  inherit (lib) mkOption mkIf types;
+
+  modeType = types.submodule {
+    options = {
+      launcher       = mkOption { type = types.nullOr types.str; default = null; };
+      clipboard      = mkOption { type = types.nullOr types.str; default = null; };
+      lock           = mkOption { type = types.nullOr types.str; default = null; };
+      volumeMute     = mkOption { type = types.nullOr types.str; default = null; };
+      volumeDown     = mkOption { type = types.nullOr types.str; default = null; };
+      volumeUp       = mkOption { type = types.nullOr types.str; default = null; };
+      brightnessUp   = mkOption { type = types.nullOr types.str; default = null; };
+      brightnessDown = mkOption { type = types.nullOr types.str; default = null; };
+
+      bindType    = mkOption { type = types.enum [ "exec" "global" ]; default = "exec"; };
+      idleLockCmd = mkOption { type = types.nullOr types.str; default = null; };
+      extraBinds  = mkOption { type = types.listOf types.str; default = []; };
+
+      packages = mkOption {
+        type = types.listOf types.package;
+        default = [];
+      };
+
+      homeFiles = mkOption {
+        type = types.attrsOf types.anything;
+        default = {};
+      };
+
+      enableWaybar            = mkOption { type = types.bool; default = false; };
+      enableDankMaterialShell = mkOption { type = types.bool; default = false; };
+      enableCaelestia         = mkOption { type = types.bool; default = false; };
+      enableNoctalia          = mkOption { type = types.bool; default = false; };
+
+      enableCliphist  = mkOption { type = types.bool; default = false; };
+      enableMako      = mkOption { type = types.bool; default = false; };
+      enableHyprpaper = mkOption { type = types.bool; default = false; };
+      enableHypridle  = mkOption { type = types.bool; default = true; };
+
+      enableHyprpolkitagent    = mkOption { type = types.bool; default = false; };
+      enableHyprlauncherDaemon = mkOption { type = types.bool; default = false; };
+    };
+  };
+
+  shellModes = import ./shell-modes-defs.nix {
+    inherit pkgs;
+    mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
+    dotfilesDir = common.dotfilesDir;
+  };
+
   modeNames = builtins.attrNames shellModes;
   cfg = config.desktop.shell;
+  current = cfg.modes.${cfg.mode};
+
+  graphicalSessionTarget = [ "graphical-session.target" ];
 in
 {
   options.desktop.shell = {
@@ -15,110 +64,112 @@ in
     };
 
     modes = mkOption {
-      type = types.attrs;
+      type = types.attrsOf modeType;
       readOnly = true;
       default = shellModes;
       description = "All available shell mode definitions.";
     };
 
     current = mkOption {
-      type = types.attrs;
+      type = modeType;
       readOnly = true;
-      default = shellModes.${cfg.mode};
+      default = current;
       description = "The currently active shell mode configuration.";
     };
 
-    launcher = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to launch the application launcher.";
-    };
-
-    clipboard = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to open clipboard manager.";
-    };
-
-    lock = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to lock the screen.";
-    };
-
-    volumeMute = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to mute volume.";
-    };
-
-    volumeDown = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to decrease volume.";
-    };
-
-    volumeUp = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to increase volume.";
-    };
-
-    brightnessUp = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to increase brightness.";
-    };
-
-    brightnessDown = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to decrease brightness.";
-    };
-
-    bindType = mkOption {
-      type = types.enum [ "exec" "global" ];
-      default = "exec";
-      description = "Hyprland bind type for shell commands.";
-    };
-
-    idleLockCmd = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Command to run on idle for locking.";
-    };
-
-    extraBinds = mkOption {
-      type = types.listOf types.str;
-      default = [];
-      description = "Extra Hyprland keybindings for this shell mode.";
-    };
+    launcher       = mkOption { type = types.nullOr types.str; readOnly = true; default = current.launcher; };
+    clipboard      = mkOption { type = types.nullOr types.str; readOnly = true; default = current.clipboard; };
+    lock           = mkOption { type = types.nullOr types.str; readOnly = true; default = current.lock; };
+    volumeMute     = mkOption { type = types.nullOr types.str; readOnly = true; default = current.volumeMute; };
+    volumeDown     = mkOption { type = types.nullOr types.str; readOnly = true; default = current.volumeDown; };
+    volumeUp       = mkOption { type = types.nullOr types.str; readOnly = true; default = current.volumeUp; };
+    brightnessUp   = mkOption { type = types.nullOr types.str; readOnly = true; default = current.brightnessUp; };
+    brightnessDown = mkOption { type = types.nullOr types.str; readOnly = true; default = current.brightnessDown; };
+    bindType       = mkOption { type = types.enum [ "exec" "global" ]; readOnly = true; default = current.bindType; };
+    idleLockCmd    = mkOption { type = types.nullOr types.str; readOnly = true; default = current.idleLockCmd; };
+    extraBinds     = mkOption { type = types.listOf types.str; readOnly = true; default = current.extraBinds; };
   };
 
-  config = mkMerge (map (modeName:
-    let m = shellModes.${modeName}; in
-    mkIf (cfg.mode == modeName) {
-      desktop.shell = {
-        inherit (m) launcher clipboard lock volumeMute volumeDown volumeUp;
-        inherit (m) brightnessUp brightnessDown bindType idleLockCmd;
-        extraBinds = m.hyprland.extraBinds or [];
+  config = {
+    home.packages = current.packages;
+    home.file = current.homeFiles;
+
+    programs.waybar.enable             = current.enableWaybar;
+    programs.dank-material-shell.enable = current.enableDankMaterialShell;
+    programs.caelestia.enable          = current.enableCaelestia;
+    programs.noctalia-shell.enable     = current.enableNoctalia;
+
+    services.cliphist.enable = current.enableCliphist;
+
+    services.mako = mkIf current.enableMako {
+      enable = true;
+      settings = {
+        default-timeout = 3000;
+        layer = "overlay";
+        anchor = "top-right";
+      };
+    };
+
+    services.hyprpaper = mkIf current.enableHyprpaper {
+      enable = true;
+      settings = {
+        preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
+        wallpaper = ",~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
+        splash = false;
+        ipc = "off";
+      };
+    };
+
+    services.hypridle = mkIf current.enableHypridle {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = current.idleLockCmd;
+          before_sleep_cmd = current.idleLockCmd;
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = current.idleLockCmd;
+          }
+          {
+            timeout = 600;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
+      };
+    };
+
+    systemd.user.services = {
+      hyprpolkitagent = mkIf current.enableHyprpolkitagent {
+        Unit = {
+          Description = "Hyprland Polkit Authentication Agent";
+          PartOf = graphicalSessionTarget;
+          After = graphicalSessionTarget;
+        };
+        Service = {
+          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = graphicalSessionTarget;
       };
 
-      home.packages = m.packages or [];
-
-      home.file = m.homeFiles {
-        mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
-        dotfilesDir = common.dotfilesDir;
+      hyprlauncher = mkIf current.enableHyprlauncherDaemon {
+        Unit = {
+          Description = "Hyprlauncher daemon";
+          PartOf = graphicalSessionTarget;
+          After = graphicalSessionTarget;
+        };
+        Service = {
+          ExecStart = "${pkgs.hyprlauncher}/bin/hyprlauncher -d";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = graphicalSessionTarget;
       };
-
-      services = m.services;
-
-      systemd.user.services = m.systemdServices;
-
-      programs.waybar.enable = m.waybar.enable;
-      programs.dank-material-shell.enable = m.dankMaterialShell.enable;
-      programs.caelestia.enable = m.caelestia.enable;
-      programs.noctalia-shell.enable = m.noctalia.enable;
-    }
-  ) modeNames);
+    };
+  };
 }
