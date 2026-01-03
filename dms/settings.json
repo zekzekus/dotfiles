@@ -311,10 +311,6 @@
           "enabled": true
         },
         {
-          "id": "clipboard",
-          "enabled": true
-        },
-        {
           "id": "cpuUsage",
           "enabled": true
         },
@@ -327,15 +323,11 @@
           "enabled": true
         },
         {
-          "id": "battery",
+          "id": "weather",
           "enabled": true
         },
         {
           "id": "controlCenterButton",
-          "enabled": true
-        },
-        {
-          "id": "weather",
           "enabled": true
         },
         {
