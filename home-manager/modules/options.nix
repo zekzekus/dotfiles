@@ -1,8 +1,8 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   inherit (lib) mkOption types;
-  shellModes = import ./shell-modes.nix;
+  shellModes = import ./shell-modes.nix { inherit pkgs; };
   modeNames = builtins.attrNames shellModes;
 in
 {

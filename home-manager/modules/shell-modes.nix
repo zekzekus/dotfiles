@@ -1,5 +1,12 @@
+{ pkgs }:
+
+let
+  graphicalSessionTarget = [ "graphical-session.target" ];
+in
 {
-  default = {
+  default = let
+    idleLockCmd = "pidof hyprlock || hyprlock";
+  in {
     launcher = "hyprlauncher";
     clipboard = "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
     lock = "hyprlock";
@@ -11,19 +18,91 @@
 
     bindType = "exec";
 
-    idleLockCmd = "pidof hyprlock || hyprlock";
+    inherit idleLockCmd;
 
     waybar.enable = true;
-    mako.enable = true;
-    hyprlauncher.enable = true;
-    hyprpaper.enable = true;
     dankMaterialShell.enable = false;
     caelestia.enable = false;
     noctalia.enable = false;
 
-    hyprpolkitagent.enable = true;
-    cliphist.enable = true;
-    hypridle.enable = true;
+    packages = with pkgs; [ hyprlauncher hyprpolkitagent ];
+
+    homeFiles = _: {};
+
+    services = {
+      cliphist.enable = true;
+
+      mako = {
+        enable = true;
+        settings = {
+          default-timeout = 3000;
+          layer = "overlay";
+          anchor = "top-right";
+        };
+      };
+
+      hyprpaper = {
+        enable = true;
+        settings = {
+          preload = "~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
+          wallpaper = ",~/Pictures/wallpapers/wallhaven-lyq3kq.jpg";
+          splash = false;
+          ipc = "off";
+        };
+      };
+
+      hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = idleLockCmd;
+            before_sleep_cmd = idleLockCmd;
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+          };
+          listener = [
+            {
+              timeout = 300;
+              on-timeout = idleLockCmd;
+            }
+            {
+              timeout = 600;
+              on-timeout = "hyprctl dispatch dpms off";
+              on-resume = "hyprctl dispatch dpms on";
+            }
+          ];
+        };
+      };
+    };
+
+    systemdServices = {
+      hyprpolkitagent = {
+        Unit = {
+          Description = "Hyprland Polkit Authentication Agent";
+          PartOf = graphicalSessionTarget;
+          After = graphicalSessionTarget;
+        };
+        Service = {
+          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = graphicalSessionTarget;
+      };
+
+      hyprlauncher = {
+        Unit = {
+          Description = "Hyprlauncher daemon";
+          PartOf = graphicalSessionTarget;
+          After = graphicalSessionTarget;
+        };
+        Service = {
+          ExecStart = "${pkgs.hyprlauncher}/bin/hyprlauncher -d";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = graphicalSessionTarget;
+      };
+    };
 
     hyprland.extraBinds = [
       ", XF86AudioPlay, exec, playerctl play-pause"
@@ -32,7 +111,9 @@
     ];
   };
 
-  dms = {
+  dms = let
+    idleLockCmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
+  in {
     launcher = "dms ipc spotlight toggle";
     clipboard = "dms ipc call clipboard toggle";
     lock = "dms ipc call lock lock";
@@ -44,19 +125,48 @@
 
     bindType = "exec";
 
-    idleLockCmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
+    inherit idleLockCmd;
 
     waybar.enable = false;
-    mako.enable = false;
-    hyprlauncher.enable = false;
-    hyprpaper.enable = false;
     dankMaterialShell.enable = true;
     caelestia.enable = false;
     noctalia.enable = false;
 
-    hyprpolkitagent.enable = false;
-    cliphist.enable = false;
-    hypridle.enable = true;
+    packages = [];
+
+    homeFiles = { mkOutOfStoreSymlink, dotfilesDir }: {
+      ".config/DankMaterialShell/settings.json".source = mkOutOfStoreSymlink "${dotfilesDir}/dms/settings.json";
+    };
+
+    services = {
+      cliphist.enable = false;
+      mako.enable = false;
+      hyprpaper.enable = false;
+
+      hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = idleLockCmd;
+            before_sleep_cmd = idleLockCmd;
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+          };
+          listener = [
+            {
+              timeout = 300;
+              on-timeout = idleLockCmd;
+            }
+            {
+              timeout = 600;
+              on-timeout = "hyprctl dispatch dpms off";
+              on-resume = "hyprctl dispatch dpms on";
+            }
+          ];
+        };
+      };
+    };
+
+    systemdServices = {};
 
     hyprland.extraBinds = [
       ", XF86AudioPlay, exec, playerctl play-pause"
@@ -65,7 +175,9 @@
     ];
   };
 
-  caelestia = {
+  caelestia = let
+    idleLockCmd = "caelestia shell -s lock";
+  in {
     launcher = "caelestia:launcher";
     clipboard = null;
     lock = "caelestia:lock";
@@ -77,19 +189,60 @@
 
     bindType = "global";
 
-    idleLockCmd = "caelestia shell -s lock";
+    inherit idleLockCmd;
 
     waybar.enable = false;
-    mako.enable = false;
-    hyprlauncher.enable = false;
-    hyprpaper.enable = false;
     dankMaterialShell.enable = false;
     caelestia.enable = true;
     noctalia.enable = false;
 
-    hyprpolkitagent.enable = true;
-    cliphist.enable = true;
-    hypridle.enable = true;
+    packages = with pkgs; [ hyprpolkitagent ];
+
+    homeFiles = _: {};
+
+    services = {
+      cliphist.enable = true;
+      mako.enable = false;
+      hyprpaper.enable = false;
+
+      hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = idleLockCmd;
+            before_sleep_cmd = idleLockCmd;
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+          };
+          listener = [
+            {
+              timeout = 300;
+              on-timeout = idleLockCmd;
+            }
+            {
+              timeout = 600;
+              on-timeout = "hyprctl dispatch dpms off";
+              on-resume = "hyprctl dispatch dpms on";
+            }
+          ];
+        };
+      };
+    };
+
+    systemdServices = {
+      hyprpolkitagent = {
+        Unit = {
+          Description = "Hyprland Polkit Authentication Agent";
+          PartOf = graphicalSessionTarget;
+          After = graphicalSessionTarget;
+        };
+        Service = {
+          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = graphicalSessionTarget;
+      };
+    };
 
     hyprland.extraBinds = [
       "$mod, V, exec, pkill fuzzel || caelestia clipboard"
@@ -107,7 +260,9 @@
     ];
   };
 
-  noctalia = {
+  noctalia = let
+    idleLockCmd = "noctalia-shell ipc call lockScreen lock";
+  in {
     launcher = "noctalia-shell ipc call launcher toggle";
     clipboard = "noctalia-shell ipc call launcher clipboard";
     lock = "noctalia-shell ipc call lockScreen lock";
@@ -119,19 +274,60 @@
 
     bindType = "exec";
 
-    idleLockCmd = "noctalia-shell ipc call lockScreen lock";
+    inherit idleLockCmd;
 
     waybar.enable = false;
-    mako.enable = false;
-    hyprlauncher.enable = false;
-    hyprpaper.enable = false;
     dankMaterialShell.enable = false;
     caelestia.enable = false;
     noctalia.enable = true;
 
-    hyprpolkitagent.enable = true;
-    cliphist.enable = true;
-    hypridle.enable = true;
+    packages = with pkgs; [ hyprpolkitagent ];
+
+    homeFiles = _: {};
+
+    services = {
+      cliphist.enable = true;
+      mako.enable = false;
+      hyprpaper.enable = false;
+
+      hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = idleLockCmd;
+            before_sleep_cmd = idleLockCmd;
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+          };
+          listener = [
+            {
+              timeout = 300;
+              on-timeout = idleLockCmd;
+            }
+            {
+              timeout = 600;
+              on-timeout = "hyprctl dispatch dpms off";
+              on-resume = "hyprctl dispatch dpms on";
+            }
+          ];
+        };
+      };
+    };
+
+    systemdServices = {
+      hyprpolkitagent = {
+        Unit = {
+          Description = "Hyprland Polkit Authentication Agent";
+          PartOf = graphicalSessionTarget;
+          After = graphicalSessionTarget;
+        };
+        Service = {
+          ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+          Restart = "on-failure";
+          RestartSec = 1;
+        };
+        Install.WantedBy = graphicalSessionTarget;
+      };
+    };
 
     hyprland.extraBinds = [
       ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
