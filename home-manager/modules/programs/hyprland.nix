@@ -27,6 +27,10 @@
         };
       };
 
+      layerrule = [
+        "no_anim true, match:namespace ^(dms)$"
+      ];
+
       windowrule = [
         "scroll_touchpad 1.5, match:class (Alacritty|kitty)"
         "scroll_touchpad 0.2, match:class com.mitchellh.ghostty"
@@ -57,33 +61,25 @@
         "move ((monitor_w*1)-window_w-20) ((monitor_h*1)-window_h-20), match:class ^(showmethekey-gtk)$"
       ];
 
-      layerrule = {
-        name = "noctalia";
-        "match:namespace" = "noctalia-background-.*$";
-        ignore_alpha = 0.5;
-        blur = true;
-        blur_popups = true;
-      };
-
       general = {
         gaps_in = 5;
         gaps_out = 10;
+        border_size = 1;
         layout = "master";
       };
 
       decoration = {
         rounding = 10;
-        rounding_power = 2;
         shadow = {
           enabled = true;
-          range = 4;
-          render_power = 3;
+          range = 30;
+          render_power = 5;
+          offset = "0 5";
         };
         blur = {
           enabled = true;
           size = 3;
-          passes = 2;
-          vibrancy = 0.1696;
+          passes = 1;
         };
       };
 
@@ -119,27 +115,21 @@
       };
 
       bind = [
-        "$mod, Space, exec, noctalia-shell ipc call launcher toggle"
-        "$mod, V, exec, noctalia-shell ipc call launcher clipboard"
-        "$mod SHIFT CTRL, L, exec, noctalia-shell ipc call lockScreen lock"
+        "$mod, Space, exec, dms ipc spotlight toggle"
+        "$mod, V, exec, dms ipc call clipboard toggle"
+        "$mod SHIFT CTRL, L, exec, dms ipc call lock lock"
 
-        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
-        ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
-        ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
+        ", XF86AudioMute, exec, dms ipc call audio mute"
+        ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+        ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
-        ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
-        ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
+        ", XF86MonBrightnessUp, exec, dms ipc call brightnessctl increment 5"
+        ", XF86MonBrightnessDown, exec, dms ipc call brightnessctl decrement 5"
 
-        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
-        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
-        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
-
-        "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
-        "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
-        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
-        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
-        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
 
         "$mod, Return, exec, uwsm-app -- $terminal +new-window"
         "$mod SHIFT, TAB, workspace, e-1"
@@ -171,12 +161,22 @@
         "$mod, 3, workspace, 3"
         "$mod, 4, workspace, 4"
         "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod, 0, workspace, 10"
 
         "$mod SHIFT, 1, movetoworkspace, 1"
         "$mod SHIFT, 2, movetoworkspace, 2"
         "$mod SHIFT, 3, movetoworkspace, 3"
         "$mod SHIFT, 4, movetoworkspace, 4"
         "$mod SHIFT, 5, movetoworkspace, 5"
+        "$mod SHIFT, 6, movetoworkspace, 6"
+        "$mod SHIFT, 7, movetoworkspace, 7"
+        "$mod SHIFT, 8, movetoworkspace, 8"
+        "$mod SHIFT, 9, movetoworkspace, 9"
+        "$mod SHIFT, 0, movetoworkspace, 10"
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
