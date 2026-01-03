@@ -1,8 +1,7 @@
-{ lib, desktop, ... }:
+{ lib, config, ... }:
 
 {
-  programs.waybar = lib.mkIf desktop.shell.current.waybar.enable {
-    enable = true;
+  programs.waybar = lib.mkIf config.programs.waybar.enable {
     systemd.enable = true;
     settings = {
       mainBar = {

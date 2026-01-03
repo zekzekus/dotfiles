@@ -1,8 +1,7 @@
-{ lib, desktop, ... }:
+{ lib, config, ... }:
 
 {
-  programs.dank-material-shell = lib.mkIf desktop.shell.current.dankMaterialShell.enable {
-    enable = true;
+  programs.dank-material-shell = lib.mkIf config.programs.dank-material-shell.enable {
     systemd = {
       enable = true;
       restartIfChanged = true;

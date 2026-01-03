@@ -1,7 +1,7 @@
-{ common, desktop, ... }:
+{ config, common, ... }:
 
 let
-  shell = desktop.shell.current;
+  shell = config.desktop.shell;
 
   mkBind = key: cmd:
     if cmd == null then null
@@ -192,7 +192,7 @@ in
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
-      ] ++ (shell.hyprland.extraBinds or []);
+      ] ++ shell.extraBinds;
 
       bindm = [
         "$mod, mouse:272, movewindow"

@@ -1,14 +1,11 @@
 {
   pkgs,
-  config,
-  common,
-  desktop,
   ...
 }:
 
 {
   imports = [
-    ../../modules/options.nix
+    ../../modules/shell-modes.nix
     ./hyprland-integration.nix
     ./stylix.nix
     ../../modules/programs/hyprland.nix
@@ -21,25 +18,16 @@
     ../../modules/programs/noctalia-shell.nix
   ];
 
-  desktop.shell.mode = "dms";
+  desktop.shell.mode = "noctalia";
 
-  home = {
-    packages = with pkgs; [
-      appimage-run
-      (import ../../modules/packages/helium.nix { inherit pkgs; })
-      showmethekey
-    ] ++ desktop.shell.current.packages;
-
-    file = desktop.shell.current.homeFiles {
-      mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
-      dotfilesDir = common.dotfilesDir;
-    };
-  };
+  home.packages = with pkgs; [
+    appimage-run
+    (import ../../modules/packages/helium.nix { inherit pkgs; })
+    showmethekey
+  ];
 
   services = {
     tailscale-systray.enable = true;
     network-manager-applet.enable = true;
-  } // desktop.shell.current.services;
-
-  systemd.user.services = desktop.shell.current.systemdServices;
+  };
 }

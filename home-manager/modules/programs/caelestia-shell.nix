@@ -1,8 +1,7 @@
-{ lib, desktop, ... }:
+{ lib, config, ... }:
 
 {
-  programs.caelestia = lib.mkIf desktop.shell.current.caelestia.enable {
-    enable = true;
+  programs.caelestia = lib.mkIf config.programs.caelestia.enable {
     systemd.enable = true;
     settings = {
       use24HourClock = true;
