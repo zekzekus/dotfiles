@@ -32,8 +32,8 @@
       };
 
       bar = {
-        backgroundOpacity = 0.5;
-        capsuleOpacity = 0.6;
+        backgroundOpacity = 0.65;
+        capsuleOpacity = 0.75;
         density = "comfortable";
         exclusive = true;
         floating = false;
@@ -222,6 +222,7 @@
           { enabled = true; id = "media-sysmon-card"; }
           { enabled = false; id = "brightness-card"; }
         ];
+        diskPath = "/";
         position = "top_center";
         shortcuts = {
           left = [
@@ -309,6 +310,11 @@
       };
 
       network = {
+        bluetoothDetailsViewMode = "grid";
+        bluetoothHideUnnamedDevices = false;
+        bluetoothRssiPollIntervalMs = 10000;
+        bluetoothRssiPollingEnabled = false;
+        wifiDetailsViewMode = "grid";
         wifiEnabled = true;
       };
 
@@ -390,7 +396,7 @@
         showNumberLabels = true;
       };
 
-      settingsVersion = 36;
+      settingsVersion = 37;
 
       systemMonitor = {
         cpuCriticalThreshold = 90;
@@ -398,7 +404,6 @@
         cpuWarningThreshold = 80;
         criticalColor = "";
         diskCriticalThreshold = 90;
-        diskPath = "/";
         diskPollingInterval = 3000;
         diskWarningThreshold = 80;
         enableDgpuMonitoring = false;
@@ -447,8 +452,7 @@
       };
 
       ui = {
-        bluetoothDetailsViewMode = "grid";
-        bluetoothHideUnnamedDevices = false;
+        boxBorderEnabled = false;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
         fontFixed = "monospace";
@@ -457,7 +461,6 @@
         panelsAttachedToBar = true;
         settingsPanelMode = "centered";
         tooltipsEnabled = true;
-        wifiDetailsViewMode = "grid";
       };
 
       wallpaper = {
@@ -474,9 +477,11 @@
         randomIntervalSec = 300;
         recursiveSearch = false;
         setWallpaperOnAllMonitors = true;
+        solidColor = "#1a1a2e";
         transitionDuration = 1500;
         transitionEdgeSmoothness = 0.05;
         transitionType = "random";
+        useSolidColor = false;
         useWallhaven = false;
         wallhavenApiKey = "";
         wallhavenCategories = "111";
