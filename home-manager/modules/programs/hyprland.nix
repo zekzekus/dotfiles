@@ -2,8 +2,6 @@
 
 let
   shell = desktop.shell.current;
-  isCaelestia = shell.caelestia.enable;
-  isNoctalia = shell.noctalia.enable;
 
   mkBind = key: cmd:
     if cmd == null then null
@@ -151,13 +149,6 @@ in
         "$mod SHIFT CTRL, M, exit"
 
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ]
-      ++ (if isNoctalia then [] else [
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
-      ])
-      ++ [
 
         "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
         "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
@@ -201,33 +192,7 @@ in
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
-      ]
-      ++ (if isCaelestia then [
-        "$mod, V, exec, pkill fuzzel || caelestia clipboard"
-
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-"
-        ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%+"
-
-        "$mod SHIFT, Escape, global, caelestia:session"
-        "$mod, Delete, global, caelestia:clearNotifs"
-      ] else [])
-      ++ (if isNoctalia then [
-        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
-        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
-
-        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
-        "$mod, Delete, exec, noctalia-shell ipc call notifications dismissAll"
-        "$mod SHIFT, Delete, exec, noctalia-shell ipc call notifications clear"
-
-        "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
-
-        "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
-
-        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
-        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
-        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
-      ] else []);
+      ] ++ (shell.hyprland.extraBinds or []);
 
       bindm = [
         "$mod, mouse:272, movewindow"

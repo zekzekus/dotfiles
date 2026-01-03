@@ -24,6 +24,12 @@
     hyprpolkitagent.enable = true;
     cliphist.enable = true;
     hypridle.enable = true;
+
+    hyprland.extraBinds = [
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
+    ];
   };
 
   dms = {
@@ -51,6 +57,12 @@
     hyprpolkitagent.enable = false;
     cliphist.enable = false;
     hypridle.enable = true;
+
+    hyprland.extraBinds = [
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
+    ];
   };
 
   caelestia = {
@@ -78,6 +90,21 @@
     hyprpolkitagent.enable = true;
     cliphist.enable = true;
     hypridle.enable = true;
+
+    hyprland.extraBinds = [
+      "$mod, V, exec, pkill fuzzel || caelestia clipboard"
+
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-"
+      ", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 3%+"
+
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
+
+      "$mod SHIFT, Escape, global, caelestia:session"
+      "$mod, Delete, global, caelestia:clearNotifs"
+    ];
   };
 
   noctalia = {
@@ -105,5 +132,21 @@
     hyprpolkitagent.enable = true;
     cliphist.enable = true;
     hypridle.enable = true;
+
+    hyprland.extraBinds = [
+      ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
+      ", XF86AudioNext, exec, noctalia-shell ipc call media next"
+      ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
+
+      "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
+      "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
+
+      "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
+      "$mod, Delete, exec, noctalia-shell ipc call notifications dismissAll"
+      "$mod SHIFT, Delete, exec, noctalia-shell ipc call notifications clear"
+
+      "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
+      "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
+    ];
   };
 }
