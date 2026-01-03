@@ -50,7 +50,6 @@
         "float true, match:class ^(blueman-manager)$"
         "float true, match:class ^(org\\.gnome\\.Nautilus)$"
 
-        "float true, match:class ^(org.quickshell)$"
         "float true, match:class ^(one.alynx.showmethekey)$"
         "float true, match:class ^(showmethekey-gtk)$"
         "pin true, match:class ^(showmethekey-gtk)$"
@@ -58,25 +57,33 @@
         "move ((monitor_w*1)-window_w-20) ((monitor_h*1)-window_h-20), match:class ^(showmethekey-gtk)$"
       ];
 
+      layerrule = {
+        name = "noctalia";
+        "match:namespace" = "noctalia-background-.*$";
+        ignore_alpha = 0.5;
+        blur = true;
+        blur_popups = true;
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 1;
         layout = "master";
       };
 
       decoration = {
         rounding = 10;
+        rounding_power = 2;
         shadow = {
           enabled = true;
-          range = 30;
-          render_power = 5;
-          offset = "0 5";
+          range = 4;
+          render_power = 3;
         };
         blur = {
           enabled = true;
           size = 3;
-          passes = 1;
+          passes = 2;
+          vibrancy = 0.1696;
         };
       };
 
