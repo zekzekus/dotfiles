@@ -29,14 +29,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,8 +44,6 @@
       nix-darwin,
       nix-homebrew,
       stylix,
-      dms,
-      caelestia-shell,
       noctalia,
       ...
     }:
@@ -64,8 +54,6 @@
 
       nixosExtraModules = [
         stylix.homeModules.stylix
-        dms.homeModules.dank-material-shell
-        caelestia-shell.homeManagerModules.default
         noctalia.homeModules.default
       ];
 

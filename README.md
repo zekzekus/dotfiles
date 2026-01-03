@@ -12,7 +12,6 @@ One config to rule them all — macOS, Linux, and NixOS.
 - 🖥️ **Multi-platform** — Single flake manages macOS (via nix-darwin), Linux, and NixOS
 - 🏠 **Multi-host** — Per-machine configurations with shared modules and platform abstractions
 - 🎨 **Stylix** — Consistent theming across applications
-- 🐚 **Desktop Shells** — AGS-based shells (DMS default) for NixOS/Hyprland
 - 🚀 **Neovim Nightly** — Always on the bleeding edge via nix-community overlay
 - ⚡ **Make-driven** — Simple commands that auto-detect your host
 
@@ -133,11 +132,9 @@ See [home-manager/README.md](./home-manager/README.md) for detailed installation
 - Homebrew integration via nix-homebrew
 
 **NixOS Host**
-- Hyprland compositor with AGS-based desktop shells
-- DankMaterialShell (default), Caelestia, Noctalia available
+- Hyprland compositor with Noctalia shell
 - Stylix system-wide theming
 - Pipewire audio, Bluetooth, SDDM
-- Mako notifications, cliphist clipboard
 
 ---
 

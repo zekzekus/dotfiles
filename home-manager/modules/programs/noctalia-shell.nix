@@ -1,7 +1,8 @@
-{ lib, config, ... }:
+{ ... }:
 
 {
-  programs.noctalia-shell = lib.mkIf config.programs.noctalia-shell.enable {
+  programs.noctalia-shell = {
+    enable = true;
     systemd.enable = true;
     settings = {
       appLauncher = {

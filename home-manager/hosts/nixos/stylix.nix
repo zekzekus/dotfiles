@@ -38,9 +38,7 @@
       hyprland.enable = true;
       hyprlock.enable = true;
       hyprpaper.enable = true;
-      mako.enable = true;
       rofi.enable = true;
-      waybar.enable = true;
 
       ghostty.enable = false;
       vicinae.enable = true;

@@ -1,15 +1,4 @@
-{ config, common, ... }:
-
-let
-  shell = config.desktop.shell;
-
-  mkBind = key: cmd:
-    if cmd == null then null
-    else if shell.bindType == "global" then "${key}, global, ${cmd}"
-    else "${key}, exec, ${cmd}";
-
-  filterNull = builtins.filter (x: x != null);
-in
+{ common, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -40,10 +29,6 @@ in
           scroll_factor = 0.4;
         };
       };
-
-      layerrule = [
-        "no_anim true, match:namespace ^(dms)$"
-      ];
 
       windowrule = [
         "scroll_touchpad 1.5, match:class (Alacritty|kitty)"
@@ -129,18 +114,32 @@ in
         disable_hyprland_logo = true;
       };
 
-      bind = filterNull [
-        (mkBind "$mod, Space" shell.launcher)
-        (mkBind "$mod, V" shell.clipboard)
-        (mkBind "$mod SHIFT CTRL, L" shell.lock)
+      bind = [
+        "$mod, Space, exec, noctalia-shell ipc call launcher toggle"
+        "$mod, V, exec, noctalia-shell ipc call launcher clipboard"
+        "$mod SHIFT CTRL, L, exec, noctalia-shell ipc call lockScreen lock"
 
-        (mkBind ", XF86AudioMute" shell.volumeMute)
-        (mkBind ", XF86AudioLowerVolume" shell.volumeDown)
-        (mkBind ", XF86AudioRaiseVolume" shell.volumeUp)
+        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
+        ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
+        ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
 
-        (mkBind ", XF86MonBrightnessUp" shell.brightnessUp)
-        (mkBind ", XF86MonBrightnessDown" shell.brightnessDown)
-      ] ++ [
+        ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
+        ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
+
+        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
+        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
+        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
+
+        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
+        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
+
+        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
+        "$mod, Delete, exec, noctalia-shell ipc call notifications dismissAll"
+        "$mod SHIFT, Delete, exec, noctalia-shell ipc call notifications clear"
+
+        "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
+        "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
+
         "$mod, Return, exec, uwsm-app -- $terminal +new-window"
         "$mod SHIFT, TAB, workspace, e-1"
         "$mod, B, exec, uwsm-app -- $browser"
@@ -192,7 +191,7 @@ in
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
-      ] ++ shell.extraBinds;
+      ];
 
       bindm = [
         "$mod, mouse:272, movewindow"
