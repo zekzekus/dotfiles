@@ -10,6 +10,7 @@
     ./ghostty.nix
     ./git.nix
     ./jujutsu.nix
+    ./mercurial.nix
     ./neovim.nix
     ./nix-helper.nix
     ./nix-your-shell.nix
