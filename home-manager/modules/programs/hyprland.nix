@@ -191,5 +191,8 @@
         "$mod, mouse:273, resizewindow"
       ];
     };
+    extraConfig = ''
+      source = ~/.config/hypr/noctalia/noctalia-colors.conf
+    '';
   };
 }
