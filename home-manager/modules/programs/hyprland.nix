@@ -139,9 +139,9 @@
         ", XF86AudioNext, exec, noctalia-shell ipc call media next"
         ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
 
-        "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
-        "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
-        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
+        "$mod SHIFT, D, exec, noctalia-shell ipc call darkMode toggle"
+        "$mod SHIFT, W, exec, noctalia-shell ipc call wallpaper toggle"
+        "$mod SHIFT, C, exec, noctalia-shell ipc call controlCenter toggle"
         "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
         "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
 
