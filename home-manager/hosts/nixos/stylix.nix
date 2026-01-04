@@ -32,8 +32,8 @@
       lazygit.enable = true;
       tmux.enable = true;
 
-      gtk.enable = false;
-      qt.enable = false;
+      gtk.enable = true;
+      qt.enable = true;
 
       hyprland.enable = false;
       hyprlock.enable = false;
