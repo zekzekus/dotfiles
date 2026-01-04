@@ -7,11 +7,17 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.neobones = {
+      vim.g.kanagawabones = {
         solid_line_nr = true,
         solid_float_border = true,
         italic_strings = false,
       }
+      vim.g.vimbones = {
+        solid_line_nr = true,
+        solid_float_border = true,
+        italic_strings = false,
+      }
+
 
       local function set_colorscheme()
         local colorscheme = vim.o.background == 'dark' and 'kanagawabones' or 'vimbones'
