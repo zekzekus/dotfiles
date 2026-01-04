@@ -212,9 +212,9 @@
         manualSunrise = "06:30";
         manualSunset = "18:30";
         matugenSchemeType = "scheme-tonal-spot";
-        predefinedScheme = "Gruvbox";
+        predefinedScheme = "Kanagawa";
         schedulingMode = "off";
-        useWallpaperColors = true;
+        useWallpaperColors = false;
       };
 
       controlCenter = {
@@ -436,23 +436,23 @@
         enableUserTemplates = false;
         foot = false;
         fuzzel = false;
-        ghostty = false;
-        gtk = false;
-        helix = false;
-        hyprland = false;
-        kcolorscheme = false;
+        ghostty = true;
+        gtk = true;
+        helix = true;
+        hyprland = true;
+        kcolorscheme = true;
         kitty = false;
         mango = false;
         niri = false;
         pywalfox = false;
-        qt = false;
+        qt = true;
         spicetify = false;
         telegram = false;
         vicinae = false;
         walker = false;
         wezterm = false;
-        yazi = false;
-        zed = false;
+        yazi = true;
+        zed = true;
         zenBrowser = false;
       };
 

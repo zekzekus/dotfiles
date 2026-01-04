@@ -23,28 +23,28 @@
     };
 
     targets = {
-      bat.enable = true;
-      btop.enable = true;
-      fish.enable = true;
-      nushell.enable = true;
-      fzf.enable = true;
-      gdu.enable = true;
-      lazygit.enable = true;
-      tmux.enable = true;
+      bat.enable = false;
+      btop.enable = false;
+      fish.enable = false;
+      nushell.enable = false;
+      fzf.enable = false;
+      gdu.enable = false;
+      lazygit.enable = false;
+      tmux.enable = false;
 
-      gtk.enable = true;
-      qt.enable = true;
+      gtk.enable = false;
+      qt.enable = false;
 
-      hyprland.enable = true;
-      hyprlock.enable = true;
-      hyprpaper.enable = true;
-      rofi.enable = true;
+      hyprland.enable = false;
+      hyprlock.enable = false;
+      hyprpaper.enable = false;
+      rofi.enable = false;
 
       ghostty.enable = false;
-      vicinae.enable = true;
+      vicinae.enable = false;
 
       firefox = {
-        enable = true;
+        enable = false;
         profileNames = [ "default" ];
       };
     };

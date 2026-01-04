@@ -10,8 +10,8 @@
       vim_mode = true;
       theme = {
         mode = "system";
-        light = "Gruvbox Light";
-        dark = "Gruvbox Dark";
+        light = "Noctalia Light";
+        dark = "Noctalia Dark";
       };
     };
     extraPackages = with pkgs; [
