@@ -24,7 +24,7 @@ let
     else "/home/${username}";
 
   mkHmModule =
-    { homeDir, username, platformPath, hostPath, extraImports ? [], extraSpecialArgs ? {} }:
+    { username, homeDir, platformPath, hostPath, extraModules ? [], extraSpecialArgs ? {} }:
     {
       nixpkgs.overlays = overlays;
       home-manager.useGlobalPkgs = true;
@@ -32,7 +32,7 @@ let
       home-manager.users.${username} =
         { ... }:
         {
-          imports = extraImports ++ [
+          imports = extraModules ++ [
             ./home.nix
             platformPath
             hostPath
@@ -62,12 +62,11 @@ let
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = { inherit common; } // extraSpecialArgs;
-      modules = [
+      modules = extraModules ++ [
         ./home.nix
       ]
       ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./platforms/darwin
       ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./platforms/linux
-      ++ extraModules
       ++ [ ./hosts/${hostname} ];
     };
 

@@ -113,7 +113,7 @@
               homeDir = "/home/${defaultUsername}";
               platformPath = ./platforms/linux;
               hostPath = ./hosts/nixos;
-              extraImports = nixosExtraModules;
+              extraModules = nixosExtraModules;
               extraSpecialArgs = { inherit hyprland hyprland-plugins; };
             })
           ];
