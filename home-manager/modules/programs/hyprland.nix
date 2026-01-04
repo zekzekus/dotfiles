@@ -28,10 +28,6 @@
         };
       };
 
-      layerrule = [
-        "no_anim true, match:namespace ^(dms)$"
-      ];
-
       windowrule = [
         "scroll_touchpad 0.2, match:class com.mitchellh.ghostty"
 
@@ -58,25 +54,33 @@
         "move ((monitor_w*1)-window_w-20) ((monitor_h*1)-window_h-20), match:class ^(showmethekey-gtk)$"
       ];
 
+      layerrule = {
+        name = "noctalia";
+        "match:namespace" = "noctalia-background-.*$";
+        ignore_alpha = 0.5;
+        blur = true;
+        blur_popups = true;
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 1;
         layout = "master";
       };
 
       decoration = {
         rounding = 10;
+        rounding_power = 2;
         shadow = {
           enabled = true;
-          range = 30;
-          render_power = 5;
-          offset = "0 5";
+          range = 4;
+          render_power = 3;
         };
         blur = {
           enabled = true;
           size = 3;
-          passes = 1;
+          passes = 2;
+          vibrancy = 0.1696;
         };
       };
 
@@ -116,23 +120,27 @@
       };
 
       bind = [
-        "$mod, Space, exec, dms ipc spotlight toggle"
-        "$mod, V, exec, dms ipc call clipboard toggle"
-        "$mod SHIFT CTRL, L, exec, dms ipc call lock lock"
-        "$mod SHIFT, ESCAPE, exec, dms ipc call powermenu toggle"
-        "$mod SHIFT, C, exec, dms ipc call control-center toggle"
+        "$mod, Space, exec, noctalia-shell ipc call launcher toggle"
+        "$mod, V, exec, noctalia-shell ipc call launcher clipboard"
+        "$mod SHIFT CTRL, L, exec, noctalia-shell ipc call lockScreen lock"
 
-        ", XF86AudioMute, exec, dms ipc call audio mute"
-        ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
-        ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
+        ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
+        ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
-        ", XF86MonBrightnessUp, exec, dms ipc call brightnessctl increment 5"
-        ", XF86MonBrightnessDown, exec, dms ipc call brightnessctl decrement 5"
+        ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
+        ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
 
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
+        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
+        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
+
+        "$mod, D, exec, noctalia-shell ipc call darkMode toggle"
+        "$mod, W, exec, noctalia-shell ipc call wallpaper toggle"
+        "$mod, C, exec, noctalia-shell ipc call controlCenter toggle"
+        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
+        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
 
         "$mod, Return, exec, uwsm-app -- $terminal +new-window"
         "$mod SHIFT, TAB, workspace, e-1"

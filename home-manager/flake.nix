@@ -34,8 +34,8 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -51,7 +51,7 @@
       stylix,
       hyprland,
       hyprland-plugins,
-      dms,
+      noctalia,
       ...
     }:
     let
@@ -61,8 +61,8 @@
 
       nixosExtraModules = [
         stylix.homeModules.stylix
-        dms.homeModules.dank-material-shell
         hyprland.homeManagerModules.default 
+        noctalia.homeModules.default
       ];
 
       lib = import ./lib.nix {

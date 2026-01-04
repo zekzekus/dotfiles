@@ -11,7 +11,7 @@
     ../../modules/programs/hyprland-plugins.nix
     ../../modules/programs/rofi.nix
     ../../modules/programs/hyprlock.nix
-    ../../modules/programs/dms-shell.nix
+    ../../modules/programs/noctalia-shell.nix
   ];
 
   home.packages = with pkgs; [
@@ -30,14 +30,14 @@
       enable = true;
       settings = {
         general = {
-          lock_cmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
-          before_sleep_cmd = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
+          lock_cmd = "noctalia-shell ipc call lockScreen lock";
+          before_sleep_cmd = "noctalia-shell ipc call lockScreen lock";
           after_sleep_cmd = "hyprctl dispatch dpms on";
         };
         listener = [
           {
             timeout = 300;
-            on-timeout = "dms ipc call lock isLocked | grep -q true || dms ipc call lock lock";
+            on-timeout = "noctalia-shell ipc call lockScreen lock";
           }
           {
             timeout = 600;
