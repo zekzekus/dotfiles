@@ -247,7 +247,12 @@
       desktopWidgets = {
         enabled = false;
         gridSnap = false;
-        monitorWidgets = [ ];
+        monitorWidgets = [
+          {
+            name = "HDMI-A-2";
+            widgets = [];
+          }
+        ];
       };
 
       dock = {
@@ -386,15 +391,15 @@
         countdownDuration = 10000;
         enableCountdown = true;
         largeButtonsLayout = "grid";
-        largeButtonsStyle = false;
+        largeButtonsStyle = true;
         position = "center";
         powerOptions = [
-          { action = "lock"; enabled = true; }
-          { action = "suspend"; enabled = true; }
-          { action = "hibernate"; enabled = true; }
-          { action = "reboot"; enabled = true; }
-          { action = "logout"; enabled = true; }
-          { action = "shutdown"; enabled = true; }
+          { action = "lock"; enabled = true; command = ""; countdownEnabled = true; }
+          { action = "suspend"; enabled = false; command = ""; countdownEnabled = true; }
+          { action = "hibernate"; enabled = false; command = ""; countdownEnabled = true; }
+          { action = "reboot"; enabled = true; command = ""; countdownEnabled = true; }
+          { action = "logout"; enabled = true; command = ""; countdownEnabled = true; }
+          { action = "shutdown"; enabled = true; command = ""; countdownEnabled = true; }
         ];
         showHeader = true;
         showNumberLabels = true;
@@ -460,7 +465,7 @@
         boxBorderEnabled = false;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
-        fontFixed = "monospace";
+        fontFixed = "JetBrains Mono NL";
         fontFixedScale = 1;
         panelBackgroundOpacity = 1;
         panelsAttachedToBar = true;
