@@ -16,7 +16,6 @@
       pavucontrol
       wireplumber
 
-      # theme-switch dependencies (gsettings for live gtk switching)
       glib
       gsettings-desktop-schemas
 
@@ -37,8 +36,8 @@
       SDL_VIDEODRIVER = "wayland";
       GTK_USE_PORTAL = "1";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
-      XCURSOR_SIZE = "36";
-      HYPRCURSOR_SIZE = "36";
+      XCURSOR_SIZE = "24";
+      HYPRCURSOR_SIZE = "24";
     };
   };
 }
