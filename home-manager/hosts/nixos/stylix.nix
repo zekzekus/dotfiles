@@ -6,7 +6,7 @@
     autoEnable = false;
     enableReleaseChecks = false;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
     polarity = "dark";
 
     cursor = {
@@ -23,14 +23,14 @@
     };
 
     targets = {
-      bat.enable = false;
-      btop.enable = false;
-      fish.enable = false;
-      nushell.enable = false;
-      fzf.enable = false;
-      gdu.enable = false;
-      lazygit.enable = false;
-      tmux.enable = false;
+      bat.enable = true;
+      btop.enable = true;
+      fish.enable = true;
+      nushell.enable = true;
+      fzf.enable = true;
+      gdu.enable = true;
+      lazygit.enable = true;
+      tmux.enable = true;
 
       gtk.enable = false;
       qt.enable = false;
