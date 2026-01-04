@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, hyprland-plugins, ... }:
 
 {
   wayland.windowManager.hyprland = {
     plugins = [
-      pkgs.hyprlandPlugins.hyprexpo
+      hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
     ];
 
     settings = {
@@ -14,10 +14,13 @@
           gap_size = 40;
           bg_col = "rgb(111111)";
           workspace_method = "first 1";
-          enable_gesture = true;
-          gesture_positive = true;
+          gesture_distance = 300;
         };
       };
+
+      "hyprexpo-gesture" = [
+        "4, pinchout, expo, toggle"
+      ];
 
       bind = [
         "$mod, TAB, hyprexpo:expo, toggle"

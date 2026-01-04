@@ -2,6 +2,7 @@
   nixpkgs,
   home-manager,
   overlays,
+  ...
 }:
 let
   defaultUsername = "zekus";
@@ -23,7 +24,7 @@ let
     else "/home/${username}";
 
   mkHmModule =
-    { homeDir, username, platformPath, hostPath, extraImports ? [] }:
+    { homeDir, username, platformPath, hostPath, extraImports ? [], extraSpecialArgs ? {} }:
     {
       nixpkgs.overlays = overlays;
       home-manager.useGlobalPkgs = true;
@@ -39,7 +40,7 @@ let
         };
       home-manager.extraSpecialArgs = {
         common = mkCommon { inherit username homeDir; };
-      };
+      } // extraSpecialArgs;
     };
 
   mkHomeConfiguration =
@@ -48,6 +49,7 @@ let
       hostname,
       username ? defaultUsername,
       extraModules ? [],
+      extraSpecialArgs ? {},
     }:
     let
       pkgs = import nixpkgs {
@@ -59,7 +61,7 @@ let
     in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      extraSpecialArgs = { inherit common; };
+      extraSpecialArgs = { inherit common; } // extraSpecialArgs;
       modules = [
         ./home.nix
       ]

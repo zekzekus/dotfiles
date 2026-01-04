@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hyprland, ... }:
 
 {
   imports = [
@@ -93,7 +93,7 @@
     xdgOpenUsePortal = true;
 
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
+      hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
 
@@ -121,6 +121,8 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+    package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
   programs.gpu-screen-recorder.enable = true;
   programs.steam = {

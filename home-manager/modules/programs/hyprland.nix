@@ -1,9 +1,10 @@
-{ common, ... }:
+{ common, hyprland, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
+    package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "ghostty";
@@ -49,6 +50,7 @@
         "float true, match:class .blueman-manager-wrapped"
         "float true, match:class nemo"
 
+        "float true, match:class ^(org.quickshell)$"
         "float true, match:class ^(one.alynx.showmethekey)$"
         "float true, match:class ^(showmethekey-gtk)$"
         "pin true, match:class ^(showmethekey-gtk)$"
@@ -107,6 +109,10 @@
       misc = {
         vfr = true;
         disable_hyprland_logo = true;
+      };
+
+      cursor = {
+        no_hardware_cursors = true;
       };
 
       bind = [

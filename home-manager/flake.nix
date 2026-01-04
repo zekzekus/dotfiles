@@ -29,6 +29,11 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +49,8 @@
       nix-darwin,
       nix-homebrew,
       stylix,
+      hyprland,
+      hyprland-plugins,
       dms,
       ...
     }:
@@ -55,10 +62,11 @@
       nixosExtraModules = [
         stylix.homeModules.stylix
         dms.homeModules.dank-material-shell
+        hyprland.homeManagerModules.default 
       ];
 
       lib = import ./lib.nix {
-        inherit nixpkgs home-manager overlays;
+        inherit nixpkgs home-manager overlays hyprland hyprland-plugins;
       };
 
       inherit (lib) defaultUsername mkHmModule mkHomeConfiguration;
@@ -70,6 +78,7 @@
           system = "x86_64-linux";
           hostname = "nixos";
           extraModules = nixosExtraModules;
+          extraSpecialArgs = { inherit hyprland hyprland-plugins; };
         };
       };
 
@@ -93,8 +102,10 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit hyprland; };
           modules = [
             determinate.nixosModules.default
+            hyprland.nixosModules.default
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             (mkHmModule {
@@ -103,6 +114,7 @@
               platformPath = ./platforms/linux;
               hostPath = ./hosts/nixos;
               extraImports = nixosExtraModules;
+              extraSpecialArgs = { inherit hyprland hyprland-plugins; };
             })
           ];
         };
