@@ -43,10 +43,13 @@
         "opacity 0.9 0.9, match:float false, match:focus false"
         "opacity 0.95 0.90, match:class com.mitchellh.ghostty"
 
+        "float true, match:class ^(org.quickshell)$"
         "float true, match:class .blueman-manager-wrapped"
         "float true, match:class nemo"
+        "size 1200 700, match:class nemo"
+        "float true, match:class org.pulseaudio.pavucontrol"
+        "size 1000 450, match:class org.pulseaudio.pavucontrol"
 
-        "float true, match:class ^(org.quickshell)$"
         "float true, match:class ^(one.alynx.showmethekey)$"
         "float true, match:class ^(showmethekey-gtk)$"
         "pin true, match:class ^(showmethekey-gtk)$"
