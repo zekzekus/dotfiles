@@ -5,7 +5,7 @@
     enable = true;
     package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
     settings = {
-      theme = "noctalia";
+      theme = if pkgs.stdenv.isDarwin then "Kanagawabones" else "noctalia";
       font-family = "TX-02";
       font-size = if pkgs.stdenv.isDarwin then 16 else 13;
       font-thicken = lib.mkIf pkgs.stdenv.isDarwin true;
