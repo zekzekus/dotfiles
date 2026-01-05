@@ -6,6 +6,7 @@
     systemd.enable = true;
     settings = {
       appLauncher = {
+        autoPasteClipboard = false;
         customLaunchPrefix = "uwsm-app --";
         customLaunchPrefixEnabled = true;
         enableClipPreview = false;
@@ -208,7 +209,6 @@
 
       colorSchemes = {
         darkMode = true;
-        generateTemplatesForPredefined = true;
         manualSunrise = "06:30";
         manualSunset = "18:30";
         matugenSchemeType = "scheme-tonal-spot";
@@ -290,6 +290,7 @@
         shadowDirection = "bottom_right";
         shadowOffsetX = 2;
         shadowOffsetY = 3;
+        showChangelogOnStartup = true;
         showHibernateOnLockScreen = false;
         showScreenCorners = false;
         showSessionButtonsOnLockScreen = true;
@@ -308,6 +309,8 @@
       location = {
         analogClockInCalendar = false;
         firstDayOfWeek = -1;
+        hideWeatherCityName = false;
+        hideWeatherTimezone = false;
         name = "Istanbul";
         showCalendarEvents = true;
         showCalendarWeather = true;
@@ -462,15 +465,19 @@
       };
 
       ui = {
+        bluetoothDetailsViewMode = "grid";
+        bluetoothHideUnnamedDevices = false;
         boxBorderEnabled = false;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
         fontFixed = "JetBrains Mono NL";
         fontFixedScale = 1;
-        panelBackgroundOpacity = 1;
         panelsAttachedToBar = true;
+        networkPanelView = "wifi";
+        panelBackgroundOpacity = 0.8500000000000001;
         settingsPanelMode = "centered";
         tooltipsEnabled = true;
+        wifiDetailsViewMode = "grid";
       };
 
       wallpaper = {
