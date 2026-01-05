@@ -14,16 +14,11 @@
           gap_size = 40;
           bg_col = "rgb(111111)";
           workspace_method = "first 1";
-          gesture_distance = 300;
         };
       };
 
-      "hyprexpo-gesture" = [
-        "4, pinchout, expo, toggle"
-      ];
-
-      bind = [
-        "$mod, TAB, hyprexpo:expo, toggle"
+      exec-once = [
+        "hyprctl keyword bind 'SUPER, TAB, hyprexpo:expo, toggle'"
       ];
     };
   };

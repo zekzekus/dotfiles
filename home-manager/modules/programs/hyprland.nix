@@ -57,13 +57,11 @@
         "move ((monitor_w*1)-window_w-20) ((monitor_h*1)-window_h-20), match:class ^(showmethekey-gtk)$"
       ];
 
-      layerrule = {
-        name = "noctalia";
-        "match:namespace" = "noctalia-background-.*$";
-        ignore_alpha = 0.5;
-        blur = true;
-        blur_popups = true;
-      };
+      layerrule = [
+        "blur true, match:namespace ^noctalia-background-.*$"
+        "blur_popups true, match:namespace ^noctalia-background-.*$"
+        "ignore_alpha 0.5, match:namespace ^noctalia-background-.*$"
+      ];
 
       general = {
         gaps_in = 5;
@@ -116,6 +114,7 @@
       misc = {
         vfr = true;
         disable_hyprland_logo = true;
+        disable_xdg_env_checks = true;
       };
 
       cursor = {
