@@ -16,7 +16,7 @@
     ./nix-your-shell.nix
     ./nushell.nix
     ./starship.nix
-    # ./tmux.nix
+    ./tmux.nix
     ./zoxide.nix
     ./yazi.nix
     ./gpg.nix
