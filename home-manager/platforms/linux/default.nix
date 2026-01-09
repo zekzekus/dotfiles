@@ -3,7 +3,7 @@
 {
   imports = [
     ../../modules/programs/firefox.nix
-    ../../modules/programs/zed-editor.nix
+    # ../../modules/programs/zed-editor.nix
   ];
 
   programs = {
