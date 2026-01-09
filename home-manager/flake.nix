@@ -71,7 +71,7 @@
       ];
 
       lib = import ./lib.nix {
-        inherit nixpkgs home-manager overlays hyprland hyprland-plugins;
+        inherit nixpkgs home-manager overlays;
       };
 
       inherit (lib) defaultUsername mkHmModule mkHomeConfiguration;

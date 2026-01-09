@@ -2,7 +2,6 @@
   nixpkgs,
   home-manager,
   overlays,
-  ...
 }:
 let
   defaultUsername = "zekus";
