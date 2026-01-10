@@ -76,7 +76,6 @@
 
       inherit (lib) mkNixosSystem mkDarwinSystem;
 
-      # Host definitions - hostname is specified once per host
       nixosHost = mkNixosSystem {
         hostname = "nixos";
         extraModules = nixosExtraModules;

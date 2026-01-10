@@ -85,6 +85,7 @@ let
         inherit system;
         specialArgs = systemSpecialArgs;
         modules = systemModules ++ [
+          ./platforms/linux/system.nix
           ./hosts/${hostname}/configuration.nix
           home-manager.nixosModules.home-manager
           (mkHmModule host)
@@ -108,6 +109,7 @@ let
       value = nix-darwin.lib.darwinSystem {
         inherit system;
         modules = systemModules ++ [
+          ./platforms/darwin/system.nix
           ./hosts/${hostname}/configuration.nix
           home-manager.darwinModules.home-manager
           (mkHmModule host)
