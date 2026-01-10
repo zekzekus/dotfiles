@@ -1,13 +1,14 @@
-{ pkgs, common, ... }:
-
-let
+{
+  pkgs,
+  common,
+  ...
+}: let
   darwinPaths = ''
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/etc/profiles/per-user/${common.username}/bin')
   '';
-in
-{
+in {
   programs.nushell = {
     enable = true;
     environmentVariables = {
@@ -37,7 +38,11 @@ in
     };
 
     extraEnv = ''
-      ${if pkgs.stdenv.isDarwin then darwinPaths else ""}
+      ${
+        if pkgs.stdenv.isDarwin
+        then darwinPaths
+        else ""
+      }
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/pnpm')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/coursier/bin')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/bin')

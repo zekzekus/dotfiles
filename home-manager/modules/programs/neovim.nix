@@ -1,6 +1,8 @@
-{ pkgs, common, ... }:
-
 {
+  pkgs,
+  common,
+  ...
+}: {
   programs.neovim = {
     enable = true;
 
@@ -45,7 +47,7 @@
 
       # JavaScript/TypeScript
       typescript-language-server
-      vscode-langservers-extracted  # html, css, json, eslint
+      vscode-langservers-extracted # html, css, json, eslint
     ];
   };
 

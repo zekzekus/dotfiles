@@ -1,14 +1,16 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isLinux;
 
-let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
-
-  pinentryPackage = if isDarwin
+  pinentryPackage =
+    if isDarwin
     then pkgs.pinentry_mac
     else pkgs.pinentry-curses;
-in
-{
+in {
   programs.gpg = {
     enable = true;
     settings = {

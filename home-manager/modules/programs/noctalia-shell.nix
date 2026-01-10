@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
@@ -14,7 +12,7 @@
         enableClipboardHistory = true;
         iconMode = "tabler";
         ignoreMouseInput = false;
-        pinnedApps = [ ];
+        pinnedApps = [];
         screenshotAnnotationTool = "";
         position = "center";
         showIconBackground = true;
@@ -27,7 +25,7 @@
 
       audio = {
         cavaFrameRate = 30;
-        mprisBlacklist = [ ];
+        mprisBlacklist = [];
         preferredPlayer = "";
         visualizerType = "linear";
         volumeOverdrive = false;
@@ -42,7 +40,7 @@
         floating = false;
         marginHorizontal = 5;
         marginVertical = 5;
-        monitors = [ ];
+        monitors = [];
         outerCorners = true;
         position = "top";
         showCapsule = true;
@@ -147,7 +145,7 @@
             }
             {
               id = "Tray";
-              blacklist = [ ];
+              blacklist = [];
               colorizeIcons = false;
               drawerEnabled = true;
               hidePassive = false;
@@ -216,10 +214,22 @@
 
       calendar = {
         cards = [
-          { enabled = true; id = "calendar-header-card"; }
-          { enabled = true; id = "calendar-month-card"; }
-          { enabled = true; id = "timer-card"; }
-          { enabled = true; id = "weather-card"; }
+          {
+            enabled = true;
+            id = "calendar-header-card";
+          }
+          {
+            enabled = true;
+            id = "calendar-month-card";
+          }
+          {
+            enabled = true;
+            id = "timer-card";
+          }
+          {
+            enabled = true;
+            id = "weather-card";
+          }
         ];
       };
 
@@ -235,26 +245,44 @@
 
       controlCenter = {
         cards = [
-          { enabled = true; id = "profile-card"; }
-          { enabled = true; id = "shortcuts-card"; }
-          { enabled = true; id = "audio-card"; }
-          { enabled = true; id = "weather-card"; }
-          { enabled = true; id = "media-sysmon-card"; }
-          { enabled = false; id = "brightness-card"; }
+          {
+            enabled = true;
+            id = "profile-card";
+          }
+          {
+            enabled = true;
+            id = "shortcuts-card";
+          }
+          {
+            enabled = true;
+            id = "audio-card";
+          }
+          {
+            enabled = true;
+            id = "weather-card";
+          }
+          {
+            enabled = true;
+            id = "media-sysmon-card";
+          }
+          {
+            enabled = false;
+            id = "brightness-card";
+          }
         ];
         diskPath = "/";
         position = "top_center";
         shortcuts = {
           left = [
-            { id = "WiFi"; }
-            { id = "Bluetooth"; }
-            { id = "WallpaperSelector"; }
+            {id = "WiFi";}
+            {id = "Bluetooth";}
+            {id = "WallpaperSelector";}
           ];
           right = [
-            { id = "Notifications"; }
-            { id = "PowerProfile"; }
-            { id = "KeepAwake"; }
-            { id = "NightLight"; }
+            {id = "Notifications";}
+            {id = "PowerProfile";}
+            {id = "KeepAwake";}
+            {id = "NightLight";}
           ];
         };
       };
@@ -279,9 +307,9 @@
         displayMode = "auto_hide";
         floatingRatio = 1;
         inactiveIndicators = false;
-        monitors = [ ];
+        monitors = [];
         onlySameOutput = true;
-        pinnedApps = [ ];
+        pinnedApps = [];
         pinnedStatic = false;
         position = "bottom";
         size = 1;
@@ -363,7 +391,7 @@
         enableKeyboardLayoutToast = true;
         location = "top_right";
         lowUrgencyDuration = 3;
-        monitors = [ ];
+        monitors = [];
         normalUrgencyDuration = 8;
         overlayLayer = true;
         respectExpireTimeout = false;
@@ -387,9 +415,9 @@
         enabled = true;
         autoHideMs = 2000;
         backgroundOpacity = 1;
-        enabledTypes = [ 0 1 2 ];
+        enabledTypes = [0 1 2];
         location = "top_right";
-        monitors = [ ];
+        monitors = [];
         overlayLayer = true;
       };
 
@@ -400,12 +428,42 @@
         largeButtonsStyle = true;
         position = "center";
         powerOptions = [
-          { action = "lock"; enabled = true; command = ""; countdownEnabled = true; }
-          { action = "suspend"; enabled = false; command = ""; countdownEnabled = true; }
-          { action = "hibernate"; enabled = false; command = ""; countdownEnabled = true; }
-          { action = "reboot"; enabled = true; command = ""; countdownEnabled = true; }
-          { action = "logout"; enabled = true; command = ""; countdownEnabled = true; }
-          { action = "shutdown"; enabled = true; command = ""; countdownEnabled = true; }
+          {
+            action = "lock";
+            enabled = true;
+            command = "";
+            countdownEnabled = true;
+          }
+          {
+            action = "suspend";
+            enabled = false;
+            command = "";
+            countdownEnabled = true;
+          }
+          {
+            action = "hibernate";
+            enabled = false;
+            command = "";
+            countdownEnabled = true;
+          }
+          {
+            action = "reboot";
+            enabled = true;
+            command = "";
+            countdownEnabled = true;
+          }
+          {
+            action = "logout";
+            enabled = true;
+            command = "";
+            countdownEnabled = true;
+          }
+          {
+            action = "shutdown";
+            enabled = true;
+            command = "";
+            countdownEnabled = true;
+          }
         ];
         showHeader = true;
         showNumberLabels = true;
@@ -490,7 +548,7 @@
         fillColor = "#000000";
         fillMode = "crop";
         hideWallpaperFilenames = false;
-        monitorDirectories = [ ];
+        monitorDirectories = [];
         overviewEnabled = false;
         panelPosition = "follow_bar";
         randomEnabled = false;

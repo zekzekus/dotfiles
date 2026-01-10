@@ -45,91 +45,87 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      neovim-nightly-overlay,
-      determinate,
-      nix-darwin,
-      nix-homebrew,
-      stylix,
-      hyprland,
-      hyprland-plugins,
-      noctalia,
-      ...
-    }:
-    let
-      overlays = [
-        neovim-nightly-overlay.overlays.default
-      ];
+  outputs = {
+    nixpkgs,
+    home-manager,
+    neovim-nightly-overlay,
+    determinate,
+    nix-darwin,
+    nix-homebrew,
+    stylix,
+    hyprland,
+    hyprland-plugins,
+    noctalia,
+    ...
+  }: let
+    overlays = [
+      neovim-nightly-overlay.overlays.default
+    ];
 
-      nixosExtraModules = [
-        stylix.homeModules.stylix
-        hyprland.homeManagerModules.default
-        noctalia.homeModules.default
-      ];
+    nixosExtraModules = [
+      stylix.homeModules.stylix
+      hyprland.homeManagerModules.default
+      noctalia.homeModules.default
+    ];
 
-      lib = import ./lib.nix {
-        inherit nixpkgs home-manager nix-darwin overlays;
-      };
-
-      inherit (lib) mkNixosSystem mkDarwinSystem;
-
-      nixosHost = mkNixosSystem {
-        hostname = "nixos";
-        extraModules = nixosExtraModules;
-        extraSpecialArgs = { inherit hyprland hyprland-plugins; };
-        systemModules = [
-          determinate.nixosModules.default
-          hyprland.nixosModules.default
-        ];
-        systemSpecialArgs = { inherit hyprland; };
-      };
-
-      macMachineHost = mkDarwinSystem {
-        hostname = "mac-machine";
-        systemModules = [
-          nix-homebrew.darwinModules.nix-homebrew
-        ];
-      };
-
-      supportedSystems = [ "x86_64-linux" "aarch64-darwin" ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    in
-    {
-      nixosConfigurations.${nixosHost.name} = nixosHost.value;
-      darwinConfigurations.${macMachineHost.name} = macMachineHost.value;
-
-      # Standalone HM configurations for non-NixOS/non-darwin hosts (WSL, generic Linux, etc.)
-      # homeConfigurations = builtins.listToAttrs [
-      #   (mkHomeConfiguration { hostname = "wsl"; system = "x86_64-linux"; })
-      # ];
-
-      checks = forAllSystems (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-          nixFiles = pkgs.lib.fileset.toSource {
-            root = ./.;
-            fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./.;
-          };
-        in
-        {
-          formatting = pkgs.runCommand "check-formatting" { buildInputs = [ pkgs.alejandra ]; } ''
-            alejandra --check ${nixFiles}
-            touch $out
-          '';
-          deadnix = pkgs.runCommand "check-deadnix" { buildInputs = [ pkgs.deadnix ]; } ''
-            deadnix --fail ${nixFiles}
-            touch $out
-          '';
-          statix = pkgs.runCommand "check-statix" { buildInputs = [ pkgs.statix ]; } ''
-            statix check ${nixFiles}
-            touch $out
-          '';
-        }
-      );
-
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    lib = import ./lib.nix {
+      inherit nixpkgs home-manager nix-darwin overlays;
     };
+
+    inherit (lib) mkNixosSystem mkDarwinSystem;
+
+    nixosHost = mkNixosSystem {
+      hostname = "nixos";
+      extraModules = nixosExtraModules;
+      extraSpecialArgs = {inherit hyprland hyprland-plugins;};
+      systemModules = [
+        determinate.nixosModules.default
+        hyprland.nixosModules.default
+      ];
+      systemSpecialArgs = {inherit hyprland;};
+    };
+
+    macMachineHost = mkDarwinSystem {
+      hostname = "mac-machine";
+      systemModules = [
+        nix-homebrew.darwinModules.nix-homebrew
+      ];
+    };
+
+    supportedSystems = ["x86_64-linux" "aarch64-darwin"];
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+  in {
+    nixosConfigurations.${nixosHost.name} = nixosHost.value;
+    darwinConfigurations.${macMachineHost.name} = macMachineHost.value;
+
+    # Standalone HM configurations for non-NixOS/non-darwin hosts (WSL, generic Linux, etc.)
+    # homeConfigurations = builtins.listToAttrs [
+    #   (mkHomeConfiguration { hostname = "wsl"; system = "x86_64-linux"; })
+    # ];
+
+    checks = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        nixFiles = pkgs.lib.fileset.toSource {
+          root = ./.;
+          fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./.;
+        };
+      in {
+        formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''
+          alejandra --check ${nixFiles}
+          touch $out
+        '';
+        deadnix = pkgs.runCommand "check-deadnix" {buildInputs = [pkgs.deadnix];} ''
+          deadnix --fail ${nixFiles}
+          touch $out
+        '';
+        statix = pkgs.runCommand "check-statix" {buildInputs = [pkgs.statix];} ''
+          statix check ${nixFiles} --config ${./.statix.toml}
+          touch $out
+        '';
+      }
+    );
+
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  };
 }

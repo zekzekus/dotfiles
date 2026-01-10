@@ -78,7 +78,7 @@ check:
 
 fmt:
 	@echo "Formatting Nix files..."
-	nix fmt $(FLAKE)
+	cd $(FLAKE) && nix fmt .
 
 clean:
 	@echo "Cleaning build artifacts..."

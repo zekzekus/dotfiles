@@ -1,6 +1,8 @@
-{ pkgs, common, ... }:
-
 {
+  pkgs,
+  common,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       brightnessctl
@@ -18,7 +20,6 @@
 
       glib
       gsettings-desktop-schemas
-
     ];
 
     file = {

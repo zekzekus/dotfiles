@@ -1,6 +1,4 @@
-{ common, ... }:
-
-{
+{common, ...}: {
   home.file = {
     ".ctags".source = "${common.dotfilesDir}/ctags/ctags";
     ".tmuxinator".source = "${common.dotfilesDir}/tmuxinator";

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.fish.enable = true;
 
   environment.systemPath = [

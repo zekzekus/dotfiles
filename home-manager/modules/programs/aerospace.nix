@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.aerospace = {
     enable = false;
     launchd.enable = true;
@@ -21,12 +19,16 @@
       ];
       accordion-padding = 50;
       gaps = {
-        inner.horizontal = 10;
-        inner.vertical = 10;
-        outer.left = 10;
-        outer.bottom = 10;
-        outer.top = 10;
-        outer.right = 10;
+        inner = {
+          horizontal = 10;
+          vertical = 10;
+        };
+        outer = {
+          left = 10;
+          bottom = 10;
+          top = 10;
+          right = 10;
+        };
       };
       mode.main.binding = {
         alt-slash = "layout tiles horizontal vertical";

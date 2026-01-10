@@ -1,6 +1,8 @@
-{ pkgs, hyprland-plugins, ... }:
-
 {
+  pkgs,
+  hyprland-plugins,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     plugins = [
       hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo

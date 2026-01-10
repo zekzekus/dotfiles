@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -74,11 +72,20 @@
         node = "bright black";
         elided = "bright black";
         immutable = "bright blue";
-        working_copy = { bold = true; fg = "green"; };
-        conflict = { bold = true; fg = "red"; };
+        working_copy = {
+          bold = true;
+          fg = "green";
+        };
+        conflict = {
+          bold = true;
+          fg = "red";
+        };
         bookmark = "cyan";
         remote_bookmark = "bright cyan";
-        git_head = { bold = true; fg = "magenta"; };
+        git_head = {
+          bold = true;
+          fg = "magenta";
+        };
         empty = "bright black";
         description_placeholder = "bright black";
       };

@@ -1,6 +1,8 @@
-{ lib, common, ... }:
-
 {
+  lib,
+  common,
+  ...
+}: {
   imports = [
     ./modules/packages
     ./modules/file
@@ -13,7 +15,7 @@
     stateVersion = "24.11";
     enableNixpkgsReleaseCheck = false;
 
-    username = common.username;
+    inherit (common) username;
     homeDirectory = lib.mkForce common.homeDir;
   };
 }

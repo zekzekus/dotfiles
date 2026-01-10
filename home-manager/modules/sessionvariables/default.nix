@@ -1,6 +1,4 @@
-{ common, ... }:
-
-{
+{common, ...}: {
   home.sessionVariables = {
     ZEK_DEVEL_HOME = common.develHome;
     ZEK_DEFAULT_PROJECT_DIR = common.defaultProjectDir;

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   # Host-specific configuration for mac-machine
   #
   # This file is for overrides specific to this machine only.

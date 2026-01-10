@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   stylix = {
     enable = true;
     autoEnable = false;
@@ -45,9 +43,8 @@
 
       firefox = {
         enable = false;
-        profileNames = [ "default" ];
+        profileNames = ["default"];
       };
     };
   };
-
 }

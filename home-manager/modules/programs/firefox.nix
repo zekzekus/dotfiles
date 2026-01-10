@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.firefox = {
     enable = true;
     profiles = {

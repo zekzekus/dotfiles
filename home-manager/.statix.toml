@@ -1,0 +1,3 @@
+# Statix configuration
+# Ignore auto-generated hardware config
+ignore = ["**/hardware-configuration.nix"]

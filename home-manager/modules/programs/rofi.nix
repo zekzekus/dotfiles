@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.rofi = {
     enable = true;
     extraConfig = {

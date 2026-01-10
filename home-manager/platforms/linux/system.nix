@@ -1,6 +1,8 @@
-{ pkgs, hyprland, ... }:
-
 {
+  pkgs,
+  hyprland,
+  ...
+}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -41,29 +43,31 @@
   };
 
   console.useXkbConfig = true;
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "tr";
-      variant = "alt";
+  services = {
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "tr";
+        variant = "alt";
+      };
     };
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
+    printing.enable = true;
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    blueman.enable = true;
+    pcscd.enable = true;
   };
-
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
-  services.printing.enable = true;
-  services.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -86,7 +90,7 @@
 
     config = {
       common = {
-        default = [ "gtk" ];
+        default = ["gtk"];
       };
 
       hyprland = {
@@ -105,25 +109,26 @@
     };
   };
 
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  programs = {
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
+    gpu-screen-recorder.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+      gamescopeSession.enable = true;
+    };
+    gamescope.enable = true;
+    gamemode.enable = true;
+    dconf.enable = true;
+    ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
   };
-  programs.gpu-screen-recorder.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
-  };
-  programs.gamescope.enable = true;
-  programs.gamemode.enable = true;
-  programs.dconf.enable = true;
-  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
-  services.pcscd.enable = true;
 
   security.rtkit.enable = true;
   security.polkit.enable = true;

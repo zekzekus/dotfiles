@@ -1,6 +1,8 @@
-{ pkgs, common, ... }:
-
 {
+  pkgs,
+  common,
+  ...
+}: {
   imports = [
     ../../modules/programs/aerospace.nix
     ../../modules/services/jankyborders.nix

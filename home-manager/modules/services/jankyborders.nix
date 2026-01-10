@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   services.jankyborders = {
     enable = false;
     settings = {

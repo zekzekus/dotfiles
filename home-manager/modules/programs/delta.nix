@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   programs.delta = {
     enable = true;
     options = {

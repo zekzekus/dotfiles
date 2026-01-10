@@ -1,6 +1,4 @@
-{ common, ... }:
-
-{
+{common, ...}: {
   programs.git = {
     enable = true;
     signing.key = "6716516470AD2D7A";
