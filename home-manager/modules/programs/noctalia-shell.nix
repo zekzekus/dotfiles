@@ -7,13 +7,14 @@
     settings = {
       appLauncher = {
         autoPasteClipboard = false;
+        clipboardWrapText = true;
         customLaunchPrefix = "uwsm-app --";
         customLaunchPrefixEnabled = true;
         enableClipPreview = false;
         enableClipboardHistory = true;
         iconMode = "tabler";
         ignoreMouseInput = false;
-        pinnedExecs = [ ];
+        pinnedApps = [ ];
         screenshotAnnotationTool = "";
         position = "center";
         showIconBackground = true;
@@ -26,7 +27,6 @@
 
       audio = {
         cavaFrameRate = 30;
-        externalMixer = "pwvucontrol || pavucontrol";
         mprisBlacklist = [ ];
         preferredPlayer = "";
         visualizerType = "linear";
@@ -40,8 +40,8 @@
         density = "comfortable";
         exclusive = true;
         floating = false;
-        marginHorizontal = 0.25;
-        marginVertical = 0.25;
+        marginHorizontal = 5;
+        marginVertical = 5;
         monitors = [ ];
         outerCorners = true;
         position = "top";
@@ -71,6 +71,11 @@
               showVisualizer = false;
               useFixedWidth = false;
               visualizerType = "linear";
+              compactMode = false;
+              compactShowAlbumArt = true;
+              compactShowVisualizer = false;
+              panelShowAlbumArt = true;
+              panelShowVisualizer = true;
             }
           ];
           left = [
@@ -141,9 +146,6 @@
               usePrimaryColor = false;
             }
             {
-              id = "ScreenRecorder";
-            }
-            {
               id = "Tray";
               blacklist = [ ];
               colorizeIcons = false;
@@ -165,6 +167,7 @@
             {
               id = "Volume";
               displayMode = "onhover";
+              middleClickCommand = "pwvucontrol || pavucontrol";
             }
             {
               id = "Brightness";
@@ -187,6 +190,19 @@
               enableColorization = false;
               icon = "noctalia";
               useDistroLogo = false;
+            }
+            {
+              id = "plugin:hyprland-steam-overlay";
+              defaultSettings = {
+                autoLaunchSteam = true;
+                chatWidthPercent = 25;
+                friendsWidthPercent = 10;
+                gapSize = 10;
+                hasNewMessages = false;
+                mainWidthPercent = 60;
+                topMarginPercent = 2.5;
+                windowHeightPercent = 95;
+              };
             }
           ];
         };
@@ -232,7 +248,6 @@
           left = [
             { id = "WiFi"; }
             { id = "Bluetooth"; }
-            { id = "ScreenRecorder"; }
             { id = "WallpaperSelector"; }
           ];
           right = [
@@ -268,6 +283,7 @@
         onlySameOutput = true;
         pinnedApps = [ ];
         pinnedStatic = false;
+        position = "bottom";
         size = 1;
       };
 
@@ -377,19 +393,6 @@
         overlayLayer = true;
       };
 
-      screenRecorder = {
-        audioCodec = "opus";
-        audioSource = "default_output";
-        colorRange = "limited";
-        copyToClipboard = false;
-        directory = "~/Videos";
-        frameRate = 60;
-        quality = "very_high";
-        showCursor = true;
-        videoCodec = "h264";
-        videoSource = "portal";
-      };
-
       sessionMenu = {
         countdownDuration = 10000;
         enableCountdown = true;
@@ -408,7 +411,7 @@
         showNumberLabels = true;
       };
 
-      settingsVersion = 37;
+      settingsVersion = 39;
 
       systemMonitor = {
         cpuCriticalThreshold = 90;
