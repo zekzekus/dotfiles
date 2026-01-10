@@ -66,63 +66,43 @@
 
       nixosExtraModules = [
         stylix.homeModules.stylix
-        hyprland.homeManagerModules.default 
+        hyprland.homeManagerModules.default
         noctalia.homeModules.default
       ];
 
       lib = import ./lib.nix {
-        inherit nixpkgs home-manager overlays;
+        inherit nixpkgs home-manager nix-darwin overlays;
       };
 
-      inherit (lib) defaultUsername mkHmModule mkHomeConfiguration;
+      inherit (lib) mkNixosSystem mkDarwinSystem;
+
+      # Host definitions - hostname is specified once per host
+      nixosHost = mkNixosSystem {
+        hostname = "nixos";
+        extraModules = nixosExtraModules;
+        extraSpecialArgs = { inherit hyprland hyprland-plugins; };
+        systemModules = [
+          determinate.nixosModules.default
+          hyprland.nixosModules.default
+        ];
+        systemSpecialArgs = { inherit hyprland; };
+      };
+
+      macMachineHost = mkDarwinSystem {
+        hostname = "mac-machine";
+        systemModules = [
+          nix-homebrew.darwinModules.nix-homebrew
+        ];
+      };
 
     in
     {
-      homeConfigurations = {
-        "zekus@nixos" = mkHomeConfiguration {
-          system = "x86_64-linux";
-          hostname = "nixos";
-          extraModules = nixosExtraModules;
-          extraSpecialArgs = { inherit hyprland hyprland-plugins; };
-        };
-      };
+      nixosConfigurations.${nixosHost.name} = nixosHost.value;
+      darwinConfigurations.${macMachineHost.name} = macMachineHost.value;
 
-      darwinConfigurations = {
-        "mac-machine" = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = [
-            nix-homebrew.darwinModules.nix-homebrew
-            ./hosts/mac-machine/configuration.nix
-            home-manager.darwinModules.home-manager
-            (mkHmModule {
-              username = defaultUsername;
-              homeDir = "/Users/${defaultUsername}";
-              platformPath = ./platforms/darwin;
-              hostPath = ./hosts/mac-machine;
-            })
-          ];
-        };
-      };
-
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit hyprland; };
-          modules = [
-            determinate.nixosModules.default
-            hyprland.nixosModules.default
-            ./hosts/nixos/configuration.nix
-            home-manager.nixosModules.home-manager
-            (mkHmModule {
-              username = defaultUsername;
-              homeDir = "/home/${defaultUsername}";
-              platformPath = ./platforms/linux;
-              hostPath = ./hosts/nixos;
-              extraModules = nixosExtraModules;
-              extraSpecialArgs = { inherit hyprland hyprland-plugins; };
-            })
-          ];
-        };
-      };
+      # Standalone HM configurations for non-NixOS/non-darwin hosts (WSL, generic Linux, etc.)
+      # homeConfigurations = builtins.listToAttrs [
+      #   (mkHomeConfiguration { hostname = "wsl"; system = "x86_64-linux"; })
+      # ];
     };
 }

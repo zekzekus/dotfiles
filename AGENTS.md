@@ -25,14 +25,28 @@ make update       # Update flake inputs
 ```
 home-manager/
 ├── flake.nix        # Main entry point: inputs, outputs, host definitions
-├── lib.nix          # Helper functions for configuration builders
+├── lib.nix          # Unified host builders (mkNixosSystem, mkDarwinSystem, mkHomeConfiguration)
 ├── home.nix         # Shared config imported by all hosts
-├── hosts/           # Per-machine configurations
+├── hosts/           # Per-machine configurations (default.nix + configuration.nix)
 ├── modules/         # Reusable Home Manager modules
 └── platforms/       # Platform-specific abstractions (darwin/, linux/)
 ```
 
 External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Manager.
+
+## Adding a New Host
+
+1. Create `hosts/<hostname>/configuration.nix` (NixOS/darwin system config)
+2. Create `hosts/<hostname>/default.nix` (Home Manager config)
+3. Add one builder call in `flake.nix`:
+   ```nix
+   myHost = mkNixosSystem { hostname = "myhost"; };
+   # or
+   myHost = mkDarwinSystem { hostname = "myhost"; };
+   # or for standalone HM:
+   myHost = mkHomeConfiguration { hostname = "myhost"; system = "x86_64-linux"; };
+   ```
+4. Export: `nixosConfigurations.${myHost.name} = myHost.value;`
 
 ## Code Style
 
