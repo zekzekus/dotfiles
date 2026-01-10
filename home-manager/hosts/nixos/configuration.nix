@@ -2,7 +2,9 @@
   pkgs,
   hyprland,
   ...
-}: {
+}: let
+  hyprPkgs = hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -104,7 +106,7 @@
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
+      hyprPkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
     config = {
@@ -118,8 +120,8 @@
     hyprland = {
       enable = true;
       withUWSM = true;
-      package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      package = hyprPkgs.hyprland;
+      portalPackage = hyprPkgs.xdg-desktop-portal-hyprland;
     };
     gpu-screen-recorder.enable = true;
     steam = {
