@@ -83,7 +83,6 @@
       modules =
         systemModules
         ++ [
-          ./platforms/linux/system.nix
           ./hosts/${hostname}/configuration.nix
           home-manager.nixosModules.home-manager
           (mkHmModule host)
@@ -106,7 +105,6 @@
       modules =
         systemModules
         ++ [
-          ./platforms/darwin/system.nix
           ./hosts/${hostname}/configuration.nix
           home-manager.darwinModules.home-manager
           (mkHmModule host)
