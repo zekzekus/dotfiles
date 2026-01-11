@@ -75,6 +75,10 @@
     systemSpecialArgs ? {},
   }: let
     host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    pkgs = import nixpkgs {
+      inherit system overlays;
+      config.allowUnfree = true;
+    };
   in {
     name = hostname;
     value = nixpkgs.lib.nixosSystem {
@@ -88,6 +92,14 @@
           (mkHmModule host)
         ];
     };
+    home = {
+      name = "${defaultUsername}@${hostname}";
+      value = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        inherit (host.home) modules;
+        extraSpecialArgs = host.home.specialArgs;
+      };
+    };
   };
 
   mkDarwinSystem = {
@@ -98,6 +110,10 @@
     systemModules ? [],
   }: let
     host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    pkgs = import nixpkgs {
+      inherit system overlays;
+      config.allowUnfree = true;
+    };
   in {
     name = hostname;
     value = nix-darwin.lib.darwinSystem {
@@ -109,6 +125,14 @@
           home-manager.darwinModules.home-manager
           (mkHmModule host)
         ];
+    };
+    home = {
+      name = "${defaultUsername}@${hostname}";
+      value = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        inherit (host.home) modules;
+        extraSpecialArgs = host.home.specialArgs;
+      };
     };
   };
 

@@ -97,11 +97,7 @@
   in {
     nixosConfigurations.${nixosHost.name} = nixosHost.value;
     darwinConfigurations.${macMachineHost.name} = macMachineHost.value;
-
-    # Standalone HM configurations for non-NixOS/non-darwin hosts (WSL, generic Linux, etc.)
-    # homeConfigurations = builtins.listToAttrs [
-    #   (mkHomeConfiguration { hostname = "wsl"; system = "x86_64-linux"; homeModules = []; })
-    # ];
+    homeConfigurations.${nixosHost.home.name} = nixosHost.home.value;
 
     checks = forAllSystems (
       system: let
