@@ -32,15 +32,15 @@
   mkHost = {
     hostname,
     system,
-    extraModules ? [],
-    extraSpecialArgs ? {},
+    homeModules ? [],
+    homeSpecialArgs ? {},
   }: let
     username = defaultUsername;
     homeDir = mkHomeDir {inherit system username;};
     common = mkCommon {inherit username homeDir;};
 
-    homeModules =
-      extraModules
+    allHomeModules =
+      homeModules
       ++ [./home.nix]
       ++ nixpkgs.lib.optional (isDarwin system) ./platforms/darwin
       ++ nixpkgs.lib.optional (isLinux system) ./platforms/linux
@@ -48,8 +48,8 @@
   in {
     inherit hostname system;
     home = {
-      modules = homeModules;
-      specialArgs = {inherit common;} // extraSpecialArgs;
+      modules = allHomeModules;
+      specialArgs = {inherit common;} // homeSpecialArgs;
       inherit username;
     };
   };
@@ -69,12 +69,12 @@
   mkNixosSystem = {
     hostname,
     system ? "x86_64-linux",
-    extraModules ? [],
-    extraSpecialArgs ? {},
+    homeModules ? [],
+    homeSpecialArgs ? {},
     systemModules ? [],
     systemSpecialArgs ? {},
   }: let
-    host = mkHost {inherit hostname system extraModules extraSpecialArgs;};
+    host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
   in {
     name = hostname;
     value = nixpkgs.lib.nixosSystem {
@@ -93,11 +93,11 @@
   mkDarwinSystem = {
     hostname,
     system ? "aarch64-darwin",
-    extraModules ? [],
-    extraSpecialArgs ? {},
+    homeModules ? [],
+    homeSpecialArgs ? {},
     systemModules ? [],
   }: let
-    host = mkHost {inherit hostname system extraModules extraSpecialArgs;};
+    host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
   in {
     name = hostname;
     value = nix-darwin.lib.darwinSystem {
@@ -115,10 +115,10 @@
   mkHomeConfiguration = {
     hostname,
     system,
-    extraModules ? [],
-    extraSpecialArgs ? {},
+    homeModules ? [],
+    homeSpecialArgs ? {},
   }: let
-    host = mkHost {inherit hostname system extraModules extraSpecialArgs;};
+    host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
     pkgs = import nixpkgs {
       inherit system overlays;
       config.allowUnfree = true;

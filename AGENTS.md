@@ -40,7 +40,13 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 2. Create `hosts/<hostname>/default.nix` (Home Manager config)
 3. Add one builder call in `flake.nix`:
    ```nix
-   myHost = mkNixosSystem { hostname = "myhost"; };
+   myHost = mkNixosSystem {
+     hostname = "myhost";
+     homeModules = [];        # Home Manager modules
+     homeSpecialArgs = {};    # Args passed to HM
+     systemModules = [];      # NixOS system modules
+     systemSpecialArgs = {};  # Args passed to NixOS
+   };
    # or
    myHost = mkDarwinSystem { hostname = "myhost"; };
    # or for standalone HM:

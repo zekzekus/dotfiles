@@ -62,7 +62,7 @@
       neovim-nightly-overlay.overlays.default
     ];
 
-    nixosExtraModules = [
+    extraHomeModules = [
       stylix.homeModules.stylix
       hyprland.homeManagerModules.default
       noctalia.homeModules.default
@@ -76,8 +76,8 @@
 
     nixosHost = mkNixosSystem {
       hostname = "nixos";
-      extraModules = nixosExtraModules;
-      extraSpecialArgs = {inherit hyprland hyprland-plugins;};
+      homeModules = extraHomeModules;
+      homeSpecialArgs = {inherit hyprland hyprland-plugins;};
       systemModules = [
         determinate.nixosModules.default
         hyprland.nixosModules.default
@@ -100,7 +100,7 @@
 
     # Standalone HM configurations for non-NixOS/non-darwin hosts (WSL, generic Linux, etc.)
     # homeConfigurations = builtins.listToAttrs [
-    #   (mkHomeConfiguration { hostname = "wsl"; system = "x86_64-linux"; })
+    #   (mkHomeConfiguration { hostname = "wsl"; system = "x86_64-linux"; homeModules = []; })
     # ];
 
     checks = forAllSystems (
