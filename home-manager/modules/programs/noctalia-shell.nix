@@ -189,19 +189,6 @@ _: {
               icon = "noctalia";
               useDistroLogo = false;
             }
-            {
-              id = "plugin:hyprland-steam-overlay";
-              defaultSettings = {
-                autoLaunchSteam = true;
-                chatWidthPercent = 25;
-                friendsWidthPercent = 10;
-                gapSize = 10;
-                hasNewMessages = false;
-                mainWidthPercent = 60;
-                topMarginPercent = 2.5;
-                windowHeightPercent = 95;
-              };
-            }
           ];
         };
       };
