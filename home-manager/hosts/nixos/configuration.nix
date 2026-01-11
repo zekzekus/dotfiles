@@ -1,6 +1,7 @@
 {
   pkgs,
   hyprland,
+  common,
   ...
 }: let
   hyprPkgs = hyprland.packages.${pkgs.stdenv.hostPlatform.system};
@@ -142,7 +143,7 @@ in {
     polkit.enable = true;
   };
 
-  users.users.zekus = {
+  users.users.${common.username} = {
     isNormalUser = true;
     description = "Zekeriya Koc";
     extraGroups = [
@@ -162,7 +163,7 @@ in {
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "zekus"];
+      trusted-users = ["root" common.username];
       extra-substituters = ["https://install.determinate.systems"];
       extra-trusted-public-keys = ["cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="];
       cores = 0;

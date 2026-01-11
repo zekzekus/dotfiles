@@ -75,6 +75,7 @@
     systemSpecialArgs ? {},
   }: let
     host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    inherit (host.home.specialArgs) common;
     pkgs = import nixpkgs {
       inherit system overlays;
       config.allowUnfree = true;
@@ -83,7 +84,7 @@
     name = hostname;
     value = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = systemSpecialArgs;
+      specialArgs = systemSpecialArgs // {inherit common;};
       modules =
         systemModules
         ++ [
@@ -108,8 +109,10 @@
     homeModules ? [],
     homeSpecialArgs ? {},
     systemModules ? [],
+    systemSpecialArgs ? {},
   }: let
     host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    inherit (host.home.specialArgs) common;
     pkgs = import nixpkgs {
       inherit system overlays;
       config.allowUnfree = true;
@@ -118,6 +121,7 @@
     name = hostname;
     value = nix-darwin.lib.darwinSystem {
       inherit system;
+      specialArgs = systemSpecialArgs // {inherit common;};
       modules =
         systemModules
         ++ [

@@ -1,7 +1,7 @@
-_: {
+{common, ...}: {
   system = {
     stateVersion = 6;
-    primaryUser = "zekus";
+    primaryUser = common.username;
     defaults = {
       NSGlobalDomain = {
         NSAutomaticWindowAnimationsEnabled = false;
@@ -32,7 +32,7 @@ _: {
   nix-homebrew = {
     enable = true;
     enableRosetta = true;
-    user = "zekus";
+    user = common.username;
     autoMigrate = true;
   };
 
