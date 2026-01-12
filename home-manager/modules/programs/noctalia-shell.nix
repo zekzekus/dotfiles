@@ -34,10 +34,10 @@ _: {
 
       bar = {
         backgroundOpacity = 0.65;
-        capsuleOpacity = 0.75;
+        capsuleOpacity = 0.5;
         density = "comfortable";
         exclusive = true;
-        floating = false;
+        floating = true;
         marginHorizontal = 5;
         marginVertical = 5;
         monitors = [];
@@ -233,28 +233,28 @@ _: {
       controlCenter = {
         cards = [
           {
-            enabled = true;
             id = "profile-card";
+            enabled = true;
           }
           {
-            enabled = true;
             id = "shortcuts-card";
+            enabled = true;
           }
           {
-            enabled = true;
             id = "audio-card";
+            enabled = true;
           }
           {
-            enabled = true;
             id = "weather-card";
-          }
-          {
             enabled = true;
-            id = "media-sysmon-card";
           }
           {
-            enabled = false;
+            id = "media-sysmon-card";
+            enabled = true;
+          }
+          {
             id = "brightness-card";
+            enabled = true;
           }
         ];
         diskPath = "/";
