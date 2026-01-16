@@ -38,6 +38,7 @@ _: {
         density = "comfortable";
         exclusive = true;
         floating = true;
+        hideOnOverview = false;
         marginHorizontal = 5;
         marginVertical = 5;
         monitors = [];
@@ -83,6 +84,7 @@ _: {
               enableColorization = false;
               hideMode = "alwaysExpanded";
               icon = "rocket";
+              ipcIdentifier = "";
               leftClickExec = "noctalia-shell ipc call launcher toggle";
               leftClickUpdateText = false;
               maxTextLength = {
@@ -325,6 +327,7 @@ _: {
         showHibernateOnLockScreen = false;
         showScreenCorners = false;
         showSessionButtonsOnLockScreen = true;
+        telemetryEnabled = true;
       };
 
       hooks = {
@@ -334,6 +337,7 @@ _: {
         performanceModeEnabled = "";
         screenLock = "";
         screenUnlock = "";
+        session = "";
         wallpaperChange = "";
       };
 
@@ -456,7 +460,7 @@ _: {
         showNumberLabels = true;
       };
 
-      settingsVersion = 39;
+      settingsVersion = 40;
 
       systemMonitor = {
         cpuCriticalThreshold = 90;
@@ -484,32 +488,29 @@ _: {
       };
 
       templates = {
-        alacritty = false;
-        cava = false;
-        code = false;
-        discord = false;
-        emacs = false;
+        activeTemplates = [
+          {
+            id = "ghostty";
+            enable = true;
+          }
+          {
+            id = "helix";
+            enable = true;
+          }
+          {
+            id = "yazi";
+            enable = true;
+          }
+          {
+            id = "hyprland";
+            enable = true;
+          }
+          {
+            id = "zed";
+            enable = true;
+          }
+        ];
         enableUserTemplates = false;
-        foot = false;
-        fuzzel = false;
-        ghostty = true;
-        gtk = false;
-        helix = true;
-        hyprland = true;
-        kcolorscheme = false;
-        kitty = false;
-        mango = false;
-        niri = false;
-        pywalfox = false;
-        qt = false;
-        spicetify = false;
-        telegram = false;
-        vicinae = false;
-        walker = false;
-        wezterm = false;
-        yazi = true;
-        zed = true;
-        zenBrowser = false;
       };
 
       ui = {
