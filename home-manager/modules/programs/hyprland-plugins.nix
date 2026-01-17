@@ -19,8 +19,8 @@
         };
       };
 
-      exec-once = [
-        "hyprctl keyword bind 'SUPER, TAB, hyprexpo:expo, toggle'"
+      bind = [
+        "SUPER, TAB, hyprexpo:expo, toggle"
       ];
     };
   };
