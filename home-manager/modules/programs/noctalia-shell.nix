@@ -128,6 +128,7 @@ _: {
             {
               id = "NotificationHistory";
               hideWhenZero = false;
+              hideWhenZeroUnread = false;
               showUnreadBadge = true;
             }
             {
@@ -327,7 +328,7 @@ _: {
         showHibernateOnLockScreen = false;
         showScreenCorners = false;
         showSessionButtonsOnLockScreen = true;
-        telemetryEnabled = true;
+        telemetryEnabled = false;
       };
 
       hooks = {
