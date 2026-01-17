@@ -119,11 +119,16 @@ in {
     powerOnBoot = true;
     settings = {
       General = {
-        Enable = "Source,Sink,Media,Socket";
         Experimental = true;
+      };
+      Policy = {
+        AutoEnable = true;
       };
     };
   };
+
+  hardware.enableAllFirmware = true;
+  hardware.firmware = [ pkgs.linux-firmware ];
 
   hardware.i2c.enable = true;
 
