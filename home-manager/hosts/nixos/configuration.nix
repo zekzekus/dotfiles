@@ -66,6 +66,22 @@ in {
   console.useXkbConfig = true;
 
   services = {
+    kanata = {
+      enable = true;
+      keyboards = {
+        logitech = {
+          devices = [
+            "/dev/input/by-id/usb-Logitech_USB_Receiver-event-kbd"
+          ];
+          extraDefCfg = "process-unmapped-keys yes";
+          config = ''
+            (defsrc caps)
+            (deflayer default @caps-ctrl-esc)
+            (defalias caps-ctrl-esc (tap-hold 200 200 esc lctl))
+          '';
+        };
+      };
+    };
     udev.extraRules = ''
       # Rules for Oryx web flashing and live training
       KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
@@ -114,23 +130,23 @@ in {
     pcscd.enable = true;
   };
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
-      };
-      Policy = {
-        AutoEnable = true;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Experimental = true;
+        };
+        Policy = {
+          AutoEnable = true;
+        };
       };
     };
+    enableAllFirmware = true;
+    firmware = [pkgs.linux-firmware];
+    i2c.enable = true;
   };
-
-  hardware.enableAllFirmware = true;
-  hardware.firmware = [ pkgs.linux-firmware ];
-
-  hardware.i2c.enable = true;
 
   xdg.portal = {
     enable = true;
