@@ -4,6 +4,7 @@
     ./delta.nix
     ./difftastic.nix
     ./direnv.nix
+    ./emacs.nix
     ./fish.nix
     ./ghostty.nix
     ./git.nix
