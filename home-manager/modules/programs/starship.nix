@@ -5,6 +5,7 @@ _: {
     enableBashIntegration = true;
     settings = {
       cmd_duration.disabled = true;
+      jobs.disabled = true;
     };
   };
 }

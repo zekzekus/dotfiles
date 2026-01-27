@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./atuin.nix
     ./carapace.nix
     ./delta.nix
     ./difftastic.nix
