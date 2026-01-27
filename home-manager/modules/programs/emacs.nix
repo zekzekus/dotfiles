@@ -25,7 +25,6 @@
 
     # For native compilation
     gcc
-    binutils
 
     # For vterm
     cmake
