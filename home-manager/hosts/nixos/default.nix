@@ -9,6 +9,13 @@
     ../../modules/programs/noctalia-shell.nix
   ];
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-pipewire-audio-capture # PipeWire audio capture
+    ];
+  };
+
   home.packages = with pkgs; [
     appimage-run
     (import ../../modules/packages/helium.nix {inherit pkgs;})
