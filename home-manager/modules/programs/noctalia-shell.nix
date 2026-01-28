@@ -1,4 +1,8 @@
-{config, common, ...}: {
+{
+  config,
+  common,
+  ...
+}: {
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;

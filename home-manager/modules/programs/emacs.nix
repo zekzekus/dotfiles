@@ -16,50 +16,52 @@
       ];
   };
 
-  home.packages = with pkgs; [
-    # Doom Emacs dependencies
-    git
-    ripgrep
-    fd
-    coreutils
+  home = {
+    packages = with pkgs; [
+      # Doom Emacs dependencies
+      git
+      ripgrep
+      fd
+      coreutils
 
-    # For native compilation
-    gcc
+      # For native compilation
+      gcc
 
-    # For vterm
-    cmake
-    libtool
+      # For vterm
+      cmake
+      libtool
 
-    # Fonts (for icons)
-    emacs-all-the-icons-fonts
-    nerd-fonts.symbols-only
+      # Fonts (for icons)
+      emacs-all-the-icons-fonts
+      nerd-fonts.symbols-only
 
-    # Org-roam sqlite
-    sqlite
+      # Org-roam sqlite
+      sqlite
 
-    # LaTeX support
-    texliveFull
+      # LaTeX support
+      texliveFull
 
-    # Markdown/Pandoc
-    pandoc
+      # Markdown/Pandoc
+      pandoc
 
-    # For +hugo
-    hugo
+      # For +hugo
+      hugo
 
-    # Spell checking
-    (aspellWithDicts (dicts: with dicts; [en en-computers en-science]))
+      # Spell checking
+      (aspellWithDicts (dicts: with dicts; [en en-computers en-science]))
 
-    # PDF tools deps
-    poppler-utils
-  ];
+      # PDF tools deps
+      poppler-utils
+    ];
 
-  home.sessionPath = ["$HOME/.config/emacs/bin"];
+    sessionPath = ["$HOME/.config/emacs/bin"];
 
-  home.file.".config/doom".source = "${common.dotfilesDir}/misc/emacs/doom";
+    file.".config/doom".source = "${common.dotfilesDir}/misc/emacs/doom";
 
-  home.activation.installDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    if [ ! -d "$HOME/.config/emacs" ]; then
-      ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.config/emacs"
-    fi
-  '';
+    activation.installDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      if [ ! -d "$HOME/.config/emacs" ]; then
+        ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.config/emacs"
+      fi
+    '';
+  };
 }
