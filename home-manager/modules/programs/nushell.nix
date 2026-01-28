@@ -43,6 +43,7 @@ in {
         then darwinPaths
         else ""
       }
+      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.config/emacs/bin')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/pnpm')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/coursier/bin')
       $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/bin')
