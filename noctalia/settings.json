@@ -1,6 +1,8 @@
 {
     "appLauncher": {
         "autoPasteClipboard": false,
+        "clipboardWatchImageCommand": "wl-paste --type image --watch cliphist store",
+        "clipboardWatchTextCommand": "wl-paste --type text --watch cliphist store",
         "clipboardWrapText": true,
         "customLaunchPrefix": "uwsm-app --",
         "customLaunchPrefixEnabled": true,
@@ -126,6 +128,7 @@
                     "id": "Workspace",
                     "labelMode": "none",
                     "occupiedColor": "secondary",
+                    "reverseScroll": false,
                     "showApplications": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
