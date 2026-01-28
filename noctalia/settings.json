@@ -34,13 +34,13 @@
     },
     "bar": {
         "backgroundOpacity": 0.65,
-        "barType": "floating",
+        "barType": "framed",
         "capsuleOpacity": 0.5,
         "density": "comfortable",
         "exclusive": true,
-        "floating": true,
+        "floating": false,
         "frameRadius": 12,
-        "frameThickness": 8,
+        "frameThickness": 5,
         "hideOnOverview": false,
         "marginHorizontal": 5,
         "marginVertical": 5,
@@ -52,7 +52,7 @@
         ],
         "showCapsule": true,
         "showOutline": false,
-        "useSeparateOpacity": true,
+        "useSeparateOpacity": false,
         "widgets": {
             "center": [
                 {

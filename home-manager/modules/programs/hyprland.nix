@@ -68,7 +68,7 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = 10;
+        gaps_out = 8;
         layout = "master";
       };
 
