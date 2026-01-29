@@ -9,6 +9,7 @@
         InitialKeyRepeat = 15;
         AppleInterfaceStyleSwitchesAutomatically = true;
       };
+      ".GlobalPreferences"."com.apple.mouse.scaling" = 1.5;
       dock = {
         expose-group-apps = true;
         autohide = true;
