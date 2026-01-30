@@ -12,7 +12,7 @@
     settings = {
       theme =
         if pkgs.stdenv.isDarwin
-        then "light:Vimbones,dark:Kanagawabones"
+        then "Kanagawabones"
         else "noctalia";
       font-family = "TX-02";
       font-size =
