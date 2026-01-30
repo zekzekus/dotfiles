@@ -8,6 +8,7 @@
 in {
   imports = [
     ./hardware-configuration.nix
+    ./flatpak.nix
   ];
 
   boot = {

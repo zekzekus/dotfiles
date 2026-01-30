@@ -43,6 +43,8 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
   };
 
   outputs = {
@@ -56,6 +58,7 @@
     hyprland,
     hyprland-plugins,
     noctalia,
+    nix-flatpak,
     ...
   }: let
     overlays = [
@@ -81,6 +84,7 @@
       systemModules = [
         determinate.nixosModules.default
         hyprland.nixosModules.default
+        nix-flatpak.nixosModules.nix-flatpak
       ];
       systemSpecialArgs = {inherit hyprland;};
     };
