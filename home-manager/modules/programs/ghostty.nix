@@ -18,7 +18,7 @@
       font-size =
         if pkgs.stdenv.isDarwin
         then 16
-        else 13;
+        else 14;
       font-thicken = lib.mkIf pkgs.stdenv.isDarwin true;
       window-padding-balance = true;
       font-feature = "-calt, -liga, -dlig";
