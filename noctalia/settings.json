@@ -36,12 +36,11 @@
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 0.65,
+        "backgroundOpacity": 0.5,
         "barType": "framed",
         "capsuleOpacity": 0.5,
         "density": "comfortable",
         "displayMode": "always_visible",
-        "exclusive": true,
         "floating": false,
         "frameRadius": 12,
         "frameThickness": 5,
@@ -54,9 +53,9 @@
         "position": "top",
         "screenOverrides": [
         ],
-        "showCapsule": false,
+        "showCapsule": true,
         "showOutline": false,
-        "useSeparateOpacity": false,
+        "useSeparateOpacity": true,
         "widgets": {
             "center": [
                 {
