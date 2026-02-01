@@ -209,6 +209,7 @@ in {
       "input"
       "i2c"
       "plugdev"
+      "kvm"
     ];
     packages = with pkgs; [
       fish
