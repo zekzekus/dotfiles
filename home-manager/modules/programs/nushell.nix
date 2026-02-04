@@ -20,6 +20,8 @@ in {
       EDITOR = "nvim";
       MANPAGER = "nvim +Man!";
 
+      SSH_AUTH_SOCK = "${common.homeDir}/.1password/agent.sock";
+
       TMUX_FZF_LAUNCH_KEY = "o";
       FZF_DEFAULT_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
       FZF_CTRL_T_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";

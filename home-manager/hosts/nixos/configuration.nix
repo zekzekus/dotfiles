@@ -191,6 +191,11 @@ in {
     gamemode.enable = true;
     dconf.enable = true;
     ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [common.username];
+    };
   };
 
   security = {

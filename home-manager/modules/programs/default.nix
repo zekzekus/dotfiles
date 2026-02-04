@@ -20,6 +20,7 @@
     ./zoxide.nix
     ./yazi.nix
     ./gpg.nix
+    ./ssh.nix
   ];
 
   programs = {
