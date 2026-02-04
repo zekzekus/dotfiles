@@ -20,7 +20,6 @@
       };
 
       bind = [
-        "SUPER, TAB, hyprexpo:expo, toggle"
       ];
     };
   };
