@@ -1,4 +1,21 @@
 {common, ...}: {
+  # Increase file descriptor limits to prevent "Too many open files" during Nix builds
+  # Sets kernel-level limits (required for per-process limits to work)
+  launchd.daemons.limit-maxfiles = {
+    serviceConfig = {
+      Label = "limit.maxfiles";
+      ProgramArguments = ["/bin/launchctl" "limit" "maxfiles" "524288" "524288"];
+      RunAtLoad = true;
+    };
+  };
+  launchd.daemons.sysctl-maxfiles = {
+    serviceConfig = {
+      Label = "sysctl.maxfiles";
+      ProgramArguments = ["/usr/sbin/sysctl" "-w" "kern.maxfiles=524288" "kern.maxfilesperproc=524288"];
+      RunAtLoad = true;
+    };
+  };
+
   system = {
     stateVersion = 6;
     primaryUser = common.username;

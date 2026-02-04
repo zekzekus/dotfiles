@@ -198,6 +198,23 @@ in {
     polkit.enable = true;
   };
 
+  # Increase file descriptor limits to prevent "Too many open files" during Nix builds
+  systemd.services.nix-daemon.serviceConfig.LimitNOFILE = 1048576;
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "soft";
+      item = "nofile";
+      value = "131072";
+    }
+    {
+      domain = "*";
+      type = "hard";
+      item = "nofile";
+      value = "131072";
+    }
+  ];
+
   users.groups.plugdev = {};
 
   users.users.${common.username} = {
@@ -237,6 +254,7 @@ in {
       max-substitution-jobs = 32;
       fsync-metadata = false;
     };
+
     gc = {
       automatic = true;
       dates = "weekly";
