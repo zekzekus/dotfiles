@@ -7,6 +7,7 @@
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/etc/profiles/per-user/${common.username}/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
   '';
 in {
   programs.nushell = {

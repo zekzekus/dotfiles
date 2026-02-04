@@ -60,11 +60,9 @@
       autoUpdate = false;
       cleanup = "zap";
     };
-    brews = [
-      "1password-cli"
-    ];
     casks = [
       "1password"
+      "1password-cli"
       "zed"
       "raycast"
       "karabiner-elements"
