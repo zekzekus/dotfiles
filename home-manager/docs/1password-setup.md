@@ -11,7 +11,7 @@ This setup uses **1Password SSH Agent** for SSH key management while keeping **G
 └───────────────────────────┬─────────────────────────────────┘
                             │
                             ▼
-              ~/.1password/agent.sock  ◄─── SSH_AUTH_SOCK
+              ~/.1password/agent.sock  ◄── SSH_AUTH_SOCK
                             │
             ┌───────────────┼───────────────┐
             │               │               │
@@ -23,6 +23,21 @@ This setup uses **1Password SSH Agent** for SSH key management while keeping **G
     uses ~/.gnupg keys
 ```
 
+### Implementation
+
+The 1Password SSH integration is managed declaratively via two modules:
+
+- **`modules/programs/ssh.nix`** -- Configures SSH to use the 1Password agent socket, sets `SSH_AUTH_SOCK`, and handles platform-specific socket paths:
+  - **macOS**: Symlinks from `~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock` to `~/.1password/agent.sock`
+  - **Linux**: Creates `~/.1password/` directory; 1Password writes the socket directly. Also sets up a systemd user service to autostart 1Password.
+
+- **`modules/programs/nushell.nix`** -- Sets `SSH_AUTH_SOCK` in Nushell's environment (Nushell requires separate env var configuration).
+
+### 1Password Installation
+
+- **macOS**: Installed via Homebrew casks in `hosts/mac-machine/configuration.nix` (`1password`, `1password-cli`)
+- **NixOS**: Installed via NixOS modules in `hosts/nixos/configuration.nix` (`programs._1password.enable`, `programs._1password-gui.enable` with polkit)
+
 ---
 
 ## New Machine Bootstrap
@@ -32,11 +47,8 @@ This setup uses **1Password SSH Agent** for SSH key management while keeping **G
 Since 1Password isn't installed yet, clone via HTTPS:
 
 ```bash
-# Create directory structure
 mkdir -p ~/devel/tools
 cd ~/devel/tools
-
-# Clone via HTTPS (not SSH)
 git clone https://github.com/zekzekus/dotfiles
 cd dotfiles
 ```
@@ -58,21 +70,18 @@ This installs:
 ### Step 3: Configure 1Password SSH Agent
 
 1. **Open 1Password** and sign in to your account
-2. Go to **Settings → Developer**
+2. Go to **Settings > Developer**
 3. Check **"Use the SSH Agent"**
 4. Expand **Advanced** section and configure as desired
 
-### Step 4: Import SSH Key from 1Password
+### Step 4: Verify SSH Key
 
-Your SSH key is already stored in 1Password. It will automatically be available via the agent.
+Your SSH key stored in 1Password will automatically be available via the agent.
 
-Verify:
 ```bash
-# Open a NEW terminal (important!)
+# Open a NEW terminal (important for env vars to take effect)
 ssh-add -l
 ```
-
-You should see your key listed.
 
 ### Step 5: Test SSH
 
@@ -91,13 +100,11 @@ git remote set-url origin git@github.com:zekzekus/dotfiles.git
 
 ### Step 7: Import GPG Keys
 
-Your GPG keys are stored as Documents in 1Password. Import them:
+GPG keys are stored as Documents in 1Password. Import them:
 
 #### Option A: Via 1Password CLI
 
 ```bash
-# Sign in to 1Password CLI (if not already)
-# On first use, you may need to enable CLI integration in 1Password Settings → Developer
 eval $(op signin)
 
 # Import GPG private key
@@ -112,16 +119,14 @@ gpg --list-secret-keys
 
 #### Option B: Manual Export from 1Password
 
-1. Open 1Password → find "GPG Private Key" document
-2. Click **⋮** → **Save As** → save to `/tmp/gpg-private.asc`
-3. Do the same for "GPG Ownertrust" → save to `/tmp/gpg-ownertrust.txt`
+1. Open 1Password, find "GPG Private Key" document
+2. Save to `/tmp/gpg-private.asc`
+3. Do the same for "GPG Ownertrust" to `/tmp/gpg-ownertrust.txt`
 
 ```bash
-# Import
 gpg --import /tmp/gpg-private.asc
 gpg --import-ownertrust /tmp/gpg-ownertrust.txt
 
-# Verify
 gpg --list-secret-keys
 
 # Securely delete temp files
@@ -135,6 +140,8 @@ shred -u /tmp/gpg-private.asc /tmp/gpg-ownertrust.txt
 echo "test" | gpg --clearsign
 ```
 
+Git is configured to sign commits by default using key `6716516470AD2D7A` (see `modules/programs/git.nix`).
+
 ---
 
 ## Existing Machine: Initial Setup
@@ -144,23 +151,19 @@ If you're setting this up on a machine that already has SSH/GPG keys:
 ### Add SSH Key to 1Password
 
 1. Open **1Password**
-2. Click **+ New Item** → **SSH Key**
-3. Click **"Import from file"** → select `~/.ssh/id_ed25519` (or your key)
+2. Click **+ New Item** > **SSH Key**
+3. Click **"Import from file"** > select `~/.ssh/id_ed25519` (or your key)
 
 ### Backup GPG Keys to 1Password
 
 ```bash
-# Export private key (use your key ID)
 gpg --export-secret-keys --armor YOUR_KEY_ID > /tmp/gpg-private.asc
-
-# Export ownertrust
 gpg --export-ownertrust > /tmp/gpg-ownertrust.txt
 ```
 
 In 1Password:
-1. Click **+ New Item** → **Document**
-2. Attach `/tmp/gpg-private.asc`, title: "GPG Private Key"
-3. Create another Document for `/tmp/gpg-ownertrust.txt`, title: "GPG Ownertrust"
+1. **+ New Item** > **Document**, attach `/tmp/gpg-private.asc`, title: "GPG Private Key"
+2. Create another Document for `/tmp/gpg-ownertrust.txt`, title: "GPG Ownertrust"
 
 Securely delete temp files:
 ```bash
@@ -173,14 +176,13 @@ rm -P /tmp/gpg-private.asc /tmp/gpg-ownertrust.txt
 
 ### Clean Up Old SSH Keys (optional)
 
-Once verified working, you can remove local SSH keys:
+Once verified working:
 
 ```bash
-# Backup first
 mkdir -p ~/.ssh/backup
 mv ~/.ssh/id_* ~/.ssh/backup/
 
-# Later, if everything works, delete backup
+# Later, if everything works
 rm -rf ~/.ssh/backup
 ```
 
@@ -200,7 +202,7 @@ rm -rf ~/.ssh/backup
    ```bash
    ls -la ~/.1password/agent.sock
    ```
-4. **New terminal?** Environment variables require a new shell session after `make nixos/darwin`.
+4. **New terminal?** Environment variables require a new shell session after `make nixos`/`make darwin`.
 
 ### "Connection refused"
 
@@ -209,38 +211,14 @@ rm -rf ~/.ssh/backup
 ### SSH works but GPG signing fails
 
 ```bash
-# Verify key is available
 gpg --list-secret-keys
-
-# Check git config
 git config user.signingkey
-
-# Test signing manually
 echo "test" | gpg --clearsign
 ```
 
 ### "Too many authentication failures"
 
-If you have many SSH keys in 1Password, servers may reject before trying the right key.
-
-Configure per-host key in 1Password:
-- Open key in 1Password → scroll to "Use for" section → add specific hosts
-
----
-
-## Platform-Specific Notes
-
-### macOS
-
-- 1Password installed via Homebrew: `brew install --cask 1password`
-- 1Password CLI via Homebrew: `brew install 1password-cli`
-- Socket path: `~/.1password/agent.sock` (symlinked from `~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock`)
-
-### NixOS
-
-- 1Password installed via NixOS modules: `programs._1password.enable` and `programs._1password-gui.enable`
-- Socket path: `~/.1password/agent.sock` (created directly by 1Password)
-- Polkit integration enabled for system authentication prompts
+If you have many SSH keys in 1Password, servers may reject before trying the right key. Configure per-host key in 1Password: open key > scroll to "Use for" section > add specific hosts.
 
 ---
 
@@ -248,10 +226,12 @@ Configure per-host key in 1Password:
 
 | File | Purpose |
 |------|---------|
-| `modules/programs/ssh.nix` | SSH config pointing to 1Password agent |
-| `modules/programs/nushell.nix` | SSH_AUTH_SOCK for Nushell |
-| `hosts/nixos/configuration.nix` | 1Password packages for NixOS |
-| `hosts/mac-machine/configuration.nix` | 1Password via Homebrew for macOS |
+| `modules/programs/ssh.nix` | SSH config, 1Password agent socket, activation scripts, Linux autostart service |
+| `modules/programs/nushell.nix` | `SSH_AUTH_SOCK` for Nushell environment |
+| `modules/programs/gpg.nix` | GPG agent configuration |
+| `modules/programs/git.nix` | Git commit signing (`signByDefault = true`, key ID) |
+| `hosts/nixos/configuration.nix` | 1Password packages for NixOS (`_1password`, `_1password-gui` with polkit) |
+| `hosts/mac-machine/configuration.nix` | 1Password via Homebrew casks for macOS |
 
 ---
 
