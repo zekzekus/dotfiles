@@ -38,8 +38,8 @@
         "autoShowDelay": 150,
         "backgroundOpacity": 0.5,
         "barType": "framed",
-        "capsuleColorKey": "none",
-        "capsuleOpacity": 0.5,
+        "capsuleColorKey": "primary",
+        "capsuleOpacity": 0.25,
         "density": "comfortable",
         "displayMode": "always_visible",
         "floating": false,
@@ -335,7 +335,7 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
-        "enabled": false,
+        "enabled": true,
         "floatingRatio": 1,
         "inactiveIndicators": false,
         "monitors": [
@@ -463,6 +463,9 @@
         ],
         "overlayLayer": true
     },
+    "plugins": {
+        "autoUpdate": false
+    },
     "sessionMenu": {
         "countdownDuration": 10000,
         "enableCountdown": true,
@@ -510,7 +513,7 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 48,
+    "settingsVersion": 49,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
