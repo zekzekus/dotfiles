@@ -39,7 +39,7 @@
         "backgroundOpacity": 0.5,
         "barType": "framed",
         "capsuleColorKey": "primary",
-        "capsuleOpacity": 0.25,
+        "capsuleOpacity": 0.2,
         "density": "comfortable",
         "displayMode": "always_visible",
         "floating": false,
