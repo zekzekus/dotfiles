@@ -12,6 +12,9 @@ input {
     repeat-rate 60
     numlock
   }
+  mouse {
+    natural-scroll
+  }
   touchpad {
     natural-scroll
     scroll-factor 0.4
@@ -19,8 +22,42 @@ input {
 }
 
 layout {
-  gaps 12
-  focus-ring { off; }
+  gaps 8
+
+  border { off; }
+
+  focus-ring {
+    width 2
+    active-color "#7e9cd8"
+  }
+
+  shadow {
+    on
+    softness 20
+    spread 3
+    offset x=0 y=3
+    color "#00000064"
+  }
+
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+
+  preset-window-heights {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+    proportion 1.0
+  }
+
+  default-column-width { proportion 0.5; }
+}
+
+window-rule {
+  open-maximized false
+  default-column-width { proportion 0.5; }
 }
 
 window-rule {
@@ -101,6 +138,14 @@ binds {
   Mod+Shift+K { move-window-up; }
   Mod+Shift+L { move-column-right; }
 
+  Mod+R { switch-preset-column-width; }
+  Mod+Shift+R { switch-preset-window-height; }
+  Mod+F { maximize-column; }
+  Mod+Minus { set-column-width "-10%"; }
+  Mod+Equal { set-column-width "+10%"; }
+  Mod+Shift+Minus { set-window-height "-10%"; }
+  Mod+Shift+Equal { set-window-height "+10%"; }
+
   Alt+J { toggle-column-tabbed-display; }
   Alt+P { consume-or-expel-window-right; }
   Alt+V { toggle-window-floating; }
@@ -126,3 +171,6 @@ binds {
 
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 }
+
+include "./noctalia.kdl"
+

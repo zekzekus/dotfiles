@@ -25,7 +25,7 @@
       adjust-cursor-thickness = 3;
       shell-integration-features = "no-cursor";
       quit-after-last-window-closed = true;
-      maximize = true;
+      maximize = false;
 
       # macOS-specific
       auto-update-channel = lib.mkIf pkgs.stdenv.isDarwin "tip";
