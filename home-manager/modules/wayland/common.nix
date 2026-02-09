@@ -5,6 +5,7 @@
 }: {
   home = {
     packages = with pkgs; [
+      uwsm
       brightnessctl
       playerctl
       grim
@@ -17,6 +18,7 @@
       nemo
       pavucontrol
       wireplumber
+      xwayland-satellite
 
       glib
       gsettings-desktop-schemas

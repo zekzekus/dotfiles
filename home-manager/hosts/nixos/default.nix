@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./hyprland-integration.nix
     ./stylix.nix
+    ./niri.nix
     ../../modules/programs/hyprland.nix
     ../../modules/programs/hyprland-plugins.nix
     ../../modules/programs/rofi.nix

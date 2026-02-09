@@ -172,11 +172,14 @@ in {
     extraPortals = [
       hyprPkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
     ];
     config = {
       common.default = ["gtk"];
       hyprland.default = ["hyprland" "gtk"];
       start-hyprland.default = ["hyprland" "gtk"];
+      niri.default = ["gnome" "gtk"];
+      start-niri.default = ["gnome" "gtk"];
     };
   };
 
@@ -186,6 +189,9 @@ in {
       withUWSM = true;
       package = hyprPkgs.hyprland;
       portalPackage = hyprPkgs.xdg-desktop-portal-hyprland;
+    };
+    niri = {
+      enable = true;
     };
     gpu-screen-recorder.enable = true;
     steam = {

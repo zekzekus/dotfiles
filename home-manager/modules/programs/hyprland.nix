@@ -1,7 +1,7 @@
 {
-  common,
   hyprland,
   pkgs,
+  common,
   ...
 }: {
   wayland.windowManager.hyprland = {

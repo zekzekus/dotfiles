@@ -161,7 +161,7 @@ make clean         # Clean build artifacts
 - Touch ID for sudo
 
 **NixOS**
-- Hyprland compositor with Noctalia shell, hypridle, hyprlock
+- Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock
 - Stylix system-wide theming (Kanagawa, dark polarity)
 - Pipewire audio, Bluetooth, SDDM display manager
 - Kanata key remapping (caps-lock as ctrl/esc)
