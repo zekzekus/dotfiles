@@ -1,0 +1,128 @@
+prefer-no-csd
+
+input {
+  mod-key "Super"
+  keyboard {
+    xkb {
+      layout "tr"
+      variant "alt"
+      options "compose:caps"
+    }
+    repeat-delay 300
+    repeat-rate 60
+    numlock
+  }
+  touchpad {
+    natural-scroll
+    scroll-factor 0.4
+  }
+}
+
+layout {
+  gaps 12
+  focus-ring { off; }
+}
+
+window-rule {
+  match title=r#"Picture.?in.?[Pp]icture"#
+  open-floating true
+  default-column-width { fixed 600; }
+  default-window-height { fixed 338; }
+  focus-ring { off; }
+}
+
+window-rule {
+  match app-id=r#"^org\.quickshell$"#
+  open-floating true
+}
+
+window-rule {
+  match app-id=r#"blueman-manager"#
+  open-floating true
+}
+
+window-rule {
+  match app-id=r#"^nemo$"#
+  open-floating true
+  default-column-width { fixed 1200; }
+  default-window-height { fixed 700; }
+}
+
+window-rule {
+  match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
+  open-floating true
+  default-column-width { fixed 1000; }
+  default-window-height { fixed 450; }
+}
+
+window-rule {
+  match app-id=r#"^(one\.alynx\.showmethekey|showmethekey-gtk)$"#
+  open-floating true
+  focus-ring { off; }
+}
+
+binds {
+  Mod+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+  Mod+V { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+  Mod+Shift+Ctrl+L { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+
+  XF86AudioMute allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume muteOutput"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume decrease"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume increase"; }
+  XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness decrease"; }
+
+  XF86AudioPlay { spawn-sh "noctalia-shell ipc call media playPause"; }
+  XF86AudioNext { spawn-sh "noctalia-shell ipc call media next"; }
+  XF86AudioPrev { spawn-sh "noctalia-shell ipc call media previous"; }
+
+  Mod+Shift+D { spawn-sh "noctalia-shell ipc call darkMode toggle"; }
+  Mod+Shift+W { spawn-sh "noctalia-shell ipc call wallpaper toggle"; }
+  Mod+Shift+C { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+  Mod+Shift+S { spawn-sh "noctalia-shell ipc call settings toggle"; }
+  Mod+Shift+Escape { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+  Mod+O { toggle-overview; }
+
+  Mod+Return { spawn-sh "uwsm-app -- ghostty +new-window"; }
+  Mod+B { spawn-sh "uwsm-app -- helium"; }
+  Mod+E { spawn-sh "uwsm-app -- nemo"; }
+
+  Mod+Q repeat=false { close-window; }
+
+  Mod+H { focus-column-left; }
+  Mod+J { focus-workspace-down; }
+  Mod+K { focus-workspace-up; }
+  Mod+L { focus-column-right; }
+
+  Mod+Shift+H { move-column-left; }
+  Mod+Shift+J { move-window-down; }
+  Mod+Shift+K { move-window-up; }
+  Mod+Shift+L { move-column-right; }
+
+  Alt+J { toggle-column-tabbed-display; }
+  Alt+P { consume-or-expel-window-right; }
+  Alt+V { toggle-window-floating; }
+
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+
+  Mod+Shift+1 { move-column-to-workspace 1; }
+  Mod+Shift+2 { move-column-to-workspace 2; }
+  Mod+Shift+3 { move-column-to-workspace 3; }
+  Mod+Shift+4 { move-column-to-workspace 4; }
+  Mod+Shift+5 { move-column-to-workspace 5; }
+
+  Mod+WheelScrollDown { focus-workspace-down; }
+  Mod+WheelScrollUp { focus-workspace-up; }
+
+  Mod+Shift+Ctrl+3 { spawn-sh "$HOME/devel/tools/dotfiles/scripts/screenshot-full"; }
+  Mod+Shift+Ctrl+4 { spawn-sh "$HOME/devel/tools/dotfiles/scripts/screenshot-area"; }
+  Mod+Shift+Ctrl+5 { spawn-sh "uwsm-app -- gpu-screen-recorder-gtk"; }
+
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}
