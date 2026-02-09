@@ -25,6 +25,14 @@ in {
     '';
   };
 
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
+  };
+
   networking = {
     hostName = "nixos";
     networkmanager = {
@@ -232,6 +240,7 @@ in {
       "i2c"
       "plugdev"
       "kvm"
+      "podman"
     ];
     packages = with pkgs; [
       fish
