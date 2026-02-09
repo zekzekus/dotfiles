@@ -117,9 +117,6 @@ _: {
 
         ll = ["log" "-T" "builtin_log_compact"];
         ld = ["log" "-T" "builtin_log_detailed"];
-
-        fetch = ["git" "fetch"];
-        push = ["git" "push"];
       };
     };
   };
