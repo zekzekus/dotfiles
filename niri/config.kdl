@@ -28,7 +28,6 @@ layout {
 
   focus-ring {
     width 2
-    active-color "#7e9cd8"
   }
 
   shadow {
@@ -36,7 +35,6 @@ layout {
     softness 20
     spread 3
     offset x=0 y=3
-    color "#00000064"
   }
 
   preset-column-widths {
@@ -52,12 +50,12 @@ layout {
     proportion 1.0
   }
 
-  default-column-width { proportion 0.5; }
+  default-column-width { proportion 0.75; }
 }
 
 window-rule {
   open-maximized false
-  default-column-width { proportion 0.5; }
+  default-column-width { proportion 0.75; }
 }
 
 window-rule {

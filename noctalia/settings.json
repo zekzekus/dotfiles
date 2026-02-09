@@ -572,6 +572,10 @@
             {
                 "enable": true,
                 "id": "zed"
+            },
+            {
+                "enabled": true,
+                "id": "niri"
             }
         ],
         "enableUserTheming": false
