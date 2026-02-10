@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  common,
+  ...
+}: {
   imports = [
     ./stylix.nix
     ./niri.nix
@@ -34,7 +38,7 @@
         general = {
           lock_cmd = "noctalia-shell ipc call lockScreen lock";
           before_sleep_cmd = "noctalia-shell ipc call lockScreen lock";
-          after_sleep_cmd = "hyprctl dispatch dpms on";
+          after_sleep_cmd = "${common.dotfilesDir}/scripts/dpms-on";
         };
         listener = [
           {
@@ -43,8 +47,8 @@
           }
           {
             timeout = 600;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
+            on-timeout = "${common.dotfilesDir}/scripts/dpms-off";
+            on-resume = "${common.dotfilesDir}/scripts/dpms-on";
           }
         ];
       };

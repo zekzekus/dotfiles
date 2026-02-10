@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ -n "$NIRI_SOCKET" ]; then
+    niri msg action power-on-monitors
+elif [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+    hyprctl dispatch dpms on
+fi
