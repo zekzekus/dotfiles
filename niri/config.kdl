@@ -27,7 +27,7 @@ layout {
   border { off; }
 
   focus-ring {
-    width 2
+    width 1
   }
 
   shadow {
@@ -59,11 +59,27 @@ window-rule {
 }
 
 window-rule {
+  match is-focused=false
+  opacity 0.9
+}
+
+window-rule {
+  match app-id="com.mitchellh.ghostty" is-focused=true
+  opacity 0.95
+}
+
+window-rule {
+  match app-id="com.mitchellh.ghostty" is-focused=false
+  opacity 0.90
+}
+
+window-rule {
   match title=r#"Picture.?in.?[Pp]icture"#
   open-floating true
   default-column-width { fixed 600; }
   default-window-height { fixed 338; }
   focus-ring { off; }
+  opacity 1.0
 }
 
 window-rule {
