@@ -6,6 +6,7 @@
         "clipboardWrapText": true,
         "customLaunchPrefix": "uwsm-app --",
         "customLaunchPrefixEnabled": true,
+        "density": "default",
         "enableClipPreview": false,
         "enableClipboardHistory": true,
         "enableSettingsSearch": true,
@@ -371,9 +372,11 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": false,
+        "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
+        "lockScreenTint": 0,
         "radiusRatio": 1,
         "scaleRatio": 1,
         "screenRadiusRatio": 1,
@@ -459,7 +462,7 @@
     },
     "osd": {
         "autoHideMs": 2000,
-        "backgroundOpacity": 1,
+        "backgroundOpacity": 0.7,
         "enabled": true,
         "enabledTypes": [
             0,
@@ -605,7 +608,9 @@
         "hideWallpaperFilenames": false,
         "monitorDirectories": [
         ],
+        "overviewBlur": 0.4,
         "overviewEnabled": false,
+        "overviewTint": 0.6,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
