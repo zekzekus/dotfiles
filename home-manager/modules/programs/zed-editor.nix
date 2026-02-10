@@ -8,8 +8,8 @@
       vim_mode = true;
       theme = {
         mode = "system";
-        light = "Noctalia Light";
-        dark = "Noctalia Dark";
+        light = "Gruvbox Light";
+        dark = "Gruvbox Dark";
       };
     };
     extraPackages = with pkgs; [
