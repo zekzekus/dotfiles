@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ../../modules/wayland/common.nix
     ./stylix.nix
     ./niri.nix
     ../../modules/programs/hyprland.nix

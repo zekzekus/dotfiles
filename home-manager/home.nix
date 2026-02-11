@@ -9,7 +9,6 @@
     ./modules/sessionpath
     ./modules/sessionvariables
     ./modules/programs
-    ./modules/wayland/common.nix
   ];
 
   home = {
