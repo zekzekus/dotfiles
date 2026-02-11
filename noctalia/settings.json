@@ -362,12 +362,24 @@
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 1,
         "keybinds": {
-            "keyDown": "Down",
-            "keyEnter": "Return",
-            "keyEscape": "Esc",
-            "keyLeft": "Left",
-            "keyRight": "Right",
-            "keyUp": "Up"
+            "keyDown": [
+                "Down"
+            ],
+            "keyEnter": [
+                "Return"
+            ],
+            "keyEscape": [
+                "Esc"
+            ],
+            "keyLeft": [
+                "Left"
+            ],
+            "keyRight": [
+                "Right"
+            ],
+            "keyUp": [
+                "Up"
+            ]
         },
         "language": "",
         "lockOnSuspend": true,
@@ -524,7 +536,7 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 49,
+    "settingsVersion": 51,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
