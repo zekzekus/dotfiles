@@ -181,6 +181,9 @@ binds {
   Mod+WheelScrollDown { focus-workspace-down; }
   Mod+WheelScrollUp { focus-workspace-up; }
 
+  Mod+Shift+WheelScrollDown { focus-column-right; }
+  Mod+Shift+WheelScrollUp { focus-column-left; }
+
   Mod+Shift+Ctrl+3 { spawn-sh "$HOME/devel/tools/dotfiles/scripts/screenshot-full"; }
   Mod+Shift+Ctrl+4 { spawn-sh "$HOME/devel/tools/dotfiles/scripts/screenshot-area"; }
   Mod+Shift+Ctrl+5 { spawn-sh "uwsm-app -- gpu-screen-recorder-gtk"; }
