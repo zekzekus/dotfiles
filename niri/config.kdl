@@ -79,6 +79,7 @@ window-rule {
   open-floating true
   default-column-width { fixed 600; }
   default-window-height { fixed 338; }
+  default-floating-position x=40 y=40 relative-to="top-right"
   focus-ring { off; }
   opacity 1.0
 }
