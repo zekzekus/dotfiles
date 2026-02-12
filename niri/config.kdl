@@ -42,6 +42,7 @@ layout {
     proportion 0.33333
     proportion 0.5
     proportion 0.66667
+    proportion 1.0
   }
 
   preset-window-heights {
@@ -51,12 +52,12 @@ layout {
     proportion 1.0
   }
 
-  default-column-width { proportion 0.75; }
+  default-column-width { proportion 0.66667; }
 }
 
 window-rule {
   open-maximized false
-  default-column-width { proportion 0.75; }
+  default-column-width { proportion 0.66667; }
 }
 
 window-rule {
@@ -163,7 +164,8 @@ binds {
   Mod+Shift+Equal { set-window-height "+10%"; }
 
   Alt+J { toggle-column-tabbed-display; }
-  Alt+P { consume-or-expel-window-right; }
+  Alt+P { consume-or-expel-window-left; }
+  Alt+O { consume-or-expel-window-right; }
   Alt+V { toggle-window-floating; }
 
   Mod+1 { focus-workspace 1; }
