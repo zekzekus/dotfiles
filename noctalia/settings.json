@@ -172,7 +172,8 @@
                     "showNetworkStats": false,
                     "showSwapUsage": false,
                     "textColor": "none",
-                    "useMonospaceFont": true
+                    "useMonospaceFont": true,
+                    "usePadding": false
                 },
                 {
                     "blacklist": [
@@ -374,6 +375,9 @@
             ],
             "keyLeft": [
                 "Left"
+            ],
+            "keyRemove": [
+                "Del"
             ],
             "keyRight": [
                 "Right"
