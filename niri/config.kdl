@@ -103,6 +103,13 @@ window-rule {
 }
 
 window-rule {
+  match app-id=r#"^1password$"#
+  open-floating true
+  default-column-width { fixed 1200; }
+  default-window-height { fixed 700; }
+}
+
+window-rule {
   match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
   open-floating true
   default-column-width { fixed 1000; }
