@@ -41,18 +41,43 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 ### NixOS
 
-1. **Clone the repository**:
+1. **Install NixOS** using the graphical installer. Ensure:
+   - Username is `zekus`
+   - Hostname is `nixos`
+
+2. **Clone the repository**:
    ```bash
    git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
    cd ~/devel/tools/dotfiles
    ```
 
-2. **Rebuild system** (includes Home Manager):
+3. **Replace hardware configuration** with the one generated for the new machine:
    ```bash
-   sudo nixos-rebuild switch --impure --flake ./home-manager#nixos
+   cp /etc/nixos/hardware-configuration.nix home-manager/hosts/nixos/hardware-configuration.nix
    ```
 
-> Trusted users are configured in `hosts/nixos/configuration.nix`. Home Manager is integrated via the NixOS module.
+4. **Bootstrap** (first time only — extra flags needed for Determinate Nix binary cache):
+   ```bash
+   sudo nixos-rebuild switch \
+     --option extra-substituters https://install.determinate.systems \
+     --option extra-trusted-public-keys "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" \
+     --impure \
+     --flake ./home-manager#nixos
+   ```
+
+   If this fails with a "stale file" or Nix version error, upgrade the stock Nix daemon first:
+   ```bash
+   sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+   sudo nixos-rebuild switch --upgrade
+   ```
+   Then retry the bootstrap command above.
+
+5. **Subsequent updates**:
+   ```bash
+   make nixos
+   ```
+
+> **Note:** The `hardware-configuration.nix` in the repo contains machine-specific UUIDs and kernel modules. Always replace it with the generated one from `/etc/nixos/` when setting up a new machine. Trusted users are configured in `hosts/nixos/configuration.nix`. Home Manager is integrated via the NixOS module.
 
 ## Adding a New Host
 
