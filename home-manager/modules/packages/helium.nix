@@ -1,10 +1,10 @@
 {pkgs}: let
   pname = "helium";
-  version = "0.8.5.1";
+  version = "0.9.2.1";
 
   src = pkgs.fetchurl {
     url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64.AppImage";
-    hash = "sha256-jFSLLDsHB/NiJqFmn8S+JpdM8iCy3Zgyq+8l4RkBecM=";
+    hash = "sha256-guDBIr8NOD0GtjWznsVXlvb6llvdWHxREfDvXeP4m/w=";
   };
 
   appimageContents = pkgs.appimageTools.extractType2 {
@@ -17,8 +17,6 @@ in
     extraInstallCommands = ''
       # Install desktop file
       install -Dm644 ${appimageContents}/helium.desktop $out/share/applications/helium.desktop
-      substituteInPlace $out/share/applications/helium.desktop \
-        --replace-fail 'Exec=AppRun' 'Exec=helium'
 
       # Install icons
       for size in 16 32 48 64 128 256 512; do
