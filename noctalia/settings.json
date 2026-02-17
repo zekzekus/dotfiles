@@ -96,6 +96,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "",
                     "hideMode": "alwaysExpanded",
                     "icon": "rocket",
                     "id": "CustomButton",
@@ -111,7 +112,9 @@
                     "parseJson": false,
                     "rightClickExec": "",
                     "rightClickUpdateText": false,
+                    "showExecTooltip": true,
                     "showIcon": true,
+                    "showTextTooltip": true,
                     "textCollapse": "",
                     "textCommand": "",
                     "textIntervalMs": 3000,
@@ -334,6 +337,7 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
+        "dockType": "floating",
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
@@ -344,6 +348,8 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
+        "showFrameIndicator": true,
+        "sitOnFrame": false,
         "size": 1
     },
     "general": {
@@ -452,6 +458,7 @@
     },
     "notifications": {
         "backgroundOpacity": 1,
+        "clearDismissed": true,
         "criticalUrgencyDuration": 15,
         "density": "default",
         "enableBatteryToast": true,
