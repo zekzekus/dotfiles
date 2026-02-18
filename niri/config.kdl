@@ -90,7 +90,7 @@ window-rule {
 }
 
 window-rule {
-  match app-id=r#"blueman-manager"#
+  match app-id=r#"blueman-manager|cameractrls"#
   open-floating true
 }
 
