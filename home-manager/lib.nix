@@ -76,13 +76,8 @@
   }: let
     host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
     inherit (host.home.specialArgs) common;
-    pkgs = import nixpkgs {
-      inherit system overlays;
-      config.allowUnfree = true;
-    };
-  in {
-    name = hostname;
-    value = nixpkgs.lib.nixosSystem {
+  in
+    nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = systemSpecialArgs // {inherit common;};
       modules =
@@ -93,15 +88,6 @@
           (mkHmModule host)
         ];
     };
-    home = {
-      name = "${defaultUsername}@${hostname}";
-      value = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        inherit (host.home) modules;
-        extraSpecialArgs = host.home.specialArgs;
-      };
-    };
-  };
 
   mkDarwinSystem = {
     hostname,
@@ -113,13 +99,8 @@
   }: let
     host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
     inherit (host.home.specialArgs) common;
-    pkgs = import nixpkgs {
-      inherit system overlays;
-      config.allowUnfree = true;
-    };
-  in {
-    name = hostname;
-    value = nix-darwin.lib.darwinSystem {
+  in
+    nix-darwin.lib.darwinSystem {
       inherit system;
       specialArgs = systemSpecialArgs // {inherit common;};
       modules =
@@ -130,15 +111,6 @@
           (mkHmModule host)
         ];
     };
-    home = {
-      name = "${defaultUsername}@${hostname}";
-      value = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        inherit (host.home) modules;
-        extraSpecialArgs = host.home.specialArgs;
-      };
-    };
-  };
 
   mkHomeConfiguration = {
     hostname,
@@ -151,18 +123,14 @@
       inherit system overlays;
       config.allowUnfree = true;
     };
-  in {
-    name = "${defaultUsername}@${hostname}";
-    value = home-manager.lib.homeManagerConfiguration {
+  in
+    home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       inherit (host.home) modules;
       extraSpecialArgs = host.home.specialArgs;
     };
-  };
 in {
   inherit
-    defaultUsername
-    overlays
     mkNixosSystem
     mkDarwinSystem
     mkHomeConfiguration

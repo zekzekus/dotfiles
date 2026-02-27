@@ -63,12 +63,15 @@
   }: let
     overlays = [
       neovim-nightly-overlay.overlays.default
-    ];
-
-    extraHomeModules = [
-      stylix.homeModules.stylix
-      hyprland.homeManagerModules.default
-      noctalia.homeModules.default
+      (_: prev: {
+        python3Packages = prev.python3Packages.overrideScope (
+          _: pyPrev: {
+            picosvg = pyPrev.picosvg.overridePythonAttrs {
+              doCheck = false;
+            };
+          }
+        );
+      })
     ];
 
     lib = import ./lib.nix {
@@ -80,60 +83,52 @@
         ;
     };
 
-    inherit (lib) mkNixosSystem mkDarwinSystem;
+    inherit (lib) mkNixosSystem mkDarwinSystem mkHomeConfiguration;
 
-    nixosHost = mkNixosSystem {
-      hostname = "nixos";
-      homeModules = extraHomeModules;
-      homeSpecialArgs = {inherit hyprland hyprland-plugins;};
-      systemModules = [
-        determinate.nixosModules.default
-        hyprland.nixosModules.default
-        nix-flatpak.nixosModules.nix-flatpak
-      ];
-      systemSpecialArgs = {inherit hyprland;};
+    ci = import ./checks.nix {
+      inherit nixpkgs;
+      supportedSystems = ["x86_64-linux" "aarch64-darwin"];
     };
 
-    macMachineHost = mkDarwinSystem {
-      hostname = "mac-machine";
-      systemModules = [
-        nix-homebrew.darwinModules.nix-homebrew
-      ];
-    };
-
-    supportedSystems = [
-      "x86_64-linux"
-      "aarch64-darwin"
+    nixosHomeModules = [
+      stylix.homeModules.stylix
+      hyprland.homeManagerModules.default
+      noctalia.homeModules.default
     ];
-    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    nixosHomeSpecialArgs = {inherit hyprland hyprland-plugins;};
   in {
-    nixosConfigurations.${nixosHost.name} = nixosHost.value;
-    darwinConfigurations.${macMachineHost.name} = macMachineHost.value;
-    homeConfigurations.${nixosHost.home.name} = nixosHost.home.value;
+    nixosConfigurations = {
+      nixos = mkNixosSystem {
+        hostname = "nixos";
+        homeModules = nixosHomeModules;
+        homeSpecialArgs = nixosHomeSpecialArgs;
+        systemModules = [
+          determinate.nixosModules.default
+          hyprland.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
+        ];
+        systemSpecialArgs = {inherit hyprland;};
+      };
+    };
 
-    checks = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-        nixFiles = pkgs.lib.fileset.toSource {
-          root = ./.;
-          fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./.;
-        };
-      in {
-        formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''
-          alejandra --check ${nixFiles}
-          touch $out
-        '';
-        deadnix = pkgs.runCommand "check-deadnix" {buildInputs = [pkgs.deadnix];} ''
-          deadnix --fail ${nixFiles}
-          touch $out
-        '';
-        statix = pkgs.runCommand "check-statix" {buildInputs = [pkgs.statix];} ''
-          statix check ${nixFiles} --config ${./.statix.toml}
-          touch $out
-        '';
-      }
-    );
+    darwinConfigurations = {
+      mac-machine = mkDarwinSystem {
+        hostname = "mac-machine";
+        systemModules = [
+          nix-homebrew.darwinModules.nix-homebrew
+        ];
+      };
+    };
 
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    homeConfigurations = {
+      "zekus@nixos" = mkHomeConfiguration {
+        hostname = "nixos";
+        system = "x86_64-linux";
+        homeModules = nixosHomeModules;
+        homeSpecialArgs = nixosHomeSpecialArgs;
+      };
+    };
+
+    inherit (ci) checks formatter;
   };
 }

@@ -104,43 +104,36 @@ Flake-based Home Manager configuration for managing user environments across mul
    }
    ```
 
-4. Add a builder call in `flake.nix`:
+4. Add directly to the appropriate output attrset in `flake.nix`:
    ```nix
    # NixOS host
-   myHost = mkNixosSystem {
-     hostname = "myhost";
-     # system = "x86_64-linux";  # default
-     homeModules = [];
-     homeSpecialArgs = {};
-     systemModules = [];
-     systemSpecialArgs = {};
+   nixosConfigurations = {
+     myhost = mkNixosSystem {
+       hostname = "myhost";
+       # system = "x86_64-linux";  # default
+       homeModules = [];
+       homeSpecialArgs = {};
+       systemModules = [];
+       systemSpecialArgs = {};
+     };
    };
 
    # macOS host
-   myHost = mkDarwinSystem {
-     hostname = "myhost";
-     # system = "aarch64-darwin";  # default
-     systemModules = [];
+   darwinConfigurations = {
+     myhost = mkDarwinSystem {
+       hostname = "myhost";
+       # system = "aarch64-darwin";  # default
+       systemModules = [];
+     };
    };
 
    # Standalone Home Manager (no system management)
-   myHost = mkHomeConfiguration {
-     hostname = "myhost";
-     system = "x86_64-linux";
+   homeConfigurations = {
+     "zekus@myhost" = mkHomeConfiguration {
+       hostname = "myhost";
+       system = "x86_64-linux";
+     };
    };
-   ```
-
-5. Export in the `in` block:
-   ```nix
-   # NixOS
-   nixosConfigurations.${myHost.name} = myHost.value;
-   homeConfigurations.${myHost.home.name} = myHost.home.value;
-
-   # macOS
-   darwinConfigurations.${myHost.name} = myHost.value;
-
-   # Standalone HM
-   homeConfigurations.${myHost.name} = myHost.value;
    ```
 
 ### How `lib.nix` Wires Hosts

@@ -24,6 +24,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ├── home-manager/              # Nix flake & Home Manager configs
 │   ├── flake.nix              # Main flake entry point
 │   ├── lib.nix                # Host builders (mkNixosSystem, mkDarwinSystem, mkHomeConfiguration)
+│   ├── checks.nix             # CI checks (formatting, deadnix, statix) and formatter
 │   ├── home.nix               # Shared home configuration (imports all shared modules)
 │   ├── hosts/                 # Per-machine configurations
 │   │   ├── mac-machine/       #   macOS (aarch64-darwin) + nix-darwin

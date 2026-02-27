@@ -26,6 +26,7 @@ make update       # Update flake inputs
 home-manager/
 ├── flake.nix        # Main entry point: inputs, outputs, host definitions
 ├── lib.nix          # Unified host builders (mkNixosSystem, mkDarwinSystem, mkHomeConfiguration)
+├── checks.nix       # CI checks (formatting, deadnix, statix) and formatter
 ├── home.nix         # Shared config imported by all hosts
 ├── hosts/           # Per-machine configurations (default.nix + configuration.nix)
 ├── modules/         # Reusable Home Manager modules
@@ -38,21 +39,26 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 
 1. Create `hosts/<hostname>/configuration.nix` (NixOS/darwin system config)
 2. Create `hosts/<hostname>/default.nix` (Home Manager config)
-3. Add one builder call in `flake.nix`:
+3. Add directly to the appropriate output attrset in `flake.nix`:
    ```nix
-   myHost = mkNixosSystem {
-     hostname = "myhost";
-     homeModules = [];        # Home Manager modules
-     homeSpecialArgs = {};    # Args passed to HM
-     systemModules = [];      # NixOS system modules
-     systemSpecialArgs = {};  # Args passed to NixOS
+   nixosConfigurations = {
+     myhost = mkNixosSystem {
+       hostname = "myhost";
+       homeModules = [];        # Home Manager modules
+       homeSpecialArgs = {};    # Args passed to HM
+       systemModules = [];      # NixOS system modules
+       systemSpecialArgs = {};  # Args passed to NixOS
+     };
    };
    # or
-   myHost = mkDarwinSystem { hostname = "myhost"; };
+   darwinConfigurations = {
+     myhost = mkDarwinSystem { hostname = "myhost"; };
+   };
    # or for standalone HM:
-   myHost = mkHomeConfiguration { hostname = "myhost"; system = "x86_64-linux"; };
+   homeConfigurations = {
+     "zekus@myhost" = mkHomeConfiguration { hostname = "myhost"; system = "x86_64-linux"; };
+   };
    ```
-4. Export: `nixosConfigurations.${myHost.name} = myHost.value;`
 
 ## Code Style
 
