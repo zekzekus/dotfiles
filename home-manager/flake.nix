@@ -72,7 +72,12 @@
     ];
 
     lib = import ./lib.nix {
-      inherit nixpkgs home-manager nix-darwin overlays;
+      inherit
+        nixpkgs
+        home-manager
+        nix-darwin
+        overlays
+        ;
     };
 
     inherit (lib) mkNixosSystem mkDarwinSystem;
@@ -96,7 +101,10 @@
       ];
     };
 
-    supportedSystems = ["x86_64-linux" "aarch64-darwin"];
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-darwin"
+    ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
   in {
     nixosConfigurations.${nixosHost.name} = nixosHost.value;
