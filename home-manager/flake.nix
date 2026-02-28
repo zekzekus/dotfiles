@@ -129,6 +129,6 @@
       };
     };
 
-    inherit (ci) checks formatter;
+    inherit (ci) checks formatter devShells;
   };
 }

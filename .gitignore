@@ -22,6 +22,8 @@ emacs/elpa
 emacs/network-security.data
 .local.env
 
+.direnv/
+
 kakoune/plugins
 
 */.cpcache/
