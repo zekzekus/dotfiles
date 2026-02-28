@@ -74,7 +74,7 @@
       })
     ];
 
-    lib = import ./lib.nix {
+    lib = import ./nix/lib.nix {
       inherit
         nixpkgs
         home-manager
@@ -85,7 +85,7 @@
 
     inherit (lib) mkNixosSystem mkDarwinSystem mkHomeConfiguration;
 
-    ci = import ./checks.nix {
+    ci = import ./nix/checks.nix {
       inherit nixpkgs;
       supportedSystems = ["x86_64-linux" "aarch64-darwin"];
     };

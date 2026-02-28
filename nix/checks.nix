@@ -8,8 +8,8 @@ in {
     system: let
       pkgs = nixpkgs.legacyPackages.${system};
       nixFiles = pkgs.lib.fileset.toSource {
-        root = ./.;
-        fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./.;
+        root = ./..;
+        fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./..;
       };
     in {
       formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''

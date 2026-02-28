@@ -29,6 +29,7 @@ in {
       FZF_ALT_C_COMMAND = "bfs -type d -nohidden";
 
       PNPM_HOME = "${common.homeDir}/.local/share/pnpm";
+      NH_FLAKE = common.dotfilesDir;
     };
     settings = {
       show_banner = false;

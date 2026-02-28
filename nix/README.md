@@ -19,7 +19,7 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 3. **Bootstrap nix-darwin** (first time only):
    ```bash
-   nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --impure --flake ./home-manager#mac-machine
+   nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --impure --flake .#mac-machine
    ```
    
    You may be prompted to:
@@ -53,7 +53,7 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 3. **Replace hardware configuration** with the one generated for the new machine:
    ```bash
-   cp /etc/nixos/hardware-configuration.nix home-manager/hosts/nixos/hardware-configuration.nix
+   cp /etc/nixos/hardware-configuration.nix nix/hosts/nixos/hardware-configuration.nix
    ```
 
 4. **Bootstrap** (first time only — extra flags needed for Determinate Nix binary cache):
@@ -62,7 +62,7 @@ Flake-based Home Manager configuration for managing user environments across mul
      --option extra-substituters https://install.determinate.systems \
      --option extra-trusted-public-keys "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" \
      --impure \
-     --flake ./home-manager#nixos
+     --flake .#nixos
    ```
 
    If this fails with a "stale file" or Nix version error, upgrade the stock Nix daemon first:
@@ -83,7 +83,7 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 1. Create host directory:
    ```bash
-   mkdir -p home-manager/hosts/<hostname>
+   mkdir -p nix/hosts/<hostname>
    ```
 
 2. Create `default.nix` (Home Manager config):
@@ -175,7 +175,7 @@ The builder functions in `lib.nix` automatically:
 
 ## Checks & Quality
 
-The flake includes automated checks run via `make check` (or `nix flake check ./home-manager --impure`):
+The flake includes automated checks run via `make check` (or `nix flake check --impure`):
 
 | Check | Tool | Purpose |
 |-------|------|---------|
@@ -190,14 +190,14 @@ Format all Nix files: `make fmt`
 ```bash
 make update
 # or manually:
-cd home-manager && nix flake update
+nix flake update
 ```
 
 ## Troubleshooting
 
 ```bash
 # Validate the flake
-nix flake check ./home-manager --impure
+nix flake check --impure
 
 # Build without switching (dry-run)
 make home-build     # Home Manager only

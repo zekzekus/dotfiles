@@ -23,8 +23,8 @@ make update       # Update flake inputs
 ## Architecture
 
 ```
-home-manager/
-├── flake.nix        # Main entry point: inputs, outputs, host definitions
+flake.nix            # Main entry point: inputs, outputs, host definitions
+nix/
 ├── lib.nix          # Unified host builders (mkNixosSystem, mkDarwinSystem, mkHomeConfiguration)
 ├── checks.nix       # CI checks (formatting, deadnix, statix) and formatter
 ├── home.nix         # Shared config imported by all hosts
@@ -37,9 +37,9 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 
 ## Adding a New Host
 
-1. Create `hosts/<hostname>/configuration.nix` (NixOS/darwin system config)
-2. Create `hosts/<hostname>/default.nix` (Home Manager config)
-3. Add directly to the appropriate output attrset in `flake.nix`:
+1. Create `nix/hosts/<hostname>/configuration.nix` (NixOS/darwin system config)
+2. Create `nix/hosts/<hostname>/default.nix` (Home Manager config)
+3. Add directly to the appropriate output attrset in `flake.nix` (at repo root):
    ```nix
    nixosConfigurations = {
      myhost = mkNixosSystem {
@@ -64,7 +64,7 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 
 - **Nix**: Use `inherit` when possible, group imports at top, prefer modules over inline config
 - **Lua**: Follow existing patterns, use `require()` for imports
-- Host-specific code → `hosts/`, shared code → `modules/`, platform code → `platforms/`
+- Host-specific code → `nix/hosts/`, shared code → `nix/modules/`, platform code → `nix/platforms/`
 
 ## Principles
 

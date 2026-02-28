@@ -2,7 +2,7 @@
 
 USER := $(shell whoami)
 HOST := $(shell hostname -s)
-FLAKE := ./home-manager
+FLAKE := .
 UNAME := $(shell uname)
 
 help:
@@ -70,17 +70,16 @@ nixos-build:
 
 update:
 	@echo "Updating flake inputs..."
-	cd $(FLAKE) && nix flake update
+	nix flake update
 
 check:
 	@echo "Checking flake..."
-	nix flake check $(FLAKE) --impure
+	nix flake check --impure
 
 fmt:
 	@echo "Formatting Nix files..."
-	cd $(FLAKE) && nix fmt .
+	nix fmt
 
 clean:
 	@echo "Cleaning build artifacts..."
 	rm -rf result
-	cd $(FLAKE) && rm -rf result

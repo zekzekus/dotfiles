@@ -21,8 +21,9 @@ One config to rule them all -- macOS, Linux, and NixOS.
 
 ```
 .
-├── home-manager/              # Nix flake & Home Manager configs
-│   ├── flake.nix              # Main flake entry point
+├── flake.nix                  # Main flake entry point
+├── flake.lock                 # Flake lock file
+├── nix/                       # Nix & Home Manager configs
 │   ├── lib.nix                # Host builders (mkNixosSystem, mkDarwinSystem, mkHomeConfiguration)
 │   ├── checks.nix             # CI checks (formatting, deadnix, statix) and formatter
 │   ├── home.nix               # Shared home configuration (imports all shared modules)
@@ -81,7 +82,7 @@ make nixos     # NixOS full system rebuild
 make home      # Standalone Home Manager only
 ```
 
-See [home-manager/README.md](./home-manager/README.md) for detailed installation instructions.
+See [nix/README.md](./nix/README.md) for detailed installation instructions.
 
 ---
 
@@ -194,8 +195,8 @@ make clean         # Clean build artifacts
 
 ## Documentation
 
-- [Home Manager README](./home-manager/README.md) -- Installation, adding hosts, troubleshooting
-- [1Password Setup](./home-manager/docs/1password-setup.md) -- SSH agent & GPG key management
+- [Home Manager README](./nix/README.md) -- Installation, adding hosts, troubleshooting
+- [1Password Setup](./nix/docs/1password-setup.md) -- SSH agent & GPG key management
 
 ---
 
