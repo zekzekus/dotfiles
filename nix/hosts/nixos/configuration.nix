@@ -130,9 +130,15 @@ in {
         variant = "alt";
       };
     };
-    displayManager.sddm = {
+    displayManager.sddm.enable = false;
+    greetd = {
       enable = true;
-      wayland.enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions /run/current-system/sw/share/wayland-sessions";
+          user = "greeter";
+        };
+      };
     };
     power-profiles-daemon.enable = true;
     upower.enable = true;
