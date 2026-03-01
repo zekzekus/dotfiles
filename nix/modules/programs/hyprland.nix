@@ -9,6 +9,8 @@
     systemd.enable = false;
     package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     settings = {
+      exec-once = ["noctalia-shell"];
+
       "$mod" = "SUPER";
       "$terminal" = "ghostty";
       "$browser" = "helium";
