@@ -87,6 +87,16 @@ window-rule {
 }
 
 window-rule {
+  match title=r#"^Meet - "#
+  open-floating true
+  default-column-width { fixed 800; }
+  default-window-height { fixed 450; }
+  default-floating-position x=50 y=50 relative-to="top-right"
+  focus-ring { off; }
+  opacity 1.0
+}
+
+window-rule {
   match app-id=r#"^org\.quickshell$"#
   open-floating true
 }
