@@ -2,6 +2,10 @@ spawn-at-startup "noctalia-shell"
 
 prefer-no-csd
 
+hotkey-overlay {
+  skip-at-startup
+}
+
 input {
   mod-key "Super"
   keyboard {
