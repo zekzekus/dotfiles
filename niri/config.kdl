@@ -1,5 +1,3 @@
-spawn-at-startup "noctalia-shell"
-
 prefer-no-csd
 
 hotkey-overlay {
