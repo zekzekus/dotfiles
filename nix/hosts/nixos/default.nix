@@ -8,7 +8,7 @@
     ./stylix.nix
     ./niri.nix
     ../../modules/programs/hyprland.nix
-    ../../modules/programs/hyprland-plugins.nix
+    # ../../modules/programs/hyprland-plugins.nix
     ../../modules/programs/rofi.nix
     ../../modules/programs/hyprlock.nix
     ../../modules/programs/noctalia-shell.nix
