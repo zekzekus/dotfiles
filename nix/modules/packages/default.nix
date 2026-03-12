@@ -27,6 +27,7 @@
     localsend
 
     # LLM
+    claude-code
     ollama-cpu
   ];
 }
