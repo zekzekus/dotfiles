@@ -169,7 +169,7 @@
         "$mod SHIFT, K, swapwindow, u"
         "$mod SHIFT, J, swapwindow, d"
 
-        "ALT, J, togglesplit"
+        "ALT, J, layoutmsg, togglesplit"
         "ALT, P, pseudo"
         "ALT, V, togglefloating"
 
