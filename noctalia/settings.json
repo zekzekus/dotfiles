@@ -8,7 +8,9 @@
         "customLaunchPrefixEnabled": true,
         "density": "default",
         "enableClipPreview": false,
+        "enableClipboardChips": true,
         "enableClipboardHistory": true,
+        "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
         "enableWindowsSearch": true,
@@ -200,7 +202,8 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
-                        "1Password"
+                        "1Password",
+                        "nm-applet"
                     ]
                 },
                 {
@@ -611,7 +614,7 @@
         "showHeader": true,
         "showKeybinds": true
     },
-    "settingsVersion": 58,
+    "settingsVersion": 59,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -702,7 +705,14 @@
         "sortOrder": "name",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
-        "transitionType": "random",
+        "transitionType": [
+            "fade",
+            "disc",
+            "stripes",
+            "wipe",
+            "pixelate",
+            "honeycomb"
+        ],
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "single",
