@@ -59,13 +59,15 @@ layout {
 }
 
 window-rule {
+  geometry-corner-radius 8
+  clip-to-geometry true
   open-maximized false
   default-column-width { proportion 0.75; }
 }
 
 window-rule {
   match is-focused=false
-  opacity 0.9
+  opacity 0.85
 }
 
 window-rule {
@@ -75,7 +77,7 @@ window-rule {
 
 window-rule {
   match app-id="com.mitchellh.ghostty" is-focused=false
-  opacity 0.90
+  opacity 0.85
 }
 
 window-rule {
