@@ -52,6 +52,9 @@
 
       # PDF tools deps
       poppler-utils
+
+      # Common Lisp
+      sbcl
     ];
 
     sessionPath = ["$HOME/.config/emacs/bin"];
@@ -61,6 +64,17 @@
     activation.installDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
       if [ ! -d "$HOME/.config/emacs" ]; then
         ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.config/emacs"
+      fi
+    '';
+
+    activation.installQuicklisp = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      if [ ! -d "$HOME/quicklisp" ]; then
+        ${pkgs.curl}/bin/curl -o /tmp/quicklisp.lisp https://beta.quicklisp.org/quicklisp.lisp
+        ${pkgs.sbcl}/bin/sbcl --non-interactive \
+          --load /tmp/quicklisp.lisp \
+          --eval '(quicklisp-quickstart:install)' \
+          --eval '(ql:add-to-init-file)'
+        rm -f /tmp/quicklisp.lisp
       fi
     '';
   };
