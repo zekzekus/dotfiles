@@ -57,8 +57,6 @@
       sbcl
     ];
 
-    sessionPath = ["$HOME/.config/emacs/bin"];
-
     file.".config/doom".source = "${common.dotfilesDir}/misc/emacs/doom";
 
     activation.installDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''

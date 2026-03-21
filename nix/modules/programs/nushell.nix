@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   common,
   ...
 }: let
@@ -9,28 +10,15 @@
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/etc/profiles/per-user/${common.username}/bin')
     $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
   '';
+
+  mkNushellPathPrepends = paths:
+    lib.concatMapStringsSep "\n"
+    (p: "$env.PATH = ($env.PATH | split row (char esep) | prepend '${p}')")
+    (lib.reverseList paths);
 in {
   programs.nushell = {
     enable = true;
-    environmentVariables = {
-      ZEK_DEVEL_HOME = common.develHome;
-      ZEK_DEFAULT_PROJECT_DIR = common.defaultProjectDir;
-      ZEK_DEVEL_WORK_HOME = common.workHome;
-      ZEK_DEVEL_PERSONAL_HOME = common.personalHome;
-
-      EDITOR = "nvim";
-      MANPAGER = "nvim +Man!";
-
-      SSH_AUTH_SOCK = "${common.homeDir}/.1password/agent.sock";
-
-      TMUX_FZF_LAUNCH_KEY = "o";
-      FZF_DEFAULT_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
-      FZF_CTRL_T_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
-      FZF_ALT_C_COMMAND = "bfs -type d -nohidden";
-
-      PNPM_HOME = "${common.homeDir}/.local/share/pnpm";
-      NH_FLAKE = common.dotfilesDir;
-    };
+    environmentVariables = common.sessionVariables;
     settings = {
       show_banner = false;
       completions = {
@@ -47,10 +35,7 @@ in {
         then darwinPaths
         else ""
       }
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.config/emacs/bin')
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/pnpm')
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/.local/share/coursier/bin')
-      $env.PATH = ($env.PATH | split row (char esep) | prepend '${common.homeDir}/bin')
+      ${mkNushellPathPrepends common.sessionPath}
       $env.GPG_TTY = (tty | str trim)
     '';
 

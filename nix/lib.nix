@@ -9,13 +9,41 @@
   mkCommon = {
     username,
     homeDir,
-  }: {
-    inherit username homeDir;
+  }: let
     dotfilesDir = "${homeDir}/devel/tools/dotfiles";
     develHome = "${homeDir}/devel/projects";
     defaultProjectDir = "personal";
     workHome = "${homeDir}/devel/projects/work";
     personalHome = "${homeDir}/devel/projects/personal";
+  in {
+    inherit username homeDir dotfilesDir develHome defaultProjectDir workHome personalHome;
+
+    sessionVariables = {
+      ZEK_DEVEL_HOME = develHome;
+      ZEK_DEFAULT_PROJECT_DIR = defaultProjectDir;
+      ZEK_DEVEL_WORK_HOME = workHome;
+      ZEK_DEVEL_PERSONAL_HOME = personalHome;
+
+      EDITOR = "nvim";
+      MANPAGER = "nvim +Man!";
+
+      TMUX_FZF_LAUNCH_KEY = "o";
+      FZF_DEFAULT_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
+      FZF_CTRL_T_COMMAND = "rg --files --hidden --follow --glob \"!.git/*\"";
+      FZF_ALT_C_COMMAND = "bfs -type d -nohidden";
+
+      PNPM_HOME = "${homeDir}/.local/share/pnpm";
+
+      SSH_AUTH_SOCK = "${homeDir}/.1password/agent.sock";
+      NH_FLAKE = dotfilesDir;
+    };
+
+    sessionPath = [
+      "${homeDir}/bin"
+      "${homeDir}/.config/emacs/bin"
+      "${homeDir}/.local/share/pnpm"
+      "${homeDir}/.local/share/coursier/bin"
+    ];
   };
 
   mkHomeDir = {

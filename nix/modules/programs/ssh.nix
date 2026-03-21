@@ -23,10 +23,6 @@ in {
   };
 
   home = {
-    sessionVariables = {
-      SSH_AUTH_SOCK = onePasswordSocketPath;
-    };
-
     activation = {
       # macOS: symlink 1Password's real socket to our stable path
       link1PasswordAgentSock = lib.mkIf isDarwin (
