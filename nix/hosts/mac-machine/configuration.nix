@@ -38,6 +38,7 @@
     };
   };
 
+  # Intentional: Determinate Nix manages the Nix installation; nix-darwin must not interfere
   nix.enable = false;
 
   programs.fish.enable = true;

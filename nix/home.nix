@@ -12,6 +12,7 @@
   ];
 
   home = {
+    # Intentional: stateVersion pinned behind current channel; release check disabled to suppress warning
     stateVersion = "24.11";
     enableNixpkgsReleaseCheck = false;
 

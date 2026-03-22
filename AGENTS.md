@@ -70,6 +70,15 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 - Platform-wide code → `nix/platforms/<platform>/modules/`
 - Host-specific code → `nix/hosts/<host>/modules/`
 
+## Intentional Design Choices
+
+These are deliberate decisions. Do NOT suggest "fixing" them.
+
+- **`--impure` flag**: All build/switch commands use `--impure` (see Makefile). This is required because the flake references `builtins.currentSystem`, environment variables, and `mkOutOfStoreSymlink` paths that need impure evaluation. Do not suggest removing it.
+- **`nix.enable = false`** in `nix/hosts/mac-machine/configuration.nix`: This machine uses **Determinate Nix**, which manages the Nix installation itself. Setting `nix.enable = false` prevents nix-darwin from conflicting with it. This is not a mistake.
+- **`home.stateVersion = "24.11"`** in `nix/home.nix` with `enableNixpkgsReleaseCheck = false`: The state version is intentionally pinned behind the current nixpkgs channel. The release check is disabled to suppress the mismatch warning. Do not suggest bumping it.
+- **Mixed config styles for window managers**: Hyprland is configured fully in Nix (`wayland.windowManager.hyprland.settings`), while Niri and Noctalia use `mkOutOfStoreSymlink` to link external config files (`niri/config.kdl`, `noctalia/settings.json`). This is intentional — Niri's KDL format and Noctalia's JSON are easier to maintain as standalone files. The Hyprland module predates this pattern. Do not suggest unifying them.
+
 ## Principles
 
 - Keep setup modern, safe, performant, idiomatic, easy to reason about and extend
