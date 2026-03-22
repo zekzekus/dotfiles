@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  copyCmd =
+    if pkgs.stdenv.isDarwin
+    then "pbcopy"
+    else "${pkgs.wl-clipboard}/bin/wl-copy";
+in {
   programs.tmux = {
     enable = true;
     tmuxinator.enable = true;
@@ -36,7 +41,7 @@
       bind-key -T copy-mode-vi 'v' send -X begin-selection
       bind-key -T copy-mode-vi 'V' send -X select-line
       bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
-      bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
+      bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "${copyCmd}"
     '';
   };
 }
