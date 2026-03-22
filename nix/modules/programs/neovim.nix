@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   common,
   ...
 }: {
@@ -51,5 +52,8 @@
     ];
   };
 
-  home.file.".config/nvim".source = "${common.dotfilesDir}/nvim";
+  xdg.configFile."nvim" = {
+    force = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/nvim";
+  };
 }

@@ -157,7 +157,6 @@ The builder functions in `lib.nix` automatically:
 | `modules/file/` | File symlinks: ctags, tmuxinator, utility scripts |
 | `modules/sessionpath/` | PATH entries: `~/bin`, pnpm, coursier |
 | `modules/sessionvariables/` | Environment variables: editor, fzf, project directories |
-| `modules/services/` | User services (jankyborders, currently empty default) |
 
 ### Platform Modules
 
