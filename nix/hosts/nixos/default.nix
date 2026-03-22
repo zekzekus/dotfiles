@@ -23,8 +23,8 @@
 
   home.packages = with pkgs; [
     appimage-run
-    (import ../../modules/packages/helium.nix {inherit pkgs;})
-    (import ../../modules/packages/nova.nix {inherit pkgs;})
+    (import ../../packages/helium.nix {inherit pkgs;})
+    (import ../../packages/nova.nix {inherit pkgs;})
     showmethekey
     hyprpolkitagent
   ];
