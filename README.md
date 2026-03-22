@@ -24,9 +24,10 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ├── flake.nix                  # Main flake entry point
 ├── flake.lock                 # Flake lock file
 ├── nix/                       # Nix & Home Manager configs
-│   ├── lib.nix                # Host builders (mkNixosSystem, mkDarwinSystem, mkHomeConfiguration)
+│   ├── lib.nix                # Host builders + shared common attrset (user info, paths, env vars)
 │   ├── checks.nix             # CI checks (formatting, deadnix, statix) and formatter
 │   ├── home.nix               # Shared home configuration (imports all shared modules)
+│   ├── packages/              # Standalone package sets (helium.nix, nova.nix)
 │   ├── hosts/                 # Per-machine configurations
 │   │   ├── mac-machine/       #   macOS (aarch64-darwin) + nix-darwin
 │   │   └── nixos/             #   NixOS (x86_64-linux) full system + home
@@ -34,7 +35,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 │   ├── modules/               # Cross-platform Home Manager modules (auto-imported)
 │   │   ├── file/              #   File symlinks (ctags, tmuxinator, scripts)
 │   │   ├── packages/          #   Shared packages
-│   │   ├── programs/          #   Program configurations (~22 modules)
+│   │   ├── programs/          #   Program configurations (~21 modules)
 │   │   ├── sessionpath/       #   PATH management
 │   │   └── sessionvariables/  #   Environment variables
 │   ├── platforms/             # Platform-specific abstractions
@@ -50,10 +51,11 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ├── tmux/                      # tmux configurations & themes (symlinked via HM)
 ├── tmuxinator/                # tmuxinator project templates (symlinked via HM)
 ├── git/                       # Git config templates & global ignore (symlinked via HM)
+├── niri/                      # Niri compositor config (symlinked via HM)
+├── noctalia/                  # Noctalia shell config (symlinked via HM)
 ├── scripts/                   # Utility scripts (tmux project launchers, theme switchers)
 ├── ctags/                     # Universal Ctags config (symlinked via HM)
 ├── macosx/                    # macOS-specific configs (Karabiner, Hammerspoon)
-├── noctalia/                  # Noctalia shell config
 ├── misc/                      # Legacy configs (archived)
 │
 ├── Makefile                   # Convenience commands
@@ -135,11 +137,11 @@ make clean         # Clean build artifacts
 
 **Layered configuration:**
 1. **Flake** -- Defines inputs, outputs, and wires everything together
-2. **lib.nix** -- Host builder functions (`mkNixosSystem`, `mkDarwinSystem`, `mkHomeConfiguration`)
+2. **lib.nix** -- Host builder functions + centralized `common` attrset (user info, paths, env vars)
 3. **Platforms** -- Darwin vs Linux specifics (auto-selected by `lib.nix` based on system)
 4. **Hosts** -- Machine-specific overrides and system config
-5. **Modules** -- Shared, reusable building blocks (programs, packages, services, etc.)
-6. **External configs** -- Neovim, tmux, Ghostty, etc. symlinked via Home Manager
+5. **Modules** -- Shared, reusable building blocks (programs, packages, etc.)
+6. **External configs** -- Neovim, tmux, Ghostty, Niri, Noctalia, etc. symlinked via Home Manager
 
 ---
 
