@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ../../modules/programs/firefox.nix
-    ../../modules/programs/zed-editor.nix
+    ./modules/firefox.nix
+    ./modules/zed-editor.nix
   ];
 
   programs = {

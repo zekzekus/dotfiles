@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
-    ../../modules/programs/aerospace.nix
-    ../../modules/services/jankyborders.nix
+    ./modules/aerospace.nix
+    ./modules/jankyborders.nix
   ];
 
   home = {

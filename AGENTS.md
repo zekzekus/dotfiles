@@ -29,8 +29,10 @@ nix/
 ├── checks.nix       # CI checks (formatting, deadnix, statix) and formatter
 ├── home.nix         # Shared config imported by all hosts
 ├── hosts/           # Per-machine configurations (default.nix + configuration.nix)
-├── modules/         # Reusable Home Manager modules
+│   └── <host>/modules/  # Host-specific opt-in modules (e.g., hyprland, niri)
+├── modules/         # Cross-platform Home Manager modules (auto-imported for all hosts)
 └── platforms/       # Platform-specific abstractions (darwin/, linux/)
+    └── <platform>/modules/  # Platform-wide opt-in modules (e.g., aerospace, firefox)
 ```
 
 External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Manager.
@@ -64,7 +66,9 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 
 - **Nix**: Use `inherit` when possible, group imports at top, prefer modules over inline config
 - **Lua**: Follow existing patterns, use `require()` for imports
-- Host-specific code → `nix/hosts/`, shared code → `nix/modules/`, platform code → `nix/platforms/`
+- Cross-platform shared code → `nix/modules/`
+- Platform-wide code → `nix/platforms/<platform>/modules/`
+- Host-specific code → `nix/hosts/<host>/modules/`
 
 ## Principles
 

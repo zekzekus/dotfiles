@@ -30,16 +30,18 @@ One config to rule them all -- macOS, Linux, and NixOS.
 │   ├── hosts/                 # Per-machine configurations
 │   │   ├── mac-machine/       #   macOS (aarch64-darwin) + nix-darwin
 │   │   └── nixos/             #   NixOS (x86_64-linux) full system + home
-│   ├── modules/               # Reusable Home Manager modules
+│   │       └── modules/       #   Host-specific: Hyprland, Niri, Rofi, Hyprlock, Noctalia, Wayland
+│   ├── modules/               # Cross-platform Home Manager modules (auto-imported)
 │   │   ├── file/              #   File symlinks (ctags, tmuxinator, scripts)
 │   │   ├── packages/          #   Shared packages
-│   │   ├── programs/          #   Program configurations (30 modules)
-│   │   ├── services/          #   User services (jankyborders)
+│   │   ├── programs/          #   Program configurations (~22 modules)
 │   │   ├── sessionpath/       #   PATH management
 │   │   └── sessionvariables/  #   Environment variables
 │   ├── platforms/             # Platform-specific abstractions
-│   │   ├── darwin/            #   macOS: Aerospace, JankyBorders, Karabiner, Hammerspoon
-│   │   └── linux/             #   Linux: Firefox, Chromium
+│   │   ├── darwin/            #   macOS: Karabiner, Hammerspoon
+│   │   │   └── modules/       #   Platform-wide opt-in: Aerospace, JankyBorders
+│   │   └── linux/             #   Linux: Chromium
+│   │       └── modules/       #   Platform-wide opt-in: Firefox, Zed Editor
 │   └── docs/                  # Setup guides
 │       └── 1password-setup.md #   1Password SSH & GPG setup
 │

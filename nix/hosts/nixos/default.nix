@@ -4,14 +4,14 @@
   ...
 }: {
   imports = [
-    ../../platforms/linux/wayland.nix
+    ./modules/wayland.nix
     ./stylix.nix
-    ./niri.nix
-    ../../modules/programs/hyprland.nix
-    # ../../modules/programs/hyprland-plugins.nix
-    ../../modules/programs/rofi.nix
-    ../../modules/programs/hyprlock.nix
-    ../../modules/programs/noctalia-shell.nix
+    ./modules/niri.nix
+    ./modules/hyprland.nix
+    # ./modules/hyprland-plugins.nix
+    ./modules/rofi.nix
+    ./modules/hyprlock.nix
+    ./modules/noctalia-shell.nix
   ];
 
   programs.obs-studio = {

@@ -38,16 +38,18 @@ nix/
 ├── hosts/              # Per-machine overrides
 │   ├── mac-machine/    #   default.nix (HM) + configuration.nix (nix-darwin system)
 │   └── nixos/          #   default.nix (HM) + configuration.nix (NixOS system) + hardware-configuration.nix
-├── modules/            # Shared Home Manager modules (all platforms)
-│   ├── programs/       #   ~30 program configs: neovim, git, fish, nushell, tmux, ghostty, starship, fzf, etc.
+│       └── modules/    #   Host-specific opt-in: Hyprland, Niri, Rofi, Hyprlock, Noctalia, Wayland
+├── modules/            # Cross-platform Home Manager modules (auto-imported for all hosts)
+│   ├── programs/       #   ~22 program configs: neovim, git, fish, nushell, tmux, ghostty, starship, fzf, etc.
 │   ├── packages/       #   Shared packages: dev tools, terminal utilities, LLM tools
 │   ├── file/           #   Symlinks: ctags, tmuxinator, utility scripts
 │   ├── sessionpath/    #   PATH entries
-│   ├── sessionvariables/  # Environment variables
-│   └── services/       #   User services (jankyborders)
-├── platforms/          # Platform-specific Home Manager modules
-│   ├── darwin/         #   Aerospace, JankyBorders, Karabiner, Hammerspoon, Homebrew PATH
-│   └── linux/          #   Firefox, Chromium, Wayland modules
+│   └── sessionvariables/  # Environment variables
+├── platforms/          # Platform-specific Home Manager config
+│   ├── darwin/         #   macOS: Karabiner, Hammerspoon, Homebrew PATH
+│   │   └── modules/    #   Platform-wide opt-in: Aerospace, JankyBorders
+│   └── linux/          #   Linux: Chromium
+│       └── modules/    #   Platform-wide opt-in: Firefox, Zed Editor
 └── docs/               # Setup guides
 ```
 
@@ -85,7 +87,9 @@ The `common` attrset (username, homeDir, dotfilesDir, project paths) is passed a
 
 - **Nix**: Use `inherit` when possible, group imports at the top, prefer modules over inline config
 - **Lua** (nvim/): Follow existing patterns, use `require()` for imports
-- Host-specific → `nix/hosts/`, shared → `nix/modules/`, platform-specific → `nix/platforms/`
+- Cross-platform shared → `nix/modules/`
+- Platform-wide opt-in → `nix/platforms/<platform>/modules/`
+- Host-specific opt-in → `nix/hosts/<host>/modules/`
 
 ## Principles
 

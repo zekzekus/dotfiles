@@ -1,0 +1,15 @@
+{
+  pkgs,
+  config,
+  common,
+  ...
+}: {
+  home.packages = with pkgs; [
+    xdg-desktop-portal-gnome
+  ];
+
+  xdg.configFile."niri/config.kdl" = {
+    force = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/niri/config.kdl";
+  };
+}
