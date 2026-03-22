@@ -18,6 +18,10 @@
   in {
     inherit username homeDir dotfilesDir develHome defaultProjectDir workHome personalHome;
 
+    userFullName = "Zekeriya Koc";
+    userEmail = "zekzekus@gmail.com";
+    gpgKey = "6716516470AD2D7A";
+
     sessionVariables = {
       ZEK_DEVEL_HOME = develHome;
       ZEK_DEFAULT_PROJECT_DIR = defaultProjectDir;

@@ -1,7 +1,7 @@
-_: {
+{common, ...}: {
   programs.mercurial = {
     enable = true;
-    userEmail = "zekzekus@gmail.com";
-    userName = "Zekeriya Koc";
+    inherit (common) userEmail;
+    userName = common.userFullName;
   };
 }

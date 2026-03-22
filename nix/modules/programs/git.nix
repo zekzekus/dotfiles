@@ -1,12 +1,12 @@
 {common, ...}: {
   programs.git = {
     enable = true;
-    signing.key = "6716516470AD2D7A";
+    signing.key = common.gpgKey;
     signing.signByDefault = true;
 
     settings = {
-      user.name = "Zekeriya Koc";
-      user.email = "zekzekus@gmail.com";
+      user.name = common.userFullName;
+      user.email = common.userEmail;
       core = {
         excludesFile = "${common.dotfilesDir}/git/gitignore_global";
       };

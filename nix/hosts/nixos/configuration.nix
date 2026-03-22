@@ -244,7 +244,7 @@ in {
 
   users.users.${common.username} = {
     isNormalUser = true;
-    description = "Zekeriya Koc";
+    description = common.userFullName;
     extraGroups = [
       "networkmanager"
       "wheel"

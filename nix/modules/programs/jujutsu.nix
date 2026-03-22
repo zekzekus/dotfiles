@@ -1,16 +1,16 @@
-_: {
+{common, ...}: {
   programs.jujutsu = {
     enable = true;
     settings = {
       user = {
-        email = "zekzekus@gmail.com";
-        name = "Zekeriya Koc";
+        email = common.userEmail;
+        name = common.userFullName;
       };
 
       signing = {
         backend = "gpg";
         behavior = "own";
-        key = "6716516470AD2D7A";
+        key = common.gpgKey;
       };
 
       ui = {
