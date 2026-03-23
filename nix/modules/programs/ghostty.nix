@@ -17,7 +17,7 @@
       font-family = "TX-02";
       font-size =
         if pkgs.stdenv.isDarwin
-        then 16
+        then 17
         else 14;
       font-thicken = lib.mkIf pkgs.stdenv.isDarwin true;
       window-padding-balance = true;
