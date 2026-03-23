@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   common,
   ...
 }: {
@@ -14,8 +15,8 @@
     ];
 
     file = {
-      ".config/karabiner".source = "${common.dotfilesDir}/macosx/karabiner";
-      ".hammerspoon/init.lua".source = "${common.dotfilesDir}/macosx/hammerspoon/init.lua";
+      ".config/karabiner".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/macosx/karabiner";
+      ".hammerspoon/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/macosx/hammerspoon/init.lua";
     };
 
     sessionPath = [
