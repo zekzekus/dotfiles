@@ -30,6 +30,7 @@
       dock = {
         expose-group-apps = true;
         autohide = true;
+        wvous-tl-corner = 2;
       };
       trackpad = {
         Clicking = true;
