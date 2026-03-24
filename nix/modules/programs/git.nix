@@ -1,8 +1,11 @@
 {common, ...}: {
   programs.git = {
     enable = true;
-    signing.key = common.gpgKey;
-    signing.signByDefault = true;
+    signing = {
+      key = common.gpgKey;
+      format = "openpgp";
+      signByDefault = true;
+    };
 
     settings = {
       user.name = common.userFullName;

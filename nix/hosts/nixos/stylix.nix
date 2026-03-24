@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
+  gtk.gtk4.theme = config.gtk.theme;
+
   stylix = {
     enable = true;
     autoEnable = false;
