@@ -34,14 +34,9 @@ return {
     end
   },
 
-  'LionC/nest.nvim',
   'christoomey/vim-tmux-navigator',
   'tpope/vim-sleuth',
-  'tpope/vim-repeat',
-  'tpope/vim-surround',
-  'tpope/vim-unimpaired',
   'tpope/vim-fugitive',
-  'Shougo/junkfile.vim',
 
   { 'tpope/vim-dadbod',               cmd = 'DB' },
   { 'preservim/tagbar',               cmd = 'TagbarToggle' },
@@ -51,12 +46,34 @@ return {
   { 'clojure-vim/vim-jack-in',        ft  = 'clojure' },
   { 'tpope/vim-fireplace',            ft  = 'clojure' },
   { 'tpope/vim-jdaddy',               ft  = 'json' },
-  { 'windwp/nvim-autopairs',          config = true, },
-  { 'ethanholz/nvim-lastplace',       config = true, },
   { 'lewis6991/gitsigns.nvim',        config = true, },
   { 'ellisonleao/glow.nvim',          config = true, },
   { 'radenling/vim-dispatch-neovim',  dependencies = 'tpope/vim-dispatch', },
   { 'SmiteshP/nvim-navic',            dependencies = 'neovim/nvim-lspconfig', },
+
+  {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('mini.pairs').setup()
+      require('mini.surround').setup({
+        mappings = {
+          add = 'ys',
+          delete = 'ds',
+          find = '',
+          find_left = '',
+          highlight = '',
+          replace = 'cs',
+          suffix_last = '',
+          suffix_next = '',
+        },
+        search_method = 'cover_or_next',
+      })
+
+      vim.keymap.del('x', 'ys')
+      vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+      vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+    end,
+  },
 
   {
     'rebelot/heirline.nvim',
@@ -67,7 +84,6 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
       {'fcying/telescope-ctags-outline.nvim'},
       {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },

@@ -21,6 +21,20 @@ M.default_config = function(plugin)
 end
 
 local vimfn = vim.fn
+
+M.open_junkfile = function()
+  local junkdir = vimfn.expand('~/.cache/junkfile')
+  local filename = os.date('%Y-%m-%d-%H%M%S.')
+  local path = junkdir .. '/' .. filename
+
+  vimfn.mkdir(junkdir, 'p')
+  if vimfn.filereadable(path) == 0 then
+    vimfn.writefile({}, path)
+  end
+
+  vim.cmd.edit(vimfn.fnameescape(path))
+end
+
 M.listinfos =  function()
   local qflistlen = #vimfn.getqflist()
   local qflist = ''

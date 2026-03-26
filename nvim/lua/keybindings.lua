@@ -1,6 +1,17 @@
-local prequire = require('utils').prequire
+local vim = vim
 
-local nest = prequire('nest')
+local function map_group(group)
+  local prefix = group.prefix or ''
+
+  for _, mapping in ipairs(group) do
+    vim.keymap.set(
+      mapping.mode or 'n',
+      prefix .. mapping[1],
+      mapping[2],
+      vim.tbl_extend('force', { silent = true }, mapping.options or {})
+    )
+  end
+end
 
 local files = {
   name = 'Files',
@@ -68,21 +79,23 @@ local misc = {
   { 'cN',   [[*``cgN]] },
   { 'cq',   [[:call zek#setup_cr()<CR>*``qz]] },
   { 'cQ',   [[:call zek#setup_cr()<CR>#``qz]] },
-  { mode = 'v', options = { expr = true },     { 'cn', [[g:mc . '``cgn']] } },
-  { mode = 'v', options = { expr = true },     { 'cN', [[g:mc . '``cgN']] } },
-  { mode = 'v', options = { expr = true },     { 'cq', [[:\<C-u>call zek#setup_cr()\<CR>' . 'gv' . g:mc . '``qz]] } },
-  { mode = 'v', options = { expr = true },     { 'cQ', [[:\<C-u>call zek#setup_cr()\<CR>' . 'gv' . substitute(g:mc, '/', '?', 'g') . '``qz]] } },
-  { mode = 'c', options = { silent = false },  { '<c-n>', [[<down>]] } },
-  { mode = 'c', options = { silent = false },  { '<c-p>', [[<up>]] } },
+  { 'cn',   [[g:mc . '``cgn']], mode = 'v', options = { expr = true } },
+  { 'cN',   [[g:mc . '``cgN']], mode = 'v', options = { expr = true } },
+  { 'cq',   [[:\<C-u>call zek#setup_cr()\<CR>' . 'gv' . g:mc . '``qz]], mode = 'v', options = { expr = true } },
+  { 'cQ',   [[:\<C-u>call zek#setup_cr()\<CR>' . 'gv' . substitute(g:mc, '/', '?', 'g') . '``qz]], mode = 'v', options = { expr = true } },
+  { '<c-n>', [[<down>]], mode = 'c', options = { silent = false } },
+  { '<c-p>', [[<up>]], mode = 'c', options = { silent = false } },
 }
 
-nest.applyKeymaps({
-    files,
-    git,
-    floatings,
-    buffers,
-    search,
-    lsp,
-    others,
-    misc,
-})
+for _, group in ipairs({
+  files,
+  git,
+  floatings,
+  buffers,
+  search,
+  lsp,
+  others,
+  misc,
+}) do
+  map_group(group)
+end
