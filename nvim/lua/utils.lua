@@ -22,9 +22,10 @@ end
 
 local vimfn = vim.fn
 
-M.open_junkfile = function()
+M.open_junkfile = function(ext)
   local junkdir = vimfn.expand('~/.cache/junkfile')
-  local filename = os.date('%Y-%m-%d-%H%M%S.')
+  ext = (ext and ext ~= '') and ext or 'txt'
+  local filename = os.date('%Y-%m-%d-%H%M%S.') .. ext
   local path = junkdir .. '/' .. filename
 
   vimfn.mkdir(junkdir, 'p')
