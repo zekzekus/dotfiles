@@ -72,6 +72,7 @@ local others = {
 
 local misc = {
   name = 'Misc.',
+  { 'ff', [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
   { 'n',    [[nzzzv]] },
   { 'N',    [[Nzzzv]] },
   { '<bs>', [[<cmd>nohlsearch<cr>]] },
