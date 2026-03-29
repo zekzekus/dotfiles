@@ -85,6 +85,11 @@ return {
 
       completion = { documentation = { auto_show = false } },
 
+      enabled = function()
+        local disabled_filetypes = { gitcommit = true, jjdescription = true }
+        return not disabled_filetypes[vim.bo.filetype]
+      end,
+
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
