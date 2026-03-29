@@ -30,6 +30,12 @@ local git = {
   { 'g', [[<cmd>Neogit<cr>]]}
 }
 
+local jj = {
+  name = 'Jujutsu',
+  prefix = '<leader>j',
+  { 'j', [[<cmd>Neojj<cr>]] },
+}
+
 local floatings = {
   name = 'Floating',
   prefix = '<leader>o',
@@ -91,6 +97,7 @@ local misc = {
 for _, group in ipairs({
   files,
   git,
+  jj,
   floatings,
   buffers,
   search,

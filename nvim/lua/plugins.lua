@@ -100,6 +100,17 @@ return {
   },
 
   {
+    'NicholasZolton/neojj',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    cmd = 'Neojj',
+    config = true,
+  },
+
+  {
     "sourcegraph/amp.nvim",
     branch = "main",
     lazy = false,
