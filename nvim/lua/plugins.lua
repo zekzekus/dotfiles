@@ -1,37 +1,10 @@
-local vim = vim
-
 return {
   {
     'mcchrish/zenbones.nvim',
     dependencies = { 'rktjmp/lush.nvim' },
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.g.kanagawabones = {
-        solid_line_nr = true,
-        solid_float_border = true,
-        italic_strings = false,
-      }
-      vim.g.vimbones = {
-        solid_line_nr = true,
-        solid_float_border = true,
-        italic_strings = false,
-      }
-
-
-      local function set_colorscheme()
-        local colorscheme = vim.o.background == 'dark' and 'kanagawabones' or 'vimbones'
-        vim.cmd('colorscheme ' .. colorscheme)
-        require('heirline').reset_highlights()
-      end
-
-      vim.api.nvim_create_autocmd('OptionSet', {
-        pattern = 'background',
-        callback = set_colorscheme,
-      })
-
-      set_colorscheme()
-    end
+    config = function() require('config.zenbones') end
   },
 
   'christoomey/vim-tmux-navigator',
@@ -53,26 +26,7 @@ return {
 
   {
     'echasnovski/mini.nvim',
-    config = function()
-      require('mini.pairs').setup()
-      require('mini.surround').setup({
-        mappings = {
-          add = 'ys',
-          delete = 'ds',
-          find = '',
-          find_left = '',
-          highlight = '',
-          replace = 'cs',
-          suffix_last = '',
-          suffix_next = '',
-        },
-        search_method = 'cover_or_next',
-      })
-
-      vim.keymap.del('x', 'ys')
-      vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
-      vim.keymap.set('n', 'yss', 'ys_', { remap = true })
-    end,
+    config = function() require('config.mini') end,
   },
 
   {
@@ -92,7 +46,6 @@ return {
     config = function() require('config.telescope') end,
     cmd = { 'Telescope' },
   },
-
 
 
   {
@@ -147,5 +100,4 @@ return {
     lazy = false,
     opts = { auto_start = true, log_level = "info" },
   },
-
 }
