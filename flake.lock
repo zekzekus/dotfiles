@@ -376,11 +376,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774875815,
-        "narHash": "sha256-PzqwM4njoB3aznqwPZUawD4uOcJeu7N6GBTJKg81EQ4=",
+        "lastModified": 1774898676,
+        "narHash": "sha256-0Utnqo+FbB+0CVUi0MI3oonF0Kuzy9VcgRkxl53Euvk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9340f51314713c83360bf72d75c8b404778ab5b1",
+        "rev": "a184bd2f8426087bae93f203403cd4b86c99e57d",
         "type": "github"
       },
       "original": {
@@ -989,11 +989,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1774874166,
-        "narHash": "sha256-nCc7BfsNs03aOJef3GGWRSuGn3jHPCuH8nO83b3ocao=",
+        "lastModified": 1774881545,
+        "narHash": "sha256-+8jDWEg9ePrhvuVEwf29JZYIA1TboXbsdF1U9VKY7t8=",
         "owner": "noctalia-dev",
         "repo": "noctalia-qs",
-        "rev": "822622ee8296bd496931933e3a3ca37ee18f0c00",
+        "rev": "1c0710cd7c9f1483bb6dbf5e69023da97136646d",
         "type": "github"
       },
       "original": {
@@ -1087,11 +1087,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1774124764,
-        "narHash": "sha256-Poz9WTjiRlqZIf197CrMMJfTifZhrZpbHFv0eU1Nhtg=",
+        "lastModified": 1774897726,
+        "narHash": "sha256-k/H2/oyex6GEC6uYXYetrboFQeTmX1Ouwv/zaW7b/Z0=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "e31c79f571c5595a155f84b9d77ce53a84745494",
+        "rev": "9b4a5eb409ceac2dd6ad495c7988e189a418cd30",
         "type": "github"
       },
       "original": {
