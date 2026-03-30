@@ -63,7 +63,9 @@ window-rule {
   geometry-corner-radius 8
   clip-to-geometry true
   open-maximized false
-  default-column-width { proportion 0.75; }
+  default-column-width {
+    proportion 0.66667
+  }
 }
 
 window-rule {
