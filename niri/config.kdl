@@ -165,8 +165,8 @@ binds {
   Mod+Q repeat=false { close-window; }
 
   Mod+H { focus-column-left; }
-  Mod+J { focus-workspace-down; }
-  Mod+K { focus-workspace-up; }
+  Mod+J { focus-window-or-workspace-down; }
+  Mod+K { focus-window-or-workspace-up; }
   Mod+L { focus-column-right; }
 
   Mod+Shift+H { move-column-left; }
