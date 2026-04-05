@@ -156,6 +156,7 @@ binds {
   Mod+Shift+S { spawn-sh "noctalia-shell ipc call settings toggle"; }
   Mod+Shift+Escape { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
   Mod+O { toggle-overview; }
+  Ctrl+Alt+Tab { toggle-overview; }
 
   Mod+Return { spawn-sh "uwsm-app -- ghostty +new-window"; }
   Mod+B { spawn-sh "uwsm-app -- helium"; }
