@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
-# Move focus in a direction, or switch workspace if already at the edge.
+# Move focus in a direction, or switch workspace if already at the edge
+# or if current workspace has no windows.
 # Usage: focus-or-workspace <direction> <workspace-delta>
-#   e.g. focus-or-workspace l e-1
-#        focus-or-workspace r e+1
+#   e.g. focus-or-workspace l r-1
+#        focus-or-workspace r r+1
 
 set -euo pipefail
 
 dir="$1"   # l or r
-ws="$2"    # e-1 / e+1
+ws="$2"    # r-1 / r+1
+
+win_count="$(hyprctl -j activeworkspace | grep '"windows"' | grep -o '[0-9]*')"
+
+if [[ "$win_count" -eq 0 ]]; then
+  existing_ws="${ws/r/e}"
+  hyprctl dispatch workspace "$existing_ws" > /dev/null
+  exit 0
+fi
 
 before="$(hyprctl -j activewindow | grep '"address"' | head -1)"
 
