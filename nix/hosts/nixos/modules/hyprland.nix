@@ -70,6 +70,11 @@
         gaps_in = 5;
         gaps_out = 8;
         layout = "master";
+        no_focus_fallback = true;
+      };
+
+      binds = {
+        window_direction_monitor_fallback = false;
       };
 
       decoration = {
@@ -159,10 +164,10 @@
         "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
         "$mod SHIFT CTRL, 5, exec, uwsm-app -- gpu-screen-recorder-gtk"
 
-        "$mod, h, movefocus, l"
+        "$mod, h, exec, ${common.dotfilesDir}/scripts/focus-or-workspace l e-1"
         "$mod, j, movefocus, d"
         "$mod, k, movefocus, u"
-        "$mod, l, movefocus, r"
+        "$mod, l, exec, ${common.dotfilesDir}/scripts/focus-or-workspace r e+1"
 
         "$mod SHIFT, H, swapwindow, l"
         "$mod SHIFT, L, swapwindow, r"

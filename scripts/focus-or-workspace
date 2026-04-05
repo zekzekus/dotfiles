@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Move focus in a direction, or switch workspace if already at the edge.
+# Usage: focus-or-workspace <direction> <workspace-delta>
+#   e.g. focus-or-workspace l e-1
+#        focus-or-workspace r e+1
+
+set -euo pipefail
+
+dir="$1"   # l or r
+ws="$2"    # e-1 / e+1
+
+before="$(hyprctl -j activewindow | grep '"address"' | head -1)"
+
+hyprctl dispatch movefocus "$dir" > /dev/null
+
+after="$(hyprctl -j activewindow | grep '"address"' | head -1)"
+
+if [[ "$before" == "$after" ]]; then
+  hyprctl dispatch workspace "$ws" > /dev/null
+fi
