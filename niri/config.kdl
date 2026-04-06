@@ -27,7 +27,7 @@ input {
 
 layout {
   center-focused-column "on-overflow"
-  gaps 8
+  gaps 10
 
   border { off; }
 
