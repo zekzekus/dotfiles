@@ -29,5 +29,8 @@
     # LLM
     # claude-code
     ollama-cpu
+
+    # misc
+    mosh
   ];
 }

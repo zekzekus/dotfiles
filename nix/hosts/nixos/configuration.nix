@@ -325,7 +325,6 @@ in {
       gnumake
       home-manager
       ddcutil
-      mosh
     ];
   };
 
