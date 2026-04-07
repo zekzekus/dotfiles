@@ -204,7 +204,8 @@
                     "id": "Tray",
                     "pinned": [
                         "1Password",
-                        "nm-applet"
+                        "nm-applet",
+                        "tailscale"
                     ]
                 },
                 {
