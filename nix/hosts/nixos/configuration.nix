@@ -41,6 +41,15 @@ in {
         networkmanager-openvpn
       ];
     };
+    firewall = {
+      trustedInterfaces = ["tailscale0"];
+      allowedUDPPortRanges = [
+        {
+          from = 60000;
+          to = 60010;
+        } # mosh on all interfaces (UDP, stateless - safe)
+      ];
+    };
   };
 
   time.timeZone = "Europe/Istanbul";
@@ -123,6 +132,25 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
     '';
     tailscale.enable = true;
+    openssh = {
+      enable = true;
+      openFirewall = false; # only allow via Tailscale, not on LAN/WAN
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        X11Forwarding = false;
+        MaxAuthTries = 3;
+        ClientAliveInterval = 300;
+        ClientAliveCountMax = 2;
+      };
+      listenAddresses = [
+        {
+          addr = "0.0.0.0"; # will be restricted by firewall
+          port = 22;
+        }
+      ];
+    };
     xserver = {
       enable = true;
       xkb = {
@@ -297,6 +325,7 @@ in {
       gnumake
       home-manager
       ddcutil
+      mosh
     ];
   };
 
