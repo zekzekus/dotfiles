@@ -14,7 +14,6 @@
         droidcam-obs
       ];
     };
-
   };
 
   home.packages = with pkgs; [
