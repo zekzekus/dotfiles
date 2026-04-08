@@ -138,6 +138,7 @@
       modules =
         systemModules
         ++ [
+          ./platforms/darwin/configuration.nix
           ./hosts/${hostname}/configuration.nix
           home-manager.darwinModules.home-manager
           (mkHmModule host)
