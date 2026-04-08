@@ -6,6 +6,8 @@
 }: {
   programs.neovim = {
     enable = true;
+    withRuby = false;
+    withPython3 = false;
 
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
