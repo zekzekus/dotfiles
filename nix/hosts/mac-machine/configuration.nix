@@ -65,6 +65,7 @@
     casks = [
       "1password"
       "1password-cli"
+      "helium-browser"
       "zed"
       "raycast"
       "karabiner-elements"
