@@ -43,6 +43,8 @@ in {
     };
     firewall = {
       trustedInterfaces = ["tailscale0"];
+      allowedTCPPorts = [53317]; # LocalSend
+      allowedUDPPorts = [53317]; # LocalSend
       allowedUDPPortRanges = [
         {
           from = 60000;
