@@ -29,6 +29,7 @@
     # LLM
     # claude-code
     ollama-cpu
+    github-copilot-cli
 
     # misc
     mosh
