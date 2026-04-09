@@ -120,7 +120,6 @@
       };
 
       misc = {
-        vfr = true;
         disable_hyprland_logo = true;
         disable_xdg_env_checks = true;
       };
