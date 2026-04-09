@@ -64,7 +64,7 @@ window-rule {
   clip-to-geometry true
   open-maximized false
   default-column-width {
-    proportion 0.66667
+    proportion 0.75
   }
 }
 
