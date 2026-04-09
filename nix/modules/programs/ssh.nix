@@ -18,6 +18,7 @@ in {
     matchBlocks."*" = {
       extraOptions = {
         IdentityAgent = "\"${onePasswordSocketPath}\"";
+        AddKeysToAgent = "yes";
       };
     };
   };
