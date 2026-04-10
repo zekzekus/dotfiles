@@ -9,6 +9,7 @@
     ./modules/niri.nix
     ./modules/hyprland.nix
     # ./modules/hyprland-plugins.nix
+    ./modules/media.nix
     ./modules/rofi.nix
     ./modules/hyprlock.nix
     ./modules/noctalia-shell.nix

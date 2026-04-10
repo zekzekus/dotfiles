@@ -10,7 +10,6 @@
     ./git.nix
     ./jujutsu.nix
     ./mercurial.nix
-    ./mpv.nix
     ./neovim.nix
     ./nix-helper.nix
     ./nix-your-shell.nix
