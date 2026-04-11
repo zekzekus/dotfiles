@@ -46,7 +46,8 @@
       ruby-lsp
 
       # Python
-      pyright
+      ty
+      ruff
 
       # JavaScript/TypeScript
       typescript-language-server

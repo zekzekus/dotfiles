@@ -8,5 +8,7 @@ vim.lsp.enable({
   'rust_analyzer',
   'hls',
   'nil_ls',
-  'nixd'
+  'nixd',
+  'ty',
+  'ruff',
 })
