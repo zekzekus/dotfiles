@@ -33,5 +33,8 @@
 
     # misc
     mosh
+
+    # productivity
+    basalt
   ];
 }
