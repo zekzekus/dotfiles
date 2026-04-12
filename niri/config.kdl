@@ -133,6 +133,21 @@ window-rule {
   focus-ring { off; }
 }
 
+animations {
+  workspace-switch {
+    duration-ms 200
+    curve "ease-out-expo"
+  }
+  horizontal-view-movement {
+    duration-ms 200
+    curve "ease-out-expo"
+  }
+  window-movement {
+    duration-ms 200
+    curve "ease-out-expo"
+  }
+}
+
 binds {
   Mod+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
   Mod+V { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
