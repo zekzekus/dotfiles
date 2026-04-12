@@ -95,13 +95,16 @@
 
       animations = {
         enabled = true;
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        bezier = [
+          "myBezier, 0.05, 0.9, 0.1, 1.05"
+          "snappy, 0.2, 1.0, 0.3, 1.0"
+        ];
         animation = [
           "windows, 1, 7, myBezier"
           "windowsOut, 1, 7, default, popin 80%"
           "border, 1, 10, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
+          "workspaces, 1, 3, snappy, slide"
         ];
       };
 
