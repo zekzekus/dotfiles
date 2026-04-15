@@ -62,6 +62,15 @@
       autoUpdate = false;
       cleanup = "zap";
     };
+    taps = [
+      "d12frosted/emacs-plus"
+    ];
+    brews = [
+      {
+        name = "emacs-plus@30";
+        args = ["with-native-comp"];
+      }
+    ];
     casks = [
       "1password"
       "1password-cli"

@@ -36,5 +36,8 @@
 
     # productivity
     basalt
+
+    # common lisp
+    sbcl
   ];
 }

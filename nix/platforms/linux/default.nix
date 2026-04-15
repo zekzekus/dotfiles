@@ -20,5 +20,6 @@
     showmethekey
     droidcam
     cameractrls-gtk4
+    emacs-pgtk
   ];
 }
