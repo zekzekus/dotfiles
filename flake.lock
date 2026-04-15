@@ -387,6 +387,22 @@
         "type": "github"
       }
     },
+    "homebrew-emacs-plus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776227928,
+        "narHash": "sha256-OJsCP1BWuBzLFh5cYo7+oWFgQ5yuusPIyoEl8mqKuHQ=",
+        "owner": "d12frosted",
+        "repo": "homebrew-emacs-plus",
+        "rev": "cdc8687518dc35034a4d9800feac8dbd59e14544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "d12frosted",
+        "repo": "homebrew-emacs-plus",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -1052,6 +1068,7 @@
       "inputs": {
         "determinate": "determinate",
         "home-manager": "home-manager",
+        "homebrew-emacs-plus": "homebrew-emacs-plus",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

@@ -66,10 +66,7 @@
       "d12frosted/emacs-plus"
     ];
     brews = [
-      {
-        name = "emacs-plus@30";
-        args = ["with-native-comp"];
-      }
+      "emacs-plus@30"
     ];
     casks = [
       "1password"

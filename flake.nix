@@ -25,6 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-emacs-plus = {
+      url = "github:d12frosted/homebrew-emacs-plus";
+      flake = false;
+    };
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
@@ -59,6 +63,7 @@
     determinate,
     nix-darwin,
     nix-homebrew,
+    homebrew-emacs-plus,
     stylix,
     hyprland,
     hyprland-plugins,
@@ -144,6 +149,11 @@
         hostname = "mac-machine";
         systemModules = [
           nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew.taps = {
+              "d12frosted/homebrew-emacs-plus" = homebrew-emacs-plus;
+            };
+          }
         ];
       };
     };
