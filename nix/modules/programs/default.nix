@@ -31,6 +31,7 @@
     fd.enable = true;
     fzf.enable = true;
     gh.enable = true;
+    helix.enable = true;
     java.enable = true;
     jjui.enable = true;
     ripgrep.enable = true;

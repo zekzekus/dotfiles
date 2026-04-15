@@ -1,18 +1,27 @@
 _: {
-  programs.mpv = {
-    enable = true;
-    config = {
-      hwdec = "auto-safe";
-      vo = "gpu-next";
-      gpu-context = "wayland";
-      profile = "high-quality";
+  programs = {
+    mpv = {
+      enable = true;
+      config = {
+        hwdec = "auto-safe";
+        vo = "gpu-next";
+        gpu-context = "wayland";
+        profile = "high-quality";
+      };
+    };
+
+    imv.enable = true;
+
+    zathura = {
+      enable = true;
+      options = {
+        selection-clipboard = "clipboard";
+        recolor = true;
+      };
     };
   };
 
-  programs.imv.enable = true;
-
   xdg.configFile."mimeapps.list".force = true;
-
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -23,6 +32,7 @@ _: {
       "image/tiff" = "imv.desktop";
       "image/bmp" = "imv.desktop";
       "image/svg+xml" = "imv.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
     };
   };
 }
