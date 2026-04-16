@@ -327,6 +327,7 @@ in {
       gnumake
       home-manager
       ddcutil
+      docker-compose
     ];
   };
 
