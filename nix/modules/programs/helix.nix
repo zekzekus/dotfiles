@@ -131,7 +131,7 @@ _: {
       "ui.menu.scroll" = { bg = "#5D5D6F"; };
       "ui.linenr" = { fg = "#646476"; };
       "ui.linenr.selected" = { fg = "#DDD8BB"; modifiers = ["bold"]; };
-      "ui.gutter" = { fg = "#646476"; };
+      "ui.gutter" = { fg = "#646476"; bg = "#232330"; };
       "ui.gutter.selected" = { fg = "#DDD8BB"; modifiers = ["bold"]; };
       "ui.cursorline.primary" = { bg = "#2A2A37"; };
       "ui.cursorline.secondary" = { bg = "#272732"; };
