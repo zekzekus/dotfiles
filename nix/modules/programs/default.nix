@@ -8,6 +8,7 @@
     ./fish.nix
     ./ghostty.nix
     ./git.nix
+    ./helix.nix
     ./jujutsu.nix
     ./mercurial.nix
     ./neovim.nix
@@ -31,7 +32,6 @@
     fd.enable = true;
     fzf.enable = true;
     gh.enable = true;
-    helix.enable = true;
     java.enable = true;
     jjui.enable = true;
     ripgrep.enable = true;
