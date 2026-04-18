@@ -30,7 +30,7 @@
     claude-code
     github-copilot-cli
     ollama-cpu
-    github-copilot-cli
+    opencode
 
     # misc
     mosh
