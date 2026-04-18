@@ -27,7 +27,8 @@
     localsend
 
     # LLM
-    # claude-code
+    claude-code
+    github-copilot-cli
     ollama-cpu
     github-copilot-cli
 
