@@ -8,7 +8,7 @@ end
 
 local vim = vim
 
-vim.g.kanagawabones = {
+vim.g.neobones = {
   solid_line_nr = true,
   solid_float_border = true,
   italic_strings = false,
@@ -20,7 +20,7 @@ vim.g.vimbones = {
 }
 
 local function set_colorscheme()
-  local colorscheme = vim.o.background == 'dark' and 'kanagawabones' or 'vimbones'
+  local colorscheme = vim.o.background == 'dark' and 'neobones' or 'vimbones'
   vim.cmd('colorscheme ' .. colorscheme)
   heirline.reset_highlights()
 end
