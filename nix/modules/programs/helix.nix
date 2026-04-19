@@ -6,14 +6,13 @@ _: {
       editor = {
         color-modes = true;
         cursorline = true;
-        bufferline = "multiple";
         cursor-shape = {
           insert = "bar";
           normal = "block";
           select = "underline";
         };
         statusline = {
-          left = [ "mode" "version-control" "spacer" "spinner" ];
+          left = [ "mode" "spacer" "version-control" "spacer" "spinner" ];
           center = [ "file-name" "read-only-indicator" "file-modification-indicator" ];
           right = [ "diagnostics" "workspace-diagnostics" "separator" "file-type" "separator" "position" "position-percentage" ];
           separator = "│";
