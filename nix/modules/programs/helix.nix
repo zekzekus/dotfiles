@@ -25,8 +25,6 @@ _: {
       };
       keys.normal = {
         esc = ["collapse_selection" "keep_primary_selection"];
-        space.q.q = ":quit";
-        space.w = ":write";
       };
     };
     themes.neobones = {
