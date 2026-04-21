@@ -98,7 +98,6 @@
         "closest_bookmark(to)" = "heads(::to & bookmarks())";
         "immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()";
         "stack()" = "descendants(trunk()) & ::@";
-        "ahead_behind(x, y)" = "y..x | x..y | x | y:: | fork_point(x | y)";
       };
 
       git = {
@@ -113,7 +112,7 @@
         gut = ["rebase" "-d" "trunk()"];
 
         lstk = ["log" "-r" "stack()"];
-        ltb = ["log" "-r" "ahead_behind(trunk(), @)"];
+        ltb = ["log" "-r" "@..trunk() | trunk()..@ | trunk() | @:: | fork_point(trunk() | @)"];
 
         ll = ["log" "-T" "builtin_log_compact"];
         ld = ["log" "-T" "builtin_log_detailed"];
