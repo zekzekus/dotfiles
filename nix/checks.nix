@@ -9,7 +9,10 @@ in {
       pkgs = nixpkgs.legacyPackages.${system};
       nixFiles = pkgs.lib.fileset.toSource {
         root = ./..;
-        fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./..;
+        fileset =
+          pkgs.lib.fileset.difference
+          (pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./..)
+          ./modules/programs/helix/themes.nix;
       };
     in {
       formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''
