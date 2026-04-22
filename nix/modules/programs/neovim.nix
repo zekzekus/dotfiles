@@ -31,9 +31,6 @@
       nixd
       nixfmt
 
-      # Clojure
-      clojure-lsp
-
       # Go
       gopls
 

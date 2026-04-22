@@ -3,6 +3,7 @@
   home-manager,
   nix-darwin,
   overlays,
+  extraHomeSpecialArgs ? {},
 }: let
   defaultUsername = "zekus";
 
@@ -37,6 +38,8 @@
       FZF_ALT_C_COMMAND = "bfs -type d -nohidden";
 
       PNPM_HOME = "${homeDir}/.local/share/pnpm";
+
+      CLJ_CONFIG = "${homeDir}/.config/clojure";
 
       SSH_AUTH_SOCK = "${homeDir}/.1password/agent.sock";
       NH_FLAKE = dotfilesDir;
@@ -81,7 +84,7 @@
     inherit hostname system;
     home = {
       modules = allHomeModules;
-      specialArgs = {inherit common;} // homeSpecialArgs;
+      specialArgs = {inherit common;} // extraHomeSpecialArgs // homeSpecialArgs;
       inherit username;
     };
   };

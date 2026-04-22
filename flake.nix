@@ -53,6 +53,11 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    practicalli-clojure-cli-config = {
+      url = "github:practicalli/clojure-cli-config";
+      flake = false;
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
   };
 
@@ -68,6 +73,7 @@
     hyprland,
     hyprland-plugins,
     noctalia,
+    practicalli-clojure-cli-config,
     nix-flatpak,
     ...
   }: let
@@ -83,6 +89,7 @@
         nix-darwin
         overlays
         ;
+      extraHomeSpecialArgs = {inherit practicalli-clojure-cli-config;};
     };
 
     inherit (lib) mkNixosSystem mkDarwinSystem mkHomeConfiguration;

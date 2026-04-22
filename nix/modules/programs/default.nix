@@ -2,6 +2,7 @@
   imports = [
     ./atuin.nix
     ./carapace.nix
+    ./clojure.nix
     ./delta.nix
     ./difftastic.nix
     ./direnv.nix

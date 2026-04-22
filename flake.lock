@@ -374,11 +374,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776869996,
-        "narHash": "sha256-1OBvTrMpG3aVYkfRv3reM+vGWS5zQCUpuOZ1HCc46ig=",
+        "lastModified": 1776879051,
+        "narHash": "sha256-VygjmVGXoLLGg3DH65Kd0SN1gITk6V1Me3jwY0MVQfk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "afd5607108220437abc9d9568538fdda5347a6f8",
+        "rev": "f9d2b2da819d1428d75299582421371c1e99fc75",
         "type": "github"
       },
       "original": {
@@ -1041,6 +1041,22 @@
         "type": "github"
       }
     },
+    "practicalli-clojure-cli-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770301501,
+        "narHash": "sha256-wgZ7Rm1lP4imq0sSw0wjGnHJWcT1+y+SLtn52Jd+SBU=",
+        "owner": "practicalli",
+        "repo": "clojure-cli-config",
+        "rev": "4ebd243ac091fc6fd408c72d78bf5bbd5a48b2d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "practicalli",
+        "repo": "clojure-cli-config",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1078,6 +1094,7 @@
         "nixpkgs": "nixpkgs_5",
         "noctalia": "noctalia",
         "noctalia-qs": "noctalia-qs",
+        "practicalli-clojure-cli-config": "practicalli-clojure-cli-config",
         "stylix": "stylix"
       }
     },
