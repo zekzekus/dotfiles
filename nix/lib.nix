@@ -29,7 +29,7 @@
       ZEK_DEVEL_WORK_HOME = workHome;
       ZEK_DEVEL_PERSONAL_HOME = personalHome;
 
-      EDITOR = "hx";
+      EDITOR = "nvim";
       MANPAGER = "nvim +Man!";
 
       TMUX_FZF_LAUNCH_KEY = "o";
