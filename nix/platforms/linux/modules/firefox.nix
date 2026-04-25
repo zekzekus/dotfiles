@@ -1,6 +1,6 @@
 _: {
   programs.firefox = {
-    enable = true;
+    enable = false;
     profiles = {
       default = {
         id = 0;
