@@ -31,6 +31,14 @@ _: prev: {
       };
     }
   );
+  # Workaround: direnv's checkPhase hangs in the Nix sandbox on macOS
+  # (test/scenarios/* spawns shells / watches dirs that deadlock).
+  # Disable tests on Darwin until upstream fixes the test suite.
+  direnv = prev.direnv.overrideAttrs (_:
+    prev.lib.optionalAttrs prev.stdenv.isDarwin {
+      doCheck = false;
+      doInstallCheck = false;
+    });
   # Workaround for nixpkgs#510488: nushell tests env_shlvl_in_repl and
   # env_shlvl_in_exec_repl fail on Darwin due to sandbox permissions.
   # The package uses a custom checkPhase, so we must override it directly.
