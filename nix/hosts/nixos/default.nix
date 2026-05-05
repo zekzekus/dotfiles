@@ -26,6 +26,13 @@
     network-manager-applet.enable = true;
     cliphist.enable = true;
 
+    udiskie = {
+      enable = true;
+      automount = true;
+      notify = true;
+      tray = "auto";
+    };
+
     hypridle = {
       enable = true;
       settings = {
