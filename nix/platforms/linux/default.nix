@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./modules/firefox.nix
+    ./modules/radicle.nix
     ./modules/zed-editor.nix
   ];
 
