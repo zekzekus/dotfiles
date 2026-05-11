@@ -19,6 +19,10 @@
       push = {
         default = "current";
       };
+      alias = {
+        ctags = "!.git/hooks/ctags";
+        ctagse = "!.git/hooks/ctagse";
+      };
     };
   };
 }
