@@ -35,3 +35,4 @@ nvim/lazy-lock.json
 .lsp/
 /.DS_Store
 result
+.claude/settings.local.json
