@@ -22,6 +22,19 @@
       "video/webm" = "org.kde.haruna.desktop";
       "video/quicktime" = "org.kde.haruna.desktop";
       "video/x-msvideo" = "org.kde.haruna.desktop";
+
+      "text/html" = "helium.desktop";
+      "x-scheme-handler/http" = "helium.desktop";
+      "x-scheme-handler/https" = "helium.desktop";
+      "x-scheme-handler/about" = "helium.desktop";
+      "x-scheme-handler/unknown" = "helium.desktop";
+      "x-scheme-handler/chrome" = "helium.desktop";
+      "application/xhtml+xml" = "helium.desktop";
+      "application/x-extension-htm" = "helium.desktop";
+      "application/x-extension-html" = "helium.desktop";
+      "application/x-extension-shtml" = "helium.desktop";
+      "application/x-extension-xhtml" = "helium.desktop";
+      "application/x-extension-xht" = "helium.desktop";
     };
   };
 }
