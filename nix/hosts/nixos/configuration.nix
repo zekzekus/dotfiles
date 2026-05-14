@@ -232,6 +232,7 @@ in {
       enable = true;
     };
     gpu-screen-recorder.enable = true;
+    nix-ld.enable = true;
     steam = {
       enable = true;
       remotePlay.openFirewall = true;

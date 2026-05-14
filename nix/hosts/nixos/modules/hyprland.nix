@@ -7,6 +7,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
+    configType = "hyprlang";
     package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     settings = {
       "$mod" = "SUPER";
