@@ -42,7 +42,16 @@ in {
         statix
         nixd
         nil
+        # entroly (https://github.com/juyterman1000/entroly):
+        # `uv tool install entroly` then `entroly go`
+        python3
+        uv
       ];
+
+      shellHook = ''
+        export UV_PYTHON=${pkgs.python3}/bin/python3
+        export PATH="$HOME/.local/bin:$PATH"
+      '';
     };
   });
 }
