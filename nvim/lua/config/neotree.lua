@@ -6,6 +6,29 @@ if not neotree then
   return
 end
 
+-- Workaround: Neovim 0.13+ removed the `BufModifiedSet` autocmd event
+-- (use `OptionSet` with pattern "modified" instead). Neo-tree still
+-- registers `BufModifiedSet`, which causes an error on first open.
+-- Translate it transparently before calling setup.
+local nt_events = prequire('neo-tree.events')
+if nt_events and nt_events.define_autocmd_event then
+  local original_define = nt_events.define_autocmd_event
+  nt_events.define_autocmd_event = function(event_name, autocmds, ...)
+    if type(autocmds) == 'table' then
+      local patched = {}
+      for _, autocmd in ipairs(autocmds) do
+        if autocmd == 'BufModifiedSet' then
+          table.insert(patched, 'OptionSet modified')
+        else
+          table.insert(patched, autocmd)
+        end
+      end
+      autocmds = patched
+    end
+    return original_define(event_name, autocmds, ...)
+  end
+end
+
 neotree.setup({
   close_if_last_window = false,
   popup_border_style = 'rounded',
