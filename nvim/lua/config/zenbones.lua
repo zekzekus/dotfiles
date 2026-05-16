@@ -30,4 +30,16 @@ vim.api.nvim_create_autocmd('OptionSet', {
   callback = set_colorscheme,
 })
 
+-- Make parens/brackets subtler in lisp-family files (Clojure, etc.).
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'clojure', 'lisp', 'scheme', 'fennel', 'racket' },
+  callback = function()
+    local subtle = vim.o.background == 'dark' and '#5c636b' or '#a89a88'
+    vim.api.nvim_set_hl(0, '@punctuation.bracket', { fg = subtle })
+    vim.api.nvim_set_hl(0, 'clojureParen', { fg = subtle })
+    vim.api.nvim_set_hl(0, 'lispParen', { fg = subtle })
+    vim.api.nvim_set_hl(0, 'schemeParen', { fg = subtle })
+  end,
+})
+
 set_colorscheme()
