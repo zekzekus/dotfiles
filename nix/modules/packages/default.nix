@@ -15,7 +15,8 @@
     # development tools
     devenv
 
-    # becuase i want amp to be at the edge
+    (callPackage ./amp.nix {})
+
     nodejs_24
     pnpm
 

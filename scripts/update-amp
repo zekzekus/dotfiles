@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Pin nix/modules/packages/amp.nix to amp's latest published binary release.
+# Fetches cli-version.txt and the four per-platform SHA256s, rewrites the file
+# in place. Run via `make update-amp`.
+
+set -euo pipefail
+
+nix_file="$(cd "$(dirname "$0")/.." && pwd)/nix/modules/packages/amp.nix"
+
+if [ ! -f "$nix_file" ]; then
+  echo "update-amp: $nix_file not found" >&2
+  exit 1
+fi
+
+version=$(curl -fsSL https://static.ampcode.com/cli/cli-version.txt)
+echo "amp version: $version"
+
+h_linux_x64=$(curl -fsSL "https://static.ampcode.com/cli/${version}/linux-x64-amp.sha256")
+h_linux_arm64=$(curl -fsSL "https://static.ampcode.com/cli/${version}/linux-arm64-amp.sha256")
+h_darwin_x64=$(curl -fsSL "https://static.ampcode.com/cli/${version}/darwin-x64-amp.sha256")
+h_darwin_arm64=$(curl -fsSL "https://static.ampcode.com/cli/${version}/darwin-arm64-amp.sha256")
+
+echo "  linux-x64    $h_linux_x64"
+echo "  linux-arm64  $h_linux_arm64"
+echo "  darwin-x64   $h_darwin_x64"
+echo "  darwin-arm64 $h_darwin_arm64"
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+# Single awk pass: rewrite the first `version = "..."` and rewrite the sha256
+# line that follows each `platform = "<key>"` line.
+awk \
+  -v new_ver="$version" \
+  -v lx="$h_linux_x64" \
+  -v la="$h_linux_arm64" \
+  -v dx="$h_darwin_x64" \
+  -v da="$h_darwin_arm64" '
+  BEGIN { cur = "" }
+  !ver_done && /version = "/ {
+    sub(/"[^"]*"/, "\"" new_ver "\"")
+    ver_done = 1
+  }
+  /platform = "linux-x64"/    { cur = lx }
+  /platform = "linux-arm64"/  { cur = la }
+  /platform = "darwin-x64"/   { cur = dx }
+  /platform = "darwin-arm64"/ { cur = da }
+  cur != "" && /sha256 = "/ {
+    sub(/"[a-f0-9]+"/, "\"" cur "\"")
+    cur = ""
+  }
+  { print }
+' "$nix_file" > "$tmp"
+mv "$tmp" "$nix_file"
+
+echo "Wrote $nix_file"
