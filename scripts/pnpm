@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Shim that injects `--allow-build=@ampcode/cli` for global installs touching
+# @ampcode/cli. pnpm 11 dropped persistent build-script approval for global
+# packages — only the CLI flag works. `amp update` calls `pnpm add -g ...`
+# without that flag, so without this shim every update leaves amp without its
+# native binary.
+
+self="$(realpath "$0")"
+real=""
+IFS=:
+for d in $PATH; do
+  c="$d/pnpm"
+  [ -x "$c" ] || continue
+  [ "$(realpath "$c" 2>/dev/null)" = "$self" ] && continue
+  real="$c"
+  break
+done
+unset IFS
+
+if [ -z "$real" ]; then
+  echo "pnpm-shim: no real pnpm found on PATH" >&2
+  exit 127
+fi
+
+inject_allow_build=0
+case "${1-}" in
+  add|install|update)
+    has_global=0
+    has_amp=0
+    for arg in "$@"; do
+      case "$arg" in
+        -g|--global) has_global=1 ;;
+        @ampcode/cli|@ampcode/cli@*) has_amp=1 ;;
+      esac
+    done
+    [ "$has_global" = 1 ] && [ "$has_amp" = 1 ] && inject_allow_build=1
+    ;;
+esac
+
+if [ "$inject_allow_build" = 1 ]; then
+  exec "$real" "$1" --allow-build=@ampcode/cli "${@:2}"
+fi
+exec "$real" "$@"

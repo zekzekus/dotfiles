@@ -17,7 +17,6 @@
     ./nix-your-shell.nix
     ./nushell.nix
     ./obsidian.nix
-    ./pnpm.nix
     ./starship.nix
     ./tmux.nix
     ./zoxide.nix

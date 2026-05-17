@@ -13,5 +13,7 @@
     "bin/gp".source = "${common.dotfilesDir}/scripts/tmuxproject.sh";
 
     "bin/yy".source = "${common.dotfilesDir}/scripts/yaziproject.sh";
+
+    "bin/pnpm".source = "${common.dotfilesDir}/scripts/pnpm";
   };
 }
