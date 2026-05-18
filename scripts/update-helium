@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Pin nix/modules/packages/helium.nix to the latest helium-linux release.
+# Looks up the newest tag on the imputnet/helium-linux repo and replaces both
+# the version line and the AppImage SRI hash in place. Run via
+# `make update-helium`.
+
+set -euo pipefail
+
+nix_file="$(cd "$(dirname "$0")/.." && pwd)/nix/modules/packages/helium.nix"
+
+if [ ! -f "$nix_file" ]; then
+  echo "update-helium: $nix_file not found" >&2
+  exit 1
+fi
+
+version=$(
+  curl -fsSL https://api.github.com/repos/imputnet/helium-linux/releases/latest \
+    | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p' \
+    | head -1
+)
+if [ -z "$version" ]; then
+  echo "update-helium: could not parse tag_name from GitHub API" >&2
+  exit 1
+fi
+echo "helium version: $version"
+
+url="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64.AppImage"
+echo "  fetching $url"
+
+hex=$(nix-prefetch-url --type sha256 "$url" 2>/dev/null)
+sri=$(nix hash convert --to sri --hash-algo sha256 "$hex")
+echo "  hash: $sri"
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+awk -v new_ver="$version" -v new_hash="$sri" '
+  !ver_done && /version = "/ {
+    sub(/"[^"]*"/, "\"" new_ver "\"")
+    ver_done = 1
+  }
+  !hash_done && /hash = "sha256-/ {
+    sub(/"sha256-[^"]*"/, "\"" new_hash "\"")
+    hash_done = 1
+  }
+  { print }
+' "$nix_file" > "$tmp"
+mv "$tmp" "$nix_file"
+
+echo "Wrote $nix_file"
