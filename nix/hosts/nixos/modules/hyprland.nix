@@ -159,8 +159,19 @@
         "$mod SHIFT, TAB, workspace, e-1"
         "$mod, B, exec, uwsm-app -- $browser"
         "$mod, Q, killactive"
+        "$mod CTRL, R, exec, ${common.dotfilesDir}/scripts/cycle-layout"
         "$mod, E, exec, uwsm-app -- nemo"
         "$mod SHIFT CTRL, M, exit"
+
+        # Scrolling-layout column controls (niri-parity)
+        "$mod, R, layoutmsg, colresize +conf"
+        "$mod SHIFT, R, layoutmsg, colresize -conf"
+        "$mod, F, fullscreen, 1"
+        "$mod, minus, layoutmsg, colresize -0.1"
+        "$mod, equal, layoutmsg, colresize +0.1"
+        "$mod SHIFT, minus, resizeactive, 0 -50"
+        "$mod SHIFT, equal, resizeactive, 0 50"
+        "ALT, P, layoutmsg, consume_or_expel next"
 
         "$mod SHIFT CTRL, 3, exec, ${common.dotfilesDir}/scripts/screenshot-full"
         "$mod SHIFT CTRL, 4, exec, ${common.dotfilesDir}/scripts/screenshot-area"
@@ -177,7 +188,6 @@
         "$mod SHIFT, J, swapwindow, d"
 
         "ALT, J, layoutmsg, togglesplit"
-        "ALT, P, pseudo"
         "ALT, V, togglefloating"
 
         "$mod, 1, workspace, 1"
@@ -194,6 +204,12 @@
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+        # Horizontal scroll = focus column left/right (scrolling layout)
+        "$mod, mouse_left, layoutmsg, focus l"
+        "$mod, mouse_right, layoutmsg, focus r"
+        "$mod SHIFT, mouse_down, layoutmsg, focus r"
+        "$mod SHIFT, mouse_up, layoutmsg, focus l"
       ];
 
       bindm = [

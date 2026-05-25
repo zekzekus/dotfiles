@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Cycle the tiling layout for the current workspace.
+# Built-in Hyprland layouts: master, dwindle, scrolling.
+
+set -euo pipefail
+
+layouts=(master dwindle scrolling)
+
+active="$(hyprctl -j activeworkspace)"
+ws_id="$(echo "$active" | grep '"id"' | head -1 | grep -o '[-0-9]*')"
+current="$(echo "$active" | grep '"tiledLayout"' | head -1 | sed -E 's/.*"tiledLayout": *"([^"]*)".*/\1/')"
+
+next="${layouts[0]}"
+for i in "${!layouts[@]}"; do
+  if [[ "${layouts[$i]}" == "$current" ]]; then
+    next="${layouts[$(( (i + 1) % ${#layouts[@]} ))]}"
+    break
+  fi
+done
+
+hyprctl keyword workspace "$ws_id,layout:$next" > /dev/null
+
+if command -v notify-send > /dev/null; then
+  notify-send -t 1500 "Hyprland" "Layout: $next"
+fi
