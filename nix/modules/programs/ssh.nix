@@ -15,11 +15,9 @@ in {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*" = {
-      extraOptions = {
-        IdentityAgent = "\"${onePasswordSocketPath}\"";
-        AddKeysToAgent = "yes";
-      };
+    settings."*" = {
+      IdentityAgent = "\"${onePasswordSocketPath}\"";
+      AddKeysToAgent = "yes";
     };
   };
 
