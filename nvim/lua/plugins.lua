@@ -25,6 +25,17 @@ return {
   { 'SmiteshP/nvim-navic',            dependencies = 'neovim/nvim-lspconfig', },
 
   {
+    'folke/zen-mode.nvim',
+    opts = {
+      window = {
+        options = {
+          wrap = true,
+        },
+      },
+    },
+  },
+
+  {
     'echasnovski/mini.nvim',
     config = function() require('config.mini') end,
   },
@@ -83,7 +94,12 @@ return {
         nerd_font_variant = 'mono'
       },
 
-      completion = { documentation = { auto_show = false } },
+      completion = {
+        menu = { auto_show = false },
+        documentation = {
+          auto_show = false
+        }
+      },
 
       enabled = function()
         local disabled_filetypes = { gitcommit = true, jjdescription = true }
