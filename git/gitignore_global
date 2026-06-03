@@ -5,3 +5,5 @@ acme.dump
 Session.vim
 .ignore
 .nvimlog
+
+**/.claude/settings.local.json
