@@ -1,4 +1,4 @@
-.PHONY: help home home-build darwin darwin-build nixos nixos-build update update-amp update-helium update-pinned check fmt clean
+.PHONY: help home home-build darwin darwin-build nixos nixos-build update update-amp update-helium update-nvim update-pinned check fmt clean
 
 USER := $(shell whoami)
 HOST := $(shell hostname -s)
@@ -18,9 +18,10 @@ help:
 	@echo "  make darwin-build  - Build nix-darwin system without switching"
 	@echo "  make nixos         - Rebuild NixOS system (requires NixOS)"
 	@echo "  make nixos-build   - Build NixOS system without switching"
-	@echo "  make update        - Update flake inputs + all pinned versions (amp, helium)"
+	@echo "  make update        - Update flake inputs (except neovim-nightly) + pinned versions"
 	@echo "  make update-amp    - Pin amp.nix to latest published amp version"
 	@echo "  make update-helium - Pin helium.nix to latest helium-linux release"
+	@echo "  make update-nvim   - Bump neovim-nightly-overlay to latest nightly"
 	@echo "  make update-pinned - Run all pinned-version updaters (amp + helium)"
 	@echo "  make check         - Run all checks (format, deadnix, statix)"
 	@echo "  make fmt           - Format all Nix files with alejandra"
@@ -72,14 +73,20 @@ nixos-build:
 	fi
 
 update: update-pinned
-	@echo "Updating flake inputs..."
-	nix flake update
+	@echo "Updating flake inputs (excluding neovim-nightly-overlay)..."
+	@inputs=$$(nix eval --raw --impure --expr 'let i = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.root.inputs; in builtins.concatStringsSep " " (builtins.filter (n: n != "neovim-nightly-overlay") (builtins.attrNames i))'); \
+	echo "  inputs: $$inputs"; \
+	nix flake update $$inputs
 
 update-amp:
 	@./scripts/update-amp
 
 update-helium:
 	@./scripts/update-helium
+
+update-nvim:
+	@echo "Bumping neovim-nightly-overlay to latest nightly..."
+	nix flake update neovim-nightly-overlay
 
 update-pinned: update-amp update-helium
 
