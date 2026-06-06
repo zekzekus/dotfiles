@@ -148,7 +148,7 @@ make clean         # Clean build artifacts
 ## What's Included
 
 **Shared** *(all platforms)*
-- Neovim (nightly) with Treesitter grammars, LSPs for Lua, Nix, Go, Rust, Python, TypeScript, Ruby, Clojure, Haskell
+- Neovim (nixpkgs unstable) with Treesitter grammars, LSPs for Lua, Nix, Go, Rust, Python, TypeScript, Ruby, Clojure, Haskell
 - Ghostty terminal
 - Fish & Nushell with Starship prompt, Carapace completions
 - tmux with tmuxinator
@@ -187,7 +187,6 @@ make clean         # Clean build artifacts
 | `home-manager` | User environment management |
 | `nix-darwin` | macOS system management |
 | `nix-homebrew` | Declarative Homebrew on macOS |
-| `neovim-nightly-overlay` | Bleeding-edge Neovim |
 | `hyprland` | Wayland compositor |
 | `hyprland-plugins` | Hyprland extensions |
 | `noctalia` | Desktop shell for Hyprland |

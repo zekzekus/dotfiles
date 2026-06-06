@@ -144,7 +144,7 @@ The builder functions in `lib.nix` automatically:
 - Import `hosts/<hostname>/default.nix` for host-specific Home Manager config
 - Import `hosts/<hostname>/configuration.nix` for system-level config (NixOS/darwin)
 - Set up the `common` attribute set with username, paths, and directories
-- Configure nixpkgs overlays (neovim-nightly)
+- Configure nixpkgs overlays (see `nix/temporary-overlays.nix`)
 
 ## Module Structure
 

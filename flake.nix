@@ -51,7 +51,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # Neovim comes from nixpkgs (nixos-unstable), which is recent enough.
+    # To switch to bleeding-edge nightly builds, re-enable the three
+    # `neovim-nightly-overlay` lines marked below (this input, the outputs
+    # function argument, and the overlays list entry).
+    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     practicalli-clojure-cli-config = {
       url = "github:practicalli/clojure-cli-config";
@@ -64,7 +68,7 @@
   outputs = {
     nixpkgs,
     home-manager,
-    neovim-nightly-overlay,
+    # neovim-nightly-overlay, # re-enable for nightly neovim (see inputs above)
     determinate,
     nix-darwin,
     nix-homebrew,
@@ -78,7 +82,7 @@
     ...
   }: let
     overlays = [
-      neovim-nightly-overlay.overlays.default
+      # neovim-nightly-overlay.overlays.default # re-enable for nightly neovim (see inputs above)
       (import ./nix/temporary-overlays.nix)
     ];
 
