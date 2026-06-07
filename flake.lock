@@ -369,11 +369,11 @@
     "homebrew-emacs-plus": {
       "flake": false,
       "locked": {
-        "lastModified": 1780646521,
-        "narHash": "sha256-FXAgYGiy9hxQ1xgU1mheho5u2HCuLvgrybU+nu9aDKc=",
+        "lastModified": 1780829914,
+        "narHash": "sha256-8A3473bwlANyEInhM3F2Mj+kZRPRdQiEVBB/EmIXbLk=",
         "owner": "d12frosted",
         "repo": "homebrew-emacs-plus",
-        "rev": "0df9688bb0f6b8e05585a5e8cdc82e0b14fb1921",
+        "rev": "714f6b0c443012281ad055947e2c96ae3761e0e1",
         "type": "github"
       },
       "original": {
