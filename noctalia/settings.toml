@@ -1,0 +1,25 @@
+[bar.default]
+margin_ends = 10
+thickness = 40
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1280.0
+    cy = 1317.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "login_box"
+
+[theme]
+builtin = "Kanagawa"

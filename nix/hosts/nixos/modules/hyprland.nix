@@ -62,9 +62,9 @@
       ];
 
       layerrule = [
-        "blur true, match:namespace ^noctalia-background-.*$"
-        "blur_popups true, match:namespace ^noctalia-background-.*$"
-        "ignore_alpha 0.5, match:namespace ^noctalia-background-.*$"
+        "blur true, match:namespace ^noctalia-backdrop$"
+        "blur_popups true, match:namespace ^noctalia-backdrop$"
+        "ignore_alpha 0.5, match:namespace ^noctalia-backdrop$"
       ];
 
       general = {
@@ -132,27 +132,27 @@
       };
 
       bind = [
-        "$mod, Space, exec, noctalia-shell ipc call launcher toggle"
-        "$mod, V, exec, noctalia-shell ipc call launcher clipboard"
-        "$mod SHIFT CTRL, L, exec, noctalia-shell ipc call lockScreen lock"
+        "$mod, Space, exec, noctalia msg panel-toggle launcher"
+        "$mod, V, exec, noctalia msg panel-toggle clipboard"
+        "$mod SHIFT CTRL, L, exec, noctalia msg session lock"
 
-        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
-        ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
-        ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
+        ", XF86AudioMute, exec, noctalia msg volume-mute"
+        ", XF86AudioLowerVolume, exec, noctalia msg volume-down"
+        ", XF86AudioRaiseVolume, exec, noctalia msg volume-up"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
-        ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
-        ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
+        ", XF86MonBrightnessUp, exec, noctalia msg brightness-up"
+        ", XF86MonBrightnessDown, exec, noctalia msg brightness-down"
 
-        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
-        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
-        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
+        ", XF86AudioPlay, exec, noctalia msg media toggle"
+        ", XF86AudioNext, exec, noctalia msg media next"
+        ", XF86AudioPrev, exec, noctalia msg media previous"
 
-        "$mod SHIFT, D, exec, noctalia-shell ipc call darkMode toggle"
-        "$mod SHIFT, W, exec, noctalia-shell ipc call wallpaper toggle"
-        "$mod SHIFT, C, exec, noctalia-shell ipc call controlCenter toggle"
-        "$mod SHIFT, S, exec, noctalia-shell ipc call settings toggle"
-        "$mod SHIFT, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
+        "$mod SHIFT, D, exec, noctalia msg theme-mode-toggle"
+        "$mod SHIFT, W, exec, noctalia msg panel-toggle wallpaper"
+        "$mod SHIFT, C, exec, noctalia msg panel-toggle control-center"
+        "$mod SHIFT, S, exec, noctalia msg settings-toggle"
+        "$mod SHIFT, Escape, exec, noctalia msg panel-toggle session"
 
         "$mod, Return, exec, uwsm-app -- $terminal +new-window"
         "$mod, TAB, workspace, e+1"

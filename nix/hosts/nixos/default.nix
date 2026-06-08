@@ -38,14 +38,14 @@
       enable = true;
       settings = {
         general = {
-          lock_cmd = "noctalia-shell ipc call lockScreen lock";
-          before_sleep_cmd = "noctalia-shell ipc call lockScreen lock";
+          lock_cmd = "noctalia msg session lock";
+          before_sleep_cmd = "noctalia msg session lock";
           after_sleep_cmd = "${common.dotfilesDir}/scripts/dpms-on";
         };
         listener = [
           {
             timeout = 300;
-            on-timeout = "noctalia-shell ipc call lockScreen lock";
+            on-timeout = "noctalia msg session lock";
           }
           {
             timeout = 600;
