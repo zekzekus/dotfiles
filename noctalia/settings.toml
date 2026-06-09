@@ -4,6 +4,9 @@ margin_ends = 10
 start = [ "launcher", "workspaces" ]
 thickness = 40
 
+[brightness]
+enable_ddcutil = true
+
 [location]
 auto_locate = true
 
@@ -29,6 +32,12 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
 [nightlight]
 enabled = true
 
+[osd]
+position = "top_right"
+
+[shell.panel]
+launcher_categories = false
+
 [theme]
 builtin = "Kanagawa"
 
@@ -36,14 +45,19 @@ builtin = "Kanagawa"
 directory = "~/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq1j2.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-oggvw9.jpg"
 
     [wallpaper.last]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq1j2.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-oggvw9.jpg"
 
     [wallpaper.monitors.HDMI-A-2]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq1j2.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-oggvw9.jpg"
+
+[widget.launcher]
+glyph = "apps"
+scale = 1.25
 
 [widget.workspaces]
+display = "none"
 max_label_chars = 2
 scale = 1.25
