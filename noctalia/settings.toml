@@ -1,6 +1,11 @@
 [bar.default]
+end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "control-center", "session" ]
 margin_ends = 10
+start = [ "launcher", "workspaces" ]
 thickness = 40
+
+[location]
+auto_locate = true
 
 [lockscreen_widgets]
 enabled = false
@@ -21,6 +26,9 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
     rotation = 0.0
     type = "login_box"
 
+[nightlight]
+enabled = true
+
 [theme]
 builtin = "Kanagawa"
 
@@ -28,10 +36,14 @@ builtin = "Kanagawa"
 directory = "~/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-xee3wz.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq1j2.jpg"
 
     [wallpaper.last]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-xee3wz.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq1j2.jpg"
 
     [wallpaper.monitors.HDMI-A-2]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-xee3wz.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq1j2.jpg"
+
+[widget.workspaces]
+max_label_chars = 2
+scale = 1.25
