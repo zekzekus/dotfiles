@@ -8,7 +8,7 @@
     ./stylix.nix
     ./modules/niri.nix
     ./modules/hyprland.nix
-    # ./modules/hyprland-plugins.nix
+    # ./modules/hyprland-plugins.nix  # disabled: hyprexpo was removed from hyprwm/hyprland-plugins (unmaintained)
     ./modules/media.nix
     ./modules/rofi.nix
     ./modules/hyprlock.nix

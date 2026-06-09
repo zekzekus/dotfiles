@@ -23,12 +23,18 @@
         repeat_rate = 60;
         repeat_delay = 300;
         numlock_by_default = true;
-        sensitivity = 0.90;
+        sensitivity = 0.7; # tuned to approximate niri's cursor feel (range -1..1; was 0.9, too fast)
         natural_scroll = true;
         follow_mouse = 1;
         touchpad = {
           natural_scroll = true;
           scroll_factor = 0.4;
+          # Apple Magic Trackpad: tap/click behaviour
+          "tap-to-click" = true; # 1-finger tap = left click
+          tap_button_map = "lrm"; # 1/2/3-finger tap = left/right/middle
+          clickfinger_behavior = true; # physical press: 1/2/3 fingers = left/right/middle
+          "tap-and-drag" = true; # tap-and-drag to select / move
+          drag_lock = false;
         };
       };
 
@@ -215,6 +221,15 @@
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+
+      # Magic Trackpad gestures (format: fingers, direction, action[, args]).
+      # Hyprland-internal scheme (workspaces are a horizontal list here):
+      #   3-finger horizontal -> switch workspaces
+      #   3-finger vertical   -> no-op (unmapped)
+      #   4-finger            -> overview (unmapped; hyprexpo was removed upstream)
+      gesture = [
+        "3, horizontal, workspace"
       ];
     };
     extraConfig = ''

@@ -1,6 +1,8 @@
 [bar.default]
+capsule = true
 end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "control-center", "session" ]
 margin_ends = 10
+scale = 1.2500000111758709
 start = [ "launcher", "workspaces" ]
 thickness = 40
 
@@ -11,12 +13,18 @@ enable_ddcutil = true
 auto_locate = true
 
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
+widget_order = [
+    "lockscreen-login-box@HDMI-A-2",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003",
+    "lockscreen-widget-0000000000000004"
+]
 
     [lockscreen_widgets.grid]
-    cell_size = 16
+    cell_size = 32
     major_interval = 4
     visible = true
 
@@ -28,6 +36,42 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
     output = "HDMI-A-2"
     rotation = 0.0
     type = "login_box"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1357.5
+    cy = 382.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "clock"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1132.0
+    cy = 382.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "weather"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1280.0
+    cy = 720.0
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "sysmon"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 755.0
+    cy = 409.5
+    output = "HDMI-A-2"
+    rotation = 0.0
+    type = "media_player"
 
 [nightlight]
 enabled = true
@@ -45,19 +89,17 @@ builtin = "Kanagawa"
 directory = "~/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-oggvw9.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq3kq.jpg"
 
     [wallpaper.last]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-oggvw9.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq3kq.jpg"
 
     [wallpaper.monitors.HDMI-A-2]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-oggvw9.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq3kq.jpg"
 
 [widget.launcher]
 glyph = "apps"
-scale = 1.25
 
 [widget.workspaces]
 display = "none"
 max_label_chars = 2
-scale = 1.25

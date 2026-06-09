@@ -19,7 +19,16 @@ input {
   mouse {
     natural-scroll
   }
+  // Apple Magic Trackpad. Tap/click behaviour is configurable below; the
+  // multi-finger swipe gestures are HARDCODED in niri and cannot be remapped:
+  //   3-finger swipe up/down    -> switch workspaces
+  //   3-finger swipe left/right -> move view horizontally (between columns)
+  //   4-finger swipe up/down    -> toggle the overview
   touchpad {
+    tap                                 // tap-to-click: 1-finger tap = left click
+    tap-button-map "left-right-middle"  // 2-finger tap = right click, 3-finger tap = middle
+    click-method "clickfinger"          // physical press: 1/2/3 fingers = left/right/middle
+    drag true                           // tap-and-drag to select / move
     natural-scroll
     scroll-factor 0.4
   }

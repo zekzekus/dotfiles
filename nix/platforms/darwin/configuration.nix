@@ -32,10 +32,32 @@
         autohide = true;
         wvous-tl-corner = 2;
       };
+      # Apple Magic Trackpad, kept consistent with niri's hardcoded scheme:
+      #   tap = click, 2-finger = right click, 1-finger tap-drag = select/move,
+      #   3-finger swipe = navigation (Spaces left/right, Mission Control up,
+      #   App Exposé down). macOS groups these swipes under one finger count, so
+      #   niri's "3-finger nav + 4-finger overview" split collapses to 3-finger.
+      # Takes effect after a logout or `killall Dock`.
       trackpad = {
-        Clicking = true;
-        TrackpadThreeFingerDrag = true;
+        Clicking = true; # tap-to-click: 1-finger tap = left click
+        Dragging = true; # 1-finger tap-and-drag to select / move (matches niri `drag`)
+        TrackpadRightClick = true; # 2-finger tap/click = right click
+        TrackpadThreeFingerDrag = false; # off, so 3 fingers are free for swipe navigation
+        TrackpadThreeFingerVertSwipeGesture = 2; # 3-finger up = Mission Control (overview), down = App Exposé
+        TrackpadThreeFingerHorizSwipeGesture = 2; # 3-finger left/right = switch Spaces (workspaces)
+        TrackpadFourFingerVertSwipeGesture = 0; # disable 4-finger to avoid double-triggering
+        TrackpadFourFingerHorizSwipeGesture = 0;
       };
+    };
+
+    defaults.CustomUserPreferences = {
+      # No typed dock option exists for this; the swipe-up = Mission Control
+      # gesture needs it enabled in the dock domain.
+      "com.apple.dock".showMissionControlGestureEnabled = true;
+      # Trackpad tracking speed. macOS uses a different acceleration model than
+      # libinput, so this can't match niri/Hyprland exactly; this is a moderate
+      # value approximating niri's default feel (tune in System Settings slider).
+      NSGlobalDomain."com.apple.trackpad.scaling" = 0.875;
     };
   };
 
