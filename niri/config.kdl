@@ -29,6 +29,7 @@ input {
     tap-button-map "left-right-middle"  // 2-finger tap = right click, 3-finger tap = middle
     click-method "clickfinger"          // physical press: 1/2/3 fingers = left/right/middle
     drag true                           // tap-and-drag to select / move
+    accel-speed 0.6                     // speed up cursor to roughly match Hyprland (range -1..1)
     natural-scroll
     scroll-factor 0.4
   }

@@ -2,7 +2,7 @@
 capsule = true
 end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "control-center", "session" ]
 margin_ends = 10
-scale = 1.2500000111758709
+scale = 1.1500000096857548
 start = [ "launcher", "workspaces" ]
 thickness = 40
 
