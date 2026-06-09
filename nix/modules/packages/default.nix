@@ -30,7 +30,7 @@
     # LLM
     claude-code
     github-copilot-cli
-    ollama-cpu
+    # ollama-cpu
     opencode
 
     # misc
