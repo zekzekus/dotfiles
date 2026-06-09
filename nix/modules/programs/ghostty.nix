@@ -28,7 +28,6 @@
       maximize = false;
 
       # macOS-specific
-      auto-update-channel = lib.mkIf pkgs.stdenv.isDarwin "tip";
       macos-titlebar-style = lib.mkIf pkgs.stdenv.isDarwin "tabs";
       macos-option-as-alt = lib.mkIf pkgs.stdenv.isDarwin "left";
       macos-shortcuts = lib.mkIf pkgs.stdenv.isDarwin "allow";
