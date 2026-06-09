@@ -149,27 +149,27 @@ animations {
 }
 
 binds {
-  Mod+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-  Mod+V { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
-  Mod+Shift+Ctrl+L { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+  Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+  Mod+V { spawn-sh "noctalia msg panel-toggle clipboard"; }
+  Mod+Shift+Ctrl+L { spawn-sh "noctalia msg session lock"; }
 
-  XF86AudioMute allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume muteOutput"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume decrease"; }
-  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume increase"; }
+  XF86AudioMute allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
   XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness decrease"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
 
-  XF86AudioPlay { spawn-sh "noctalia-shell ipc call media playPause"; }
-  XF86AudioNext { spawn-sh "noctalia-shell ipc call media next"; }
-  XF86AudioPrev { spawn-sh "noctalia-shell ipc call media previous"; }
+  XF86AudioPlay { spawn-sh "noctalia msg media toggle"; }
+  XF86AudioNext { spawn-sh "noctalia msg media next"; }
+  XF86AudioPrev { spawn-sh "noctalia msg media previous"; }
 
-  Mod+Shift+D { spawn-sh "noctalia-shell ipc call darkMode toggle"; }
-  Mod+Shift+W { spawn-sh "noctalia-shell ipc call wallpaper toggle"; }
-  Mod+Shift+C { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-  Mod+Shift+S { spawn-sh "noctalia-shell ipc call settings toggle"; }
-  Mod+Shift+Escape { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+  Mod+Shift+D { spawn-sh "noctalia msg theme-mode-toggle"; }
+  Mod+Shift+W { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+  Mod+Shift+C { spawn-sh "noctalia msg panel-toggle control-center"; }
+  Mod+Shift+S { spawn-sh "noctalia msg settings-toggle"; }
+  Mod+Shift+Escape { spawn-sh "noctalia msg panel-toggle session"; }
   Mod+O { toggle-overview; }
   Ctrl+Alt+Tab { toggle-overview; }
 

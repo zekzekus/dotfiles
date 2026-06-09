@@ -23,3 +23,15 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
 
 [theme]
 builtin = "Kanagawa"
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-xee3wz.jpg"
+
+    [wallpaper.last]
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-xee3wz.jpg"
+
+    [wallpaper.monitors.HDMI-A-2]
+    path = "/home/zekus/Pictures/Wallpapers/wallhaven-xee3wz.jpg"
