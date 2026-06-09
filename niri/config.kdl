@@ -114,8 +114,12 @@ window-rule {
 }
 
 window-rule {
-  match app-id=r#"^org\.quickshell$"#
+  // Noctalia v5 (C++ rewrite) windows, e.g. the Settings window
+  // "dev.noctalia.Noctalia.Settings" (was "org.quickshell" in v4).
+  match app-id=r#"^dev\.noctalia\.Noctalia"#
   open-floating true
+  default-column-width { fixed 1200; }
+  default-window-height { fixed 850; }
 }
 
 window-rule {

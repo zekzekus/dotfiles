@@ -53,7 +53,8 @@
         "opacity 0.9 0.9, match:float false, match:focus false"
         "opacity 0.95 0.90, match:class com.mitchellh.ghostty"
 
-        "float true, match:class ^(org.quickshell)$"
+        "float true, match:class ^(dev.noctalia.Noctalia)"
+        "size 1200 850, match:class ^(dev.noctalia.Noctalia)"
         "float true, match:class .blueman-manager-wrapped"
         "float true, match:class nemo"
         "size 1200 700, match:class nemo"
