@@ -84,6 +84,7 @@ launcher_categories = false
 
 [theme]
 builtin = "Kanagawa"
+mode = "dark"
 
 [wallpaper]
 directory = "~/Pictures/Wallpapers"
