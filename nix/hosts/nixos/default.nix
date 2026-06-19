@@ -3,6 +3,19 @@
   common,
   ...
 }: {
+  systemd.user.services.tailscale-systray = {
+    Unit = {
+      After = ["noctalia.service"];
+      Requires = ["noctalia.service"];
+      PartOf = ["noctalia.service"];
+    };
+    Service = {
+      ExecStartPre = ''${pkgs.bash}/bin/bash -c 'for _ in $(${pkgs.coreutils}/bin/seq 1 50); do ${pkgs.systemd}/bin/busctl --user --list --acquired | ${pkgs.gnugrep}/bin/grep -q org.kde.StatusNotifierWatcher && exit 0; ${pkgs.coreutils}/bin/sleep 0.2; done' '';
+      Restart = "on-failure";
+      RestartSec = 2;
+    };
+  };
+
   imports = [
     ./modules/wayland.nix
     ./stylix.nix
