@@ -161,6 +161,8 @@ in {
       };
     };
     displayManager.sddm.enable = false;
+    displayManager.cosmic-greeter.enable = false;
+    desktopManager.cosmic.enable = true;
     greetd = {
       enable = true;
       settings = {
@@ -218,6 +220,8 @@ in {
       start-hyprland.default = ["hyprland" "gtk"];
       niri.default = ["gnome" "gtk"];
       start-niri.default = ["gnome" "gtk"];
+      cosmic.default = ["cosmic" "gtk"];
+      start-cosmic.default = ["cosmic" "gtk"];
     };
   };
 

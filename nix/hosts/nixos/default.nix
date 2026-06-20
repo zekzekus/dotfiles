@@ -3,16 +3,21 @@
   common,
   ...
 }: {
-  systemd.user.services.tailscale-systray = {
-    Unit = {
-      After = ["noctalia.service"];
-      Requires = ["noctalia.service"];
-      PartOf = ["noctalia.service"];
-    };
-    Service = {
-      ExecStartPre = ''${pkgs.bash}/bin/bash -c 'for _ in $(${pkgs.coreutils}/bin/seq 1 50); do ${pkgs.systemd}/bin/busctl --user --list --acquired | ${pkgs.gnugrep}/bin/grep -q org.kde.StatusNotifierWatcher && exit 0; ${pkgs.coreutils}/bin/sleep 0.2; done' '';
-      Restart = "on-failure";
-      RestartSec = 2;
+  systemd.user.services = {
+    noctalia.Unit.ConditionEnvironment = "!XDG_CURRENT_DESKTOP=COSMIC";
+    hypridle.Unit.ConditionEnvironment = pkgs.lib.mkForce ["WAYLAND_DISPLAY" "!XDG_CURRENT_DESKTOP=COSMIC"];
+    tailscale-systray = {
+      Unit = {
+        After = ["noctalia.service"];
+        Requires = ["noctalia.service"];
+        PartOf = ["noctalia.service"];
+        ConditionEnvironment = "!XDG_CURRENT_DESKTOP=COSMIC";
+      };
+      Service = {
+        ExecStartPre = ''${pkgs.bash}/bin/bash -c 'for _ in $(${pkgs.coreutils}/bin/seq 1 50); do ${pkgs.systemd}/bin/busctl --user --list --acquired | ${pkgs.gnugrep}/bin/grep -q org.kde.StatusNotifierWatcher && exit 0; ${pkgs.coreutils}/bin/sleep 0.2; done' '';
+        Restart = "on-failure";
+        RestartSec = 2;
+      };
     };
   };
 
