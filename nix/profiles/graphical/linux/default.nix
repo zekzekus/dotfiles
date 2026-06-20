@@ -3,6 +3,7 @@
 {pkgs, ...}: {
   imports = [
     ./firefox.nix
+    ./media.nix
     ./radicle.nix
     ./zed-editor.nix
   ];
@@ -20,6 +21,8 @@
   };
 
   home.packages = with pkgs; [
+    appimage-run
+    (import ../../../modules/packages/helium.nix {inherit pkgs;})
     showmethekey
     droidcam
     cameractrls-gtk4

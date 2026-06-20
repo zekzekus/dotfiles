@@ -88,6 +88,18 @@
     profileRegistry = {
       # Any host with a display. Cross-platform GUI apps; Linux-only GUI gated inside.
       graphical.homeModules = [./nix/profiles/graphical];
+
+      # Hyprland/Niri/Noctalia Wayland session (home-manager side). Bundles the
+      # external HM modules and inputs it needs. Normally paired with "graphical".
+      wayland = {
+        homeModules = [
+          stylix.homeModules.stylix
+          hyprland.homeManagerModules.default
+          noctalia.homeModules.default
+          ./nix/profiles/wayland
+        ];
+        homeSpecialArgs = {inherit hyprland hyprland-plugins;};
+      };
     };
 
     lib = import ./nix/lib.nix {
@@ -107,20 +119,11 @@
       inherit nixpkgs;
       supportedSystems = ["x86_64-linux" "aarch64-darwin"];
     };
-
-    nixosHomeModules = [
-      stylix.homeModules.stylix
-      hyprland.homeManagerModules.default
-      noctalia.homeModules.default
-    ];
-    nixosHomeSpecialArgs = {inherit hyprland hyprland-plugins;};
   in {
     nixosConfigurations = {
       nixos = mkNixosSystem {
         hostname = "nixos";
-        profiles = ["graphical"];
-        homeModules = nixosHomeModules;
-        homeSpecialArgs = nixosHomeSpecialArgs;
+        profiles = ["graphical" "wayland"];
         systemModules = [
           determinate.nixosModules.default
           hyprland.nixosModules.default
@@ -149,9 +152,7 @@
       "zekus@nixos" = mkHomeConfiguration {
         hostname = "nixos";
         system = "x86_64-linux";
-        profiles = ["graphical"];
-        homeModules = nixosHomeModules;
-        homeSpecialArgs = nixosHomeSpecialArgs;
+        profiles = ["graphical" "wayland"];
       };
     };
 
