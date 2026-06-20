@@ -152,6 +152,7 @@
       "zekus@nixos" = mkHomeConfiguration {
         hostname = "nixos";
         system = "x86_64-linux";
+        target = "nixos"; # standalone HM on NixOS — do NOT enable genericLinux
         profiles = ["graphical" "wayland"];
       };
     };

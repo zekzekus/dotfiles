@@ -24,25 +24,25 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ├── flake.nix                  # Main flake entry point
 ├── flake.lock                 # Flake lock file
 ├── nix/                       # Nix & Home Manager configs
-│   ├── lib.nix                # Host builders + shared common attrset (user info, paths, env vars)
+│   ├── lib.nix                # Host builders + profile folding + common (user info, paths, env)
 │   ├── checks.nix             # CI checks (formatting, deadnix, statix) and formatter
-│   ├── home.nix               # Shared home configuration (imports all shared modules)
-│   ├── packages/              # Standalone package sets (helium.nix, nova.nix)
-│   ├── hosts/                 # Per-machine configurations
+│   ├── home.nix               # Shared, headless-safe base (imports all shared modules)
+│   ├── hosts/                 # Per-machine config only
 │   │   ├── mac-machine/       #   macOS (aarch64-darwin) + nix-darwin
-│   │   └── nixos/             #   NixOS (x86_64-linux) full system + home
-│   │       └── modules/       #   Host-specific: Hyprland, Niri, Rofi, Hyprlock, Noctalia, Wayland
-│   ├── modules/               # Cross-platform Home Manager modules (auto-imported)
+│   │   └── nixos/             #   NixOS (x86_64-linux) full system + host overrides
+│   ├── modules/               # Cross-platform, headless-safe HM modules (auto-imported)
 │   │   ├── file/              #   File symlinks (ctags, tmuxinator, scripts)
-│   │   ├── packages/          #   Shared packages
-│   │   ├── programs/          #   Program configurations (~21 modules)
+│   │   ├── packages/          #   Shared CLI packages
+│   │   ├── programs/          #   Program configurations
 │   │   ├── sessionpath/       #   PATH management
 │   │   └── sessionvariables/  #   Environment variables
-│   ├── platforms/             # Platform-specific abstractions
+│   ├── profiles/              # Opt-in role bundles, selected via `profiles = [ ... ]`
+│   │   ├── graphical/         #   GUI apps (cross-platform + linux/ gated via common.isLinux)
+│   │   └── wayland/           #   Hyprland/Niri/Noctalia session (HM side) + stylix
+│   ├── platforms/             # OS-family abstractions
 │   │   ├── darwin/            #   macOS: Karabiner, Hammerspoon
-│   │   │   └── modules/       #   Platform-wide opt-in: Aerospace, JankyBorders
-│   │   └── linux/             #   Linux: Chromium
-│   │       └── modules/       #   Platform-wide opt-in: Firefox, Zed Editor
+│   │   │   └── modules/       #   opt-in: Aerospace, JankyBorders
+│   │   └── linux/             #   headless-safe stub (Linux-universal user config)
 │   └── docs/                  # Setup guides
 │       └── 1password-setup.md #   1Password SSH & GPG setup
 │

@@ -185,6 +185,15 @@
     hostname,
     system,
     profiles ? [],
+    # Management target — drives non-NixOS integration. Auto-detected: standalone
+    # HM on a foreign Linux distro defaults to "generic-linux". Pass target =
+    # "nixos" for standalone HM on NixOS, otherwise genericLinux would wrongly
+    # enable (and assert) on a NixOS box.
+    target ? (
+      if isLinux system
+      then "generic-linux"
+      else "standalone"
+    ),
     homeModules ? [],
     homeSpecialArgs ? {},
   }: let
@@ -193,10 +202,20 @@
       inherit system overlays;
       config.allowUnfree = true;
     };
+    # Non-NixOS Linux integration: FHS XDG data dirs, session-var/nix.sh sourcing,
+    # cursor paths, etc. Only valid/needed for standalone HM on a foreign distro.
+    genericLinuxModule = {lib, ...}: {
+      targets.genericLinux.enable = true;
+      # Headless-safe: HM otherwise defaults gpu.enable to true, pulling in the
+      # non-NixOS GPU driver setup package + an activation warning. Graphical
+      # foreign hosts opt back in (gpu.enable = true, then `sudo non-nixos-gpu`)
+      # or wrap individual GUI packages with nixGL.
+      targets.genericLinux.gpu.enable = lib.mkDefault false;
+    };
   in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      inherit (host.home) modules;
+      modules = host.home.modules ++ nixpkgs.lib.optional (target == "generic-linux") genericLinuxModule;
       extraSpecialArgs = host.home.specialArgs;
     };
 in {

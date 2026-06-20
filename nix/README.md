@@ -140,37 +140,46 @@ Flake-based Home Manager configuration for managing user environments across mul
 
 The builder functions in `lib.nix` automatically:
 - Detect platform from `system` and import the correct `platforms/darwin` or `platforms/linux`
-- Import `home.nix` (shared config) for all hosts
+- Import `home.nix` (shared, headless-safe base) for all hosts
+- Resolve `profiles = [ ... ]` from the `profileRegistry` and fold in their home/system modules + specialArgs
 - Import `hosts/<hostname>/default.nix` for host-specific Home Manager config
 - Import `hosts/<hostname>/configuration.nix` for system-level config (NixOS/darwin)
-- Set up the `common` attribute set with username, paths, and directories
+- Set up the `common` attribute set (username, paths, directories, `isLinux`/`isDarwin`)
+- For `mkHomeConfiguration` on a foreign distro (`target = "generic-linux"`), enable `targets.genericLinux` (with `gpu.enable` off for headless safety)
 - Configure nixpkgs overlays (see `nix/temporary-overlays.nix`)
 
 ## Module Structure
 
-### Shared Modules (all platforms)
+### Shared Modules — headless-safe base (all hosts)
 
 | Module | Contents |
 |--------|----------|
-| `modules/programs/` | 30 program configs: neovim, git, fish, nushell, tmux, ghostty, starship, fzf, etc. |
-| `modules/packages/` | Shared packages: dev tools, terminal utilities, LLM tools |
+| `modules/programs/` | CLI program configs: neovim, git, fish, nushell, tmux, starship, fzf, etc. |
+| `modules/packages/` | Shared CLI packages: dev tools, terminal utilities, LLM tools |
 | `modules/file/` | File symlinks: ctags, tmuxinator, utility scripts |
 | `modules/sessionpath/` | PATH entries: `~/bin`, pnpm, coursier |
 | `modules/sessionvariables/` | Environment variables: editor, fzf, project directories |
 
-### Platform Modules
+### Profiles — opt-in roles (`profiles = [ ... ]`)
+
+| Profile | Contents |
+|---------|----------|
+| `profiles/graphical/` | GUI apps: ghostty, obsidian (cross-platform); `linux/` adds firefox, chromium, zed, OBS, media viewers, helium, emacs-pgtk, 1Password GUI |
+| `profiles/wayland/` | Hyprland/Niri/Noctalia session (HM side), stylix, rofi, hyprlock, hypridle, tray services |
+
+### Platform Modules (OS family)
 
 | Platform | Contents |
 |----------|----------|
 | `platforms/darwin/` | Aerospace, JankyBorders, Karabiner, Hammerspoon, Homebrew PATH |
-| `platforms/linux/` | Firefox, Chromium |
+| `platforms/linux/` | Headless-safe stub (home for Linux-universal user config) |
 
-### Host-Specific Modules
+### Host-Specific Config
 
 | Host | Key Features |
 |------|-------------|
 | `hosts/mac-machine/` | nix-darwin system defaults, Homebrew casks, Touch ID sudo, file descriptor limits |
-| `hosts/nixos/` | Hyprland, Stylix, hypridle, OBS, Kanata, Steam, Flatpak, hardware config |
+| `hosts/nixos/` | NixOS system: Kanata, Steam, Flatpak, PipeWire, portals, greetd, hardware config (desktop *home* now via `graphical`+`wayland` profiles) |
 
 ## Checks & Quality
 
