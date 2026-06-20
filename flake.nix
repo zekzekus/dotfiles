@@ -81,12 +81,22 @@
       (import ./nix/temporary-overlays.nix)
     ];
 
+    # Profile registry: named, opt-in role bundles selected per-host via
+    # `profiles = [ ... ]`. Orthogonal to OS family (darwin/linux) and management
+    # target (nixos/darwin/generic-linux). A profile may contribute homeModules,
+    # homeSpecialArgs, systemModules and systemSpecialArgs.
+    profileRegistry = {
+      # Any host with a display. Cross-platform GUI apps; Linux-only GUI gated inside.
+      graphical.homeModules = [./nix/profiles/graphical];
+    };
+
     lib = import ./nix/lib.nix {
       inherit
         nixpkgs
         home-manager
         nix-darwin
         overlays
+        profileRegistry
         ;
       extraHomeSpecialArgs = {inherit practicalli-clojure-cli-config;};
     };
@@ -108,6 +118,7 @@
     nixosConfigurations = {
       nixos = mkNixosSystem {
         hostname = "nixos";
+        profiles = ["graphical"];
         homeModules = nixosHomeModules;
         homeSpecialArgs = nixosHomeSpecialArgs;
         systemModules = [
@@ -122,6 +133,7 @@
     darwinConfigurations = {
       mac-machine = mkDarwinSystem {
         hostname = "mac-machine";
+        profiles = ["graphical"];
         systemModules = [
           nix-homebrew.darwinModules.nix-homebrew
           {
@@ -137,6 +149,7 @@
       "zekus@nixos" = mkHomeConfiguration {
         hostname = "nixos";
         system = "x86_64-linux";
+        profiles = ["graphical"];
         homeModules = nixosHomeModules;
         homeSpecialArgs = nixosHomeSpecialArgs;
       };

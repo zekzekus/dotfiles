@@ -1,26 +1,7 @@
-{pkgs, ...}: {
-  imports = [
-    ./modules/firefox.nix
-    ./modules/radicle.nix
-    ./modules/zed-editor.nix
-  ];
-
-  programs = {
-    chromium.enable = true;
-
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-pipewire-audio-capture # PipeWire audio capture
-        droidcam-obs
-      ];
-    };
-  };
-
-  home.packages = with pkgs; [
-    showmethekey
-    droidcam
-    cameractrls-gtk4
-    emacs-pgtk
-  ];
+# Linux platform layer — applies to EVERY Linux host (NixOS or foreign distro,
+# desktop or headless server). Keep this headless-safe: NO GUI apps or desktop
+# services. Graphical apps live in profiles/graphical; the Wayland desktop lives
+# in profiles/wayland. This is intentionally near-empty and is the home for
+# truly Linux-universal user config.
+_: {
 }

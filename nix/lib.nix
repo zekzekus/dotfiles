@@ -3,6 +3,7 @@
   home-manager,
   nix-darwin,
   overlays,
+  profileRegistry ? {},
   extraHomeSpecialArgs ? {},
 }: let
   defaultUsername = "zekus";
@@ -64,27 +65,53 @@
   isDarwin = system: builtins.elem system ["aarch64-darwin" "x86_64-darwin"];
   isLinux = system: builtins.elem system ["x86_64-linux" "aarch64-linux"];
 
+  # Profiles are named, opt-in bundles of modules (and specialArgs) defined in the
+  # `profileRegistry` (see flake.nix) and selected per-host via `profiles = [ ... ]`.
+  # A profile may contribute: homeModules, homeSpecialArgs, systemModules,
+  # systemSpecialArgs. This is the third axis (role) orthogonal to OS family and
+  # management target, e.g. "graphical", "wayland".
+  resolveProfiles = profiles: let
+    known = builtins.attrNames profileRegistry;
+    missing = builtins.filter (p: !(builtins.elem p known)) profiles;
+  in
+    if missing != []
+    then throw "Unknown profile(s): ${builtins.concatStringsSep ", " missing}. Known profiles: ${builtins.concatStringsSep ", " known}"
+    else map (p: profileRegistry.${p}) profiles;
+
+  profileHomeModules = ps: nixpkgs.lib.concatMap (p: p.homeModules or []) ps;
+  profileSystemModules = ps: nixpkgs.lib.concatMap (p: p.systemModules or []) ps;
+  profileHomeSpecialArgs = ps: nixpkgs.lib.foldl' nixpkgs.lib.recursiveUpdate {} (map (p: p.homeSpecialArgs or {}) ps);
+  profileSystemSpecialArgs = ps: nixpkgs.lib.foldl' nixpkgs.lib.recursiveUpdate {} (map (p: p.systemSpecialArgs or {}) ps);
+
   mkHost = {
     hostname,
     system,
+    profiles ? [],
     homeModules ? [],
     homeSpecialArgs ? {},
   }: let
     username = defaultUsername;
     homeDir = mkHomeDir {inherit system username;};
-    common = mkCommon {inherit username homeDir;};
+    common =
+      (mkCommon {inherit username homeDir;})
+      // {
+        isLinux = isLinux system;
+        isDarwin = isDarwin system;
+      };
+    resolvedProfiles = resolveProfiles profiles;
 
     allHomeModules =
       homeModules
       ++ [./home.nix]
       ++ nixpkgs.lib.optional (isDarwin system) ./platforms/darwin
       ++ nixpkgs.lib.optional (isLinux system) ./platforms/linux
+      ++ profileHomeModules resolvedProfiles
       ++ [./hosts/${hostname}];
   in {
     inherit hostname system;
     home = {
       modules = allHomeModules;
-      specialArgs = {inherit common;} // extraHomeSpecialArgs // homeSpecialArgs;
+      specialArgs = {inherit common;} // extraHomeSpecialArgs // profileHomeSpecialArgs resolvedProfiles // homeSpecialArgs;
       inherit username;
     };
   };
@@ -104,19 +131,22 @@
   mkNixosSystem = {
     hostname,
     system ? "x86_64-linux",
+    profiles ? [],
     homeModules ? [],
     homeSpecialArgs ? {},
     systemModules ? [],
     systemSpecialArgs ? {},
   }: let
-    host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
     inherit (host.home.specialArgs) common;
+    resolvedProfiles = resolveProfiles profiles;
   in
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = systemSpecialArgs // {inherit common;};
+      specialArgs = profileSystemSpecialArgs resolvedProfiles // systemSpecialArgs // {inherit common;};
       modules =
         systemModules
+        ++ profileSystemModules resolvedProfiles
         ++ [
           ./hosts/${hostname}/configuration.nix
           home-manager.nixosModules.home-manager
@@ -127,19 +157,22 @@
   mkDarwinSystem = {
     hostname,
     system ? "aarch64-darwin",
+    profiles ? [],
     homeModules ? [],
     homeSpecialArgs ? {},
     systemModules ? [],
     systemSpecialArgs ? {},
   }: let
-    host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
     inherit (host.home.specialArgs) common;
+    resolvedProfiles = resolveProfiles profiles;
   in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = systemSpecialArgs // {inherit common;};
+      specialArgs = profileSystemSpecialArgs resolvedProfiles // systemSpecialArgs // {inherit common;};
       modules =
         systemModules
+        ++ profileSystemModules resolvedProfiles
         ++ [
           ./platforms/darwin/configuration.nix
           ./hosts/${hostname}/configuration.nix
@@ -151,10 +184,11 @@
   mkHomeConfiguration = {
     hostname,
     system,
+    profiles ? [],
     homeModules ? [],
     homeSpecialArgs ? {},
   }: let
-    host = mkHost {inherit hostname system homeModules homeSpecialArgs;};
+    host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
     pkgs = import nixpkgs {
       inherit system overlays;
       config.allowUnfree = true;

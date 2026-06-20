@@ -40,19 +40,4 @@ in {
       );
     };
   };
-
-  # Linux: systemd user service to autostart 1Password
-  systemd.user.services.onepassword = lib.mkIf isLinux {
-    Unit = {
-      Description = "1Password";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
-    };
-    Service = {
-      ExecStart = "${pkgs._1password-gui}/bin/1password --silent";
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-    Install.WantedBy = ["graphical-session.target"];
-  };
 }

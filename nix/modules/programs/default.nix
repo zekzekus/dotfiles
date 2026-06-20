@@ -7,7 +7,6 @@
     ./difftastic.nix
     ./direnv.nix
     ./fish.nix
-    ./ghostty.nix
     ./git.nix
     ./helix.nix
     ./jujutsu.nix
@@ -16,7 +15,6 @@
     ./nix-helper.nix
     ./nix-your-shell.nix
     ./nushell.nix
-    ./obsidian.nix
     ./starship.nix
     ./tmux.nix
     ./zoxide.nix
