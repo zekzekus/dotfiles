@@ -9,10 +9,10 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ## Highlights
 
 - **Declarative** -- Entire environment defined in code, version controlled, reproducible
+- **Any Linux box** -- Headless-safe base + opt-in `profiles` work on NixOS *and* foreign distros (Ubuntu, etc.), desktop or headless server
 - **Multi-platform** -- Single flake manages macOS (via nix-darwin), Linux, and NixOS
-- **Multi-host** -- Per-machine configurations with shared modules and platform abstractions
-- **Stylix** -- Consistent theming across applications (Kanagawa scheme on NixOS)
-- **Neovim Nightly** -- Always on the bleeding edge via nix-community overlay
+- **Multi-host** -- Per-machine config with shared modules, platform abstractions, and composable role profiles
+- **Stylix** -- Consistent theming across applications (Kanagawa scheme, via the `wayland` profile)
 - **Make-driven** -- Simple commands that auto-detect your host
 
 ---
@@ -21,7 +21,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 
 ```
 .
-├── flake.nix                  # Main flake entry point
+├── flake.nix                  # Main flake entry point (inputs, outputs, host wiring, profileRegistry)
 ├── flake.lock                 # Flake lock file
 ├── nix/                       # Nix & Home Manager configs
 │   ├── lib.nix                # Host builders + profile folding + common (user info, paths, env)
@@ -66,10 +66,12 @@ One config to rule them all -- macOS, Linux, and NixOS.
 
 ## Supported Hosts
 
-| Host | Platform | Architecture | Management |
-|------|----------|--------------|------------|
-| `mac-machine` | macOS | aarch64-darwin | nix-darwin + Home Manager |
-| `nixos` | NixOS | x86_64-linux | NixOS + Home Manager |
+| Host | Platform | Architecture | Management | Profiles |
+|------|----------|--------------|------------|----------|
+| `mac-machine` | macOS | aarch64-darwin | nix-darwin + Home Manager | `graphical` |
+| `nixos` | NixOS | x86_64-linux | NixOS + Home Manager | `graphical`, `wayland` |
+
+Any other Linux box -- a foreign distro desktop, or a headless VPS -- can be added as a standalone Home Manager target (`mkHomeConfiguration`); the base is headless-safe and graphical bits are opt-in via profiles. See [Adding a New Host](./nix/README.md#adding-a-new-host).
 
 ---
 
@@ -83,7 +85,7 @@ cd ~/devel/tools/dotfiles
 # Apply (auto-detects host)
 make darwin    # macOS (nix-darwin + Home Manager)
 make nixos     # NixOS full system rebuild
-make home      # Standalone Home Manager only
+make home      # Standalone Home Manager only (NixOS or any foreign Linux distro)
 ```
 
 See [nix/README.md](./nix/README.md) for detailed installation instructions.
@@ -110,46 +112,59 @@ make clean         # Clean build artifacts
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         flake.nix                               │
-│                    (single source of truth)                     │
-└───────────────────────────┬─────────────────────────────────────┘
-                            │
-              ┌─────────────┴─────────────┐
-              ▼                           ▼
-        ┌───────────┐               ┌───────────┐
-        │  darwin   │               │   linux   │
-        │ platform  │               │ platform  │
-        └─────┬─────┘               └─────┬─────┘
-              │                           │
-              ▼                           ▼
-        ┌───────────┐               ┌───────────┐
-        │mac-machine│               │   nixos   │
-        │(nix-darwin)│              │ (NixOS)   │
-        └───────────┘               └───────────┘
+Every host is built from one **headless-safe base** and then specialised along
+**three orthogonal axes** -- OS family, role, and management target. The base
+(`home.nix` + `modules/*` + `platforms/linux`) ships no GUI apps or desktop
+services, so it runs on a headless server just as happily as a laptop; anything
+graphical is opt-in via a profile.
 
-              ┌───────────┐       ┌─────────────┐
-              │  modules  │       │  home.nix   │
-              │ (shared)  │       │  (shared)   │
-              └───────────┘       └─────────────┘
+```
+                  ┌────────────────────────────────────────────┐
+                  │              flake.nix                     │
+                  │ inputs - profileRegistry - host wiring     │
+                  └────────────────────────────────────────────┘
+                                         │
+                ┌────────────────────────────────────────────────┐
+                │            lib.nix builders                    │
+                │ mkNixosSystem / mkDarwinSystem /               │
+                │ mkHomeConfiguration                            │
+                │ pick management target:                        │
+                │ nixos | generic-linux | standalone             │
+                └────────────────────────────────────────────────┘
+                                         │  assemble the HM module stack
+                                         ▼
+        ┌─────────────────────────────────────────────────────────────────┐
+        │ hosts/<host>/             machine-specific overrides            │
+        ├─────────────────────────────────────────────────────────────────┤
+        │ profiles = [ ... ]        graphical, wayland          (role)    │
+        ├─────────────────────────────────────────────────────────────────┤
+        │ platforms/{darwin,linux}  auto-selected by system   (OS family) │
+        ├─────────────────────────────────────────────────────────────────┤
+        │ home.nix + modules/*      shared, HEADLESS-SAFE base            │
+        └─────────────────────────────────────────────────────────────────┘
 ```
 
-**Layered configuration:**
-1. **Flake** -- Defines inputs, outputs, and wires everything together
-2. **lib.nix** -- Host builder functions + centralized `common` attrset (user info, paths, env vars)
-3. **Platforms** -- Darwin vs Linux specifics (auto-selected by `lib.nix` based on system)
-4. **Hosts** -- Machine-specific overrides and system config
-5. **Modules** -- Shared, reusable building blocks (programs, packages, etc.)
-6. **External configs** -- Neovim, tmux, Ghostty, Niri, Noctalia, etc. symlinked via Home Manager
+**Three orthogonal axes**
+
+1. **OS family** -- `platforms/{darwin,linux}`, auto-selected from `system`.
+2. **Role** -- `profiles/*`, opt-in per host via `profiles = [ ... ]` (e.g. `graphical`, `wayland`), resolved from the `profileRegistry` in `flake.nix`. A profile may bundle HM modules, system modules, and extra `specialArgs`.
+3. **Management target** -- the builder (`mkNixosSystem` / `mkDarwinSystem` / `mkHomeConfiguration`) plus `mkHomeConfiguration`'s `target` (`nixos` | `generic-linux` | `standalone`), which drives non-NixOS integration. On a foreign distro it auto-selects `generic-linux` and enables `targets.genericLinux`.
+
+**How `lib.nix` assembles a host** *(module order)*
+
+1. `home.nix` -- shared, headless-safe base (imports every shared `modules/*`)
+2. `platforms/darwin` or `platforms/linux` -- auto-selected by `system`
+3. profile modules from `profiles = [ ... ]` -- resolved via the `profileRegistry`
+4. `hosts/<hostname>/default.nix` -- host-specific Home Manager overrides
+
+The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwin`) is passed as `specialArgs` to every Home Manager and system module. External configs (Neovim, tmux, Ghostty, Niri, Noctalia, ...) live at the repo root and are symlinked into place via Home Manager (`modules/file/`).
 
 ---
 
 ## What's Included
 
-**Shared** *(all platforms)*
+**Base** *(all hosts -- headless-safe)*
 - Neovim (nixpkgs unstable) with Treesitter grammars, LSPs for Lua, Nix, Go, Rust, Python, TypeScript, Ruby, Clojure, Haskell
-- Ghostty terminal
 - Fish & Nushell with Starship prompt, Carapace completions
 - tmux with tmuxinator
 - Git with delta, difftastic, lazygit, jujutsu (jj), lazyjj, jjui
@@ -158,24 +173,31 @@ make clean         # Clean build artifacts
 - GPG signing, SSH via 1Password agent
 - devenv, Ollama (CPU)
 
-**Darwin** *(macOS via nix-darwin)*
-- Aerospace tiling window manager
-- JankyBorders for window highlights (currently disabled)
+**`graphical` profile** *(opt-in -- any host with a display)*
+- Ghostty terminal, Obsidian (cross-platform)
+- Linux adds: Firefox, Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium, 1Password GUI autostart
+
+**`wayland` profile** *(opt-in -- Wayland desktop, normally paired with `graphical`)*
+- Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock
+- Stylix system-wide theming (Kanagawa, dark polarity)
+- rofi launcher, Hyprland polkit agent
+- Tray/session services: clipboard history (cliphist), automount (udiskie), network + Tailscale applets
+
+**`darwin` platform** *(macOS via nix-darwin)*
+- Aerospace tiling window manager (opt-in)
+- JankyBorders for window highlights (opt-in, currently disabled)
 - Karabiner-Elements key remapping
 - Hammerspoon automation
 - Homebrew integration via nix-homebrew (Raycast, Zed, 1Password)
 - Touch ID for sudo
 
-**NixOS**
-- Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock
-- Stylix system-wide theming (Kanagawa, dark polarity)
-- Pipewire audio, Bluetooth, SDDM display manager
+**`nixos` host** *(system level)*
+- PipeWire audio, Bluetooth, greetd + tuigreet login, COSMIC desktop available
 - Kanata key remapping (caps-lock as ctrl/esc)
-- Steam + Gamescope gaming
-- Flatpak (GeForce NOW)
-- OBS Studio with PipeWire capture
-- Tailscale VPN
-- 1Password via NixOS modules
+- Steam + Gamescope gaming, gpu-screen-recorder, v4l2loopback virtual camera
+- Flatpak (GeForce NOW), Podman (Docker-compatible)
+- Tailscale VPN, OpenSSH (reachable via Tailscale only)
+- 1Password (NixOS module + GUI polkit), xdg portals (Hyprland/GTK/GNOME/COSMIC)
 
 ---
 

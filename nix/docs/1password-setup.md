@@ -29,7 +29,9 @@ The 1Password SSH integration is managed declaratively via two modules:
 
 - **`modules/programs/ssh.nix`** -- Configures SSH to use the 1Password agent socket, sets `SSH_AUTH_SOCK`, and handles platform-specific socket paths:
   - **macOS**: Symlinks from `~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock` to `~/.1password/agent.sock`
-  - **Linux**: Creates `~/.1password/` directory; 1Password writes the socket directly. Also sets up a systemd user service to autostart 1Password.
+  - **Linux**: Creates `~/.1password/` directory; 1Password writes the socket directly.
+
+- **`profiles/graphical/linux/default.nix`** -- systemd user service to autostart the 1Password GUI (Linux). Lives in the `graphical` profile so headless hosts don't pull in the GUI package.
 
 - **`modules/programs/nushell.nix`** -- Sets `SSH_AUTH_SOCK` in Nushell's environment (Nushell requires separate env var configuration).
 
@@ -226,7 +228,8 @@ If you have many SSH keys in 1Password, servers may reject before trying the rig
 
 | File | Purpose |
 |------|---------|
-| `modules/programs/ssh.nix` | SSH config, 1Password agent socket, activation scripts, Linux autostart service |
+| `modules/programs/ssh.nix` | SSH config, 1Password agent socket, activation scripts |
+| `profiles/graphical/linux/default.nix` | 1Password GUI autostart (Linux, systemd user service) |
 | `modules/programs/nushell.nix` | `SSH_AUTH_SOCK` for Nushell environment |
 | `modules/programs/gpg.nix` | GPG agent configuration |
 | `modules/programs/git.nix` | Git commit signing (`signByDefault = true`, key ID) |
