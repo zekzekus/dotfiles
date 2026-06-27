@@ -90,13 +90,13 @@ mode = "dark"
 directory = "~/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq3kq.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/w11black.jpg"
 
     [wallpaper.last]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq3kq.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/w11black.jpg"
 
     [wallpaper.monitors.HDMI-A-2]
-    path = "/home/zekus/Pictures/Wallpapers/wallhaven-lyq3kq.jpg"
+    path = "/home/zekus/Pictures/Wallpapers/w11black.jpg"
 
 [widget.launcher]
 glyph = "apps"
