@@ -28,8 +28,11 @@ in {
   virtualisation = {
     podman = {
       enable = true;
+      # `docker` -> `podman` alias; runs rootless as the invoking user.
       dockerCompat = true;
-      dockerSocket.enable = true;
+      # No rootful dockerSocket: docker-compose talks to the rootless user
+      # socket via DOCKER_HOST (see environment.sessionVariables), so the
+      # `docker` CLI and docker-compose share one rootless namespace.
     };
   };
 
@@ -289,7 +292,6 @@ in {
       "i2c"
       "plugdev"
       "kvm"
-      "podman"
     ];
     packages = with pkgs; [
       fish
@@ -326,7 +328,11 @@ in {
   };
 
   environment = {
-    sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
+    sessionVariables = {
+      STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
+      # Point Docker-API clients (docker-compose) at the rootless Podman socket.
+      DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
+    };
     systemPackages = with pkgs; [
       vim
       git
