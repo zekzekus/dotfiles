@@ -28,17 +28,27 @@ help:
 	@echo ""
 
 home:
+	@if [ "$(UNAME)" = "Darwin" ]; then \
+		echo "Error: home-manager is integrated into the darwin system here (no standalone homeConfigurations for this host)."; \
+		echo "Use 'make darwin' instead — it applies your home config too."; \
+		exit 1; \
+	fi
 	@echo "Switching home-manager for $(USER)@$(HOST)..."
 	home-manager switch --impure --flake $(FLAKE)#$(USER)@$(HOST)
 
 home-build:
+	@if [ "$(UNAME)" = "Darwin" ]; then \
+		echo "Error: home-manager is integrated into the darwin system here (no standalone homeConfigurations for this host)."; \
+		echo "Use 'make darwin-build' instead."; \
+		exit 1; \
+	fi
 	@echo "Building home-manager for $(USER)@$(HOST)..."
 	nix build --impure --dry-run $(FLAKE)#homeConfigurations.\"$(USER)@$(HOST)\".activationPackage
 
 darwin:
 	@if [ "$(UNAME)" = "Darwin" ]; then \
 		echo "Rebuilding nix-darwin for $(HOST)..."; \
-		darwin-rebuild switch --impure --flake $(FLAKE)#$(HOST); \
+		sudo darwin-rebuild switch --impure --flake $(FLAKE)#$(HOST); \
 	else \
 		echo "Error: Not a macOS system"; \
 		exit 1; \
