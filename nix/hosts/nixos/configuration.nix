@@ -331,7 +331,12 @@ in {
     sessionVariables = {
       STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
       # Point Docker-API clients (docker-compose) at the rootless Podman socket.
-      DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
+      # NOTE: sessionVariables are set literally by systemd/PAM (no shell-style
+      # $VAR expansion), and the login shell is nushell, which never sources
+      # bash's /etc/set-environment. So "$XDG_RUNTIME_DIR" would reach clients
+      # verbatim and docker-compose would fail to dial the socket. Use the
+      # resolved rootless path (XDG_RUNTIME_DIR is always /run/user/<uid>).
+      DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
     };
     systemPackages = with pkgs; [
       vim
