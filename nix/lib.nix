@@ -1,6 +1,7 @@
 {
   nixpkgs,
   home-manager,
+  sops-nix,
   nix-darwin,
   overlays,
   profileRegistry ? {},
@@ -44,6 +45,11 @@
 
       SSH_AUTH_SOCK = "${homeDir}/.1password/agent.sock";
       NH_FLAKE = dotfilesDir;
+
+      # sops-nix decrypts from here (set in ssh.nix); also point the `sops` CLI
+      # at it so `sops edit` works. The CLI's macOS default is ~/Library/...,
+      # which would otherwise miss this Linux-native location.
+      SOPS_AGE_KEY_FILE = "${homeDir}/.config/sops/age/keys.txt";
     };
 
     sessionPath = [
@@ -102,7 +108,7 @@
 
     allHomeModules =
       homeModules
-      ++ [./home.nix]
+      ++ [sops-nix.homeManagerModules.sops ./home.nix]
       ++ nixpkgs.lib.optional (isDarwin system) ./platforms/darwin
       ++ nixpkgs.lib.optional (isLinux system) ./platforms/linux
       ++ profileHomeModules resolvedProfiles

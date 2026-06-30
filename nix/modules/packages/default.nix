@@ -33,6 +33,10 @@
     # ollama-cpu
     opencode
 
+    # secrets (sops-nix workflow; see docs/sops-setup.md)
+    sops
+    age
+
     # misc
     mosh
 

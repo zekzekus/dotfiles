@@ -20,6 +20,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Encrypted secrets (age-backed). Provides the home-manager `sops` module,
+    # wired into the base layer in nix/lib.nix so every host can decrypt secrets.
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +70,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    sops-nix,
     # neovim-nightly-overlay, # re-enable for nightly neovim (see inputs above)
     determinate,
     nix-darwin,
@@ -106,6 +114,7 @@
       inherit
         nixpkgs
         home-manager
+        sops-nix
         nix-darwin
         overlays
         profileRegistry

@@ -1,0 +1,17 @@
+# sops creation rules — used by the `sops` CLI when encrypting/editing files.
+# This is NOT read by Nix; it only tells sops which age recipients a new or
+# edited secret must be encrypted for. Every machine that needs to decrypt must
+# have its PUBLIC age key listed here, and the file must be (re)encrypted after
+# adding one. See docs/sops-setup.md for the full workflow.
+#
+# Get a machine's public key from its private key:
+#   age-keygen -y ~/.config/sops/age/keys.txt
+keys:
+  # Replace these placeholders with each machine's real public age key (age1...).
+  - &mac-machine age1jq79t9d89pxvj0ahg9qstktehypqxh3luexnczydfga29c3sgq0s5gxhp7
+
+creation_rules:
+  - path_regex: secrets/ssh-config$
+    key_groups:
+      - age:
+          - *mac-machine
