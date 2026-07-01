@@ -10,8 +10,10 @@ keys:
   # Replace these placeholders with each machine's real public age key (age1...).
   - &mac-machine age1jq79t9d89pxvj0ahg9qstktehypqxh3luexnczydfga29c3sgq0s5gxhp7
 
+  - &nixos age1xd32x3k6p39arjfjfcp4lvzk9mg4gfu7n6mag4c5c80dxmscua3svazzq3
 creation_rules:
   - path_regex: secrets/ssh-config$
     key_groups:
       - age:
           - *mac-machine
+          - *nixos
