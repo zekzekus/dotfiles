@@ -99,6 +99,10 @@
       "karabiner-elements"
       "hammerspoon"
       "obsidian"
+      # Docker Desktop — official all-in-one: bundles its own Linux VM, the
+      # Docker daemon, the `docker`/`docker compose` CLIs, and a GUI.
+      # Self-updates outside Nix.
+      "docker-desktop"
     ];
   };
 
