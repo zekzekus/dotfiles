@@ -1,3 +1,5 @@
+config_version = 1
+
 [bar.default]
 capsule = true
 end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "control-center", "session" ]
