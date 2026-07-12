@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  home.pointerCursor.enable = true;
+
   stylix = {
     enable = true;
     autoEnable = false;
@@ -25,7 +27,6 @@
       btop.enable = true;
       fish.enable = true;
       nushell.enable = true;
-      fzf.enable = true;
       gdu.enable = true;
       lazygit.enable = true;
       tmux.enable = true;

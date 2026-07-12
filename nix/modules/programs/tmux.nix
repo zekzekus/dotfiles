@@ -19,7 +19,6 @@ in {
       vim-tmux-navigator
       urlview
       extrakto
-      tmux-fzf
     ];
     extraConfig = ''
       set -g status-justify "left"

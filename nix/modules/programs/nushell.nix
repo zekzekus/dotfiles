@@ -37,11 +37,6 @@ in {
       }
       ${mkNushellPathPrepends common.sessionPath}
       $env.GPG_TTY = (tty | str trim)
-      # Cede ctrl+r to atuin: fzf's nushell integration (sourced after our atuin
-      # keybindings) otherwise appends its own fzf_history ctrl+r binding, which
-      # wins as the last match. Empty string disables just that binding; fzf's
-      # ctrl+t (files) and alt+c (cd) stay enabled.
-      $env.FZF_CTRL_R_COMMAND = ""
     '';
 
     extraConfig = ''

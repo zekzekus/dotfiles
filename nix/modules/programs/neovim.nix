@@ -15,7 +15,7 @@
     ];
 
     extraPackages = with pkgs; [
-      # Build deps (for plugins like blink.cmp, fff.nvim, telescope-fzf-native)
+      # Build deps (for plugins like blink.cmp and fff.nvim)
       gcc
       gnumake
       cargo

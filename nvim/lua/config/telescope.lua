@@ -24,6 +24,5 @@ telescope.setup({
   }
 })
 
-telescope.load_extension('fzf')
 telescope.load_extension('ctags_outline')
 telescope.load_extension('undo')

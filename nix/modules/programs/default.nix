@@ -29,7 +29,6 @@
     btop.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
-    fzf.enable = true;
     gh.enable = true;
     java.enable = true;
     jjui.enable = true;
