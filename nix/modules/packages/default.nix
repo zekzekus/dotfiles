@@ -14,6 +14,7 @@
 
     # development tools
     devenv
+    sqlit-tui
 
     (callPackage ./amp.nix {})
 
