@@ -1,4 +1,4 @@
-.PHONY: help home home-build darwin darwin-build nixos nixos-build update update-amp update-helium update-pinned check fmt clean
+.PHONY: help home home-build darwin darwin-build nixos nixos-build update update-neovim update-amp update-helium update-pinned check fmt clean
 
 USER := $(shell whoami)
 HOST := $(shell hostname -s)
@@ -18,7 +18,8 @@ help:
 	@echo "  make darwin-build  - Build nix-darwin system without switching"
 	@echo "  make nixos         - Rebuild NixOS system (requires NixOS)"
 	@echo "  make nixos-build   - Build NixOS system without switching"
-	@echo "  make update        - Update flake inputs + all pinned versions (amp, helium)"
+	@echo "  make update        - Update flake inputs (including Neovim nightly) + pinned versions"
+	@echo "  make update-neovim - Update only the pinned Neovim nightly"
 	@echo "  make update-amp    - Pin amp.nix to latest published amp version"
 	@echo "  make update-helium - Pin helium.nix to latest helium-linux release"
 	@echo "  make update-pinned - Run all pinned-version updaters (amp + helium)"
@@ -84,6 +85,10 @@ nixos-build:
 update: update-pinned
 	@echo "Updating flake inputs..."
 	nix flake update
+
+update-neovim:
+	@echo "Updating Neovim nightly..."
+	nix flake update neovim-nightly-overlay
 
 update-amp:
 	@./scripts/update-amp
