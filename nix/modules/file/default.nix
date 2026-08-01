@@ -20,8 +20,13 @@
 in {
   home.file =
     {
-      ".config/amp/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/AGENTS.md";
-      ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/AGENTS.md";
+      ".config/amp/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/amp/AGENTS.md";
+      ".config/amp/languages/clojure.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/amp/languages/clojure.md";
+      ".config/amp/languages/python.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/amp/languages/python.md";
+
+      ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/claude/CLAUDE.md";
+      ".claude/rules/clojure.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/claude/rules/clojure.md";
+      ".claude/rules/python.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/claude/rules/python.md";
 
       ".ctags".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/ctags/ctags";
       ".tmuxinator".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/tmuxinator";

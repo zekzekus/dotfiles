@@ -9,6 +9,13 @@ activation must expose these source files rather than create copies that drift.
 ```
 agents/
 ├── AGENTS.md                 always-on preferences and engineering defaults
+├── adapters/                 tool-specific imports and path scoping
+│   ├── amp/
+│   │   ├── AGENTS.md
+│   │   └── languages/
+│   └── claude/
+│       ├── CLAUDE.md
+│       └── rules/
 ├── languages/
 │   ├── clojure.md            opt-in Clojure defaults
 │   └── python.md             opt-in Python defaults
@@ -43,9 +50,11 @@ adds stack and domain specifics and wins on conflict.
 
 ### Per-language conventions
 
-Files under `languages/` are meant to be referenced from a repository's local
-guidance when that language is used. They are defaults for new projects, not a
-reason to migrate an established toolchain without an explicit request.
+Files under `languages/` contain canonical language defaults. Thin adapters
+apply them only when matching files enter context: Amp uses `globs` through its
+global `AGENTS.md`, while Claude uses `paths` through user-level rules. These
+defaults are not a reason to migrate an established toolchain without an
+explicit request.
 
 ### Skills
 
@@ -63,11 +72,14 @@ user-wide discovery paths:
 
 | Source | Amp | Claude Code |
 |---|---|---|
-| `AGENTS.md` | `~/.config/amp/AGENTS.md` | `~/.claude/CLAUDE.md` |
+| Global adapter | `~/.config/amp/AGENTS.md` | `~/.claude/CLAUDE.md` |
+| Language adapters | `~/.config/amp/languages/<language>.md` | `~/.claude/rules/<language>.md` |
 | `skills/<name>/` | `~/.config/agents/skills/<name>/` | `~/.claude/skills/<name>/` |
 
-Each skill is linked individually so tool-specific skills can coexist in either
-destination. Do not edit the destination links; edit the files in this directory.
+Adapters contain only imports and tool-specific scope metadata; guidance remains
+defined once in `AGENTS.md` and `languages/`. Each skill is linked individually
+so tool-specific skills can coexist in either destination. Do not edit the
+destination links; edit the files in this directory.
 
 ## Exclusions
 
