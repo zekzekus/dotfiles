@@ -54,6 +54,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ├── niri/                      # Niri compositor config (symlinked via HM)
 ├── noctalia/                  # Noctalia shell config (symlinked via HM)
 ├── scripts/                   # Utility scripts (tmux project launchers, theme switchers)
+├── agents/                    # Global AI-agent guidance, skills, and language conventions
 ├── ctags/                     # Universal Ctags config (symlinked via HM)
 ├── macosx/                    # macOS-specific configs (Karabiner, Hammerspoon)
 ├── misc/                      # Legacy configs (archived)
