@@ -56,11 +56,18 @@ Shell snippets in skills are instructions for the agent's execution environment.
 Commands handed to me must still be translated to Nushell-compatible form as
 required by `AGENTS.md`.
 
-## Activation contract
+## Activation
 
-Home Manager activation and Amp/Claude installation wiring are not defined yet.
-When added, they must link or expose this directory as the source rather than
-create independent copies.
+Home Manager creates out-of-store symlinks from this directory to each tool's
+user-wide discovery paths:
+
+| Source | Amp | Claude Code |
+|---|---|---|
+| `AGENTS.md` | `~/.config/amp/AGENTS.md` | `~/.claude/CLAUDE.md` |
+| `skills/<name>/` | `~/.config/agents/skills/<name>/` | `~/.claude/skills/<name>/` |
+
+Each skill is linked individually so tool-specific skills can coexist in either
+destination. Do not edit the destination links; edit the files in this directory.
 
 ## Exclusions
 
