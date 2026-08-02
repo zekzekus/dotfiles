@@ -53,8 +53,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
     practicalli-clojure-cli-config = {
       url = "github:practicalli/clojure-cli-config";
       flake = false;
@@ -67,7 +65,6 @@
     nixpkgs,
     home-manager,
     sops-nix,
-    neovim-nightly-overlay,
     determinate,
     nix-darwin,
     nix-homebrew,
@@ -81,7 +78,6 @@
     ...
   }: let
     overlays = [
-      neovim-nightly-overlay.overlays.default
       (import ./nix/temporary-overlays.nix)
     ];
 

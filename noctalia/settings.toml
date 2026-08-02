@@ -1,4 +1,4 @@
-config_version = 11
+config_version = 8
 
 [bar.default]
 capsule = true
@@ -81,9 +81,6 @@ enabled = true
 [osd]
 position = "top_right"
 
-[shell.panel]
-launcher_categories = false
-
 [[shell.session.actions]]
 action = "lock"
 countdown_seconds = 5.0
@@ -140,4 +137,3 @@ glyph = "apps"
 
 [widget.workspaces]
 max_label_chars = 2
-show_labels = false

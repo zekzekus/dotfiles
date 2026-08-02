@@ -1,12 +1,15 @@
 {
   config,
   common,
+  pkgs,
   ...
 }: {
   # Noctalia v5 (C++ rewrite) ships its own Home Manager module and systemd
-  # user service. We enable the built-in service rather than hand-rolling one.
+  # user service. Use nixpkgs' cached package instead of building the package
+  # from the Noctalia flake on every upstream update.
   programs.noctalia = {
     enable = true;
+    package = pkgs.noctalia;
     systemd.enable = true;
   };
 
