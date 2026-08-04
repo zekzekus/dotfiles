@@ -22,6 +22,8 @@
 
   home.packages = with pkgs; [
     appimage-run
+    (import ../../../modules/packages/amp-acp.nix {inherit pkgs;})
+    (import ../../../modules/packages/buzz.nix {inherit pkgs;})
     (import ../../../modules/packages/helium.nix {inherit pkgs;})
     showmethekey
     droidcam

@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Pin nix/modules/packages/amp-acp.nix to the latest amp-acp release.
+# Replaces both the version line and Linux x86_64 archive SRI hash in place.
+# Run via `make update-amp-acp`.
+
+set -euo pipefail
+
+nix_file="$(cd "$(dirname "$0")/.." && pwd)/nix/modules/packages/amp-acp.nix"
+
+if [ ! -f "$nix_file" ]; then
+  echo "update-amp-acp: $nix_file not found" >&2
+  exit 1
+fi
+
+tag=$(
+  curl -fsSL https://api.github.com/repos/tao12345666333/amp-acp/releases/latest \
+    | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p' \
+    | head -1
+)
+if [ -z "$tag" ]; then
+  echo "update-amp-acp: could not parse tag_name from GitHub API" >&2
+  exit 1
+fi
+version=${tag#v}
+echo "amp-acp version: $version"
+
+url="https://github.com/tao12345666333/amp-acp/releases/download/${tag}/amp-acp-linux-x86_64.tar.gz"
+echo "  fetching $url"
+
+hex=$(nix-prefetch-url --type sha256 "$url" 2>/dev/null)
+sri=$(nix hash convert --to sri --hash-algo sha256 "$hex")
+echo "  hash: $sri"
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+awk -v new_ver="$version" -v new_hash="$sri" '
+  !ver_done && /version = "/ {
+    sub(/"[^"]*"/, "\"" new_ver "\"")
+    ver_done = 1
+  }
+  !hash_done && /hash = "sha256-/ {
+    sub(/"sha256-[^"]*"/, "\"" new_hash "\"")
+    hash_done = 1
+  }
+  { print }
+' "$nix_file" > "$tmp"
+mv "$tmp" "$nix_file"
+
+echo "Wrote $nix_file"

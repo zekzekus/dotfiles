@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Pin nix/modules/packages/buzz.nix to the latest Buzz desktop release.
+# Looks up the newest desktop tag on the block/buzz repo and replaces both the
+# version line and the AppImage SRI hash in place. Run via `make update-buzz`.
+
+set -euo pipefail
+
+nix_file="$(cd "$(dirname "$0")/.." && pwd)/nix/modules/packages/buzz.nix"
+
+if [ ! -f "$nix_file" ]; then
+  echo "update-buzz: $nix_file not found" >&2
+  exit 1
+fi
+
+tag=$(
+  curl -fsSL https://api.github.com/repos/block/buzz/releases/latest \
+    | sed -n 's/.*"tag_name":[[:space:]]*"\(desktop-v[^"]*\)".*/\1/p' \
+    | head -1
+)
+if [ -z "$tag" ]; then
+  echo "update-buzz: could not parse desktop tag_name from GitHub API" >&2
+  exit 1
+fi
+version=${tag#desktop-v}
+echo "buzz version: $version"
+
+url="https://github.com/block/buzz/releases/download/${tag}/Buzz_${version}_amd64.AppImage"
+echo "  fetching $url"
+
+hex=$(nix-prefetch-url --type sha256 "$url" 2>/dev/null)
+sri=$(nix hash convert --to sri --hash-algo sha256 "$hex")
+echo "  hash: $sri"
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+awk -v new_ver="$version" -v new_hash="$sri" '
+  !ver_done && /version = "/ {
+    sub(/"[^"]*"/, "\"" new_ver "\"")
+    ver_done = 1
+  }
+  !hash_done && /hash = "sha256-/ {
+    sub(/"sha256-[^"]*"/, "\"" new_hash "\"")
+    hash_done = 1
+  }
+  { print }
+' "$nix_file" > "$tmp"
+mv "$tmp" "$nix_file"
+
+echo "Wrote $nix_file"
