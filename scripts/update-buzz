@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Pin nix/modules/packages/buzz.nix to the latest Buzz desktop release.
 # Looks up the newest desktop tag on the block/buzz repo and replaces both the
-# version line and the AppImage SRI hash in place. Run via `make update-buzz`.
+# version line and the DEB SRI hash in place. Run via `make update-buzz`.
 
 set -euo pipefail
 
@@ -24,7 +24,7 @@ fi
 version=${tag#desktop-v}
 echo "buzz version: $version"
 
-url="https://github.com/block/buzz/releases/download/${tag}/Buzz_${version}_amd64.AppImage"
+url="https://github.com/block/buzz/releases/download/${tag}/Buzz_${version}_amd64.deb"
 echo "  fetching $url"
 
 hex=$(nix-prefetch-url --type sha256 "$url" 2>/dev/null)
