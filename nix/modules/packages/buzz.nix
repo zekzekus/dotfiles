@@ -41,6 +41,8 @@ in
       runHook preInstall
       dpkg-deb -x $src $out
       mv $out/usr/bin $out/bin
+      mv $out/usr/share $out/share
+      rmdir $out/usr
       runHook postInstall
     '';
 
