@@ -1,8 +1,9 @@
 # AI agent configuration
 
 The single source of truth for personal AI-agent guidance, reusable skills, and
-language-specific conventions, designed for use by Amp and Claude. Tool-specific
-activation must expose these source files rather than create copies that drift.
+language-specific conventions, designed for use by Amp, Claude Code, and
+OpenCode. Tool-specific activation must expose these source files rather than
+create copies that drift.
 
 ## What goes where
 
@@ -70,16 +71,43 @@ required by `AGENTS.md`.
 Home Manager creates out-of-store symlinks from this directory to each tool's
 user-wide discovery paths:
 
-| Source | Amp | Claude Code |
-|---|---|---|
-| Global adapter | `~/.config/amp/AGENTS.md` | `~/.claude/CLAUDE.md` |
-| Language adapters | `~/.config/amp/languages/<language>.md` | `~/.claude/rules/<language>.md` |
-| `skills/<name>/` | `~/.config/agents/skills/<name>/` | `~/.claude/skills/<name>/` |
+| Source | Amp | Claude Code | OpenCode |
+|---|---|---|---|
+| Global guidance | `~/.config/amp/AGENTS.md` | `~/.claude/CLAUDE.md` | `~/.config/opencode/AGENTS.md` |
+| Language adapters | `~/.config/amp/languages/<language>.md` | `~/.claude/rules/<language>.md` | Not supported as conditional global rules |
+| `skills/<name>/` | `~/.config/agents/skills/<name>/` | `~/.claude/skills/<name>/` | `~/.config/opencode/skills/<name>/` |
 
 Adapters contain only imports and tool-specific scope metadata; guidance remains
 defined once in `AGENTS.md` and `languages/`. Each skill is linked individually
 so tool-specific skills can coexist in either destination. Do not edit the
 destination links; edit the files in this directory.
+
+OpenCode receives the canonical `AGENTS.md` directly because it does not expand
+Amp/Claude-style `@file` imports. Its browser UI is served by the local
+`opencode web` process, so it uses these same local links; OpenCode does not
+currently provide a separately hosted agent service that needs another copy.
+
+## Hosted products
+
+Local symlinks cannot configure vendor-hosted execution environments. Publish
+the canonical content separately for each hosted surface:
+
+- **Amp web:** paste `agents/AGENTS.md` into **Settings → Advanced → Global
+  AGENTS.md**. Publish each directory under `agents/skills/` to the Amp personal
+  skills repository (`amp skills repositories` shows its clone URL). Personal
+  skills then follow the account across CLI and web sessions. Publishing
+  creates a cloud copy, so repeat it after changing a canonical local skill.
+- **Claude.ai / Claude desktop:** put the contents of `agents/AGENTS.md` in the
+  relevant Project instructions. Zip and upload each custom skill through
+  **Settings → Features**. Claude Code, claude.ai, and the Claude API do not sync
+  custom skills with one another, so uploads must be refreshed separately.
+- **OpenCode web:** run `opencode web` from the desired checkout. It is a local
+  server and discovers the same global guidance and skills as the terminal UI;
+  there is no separate hosted configuration to publish.
+
+Do not upload local-only language adapters as always-on hosted instructions:
+their path/glob metadata is specific to Amp or Claude Code and is what keeps
+those conventions conditional.
 
 ## Exclusions
 

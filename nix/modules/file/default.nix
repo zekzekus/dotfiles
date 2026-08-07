@@ -28,6 +28,8 @@ in {
       ".claude/rules/clojure.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/claude/rules/clojure.md";
       ".claude/rules/python.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/adapters/claude/rules/python.md";
 
+      ".config/opencode/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/agents/AGENTS.md";
+
       ".ctags".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/ctags/ctags";
       ".tmuxinator".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/tmuxinator";
       ".config/doom".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/misc/emacs/doom";
@@ -39,5 +41,6 @@ in {
       "bin/yy".source = "${common.dotfilesDir}/scripts/yaziproject.sh";
     }
     // skillLinks ".config/agents/skills"
-    // skillLinks ".claude/skills";
+    // skillLinks ".claude/skills"
+    // skillLinks ".config/opencode/skills";
 }
