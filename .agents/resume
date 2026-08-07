@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+nix="/nix/var/nix/profiles/default/bin/nix"
+
+if [[ ! -x "$nix" ]]; then
+  printf 'Nix is missing; recreate the orb so .agents/setup can install it.\n' >&2
+  exit 1
+fi
+
+printf 'Orb ready: %s\n' "$($nix --version)"

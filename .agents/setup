@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+nix_profile="/nix/var/nix/profiles/default"
+
+run_step() {
+  local description="$1"
+  shift
+
+  printf '\n==> %s\n' "$description"
+  time "$@"
+}
+
+install_nix() {
+  curl --proto '=https' --tlsv1.2 --fail --silent --show-error --location \
+    https://install.determinate.systems/nix \
+    | sh -s -- install --no-confirm
+}
+
+ensure_repo_link() {
+  local link_path="$1"
+
+  if [[ -L "$link_path" && "$(readlink -f "$link_path")" == "$repo_root" ]]; then
+    return
+  fi
+
+  if [[ -e "$link_path" || -L "$link_path" ]]; then
+    printf 'Refusing to replace existing path: %s\n' "$link_path" >&2
+    exit 1
+  fi
+
+  sudo mkdir -p "$(dirname "$link_path")"
+  sudo ln -s "$repo_root" "$link_path"
+}
+
+if [[ ! -x "$nix_profile/bin/nix" ]]; then
+  run_step "Installing Determinate Nix" install_nix
+else
+  printf '==> Determinate Nix is already installed\n'
+fi
+
+# The installer cannot update this script's environment.
+# shellcheck disable=SC1091
+source "$nix_profile/etc/profile.d/nix-daemon.sh"
+
+# Host modules use out-of-store links rooted at these real-machine checkout
+# paths. Mirror them only inside an orb so flake evaluation can find the files.
+if [[ "${AMP_ORB:-}" == "1" ]]; then
+  ensure_repo_link "/home/zekus/devel/tools/dotfiles"
+  ensure_repo_link "/Users/zekus/devel/tools/dotfiles"
+fi
+
+profile_marker="# >>> dotfiles Nix development shell >>>"
+profile_end_marker="# <<< dotfiles Nix development shell <<<"
+
+if grep -Fqx "$profile_marker" "$HOME/.bash_profile" 2>/dev/null; then
+  sed -i '/^# >>> dotfiles Nix development shell >>>$/,/^# <<< dotfiles Nix development shell <<<$/{d;}' "$HOME/.bash_profile"
+fi
+
+cat >> "$HOME/.bash_profile" <<EOF
+$profile_marker
+if [[ -z "\${IN_NIX_SHELL:-}" && "\${PWD}" == "$repo_root" ]]; then
+  # shellcheck disable=SC1091
+  source "$nix_profile/etc/profile.d/nix-daemon.sh"
+  eval "\$("$nix_profile/bin/nix" print-dev-env --accept-flake-config --impure "$repo_root")"
+  export PATH="$nix_profile/bin:\$PATH"
+fi
+$profile_end_marker
+EOF
+
+run_step "Preparing the flake development environment" \
+  nix develop --accept-flake-config --impure "$repo_root" --command true
+
+printf '\nOrb setup complete. Run `make check` to validate the repository.\n'
