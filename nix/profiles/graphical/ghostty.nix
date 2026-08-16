@@ -6,20 +6,20 @@
   programs.ghostty = {
     enable = true;
     package =
-      if pkgs.stdenv.isDarwin
+      if pkgs.stdenv.hostPlatform.isDarwin
       then pkgs.ghostty-bin
       else pkgs.ghostty;
     settings = {
       theme =
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.hostPlatform.isDarwin
         then "Kanagawabones"
         else "noctalia";
       font-family = "TX-02";
       font-size =
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.hostPlatform.isDarwin
         then 17
         else 14;
-      font-thicken = lib.mkIf pkgs.stdenv.isDarwin true;
+      font-thicken = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin true;
       window-padding-balance = true;
       font-feature = "-calt, -liga, -dlig";
       adjust-cursor-thickness = 3;
@@ -28,9 +28,9 @@
       maximize = false;
 
       # macOS-specific
-      macos-titlebar-style = lib.mkIf pkgs.stdenv.isDarwin "tabs";
-      macos-option-as-alt = lib.mkIf pkgs.stdenv.isDarwin "left";
-      macos-shortcuts = lib.mkIf pkgs.stdenv.isDarwin "allow";
+      macos-titlebar-style = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "tabs";
+      macos-option-as-alt = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "left";
+      macos-shortcuts = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "allow";
 
       # Keybindings (cross-platform)
       keybind = [

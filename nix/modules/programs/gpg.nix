@@ -3,8 +3,7 @@
   lib,
   ...
 }: let
-  inherit (pkgs.stdenv) isDarwin;
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 
   pinentryPackage =
     if isDarwin

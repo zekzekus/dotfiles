@@ -4,7 +4,7 @@
 # config out of here — that belongs in the `wayland` profile.
 #
 # Note: the Linux gate uses `common.isLinux` (a specialArg) rather than
-# `pkgs.stdenv.isLinux`, because branching `imports` on a regular module arg
+# `pkgs.stdenv.hostPlatform.isLinux`, because branching `imports` on a regular module arg
 # (pkgs/config) triggers infinite recursion.
 {
   lib,

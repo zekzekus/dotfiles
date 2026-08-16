@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (pkgs.stdenv) isDarwin isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 
   # Stable socket path used across platforms
   onePasswordSocketPath = "${config.home.homeDirectory}/.1password/agent.sock";

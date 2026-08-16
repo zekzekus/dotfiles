@@ -12,7 +12,7 @@ _: prev: {
   # (test/scenarios/* spawns shells / watches dirs that deadlock).
   # Disable tests on Darwin until upstream fixes the test suite.
   direnv = prev.direnv.overrideAttrs (_:
-    prev.lib.optionalAttrs prev.stdenv.isDarwin {
+    prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
       doCheck = false;
       doInstallCheck = false;
     });
@@ -20,7 +20,7 @@ _: prev: {
   # env_shlvl_in_exec_repl fail on Darwin due to sandbox permissions.
   # The package uses a custom checkPhase, so we must override it directly.
   nushell = prev.nushell.overrideAttrs (old:
-    prev.lib.optionalAttrs prev.stdenv.isDarwin {
+    prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
       checkPhase =
         builtins.replaceStrings
         ["shell::environment::env::path_is_a_list_in_repl"]
