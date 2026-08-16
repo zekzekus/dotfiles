@@ -1,4 +1,4 @@
-config_version = 8
+config_version = 12
 
 [bar.default]
 capsule = true
@@ -136,5 +136,5 @@ directory = "~/Pictures/Wallpapers"
 glyph = "apps"
 
 [widget.workspaces]
-display = "none"
 max_label_chars = 2
+show_labels = false
