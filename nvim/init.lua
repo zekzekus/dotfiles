@@ -1,5 +1,6 @@
 require('lazynvim')
 require('options')
+require('config.treesitter')
 require('keybindings')
 require('config.lsp-auto')
 require('commands')

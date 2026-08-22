@@ -1,6 +1,14 @@
 local vim = vim
 local opt = vim.opt
 
+vim.filetype.add({
+  extension = {
+    kk = 'koka',
+    kki = 'koka',
+    kkc = 'koka',
+  },
+})
+
 opt.shell = '/usr/bin/env bash'
 opt.number = true
 opt.hidden = true

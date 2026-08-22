@@ -1,26 +1,9 @@
-local prequire = require('utils').prequire
-
-local tsitter = prequire('nvim-treesitter.configs')
-
-if not tsitter then
-  return
-end
-
-tsitter.setup {
-  auto_install = false,
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'gnn',
-      node_incremental = 'grn',
-      node_decremental = 'grm',
-      scope_incremental = 'grc',
-    }
-  },
-}
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function(args)
+    -- Neovim's native Tree-sitter highlighter is used by nvim-treesitter 0.10+.
+    -- pcall keeps filetypes without an installed parser on the normal Vim
+    -- highlighting path.
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})

@@ -11,4 +11,5 @@ vim.lsp.enable({
   'nixd',
   'ty',
   'ruff',
+  'koka',
 })

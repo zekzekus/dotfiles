@@ -39,6 +39,14 @@ local function custom_root_pattern(opt)
 end
 
 lsp_zero.on_attach(function(client, bufnr)
+  -- Koka advertises semantic tokens, but its server currently sends a
+  -- request Neovim does not have a handler for. Tree-sitter provides the
+  -- highlighting for Koka, so do not start the incompatible semantic-token
+  -- client path.
+  if client.name == 'koka' then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
+
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
   end
