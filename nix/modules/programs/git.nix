@@ -23,6 +23,7 @@
         ctags = "!.git/hooks/ctags";
         ctagse = "!.git/hooks/ctagse";
       };
+      credential."https://ampcode.com".helper = "!amp git-credential-helper";
     };
   };
 }

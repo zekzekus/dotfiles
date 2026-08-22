@@ -26,6 +26,7 @@
     gpgKey = "6716516470AD2D7A";
 
     sessionVariables = {
+      AMP_NO_GIT_SETUP = "1";
       ZEK_DEVEL_HOME = develHome;
       ZEK_DEFAULT_PROJECT_DIR = defaultProjectDir;
       ZEK_DEVEL_WORK_HOME = workHome;
