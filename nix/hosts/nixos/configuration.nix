@@ -35,7 +35,7 @@ in {
       # `docker` -> `podman` alias; runs rootless as the invoking user.
       dockerCompat = true;
       # No rootful dockerSocket: docker-compose talks to the rootless user
-      # socket via DOCKER_HOST (see environment.sessionVariables), so the
+      # socket via DOCKER_HOST (see the host Home Manager config), so the
       # `docker` CLI and docker-compose share one rootless namespace.
     };
   };
@@ -174,6 +174,9 @@ in {
         compositor = "kwin";
       };
     };
+    # Keep Niri as the host-wide fallback for SDDM. SDDM does not provide a
+    # declarative per-user default session; Asya and Mehmet can select Plasma
+    # (Wayland) in the session chooser when they first log in.
     displayManager.defaultSession = "niri";
     desktopManager.plasma6.enable = true;
     power-profiles-daemon.enable = true;
@@ -282,24 +285,38 @@ in {
     }
   ];
 
-  users.groups.plugdev = {};
+  users = {
+    groups.plugdev = {};
 
-  users.users.${common.username} = {
-    isNormalUser = true;
-    description = common.userFullName;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "input"
-      "i2c"
-      "plugdev"
-      "kvm"
-    ];
-    packages = with pkgs; [
-      fish
-      nushell
-    ];
-    shell = pkgs.nushell;
+    users = {
+      asya = {
+        isNormalUser = true;
+        description = "Asya";
+      };
+
+      mehmet = {
+        isNormalUser = true;
+        description = "Mehmet";
+      };
+
+      ${common.username} = {
+        isNormalUser = true;
+        description = common.userFullName;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "input"
+          "i2c"
+          "plugdev"
+          "kvm"
+        ];
+        packages = with pkgs; [
+          fish
+          nushell
+        ];
+        shell = pkgs.nushell;
+      };
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -330,16 +347,7 @@ in {
   };
 
   environment = {
-    sessionVariables = {
-      STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
-      # Point Docker-API clients (docker-compose) at the rootless Podman socket.
-      # NOTE: sessionVariables are set literally by systemd/PAM (no shell-style
-      # $VAR expansion), and the login shell is nushell, which never sources
-      # bash's /etc/set-environment. So "$XDG_RUNTIME_DIR" would reach clients
-      # verbatim and docker-compose would fail to dial the socket. Use the
-      # resolved rootless path (XDG_RUNTIME_DIR is always /run/user/<uid>).
-      DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
-    };
+    sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
     systemPackages = with pkgs; [
       vim
       git
