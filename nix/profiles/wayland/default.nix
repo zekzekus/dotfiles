@@ -9,18 +9,22 @@
   pkgs,
   common,
   ...
-}: {
+}: let
+  compositorSessionCondition = "${pkgs.bash}/bin/bash -c 'case \"$XDG_CURRENT_DESKTOP\" in niri|Hyprland) exit 0;; *) exit 1;; esac'";
+in {
   systemd.user.services = {
     # Noctalia is the StatusNotifierWatcher/host. Make it the *sole* owner of
     # the Tailscale tray client: while noctalia is up, keep the tray up
     # (Upholds); see tailscale-systray below for the matching BindsTo/After.
     # This is what guarantees a single tray icon — graphical-session.target no
     # longer pulls in the tray independently.
-    noctalia.Unit = {
-      ConditionEnvironment = "!XDG_CURRENT_DESKTOP=COSMIC";
-      Upholds = ["tailscale-systray.service"];
+    noctalia = {
+      Service.ExecCondition = compositorSessionCondition;
+      Unit = {
+        Upholds = ["tailscale-systray.service"];
+      };
     };
-    hypridle.Unit.ConditionEnvironment = pkgs.lib.mkForce ["WAYLAND_DISPLAY" "!XDG_CURRENT_DESKTOP=COSMIC"];
+    hypridle.Service.ExecCondition = compositorSessionCondition;
 
     # The duplicated tray icon came from noctalia restarting *itself* (its
     # service has Restart=on-failure, common during v5 session startup): PartOf
@@ -45,14 +49,22 @@
         BindsTo = ["noctalia.service"];
         Requires = pkgs.lib.mkForce [];
         PartOf = pkgs.lib.mkForce [];
-        ConditionEnvironment = "!XDG_CURRENT_DESKTOP=COSMIC";
       };
       Install.WantedBy = pkgs.lib.mkForce [];
       Service = {
+        ExecCondition = compositorSessionCondition;
         ExecStartPre = ''${pkgs.bash}/bin/bash -c 'for _ in $(${pkgs.coreutils}/bin/seq 1 50); do ${pkgs.systemd}/bin/busctl --user --list --acquired | ${pkgs.gnugrep}/bin/grep -q org.kde.StatusNotifierWatcher && exit 0; ${pkgs.coreutils}/bin/sleep 0.2; done; exit 1' '';
         Restart = pkgs.lib.mkForce "no";
       };
     };
+
+    # Plasma provides its own tray, clipboard, storage, and polkit services.
+    # These shared Home Manager services are therefore allowed only in the
+    # compositor sessions that use this profile's Noctalia shell.
+    network-manager-applet.Service.ExecCondition = compositorSessionCondition;
+    cliphist.Service.ExecCondition = compositorSessionCondition;
+    cliphist-images.Service.ExecCondition = compositorSessionCondition;
+    udiskie.Service.ExecCondition = compositorSessionCondition;
   };
 
   imports = [
@@ -111,6 +123,7 @@
       After = ["graphical-session.target"];
     };
     Service = {
+      ExecCondition = compositorSessionCondition;
       ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
       Restart = "on-failure";
       RestartSec = 1;

@@ -180,7 +180,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 **`wayland` profile** *(opt-in -- Wayland desktop, normally paired with `graphical`)*
 - Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock
-- Stylix system-wide theming (Kanagawa, dark polarity)
+- Stylix CLI theming (Kanagawa, dark polarity); Plasma owns shared Qt/GTK appearance
 - rofi launcher, Hyprland polkit agent
 - Tray/session services: clipboard history (cliphist), automount (udiskie), network + Tailscale applets
 
@@ -193,12 +193,12 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 - Touch ID for sudo
 
 **`nixos` host** *(system level)*
-- PipeWire audio, Bluetooth, greetd + tuigreet login, COSMIC desktop available
+- PipeWire audio, Bluetooth, SDDM login, Plasma 6, Niri, and Hyprland sessions
 - Kanata key remapping (caps-lock as ctrl/esc)
 - Steam + Gamescope gaming, gpu-screen-recorder, v4l2loopback virtual camera
 - Flatpak (GeForce NOW), Podman (Docker-compatible)
 - Tailscale VPN, OpenSSH (reachable via Tailscale only)
-- 1Password (NixOS module + GUI polkit), xdg portals (Hyprland/GTK/GNOME/COSMIC)
+- 1Password (NixOS module + GUI polkit), xdg portals (KDE/Hyprland/GTK/GNOME)
 
 ---
 

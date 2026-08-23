@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  home.pointerCursor.enable = true;
-
+  # Plasma is the shared GUI appearance authority for this host. Keep Stylix
+  # on CLI targets only so Home Manager does not own Qt/GTK/KDE state.
   stylix = {
     enable = true;
     autoEnable = false;
@@ -8,19 +8,6 @@
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
     polarity = "dark";
-
-    cursor = {
-      package = pkgs.volantes-cursors;
-      name = "volantes_cursors";
-      size = 24;
-    };
-
-    icons = {
-      enable = true;
-      package = pkgs.tela-circle-icon-theme;
-      dark = "Tela-circle-dark";
-      light = "Tela-circle-light";
-    };
 
     targets = {
       bat.enable = true;
@@ -30,9 +17,6 @@
       gdu.enable = true;
       lazygit.enable = true;
       tmux.enable = true;
-
-      gtk.enable = true;
-      qt.enable = true;
 
       hyprland.enable = false;
       hyprlock.enable = false;

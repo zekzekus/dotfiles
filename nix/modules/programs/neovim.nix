@@ -3,8 +3,7 @@
   config,
   common,
   ...
-}:
-let
+}: let
   kokaTreeSitter = pkgs.runCommand "tree-sitter-koka-vim-plugin" {} ''
     mkdir -p "$out/parser" "$out/queries/koka"
     cp "${pkgs.tree-sitter-grammars.tree-sitter-koka}/parser" "$out/parser/koka.so"

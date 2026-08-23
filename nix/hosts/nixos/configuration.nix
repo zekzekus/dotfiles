@@ -11,6 +11,10 @@ in {
     ./flatpak.nix
   ];
 
+  # Keep an activation-time safety net for files that are unexpectedly claimed
+  # by an application outside Home Manager.
+  home-manager.backupFileExtension = "hm-backup";
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -163,18 +167,15 @@ in {
         variant = "alt";
       };
     };
-    displayManager.sddm.enable = false;
-    displayManager.cosmic-greeter.enable = false;
-    desktopManager.cosmic.enable = true;
-    greetd = {
+    displayManager.sddm = {
       enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions /run/current-system/sw/share/wayland-sessions";
-          user = "greeter";
-        };
+      wayland = {
+        enable = true;
+        compositor = "kwin";
       };
     };
+    displayManager.defaultSession = "niri";
+    desktopManager.plasma6.enable = true;
     power-profiles-daemon.enable = true;
     upower.enable = true;
     printing.enable = true;
@@ -216,6 +217,7 @@ in {
       hyprPkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
+      pkgs.kdePackages.xdg-desktop-portal-kde
     ];
     config = {
       common.default = ["gtk"];
@@ -223,8 +225,8 @@ in {
       start-hyprland.default = ["hyprland" "gtk"];
       niri.default = ["gnome" "gtk"];
       start-niri.default = ["gnome" "gtk"];
-      cosmic.default = ["cosmic" "gtk"];
-      start-cosmic.default = ["cosmic" "gtk"];
+      kde.default = ["kde" "gtk"];
+      plasma.default = ["kde" "gtk"];
     };
   };
 

@@ -179,7 +179,7 @@ The builder functions in `lib.nix` automatically:
 | Host | Key Features |
 |------|-------------|
 | `hosts/mac-machine/` | nix-darwin system defaults, Homebrew casks, Touch ID sudo, file descriptor limits |
-| `hosts/nixos/` | NixOS system: Kanata, Steam, Flatpak, PipeWire, portals, greetd, hardware config (desktop *home* now via `graphical`+`wayland` profiles) |
+| `hosts/nixos/` | NixOS system: Kanata, Steam, Flatpak, PipeWire, portals, SDDM, Plasma 6, Niri, Hyprland, hardware config (desktop *home* via `graphical`+`wayland` profiles) |
 
 ## Checks & Quality
 

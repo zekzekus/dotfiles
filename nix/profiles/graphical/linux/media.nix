@@ -4,37 +4,4 @@
     loupe
     papers
   ];
-
-  xdg.configFile."mimeapps.list".force = true;
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "image/png" = "org.gnome.Loupe.desktop";
-      "image/jpeg" = "org.gnome.Loupe.desktop";
-      "image/gif" = "org.gnome.Loupe.desktop";
-      "image/webp" = "org.gnome.Loupe.desktop";
-      "image/tiff" = "org.gnome.Loupe.desktop";
-      "image/bmp" = "org.gnome.Loupe.desktop";
-      "image/svg+xml" = "org.gnome.Loupe.desktop";
-      "application/pdf" = "org.gnome.Papers.desktop";
-      "video/mp4" = "org.kde.haruna.desktop";
-      "video/x-matroska" = "org.kde.haruna.desktop";
-      "video/webm" = "org.kde.haruna.desktop";
-      "video/quicktime" = "org.kde.haruna.desktop";
-      "video/x-msvideo" = "org.kde.haruna.desktop";
-
-      "text/html" = "helium.desktop";
-      "x-scheme-handler/http" = "helium.desktop";
-      "x-scheme-handler/https" = "helium.desktop";
-      "x-scheme-handler/about" = "helium.desktop";
-      "x-scheme-handler/unknown" = "helium.desktop";
-      "x-scheme-handler/chrome" = "helium.desktop";
-      "application/xhtml+xml" = "helium.desktop";
-      "application/x-extension-htm" = "helium.desktop";
-      "application/x-extension-html" = "helium.desktop";
-      "application/x-extension-shtml" = "helium.desktop";
-      "application/x-extension-xhtml" = "helium.desktop";
-      "application/x-extension-xht" = "helium.desktop";
-    };
-  };
 }
