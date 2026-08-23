@@ -243,5 +243,4 @@ binds {
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 }
 
-include "./noctalia.kdl"
 
