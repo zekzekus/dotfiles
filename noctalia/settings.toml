@@ -141,6 +141,9 @@ variant = "destructive"
 builtin = "Kanagawa"
 mode = "dark"
 
+    [theme.templates]
+    builtin_ids = [ "ghostty", "niri" ]
+
 [wallpaper]
 directory = "~/Pictures/Wallpapers"
 
