@@ -3,8 +3,9 @@
 # "graphical"). Reusable across any Wayland host; not NixOS-specific.
 #
 # Requires these HM modules + specialArgs (provided by the registry entry in
-# flake.nix): stylix, hyprland HM module, noctalia HM module, and the
-# `hyprland`/`hyprland-plugins` flake inputs.
+# flake.nix): stylix, the Hyprland HM module, and the
+# `hyprland`/`hyprland-plugins` flake inputs. Noctalia's HM module is provided
+# by nixpkgs.
 {
   pkgs,
   common,

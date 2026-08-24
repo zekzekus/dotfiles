@@ -43,11 +43,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,7 +67,6 @@
     stylix,
     hyprland,
     hyprland-plugins,
-    noctalia,
     practicalli-clojure-cli-config,
     nix-flatpak,
     ...
@@ -90,12 +84,12 @@
       graphical.homeModules = [./nix/profiles/graphical];
 
       # Hyprland/Niri/Noctalia Wayland session (home-manager side). Bundles the
-      # external HM modules and inputs it needs. Normally paired with "graphical".
+      # external Hyprland module and inputs it needs; Noctalia's module is
+      # provided by nixpkgs. Normally paired with "graphical".
       wayland = {
         homeModules = [
           stylix.homeModules.stylix
           hyprland.homeManagerModules.default
-          noctalia.homeModules.default
           ./nix/profiles/wayland
         ];
         homeSpecialArgs = {inherit hyprland hyprland-plugins;};
