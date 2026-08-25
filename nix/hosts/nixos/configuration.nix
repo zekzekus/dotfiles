@@ -5,6 +5,20 @@
   ...
 }: let
   hyprPkgs = hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+  geforceNowWaylandDesktop = pkgs.writeTextFile {
+    name = "geforcenow-wayland.desktop";
+    executable = true;
+    text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=GeForce NOW (Wayland test)
+      Comment=Launch GeForce NOW using native Wayland
+      Icon=com.nvidia.geforcenow
+      Exec=${pkgs.coreutils}/bin/env NIXOS_OZONE_WL=1 ELECTRON_OZONE_PLATFORM_HINT=wayland ${pkgs.flatpak}/bin/flatpak run com.nvidia.geforcenow
+      Terminal=false
+      Categories=Game;
+    '';
+  };
 in {
   imports = [
     ./hardware-configuration.nix
@@ -270,6 +284,10 @@ in {
 
   # Increase file descriptor limits to prevent "Too many open files" during Nix builds
   systemd.services.nix-daemon.serviceConfig.LimitNOFILE = 1048576;
+  systemd.tmpfiles.rules = [
+    "d /home/mehmet/Desktop 0755 mehmet users -"
+    "L+ /home/mehmet/Desktop/geforcenow-wayland.desktop - mehmet users - ${geforceNowWaylandDesktop}"
+  ];
   security.pam.loginLimits = [
     {
       domain = "*";
