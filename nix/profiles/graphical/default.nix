@@ -9,6 +9,7 @@
 {
   lib,
   common,
+  pkgs,
   ...
 }: {
   imports =
@@ -17,4 +18,6 @@
       ./obsidian.nix
     ]
     ++ lib.optional common.isLinux ./linux;
+
+  home.packages = [pkgs.spotify];
 }
