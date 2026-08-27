@@ -22,9 +22,9 @@
 
   home.packages = with pkgs; [
     appimage-run
-    (import ../../../modules/packages/amp-acp.nix {inherit pkgs;})
-    (import ../../../modules/packages/buzz.nix {inherit pkgs;})
-    (import ../../../modules/packages/helium.nix {inherit pkgs;})
+    (callPackage ../../../modules/packages/amp-acp.nix {})
+    (callPackage ../../../modules/packages/buzz.nix {})
+    (callPackage ../../../modules/packages/helium.nix {})
     showmethekey
     droidcam
     cameractrls-gtk4

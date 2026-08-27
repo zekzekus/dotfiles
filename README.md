@@ -44,7 +44,8 @@ One config to rule them all -- macOS, Linux, and NixOS.
 │   │   │   └── modules/       #   opt-in: Aerospace, JankyBorders
 │   │   └── linux/             #   headless-safe stub (Linux-universal user config)
 │   └── docs/                  # Setup guides
-│       └── 1password-setup.md #   1Password SSH & GPG setup
+│       ├── 1password-setup.md #   1Password SSH & GPG setup
+│       └── sops-setup.md      #   Encrypted secrets (sops-nix, age) bootstrap & workflow
 │
 ├── nvim/                      # Neovim configuration (Lua, symlinked via HM)
 ├── ghostty/                   # Ghostty terminal config (symlinked via HM)
@@ -170,9 +171,9 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 - tmux with tmuxinator
 - Git with delta, difftastic, lazygit, jujutsu (jj), lazyjj, jjui
 - direnv, atuin (shell history), zoxide, yazi
-- fzf, ripgrep, fd, bat, btop, fastfetch
-- GPG signing, SSH via 1Password agent
-- devenv, Ollama (CPU)
+- ripgrep, fd, bat, btop, fastfetch
+- GPG signing, SSH via 1Password agent (encrypted host list via sops-nix)
+- devenv
 
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
@@ -208,12 +209,14 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 |-------|---------|
 | `nixpkgs` | Main package set (nixos-unstable) |
 | `home-manager` | User environment management |
+| `sops-nix` | Encrypted secrets (age-backed), wired into the base in `nix/lib.nix` |
 | `nix-darwin` | macOS system management |
 | `nix-homebrew` | Declarative Homebrew on macOS |
+| `homebrew-emacs-plus` | Homebrew tap for emacs-plus (macOS) |
 | `hyprland` | Wayland compositor |
 | `hyprland-plugins` | Hyprland extensions |
-| `noctalia` | Desktop shell for Hyprland |
 | `stylix` | System-wide theming |
+| `practicalli-clojure-cli-config` | Clojure CLI user config (deps.edn aliases) |
 | `nix-flatpak` | Declarative Flatpak management |
 | `determinate` | Determinate Nix integration |
 
@@ -223,6 +226,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 - [Home Manager README](./nix/README.md) -- Installation, adding hosts, troubleshooting
 - [1Password Setup](./nix/docs/1password-setup.md) -- SSH agent & GPG key management
+- [sops Setup](./nix/docs/sops-setup.md) -- Encrypted secrets bootstrap & workflow (sops-nix, age)
 
 ---
 

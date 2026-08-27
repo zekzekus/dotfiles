@@ -57,22 +57,22 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 
 1. Create `nix/hosts/<hostname>/default.nix` (host-specific Home Manager overrides; may be an empty `_: {}` stub).
 2. For NixOS/darwin only: create `nix/hosts/<hostname>/configuration.nix` (system config).
-3. Pick `profiles` for the host's role and add it to the right output attrset in `flake.nix`:
+3. Define the machine once in the `hosts` attrset in `flake.nix` (single source of truth for system, profiles, and system wiring), then reference it from the output(s) that manage it:
    ```nix
-   nixosConfigurations = {
-     myhost = mkNixosSystem {
+   hosts = {
+     myhost = {
        hostname = "myhost";
-       profiles = ["graphical" "wayland"];  # omit for a headless NixOS server
-       systemModules = [];                  # NixOS system modules
-       systemSpecialArgs = {};              # args passed to NixOS
+       system = "x86_64-linux";   # or "aarch64-darwin"
+       profiles = ["graphical" "wayland"];  # [] for a headless server
+       systemModules = [];                  # NixOS/darwin system modules
+       systemSpecialArgs = {};
      };
    };
-   # or
-   darwinConfigurations.myhost = mkDarwinSystem {
-     hostname = "myhost";
-     profiles = ["graphical"];
-   };
+
+   nixosConfigurations.myhost = mkNixosSystem hosts.myhost;
+   # or: darwinConfigurations.myhost = mkDarwinSystem hosts.myhost;
    ```
+   A machine that appears in several outputs (e.g. NixOS system + standalone HM) must reuse its single `hosts` entry so the profile list cannot diverge.
 
 ### Any Linux box via standalone Home Manager
 
@@ -81,28 +81,29 @@ External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Man
 with `gpu.enable` forced off for headless safety). Profiles decide the role:
 
 ```nix
-homeConfigurations = {
+hosts = {
   # Foreign distro, desktop (Ubuntu/etc.). GUI apps; needs GL for them — either
   # set targets.genericLinux.gpu.enable = true (then `sudo non-nixos-gpu`) or wrap
   # GUI packages with nixGL.
-  "zekus@ubuntu" = mkHomeConfiguration {
-    hostname = "ubuntu"; system = "x86_64-linux"; profiles = ["graphical"];
-  };
+  ubuntu = { hostname = "ubuntu"; system = "x86_64-linux"; profiles = ["graphical"]; };
 
   # Any non-NixOS server, headless. Base only — no GUI, gpu off.
-  "zekus@vps" = mkHomeConfiguration {
-    hostname = "vps"; system = "x86_64-linux";
-  };
+  vps = { hostname = "vps"; system = "x86_64-linux"; profiles = []; };
+};
+
+homeConfigurations = {
+  "zekus@ubuntu" = mkHomeConfiguration { inherit (hosts.ubuntu) hostname system profiles; };
+  "zekus@vps" = mkHomeConfiguration { inherit (hosts.vps) hostname system profiles; };
 
   # Standalone HM on NixOS — pass target = "nixos" so genericLinux is NOT enabled.
   "zekus@nixbox" = mkHomeConfiguration {
-    hostname = "nixbox"; system = "x86_64-linux"; target = "nixos"; profiles = ["graphical"];
+    inherit (hosts.nixbox) hostname system profiles; target = "nixos";
   };
 };
 ```
 
-A **headless NixOS server** is just `mkNixosSystem { hostname = "..."; }` with no
-`profiles` and no desktop `systemModules` — the base is already headless-safe.
+A **headless NixOS server** is just a `hosts` entry with `profiles = []` and no
+desktop `systemModules`, passed to `mkNixosSystem` — the base is already headless-safe.
 
 ## Code Style
 

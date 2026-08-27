@@ -114,10 +114,16 @@
       inherit nixpkgs;
       supportedSystems = ["x86_64-linux" "aarch64-darwin"];
     };
-  in {
-    nixosConfigurations = {
-      nixos = mkNixosSystem {
+
+    # Hosts: one entry per machine — the single source of truth for its system,
+    # profiles, and system-level wiring. Every output below derives from this,
+    # so a machine that appears in several outputs (e.g. `nixos` in both
+    # nixosConfigurations and homeConfigurations) can never drift. Every entry
+    # declares hostname, system and profiles (use [] for headless).
+    hosts = {
+      nixos = {
         hostname = "nixos";
+        system = "x86_64-linux";
         profiles = ["graphical" "wayland"];
         systemModules = [
           determinate.nixosModules.default
@@ -126,11 +132,10 @@
         ];
         systemSpecialArgs = {inherit hyprland;};
       };
-    };
 
-    darwinConfigurations = {
-      mac-machine = mkDarwinSystem {
+      mac-machine = {
         hostname = "mac-machine";
+        system = "aarch64-darwin";
         profiles = ["graphical"];
         systemModules = [
           nix-homebrew.darwinModules.nix-homebrew
@@ -143,15 +148,44 @@
       };
     };
 
+    nixosConfigurations = {
+      nixos = mkNixosSystem hosts.nixos;
+    };
+
+    darwinConfigurations = {
+      mac-machine = mkDarwinSystem hosts.mac-machine;
+    };
+
     homeConfigurations = {
       "zekus@nixos" = mkHomeConfiguration {
-        hostname = "nixos";
-        system = "x86_64-linux";
+        inherit (hosts.nixos) hostname system profiles;
         target = "nixos"; # standalone HM on NixOS — do NOT enable genericLinux
-        profiles = ["graphical" "wayland"];
       };
     };
 
-    inherit (ci) checks formatter devShells;
+    # `nix flake check` evaluates nixosConfigurations on its own, but skips the
+    # non-standard darwinConfigurations/homeConfigurations outputs. These checks
+    # force full evaluation (instantiation only — nothing is built) so eval
+    # breakage in those configs surfaces in `make check`.
+    mkEvalCheck = system: name: drv: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      pkgs.runCommand "eval-${name}" {} ''
+        echo ${builtins.unsafeDiscardStringContext drv.drvPath} > $out
+      '';
+
+    evalChecks = {
+      x86_64-linux.eval-home-zekus-nixos =
+        mkEvalCheck "x86_64-linux" "home-zekus-nixos"
+        homeConfigurations."zekus@nixos".activationPackage;
+      aarch64-darwin.eval-darwin-mac-machine =
+        mkEvalCheck "aarch64-darwin" "darwin-mac-machine"
+        darwinConfigurations.mac-machine.system;
+    };
+  in {
+    inherit nixosConfigurations darwinConfigurations homeConfigurations;
+
+    checks = nixpkgs.lib.recursiveUpdate ci.checks evalChecks;
+    inherit (ci) formatter devShells;
   };
 }

@@ -110,7 +110,7 @@
       ++ profileHomeModules resolvedProfiles
       ++ [./hosts/${hostname}];
   in {
-    inherit hostname system;
+    inherit hostname system resolvedProfiles;
     home = {
       modules = allHomeModules;
       specialArgs = {inherit common;} // extraHomeSpecialArgs // profileHomeSpecialArgs resolvedProfiles // homeSpecialArgs;
@@ -123,6 +123,10 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
+      # Activation-time safety net for files unexpectedly claimed by an
+      # application outside Home Manager. Standalone HM gets the same via
+      # `home-manager switch -b hm-backup` in the Makefile.
+      backupFileExtension = "hm-backup";
       users.${host.home.username} = {...}: {
         imports = host.home.modules;
       };
@@ -141,7 +145,7 @@
   }: let
     host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
     inherit (host.home.specialArgs) common;
-    resolvedProfiles = resolveProfiles profiles;
+    inherit (host) resolvedProfiles;
   in
     nixpkgs.lib.nixosSystem {
       inherit system;
@@ -167,7 +171,7 @@
   }: let
     host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
     inherit (host.home.specialArgs) common;
-    resolvedProfiles = resolveProfiles profiles;
+    inherit (host) resolvedProfiles;
   in
     nix-darwin.lib.darwinSystem {
       inherit system;

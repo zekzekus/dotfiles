@@ -104,35 +104,32 @@ Flake-based Home Manager configuration for managing user environments across mul
    }
    ```
 
-4. Add directly to the appropriate output attrset in `flake.nix`:
+4. Define the machine once in the `hosts` attrset in `flake.nix` — the single
+   source of truth for its system, profiles, and system-level wiring — and
+   reference it from the output(s) that manage it:
    ```nix
-   # NixOS host
-   nixosConfigurations = {
-     myhost = mkNixosSystem {
+   hosts = {
+     myhost = {
        hostname = "myhost";
-       # system = "x86_64-linux";  # default
-       homeModules = [];
-       homeSpecialArgs = {};
-       systemModules = [];
+       system = "x86_64-linux";      # or "aarch64-darwin"
+       profiles = [];                 # e.g. ["graphical" "wayland"]; [] for headless
+       systemModules = [];            # NixOS/darwin system modules (omit for HM-only hosts)
        systemSpecialArgs = {};
      };
    };
 
-   # macOS host
-   darwinConfigurations = {
-     myhost = mkDarwinSystem {
-       hostname = "myhost";
-       # system = "aarch64-darwin";  # default
-       systemModules = [];
-     };
-   };
+   # NixOS host
+   nixosConfigurations.myhost = mkNixosSystem hosts.myhost;
 
-   # Standalone Home Manager (no system management)
-   homeConfigurations = {
-     "zekus@myhost" = mkHomeConfiguration {
-       hostname = "myhost";
-       system = "x86_64-linux";
-     };
+   # macOS host
+   darwinConfigurations.myhost = mkDarwinSystem hosts.myhost;
+
+   # Standalone Home Manager (no system management). Reuses the same hosts
+   # entry, so the profile list can never diverge between outputs.
+   homeConfigurations."zekus@myhost" = mkHomeConfiguration {
+     inherit (hosts.myhost) hostname system profiles;
+     # target = "nixos";  # only for standalone HM on NixOS;
+     #                    # on a foreign distro it auto-detects to generic-linux
    };
    ```
 
@@ -154,11 +151,11 @@ The builder functions in `lib.nix` automatically:
 
 | Module | Contents |
 |--------|----------|
-| `modules/programs/` | CLI program configs: neovim, git, fish, nushell, tmux, starship, fzf, etc. |
+| `modules/programs/` | CLI program configs: neovim, git, fish, nushell, tmux, starship, etc. |
 | `modules/packages/` | Shared CLI packages: dev tools, terminal utilities, LLM tools |
 | `modules/file/` | File symlinks: ctags, tmuxinator, utility scripts |
 | `modules/sessionpath/` | PATH entries: `~/bin`, pnpm, coursier |
-| `modules/sessionvariables/` | Environment variables: editor, fzf, project directories |
+| `modules/sessionvariables/` | Environment variables: editor, project directories, sops/ssh agent paths |
 
 ### Profiles — opt-in roles (`profiles = [ ... ]`)
 

@@ -25,10 +25,6 @@ in {
     ./flatpak.nix
   ];
 
-  # Keep an activation-time safety net for files that are unexpectedly claimed
-  # by an application outside Home Manager.
-  home-manager.backupFileExtension = "hm-backup";
-
   boot = {
     loader = {
       systemd-boot.enable = true;

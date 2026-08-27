@@ -36,7 +36,7 @@ home:
 		exit 1; \
 	fi
 	@echo "Switching home-manager for $(USER)@$(HOST)..."
-	home-manager switch --impure --flake $(FLAKE)#$(USER)@$(HOST)
+	home-manager switch -b hm-backup --impure --flake $(FLAKE)#$(USER)@$(HOST)
 
 home-build:
 	@if [ "$(UNAME)" = "Darwin" ]; then \
