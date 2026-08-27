@@ -8,10 +8,11 @@
       vim_mode = true;
       theme = {
         mode = "system";
-        light = "Gruvbox Light";
-        dark = "Gruvbox Dark";
+        light = "Vimbones Light";
+        dark = "Neobones Dark";
       };
     };
+    themes.zenbones = ../../../../zed/themes/zenbones.json;
     extraPackages = with pkgs; [
       # LSPs
       nil
