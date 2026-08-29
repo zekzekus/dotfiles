@@ -322,6 +322,26 @@
         "type": "gitlab"
       }
     },
+    "hey-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787973788,
+        "narHash": "sha256-DOXGsZgYiuOnMv7aA32Xf2OSY+OlD1y0kWFlmvZMSGA=",
+        "owner": "basecamp",
+        "repo": "hey-cli",
+        "rev": "c0f19cf3c22a8cd51e4c73f4fedbc47bcf2ec47e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "basecamp",
+        "repo": "hey-cli",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -940,6 +960,7 @@
     "root": {
       "inputs": {
         "determinate": "determinate",
+        "hey-cli": "hey-cli",
         "home-manager": "home-manager",
         "homebrew-emacs-plus": "homebrew-emacs-plus",
         "hyprland": "hyprland",

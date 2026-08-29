@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  hey-cli,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # terminal tools
     bfs
@@ -43,6 +47,7 @@
 
     # productivity
     basalt
+    hey-cli.packages.${pkgs.system}.default
 
     # common lisp
     sbcl
