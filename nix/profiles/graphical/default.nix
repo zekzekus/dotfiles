@@ -14,6 +14,7 @@
 }: {
   imports =
     [
+      ./acme.nix
       ./ghostty.nix
       ./obsidian.nix
     ]
