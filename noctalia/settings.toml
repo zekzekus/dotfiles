@@ -117,6 +117,15 @@ shortcut = "2"
 variant = "default"
 
 [[shell.session.actions]]
+action = "command"
+command = "noctalia msg session lock && sleep 0.3 && busctl call --system org.freedesktop.DisplayManager /org/freedesktop/DisplayManager/Seat0 org.freedesktop.DisplayManager.Seat SwitchToGreeter"
+countdown_seconds = 0.0
+enabled = true
+glyph = "users"
+label = "Switch user"
+variant = "default"
+
+[[shell.session.actions]]
 action = "lock_and_suspend"
 countdown_seconds = 0.0
 enabled = true
