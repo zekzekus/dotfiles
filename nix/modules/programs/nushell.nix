@@ -174,7 +174,7 @@ in {
         $env.config | upsert keybindings (
           $env.config.keybindings
           | append {
-            name: atuin
+            name: atuin_search
             modifier: control
             keycode: char_r
             mode: [emacs, vi_normal, vi_insert]
@@ -186,7 +186,7 @@ in {
         $env.config | upsert keybindings (
           $env.config.keybindings
           | append {
-            name: atuin
+            name: atuin_up
             modifier: none
             keycode: up
             mode: [emacs, vi_normal, vi_insert]
