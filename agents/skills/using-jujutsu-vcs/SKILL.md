@@ -1,6 +1,6 @@
 ---
 name: using-jujutsu-vcs
-description: "Performs version control with Jujutsu (jj), including the git-to-jj command map and anonymous-change workflow. Use for VCS operations when a repository has .jj, or when the user explicitly asks to initialize or adopt Jujutsu."
+description: "Performs version control with Jujutsu (jj), including the git-to-jj command map and anonymous-change workflow. Use for VCS operations in an ordinary repository with .jj, or when the user explicitly asks to initialize or adopt Jujutsu; do not substitute Vex unless the checkout is known to be Vex-backed."
 ---
 
 # Using Jujutsu (jj) for version control
@@ -9,6 +9,10 @@ When a repository has `.jj/`, use **Jujutsu (`jj`)**, not raw `git`, for routine
 VCS work. A repo may have a colocated `.git/` directory, but operations go
 through `jj` except where Git interoperability is required or explicitly
 requested.
+
+Do not substitute the `vex` executable merely because it is installed or a Vex
+skill is globally available. Use Vex only when the checkout is known to be
+Vex-backed or the user or repository-local guidance explicitly requests it.
 
 ## First: make sure the repo is a jj repo
 

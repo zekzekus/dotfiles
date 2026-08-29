@@ -35,7 +35,7 @@ The split follows one rule:
 
 | Kind | Mechanism | Why |
 |---|---|---|
-| Ambient constraints ("prefer `jj` when this is a jj repo") | **AGENTS.md context** (always loaded) | The agent must know the rule before choosing tools or starting work. |
+| Ambient constraints ("use `jj` in ordinary jj repos; reserve Vex for Vex-backed checkouts") | **AGENTS.md context** (always loaded) | The agent must know the rule before choosing tools or starting work. |
 | Procedural techniques ("when editing Clojure, indent like this, then verify") | **Skill** (loaded on demand) | A workflow with steps the agent pulls in only when it hits a matching task. |
 | Language defaults ("use Ruff for a new Python project") | **`languages/` guidance** (opt-in) | A language-specific preference that should not consume context or constrain unrelated repositories. |
 
@@ -82,6 +82,11 @@ defined once in `AGENTS.md` and `languages/`. Each skill is linked individually
 so tool-specific skills can coexist in either destination. Do not edit the
 destination links; edit the files in this directory.
 
+Vex skills are repository-specific and must not be installed in a user-global
+skill directory. In a Vex-backed checkout, install them project-locally with
+`vex setup --targets generic --skill-scope local`; the generic target covers
+Amp and other Agent Skills clients.
+
 OpenCode receives the canonical `AGENTS.md` directly because it does not expand
 Amp/Claude-style `@file` imports. Its browser UI is served by the local
 `opencode web` process, so it uses these same local links; OpenCode does not
@@ -93,10 +98,11 @@ Local symlinks cannot configure vendor-hosted execution environments. Publish
 the canonical content separately for each hosted surface:
 
 - **Amp web:** paste `agents/AGENTS.md` into **Settings → Advanced → Global
-  AGENTS.md**. Publish each directory under `agents/skills/` to the Amp personal
-  skills repository (`amp skills repositories` shows its clone URL). Personal
-  skills then follow the account across CLI and web sessions. Publishing
-  creates a cloud copy, so repeat it after changing a canonical local skill.
+  AGENTS.md**; the Amp CLI does not currently update this account-level field.
+  Publish each directory under `agents/skills/` to the Amp personal skills
+  repository (`amp skills repositories` shows its clone URL). Personal skills
+  then follow the account across CLI and web sessions. Publishing creates a
+  cloud copy, so repeat it after changing a canonical local skill.
 - **Claude.ai / Claude desktop:** put the contents of `agents/AGENTS.md` in the
   relevant Project instructions. Zip and upload each custom skill through
   **Settings → Features**. Claude Code, claude.ai, and the Claude API do not sync

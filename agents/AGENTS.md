@@ -15,8 +15,13 @@ In shared repositories, do not force personal tooling choices on teammates.
 
 ## Version control
 
-- When `.jj/` exists, use Jujutsu for routine VCS work. Use Git only for
-  required interoperability, an explicit request, or local policy.
+- Use the repository's native VCS. In an ordinary repository with `.jj/`, use
+  Jujutsu (`jj`) for routine VCS work. Use Git only for required
+  interoperability, an explicit request, or local policy.
+- Use `vex` only in a checkout known to be Vex-backed (for example, one created
+  by `vex clone`, `vex init`, or `vex convert`) or when explicitly requested by
+  me or repository-local guidance. An installed `vex` executable or globally
+  available Vex skill is not evidence that a repository is Vex-backed.
 - Do not create branches or bookmarks unless I ask.
 - Commit only when I ask. Keep an explicitly requested commit atomic and
   single-concern; inspect the status and diff before recording it.
