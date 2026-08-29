@@ -85,12 +85,12 @@ window-rule {
 
 window-rule {
   match app-id="com.mitchellh.ghostty" is-focused=true
-  opacity 0.95
+  opacity 1.0
 }
 
 window-rule {
   match app-id="com.mitchellh.ghostty" is-focused=false
-  opacity 0.85
+  opacity 1.0
 }
 
 window-rule {

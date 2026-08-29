@@ -20,6 +20,13 @@
         log-synthetic-elided-nodes = true;
       };
 
+      "--scope" = [
+        {
+          "--when".commands = ["diff"];
+          ui.pager = ["hunk" "pager"];
+        }
+      ];
+
       merge-tools.difft = {
         program = "difft";
         diff-args = ["--color=always" "$left" "$right"];
@@ -107,6 +114,7 @@
       };
 
       aliases = {
+        diffd = ["--config" "ui.pager='delta'" "diff"];
         difft = ["diff" "--tool" "difft"];
         tug = ["bookmark" "move" "--from" "closest_bookmark(@-)" "--to" "@-"];
         gut = ["rebase" "-d" "trunk()"];

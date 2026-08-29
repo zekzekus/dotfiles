@@ -15,6 +15,7 @@
     git-extras
     tig
     lazyjj
+    hunk
 
     # development tools
     devenv
