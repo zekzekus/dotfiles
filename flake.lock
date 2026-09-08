@@ -329,11 +329,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788548575,
-        "narHash": "sha256-bTdtIzxIP2Mk5Ok3MTLKJPSqL1LA8rboE3ou1hXbUV4=",
+        "lastModified": 1788865250,
+        "narHash": "sha256-CkQwuj+EE3zni27dynI54Gnhb1cr6EbC/Vu5xBigtN0=",
         "owner": "basecamp",
         "repo": "hey-cli",
-        "rev": "d5d5a9360266c74c95165939d478132bc2752344",
+        "rev": "a6e5ec62a20433db2c8fed9eb9910bc671a6a515",
         "type": "github"
       },
       "original": {
@@ -365,11 +365,11 @@
     "homebrew-emacs-plus": {
       "flake": false,
       "locked": {
-        "lastModified": 1788752813,
-        "narHash": "sha256-Qc7mf8Hq6102LRReu0Vjd+cwQom/hLDmFKirA0Lbwq0=",
+        "lastModified": 1788870229,
+        "narHash": "sha256-3O2wsJhg4pSC7OsF+lJu1+5IZNTBcR53pPwJdE/Rtqo=",
         "owner": "d12frosted",
         "repo": "homebrew-emacs-plus",
-        "rev": "9fd3195a1732893179c333cc1d2d26d9b88a2a60",
+        "rev": "411ca0a177b7b5a4fe0768b5c94239bfc3c59914",
         "type": "github"
       },
       "original": {
