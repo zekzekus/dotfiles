@@ -171,6 +171,9 @@ binds {
   XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
   XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+  Mod+Shift+A { spawn-sh "noctalia msg panel-toggle blackbartblues/audio-switcher:audio-switcher"; }
+  Mod+Alt+O { spawn-sh "noctalia msg plugin blackbartblues/audio-switcher:service all cycle-output"; }
+  Mod+Alt+I { spawn-sh "noctalia msg plugin blackbartblues/audio-switcher:service all cycle-input"; }
 
   XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
   XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }

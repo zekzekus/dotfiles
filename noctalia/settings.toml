@@ -102,6 +102,13 @@ enabled = true
 [osd]
 position = "top_right"
 
+[plugin_settings."blackbartblues/audio-switcher"]
+audio-switcher_open_near_click = false
+show_notification_on_switch = false
+
+[plugins]
+enabled = [ "blackbartblues/audio-switcher" ]
+
 [[shell.session.actions]]
 action = "lock"
 countdown_seconds = 5.0
@@ -167,6 +174,9 @@ directory = "~/Pictures/Wallpapers"
 
 [widget.launcher]
 glyph = "apps"
+
+[widget.volume.actions]
+left = "exec noctalia msg panel-toggle blackbartblues/audio-switcher:audio-switcher"
 
 [widget.workspaces]
 max_label_chars = 2

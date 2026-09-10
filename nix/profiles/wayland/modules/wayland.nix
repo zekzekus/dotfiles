@@ -16,6 +16,7 @@
       libnotify
       blueman
       nemo
+      pulseaudio
       pavucontrol
       wireplumber
       xwayland-satellite
