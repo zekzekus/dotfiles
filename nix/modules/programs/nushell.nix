@@ -22,7 +22,20 @@ in {
     # Read the merged Home Manager environment, not the pre-merge `common`
     # copy. Hosts, platforms, and profiles extend home.sessionVariables /
     # home.sessionPath; Nushell must see the resolved result.
-    environmentVariables = lib.mapAttrs (_: toString) config.home.sessionVariables;
+    #
+    # Skip POSIX shell fragments (`${...}`, `$(...)`). HM stores those for
+    # hm-session-vars.sh; dumping them via load-env exports literal braces
+    # that Neovim glob-expands (E79).
+    environmentVariables = let
+      isShellTemplate = value: let
+        s = toString value;
+      in
+        lib.hasInfix "\${" s || lib.hasInfix "$(" s;
+    in
+      lib.mapAttrs (_: toString) (
+        lib.filterAttrs (_: value: !(isShellTemplate value))
+        config.home.sessionVariables
+      );
     settings = {
       show_banner = false;
       completions = {
