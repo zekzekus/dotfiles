@@ -316,6 +316,7 @@ in {
       ${common.username} = {
         isNormalUser = true;
         description = common.userFullName;
+        linger = true;
         extraGroups = [
           "networkmanager"
           "wheel"
