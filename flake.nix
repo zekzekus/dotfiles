@@ -176,9 +176,25 @@
       '';
 
     evalChecks = {
-      x86_64-linux.eval-home-zekus-nixos =
-        mkEvalCheck "x86_64-linux" "home-zekus-nixos"
-        homeConfigurations."zekus@nixos".activationPackage;
+      x86_64-linux = {
+        eval-home-zekus-nixos =
+          mkEvalCheck "x86_64-linux" "home-zekus-nixos"
+          homeConfigurations."zekus@nixos".activationPackage;
+        eval-home-headless-linux =
+          mkEvalCheck "x86_64-linux" "home-headless-linux"
+          (mkHomeConfiguration {
+            hostname = "eval-headless";
+            system = "x86_64-linux";
+            profiles = [];
+          }).activationPackage;
+        eval-home-graphical-linux =
+          mkEvalCheck "x86_64-linux" "home-graphical-linux"
+          (mkHomeConfiguration {
+            hostname = "eval-graphical";
+            system = "x86_64-linux";
+            profiles = ["graphical"];
+          }).activationPackage;
+      };
       aarch64-darwin.eval-darwin-mac-machine =
         mkEvalCheck "aarch64-darwin" "darwin-mac-machine"
         darwinConfigurations.mac-machine.system;

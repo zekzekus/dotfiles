@@ -209,27 +209,27 @@
       "nixos"
       "standalone"
     ]; let
-    host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
-    pkgs = import nixpkgs {
-      inherit system overlays;
-      config.allowUnfree = true;
-    };
-    # Non-NixOS Linux integration: FHS XDG data dirs, session-var/nix.sh sourcing,
-    # cursor paths, etc. Only valid/needed for standalone HM on a foreign distro.
-    genericLinuxModule = {lib, ...}: {
-      targets.genericLinux.enable = true;
-      # Headless-safe: HM otherwise defaults gpu.enable to true, pulling in the
-      # non-NixOS GPU driver setup package + an activation warning. Graphical
-      # foreign hosts opt back in (gpu.enable = true, then `sudo non-nixos-gpu`)
-      # or wrap individual GUI packages with nixGL.
-      targets.genericLinux.gpu.enable = lib.mkDefault false;
-    };
-  in
-    home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = host.home.modules ++ nixpkgs.lib.optional (target == "generic-linux") genericLinuxModule;
-      extraSpecialArgs = host.home.specialArgs;
-    };
+      host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
+      # Non-NixOS Linux integration: FHS XDG data dirs, session-var/nix.sh sourcing,
+      # cursor paths, etc. Only valid/needed for standalone HM on a foreign distro.
+      genericLinuxModule = {lib, ...}: {
+        targets.genericLinux.enable = true;
+        # Headless-safe: HM otherwise defaults gpu.enable to true, pulling in the
+        # non-NixOS GPU driver setup package + an activation warning. Graphical
+        # foreign hosts opt back in (gpu.enable = true, then `sudo non-nixos-gpu`)
+        # or wrap individual GUI packages with nixGL.
+        targets.genericLinux.gpu.enable = lib.mkDefault false;
+      };
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = host.home.modules ++ nixpkgs.lib.optional (target == "generic-linux") genericLinuxModule;
+        extraSpecialArgs = host.home.specialArgs;
+      };
 in {
   inherit
     mkNixosSystem

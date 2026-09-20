@@ -187,6 +187,7 @@ The flake includes automated checks run via `make check` (or `nix flake check --
 | `formatting` | alejandra | Nix code formatting |
 | `deadnix` | deadnix | Unused code detection |
 | `statix` | statix | Nix anti-pattern linting |
+| `eval-*` | instantiation | Darwin system, standalone HM, plus headless and graphical-only Linux fixtures |
 
 Format all Nix files: `make fmt`
 
