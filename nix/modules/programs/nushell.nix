@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   common,
   ...
 }: let
@@ -18,7 +19,10 @@
 in {
   programs.nushell = {
     enable = true;
-    environmentVariables = common.sessionVariables;
+    # Read the merged Home Manager environment, not the pre-merge `common`
+    # copy. Hosts, platforms, and profiles extend home.sessionVariables /
+    # home.sessionPath; Nushell must see the resolved result.
+    environmentVariables = lib.mapAttrs (_: toString) config.home.sessionVariables;
     settings = {
       show_banner = false;
       completions = {
@@ -35,7 +39,7 @@ in {
         then darwinPaths
         else ""
       }
-      ${mkNushellPathPrepends common.sessionPath}
+      ${mkNushellPathPrepends config.home.sessionPath}
       $env.GPG_TTY = (tty | str trim)
     '';
 

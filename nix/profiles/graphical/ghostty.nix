@@ -10,10 +10,9 @@
       then pkgs.ghostty-bin
       else pkgs.ghostty;
     settings = {
-      theme =
-        if pkgs.stdenv.hostPlatform.isDarwin
-        then "Kanagawabones"
-        else "noctalia";
+      # Built-in default so a graphical-only host does not depend on Noctalia.
+      # The wayland profile overrides this to "noctalia" when that session is on.
+      theme = lib.mkDefault "Kanagawabones";
       font-family = "TX-02";
       font-size =
         if pkgs.stdenv.hostPlatform.isDarwin

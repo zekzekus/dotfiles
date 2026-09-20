@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   common,
   pkgs,
   ...
@@ -11,6 +12,12 @@
     enable = true;
     package = pkgs.noctalia;
     systemd.enable = true;
+  };
+
+  # Noctalia owns the Ghostty "noctalia" theme. Only set it when Ghostty is
+  # actually enabled (normally via the graphical profile).
+  programs.ghostty.settings = lib.mkIf config.programs.ghostty.enable {
+    theme = "noctalia";
   };
 
   # v5 loads config by merging every *.toml in $XDG_CONFIG_HOME/noctalia, then

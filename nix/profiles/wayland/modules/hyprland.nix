@@ -233,8 +233,5 @@
         "3, horizontal, workspace"
       ];
     };
-    extraConfig = ''
-      source = ~/.config/hypr/noctalia/noctalia-colors.conf
-    '';
   };
 }
