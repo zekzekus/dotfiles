@@ -34,11 +34,13 @@ in {
       ".tmuxinator".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/tmuxinator";
       ".config/doom".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/misc/emacs/doom";
 
-      "bin/gg".source = "${common.dotfilesDir}/scripts/tmuxproject.sh";
-      "bin/gk".source = "${common.dotfilesDir}/scripts/tmuxproject.sh";
-      "bin/gp".source = "${common.dotfilesDir}/scripts/tmuxproject.sh";
+      # Store snapshots of the evaluated tree (not live links). Repo-relative
+      # so evaluation does not depend on common.dotfilesDir existing.
+      "bin/gg".source = ../../../scripts/tmuxproject.sh;
+      "bin/gk".source = ../../../scripts/tmuxproject.sh;
+      "bin/gp".source = ../../../scripts/tmuxproject.sh;
 
-      "bin/yy".source = "${common.dotfilesDir}/scripts/yaziproject.sh";
+      "bin/yy".source = ../../../scripts/yaziproject.sh;
     }
     // skillLinks ".config/agents/skills"
     // skillLinks ".claude/skills"

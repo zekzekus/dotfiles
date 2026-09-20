@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  common,
   ...
 }: {
   programs.tmux.extraConfig = lib.mkAfter ''
@@ -31,8 +30,8 @@
     ];
 
     file = {
-      "bin/theme-dark".source = "${common.dotfilesDir}/scripts/theme-dark";
-      "bin/theme-light".source = "${common.dotfilesDir}/scripts/theme-light";
+      "bin/theme-dark".source = ../../../../scripts/theme-dark;
+      "bin/theme-light".source = ../../../../scripts/theme-light;
     };
 
     sessionVariables = {

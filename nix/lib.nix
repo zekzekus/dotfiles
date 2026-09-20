@@ -203,7 +203,12 @@
     ),
     homeModules ? [],
     homeSpecialArgs ? {},
-  }: let
+  }:
+    assert nixpkgs.lib.assertOneOf "mkHomeConfiguration.target" target [
+      "generic-linux"
+      "nixos"
+      "standalone"
+    ]; let
     host = mkHost {inherit hostname system profiles homeModules homeSpecialArgs;};
     pkgs = import nixpkgs {
       inherit system overlays;

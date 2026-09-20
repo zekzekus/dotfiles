@@ -11,11 +11,11 @@
       user.name = common.userFullName;
       user.email = common.userEmail;
       core = {
-        excludesFile = "${common.dotfilesDir}/git/gitignore_global";
+        excludesFile = "${../../../git/gitignore_global}";
       };
       pager.diff = "hunk pager";
       init = {
-        templateDir = "${common.dotfilesDir}/git/git_template";
+        templateDir = "${../../../git/git_template}";
       };
       push = {
         default = "current";
