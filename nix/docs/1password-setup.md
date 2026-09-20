@@ -25,19 +25,16 @@ This setup uses **1Password SSH Agent** for SSH key management while keeping **G
 
 ### Implementation
 
-The 1Password SSH integration is managed declaratively via two modules:
+The 1Password SSH integration is managed declaratively:
 
-- **`modules/programs/ssh.nix`** -- Configures SSH to use the 1Password agent socket, sets `SSH_AUTH_SOCK`, and handles platform-specific socket paths:
-  - **macOS**: Symlinks from `~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock` to `~/.1password/agent.sock`
-  - **Linux**: Creates `~/.1password/` directory; 1Password writes the socket directly.
-
-- **`profiles/graphical/linux/default.nix`** -- systemd user service to autostart the 1Password GUI (Linux). Lives in the `graphical` profile so headless hosts don't pull in the GUI package.
-
-- **`modules/programs/nushell.nix`** -- Sets `SSH_AUTH_SOCK` in Nushell's environment (Nushell requires separate env var configuration).
+- **`modules/programs/ssh.nix`** -- Shared SSH config and platform-specific 1Password socket paths (macOS symlink, Linux directory). Does not select the agent on headless hosts.
+- **`profiles/graphical/default.nix`** -- Sets `SSH_AUTH_SOCK` and `IdentityAgent` for hosts with a display.
+- **`profiles/graphical/linux/default.nix`** -- systemd user service to autostart the 1Password GUI (Linux).
+- **`modules/programs/nushell.nix`** -- Exports the merged Home Manager environment, including `SSH_AUTH_SOCK` when the graphical profile sets it.
 
 ### 1Password Installation
 
-- **macOS**: Installed via Homebrew casks in `hosts/mac-machine/configuration.nix` (`1password`, `1password-cli`)
+- **macOS**: Installed via Homebrew casks in `platforms/darwin/configuration.nix` (`1password`, `1password-cli`)
 - **NixOS**: Installed via NixOS modules in `hosts/nixos/configuration.nix` (`programs._1password.enable`, `programs._1password-gui.enable` with polkit)
 
 ---
@@ -228,13 +225,14 @@ If you have many SSH keys in 1Password, servers may reject before trying the rig
 
 | File | Purpose |
 |------|---------|
-| `modules/programs/ssh.nix` | SSH config, 1Password agent socket, activation scripts |
+| `modules/programs/ssh.nix` | SSH config and 1Password socket paths |
+| `profiles/graphical/default.nix` | `SSH_AUTH_SOCK` and `IdentityAgent` |
 | `profiles/graphical/linux/default.nix` | 1Password GUI autostart (Linux, systemd user service) |
-| `modules/programs/nushell.nix` | `SSH_AUTH_SOCK` for Nushell environment |
+| `modules/programs/nushell.nix` | Merged Home Manager environment, including `SSH_AUTH_SOCK` |
 | `modules/programs/gpg.nix` | GPG agent configuration |
 | `modules/programs/git.nix` | Git commit signing (`signByDefault = true`, key ID) |
 | `hosts/nixos/configuration.nix` | 1Password packages for NixOS (`_1password`, `_1password-gui` with polkit) |
-| `hosts/mac-machine/configuration.nix` | 1Password via Homebrew casks for macOS |
+| `platforms/darwin/configuration.nix` | 1Password via Homebrew casks for macOS |
 
 ---
 

@@ -12,6 +12,7 @@ in {
         fileset =
           pkgs.lib.fileset.difference
           (pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./..)
+          # Generated/vendored Helix theme dump; keep it out of format/lint.
           ./modules/programs/helix/themes.nix;
       };
     in {

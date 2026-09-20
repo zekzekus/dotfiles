@@ -25,11 +25,6 @@
 
       ghostty.enable = false;
       vicinae.enable = false;
-
-      firefox = {
-        enable = false;
-        profileNames = ["default"];
-      };
     };
   };
 }

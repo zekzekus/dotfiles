@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./firefox.nix
     ./media.nix
     ./radicle.nix
     ./zed-editor.nix

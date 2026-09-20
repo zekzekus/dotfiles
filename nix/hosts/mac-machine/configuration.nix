@@ -5,5 +5,5 @@ _: {
   #
   # Examples:
   #   homebrew.casks = [ "some-host-specific-app" ];
-  #   system.defaults.dock.autohide = false;
+  #   system.defaults.dock.autohide = lib.mkForce false;
 }

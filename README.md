@@ -30,7 +30,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 │   ├── hosts/                 # Per-machine config only
 │   │   ├── mac-machine/       #   macOS (aarch64-darwin) + nix-darwin
 │   │   └── nixos/             #   NixOS (x86_64-linux) full system + host overrides
-│   ├── modules/               # Cross-platform, headless-safe HM modules (auto-imported)
+│   ├── modules/               # Cross-platform, headless-safe HM modules (explicitly imported)
 │   │   ├── file/              #   File symlinks (ctags, tmuxinator, scripts)
 │   │   ├── packages/          #   Shared CLI packages
 │   │   ├── programs/          #   Program configurations
@@ -47,13 +47,11 @@ One config to rule them all -- macOS, Linux, and NixOS.
 │       ├── 1password-setup.md #   1Password SSH & GPG setup
 │       └── sops-setup.md      #   Encrypted secrets (sops-nix, age) bootstrap & workflow
 │
-├── nvim/                      # Neovim configuration (Lua, symlinked via HM)
-├── ghostty/                   # Ghostty terminal config (symlinked via HM)
-├── tmux/                      # tmux configurations & themes (symlinked via HM)
-├── tmuxinator/                # tmuxinator project templates (symlinked via HM)
-├── git/                       # Git config templates & global ignore (symlinked via HM)
-├── niri/                      # Niri compositor config (symlinked via HM)
-├── noctalia/                  # Noctalia shell config (symlinked via HM)
+├── nvim/                      # Neovim configuration (Lua, live-linked via HM)
+├── tmuxinator/                # tmuxinator project templates (live-linked via HM)
+├── git/                       # Git ignore + template (store snapshots via HM)
+├── niri/                      # Niri compositor config (live-linked via HM)
+├── noctalia/                  # Noctalia settings.toml (live-linked into XDG state)
 ├── scripts/                   # Utility scripts (tmux project launchers, theme switchers)
 ├── agents/                    # Global AI-agent guidance, skills, and language conventions
 ├── ctags/                     # Universal Ctags config (symlinked via HM)
@@ -98,13 +96,13 @@ See [nix/README.md](./nix/README.md) for detailed installation instructions.
 
 ```bash
 make help          # Show all commands with detected host
-make home          # Switch Home Manager only (faster iteration)
-make home-build    # Build Home Manager only (dry-run)
-make darwin        # Rebuild nix-darwin system (macOS only)
+make home          # Switch standalone Home Manager (Linux; not used on Darwin)
+make home-build    # Plan standalone Home Manager (dry-run, does not build)
+make darwin        # Rebuild nix-darwin + integrated Home Manager (macOS only)
 make darwin-build  # Build nix-darwin without switching
-make nixos         # Rebuild NixOS system (NixOS only)
-make nixos-build   # Build NixOS without switching
-make update        # Update flake inputs
+make nixos         # Rebuild NixOS + integrated Home Manager (NixOS only)
+make nixos-build   # Plan NixOS (dry-run, does not build)
+make update        # Update flake inputs + pinned package versions
 make check         # Run all checks (format, deadnix, statix)
 make fmt           # Format all Nix files with alejandra
 make clean         # Clean build artifacts
@@ -159,7 +157,7 @@ graphical is opt-in via a profile.
 3. profile modules from `profiles = [ ... ]` -- resolved via the `profileRegistry`
 4. `hosts/<hostname>/default.nix` -- host-specific Home Manager overrides
 
-The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwin`) is passed as `specialArgs` to every Home Manager and system module. External configs (Neovim, tmux, Ghostty, Niri, Noctalia, ...) live at the repo root and are symlinked into place via Home Manager (`modules/file/`).
+The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwin`) is passed as `specialArgs` to every Home Manager and system module. Live-edited configs (Neovim, Niri, Noctalia, agents) use `mkOutOfStoreSymlink`. Ghostty and tmux are Nix-managed. Script helpers are store snapshots of repo-relative sources.
 
 ---
 
@@ -177,7 +175,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
-- Linux adds: Firefox, Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium, 1Password GUI autostart
+- Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium (x86_64), 1Password GUI autostart
 
 **`wayland` profile** *(opt-in -- Wayland desktop, normally paired with `graphical`)*
 - Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock
@@ -214,7 +212,6 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 | `nix-homebrew` | Declarative Homebrew on macOS |
 | `homebrew-emacs-plus` | Homebrew tap for emacs-plus (macOS) |
 | `hyprland` | Wayland compositor |
-| `hyprland-plugins` | Hyprland extensions |
 | `stylix` | System-wide theming |
 | `practicalli-clojure-cli-config` | Clojure CLI user config (deps.edn aliases) |
 | `nix-flatpak` | Declarative Flatpak management |

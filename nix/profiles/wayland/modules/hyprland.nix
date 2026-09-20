@@ -228,7 +228,6 @@
       # Hyprland-internal scheme (workspaces are a horizontal list here):
       #   3-finger horizontal -> switch workspaces
       #   3-finger vertical   -> no-op (unmapped)
-      #   4-finger            -> overview (unmapped; hyprexpo was removed upstream)
       gesture = [
         "3, horizontal, workspace"
       ];

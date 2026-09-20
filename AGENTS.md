@@ -13,11 +13,11 @@ User runs **Nushell** as default shell. When executing commands:
 
 ```bash
 make check        # Validate flake
-make home         # Apply home-manager config (auto-detects host)
-make home-build   # Dry-run build
-make darwin       # Rebuild nix-darwin system (macOS only)
-make nixos        # Rebuild NixOS system (NixOS only)
-make update       # Update flake inputs
+make home         # Switch standalone Home Manager (Linux; not used on Darwin)
+make home-build   # Plan standalone Home Manager (dry-run, does not build)
+make darwin       # Rebuild nix-darwin + integrated Home Manager (macOS only)
+make nixos        # Rebuild NixOS + integrated Home Manager (NixOS only)
+make update       # Update flake inputs + pinned package versions
 ```
 
 ## Architecture
@@ -37,7 +37,7 @@ nix/
 ├── checks.nix       # CI checks (formatting, deadnix, statix) and formatter
 ├── home.nix         # Shared, headless-safe base imported by all hosts
 ├── hosts/           # Per-machine config only (default.nix + configuration.nix)
-├── modules/         # Cross-platform, headless-safe HM modules (auto-imported)
+├── modules/         # Cross-platform, headless-safe HM modules (explicitly imported)
 ├── profiles/        # Opt-in role bundles selected via `profiles = [ ... ]`
 │   ├── graphical/   #   GUI apps (cross-platform + ./linux gated via common.isLinux)
 │   └── wayland/     #   Hyprland/Niri/Noctalia session (HM side) + ./modules, stylix
@@ -51,7 +51,7 @@ HM modules + `homeSpecialArgs` + `systemModules` + `systemSpecialArgs`) and fold
 into a host by the builders in `lib.nix`. Conditional `imports` must branch on a
 specialArg (e.g. `common.isLinux`), never on `pkgs`/`config` (infinite recursion).
 
-External configs (nvim/, ghostty/, tmux/, git/, etc.) are symlinked via Home Manager.
+Live-edited configs (nvim/, niri/, noctalia/settings.toml, agents/) use `mkOutOfStoreSymlink`. Ghostty and tmux are Nix-managed. Script helpers are store snapshots of repo-relative sources.
 
 ## Adding a New Host
 
@@ -119,9 +119,9 @@ desktop `systemModules`, passed to `mkNixosSystem` — the base is already headl
 These are deliberate decisions. Do NOT suggest "fixing" them.
 
 - **`--impure` flag**: All build/switch commands use `--impure` (see Makefile). This is required because the flake references `builtins.currentSystem`, environment variables, and `mkOutOfStoreSymlink` paths that need impure evaluation. Do not suggest removing it.
-- **`nix.enable = false`** in `nix/hosts/mac-machine/configuration.nix`: This machine uses **Determinate Nix**, which manages the Nix installation itself. Setting `nix.enable = false` prevents nix-darwin from conflicting with it. This is not a mistake.
+- **`nix.enable = false`** in `nix/platforms/darwin/configuration.nix`: Managed Macs use **Determinate Nix**, which manages the Nix installation itself. Setting `nix.enable = false` prevents nix-darwin from conflicting with it. This is not a mistake.
 - **`home.stateVersion = "24.11"`** in `nix/home.nix` with `enableNixpkgsReleaseCheck = false`: The state version is intentionally pinned behind the current nixpkgs channel. The release check is disabled to suppress the mismatch warning. Do not suggest bumping it.
-- **Mixed config styles for window managers**: Hyprland is configured fully in Nix (`wayland.windowManager.hyprland.settings`), while Niri and Noctalia use `mkOutOfStoreSymlink` to link external config files (`niri/config.kdl`, `noctalia/settings.json`). This is intentional — Niri's KDL format and Noctalia's JSON are easier to maintain as standalone files. The Hyprland module predates this pattern. Do not suggest unifying them.
+- **Mixed config styles for window managers**: Hyprland is configured fully in Nix (`wayland.windowManager.hyprland.settings`), while Niri and Noctalia use `mkOutOfStoreSymlink` to link external config files (`niri/config.kdl`, `noctalia/settings.toml`). This is intentional — Niri's KDL format and Noctalia's TOML are easier to maintain as standalone files. The Hyprland module predates this pattern. Do not suggest unifying them.
 
 ## Principles
 

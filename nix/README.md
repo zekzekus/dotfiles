@@ -151,17 +151,17 @@ The builder functions in `lib.nix` automatically:
 
 | Module | Contents |
 |--------|----------|
-| `modules/programs/` | CLI program configs: neovim, git, fish, nushell, tmux, starship, etc. |
+| `modules/programs/` | CLI program configs (explicit imports in `default.nix`): neovim, git, fish, nushell, tmux, starship, etc. |
 | `modules/packages/` | Shared CLI packages: dev tools, terminal utilities, LLM tools |
 | `modules/file/` | File symlinks: ctags, tmuxinator, utility scripts |
 | `modules/sessionpath/` | PATH entries: `~/bin`, pnpm, coursier |
-| `modules/sessionvariables/` | Environment variables: editor, project directories, sops/ssh agent paths |
+| `modules/sessionvariables/` | Environment variables: editor, project directories, sops age key path |
 
 ### Profiles — opt-in roles (`profiles = [ ... ]`)
 
 | Profile | Contents |
 |---------|----------|
-| `profiles/graphical/` | GUI apps: ghostty, obsidian (cross-platform); `linux/` adds firefox, chromium, zed, OBS, media viewers, helium, emacs-pgtk, 1Password GUI |
+| `profiles/graphical/` | GUI apps: ghostty, obsidian, localsend, 1Password SSH agent (cross-platform); `linux/` adds chromium, zed, OBS, media viewers, helium (x86_64), emacs-pgtk, 1Password GUI |
 | `profiles/wayland/` | Hyprland/Niri/Noctalia session (HM side), stylix, rofi, hyprlock, hypridle, tray services |
 
 ### Platform Modules (OS family)
@@ -194,7 +194,8 @@ Format all Nix files: `make fmt`
 
 ```bash
 make update
-# or manually:
+# updates flake inputs *and* pinned Amp/Buzz/Helium versions.
+# flake inputs only:
 nix flake update
 ```
 
@@ -204,10 +205,10 @@ nix flake update
 # Validate the flake
 nix flake check --impure
 
-# Build without switching (dry-run)
-make home-build     # Home Manager only
-make darwin-build   # nix-darwin
-make nixos-build    # NixOS
+# Plan without switching (dry-run does not prove a successful build)
+make home-build     # standalone Home Manager (dry-run)
+make darwin-build   # nix-darwin (actual build, no switch)
+make nixos-build    # NixOS (dry-run)
 
 # Show detected host
 make help

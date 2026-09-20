@@ -1,15 +1,4 @@
 #!/bin/sh
 
-# Define Theme Variables
-COLOR_SCHEME="prefer-light"
-
-# Apply GTK Settings (Live)
-gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME"
-
-# Apply Ghostty Theme (Omarchy Style)
-THEME_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty_theme"
-# mkdir -p "$(dirname "$THEME_FILE")" # .config usually exists
-echo "theme = Vimbones" > "$THEME_FILE"
-
-# Notify User
+gsettings set org.gnome.desktop.interface color-scheme prefer-light
 notify-send "Prefer Light Mode"

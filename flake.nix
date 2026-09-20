@@ -43,10 +43,6 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     stylix = {
       url = "github:danth/stylix";
@@ -72,7 +68,6 @@
     homebrew-emacs-plus,
     stylix,
     hyprland,
-    hyprland-plugins,
     practicalli-clojure-cli-config,
     nix-flatpak,
     ...
@@ -91,14 +86,14 @@
 
       # Hyprland/Niri/Noctalia Wayland session (home-manager side). Bundles the
       # external Hyprland module and inputs it needs; Noctalia's module is
-      # provided by nixpkgs. Normally paired with "graphical".
+      # provided by nixpkgs. Expects "graphical" for Ghostty/Helium launchers.
       wayland = {
         homeModules = [
           stylix.homeModules.stylix
           hyprland.homeManagerModules.default
           ./nix/profiles/wayland
         ];
-        homeSpecialArgs = {inherit hyprland hyprland-plugins;};
+        homeSpecialArgs = {inherit hyprland;};
       };
     };
 
