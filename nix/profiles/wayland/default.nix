@@ -77,7 +77,6 @@ in {
     ./modules/rofi.nix
     ./modules/hyprlock.nix
     ./modules/noctalia-shell.nix
-    ./modules/qmd.nix
   ];
 
   home.packages = [pkgs.hyprpolkitagent];

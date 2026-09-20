@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  programs.tmux.terminal = "xterm-ghostty";
+
   programs.ghostty = {
     enable = true;
     package =

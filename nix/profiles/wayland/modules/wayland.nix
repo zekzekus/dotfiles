@@ -1,8 +1,13 @@
 {
   pkgs,
+  lib,
   common,
   ...
 }: {
+  programs.tmux.extraConfig = lib.mkAfter ''
+    bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "${pkgs.wl-clipboard}/bin/wl-copy"
+  '';
+
   home = {
     packages = with pkgs; [
       uwsm

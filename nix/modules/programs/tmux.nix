@@ -2,7 +2,11 @@
   copyCmd =
     if pkgs.stdenv.hostPlatform.isDarwin
     then "pbcopy"
-    else "${pkgs.wl-clipboard}/bin/wl-copy";
+    else null;
+  yankBinding =
+    if copyCmd != null
+    then ''bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "${copyCmd}"''
+    else "bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel";
 in {
   programs.tmux = {
     enable = true;
@@ -12,7 +16,8 @@ in {
     prefix = "C-a";
     baseIndex = 0;
     mouse = true;
-    terminal = "xterm-ghostty";
+    # Ghostty hosts override this; keep a portable default in the base.
+    terminal = pkgs.lib.mkDefault "screen-256color";
     keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [
       sensible
@@ -40,7 +45,7 @@ in {
       bind-key -T copy-mode-vi 'v' send -X begin-selection
       bind-key -T copy-mode-vi 'V' send -X select-line
       bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
-      bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "${copyCmd}"
+      ${yankBinding}
     '';
   };
 }

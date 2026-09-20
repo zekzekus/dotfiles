@@ -1,6 +1,10 @@
 # Linux-only graphical apps and user services. Loaded by the `graphical` profile
 # only on Linux hosts. Not headless-safe by design.
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./firefox.nix
     ./media.nix
@@ -20,16 +24,19 @@
     };
   };
 
-  home.packages = with pkgs; [
-    appimage-run
-    (callPackage ../../../modules/packages/amp-acp.nix {})
-    (callPackage ../../../modules/packages/buzz.nix {})
-    (callPackage ../../../modules/packages/helium.nix {})
-    showmethekey
-    droidcam
-    cameractrls-gtk4
-    emacs-pgtk
-  ];
+  home.packages = with pkgs;
+    [
+      appimage-run
+      showmethekey
+      droidcam
+      cameractrls-gtk4
+      emacs-pgtk
+    ]
+    ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
+      (callPackage ../../../modules/packages/amp-acp.nix {})
+      (callPackage ../../../modules/packages/buzz.nix {})
+      (callPackage ../../../modules/packages/helium.nix {})
+    ];
 
   # 1Password GUI autostart (moved out of the shared ssh module so headless
   # hosts don't pull in the GUI package).

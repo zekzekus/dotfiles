@@ -30,9 +30,6 @@
     chafa
     viu
 
-    # apps
-    localsend
-
     # LLM
     claude-code
     github-copilot-cli

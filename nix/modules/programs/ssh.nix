@@ -29,7 +29,6 @@ in {
     # silently ignores a missing include, so this is safe even mid-bootstrap.
     includes = lib.optional hasSshHosts sshHostsPath;
     settings."*" = {
-      IdentityAgent = "\"${onePasswordSocketPath}\"";
       AddKeysToAgent = "yes";
     };
   };

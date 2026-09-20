@@ -3,6 +3,7 @@
   home-manager,
   sops-nix,
   nix-darwin,
+  nix-homebrew,
   overlays,
   profileRegistry ? {},
   extraHomeSpecialArgs ? {},
@@ -39,7 +40,6 @@
 
       CLJ_CONFIG = "${homeDir}/.config/clojure";
 
-      SSH_AUTH_SOCK = "${homeDir}/.1password/agent.sock";
       NH_FLAKE = dotfilesDir;
 
       # sops-nix decrypts from here (set in ssh.nix); also point the `sops` CLI
@@ -180,6 +180,7 @@
         systemModules
         ++ profileSystemModules resolvedProfiles
         ++ [
+          nix-homebrew.darwinModules.nix-homebrew
           ./platforms/darwin/configuration.nix
           ./hosts/${hostname}/configuration.nix
           home-manager.darwinModules.home-manager

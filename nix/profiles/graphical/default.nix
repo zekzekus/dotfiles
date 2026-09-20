@@ -8,10 +8,13 @@
 # (pkgs/config) triggers infinite recursion.
 {
   lib,
+  config,
   common,
   pkgs,
   ...
-}: {
+}: let
+  onePasswordSocketPath = "${config.home.homeDirectory}/.1password/agent.sock";
+in {
   imports =
     [
       ./acme.nix
@@ -20,5 +23,13 @@
     ]
     ++ lib.optional common.isLinux ./linux;
 
-  home.packages = [pkgs.spotify];
+  home = {
+    packages = with pkgs; [
+      localsend
+      spotify
+    ];
+    sessionVariables.SSH_AUTH_SOCK = onePasswordSocketPath;
+  };
+
+  programs.ssh.settings."*".IdentityAgent = "\"${onePasswordSocketPath}\"";
 }

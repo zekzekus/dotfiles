@@ -108,6 +108,7 @@
         home-manager
         sops-nix
         nix-darwin
+        nix-homebrew
         overlays
         profileRegistry
         ;
@@ -144,7 +145,6 @@
         system = "aarch64-darwin";
         profiles = ["graphical"];
         systemModules = [
-          nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew.taps = {
               "d12frosted/homebrew-emacs-plus" = homebrew-emacs-plus;

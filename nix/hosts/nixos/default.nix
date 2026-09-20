@@ -23,6 +23,8 @@
         ]);
     };
 in {
+  imports = [./qmd.nix];
+
   # This is intentionally user-scoped: the rootless Podman socket belongs to
   # Zekus (uid 1000), not to the other local accounts.
   home.sessionVariables.DOCKER_HOST = dockerHost;
