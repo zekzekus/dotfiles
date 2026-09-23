@@ -45,7 +45,7 @@
 
     # productivity
     basalt
-    hey-cli.packages.${pkgs.system}.default
+    hey-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # common lisp
     sbcl
