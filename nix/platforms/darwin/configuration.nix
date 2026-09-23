@@ -76,6 +76,9 @@
     enableRosetta = true;
     user = common.username;
     autoMigrate = true;
+    trust.formulae = [
+      "d12frosted/emacs-plus/emacs-plus@30"
+    ];
   };
 
   homebrew = {

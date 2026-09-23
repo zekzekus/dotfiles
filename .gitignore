@@ -23,6 +23,7 @@ emacs/network-security.data
 .local.env
 
 .direnv/
+/.cache/
 
 kakoune/plugins
 
