@@ -24,9 +24,9 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(load! "menguless-theme")
+(load! "kanagawabones-theme")
 
-(setq doom-theme 'nord)
+(setq doom-theme 'kanagawabones)
 (setq display-line-numbers-type nil)
 (setq mac-command-modifier 'meta
       mac-option-modifier 'super)
@@ -35,6 +35,12 @@
 (setq-default vterm-shell (executable-find "fish"))
 (global-auto-revert-mode 1)
 ;; (rainbow-delimiters-mode -1)
+
+(after! ghostel
+  ;; TX-02 lacks several terminal glyphs (including rounded box drawing),
+  ;; whose fallback fonts have incompatible cell metrics.
+  (set-face-attribute 'ghostel-default nil
+                      :family "JetBrainsMono Nerd Font Mono"))
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -137,12 +143,6 @@
 (custom-theme-set-faces! 'menguless
   '(org-block-begin-line :box (:color "#ccccbb" :line-width -1))
   '(org-block-end-line :box (:color "#ccccbb" :line-width -1)))
-
-(custom-theme-set-faces! 'nord
-  '(org-level-1 :height 1.1 :weight extrabold :overline t :foreground "#8FBCBB" :extend t :background "#3B4252")
-  '(org-document-title :height 1.5 :weight bold :foreground "#88C0D0")
-  '(org-agenda-structure :height 1.3 :weight bold :foreground "#81A1C1")
-  '(org-todo :weight bold :box (:line-width (1 . -1) :color nil :style nil)))
 
 (custom-theme-set-faces! 'parchment
   '(org-level-1 :height 1.1 :weight bold :overline nil :foreground "#000000" :background "#eaeaea" :extend t)

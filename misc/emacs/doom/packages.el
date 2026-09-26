@@ -12,7 +12,6 @@
 ;; Here are a couple examples:
 
 (package! w3m)
-(package! nord-theme)
 (package! parchment-theme)
 (package! consult-projectile)
 (unpin! org-roam)
