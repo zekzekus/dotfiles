@@ -29,15 +29,16 @@ in {
   # Zekus (uid 1000), not to the other local accounts.
   home.sessionVariables.DOCKER_HOST = dockerHost;
 
-  # One persistent runner discovers every checkout under ~/devel and makes it
-  # available from ampcode.com. Depth 3 covers projects/{personal,playground,work}
-  # as well as tools, while Amp stops scanning when it reaches a checkout.
+  # One persistent runner discovers every checkout under ~/devel and serves
+  # ~/Documents/dev.zeko.miracle directly. Depth 3 covers
+  # projects/{personal,playground,work} as well as tools, while Amp stops
+  # scanning when it reaches a checkout.
   systemd.user.services.amp-runner = {
     Unit.Description = "Amp remote runner";
     Service = {
       Environment = pkgs.lib.mapAttrsToList (name: value: "${name}=${value}") runnerEnvironment;
       WorkingDirectory = "${common.homeDir}/devel";
-      ExecStart = "${amp}/bin/amp --no-tui --runner-id nixos --remote-control-terminal --discover-dirs=${common.homeDir}/devel --discover-depth 3";
+      ExecStart = "${amp}/bin/amp --no-tui --runner-id nixos --remote-control-terminal --dir=${common.homeDir}/Documents/dev.zeko.miracle --discover-dirs=${common.homeDir}/devel --discover-depth 3";
       Restart = "always";
       RestartSec = 5;
     };
