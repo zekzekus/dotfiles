@@ -2,25 +2,25 @@
   stdenv,
   fetchurl,
 }: let
-  version = "0.0.1790884861-gc8feff";
+  version = "0.0.1791134020-gd49eb2";
 
   # Per-system source: (platform, sha256). Pattern is parsed by scripts/update-amp.
   sources = {
     x86_64-linux = {
       platform = "linux-x64";
-      sha256 = "c82bc00c79a106ed3ec3a3ca27797c5794b05f1aa05e6c5ad68c04064c383ef2";
+      sha256 = "f526116da0d24c90af9f7457ebe0df6808d77c2f6e0b450e30a510b65791e5d5";
     };
     aarch64-linux = {
       platform = "linux-arm64";
-      sha256 = "b9476aed953ee820cd502fd316e8a273200f4196a2a05cbe4b50d35b040e5086";
+      sha256 = "ade60080a326c3300103673bf57241e2a0fbbe11b9d7b4e6bd3b303f39af6dfd";
     };
     x86_64-darwin = {
       platform = "darwin-x64";
-      sha256 = "190ee3effe20ff0f10f593ca09dd77f438f946731789ac14c81ca89581ec8f3d";
+      sha256 = "ba1d30c1c2d02898352594ef068e78ce2390f7c13b8327f5dbe54cb6a737e62b";
     };
     aarch64-darwin = {
       platform = "darwin-arm64";
-      sha256 = "961fb852d8e05bb3dfefcbcdc1a062f2b788e06a74f061f47181ce3f8bb33904";
+      sha256 = "5b045195fa188f3ac6e1f4ea737863024d236497ba412e4353bc7b605fc1e0b7";
     };
   };
 
