@@ -1,5 +1,6 @@
 {
   hey-cli,
+  basecamp-cli,
   pkgs,
   ...
 }: {
@@ -46,6 +47,7 @@
     # productivity
     basalt
     hey-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
+    basecamp-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # common lisp
     sbcl

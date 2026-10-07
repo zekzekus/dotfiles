@@ -25,6 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    basecamp-cli = {
+      url = "github:basecamp/basecamp-cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Encrypted secrets (age-backed). Provides the home-manager `sops` module,
     # wired into the base layer in nix/lib.nix so every host can decrypt secrets.
     sops-nix = {
@@ -61,6 +66,7 @@
     nixpkgs,
     home-manager,
     hey-cli,
+    basecamp-cli,
     sops-nix,
     determinate,
     nix-darwin,
@@ -107,7 +113,7 @@
         overlays
         profileRegistry
         ;
-      extraHomeSpecialArgs = {inherit hey-cli practicalli-clojure-cli-config;};
+      extraHomeSpecialArgs = {inherit hey-cli basecamp-cli practicalli-clojure-cli-config;};
     };
 
     inherit (lib) mkNixosSystem mkDarwinSystem mkHomeConfiguration;
