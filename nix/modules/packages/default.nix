@@ -46,6 +46,7 @@
 
     # productivity
     basalt
+    gws
     hey-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
     basecamp-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
 
