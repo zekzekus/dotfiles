@@ -54,10 +54,8 @@
       # No typed dock option exists for this; the swipe-up = Mission Control
       # gesture needs it enabled in the dock domain.
       "com.apple.dock".showMissionControlGestureEnabled = true;
-      # Trackpad tracking speed. macOS uses a different acceleration model than
-      # libinput, so this can't match niri/Hyprland exactly; this is a moderate
-      # value approximating niri's default feel (tune in System Settings slider).
-      NSGlobalDomain."com.apple.trackpad.scaling" = 0.875;
+      # Faster tracking, shared by the built-in trackpad and Magic Trackpad.
+      NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
     };
   };
 
