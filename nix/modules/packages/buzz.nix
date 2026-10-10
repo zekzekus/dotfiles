@@ -1,10 +1,10 @@
 {pkgs}: let
   pname = "buzz-desktop";
-  version = "0.5.27";
+  version = "0.5.28";
 
   src = pkgs.fetchurl {
     url = "https://github.com/block/buzz/releases/download/desktop-v${version}/Buzz_${version}_amd64.deb";
-    hash = "sha256-/5kFRxaRYn3P8eXALGCRJsrh5l1b+TK9bqyEZXOOHDQ=";
+    hash = "sha256-U2CfpYanh4cfCAsL/OZ5Yz5Ff2UJgkEcgboQRkjDiMs=";
   };
 in
   pkgs.stdenv.mkDerivation {
