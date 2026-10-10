@@ -24,6 +24,7 @@
 
   home.packages = with pkgs;
     [
+      anytype
       appimage-run
       showmethekey
       droidcam
