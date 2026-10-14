@@ -34,6 +34,7 @@
     ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
       (callPackage ../../../modules/packages/amp-acp.nix {})
       (callPackage ../../../modules/packages/buzz.nix {})
+      (callPackage ../../../modules/packages/grokbot.nix {})
       (callPackage ../../../modules/packages/helium.nix {})
     ];
 

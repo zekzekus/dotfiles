@@ -103,10 +103,17 @@ make darwin-build  # Build nix-darwin without switching
 make nixos         # Rebuild NixOS + integrated Home Manager (NixOS only)
 make nixos-build   # Plan NixOS (dry-run, does not build)
 make update        # Update flake inputs + pinned package versions
+make update-grokbot # Update only the pinned Grok Bot AppImage
 make check         # Run all checks (format, deadnix, statix)
 make fmt           # Format all Nix files with alejandra
 make clean         # Clean build artifacts
 ```
+
+Grok Bot uses a version-pinned x64 AppImage on Linux, with a desktop launcher and
+the `grok-bot` command. `make update-grokbot` resolves the official stable download
+link and updates the version, release revision, and hash; it also runs as part of
+`make update`. Apply the new package with `make nixos` (or `make home` for a
+standalone Home Manager installation), rather than using in-app updates.
 
 ---
 
@@ -175,7 +182,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
-- Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium (x86_64), 1Password GUI autostart
+- Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
 
 **`wayland` profile** *(opt-in -- Wayland desktop, normally paired with `graphical`)*
 - Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock

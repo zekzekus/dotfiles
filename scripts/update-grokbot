@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Pin the Grok Bot AppImage using the official stable download redirect.
+# Run via `make update-grokbot`.
+
+set -euo pipefail
+
+nix_file="$(cd "$(dirname "$0")/.." && pwd)/nix/modules/packages/grokbot.nix"
+
+if [ ! -f "$nix_file" ]; then
+  echo "update-grokbot: $nix_file not found" >&2
+  exit 1
+fi
+
+url=$(curl -fsSI --output /dev/null --write-out '%{redirect_url}' \
+  https://api2.cursor.sh/updates/download/stable/linux-x64/grok-bot-6f47c900083d6a0c)
+if [[ ! "$url" =~ ^https://downloads\.cursor\.com/grokbot/stable/([0-9a-f]{40})/linux/x64/Grok_Bot_([0-9]+\.[0-9]+\.[0-9]+)\.AppImage$ ]]; then
+  echo "update-grokbot: unexpected stable download URL: $url" >&2
+  exit 1
+fi
+revision=${BASH_REMATCH[1]}
+version=${BASH_REMATCH[2]}
+echo "grokbot version: $version ($revision)"
+echo "  fetching $url"
+
+hex=$(nix-prefetch-url --type sha256 "$url")
+sri=$(nix hash convert --to sri --hash-algo sha256 "$hex")
+echo "  hash: $sri"
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+awk -v new_ver="$version" -v new_rev="$revision" -v new_hash="$sri" '
+  !ver_done && /version = "/ {
+    sub(/"[^"]*"/, "\"" new_ver "\"")
+    ver_done = 1
+  }
+  !rev_done && /revision = "/ {
+    sub(/"[^"]*"/, "\"" new_rev "\"")
+    rev_done = 1
+  }
+  !hash_done && /hash = "sha256-/ {
+    sub(/"sha256-[^"]*"/, "\"" new_hash "\"")
+    hash_done = 1
+  }
+  { print }
+  END { if (!ver_done || !rev_done || !hash_done) exit 1 }
+' "$nix_file" > "$tmp"
+mv "$tmp" "$nix_file"
+
+echo "Wrote $nix_file"
