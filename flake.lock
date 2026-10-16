@@ -108,11 +108,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791966609,
-        "narHash": "sha256-faZcW6QSaK4i7/q1sJE1uSiCJy8NKk/Q6H4HgYDM4/w=",
+        "lastModified": 1792080899,
+        "narHash": "sha256-GNL16h3tSpz14JWG9fzCJFYkgTc5GR459V6sSlSP7Bo=",
         "owner": "basecamp",
         "repo": "basecamp-cli",
-        "rev": "81562bb88444c672a182618fa40db6c4345071ec",
+        "rev": "5a8e982221e979c47718f0e3aaa8168807f0779e",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792000010,
-        "narHash": "sha256-4jtkwQlReQdXsKJJfB9yT7nIf0TlwgZOk2XtxjUgDS8=",
+        "lastModified": 1792098797,
+        "narHash": "sha256-u4DIIZgznEGzByxXrxWCXK19VcMtTBmi/M9gZ7Jk9bM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5a9d300bd619c03857521b50c8877a19dbad7078",
+        "rev": "640725978b99076e18e069f6e7d2959124584f8f",
         "type": "github"
       },
       "original": {
@@ -402,11 +402,11 @@
     "homebrew-emacs-plus": {
       "flake": false,
       "locked": {
-        "lastModified": 1792035463,
-        "narHash": "sha256-GajT2QFji5CMNtY2F4TAcFQZus+mgEq2J7rAxZLO83I=",
+        "lastModified": 1792122031,
+        "narHash": "sha256-u+VlIGtmJs4yaZVt1rVd5IBlkhPIBvw66BmaU6PgmcE=",
         "owner": "d12frosted",
         "repo": "homebrew-emacs-plus",
-        "rev": "388d0060a56b41c7aae70da3725c5536fa54547a",
+        "rev": "fa1b4ec78b08100bcb0e15ea7d7d0aeb5b4b1650",
         "type": "github"
       },
       "original": {
@@ -491,11 +491,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1792003461,
-        "narHash": "sha256-sqWBYgjkJd5xTJKd9Jz/SbtrJfY3eTqxyqn1xfH6O00=",
+        "lastModified": 1792164938,
+        "narHash": "sha256-4JnTrBgwuVMo5cihxgumqBAk26M7YOK9R6aVc1gqhrk=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "e2ad066c9ffd45ddfbe4dc76d2de16b382fbe3eb",
+        "rev": "25f09b26f9db7dbca4a4b3c265fdb96802db122c",
         "type": "github"
       },
       "original": {
@@ -927,11 +927,11 @@
     "practicalli-clojure-cli-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1790801107,
-        "narHash": "sha256-T/JpNcOSKJB5d57ejN+avC5VowJDHxISw5PZ5SfDsng=",
+        "lastModified": 1791660173,
+        "narHash": "sha256-ZtHLuSHa3JxpGJ2CUr3CgN1E08BUm8L0TtWsdI4KLCY=",
         "owner": "practicalli",
         "repo": "clojure-cli-config",
-        "rev": "045548f31beb62de2c6d3759c32e22363e5b8c77",
+        "rev": "603201e56ee53eb930283b2c1f3486fa9219b45e",
         "type": "github"
       },
       "original": {
