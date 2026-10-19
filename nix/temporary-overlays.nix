@@ -1,6 +1,22 @@
 # Temporary overlays / workarounds.
 # Review periodically and remove once upstream fixes land.
 _: prev: {
+  # Backport https://github.com/NixOS/nixpkgs/pull/574509 until our pin includes it.
+  # Host /etc/bashrc resets PATH in unsandboxed Darwin e2e tests. The harness
+  # clears the environment, so set NOSYSBASHRC in a wrapper named bash (the
+  # executable name selects Atuin's shell integration), not in preCheck.
+  atuin = prev.atuin.overrideAttrs (old:
+    prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
+      env =
+        (old.env or {})
+        // {
+          ATUIN_E2E_BASH = prev.lib.getExe (
+            prev.writeShellScriptBin "bash" ''
+              NOSYSBASHRC=1 exec ${prev.lib.getExe prev.bashInteractive} "$@"
+            ''
+          );
+        };
+    });
   python3Packages = prev.python3Packages.overrideScope (
     _: pyPrev: {
       picosvg = pyPrev.picosvg.overridePythonAttrs {
