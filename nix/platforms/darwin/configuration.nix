@@ -94,6 +94,7 @@
     casks = [
       "1password"
       "1password-cli"
+      "grok-bot"
       "helium-browser"
       "zed"
       "raycast"

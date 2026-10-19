@@ -115,6 +115,9 @@ link and updates the version, release revision, and hash; it also runs as part o
 `make update`. Apply the new package with `make nixos` (or `make home` for a
 standalone Home Manager installation), rather than using in-app updates.
 
+On macOS, `make darwin` manages Grok Bot through the Homebrew `grok-bot` cask.
+The Mac app supports in-app updates; `make update-grokbot` only updates Linux.
+
 ---
 
 ## Architecture

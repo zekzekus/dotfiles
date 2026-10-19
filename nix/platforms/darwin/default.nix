@@ -21,6 +21,7 @@
 
     sessionPath = [
       "/opt/homebrew/bin"
+      "/usr/local/bin" # Determinate Nix installs determinate-nixd here.
     ];
 
     sessionVariables = {

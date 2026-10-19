@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -28,4 +29,14 @@ in {
       allow-loopback-pinentry
     '';
   };
+
+  # GnuPG's supervised mode expects systemd socket passing, not launchd's.
+  # On macOS, let GnuPG autostart its agent on the socket its clients use.
+  launchd.agents.gpg-agent.enable = lib.mkIf isDarwin (lib.mkForce false);
+
+  # Retire the old process after config/pinentry changes; the next GPG command
+  # starts an agent with the current configuration and Nix store paths.
+  home.file."${config.programs.gpg.homedir}/gpg-agent.conf".onChange = lib.mkIf isDarwin ''
+    ${config.programs.gpg.package}/bin/gpgconf --homedir ${lib.escapeShellArg config.programs.gpg.homedir} --kill gpg-agent
+  '';
 }
