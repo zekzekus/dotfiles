@@ -20,6 +20,7 @@ in {
       ./acme.nix
       ./ghostty.nix
       ./obsidian.nix
+      ./zed-editor.nix
     ]
     ++ lib.optional common.isLinux ./linux;
 

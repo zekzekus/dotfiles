@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./media.nix
-    ./zed-editor.nix
   ];
 
   programs = {
