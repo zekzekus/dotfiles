@@ -9,8 +9,8 @@ into `~/.ssh/config.d/hosts`, which the managed `~/.ssh/config` pulls in via
 The actual private keys (`.pem`/`.key`) are **never** in this repo or in sops —
 you place them on each machine manually (e.g. `~/.ssh/keys/<host>.pem`,
 `chmod 600`). For SSH, sops only protects the *config metadata* in git.
-The NixOS Amp runners also use sops for their account access tokens, described
-below.
+The NixOS and macOS Amp runners also use sops for their account access tokens,
+described below.
 
 ## How it is wired
 
@@ -146,8 +146,8 @@ with-env {
 In each editor buffer, keep a single `AMP_API_KEY=` assignment and paste the
 corresponding token after `=`. Do not put tokens in shell commands, Nix strings,
 chat, or logs. The saved repository files must contain encrypted values, never
-plaintext. `.sops.yaml` encrypts these files only for this NixOS machine's age
-key. Keep a secure backup of that private key, such as in a password manager.
+plaintext. `.sops.yaml` encrypts these files for both the NixOS and mac-machine
+age keys. Keep secure backups of the private keys, such as in a password manager.
 
 The encrypted files are intentionally not supplied with placeholder tokens.
 Until each exists, its service cannot start. A missing environment file or
@@ -227,6 +227,68 @@ To rotate a token, edit its encrypted file, apply the configuration, restart
 `sops-nix.service`, and restart the corresponding runner. Verify the new token
 works before revoking the old one. Removing an age recipient does not revoke
 old tokens or erase ciphertext from repository history.
+
+## macOS Amp runners
+
+`nix/hosts/mac-machine/default.nix` defines two Home Manager LaunchAgents with
+the same directory lists as NixOS, including `~/Documents/dev.zeko.miracle`
+for work. Their runner IDs are `mac-machine-personal` and `mac-machine-work`;
+their launchd labels are `org.nix-community.home.amp-runner-personal` and
+`org.nix-community.home.amp-runner-work`.
+
+They use the same two encrypted account tokens. The Mac's existing age key
+must match the `mac-machine` recipient in `.sops.yaml`, and the encrypted files
+must have been updated with `sops updatekeys` on a machine that could already
+decrypt them. No private age key needs to move between machines.
+
+SOPS publishes mode-`0600` dotenv files through the Mac's configured SOPS paths.
+Each runner reads exactly one nonempty `AMP_API_KEY=` assignment; keep its value
+unquoted, without comments or additional assignments. The value is read as
+literal data, never executed as shell code. Missing or malformed credentials
+stop startup instead of falling back to the interactive CLI account. launchd
+retries at five-second intervals while waiting for SOPS; it does not itself
+retry failed SOPS decryption.
+
+The agents run at login and restart on exit. Unlike NixOS user lingering, they
+do not run before login or after logout, and the Mac must remain awake to serve
+threads. They inherit the configured user tools and 1Password SSH socket, but
+not the Linux Podman socket; Docker uses the Mac's selected Docker context.
+Both accounts still run as the same macOS user, and subprocesses may inherit
+their runner's account token.
+
+Build without switching:
+
+```nu
+make check
+make darwin-build
+```
+
+When ready, run `make darwin` from a normal terminal. It activates SOPS and the
+LaunchAgents. Inspect the jobs and their logs without printing credential files:
+
+```nu
+let domain = $"gui/(id -u | str trim)"
+launchctl print $"($domain)/org.nix-community.home.sops-nix"
+launchctl print $"($domain)/org.nix-community.home.amp-runner-personal"
+launchctl print $"($domain)/org.nix-community.home.amp-runner-work"
+```
+
+Runner logs are `~/Library/Logs/amp-runner-{personal,work}.log` and
+`~/Library/Logs/amp-runner-{personal,work}.err.log`; SOPS logs are under
+`~/Library/Logs/SopsNix/`. Use `amp runner list` and
+`amp runner dirs list --runner-id mac-machine-personal` or `mac-machine-work`
+under the corresponding CLI account, as in the NixOS verification above.
+If the work runner reports permission errors for the Documents vault, check
+macOS Privacy & Security permissions for the runner; terminal access does not
+establish that a LaunchAgent can read the same directory.
+
+For token rotation, wait for active threads to finish, update the encrypted
+file and switch. Check that the SOPS job has finished with exit code 0 before
+restarting the affected runner with `launchctl kickstart -k` and its job label.
+A running runner does not reread credentials, and an existing secret file can
+belong to the previous generation if decryption fails. Apply the updated token
+and restart the corresponding NixOS runner too; verify both hosts before
+revoking the old token.
 
 [sops]: https://github.com/getsops/sops
 [age]: https://github.com/FiloSottile/age
