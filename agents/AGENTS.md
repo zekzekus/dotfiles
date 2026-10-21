@@ -25,8 +25,9 @@ In shared repositories, do not force personal tooling choices on teammates.
 - Do not create branches or bookmarks unless I ask.
 - Commit only when I ask. Keep an explicitly requested commit atomic and
   single-concern; inspect the status and diff before recording it.
-- Never add AI attribution, agent signatures, or generated-by trailers to
-  commits, pull requests, or tags.
+- Keep my configured identity as the commit author; never replace it with an
+  AI agent identity. AI attribution in co-author or generated-by trailers is
+  allowed, as is attribution in pull requests and tags.
 - Never push or deploy; I do those myself.
 - Ask before destructive or history-rewriting VCS operations. If concurrent
   work exists, finish only your task, do not commit, and never revert others.
