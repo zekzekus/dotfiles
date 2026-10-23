@@ -32,7 +32,13 @@ in {
     };
 
     # v4l2loopback for OBS virtual camera
-    extraModulePackages = with pkgs.linuxPackages; [v4l2loopback];
+    extraModulePackages = [
+      (pkgs.linuxPackages.v4l2loopback.overrideAttrs (old: {
+        # Temporary workaround: upstream installs depmod maps that collide
+        # with the kernel's. NixOS generates them for the combined module tree.
+        makeFlags = old.makeFlags ++ ["DEPMOD=true"];
+      }))
+    ];
     kernelModules = ["v4l2loopback"];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1

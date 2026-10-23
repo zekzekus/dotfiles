@@ -1,11 +1,11 @@
 {pkgs}: let
   pname = "grok-bot";
-  version = "0.71.2";
-  revision = "92808c0ad869b2e3725dbc3b8fa2fcc991687502";
+  version = "0.75.3";
+  revision = "5acb0be5178da83005411731082da2dab1602ca7";
 
   src = pkgs.fetchurl {
     url = "https://downloads.cursor.com/grokbot/stable/${revision}/linux/x64/Grok_Bot_${version}.AppImage";
-    hash = "sha256-a8SI+sg9tWbojxx1BzkBLbceGPS8Z+af6Tz/M0nZH+g=";
+    hash = "sha256-aO0Fu7aK2sSSYSEVAvYN2dIbUzwZl/mjEH6Q2wiRPRU=";
   };
 
   appimageContents = pkgs.appimageTools.extract {
