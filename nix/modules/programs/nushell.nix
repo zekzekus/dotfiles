@@ -1,41 +1,9 @@
-{
-  pkgs,
-  lib,
-  config,
-  common,
-  ...
-}: let
-  darwinPaths = ''
-    $env.PATH = ($env.PATH | split row (char esep) | prepend '/run/current-system/sw/bin')
-    $env.PATH = ($env.PATH | split row (char esep) | prepend '/nix/var/nix/profiles/default/bin')
-    $env.PATH = ($env.PATH | split row (char esep) | prepend '/etc/profiles/per-user/${common.username}/bin')
-    $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
-  '';
-
-  mkNushellPathPrepends = paths:
-    lib.concatMapStringsSep "\n"
-    (p: "$env.PATH = ($env.PATH | split row (char esep) | prepend '${p}')")
-    (lib.reverseList paths);
-in {
+{pkgs, ...}: {
   programs.nushell = {
     enable = true;
-    # Read the merged Home Manager environment, not the pre-merge `common`
-    # copy. Hosts, platforms, and profiles extend home.sessionVariables /
-    # home.sessionPath; Nushell must see the resolved result.
-    #
-    # Skip POSIX shell fragments (`${...}`, `$(...)`). HM stores those for
-    # hm-session-vars.sh; dumping them via load-env exports literal braces
-    # that Neovim glob-expands (E79).
-    environmentVariables = let
-      isShellTemplate = value: let
-        s = toString value;
-      in
-        lib.hasInfix "\${" s || lib.hasInfix "$(" s;
-    in
-      lib.mapAttrs (_: toString) (
-        lib.filterAttrs (_: value: !(isShellTemplate value))
-        config.home.sessionVariables
-      );
+    # Evaluate HM session variables/PATH and the integrated NixOS/nix-darwin
+    # environment at startup, including POSIX expressions in their values.
+    loadSessionVariables = true;
     settings = {
       show_banner = false;
       completions = {
@@ -47,12 +15,6 @@ in {
     };
 
     extraEnv = ''
-      ${
-        if pkgs.stdenv.hostPlatform.isDarwin
-        then darwinPaths
-        else ""
-      }
-      ${mkNushellPathPrepends config.home.sessionPath}
       $env.GPG_TTY = (tty | str trim)
     '';
 

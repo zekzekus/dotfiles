@@ -30,7 +30,7 @@ The 1Password SSH integration is managed declaratively:
 - **`modules/programs/ssh.nix`** -- Shared SSH config and platform-specific 1Password socket paths (macOS symlink, Linux directory). Does not select the agent on headless hosts.
 - **`profiles/graphical/default.nix`** -- Sets `SSH_AUTH_SOCK` and `IdentityAgent` for hosts with a display.
 - **`profiles/graphical/linux/default.nix`** -- systemd user service to autostart the 1Password GUI (Linux).
-- **`modules/programs/nushell.nix`** -- Exports the merged Home Manager environment, including `SSH_AUTH_SOCK` when the graphical profile sets it.
+- **`modules/programs/nushell.nix`** -- Enables Home Manager's session-environment loader, including `SSH_AUTH_SOCK` when the graphical profile sets it. Already-initialized sessions keep their inherited environment; use a fresh login after applying environment changes.
 
 ### 1Password Installation
 
