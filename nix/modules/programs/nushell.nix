@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.nushell = {
     enable = true;
     # Evaluate HM session variables/PATH and the integrated NixOS/nix-darwin
@@ -7,7 +11,9 @@
     settings = {
       show_banner = false;
       completions = {
-        algorithm = "fuzzy";
+        # Fuzzy matching searches whole registered subcommand names, making
+        # unrelated commands (notably Niri's many externs) pollute the menu.
+        algorithm = "prefix";
       };
       table = {
         mode = "default";
@@ -23,35 +29,45 @@
         nix flake init --template $"https://flakehub.com/f/the-nix-way/dev-templates/*#($target)"
       }
 
-      let fish_completer = {|spans|
-        # This effectively passes the cursor position and command to fish
-        ${pkgs.fish}/bin/fish --command $'complete "--do-complete=($spans | str join " ")"'
-        | from tsv --flexible --noheaders --no-infer
-        | rename value description
+      let fish_completer = {|place|
+        # Pass the command as data, not interpolated Fish code. HM only adds
+        # its man-page completions in interactive Fish, so include them here.
+        ${pkgs.fish}/bin/fish --command '
+          set --append fish_complete_path $argv[2]
+          complete --do-complete="$argv[1]"
+        ' -- ($place.command | str join ' ') '${config.xdg.dataHome}/fish/home-manager/generated_completions'
+        | lines
+        | split column --number 2 (char tab) value description
+        | update value {|row|
+          let value = $row.value
+          let need_quote = ['\' ',' '[' ']' '(' ')' '{' '}' ' ' (char tab) "'" '"' '`' '$' ';' '#' '|' '&' '<' '>'] | any { $in in $value }
+          if $need_quote {
+            let value = if ($value | str starts-with '~') and ($value | path exists) {
+              $value | path expand --no-symlink
+            } else { $value }
+            $value | to nuon
+          } else { $value }
+        }
       }
 
-      let carapace_completer = {|spans|
-        carapace $spans.0 nushell ...$spans | from json
+      let carapace_completer = {|place|
+        CARAPACE_LENIENT=1 carapace $place.command.0 nushell ...$place.command | from json
       }
 
-      let external_completer = {|spans|
-        let expanded_alias = scope aliases | where name == $spans.0 | get -o 0.expansion
-
-        let spans = if $expanded_alias != null {
-          $spans | skip 1 | prepend ($expanded_alias | split row ' ' | take 1)
+      let external_completer = {|place|
+        # Nushell already expands aliases, including their fixed arguments.
+        let completions = if $place.command.0 in [asdf mvn tailscale] {
+          do $fish_completer $place
         } else {
-          $spans
+          # Unsupported commands, empty results and failures fall back to Fish.
+          let carapace = try { do $carapace_completer $place } catch { null }
+          if ($carapace | is-empty) {
+            do $fish_completer $place
+          } else { $carapace }
         }
 
-        match $spans.0 {
-          # Use Fish for tools where it shines
-          asdf => $fish_completer
-          mvn => $fish_completer
-          tailscale => $fish_completer
-
-          # Default to Carapace for everything else
-          _ => $carapace_completer
-        } | do $in $spans
+        # null lets Nushell supply file completions when neither has an answer.
+        if ($completions | is-empty) { null } else { $completions }
       }
 
       $env.config.completions.external = {

@@ -118,6 +118,30 @@ standalone Home Manager installation), rather than using in-app updates.
 On macOS, `make darwin` manages Grok Bot through the Homebrew `grok-bot` cask.
 The Mac app supports in-app updates; `make update-grokbot` only updates Linux.
 
+### Nushell completions
+
+Nushell uses prefix matching for its native completions, so short command names
+do not match unrelated words inside long registered subcommands. For external
+commands, it tries Carapace, then Fish when Carapace returns no suggestions or
+fails. `asdf`, `mvn`, and
+`tailscale` use Fish directly. If neither provider has suggestions, Nushell can
+fall back to its file completions. This requires Nushell's named completer inputs
+(`place.command`, supported by the pinned Nushell).
+
+The Fish bridge loads bundled, vendor, user, and man-page-generated completions,
+including Home Manager's generated completion directory. Home Manager generates
+these from installed packages by default. To refresh Fish's separate cache from
+man pages available on the current system, run this from Nushell:
+
+```nu
+fish -c 'fish_update_completions'
+```
+
+Custom Fish completion files belong in `~/.config/fish/completions/<command>.fish`.
+Arbitrary project scripts still need completion definitions; neither provider
+can infer their subcommands. The bridge does not provide Fish syntax or functions
+defined only during interactive Fish startup.
+
 ---
 
 ## Architecture
