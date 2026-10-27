@@ -209,6 +209,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
+- [Cuis Smalltalk](https://cuis.st/documentation/) (`cuis`, Linux/macOS) with desktop launchers and a persistent writable image
 - Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
 
 **`wayland` profile** *(opt-in -- Wayland desktop, normally paired with `graphical`)*
