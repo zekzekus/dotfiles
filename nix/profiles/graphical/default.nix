@@ -25,12 +25,10 @@ in {
     ++ lib.optional common.isLinux ./linux;
 
   home = {
-    packages =
-      (with pkgs; [
-        localsend
-        spotify
-      ])
-      ++ [(import ../../modules/packages/cuis.nix {inherit pkgs;})];
+    packages = with pkgs; [
+      localsend
+      spotify
+    ];
     sessionVariables.SSH_AUTH_SOCK = onePasswordSocketPath;
   };
 
