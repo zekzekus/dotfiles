@@ -195,7 +195,7 @@ Format all Nix files: `make fmt`
 
 ```bash
 make update
-# updates flake inputs *and* pinned Amp/Buzz/Helium versions.
+# updates flake inputs *and* pinned application versions.
 # flake inputs only:
 nix flake update
 ```
