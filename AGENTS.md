@@ -114,6 +114,16 @@ desktop `systemModules`, passed to `mkNixosSystem` — the base is already headl
 - Platform-wide (OS-family) code → `nix/platforms/<platform>/modules/`
 - Host-specific code → `nix/hosts/<host>/{default,configuration}.nix`
 
+## Documentation
+
+- Use the current `README.md` as the style and scope reference: a scannable project
+  overview covering structure, hosts, common commands, architecture, and included tools.
+- Preserve its organization and level of detail. Brief usage notes belong where
+  they help readers understand the setup; do not turn each addition into a tutorial.
+- Put detailed setup or troubleshooting in `nix/docs/` only when worth retaining,
+  and link it from the README. Prefer upstream references over duplicated manuals;
+  keep session-specific findings in the conversation.
+
 ## Intentional Design Choices
 
 These are deliberate decisions. Do NOT suggest "fixing" them.
