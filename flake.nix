@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rex = {
+      url = "https://pkgs.superlogical.com/rex/nix/preview.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hey-cli = {
       url = "github:basecamp/hey-cli";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,6 +70,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    rex,
     hey-cli,
     basecamp-cli,
     sops-nix,
@@ -133,6 +139,7 @@
         hostname = "nixos";
         system = "x86_64-linux";
         profiles = ["graphical" "wayland"];
+        homeModules = [rex.homeManagerModules.default];
         systemModules = [
           determinate.nixosModules.default
           hyprland.nixosModules.default
@@ -165,7 +172,7 @@
 
     homeConfigurations = {
       "zekus@nixos" = mkHomeConfiguration {
-        inherit (hosts.nixos) hostname system profiles;
+        inherit (hosts.nixos) hostname system profiles homeModules;
         target = "nixos"; # standalone HM on NixOS — do NOT enable genericLinux
       };
     };

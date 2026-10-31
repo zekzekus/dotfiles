@@ -962,6 +962,23 @@
         "type": "github"
       }
     },
+    "rex": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793377904,
+        "narHash": "sha256-GmWf210OgpSfM532AGtm748vM68QltaA8MlqtqHgiy8=",
+        "type": "tarball",
+        "url": "https://pkgs.superlogical.com/rex/nix/preview/0.1.0-preview.12.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://pkgs.superlogical.com/rex/nix/preview.tar.gz"
+      }
+    },
     "root": {
       "inputs": {
         "basecamp-cli": "basecamp-cli",
@@ -975,6 +992,7 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_4",
         "practicalli-clojure-cli-config": "practicalli-clojure-cli-config",
+        "rex": "rex",
         "sops-nix": "sops-nix",
         "stylix": "stylix"
       }

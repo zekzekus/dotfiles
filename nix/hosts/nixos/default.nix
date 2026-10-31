@@ -54,6 +54,17 @@
 in {
   imports = [./qmd.nix];
 
+  # The NixOS account already has linger enabled, so this personal server starts
+  # at boot and survives logout. Only its enrolling Tailscale owner may connect.
+  services.rex = {
+    enable = true;
+    tailscale = {
+      enable = true;
+      hostname = "nixos-rex";
+      allowTailnetMembers = false;
+    };
+  };
+
   # This is intentionally user-scoped: the rootless Podman socket belongs to
   # Zekus (uid 1000), not to the other local accounts.
   home.sessionVariables.DOCKER_HOST = dockerHost;

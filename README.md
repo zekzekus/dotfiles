@@ -241,6 +241,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 |-------|---------|
 | `nixpkgs` | Main package set (nixos-unstable) |
 | `home-manager` | User environment management |
+| `rex` | Preview-channel Rex personal server on the NixOS host |
 | `sops-nix` | Encrypted secrets (age-backed), wired into the base in `nix/lib.nix` |
 | `nix-darwin` | macOS system management |
 | `nix-homebrew` | Declarative Homebrew on macOS |
@@ -258,6 +259,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 - [Home Manager README](./nix/README.md) -- Installation, adding hosts, troubleshooting
 - [1Password Setup](./nix/docs/1password-setup.md) -- SSH agent & GPG key management
 - [sops Setup](./nix/docs/sops-setup.md) -- Encrypted secrets bootstrap & workflow (sops-nix, age)
+- [Rex Setup](./nix/docs/rex-setup.md) -- Remote access to NixOS from the Mac
 
 ---
 
