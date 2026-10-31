@@ -22,9 +22,9 @@ in {
   services.gpg-agent = {
     enable = true;
     enableSshSupport = false;
-    pinentry.package = pinentryPackage;
-    defaultCacheTtl = 86400;
-    maxCacheTtl = 86400;
+    pinentry.package = lib.mkDefault pinentryPackage;
+    defaultCacheTtl = 259200;
+    maxCacheTtl = 259200;
     extraConfig = lib.optionalString isLinux ''
       allow-loopback-pinentry
     '';

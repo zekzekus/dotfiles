@@ -9,6 +9,9 @@
     ./media.nix
   ];
 
+  # Signing from non-interactive clients can prompt on the desktop.
+  services.gpg-agent.pinentry.package = pkgs.pinentry-qt;
+
   programs = {
     chromium.enable = true;
 

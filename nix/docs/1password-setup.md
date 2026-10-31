@@ -73,6 +73,21 @@ This installs:
 3. Check **"Use the SSH Agent"**
 4. Expand **Advanced** section and configure as desired
 
+For fewer prompts, set **Ask approval for each new** to **Application**.
+**Remember key approval** supports 4, 12, or 24 hours, not three days. Choose
+**Until 1Password quits** if you want approvals to last across multiple days
+while the app stays running. A locked 1Password still needs unlocking to use
+the private key; remembering approval does not keep the vault unlocked.
+These settings are managed in the app, not by this Nix configuration.
+
+GPG commit signing has a separate passphrase cache: both its idle timeout and
+maximum lifetime are three days (259200 seconds). Restarting the agent or
+rebooting clears it sooner. During that window, processes running as your user
+can sign without another passphrase prompt. Desktop Linux uses Qt pinentry so
+non-interactive clients can request a passphrase on the desktop; a running
+graphical session with a reachable display is required. Headless Linux keeps
+terminal pinentry, and macOS uses native pinentry.
+
 ### Step 4: Verify SSH Key
 
 Your SSH key stored in 1Password will automatically be available via the agent.
