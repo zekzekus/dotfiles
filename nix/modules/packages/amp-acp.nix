@@ -1,12 +1,12 @@
 {pkgs}: let
   pname = "amp-acp";
-  version = "0.10.0";
+  version = "0.11.0";
 
   amp = pkgs.callPackage ./amp.nix {};
 
   src = pkgs.fetchurl {
     url = "https://github.com/tao12345666333/amp-acp/releases/download/v${version}/amp-acp-linux-x86_64.tar.gz";
-    hash = "sha256-MglZux3mUGgUE6P8cv69Yv3tZcc0uaszmYVeAH/N0bo=";
+    hash = "sha256-V2QqfW6AAVz/qyY+hMBc3iKDsapcgDSdAWESTx3ySoE=";
   };
 in
   pkgs.stdenvNoCC.mkDerivation {
