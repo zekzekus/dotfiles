@@ -366,11 +366,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793508208,
-        "narHash": "sha256-UxjH2kGTyWy1XH0O24EmQuQQ5QoubOOxHaCPPuqLCoc=",
+        "lastModified": 1793697504,
+        "narHash": "sha256-tbCwodK9LWY2ot08sSsbd/kVBN/ozIarr2wt0V3+fKM=",
         "owner": "basecamp",
         "repo": "hey-cli",
-        "rev": "505948d2b24c4f1ba30b51fcba8d43c7ddba74a8",
+        "rev": "98430d8adeb6570278d511ac1c10ad3f91783f6e",
         "type": "github"
       },
       "original": {
@@ -491,11 +491,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1793642239,
-        "narHash": "sha256-6O5UhcX4vxBgHi5Dh90YbdI8/V1h3BuquQhOMIkaaAk=",
+        "lastModified": 1793718629,
+        "narHash": "sha256-um+dW6hAJAVCgPb3eP6scegqEt+2cd95fdsbiHdvONg=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "e93501dd1bfeabf6206cdaebd853008d47a7dcc1",
+        "rev": "7cc61bc9a0b00ea90cfcb1055227f0937c527d32",
         "type": "github"
       },
       "original": {
