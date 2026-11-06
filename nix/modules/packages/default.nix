@@ -35,7 +35,9 @@
     claude-code
     github-copilot-cli
     # ollama-cpu
-    opencode
+    # Temporarily disabled: opencode 2.2.5 node_modules fails hash verification.
+    # Re-enable after a verified upstream packaging fix; do not override the hash.
+    # opencode
 
     # secrets (sops-nix workflow; see docs/sops-setup.md)
     sops
