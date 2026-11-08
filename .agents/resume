@@ -3,6 +3,13 @@ set -euo pipefail
 
 nix="/nix/var/nix/profiles/default/bin/nix"
 
+for candidate in "$(command -v nix || true)" "$HOME/.nix-profile/bin/nix" "$nix"; do
+  if [[ -x "$candidate" ]]; then
+    nix="$candidate"
+    break
+  fi
+done
+
 if [[ ! -x "$nix" ]]; then
   printf 'Nix is missing; recreate the orb so .agents/setup can install it.\n' >&2
   exit 1

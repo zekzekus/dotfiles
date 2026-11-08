@@ -4,6 +4,14 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 nix_profile="/nix/var/nix/profiles/default"
 
+# Reuse Nix from PATH or either standard profile, including orb user installs.
+for candidate in "$(command -v nix || true)" "$HOME/.nix-profile/bin/nix" "$nix_profile/bin/nix"; do
+  if [[ -x "$candidate" ]]; then
+    nix_profile="$(dirname "$(dirname "$candidate")")"
+    break
+  fi
+done
+
 run_step() {
   local description="$1"
   shift
@@ -37,12 +45,13 @@ ensure_repo_link() {
 if [[ ! -x "$nix_profile/bin/nix" ]]; then
   run_step "Installing Determinate Nix" install_nix
 else
-  printf '==> Determinate Nix is already installed\n'
+  printf '==> Reusing Nix at %s/bin/nix\n' "$nix_profile"
 fi
 
 # The installer cannot update this script's environment.
 # shellcheck disable=SC1091
 source "$nix_profile/etc/profile.d/nix-daemon.sh"
+export PATH="$nix_profile/bin:$PATH"
 
 # Host modules use out-of-store links rooted at these real-machine checkout
 # paths. Mirror them only inside an orb so flake evaluation can find the files.
