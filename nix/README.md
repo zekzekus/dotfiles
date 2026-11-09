@@ -58,9 +58,45 @@ Do not clone over an existing checkout.
 Make normally selects `whoami` and `hostname -s`. A fresh machine may not have
 the intended name yet: use `make darwin HOST=mac-machine` or
 `make nixos HOST=nixos` explicitly. Standalone HM selects `zekus@HOST`, not a
-system output. Check the target table above and `flake.nix` yourself; there is
-currently no read-only preflight command to validate user, architecture, path,
-tools, or readiness. That is a separate follow-up.
+system output. Check the target table above, then run the read-only preflight:
+
+```nu
+make doctor HOST=mac-machine TARGET=darwin
+# Or on the NixOS workstation:
+make doctor HOST=nixos TARGET=nixos
+# Standalone Home Manager, not a system install:
+make doctor HOST=nixos TARGET=home
+```
+
+`make doctor` defaults to the current hostname/account and selects `darwin` on
+macOS, `nixos` on NixOS, otherwise `home`. `TARGET` affects only preflight;
+activation still uses the explicit `make darwin`, `make nixos`, or `make home`
+command. `USER=...` selects an HM output but cannot change the managed account.
+If Make is not installed yet, `bash scripts/doctor --host mac-machine --target
+darwin` runs the same checks and reports Make as missing.
+
+The report identifies the selected output, configured user/architecture/home,
+expected checkout, missing bootstrap tools/features, age-key availability and
+permissions, and decryption of the SSH ciphertext. Optional runner ciphertext
+and directory prerequisites are warnings, not blockers for basic setup. It is
+normal for credential checks to fail before phase 3; rerun after restoring or
+enrolling the key. Missing `darwin-rebuild` is a bootstrap warning (use phase 4),
+whereas missing `home-manager` blocks today's `make home` path.
+
+Exit 0 means required preflight checks passed, not that the machine can boot or
+all services work. Exit 1 means blocked/unverified; direct script invocation
+uses exit 2 for invalid arguments (Make itself wraps failures with exit 2).
+No files are created, credentials displayed, inputs downloaded, commands
+installed, services started, or configurations applied. Nix reads local setup
+metadata through a dummy store, without resolving flake inputs or evaluating
+Home Manager/packages; it therefore works before caches are populated. Nix
+must already be installed. Only run repository code you trust.
+
+For a new host, add/export it using [the steps below](#adding-a-new-host), then
+run `make doctor HOST=<hostname> TARGET=<target>`. Unknown outputs report the
+available names. Preflight follows the registry naming convention: system
+outputs use the host key; HM outputs use `username@host`. Its user/path facts
+are the shared builder policy, not a full evaluation of host overrides.
 
 ## 3. Restore credentials and service prerequisites
 
@@ -235,8 +271,10 @@ not a claim that an empty host module boots.
   recovery material and password-manager recovery access backed up off-machine.
 
 `make check` checks Nix code/evaluation, not credentials, services, bootability,
-or a working desktop. Runtime directory creation and clean-session asset tests
-remain separate follow-ups, not guarantees made by this documentation.
+or a working desktop. `make doctor` checks setup prerequisites, not live service
+health, signing, account enrollment, network/disk capacity, desktop assets, or
+privacy permissions. Runtime directory creation and clean-session asset tests
+remain separate follow-ups, not guarantees made by these checks.
 
 ## Edit and apply ownership
 
@@ -301,6 +339,7 @@ The flake includes automated checks run via `make check` (or `nix flake check --
 | `formatting` | alejandra | Nix code formatting |
 | `deadnix` | deadnix | Unused code detection |
 | `statix` | statix | Nix anti-pattern linting |
+| `doctor` | ShellCheck + Python CLI tests | Offline preflight, disposable age decryption, error/warning behavior, no-write check |
 | `eval-*` | instantiation | Darwin system, standalone HM, plus headless and graphical-only Linux fixtures |
 
 Format all Nix files: `make fmt`

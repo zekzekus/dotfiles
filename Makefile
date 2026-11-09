@@ -1,4 +1,4 @@
-.PHONY: help home home-build darwin darwin-build nixos nixos-build update update-amp update-amp-acp update-grokbot update-helium update-pinned check fmt clean
+.PHONY: help doctor home home-build darwin darwin-build nixos nixos-build update update-amp update-amp-acp update-grokbot update-helium update-pinned check fmt clean
 
 USER := $(shell whoami)
 HOST := $(shell hostname -s)
@@ -12,6 +12,7 @@ help:
 	@echo "Detected: $(USER)@$(HOST)"
 	@echo ""
 	@echo "Available commands:"
+	@echo "  make doctor        - Read-only setup preflight (HOST=... TARGET=darwin|nixos|home)"
 	@echo "  make home          - Switch standalone home-manager (Linux; not used on Darwin)"
 	@echo "  make home-build    - Plan standalone home-manager (dry-run, does not build)"
 	@echo "  make darwin        - Rebuild nix-darwin system (macOS; includes Home Manager)"
@@ -28,6 +29,9 @@ help:
 	@echo "  make fmt           - Format all Nix files with alejandra"
 	@echo "  make clean         - Clean build artifacts"
 	@echo ""
+
+doctor:
+	@bash scripts/doctor --host "$(HOST)" --user "$(USER)" --flake "$(FLAKE)" $(if $(TARGET),--target "$(TARGET)")
 
 home:
 	@if [ "$(UNAME)" = "Darwin" ]; then \

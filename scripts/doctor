@@ -1,0 +1,202 @@
+#!/usr/bin/env bash
+# Bootstrap-safe: Bash 3.2 (macOS), core OS tools, and the installed Nix only.
+set -uo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: make doctor [HOST=name] [TARGET=darwin|nixos|home] [FLAKE=path]
+       bash scripts/doctor [--host name] [--target target] [--user name] [--flake path]
+
+Defaults: current short hostname/account, local checkout, Darwin on macOS,
+NixOS on NixOS, otherwise standalone Home Manager. TARGET selects a management
+output, not an OS installation. New hosts must be defined/exported first.
+Exit 0: required checks passed (warnings may remain); 1: blocked or unverified;
+2: invalid invocation. Offline: never fetches, builds, switches, or signs in.
+EOF
+}
+
+script_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
+repo=$script_root
+host=$(hostname -s)
+selected_user=$(id -un)
+target=
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --help|-h) usage; exit 0 ;;
+    --host|--target|--user|--flake)
+      if [[ $# -lt 2 || -z "$2" ]]; then usage >&2; exit 2; fi
+      case "$1" in
+        --host) host=$2 ;;
+        --target) target=$2 ;;
+        --user) selected_user=$2 ;;
+        --flake) repo=$2 ;;
+      esac
+      shift 2 ;;
+    *) usage >&2; exit 2 ;;
+  esac
+done
+os=$(uname -s)
+arch=$(uname -m)
+if [[ -z "$target" ]]; then
+  if [[ "$os" == Darwin ]]; then target=darwin
+  elif [[ -f /etc/NIXOS ]]; then target=nixos
+  else target=home
+  fi
+fi
+case "$target" in darwin|nixos|home) ;; *) usage >&2; exit 2 ;; esac
+output=$host
+[[ "$target" != home ]] || output="$selected_user@$host"
+errors=0
+warnings=0
+ok() { printf 'OK    %s\n' "$*"; }
+error() { printf 'ERROR %s\n' "$*"; errors=$((errors + 1)); }
+warn() { printf 'WARN  %s\n' "$*"; warnings=$((warnings + 1)); }
+finish() {
+  printf '\n%s error(s), %s warning(s). ' "$errors" "$warnings"
+  if [[ "$errors" -gt 0 ]]; then
+    printf 'Not ready: resolve errors and rerun.\n'
+    exit 1
+  fi
+  printf 'Required preflight checks passed; review warnings before activation.\n'
+  exit 0
+}
+
+printf 'Dotfiles setup preflight (read-only, offline)\nTarget: %s\nOutput: %s\nMachine: %s / %s, account %s\n' \
+  "$target" "$output" "$os" "$arch" "$(id -un)"
+printf 'Guide: nix/README.md (no activation or runtime-health checks are performed)\n\n'
+if [[ ! -d "$repo" ]]; then error "Checkout does not exist: $repo"; finish; fi
+repo=$(cd "$repo" && pwd -P)
+if [[ ! -f "$repo/flake.nix" || ! -f "$repo/flake.lock" ]]; then
+  error "Expected a local dotfiles checkout with flake.nix and flake.lock: $repo"
+  finish
+fi
+for tool in git make nix; do
+  if command -v "$tool" >/dev/null 2>&1; then ok "Tool available: $tool"
+  else error "Missing bootstrap tool: $tool (see guide phase 1)"
+  fi
+done
+if [[ "$target" == darwin ]]; then
+  [[ "$os" == Darwin ]] || error 'Darwin target requires macOS.'
+  if [[ "$os" == Darwin ]]; then
+    if xcode-select -p >/dev/null 2>&1; then ok 'Command Line Tools selected'
+    else error 'Install/finish Apple Command Line Tools; see guide phase 1.'
+    fi
+  fi
+  if ! command -v darwin-rebuild >/dev/null 2>&1; then
+    warn 'darwin-rebuild absent: use the locked first-activation command in guide phase 4, not make darwin.'
+  fi
+  warn 'Review Homebrew auto-migration, cleanup="zap", backups and macOS defaults before activation.'
+elif [[ "$target" == nixos ]]; then
+  [[ -f /etc/NIXOS ]] || error 'NixOS target requires an installed NixOS system; it does not install the OS.'
+  command -v nixos-rebuild >/dev/null 2>&1 || error 'Missing nixos-rebuild (see NixOS first activation).'
+  warn 'Review installer-generated hardware/boot configuration for this machine before switching.'
+else
+  [[ "$os" == Linux ]] || error 'This repository supports standalone Home Manager on Linux only.'
+  if ! command -v home-manager >/dev/null 2>&1; then
+    error 'Missing home-manager: make home cannot bootstrap it; see Standalone Linux in nix/README.md.'
+  fi
+fi
+if [[ "$target" != home ]]; then
+  command -v sudo >/dev/null 2>&1 || error 'Missing sudo for system activation.'
+  warn 'Administrator access is required; preflight does not invoke sudo or test authorization.'
+fi
+if [[ "$(id -u)" == 0 ]]; then error 'Run as the managed account, not root (including for system setup).'; fi
+
+case "$arch" in arm64|aarch64) arch=aarch64 ;; amd64|x86_64) arch=x86_64 ;; esac
+case "$os" in Darwin) machine_system="$arch-darwin" ;; Linux) machine_system="$arch-linux" ;; *) machine_system="$arch-unknown" ;; esac
+
+if ! command -v nix >/dev/null 2>&1; then
+  error 'Output/user/architecture/path and secrets cannot be verified until Nix is available.'
+  finish
+fi
+if features=$(nix config show --store dummy:// experimental-features 2>/dev/null); then
+  case " $features " in *' flakes '*) ok 'Nix flakes enabled' ;;
+    *) error 'Enable flakes in Nix configuration (guide phase 1).' ;;
+  esac
+else
+  error 'Cannot read Nix configuration; enable nix-command and verify nix works (guide phase 1).'
+fi
+# No automatic experimental-feature overrides: disabled flakes/nix-command must
+# be reported rather than hidden. No input downloads, lock updates or builds.
+if ! facts=$(DOTFILES_DOCTOR_REPO="$repo" DOTFILES_DOCTOR_TARGET="$target" DOTFILES_DOCTOR_OUTPUT="$output" \
+  nix eval --store dummy:// --offline --read-only --no-write-lock-file --option eval-cache false \
+  --impure --raw --file "$script_root/nix/doctor.nix" \
+  --apply 'f: f { repo = builtins.getEnv "DOTFILES_DOCTOR_REPO"; target = builtins.getEnv "DOTFILES_DOCTOR_TARGET"; output = builtins.getEnv "DOTFILES_DOCTOR_OUTPUT"; }' 2>&1); then
+  printf '%s\n' "$facts"
+  error 'Cannot inspect selected output. Check its name, Nix features and local configuration syntax. No inputs were fetched. See guide phases 1–2.'
+  finish
+fi
+
+age_key=
+configured_home=
+while IFS=$'\t' read -r kind value path format; do
+  case "$kind" in
+    system)
+      printf 'Configured architecture: %s\n' "$value"
+      if [[ "$value" == "$machine_system" ]]; then ok 'Architecture matches'
+      else error "Architecture mismatch: machine $machine_system, output $value (on Macs also check for a Rosetta shell)."
+      fi ;;
+    user)
+      printf 'Configured user: %s\n' "$value"
+      if [[ "$value" == "$(id -un)" && "$value" == "$selected_user" ]]; then ok 'Managed account matches'
+      else error "Wrong account: run as $value. USER overrides select an output; they do not change the configured account."
+      fi ;;
+    home)
+      configured_home=$value
+      if [[ "$HOME" == "$value" ]]; then ok "Home matches: $value"
+      else error "Home mismatch: expected $value, current HOME is $HOME."
+      fi ;;
+    checkout)
+      printf 'Expected checkout: %s\nActual checkout: %s\n' "$value" "$repo"
+      if [[ -d "$value" && "$(cd "$value" && pwd -P)" == "$repo" ]]; then ok 'Live-link checkout matches'
+      else error "Wrong checkout path: keep this checkout at $value before activation."
+      fi ;;
+    age) age_key=$value ;;
+    host)
+      [[ -f "$repo/nix/hosts/$value/default.nix" ]] || error "Missing host Home Manager module: nix/hosts/$value/default.nix"
+      if [[ "$target" != home && ! -f "$repo/nix/hosts/$value/configuration.nix" ]]; then
+        error "Missing system module: nix/hosts/$value/configuration.nix"
+      fi ;;
+  esac
+done <<< "$facts"
+
+if [[ ! -r "$age_key" ]]; then
+  error 'Configured age key is missing/unreadable. Restore its backup or enroll this host from an authorized machine (guide phase 3).'
+else
+  if [[ "$os" == Darwin ]]; then mode=$(stat -f '%Lp' "$age_key")
+  else mode=$(stat -c '%a' "$age_key")
+  fi
+  case "$mode" in 400|600) ok 'Configured age key is readable with private permissions' ;;
+    *) error 'Age key permissions must be private (0400 or 0600); contents were not read or displayed.' ;;
+  esac
+fi
+
+check_secret() {
+  local name=$1 path=$2 format=$3 severity=$4
+  # Never display plaintext or sops diagnostics. Do not use ambient interactive
+  # credentials or a user-provided key command in place of the configured file.
+  if [[ ! -r "$path" ]]; then "$severity" "Secret $name: encrypted source missing/unreadable."
+  elif [[ ! -r "$age_key" ]]; then "$severity" "Secret $name: decryption unverified (configured age key unavailable)."
+  elif ! command -v sops >/dev/null 2>&1; then
+    "$severity" "Secret $name: decryption unverified; sops is not on PATH (see phase 3)."
+  elif env -u SOPS_AGE_KEY -u SOPS_AGE_KEY_CMD -u SOPS_AGE_SSH_PRIVATE_KEY_FILE \
+    SOPS_AGE_KEY_FILE="$age_key" sops --decrypt --input-type "$format" --output-type "$format" \
+    "$path" >/dev/null 2>&1; then ok "Secret $name: decrypts (plaintext discarded)"
+  else "$severity" "Secret $name: cannot decrypt; verify key enrollment for this ciphertext on an authorized machine."
+  fi
+}
+check_secret ssh-hosts "$repo/secrets/ssh-config" binary error
+# These are optional personal-service prerequisites from guide phase 3, not an
+# assertion that a new host enables runners. Do not inspect running services.
+for name in personal work; do
+  check_secret "amp-runner-$name" "$repo/secrets/amp-runner-$name.env" dotenv warn
+done
+for relative in devel/projects/personal devel/projects/playground devel/tools devel/projects/work Documents/dev.zeko.miracle; do
+  path="$configured_home/$relative"
+  if [[ -d "$path" ]]; then ok "Optional runner directory exists: $path"
+  else warn "Optional runner directory missing: $path (guide phase 3; do not replace missing vault data with an empty directory)."
+  fi
+done
+warn 'Runner discovery roots, restored project/vault data, account enrollment and service health still need the guide checklist; directory presence/decryption does not prove a working service.'
+warn 'No boot, desktop, signing, network/disk capacity, or macOS privacy-permission checks are performed.'
+finish

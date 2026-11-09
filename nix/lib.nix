@@ -10,10 +10,9 @@
 }: let
   defaultUsername = "zekus";
 
-  mkCommon = {
-    username,
-    homeDir,
-  }: let
+  mkCommon = system: let
+    username = defaultUsername;
+    homeDir = mkHomeDir {inherit system username;};
     dotfilesDir = "${homeDir}/devel/tools/dotfiles";
     develHome = "${homeDir}/devel/projects";
     defaultProjectDir = "personal";
@@ -92,10 +91,9 @@
     homeModules ? [],
     homeSpecialArgs ? {},
   }: let
-    username = defaultUsername;
-    homeDir = mkHomeDir {inherit system username;};
+    inherit (common) username;
     common =
-      (mkCommon {inherit username homeDir;})
+      (mkCommon system)
       // {
         isLinux = isLinux system;
         isDarwin = isDarwin system;
@@ -232,6 +230,7 @@
       };
 in {
   inherit
+    mkCommon
     mkNixosSystem
     mkDarwinSystem
     mkHomeConfiguration

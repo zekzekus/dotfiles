@@ -11,6 +11,17 @@ in {
         root = ./..;
         fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ./..;
       };
+      doctorSource = pkgs.lib.fileset.toSource {
+        root = ./..;
+        fileset = pkgs.lib.fileset.unions [
+          ../flake.nix
+          ./lib.nix
+          ./doctor.nix
+          ../Makefile
+          ../scripts/doctor
+          ../scripts/tests/test_doctor.py
+        ];
+      };
     in {
       formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''
         alejandra --check ${nixFiles}
@@ -24,6 +35,17 @@ in {
         statix check ${nixFiles} --config ${./.statix.toml}
         touch $out
       '';
+      doctor =
+        pkgs.runCommand "check-doctor" {
+          nativeBuildInputs = with pkgs; [bash python3 nix sops age git gnumake shellcheck];
+        } ''
+          export HOME=$TMPDIR/home
+          mkdir -p "$HOME"
+          cd ${doctorSource}
+          shellcheck scripts/doctor
+          python3 -B -m unittest discover -s scripts/tests -v
+          touch $out
+        '';
     }
   );
 
@@ -42,6 +64,9 @@ in {
         # entroly (https://github.com/juyterman1000/entroly):
         # `uv tool install entroly` then `entroly go`
         python3
+        shellcheck
+        sops
+        age
         uv
       ];
 

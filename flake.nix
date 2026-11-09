@@ -215,6 +215,23 @@
   in {
     inherit nixosConfigurations darwinConfigurations homeConfigurations;
 
+    # Dependency-free setup facts. doctor imports outputs with unused inputs
+    # left empty, so keep this projection independent of module/package eval.
+    lib.setup = {
+      hosts =
+        builtins.mapAttrs (_: host: {
+          inherit (host) hostname system profiles;
+          common = lib.mkCommon host.system;
+        })
+        hosts;
+      outputs = {
+        darwin = builtins.attrNames darwinConfigurations;
+        nixos = builtins.attrNames nixosConfigurations;
+        home = builtins.attrNames homeConfigurations;
+      };
+      profiles = builtins.attrNames profileRegistry;
+    };
+
     checks = nixpkgs.lib.recursiveUpdate ci.checks evalChecks;
     inherit (ci) formatter devShells;
   };
