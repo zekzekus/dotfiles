@@ -23,42 +23,109 @@ described below.
 - `.sops.yaml` — lists the age recipients (one per machine) a secret is
   encrypted for.
 
-## One-time bootstrap, per machine
+## Restore or enroll an age key
 
-`sops` and `age` ship in `home.packages`, but on a machine that has not switched
-yet, grab them temporarily:
+Start with the [installation and recovery sequence](../README.md). Complete
+this phase **before activation**, including for a reinstall. Commands below
+use Nushell. Before the first switch, enter a temporary Nushell with the tools
+from the locked input (Nushell need not already be installed). Run from the
+checkout; this command also works from the OS's initial shell:
 
-```bash
-nix shell nixpkgs#age nixpkgs#sops
+```nu
+nix --extra-experimental-features "nix-command flakes" shell --inputs-from . nixpkgs#age nixpkgs#sops nixpkgs#nushell --command nu --no-config-file
 ```
 
-1. **Generate this machine's age key** (private key stays local, never committed):
+Inside that shell, explicitly set the path (SOPS uses a different default on
+macOS). Keep using that shell for the remaining commands in this phase:
 
-   ```bash
-   mkdir -p ~/.config/sops/age
+```nu
+$env.SOPS_AGE_KEY_FILE = ($env.HOME | path join ".config/sops/age/keys.txt")
+```
+
+### Reinstall an existing host
+
+Restore that host's backed-up `keys.txt` to `~/.config/sops/age/keys.txt` using
+your trusted backup/password manager. Create the parent directory if absent;
+do not overwrite an existing key without identifying and backing it up first.
+Keep the directory mode `0700` and the key mode `0600`:
+
+```nu
+chmod 700 ~/.config/sops/age
+chmod 600 ~/.config/sops/age/keys.txt
+age-keygen -y ~/.config/sops/age/keys.txt
+```
+
+The printed **public** key must match the host's recipient in `.sops.yaml`.
+Restoring the original authorized key does not require `updatekeys`. Keep its
+private backup off-machine; never commit it or send it through chat.
+
+### Enroll a new host or replace a lost host key
+
+1. **On the new machine**, only if no key exists at that path, generate a unique
+   key and back it up securely:
+
+   ```nu
+   mkdir ~/.config/sops/age
+   chmod 700 ~/.config/sops/age
    age-keygen -o ~/.config/sops/age/keys.txt
+   chmod 600 ~/.config/sops/age/keys.txt
+   age-keygen -y ~/.config/sops/age/keys.txt
    ```
 
-   Back up this key — losing it on every machine means the secret cannot be
-   decrypted. Storing a copy in 1Password is a good idea.
+2. Transfer **only the public `age1...` recipient** to a trusted machine that
+   can already decrypt the applicable files. On that authorized machine, add a
+   named key in `.sops.yaml` and add its alias to each applicable creation rule.
+   Both existing hosts need all three files below. A new host needing only SSH
+   metadata need not receive the account-wide Amp runner tokens.
+3. **On the authorized machine**, point `SOPS_AGE_KEY_FILE` at its existing key
+   and rewrap every applicable file. For the existing full host setup:
 
-2. **Print its public key** and add it to `.sops.yaml` under `keys:` (and to the
-   `creation_rules` key group):
-
-   ```bash
-   age-keygen -y ~/.config/sops/age/keys.txt   # prints age1...
-   ```
-
-3. **Re-encrypt** the secret for the updated recipient set (skip on the very
-   first machine, which instead does step 4 to create it):
-
-   ```bash
+   ```nu
    sops updatekeys secrets/ssh-config
+   sops updatekeys secrets/amp-runner-personal.env
+   sops updatekeys secrets/amp-runner-work.env
    ```
+
+   Changing `.sops.yaml` alone does not change existing ciphertext recipients.
+   `updatekeys` needs access to an already-authorized private key; it cannot run
+   successfully using only the newly generated, unauthorized key.
+4. Review the recipient/ciphertext diff and transfer `.sops.yaml` plus all
+   changed encrypted files back to the new host (through the normal repository
+   workflow or a trusted file transfer). Keep ciphertext Git-tracked so flakes
+   see it. Verify decryption on the new machine before activating services.
+   No private key needs to move between machines for enrollment.
+
+### No authorized machine remains
+
+Restore a backed-up **already-authorized private age key** on a trusted recovery
+machine, then decrypt or enroll a replacement as above. A fresh key, public
+recipients, and ciphertext alone cannot recover the data. Without any authorized
+private-key backup, recreate SSH metadata from trusted records and issue new
+runner tokens through their accounts, encrypting for the new recipients. Old
+private SSH/GPG keys and application data need their own backups; age cannot
+recover them. Revoke lost/compromised credentials through their providers.
+Removing a recipient does not revoke tokens or erase old ciphertext history.
+
+### Verify decryption without printing secrets
+
+Run for every file the selected host consumes, with `SOPS_AGE_KEY_FILE` set.
+The explicit `sh` wrapper discards plaintext and preserves SOPS's exit status:
+
+```nu
+sh -c 'sops decrypt secrets/ssh-config > /dev/null'
+sh -c 'sops decrypt secrets/amp-runner-personal.env > /dev/null'
+sh -c 'sops decrypt secrets/amp-runner-work.env > /dev/null'
+```
+
+Each must exit successfully; stop on any error. Do not use `cat`, shell tracing,
+or logs to inspect credentials. If a required encrypted file is missing, recover
+its ciphertext from backup/history or recreate its contents deliberately;
+do not use placeholder tokens. Return to the installation guide's activation
+phase once the host's directories and credentials are ready.
 
 ## Add or edit a host
 
-```bash
+```nu
 sops edit secrets/ssh-config
 ```
 
@@ -74,25 +141,17 @@ Host myhost
   IdentityAgent none
 ```
 
-`IdentitiesOnly yes` + `IdentityAgent none` matter: the global `Host *` block
-routes auth through the 1Password agent, which will not hold a manually-placed
-PEM, so these two lines make SSH use the file instead.
+`IdentitiesOnly yes` + `IdentityAgent none` matter: on graphical hosts the
+global `Host *` block routes auth through the 1Password agent, which will not
+hold a manually-placed PEM, so these two lines make SSH use the file instead.
 
 ## Apply
 
-```bash
-git add secrets/ssh-config .sops.yaml   # flakes only see git-tracked files
-make check                              # validates evaluation
-make darwin                             # or `make home` / `make nixos`
-```
-
-Then place the PEM (`~/.ssh/keys/myhost.pem`, `chmod 600`) and test: `ssh myhost`.
-
-## Adding a new machine later
-
-Run the bootstrap (generate key → add public key to `.sops.yaml` →
-`sops updatekeys secrets/ssh-config` → commit) on the new machine. Until its
-public key is a recipient, that machine cannot decrypt the secret.
+Ensure changed ciphertext is Git-tracked and contains no plaintext. First
+activation and later target selection follow the
+[installation guide](../README.md#4-first-activation); do not substitute a
+`make` command for a missing bootstrap tool. Place the PEM separately
+(`~/.ssh/keys/myhost.pem`, mode `0600`) and test `ssh myhost`.
 
 ## NixOS Amp runners
 
@@ -155,13 +214,13 @@ empty token fails startup rather than falling back to the CLI's selected account
 
 ### Apply and verify
 
-3. Check that SOPS reports both files as encrypted, then ensure both appear in
-   `jj status` (which snapshots new files in this repository):
+3. Check that SOPS reports both files as encrypted, then inspect the Git diff
+   and ensure new ciphertext files are tracked:
 
 ```nu
 sops filestatus secrets/amp-runner-personal.env
 sops filestatus secrets/amp-runner-work.env
-jj status
+git status --short
 ```
 
 4. Validate and build before interrupting the running service. Both commands
@@ -172,11 +231,10 @@ make check
 nix build --impure .#nixosConfigurations.nixos.config.system.build.toplevel --no-link
 ```
 
-5. Wait for active runner threads to finish. Stop the old service and switch:
+5. Wait for active runner threads to finish and switch from a normal terminal:
 
 ```nu
-systemctl --user stop amp-runner.service
-make nixos
+make nixos HOST=nixos
 ```
 
 6. Only after a successful switch, decrypt and start the two new runners:
@@ -236,10 +294,11 @@ for work. Their runner IDs are `mac-machine-personal` and `mac-machine-work`;
 their launchd labels are `org.nix-community.home.amp-runner-personal` and
 `org.nix-community.home.amp-runner-work`.
 
-They use the same two encrypted account tokens. The Mac's existing age key
-must match the `mac-machine` recipient in `.sops.yaml`, and the encrypted files
-must have been updated with `sops updatekeys` on a machine that could already
-decrypt them. No private age key needs to move between machines.
+They use the same two encrypted account tokens. Complete
+[key restoration/enrollment](#restore-or-enroll-an-age-key) and the installation
+guide's directory restoration before activation. Restoring the Mac's original
+authorized key needs no recipient changes; a new key needs authorized-machine
+rewrapping of every applicable file.
 
 SOPS publishes mode-`0600` dotenv files through the Mac's configured SOPS paths.
 Each runner reads exactly one nonempty `AMP_API_KEY=` assignment; keep its value
@@ -263,8 +322,9 @@ make check
 make darwin-build
 ```
 
-When ready, run `make darwin` from a normal terminal. It activates SOPS and the
-LaunchAgents. Inspect the jobs and their logs without printing credential files:
+For an already-bootstrapped Mac, run `make darwin HOST=mac-machine` from a
+normal terminal when ready. For first activation use the installation guide.
+Inspect the SOPS and runner jobs/logs without printing credential files:
 
 ```nu
 let domain = $"gui/(id -u | str trim)"

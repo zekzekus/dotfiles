@@ -1,262 +1,146 @@
-# 1Password SSH & GPG Setup Guide
+# 1Password SSH and GPG Restoration
 
-This setup uses **1Password SSH Agent** for SSH key management while keeping **GPG signing** with your existing GPG keys.
+Use the [installation and recovery guide](../README.md) for prerequisites,
+cloning, age recovery **before activation**, and first system activation. Return
+here after activation and a fresh login. This is not an alternative first-build
+sequence. Examples use Nushell.
 
-## How It Works
+## How it works
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    1Password SSH Agent                       │
-│            (private keys never leave 1Password)              │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-                            ▼
-              ~/.1password/agent.sock  ◄── SSH_AUTH_SOCK
-                            │
-            ┌───────────────┼───────────────┐
-            │               │               │
-            ▼               ▼               ▼
-          git            ssh           other tools
-            │
-            ▼
-    GPG Signing (separate)
-    uses ~/.gnupg keys
-```
+1Password's graphical app holds SSH keys and serves them through
+`~/.1password/agent.sock`. GPG signing is separate: it uses keys restored into
+`~/.gnupg`. The private age key used by SOPS is a third, independent credential;
+see [age recovery](sops-setup.md#restore-or-enroll-an-age-key).
 
-### Implementation
+| Configuration (under `nix/`) | Responsibility |
+| --- | --- |
+| `modules/programs/ssh.nix` | SSH config and stable socket path (macOS links the real Group Containers socket) |
+| `profiles/graphical/default.nix` | `SSH_AUTH_SOCK` and `IdentityAgent`; headless hosts do not select this agent |
+| `profiles/graphical/linux/default.nix` | 1Password GUI autostart on Linux |
+| `modules/programs/nushell.nix` | Home Manager session-environment loader |
+| `modules/programs/gpg.nix`, `git.nix` | GPG agent and signing by default with key `6716516470AD2D7A` |
+| `hosts/nixos/configuration.nix` | NixOS 1Password CLI/GUI and polkit integration |
+| `platforms/darwin/configuration.nix` | macOS 1Password app/CLI through Homebrew |
 
-The 1Password SSH integration is managed declaratively:
+## Account and key restoration
 
-- **`modules/programs/ssh.nix`** -- Shared SSH config and platform-specific 1Password socket paths (macOS symlink, Linux directory). Does not select the agent on headless hosts.
-- **`profiles/graphical/default.nix`** -- Sets `SSH_AUTH_SOCK` and `IdentityAgent` for hosts with a display.
-- **`profiles/graphical/linux/default.nix`** -- systemd user service to autostart the 1Password GUI (Linux).
-- **`modules/programs/nushell.nix`** -- Enables Home Manager's session-environment loader, including `SSH_AUTH_SOCK` when the graphical profile sets it. Already-initialized sessions keep their inherited environment; use a fresh login after applying environment changes.
+### 1. Sign in and enable the SSH agent
 
-### 1Password Installation
-
-- **macOS**: Installed via Homebrew casks in `platforms/darwin/configuration.nix` (`1password`, `1password-cli`)
-- **NixOS**: Installed via NixOS modules in `hosts/nixos/configuration.nix` (`programs._1password.enable`, `programs._1password-gui.enable` with polkit)
-
----
-
-## New Machine Bootstrap
-
-### Step 1: Clone via HTTPS
-
-Since 1Password isn't installed yet, clone via HTTPS:
-
-```bash
-mkdir -p ~/devel/tools
-cd ~/devel/tools
-git clone https://github.com/zekzekus/dotfiles
-cd dotfiles
-```
-
-### Step 2: First Build
-
-```bash
-# NixOS
-make nixos
-
-# macOS
-make darwin
-```
-
-This installs:
-- **NixOS**: 1Password GUI + CLI via `programs._1password` and `programs._1password-gui`
-- **macOS**: 1Password via Homebrew cask + 1password-cli via brew formula
-
-### Step 3: Configure 1Password SSH Agent
-
-1. **Open 1Password** and sign in to your account
-2. Go to **Settings > Developer**
-3. Check **"Use the SSH Agent"**
-4. Expand **Advanced** section and configure as desired
+Open 1Password and sign in with your account/recovery and 2FA material. In
+**Settings → Developer**, enable **Use the SSH Agent**. Restore/import the SSH
+key item if it is not already in your vault. File-based SSH keys referenced by
+the encrypted hosts config must be restored separately; the agent does not
+recover those files.
 
 For fewer prompts, set **Ask approval for each new** to **Application**.
-**Remember key approval** supports 4, 12, or 24 hours, not three days. Choose
-**Until 1Password quits** if you want approvals to last across multiple days
-while the app stays running. A locked 1Password still needs unlocking to use
-the private key; remembering approval does not keep the vault unlocked.
-These settings are managed in the app, not by this Nix configuration.
+**Remember key approval** supports 4, 12, or 24 hours; **Until 1Password quits**
+can retain approval across days while the app stays running. A locked vault
+still needs unlocking. These settings are managed in the app, not Nix.
 
-GPG commit signing has a separate passphrase cache: both its idle timeout and
-maximum lifetime are three days (259200 seconds). Restarting the agent or
-rebooting clears it sooner. During that window, processes running as your user
-can sign without another passphrase prompt. Desktop Linux uses Qt pinentry so
-non-interactive clients can request a passphrase on the desktop; a running
-graphical session with a reachable display is required. Headless Linux keeps
-terminal pinentry, and macOS uses native pinentry.
+Open a fresh login/terminal to pick up managed environment changes, then:
 
-### Step 4: Verify SSH Key
-
-Your SSH key stored in 1Password will automatically be available via the agent.
-
-```bash
-# Open a NEW terminal (important for env vars to take effect)
+```nu
 ssh-add -l
-```
-
-### Step 5: Test SSH
-
-```bash
 ssh -T git@github.com
 ```
 
-Expected output: `Hi zekzekus! You've successfully authenticated...`
+For the intended account, GitHub should say `Hi zekzekus! You've successfully
+authenticated...`. This test normally exits with status 1 because GitHub offers
+no interactive shell; judge the message, not just the exit status.
 
-### Step 6: Switch Git Remote to SSH (optional)
+Switching the repository remote to SSH is optional; HTTPS remains valid:
 
-```bash
-cd ~/devel/tools/dotfiles
+```nu
 git remote set-url origin git@github.com:zekzekus/dotfiles.git
 ```
 
-### Step 7: Import GPG Keys
+### 2. Restore GPG private key and ownertrust
 
-GPG keys are stored as Documents in 1Password. Import them:
+Enable 1Password's CLI app integration, unlock the app, and verify `op whoami`
+before importing (see [CLI setup](https://developer.1password.com/docs/cli/get-started/)).
+The Documents below must be your actual backups; use their unique item IDs if
+titles are ambiguous. Prefer streaming to avoid plaintext export files:
 
-#### Option A: Via 1Password CLI
-
-```bash
-eval $(op signin)
-
-# Import GPG private key
-op document get "GPG Private Key" --output - | gpg --import
-
-# Import ownertrust
-op document get "GPG Ownertrust" --output - | gpg --import-ownertrust
-
-# Verify
+```nu
+op whoami
+op document get "GPG Private Key" | gpg --import
+op document get "GPG Ownertrust" | gpg --import-ownertrust
 gpg --list-secret-keys
 ```
 
-#### Option B: Manual Export from 1Password
+Stop on an error and confirm the expected secret signing key is present. Do
+not paste private keys into commands, chat, or logs.
 
-1. Open 1Password, find "GPG Private Key" document
-2. Save to `/tmp/gpg-private.asc`
-3. Do the same for "GPG Ownertrust" to `/tmp/gpg-ownertrust.txt`
+If CLI integration is unavailable, download those two Documents into a private
+directory (mode `0700`) on encrypted local storage. Import each with
+`gpg --import <private-key-file>` and
+`gpg --import-ownertrust <ownertrust-file>`, then remove only those temporary
+exports after verification. Deletion (including `shred` or `rm -P`) does not
+guarantee erasure on SSDs, snapshots, or copy-on-write filesystems. Never put
+exports in the repository or a shared `/tmp` path; retain the secure backups.
 
-```bash
-gpg --import /tmp/gpg-private.asc
-gpg --import-ownertrust /tmp/gpg-ownertrust.txt
+### 3. Test the configured signing key
 
-gpg --list-secret-keys
-
-# Securely delete temp files
-shred -u /tmp/gpg-private.asc /tmp/gpg-ownertrust.txt
-# On macOS (no shred): rm -P /tmp/gpg-private.asc /tmp/gpg-ownertrust.txt
+```nu
+git config user.signingkey
+echo "test" | gpg --local-user 6716516470AD2D7A --clearsign
 ```
 
-### Step 8: Test GPG Signing
+The first command should identify `6716516470AD2D7A`; the second must produce a
+signed message with that key. A successful rebuild alone cannot prove signing.
+GPG's passphrase cache has three-day idle and maximum lifetimes (259200 seconds);
+agent restart/reboot clears it sooner. During that window, processes running as
+your user can sign without another prompt. Desktop Linux uses Qt pinentry and
+needs a reachable graphical session; headless Linux uses terminal pinentry;
+macOS uses native pinentry.
 
-```bash
-echo "test" | gpg --clearsign
+Return to the [readiness checklist](../README.md#5-accounts-login-and-readiness)
+for services, permissions, and application/data restoration.
+
+## Preparing backups on an existing machine
+
+To move an existing SSH key into 1Password, use **New Item → SSH Key → Import
+from file**. Verify the agent works before retiring its original file; do not
+bulk-move or delete `~/.ssh/id_*` without identifying their consumers and keeping
+verified backups.
+
+After authenticating `op`, stream GPG exports into new Documents. Choose unique
+titles or deliberately update existing items; do not create ambiguous copies:
+
+```nu
+gpg --export-secret-keys --armor 6716516470AD2D7A | op document create - --title "GPG Private Key"
+gpg --export-ownertrust | op document create - --title "GPG Ownertrust"
 ```
 
-Git is configured to sign commits by default using key `6716516470AD2D7A` (see `modules/programs/git.nix`).
-
----
-
-## Existing Machine: Initial Setup
-
-If you're setting this up on a machine that already has SSH/GPG keys:
-
-### Add SSH Key to 1Password
-
-1. Open **1Password**
-2. Click **+ New Item** > **SSH Key**
-3. Click **"Import from file"** > select `~/.ssh/id_ed25519` (or your key)
-
-### Backup GPG Keys to 1Password
-
-```bash
-gpg --export-secret-keys --armor YOUR_KEY_ID > /tmp/gpg-private.asc
-gpg --export-ownertrust > /tmp/gpg-ownertrust.txt
-```
-
-In 1Password:
-1. **+ New Item** > **Document**, attach `/tmp/gpg-private.asc`, title: "GPG Private Key"
-2. Create another Document for `/tmp/gpg-ownertrust.txt`, title: "GPG Ownertrust"
-
-Securely delete temp files:
-```bash
-# Linux
-shred -u /tmp/gpg-private.asc /tmp/gpg-ownertrust.txt
-
-# macOS
-rm -P /tmp/gpg-private.asc /tmp/gpg-ownertrust.txt
-```
-
-### Clean Up Old SSH Keys (optional)
-
-Once verified working:
-
-```bash
-mkdir -p ~/.ssh/backup
-mv ~/.ssh/id_* ~/.ssh/backup/
-
-# Later, if everything works
-rm -rf ~/.ssh/backup
-```
-
----
+Verify the intended key was exported and that both Documents can be imported
+on a trusted recovery machine before retiring any original key. Keep password
+manager recovery access and the separate age backup independent of one device.
 
 ## Troubleshooting
 
-### "Could not open a connection to your authentication agent"
+### Agent unavailable or connection refused
 
-1. **Is 1Password running?** The SSH agent only works when 1Password is open.
-2. **Is SSH_AUTH_SOCK set?** 
-   ```bash
-   echo $SSH_AUTH_SOCK
-   # Should be: ~/.1password/agent.sock
-   ```
-3. **Is the socket there?**
-   ```bash
-   ls -la ~/.1password/agent.sock
-   ```
-4. **New terminal?** Environment variables require a new shell session after `make nixos`/`make darwin`.
+Confirm 1Password is running/unlocked and its SSH agent is enabled. In a fresh
+managed graphical session, inspect the socket path, not key contents:
 
-### "Connection refused"
-
-1Password isn't running. Start it and try again.
-
-### SSH works but GPG signing fails
-
-```bash
-gpg --list-secret-keys
-git config user.signingkey
-echo "test" | gpg --clearsign
+```nu
+$env.SSH_AUTH_SOCK
+ls -l ~/.1password/agent.sock
+ssh-add -l
 ```
 
-### "Too many authentication failures"
+The environment should select `~/.1password/agent.sock`. Headless hosts do not
+have this graphical-agent contract; configure appropriate SSH authentication
+for them rather than assuming a GUI exists.
 
-If you have many SSH keys in 1Password, servers may reject before trying the right key. Configure per-host key in 1Password: open key > scroll to "Use for" section > add specific hosts.
+### SSH succeeds but signing fails
 
----
+List secret keys and repeat the explicit signing test above. Check that pinentry
+can reach the terminal/desktop and that the correct private key was restored;
+SSH-agent success says nothing about GPG recovery.
 
-## Files Changed
+### Too many authentication failures
 
-| File | Purpose |
-|------|---------|
-| `modules/programs/ssh.nix` | SSH config and 1Password socket paths |
-| `profiles/graphical/default.nix` | `SSH_AUTH_SOCK` and `IdentityAgent` |
-| `profiles/graphical/linux/default.nix` | 1Password GUI autostart (Linux, systemd user service) |
-| `modules/programs/nushell.nix` | Merged Home Manager environment, including `SSH_AUTH_SOCK` |
-| `modules/programs/gpg.nix` | GPG agent configuration |
-| `modules/programs/git.nix` | Git commit signing (`signByDefault = true`, key ID) |
-| `hosts/nixos/configuration.nix` | 1Password packages for NixOS (`_1password`, `_1password-gui` with polkit) |
-| `platforms/darwin/configuration.nix` | 1Password via Homebrew casks for macOS |
-
----
-
-## Quick Reference
-
-| Task | Command |
-|------|---------|
-| List SSH keys | `ssh-add -l` |
-| Test GitHub SSH | `ssh -T git@github.com` |
-| List GPG keys | `gpg --list-secret-keys` |
-| Test GPG signing | `echo "test" \| gpg --clearsign` |
-| 1Password CLI signin | `eval $(op signin)` |
+Limit which SSH key is offered for the destination using per-host SSH/1Password
+configuration. File-based PEM hosts should use `IdentitiesOnly yes` and
+`IdentityAgent none` as described in [SOPS host editing](sops-setup.md#add-or-edit-a-host).

@@ -8,7 +8,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 
 ## Highlights
 
-- **Declarative** -- Entire environment defined in code, version controlled, reproducible
+- **Declarative** -- Packages and configuration defined in code; credentials, accounts, and personal data restored separately
 - **Any Linux box** -- Headless-safe base + opt-in `profiles` work on NixOS *and* foreign distros (Ubuntu, etc.), desktop or headless server
 - **Multi-platform** -- Single flake manages macOS (via nix-darwin), Linux, and NixOS
 - **Multi-host** -- Per-machine config with shared modules, platform abstractions, and composable role profiles
@@ -56,7 +56,7 @@ One config to rule them all -- macOS, Linux, and NixOS.
 ├── agents/                    # Global AI-agent guidance, skills, and language conventions
 ├── ctags/                     # Universal Ctags config (symlinked via HM)
 ├── macosx/                    # macOS-specific configs (Karabiner, Hammerspoon)
-├── misc/                      # Legacy configs (archived)
+├── misc/                      # Historical configs + active Doom config (see inventory below)
 │
 ├── Makefile                   # Convenience commands
 └── AGENTS.md                  # AI agent instructions
@@ -71,24 +71,28 @@ One config to rule them all -- macOS, Linux, and NixOS.
 | `mac-machine` | macOS | aarch64-darwin | nix-darwin + Home Manager | `graphical` |
 | `nixos` | NixOS | x86_64-linux | NixOS + Home Manager | `graphical`, `wayland` |
 
-Any other Linux box -- a foreign distro desktop, or a headless VPS -- can be added as a standalone Home Manager target (`mkHomeConfiguration`); the base is headless-safe and graphical bits are opt-in via profiles. See [Adding a New Host](./nix/README.md#adding-a-new-host).
+Other Linux machines can be wired as standalone Home Manager targets
+(`mkHomeConfiguration`); no foreign-distro output or tested first-install
+bootstrap is exported yet. See [Adding a New Host](./nix/README.md#adding-a-new-host).
+
+### Active and historical configuration
+
+`misc/emacs/doom` is active: Home Manager live-links it to `~/.config/doom`.
+The other `misc/` configs are historical material, not a fresh-install recipe.
+The `.gitmodules` entries for `fish/functions/rust.fish` and
+`clojure/dot-clojure` refer to paths absent from the tracked tree; there are no
+tracked submodule gitlinks to initialize. They are not onboarding prerequisites.
+This inventory does not relocate or delete historical configs.
 
 ---
 
 ## Quick Start
 
-```bash
-# Clone
-git clone https://github.com/zekzekus/dotfiles ~/devel/tools/dotfiles
-cd ~/devel/tools/dotfiles
-
-# Apply (auto-detects host)
-make darwin    # macOS (nix-darwin + Home Manager)
-make nixos     # NixOS full system rebuild
-make home      # Standalone Home Manager only (NixOS or any foreign Linux distro)
-```
-
-See [nix/README.md](./nix/README.md) for detailed installation instructions.
+Start with the [installation and recovery guide](./nix/README.md). It is the
+single ordered path for prerequisites, checkout/host selection, age key recovery
+or enrollment, first activation, and account/data readiness. Do not start a
+fresh machine with the everyday rebuild commands below: bootstrap tools may
+not exist yet. Review the Homebrew cleanup warning before applying to a Mac.
 
 ---
 
@@ -108,6 +112,12 @@ make check         # Run all checks (format, deadnix, statix)
 make fmt           # Format all Nix files with alejandra
 make clean         # Clean build artifacts
 ```
+
+These are post-bootstrap commands. They normally select the current username
+and short hostname; use `HOST=mac-machine` or `HOST=nixos` when the detected
+hostname is not the intended output. The configured account remains `zekus`.
+`make home` currently has only the `zekus@nixos` output and needs an installed
+`home-manager`; NixOS/Darwin system switches already include Home Manager.
 
 Grok Bot uses a version-pinned x64 AppImage on Linux, with a desktop launcher and
 the `grok-bot` command. `make update-grokbot` resolves the official stable download
@@ -151,6 +161,11 @@ Every host is built from one **headless-safe base** and then specialised along
 (`home.nix` + `modules/*` + `platforms/linux`) ships no GUI apps or desktop
 services, so it runs on a headless server just as happily as a laptop; anything
 graphical is opt-in via a profile.
+
+This no-GUI contract applies to Linux; the Darwin platform itself installs GUI
+apps and preferences. Headless-safe does not mean a minimal package closure.
+See [edit/apply ownership](./nix/README.md#edit-and-apply-ownership) for live links,
+Nix-managed settings, script snapshots, and separately restored state.
 
 ```
                   ┌────────────────────────────────────────────┐
@@ -256,7 +271,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 ## Documentation
 
-- [Home Manager README](./nix/README.md) -- Installation, adding hosts, troubleshooting
+- [Installation and Recovery](./nix/README.md) -- Canonical setup sequence, adding hosts, readiness, troubleshooting
 - [1Password Setup](./nix/docs/1password-setup.md) -- SSH agent & GPG key management
 - [sops Setup](./nix/docs/sops-setup.md) -- Encrypted secrets bootstrap & workflow (sops-nix, age)
 - [Rex Setup](./nix/docs/rex-setup.md) -- Remote access to NixOS from the Mac
