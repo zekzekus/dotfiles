@@ -595,8 +595,9 @@ Downloads retry transient HTTP errors (including 429/504), timeouts, and refused
 connections up to four times, with bounded timeouts. Permanent errors still fail
 with diagnostics. GitHub lookups can optionally use an existing `GH_TOKEN` or
 `GITHUB_TOKEN` environment variable for authenticated rate limits; no token is
-required or written into the checkout. Updaters need Bash, curl, Python 3, and
-Nix (archive hashes are computed locally, without prefetching into the store).
+required or written into the checkout. Updaters need Bash, curl, and Nix, plus
+standard shell utilities; Nix parses release JSON and computes archive hashes
+locally, without prefetching into the store. Python 3 is only needed for tests.
 
 Review `nix/temporary-overlays.nix` during nixpkgs updates. Each workaround's
 removal criterion is a successful affected-platform build with upstream checks

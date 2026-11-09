@@ -22,6 +22,7 @@ fetch() {
 github_tag() {
   local token=${GH_TOKEN:-${GITHUB_TOKEN:-}}
   local header=""
+  command -v nix >/dev/null || fail "Nix is required for release JSON parsing and archive hashing"
   # Feed the optional credential through stdin, not process arguments/logs.
   [[ "$token" != *[!a-zA-Z0-9_]* ]] || fail "invalid GitHub token format"
   [[ -z "$token" ]] || header="header = \"Authorization: Bearer $token\""
@@ -29,13 +30,14 @@ github_tag() {
     | fetch --config - "$1" --output "$work/release.json"; then
     fail "GitHub release lookup failed: $1 (check service status or API rate limits; GH_TOKEN/GITHUB_TOKEN is optional)"
   fi
-  if ! python3 -c '
-import json, sys
-tag = json.load(sys.stdin)["tag_name"]
-if not isinstance(tag, str) or not tag:
-    raise ValueError("missing nonempty tag_name")
-print(tag)
-' < "$work/release.json"; then
+  if ! DOTFILES_RELEASE_JSON="$work/release.json" nix eval --impure --raw --expr '
+    let
+      release = builtins.fromJSON (builtins.readFile (builtins.getEnv "DOTFILES_RELEASE_JSON"));
+      tag = release.tag_name;
+    in
+      if builtins.isString tag && tag != "" then tag
+      else throw "missing nonempty tag_name"
+  '; then
     fail "invalid GitHub release JSON or missing tag_name: $1"
   fi
 }

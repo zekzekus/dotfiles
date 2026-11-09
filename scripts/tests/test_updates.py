@@ -192,6 +192,19 @@ os.execv({shutil.which('curl')!r}, ['curl', *args, '--retry-delay', '1', '--nopr
         self.assertIn("rate limits", out)
         self.assertEqual(list(self.counts.values()), [1])
 
+    def test_github_updaters_work_without_python_on_path(self):
+        bin_dir = self.repo / "bin"
+        for tool in ("bash", "dirname", "basename", "mktemp", "rm", "nix",
+                     "awk", "chmod", "mv"):
+            (bin_dir / tool).symlink_to(shutil.which(tool))
+        self.env["PATH"] = str(bin_dir)
+        self.assertIsNone(shutil.which("python3", path=self.env["PATH"]))
+        for name in ("amp-acp", "helium"):
+            with self.subTest(name=name):
+                self.run_update(name)
+                self.assertIn(f'version = "{VERSION}"', (self.pins / f"{name}.nix").read_text())
+                self.assertIn(f'hash = "{SRI}"', (self.pins / f"{name}.nix").read_text())
+
     def test_malformed_release_data_preserves_pins(self):
         for body in (b"not JSON", b"{}", b'{"tag_name": null}',
                      b'{"tag_name": ""}', b'{"tag_name": "bad/tag"}'):
