@@ -157,11 +157,12 @@ builder details, inputs, and where a change belongs.
 - Git with delta, difftastic, lazygit, jujutsu (jj), lazyjj, jjui
 - direnv, atuin (shell history), zoxide, yazi
 - ripgrep, fd, bat, btop, fastfetch
-- GPG signing, SSH via 1Password agent (encrypted host list via sops-nix)
+- GPG signing and an encrypted SSH host list (sops-nix)
 - devenv
 
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
+- SSH via the 1Password agent
 - Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
 
 **`wayland` profile** *(opt-in -- Linux desktop, requires `graphical`)*

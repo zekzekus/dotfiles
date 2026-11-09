@@ -1,19 +1,31 @@
 # Installation and Recovery
 
+[Project overview](../README.md) · [Adding a Host](docs/adding-hosts.md) ·
+[Architecture](docs/architecture.md) · [Maintenance](docs/maintenance.md)
+
 This is the authoritative sequence for first installation, reinstalling an
 existing host, and adding a machine. Credential guides linked below describe
 individual phases, not alternative bootstrap sequences. Commands work in
 Nushell unless explicitly marked `sh` (run those in `sh`); stop on any failure.
 Do not run system activation in an orb or against a different machine.
 
+**Follow in order:** [OS prerequisites](#1-choose-the-target-and-prepare-the-os)
+→ [checkout and host](#2-clone-and-select-the-host-explicitly)
+→ [credentials](#3-restore-credentials-and-service-prerequisites)
+→ [first activation](#4-first-activation)
+→ [login and readiness](#5-accounts-login-and-readiness).
+For an additional machine, declare it using [Adding a Host](docs/adding-hosts.md)
+after cloning, then return to credentials here. For a reinstall, retain the
+existing host identity and restore its backups instead.
+
 ## 1. Choose the target and prepare the OS
 
 | Target | Architecture | Output | First activation |
 | --- | --- | --- | --- |
-| Existing Mac `mac-machine` | Apple Silicon, `aarch64-darwin` | `darwinConfigurations.mac-machine` | [macOS](#4-first-activation) |
+| Existing Mac `mac-machine` | Apple Silicon, `aarch64-darwin` | `darwinConfigurations.mac-machine` | [macOS](#macos) |
 | Existing NixOS workstation `nixos` | `x86_64-linux` | `nixosConfigurations.nixos` | [NixOS](#nixos) |
-| Standalone HM on `nixos` | `x86_64-linux` | `homeConfigurations."zekus@nixos"` | [Standalone Linux](#standalone-linux) |
-| Additional machine | Explicit host/output required | Not auto-generated | [Adding a new host](#adding-a-new-host) first |
+| Standalone HM on `nixos` | `x86_64-linux` | `homeConfigurations."zekus@nixos"` | [Standalone NixOS home](#existing-standalone-nixos-output) |
+| Additional machine | Explicit host/output required | Not auto-generated | [Adding a Host](docs/adding-hosts.md) first |
 
 - The managed account is **`zekus`**, with home `/Users/zekus` on macOS or
   `/home/zekus` on Linux. Username and checkout paths are fixed in `lib.nix`;
@@ -54,7 +66,7 @@ Do not run system activation in an orb or against a different machine.
   The first-activation commands below also pass the flags for upstream Nix.
 
 **Before applying on an existing Mac:** review
-`platforms/darwin/configuration.nix` and inventory/back up Homebrew packages and
+`nix/platforms/darwin/configuration.nix` and inventory/back up Homebrew packages and
 application data. `nix-homebrew.autoMigrate = true` adopts existing Homebrew;
 `homebrew.onActivation.cleanup = "zap"` can remove undeclared packages/casks
 and associated data. The switch also changes macOS defaults. Proceed only if
@@ -92,32 +104,24 @@ make doctor HOST=nixos TARGET=home
 macOS, `nixos` on NixOS, otherwise `home`. `TARGET` affects only preflight;
 activation still uses the explicit `make darwin`, `make nixos`, or `make home`
 command. `USER=...` selects an HM output but cannot change the managed account.
-If Make is not installed yet, `bash scripts/doctor --host mac-machine --target
-darwin` runs the same checks and reports Make as missing.
 
-The report identifies the selected output, configured user/architecture/home,
-expected checkout, missing bootstrap tools/features, age-key availability and
-permissions, and decryption of the SSH ciphertext. Optional runner ciphertext
-and directory prerequisites are warnings, not blockers for basic setup. It is
-normal for credential checks to fail before phase 3; rerun after restoring or
-enrolling the key. Missing `darwin-rebuild` or `home-manager` is a bootstrap
-warning: use phase 4, not the everyday Make switch command. Standalone Linux
-also requires a reachable systemd user manager for the managed sops service.
+Doctor checks the output, account/architecture/paths, bootstrap tools, and age
+decryption without changing the machine or displaying credentials. Credential
+errors are expected before phase 3: restore/enroll the key and rerun. Missing
+`darwin-rebuild` or `home-manager` is a bootstrap warning; phase 4 supplies the
+locked first-use CLI. Stop on required errors before activation. Exit 0 means
+required automated checks passed, not that the machine is fully ready.
+See the [doctor reference](docs/maintenance.md#doctor-reference) for exact scope,
+exit codes, and invocation without Make.
 
-Exit 0 means required preflight checks passed, not that the machine can boot or
-all services work. Exit 1 means blocked/unverified; direct script invocation
-uses exit 2 for invalid arguments (Make itself wraps failures with exit 2).
-No files are created, credentials displayed, inputs downloaded, commands
-installed, services started, or configurations applied. Nix reads local setup
-metadata through a dummy store, without resolving flake inputs or evaluating
-Home Manager/packages; it therefore works before caches are populated. Nix
-must already be installed. Only run repository code you trust.
+### Adding a New Host
 
-For a new host, add/export it using [the steps below](#adding-a-new-host), then
-run `make doctor HOST=<hostname> TARGET=<target>`. Unknown outputs report the
-available names. Preflight follows the registry naming convention: system
-outputs use the host key; HM outputs use `username@host`. Its user/path facts
-are the shared builder policy, not a full evaluation of host overrides.
+Follow [Adding a Host](docs/adding-hosts.md) for the copyable NixOS desktop,
+Apple Silicon Mac, or headless Linux example. It covers machine-specific
+hardware, registry/output wiring, no-switch builds, and what the example checks
+do and do not establish. Complete it now, **before phase 3**, then return here
+for credentials and activation with your new output name. Do not apply an
+existing machine's output to new hardware.
 
 ## 3. Restore credentials and service prerequisites
 
@@ -144,6 +148,10 @@ SSH agent to obtain the checkout or the decryption key.
 
 ## 4. First activation
 
+Choose **one** target below. Commands name the existing hosts; for an additional
+machine, use the output you declared in [Adding a Host](docs/adding-hosts.md).
+Do not run a separate Home Manager switch after a NixOS or Darwin system switch.
+
 ### macOS
 
 From the checkout, bootstrap nix-darwin using this flake's locked input, rather
@@ -164,14 +172,23 @@ with [readiness](#5-accounts-login-and-readiness). Later applies use
 
 ### NixOS
 
-This path **reinstalls/replaces the existing `nixos` host**, not an additional
-machine. Compare the installer's generated storage/boot configuration with
-`hosts/nixos/configuration.nix` (including boot loader and other hardware policy).
+**Reinstalling the existing `nixos` host:** compare the installer's generated
+storage/boot configuration with
+`nix/hosts/nixos/configuration.nix` (including boot loader and other hardware policy).
 Only for that replacement, back up the old hardware file and copy the generated
 one into this host:
 
 ```nu
 cp /etc/nixos/hardware-configuration.nix nix/hosts/nixos/hardware-configuration.nix
+```
+
+**Additional machine:** use its own hardware/configuration prepared in
+[Adding a Host](docs/adding-hosts.md), not the copy command above.
+
+**Either path:** from the checkout, activate the selected host. Replace
+`.#nixos` below with `.#your-hostname` for an additional machine:
+
+```nu
 sudo nixos-rebuild switch --option extra-substituters https://install.determinate.systems --option extra-trusted-public-keys "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" --impure --flake .#nixos
 ```
 
@@ -184,7 +201,7 @@ switch channels as a generic error workaround.
 
 Reboot into the new generation, then continue with
 [readiness](#5-accounts-login-and-readiness). Later applies use
-`make nixos HOST=nixos`; it also applies Home Manager.
+`make nixos HOST=nixos` (or your new hostname); it also applies Home Manager.
 
 ### Standalone Linux
 
@@ -264,117 +281,6 @@ Linux GPU integration defaults off; graphical hosts must deliberately enable
 it (and run `sudo non-nixos-gpu`) or use appropriate nixGL wrappers. Darwin's
 platform includes GUI packages even without the `graphical` profile.
 
-## Adding a New Host
-
-Do this before the shared credential and activation phases above. Never replace
-`hosts/nixos/hardware-configuration.nix` to add a second machine.
-
-1. Choose a unique hostname, supported architecture, and management target.
-   Copy the matching example directory (replace `new-desktop` with your name):
-
-   | Target | Directory to copy | Architecture | Profiles |
-   | --- | --- | --- | --- |
-   | NixOS Wayland desktop | `nix/hosts/example-nixos` | `x86_64-linux` | `["graphical" "wayland"]` |
-   | Apple Silicon Mac | `nix/hosts/example-darwin` | `aarch64-darwin` | `["graphical"]` |
-   | Foreign Linux headless server | `nix/hosts/example-headless` | `x86_64-linux` | `[]` |
-
-   ```nu
-   cp -r nix/hosts/example-nixos nix/hosts/new-desktop
-   ```
-
-   Other architectures are not covered by these examples. All retain the
-   `zekus` account and fixed checkout path. Examples enable no personal runners.
-2. **NixOS:** replace the copied hardware fixture with the **new machine's**
-   generated file, not the existing workstation's hardware file:
-
-   ```nu
-   cp /etc/nixos/hardware-configuration.nix nix/hosts/new-desktop/hardware-configuration.nix
-   ```
-
-   Edit `configuration.nix`: change `networking.hostName`, use the installer's
-   original `system.stateVersion`, and retain its working boot loader and any
-   additional storage/encryption/driver settings. The sample uses UEFI with
-   systemd-boot; BIOS, NVIDIA, disk encryption and unusual layouts need their
-   installer-specific configuration. Keep the installer-created `zekus`
-   administrator account/password and recovery access; no password is supplied
-   by the example. Preserve the installer's working generation until boot-tested.
-   Never format disks to match the example labels: those are build fixtures.
-
-   **Darwin:** edit the three machine names in `configuration.nix`. The shared
-   platform supplies state version, primary user, Homebrew and system defaults.
-   Start with the existing `zekus` administrator account, Command Line Tools,
-   and Determinate Nix. Review the Homebrew migration/`zap` warning in phase 1.
-
-   **Headless Linux:** only `default.nix` is needed. The distro must supply the
-   account, boot/storage, networking, SSH access, systemd user session and Nix
-   prerequisites in phase 1. HM does not replace system provisioning.
-3. Copy the corresponding `exampleHosts` entry in `flake.nix` into `hosts`.
-   Rename its key and `hostname` to the new directory name; retain the Darwin
-   `systemModules` tap wiring. Leave the original examples intact for checks.
-   Export the new host in the matching output attrset, for example:
-
-   ```nix
-   # In nixosConfigurations:
-   new-desktop = mkNixosSystem hosts.new-desktop;
-   # Or in darwinConfigurations, for a new Mac:
-   new-mac = mkDarwinSystem hosts.new-mac;
-   # Or in homeConfigurations, for a foreign headless server:
-   "zekus@new-server" = mkHomeConfiguration hosts.new-server;
-   ```
-
-   System builders accept the complete host entry. A standalone HM-only entry
-   accepts `hostname`, `system`, `profiles`, `homeModules`, and `homeSpecialArgs`.
-   If reusing a system-host entry, forward those home fields explicitly with
-   `inherit (hosts.<name>) ...`, not system-only fields. Foreign Linux defaults
-   to `generic-linux`; `target = "nixos"` is only for standalone HM on NixOS.
-4. `wayland` requires Linux **and** `graphical` (enforced by the builders).
-   For NixOS, it now supplies Niri/Hyprland, SDDM with Niri as the default,
-   portals, graphics, PipeWire, polkit/PAM and session storage/power services.
-   It does not copy Plasma, family accounts, keyboard devices, gaming, VPNs or
-   personal services from `nixos`. Foreign Linux gets only HM-side configuration;
-   foreign desktops remain outside the supported onboarding path.
-5. Review new files for plaintext secrets. In this jj checkout, `jj status`
-   tracks new files automatically and makes them visible to the flake; do not
-   create a bookmark or commit just to evaluate. In a Git-only clone, stage
-   only the new files so the Git-backed flake sees them. Then run:
-
-   ```nu
-   make check
-   make doctor HOST=new-desktop TARGET=nixos
-   nix build --impure --no-link .#nixosConfigurations.new-desktop.config.system.build.toplevel
-   # Mac equivalent, on the Mac:
-   nix build --impure --no-link .#darwinConfigurations.new-mac.system
-   # Server equivalent, on supported Linux:
-   nix build --impure --no-link '.#homeConfigurations."zekus@new-server".activationPackage'
-   ```
-
-   Use only your target's build command. These build without switching; doctor
-   may report credential errors until phase 3. Return to
-   [phase 3](#3-restore-credentials-and-service-prerequisites), then activate
-   using the appropriate phase-4 command with the **new** output name.
-
-### Example checks versus installation testing
-
-`make check` instantiates **all three examples on either check platform**, so
-Linux checks also catch Darwin evaluation failures. It forces the complete
-system/activation derivations and their module assertions; it does not build
-their closures, activate them, validate real hardware, or test desktop startup.
-The examples are build-only `packages`, deliberately absent from installable
-system/HM outputs and doctor's inventory. To build the unchanged examples:
-
-```nu
-# On x86_64 Linux (no activation):
-nix build --impure --no-link .#example-nixos .#example-headless
-# On Apple Silicon macOS (no activation):
-nix build --impure --no-link .#example-darwin
-```
-
-The NixOS and headless examples have completed real builds on Linux. Darwin
-has full derivation-evaluation coverage; its closure still needs a native Mac
-build. No example has a fresh-install/boot/runtime guarantee. The NixOS sample
-hardware is a generic QEMU UEFI/ext4 fixture, replaced during onboarding, not
-automatic disk provisioning. Existing host hardware remains untouched.
-
 ## 5. Accounts, login, and readiness
 
 After activation and a fresh login, run the local, read-only runtime checks:
@@ -387,24 +293,12 @@ make doctor HOST=mac-machine TARGET=darwin RUNTIME=1
 make doctor HOST=server-name TARGET=home RUNTIME=1
 ```
 
-Direct invocation also accepts `bash scripts/doctor --runtime`. This adds checks
-for the live hostname, managed commands on PATH, and the nonempty rendered SSH
-snippet with private permissions. For graphical profiles it checks the agent
-socket/environment; for the two existing personal hosts it checks runner service
-state, rendered credential presence/permissions and directory existence. For
-Wayland it checks Noctalia's service in a Niri/Hyprland session and the generated
-Niri include. Optional runner/account/tool gaps are warnings; missing rendered
-SSH configuration or a stopped shell in an active Wayland session are errors.
-An inactive successful `sops-nix` oneshot is normal: the rendered file, not a
-permanently running secret daemon, is the runtime contract.
-
-The command does not start/restart services, sign, invoke account CLIs, contact
-SSH hosts, unlock accounts, or show credentials/service environments. Exit 0
-means only that automated required checks passed. File presence is not valid
-authentication or restored data; an active runner is not proof of its account
-or discovery results. Checks use the registry profiles and current personal-host
-service names, not full evaluation of arbitrary module overrides. Complete the
-applicable checklist below before calling a machine ready.
+Runtime doctor checks local commands, rendered secrets/permissions, and relevant
+agent/session/runner state without starting services or authenticating accounts.
+An inactive successful sops-nix oneshot is normal. Exit 0 is not proof of signing,
+account enrollment, correct project data, or a working desktop. See the
+[doctor reference](docs/maintenance.md#doctor-reference) for scope and complete
+the applicable checklist below before calling a machine ready.
 
 ### Required for the workflows you use
 
@@ -433,6 +327,13 @@ applicable checklist below before calling a machine ready.
 
 ### Clean Wayland session acceptance check
 
+For normal setup, complete the desktop checks above. The expandable procedure
+below is for validating clean-session recovery on a disposable system, not a
+prerequisite to reinstalling the workstation.
+
+<details>
+<summary>Disposable-session procedure, recorded results, and limits</summary>
+
 Use a disposable NixOS install/test account with the supported configuration,
 not deletion of state in the daily desktop account. This is an interactive
 acceptance test, **not** something doctor performs. Do not reset real state or
@@ -455,7 +356,8 @@ restart the current desktop to simulate a clean install.
 4. Restore the wallpaper or deliberately choose a new one; verify monitors,
    terminal, launcher, browser and sound, then log out/in and rerun runtime doctor.
 
-**Validation status (locked configuration, disposable NixOS VM):** first login
+**Recorded validation (disposable NixOS VM):** these results are point-in-time,
+not a guarantee for every lock-file update. First login
 starts Niri with its default configuration and a missing-include warning.
 Noctalia then generates `~/.config/niri/noctalia.kdl` beside the installed config,
 not beside its checkout symlink target; Niri automatically reloads the intended
@@ -482,6 +384,8 @@ applicable checks above. The bootstrap/recovery checks pass, not the entire
 interactive checklist; neither doctor nor evaluation certifies a fully ready
 desktop.
 
+</details>
+
 ### Optional personal services and data
 
 - Verify Amp runner services, correct account/directory discovery, and token
@@ -507,114 +411,8 @@ necessary; no automatic check here certifies a fully restored machine.
 
 ## Edit and apply ownership
 
-| Source | How changes take effect |
-| --- | --- |
-| Nix settings, Ghostty, tmux | Rebuild the chosen system/HM output |
-| Live-linked Neovim, Niri, Noctalia, agents, tmuxinator, Doom | Edit in the fixed checkout; reload/restart the application as needed |
-| Repo-relative script snapshots and Git templates | Rebuild; editing the source does not update the installed snapshot |
-| Age/SSH/GPG keys, tokens, accounts, project data, generated assets | Restore/enroll separately; reapply/restart consumers where required |
-
-### How `lib.nix` Wires Hosts
-
-The builder functions in `lib.nix` automatically:
-- Detect platform from `system` and import the correct `platforms/darwin` or `platforms/linux`
-- Import `home.nix` (shared, headless-safe base) for all hosts
-- Resolve `profiles = [ ... ]` from the `profileRegistry` and fold in their home/system modules + specialArgs
-- Import `hosts/<hostname>/default.nix` for host-specific Home Manager config
-- Import `hosts/<hostname>/configuration.nix` for system-level config (NixOS/darwin)
-- Set up the `common` attribute set (username, paths, directories, `isLinux`/`isDarwin`)
-- For `mkHomeConfiguration` on a foreign distro (`target = "generic-linux"`), enable `targets.genericLinux` (with `gpu.enable` off for headless safety)
-- Configure nixpkgs overlays (see `nix/temporary-overlays.nix`)
-
-## Module Structure
-
-### Shared Modules — headless-safe base (all hosts)
-
-| Module | Contents |
-|--------|----------|
-| `modules/programs/` | CLI program configs (explicit imports in `default.nix`): neovim, git, fish, nushell, tmux, starship, etc. |
-| `modules/packages/` | Shared CLI packages: dev tools, terminal utilities, LLM tools |
-| `modules/file/` | File symlinks: ctags, tmuxinator, utility scripts |
-| `modules/sessionpath/` | PATH entries: `~/bin`, pnpm, coursier |
-| `modules/sessionvariables/` | Environment variables: editor, project directories, sops age key path |
-
-### Profiles — opt-in roles (`profiles = [ ... ]`)
-
-| Profile | Contents |
-|---------|----------|
-| `profiles/graphical/` | GUI apps: ghostty, obsidian, localsend, 1Password SSH agent (cross-platform); `linux/` adds chromium, zed, OBS, media viewers, helium (x86_64), emacs-pgtk, 1Password GUI |
-| `profiles/wayland/` | Hyprland/Niri/Noctalia HM session and NixOS system prerequisites (`system.nix`), stylix, rofi, hyprlock, hypridle, tray services |
-
-### Platform Modules (OS family)
-
-| Platform | Contents |
-|----------|----------|
-| `platforms/darwin/` | Aerospace, JankyBorders, Karabiner, Hammerspoon, Homebrew PATH |
-| `platforms/linux/` | Headless-safe stub (home for Linux-universal user config) |
-
-### Host-Specific Config
-
-| Host | Key Features |
-|------|-------------|
-| `hosts/mac-machine/` | nix-darwin system defaults, Homebrew casks, Touch ID sudo, file descriptor limits |
-| `hosts/nixos/` | NixOS system: Kanata, Steam, Flatpak, PipeWire, portals, SDDM, Plasma 6, Niri, Hyprland, hardware config (desktop *home* via `graphical`+`wayland` profiles) |
-
-## Checks & Quality
-
-The flake includes automated checks run via `make check` (or `nix flake check --impure`):
-
-| Check | Tool | Purpose |
-|-------|------|---------|
-| `formatting` | alejandra | Nix code formatting |
-| `deadnix` | deadnix | Unused code detection |
-| `statix` | statix | Nix anti-pattern linting |
-| `doctor` | ShellCheck + Python CLI tests | Offline preflight/runtime checks, disposable age decryption, error/warning behavior, no-write and no-secret-output checks |
-| `updaters` | ShellCheck + Python CLI tests | Copied pins and local HTTP: retries, errors, replacement guards, hashes, optional authentication, and stop-on-failure ordering |
-| `eval-*` | instantiation | Darwin system, standalone HM, Linux fixtures, and every copyable host example (including Darwin on Linux) |
-
-Format all Nix files: `make fmt`
-
-## Updating Dependencies
-
-```bash
-make update
-# Flake inputs only:
-nix flake update
-# Or diagnose/update one application:
-make update-amp-acp
-```
-
-`make update` runs `update-amp`, `update-amp-acp`, `update-grokbot`, and
-`update-helium` in that order, then `nix flake update`. It stops on failure and
-is **not atomic**: earlier successful pin edits remain for review. Fix the
-reported problem and rerun the failing target before continuing. The individual
-updaters validate release data and all expected replacement fields before
-atomically replacing their own pin; a failed updater leaves that pin unchanged.
-
-Downloads retry transient HTTP errors (including 429/504), timeouts, and refused
-connections up to four times, with bounded timeouts. Permanent errors still fail
-with diagnostics. GitHub lookups can optionally use an existing `GH_TOKEN` or
-`GITHUB_TOKEN` environment variable for authenticated rate limits; no token is
-required or written into the checkout. Updaters need Bash, curl, and Nix, plus
-standard shell utilities; Nix parses release JSON and computes archive hashes
-locally, without prefetching into the store. Python 3 is only needed for tests.
-
-Review `nix/temporary-overlays.nix` during nixpkgs updates. Each workaround's
-removal criterion is a successful affected-platform build with upstream checks
-restored, not just an evaluation. The picosvg override has no recorded original
-failure; its comment gives the explicit recheck needed before removing it.
-
-## Troubleshooting
-
-```bash
-# Validate the flake
-nix flake check --impure
-
-# Plan without switching (dry-run does not prove a successful build)
-make home-build     # standalone Home Manager (dry-run)
-make darwin-build   # nix-darwin (actual build, no switch)
-make nixos-build    # NixOS (dry-run)
-
-# Show detected host
-make help
-```
+After bootstrap, use [Maintenance](docs/maintenance.md) for the edit/apply table,
+everyday rebuilds, dependency updates, checks, and troubleshooting. See
+[Architecture and Extension](docs/architecture.md) to choose the correct module
+or add a reusable profile. Keep first-install/recovery changes in this guide;
+the references do not replace its ordered sequence.
