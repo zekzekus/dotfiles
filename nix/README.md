@@ -569,6 +569,7 @@ The flake includes automated checks run via `make check` (or `nix flake check --
 | `deadnix` | deadnix | Unused code detection |
 | `statix` | statix | Nix anti-pattern linting |
 | `doctor` | ShellCheck + Python CLI tests | Offline preflight/runtime checks, disposable age decryption, error/warning behavior, no-write and no-secret-output checks |
+| `updaters` | ShellCheck + Python CLI tests | Copied pins and local HTTP: retries, errors, replacement guards, hashes, optional authentication, and stop-on-failure ordering |
 | `eval-*` | instantiation | Darwin system, standalone HM, Linux fixtures, and every copyable host example (including Darwin on Linux) |
 
 Format all Nix files: `make fmt`
@@ -577,10 +578,30 @@ Format all Nix files: `make fmt`
 
 ```bash
 make update
-# updates flake inputs *and* pinned application versions.
-# flake inputs only:
+# Flake inputs only:
 nix flake update
+# Or diagnose/update one application:
+make update-amp-acp
 ```
+
+`make update` runs `update-amp`, `update-amp-acp`, `update-grokbot`, and
+`update-helium` in that order, then `nix flake update`. It stops on failure and
+is **not atomic**: earlier successful pin edits remain for review. Fix the
+reported problem and rerun the failing target before continuing. The individual
+updaters validate release data and all expected replacement fields before
+atomically replacing their own pin; a failed updater leaves that pin unchanged.
+
+Downloads retry transient HTTP errors (including 429/504), timeouts, and refused
+connections up to four times, with bounded timeouts. Permanent errors still fail
+with diagnostics. GitHub lookups can optionally use an existing `GH_TOKEN` or
+`GITHUB_TOKEN` environment variable for authenticated rate limits; no token is
+required or written into the checkout. Updaters need Bash, curl, Python 3, and
+Nix (archive hashes are computed locally, without prefetching into the store).
+
+Review `nix/temporary-overlays.nix` during nixpkgs updates. Each workaround's
+removal criterion is a successful affected-platform build with upstream checks
+restored, not just an evaluation. The picosvg override has no recorded original
+failure; its comment gives the explicit recheck needed before removing it.
 
 ## Troubleshooting
 

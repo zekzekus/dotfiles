@@ -82,10 +82,8 @@ exported yet; declare the actual host before applying.
 
 `misc/emacs/doom` is active: Home Manager live-links it to `~/.config/doom`.
 The other `misc/` configs are historical material, not a fresh-install recipe.
-The `.gitmodules` entries for `fish/functions/rust.fish` and
-`clojure/dot-clojure` refer to paths absent from the tracked tree; there are no
-tracked submodule gitlinks to initialize. They are not onboarding prerequisites.
-This inventory does not relocate or delete historical configs.
+There are no tracked submodules to initialize. Historical configs are retained
+in place; they are not onboarding prerequisites.
 
 ---
 

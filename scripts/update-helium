@@ -7,44 +7,31 @@
 set -euo pipefail
 
 nix_file="$(cd "$(dirname "$0")/.." && pwd)/nix/modules/packages/helium.nix"
+# shellcheck source=scripts/update-common.sh
+source "$(dirname "$0")/update-common.sh"
 
-if [ ! -f "$nix_file" ]; then
-  echo "update-helium: $nix_file not found" >&2
-  exit 1
-fi
-
-version=$(
-  curl -fsSL https://api.github.com/repos/imputnet/helium-linux/releases/latest \
-    | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p' \
-    | head -1
-)
-if [ -z "$version" ]; then
-  echo "update-helium: could not parse tag_name from GitHub API" >&2
-  exit 1
-fi
+version=$(github_tag https://api.github.com/repos/imputnet/helium-linux/releases/latest)
+[[ "$version" =~ ^[0-9][a-zA-Z0-9.+-]*$ ]] || fail "invalid helium version: $version"
 echo "helium version: $version"
 
 url="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64.AppImage"
 echo "  fetching $url"
 
-hex=$(nix-prefetch-url --type sha256 "$url" 2>/dev/null)
-sri=$(nix hash convert --to sri --hash-algo sha256 "$hex")
+sri=$(download_hash "$url")
+[[ "$sri" =~ ^sha256-[a-zA-Z0-9+/]{43}=$ ]] || fail "invalid archive hash: $sri"
 echo "  hash: $sri"
 
-tmp=$(mktemp)
-trap 'rm -f "$tmp"' EXIT
-
-awk -v new_ver="$version" -v new_hash="$sri" '
-  !ver_done && /version = "/ {
-    sub(/"[^"]*"/, "\"" new_ver "\"")
-    ver_done = 1
+if ! awk -v new_ver="$version" -v new_hash="$sri" '
+  /version = "/ {
+    versions += sub(/"[^"]*"/, "\"" new_ver "\"")
   }
-  !hash_done && /hash = "sha256-/ {
-    sub(/"sha256-[^"]*"/, "\"" new_hash "\"")
-    hash_done = 1
+  /hash = "sha256-/ {
+    hashes += sub(/"sha256-[^"]*"/, "\"" new_hash "\"")
   }
   { print }
-' "$nix_file" > "$tmp"
-mv "$tmp" "$nix_file"
+  END { if (versions != 1 || hashes != 1) exit 1 }
+' "$nix_file" > "$work/pin"; then
+  fail "expected one version and one hash field in $nix_file; pin unchanged"
+fi
 
-echo "Wrote $nix_file"
+install_pin

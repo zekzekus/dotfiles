@@ -22,6 +22,22 @@ in {
           ../scripts/tests/test_doctor.py
         ];
       };
+      updaterSource = pkgs.lib.fileset.toSource {
+        root = ./..;
+        fileset = pkgs.lib.fileset.unions [
+          ../Makefile
+          ../scripts/update-common.sh
+          ../scripts/update-amp
+          ../scripts/update-amp-acp
+          ../scripts/update-grokbot
+          ../scripts/update-helium
+          ../scripts/tests/test_updates.py
+          ./modules/packages/amp.nix
+          ./modules/packages/amp-acp.nix
+          ./modules/packages/grokbot.nix
+          ./modules/packages/helium.nix
+        ];
+      };
     in {
       formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''
         alejandra --check ${nixFiles}
@@ -44,6 +60,20 @@ in {
           cd ${doctorSource}
           shellcheck scripts/doctor
           python3 -B -m unittest discover -s scripts/tests -v
+          touch $out
+        '';
+      updaters =
+        pkgs.runCommand "check-updaters" {
+          nativeBuildInputs = with pkgs; [bash python3 curl nix gnumake shellcheck];
+        } ''
+          export HOME=$TMPDIR/home
+          mkdir -p "$HOME"
+          cp -r ${updaterSource} source
+          chmod -R u+w source
+          patchShebangs source/scripts/update-*
+          cd source
+          shellcheck scripts/update-amp scripts/update-amp-acp scripts/update-grokbot scripts/update-helium scripts/update-common.sh
+          python3 -B -m unittest discover -s scripts/tests -p test_updates.py -v
           touch $out
         '';
     }

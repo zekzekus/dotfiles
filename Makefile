@@ -103,6 +103,8 @@ update-grokbot:
 update-helium:
 	@./scripts/update-helium
 
+# Keep the documented order even when invoked with make -j.
+.NOTPARALLEL: update-pinned
 update-pinned: update-amp update-amp-acp update-grokbot update-helium
 
 check:

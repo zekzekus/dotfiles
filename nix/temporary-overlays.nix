@@ -1,5 +1,7 @@
 # Temporary overlays / workarounds.
-# Review periodically and remove once upstream fixes land.
+# On each nixpkgs update, check the linked fixes and retry affected packages
+# without their overrides on the affected OS. Remove only after a clean build
+# with the upstream checks enabled; evaluation alone does not prove a fix.
 _: prev: {
   # Backport https://github.com/NixOS/nixpkgs/pull/574509 until our pin includes it.
   # Host /etc/bashrc resets PATH in unsandboxed Darwin e2e tests. The harness
@@ -19,6 +21,11 @@ _: prev: {
     });
   python3Packages = prev.python3Packages.overrideScope (
     _: pyPrev: {
+      # Legacy picosvg test disable: the original failing test/platform and
+      # upstream issue were not recorded. Do not infer that it is still needed.
+      # Review by building python3Packages.picosvg with doCheck = true on Linux
+      # and Darwin; remove this override if both pass, otherwise record the
+      # reproduced failure and upstream reference here.
       picosvg = pyPrev.picosvg.overridePythonAttrs {
         doCheck = false;
       };
