@@ -72,8 +72,11 @@ One config to rule them all -- macOS, Linux, and NixOS.
 | `nixos` | NixOS | x86_64-linux | NixOS + Home Manager | `graphical`, `wayland` |
 
 Other Linux machines can be wired as standalone Home Manager targets
-(`mkHomeConfiguration`); no foreign-distro output or tested first-install
-bootstrap is exported yet. See [Adding a New Host](./nix/README.md#adding-a-new-host).
+(`mkHomeConfiguration`). For future headless servers, the
+[standalone Linux bootstrap](./nix/README.md#standalone-linux) covers distro/Nix
+prerequisites, explicit host selection, locked first activation without an
+installed Home Manager, and session setup. No real foreign-server output is
+exported yet; declare the actual host before applying.
 
 ### Active and historical configuration
 
@@ -117,8 +120,10 @@ make clean         # Clean build artifacts
 These are post-bootstrap commands. They normally select the current username
 and short hostname; use `HOST=mac-machine` or `HOST=nixos` when the detected
 hostname is not the intended output. The configured account remains `zekus`.
-`make home` currently has only the `zekus@nixos` output and needs an installed
-`home-manager`; NixOS/Darwin system switches already include Home Manager.
+`make home` needs the `home-manager` installed by the first activation; use the
+guide's locked bootstrap command on a fresh server. The existing `zekus@nixos`
+output is for the workstation, not a headless server. NixOS/Darwin system
+switches already include Home Manager.
 
 Grok Bot uses a version-pinned x64 AppImage on Linux, with a desktop launcher and
 the `grok-bot` command. `make update-grokbot` resolves the official stable download

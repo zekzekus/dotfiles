@@ -29,9 +29,29 @@ Do not run system activation in an orb or against a different machine.
 - On NixOS, finish the OS installer with account `zekus`. Keep its generated
   `/etc/nixos` configuration. Ensure Git and Make are available; if needed use
   `nix-shell -p git gnumake` temporarily. Nix is already installed.
-- Confirm `git --version`, `make --version`, and `nix --version` work. Flake
-  commands require `nix-command` and `flakes` enabled in Nix's configuration;
-  the bootstrap Mac command below also enables them explicitly.
+- For a **non-NixOS headless server**, use `x86_64-linux`, a glibc-based
+  distribution with systemd (such as Debian/Ubuntu), and account `zekus` with
+  home `/home/zekus`. Alpine/musl, non-systemd distributions, and ARM servers
+  are outside this bootstrap's scope. Keep the distro responsible for
+  boot, networking, SSH access, users, security updates, and the login shell.
+  Install Bash, Git, Make, curl, CA certificates, xz, sudo, and the systemd user
+  session/PAM integration using its package manager. On Debian/Ubuntu:
+
+  ```nu
+  sudo apt-get update
+  sudo apt-get install bash git make curl ca-certificates xz-utils sudo libpam-systemd dbus-user-session
+  ```
+
+  Log in directly as `zekus` (for example over SSH), not via `su` or `sudo -u`;
+  `systemctl --user show-environment` must succeed. Install
+  [Determinate Nix](https://docs.determinate.systems/getting-started/) using its
+  supported Linux installer and review its privilege/system changes. Reconnect
+  after installation so Nix is on PATH. Do not install Home Manager separately
+  or add a Home Manager channel: phase 4 uses this checkout's locked input.
+- Confirm `git --version`, `make --version`, and `nix --version` work. With
+  upstream Nix, enable `nix-command` and `flakes` in Nix's configuration;
+  current Determinate Nix provides these without experimental-feature flags.
+  The first-activation commands below also pass the flags for upstream Nix.
 
 **Before applying on an existing Mac:** review
 `platforms/darwin/configuration.nix` and inventory/back up Homebrew packages and
@@ -80,8 +100,9 @@ expected checkout, missing bootstrap tools/features, age-key availability and
 permissions, and decryption of the SSH ciphertext. Optional runner ciphertext
 and directory prerequisites are warnings, not blockers for basic setup. It is
 normal for credential checks to fail before phase 3; rerun after restoring or
-enrolling the key. Missing `darwin-rebuild` is a bootstrap warning (use phase 4),
-whereas missing `home-manager` blocks today's `make home` path.
+enrolling the key. Missing `darwin-rebuild` or `home-manager` is a bootstrap
+warning: use phase 4, not the everyday Make switch command. Standalone Linux
+also requires a reachable systemd user manager for the managed sops service.
 
 Exit 0 means required preflight checks passed, not that the machine can boot or
 all services work. Exit 1 means blocked/unverified; direct script invocation
@@ -172,25 +193,80 @@ Reboot into the new generation, then continue with
 
 ### Standalone Linux
 
-The only exported standalone target is currently `zekus@nixos`. It is an
-alternative way to manage that user's home on an already-configured NixOS
-system, **not** a way to install the NixOS host. Do not alternate it with
-integrated Home Manager without deliberately deciding which owns the home.
-`make home HOST=nixos` requires `home-manager` already on PATH.
+#### Non-NixOS headless server
 
-Foreign Linux support exists in the builder, but the headless/graphical hosts
-are evaluation fixtures, not installable exported outputs. There is **no
-complete, clean-install-tested standalone bootstrap yet**. A later piece will
-provide the locked first-use Home Manager invocation (without preinstalled
-`home-manager`), distro prerequisites, and session environment loading. Until
-then, adding a standalone output requires completing those steps manually with
-the [Home Manager manual](https://nix-community.github.io/home-manager/).
+Complete phases 1–3 first. There is no real foreign server in the host inventory
+yet: declare its actual hostname/output using [Adding a New Host](#adding-a-new-host).
+Choose `system = "x86_64-linux"`, `profiles = []`, and `mkHomeConfiguration`'s
+default `generic-linux` target (do **not** set `target = "nixos"`). Export
+`homeConfigurations."zekus@<hostname>"`. The evaluation fixtures are not outputs
+you can install. No desktop/Wayland profiles, GPU setup, Amp runners, or
+1Password GUI are needed. The shared base is no-GUI, not a minimal closure:
+it includes editors, language tooling, and personal CLI configuration.
 
-For a foreign desktop, the distro must supply the graphical session, display
-manager, portals, and drivers; HM does not configure the OS. Generic Linux GPU
-integration defaults off for headless safety; graphical hosts must deliberately
-enable it (and run `sudo non-nixos-gpu`) or use appropriate nixGL wrappers.
-Headless-safe means no GUI on Linux, not a small package closure. Darwin's
+In the commands below, replace `server-name` with that declared hostname;
+keep `zekus` and the checkout path unchanged. Run from the checkout as `zekus`,
+never with `sudo`. The temporary secret-tools shell in phase 3 supplies `sops`
+for doctor before it is installed in the home:
+
+```nu
+make doctor HOST=server-name TARGET=home
+nix --extra-experimental-features "nix-command flakes" run --inputs-from . home-manager -- switch -b hm-backup --impure --flake .#zekus@server-name
+```
+
+`--inputs-from .` resolves the CLI from **this checkout's `flake.lock`**, not
+the latest Home Manager release or a channel. It needs no preinstalled
+`home-manager`. Stop if doctor reports errors. Review file collisions and
+preserve existing files/backups; `-b hm-backup` does not overwrite an existing
+backup. Activation installs the `home-manager` command via
+`programs.home-manager.enable`, creates the user profile/configuration, and
+starts the user secret service. It does not install the OS or change the
+distro's login shell. Keep the existing SSH session open until a second login
+works; do not change sshd, PAM, or the login shell as part of this bootstrap.
+
+For a POSIX login shell that is not managed by HM, load the generated session
+environment from its login startup file, after the installer's Nix setup. Add
+the following once; do not replace the file (this snippet is **sh**, not Nu):
+
+```sh
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+```
+
+For the current POSIX shell, source that same file or log out and back in.
+Managed Nushell loads HM session variables itself; do not `source` the POSIX
+file in Nu. Start `~/.nix-profile/bin/nu` explicitly if desired without changing
+the OS login shell. From a fresh session, confirm `home-manager --version`,
+then subsequent applies use:
+
+```nu
+cd ~/devel/tools/dotfiles
+make home HOST=server-name
+```
+
+Continue with the applicable account/key steps in phase 5. Headless SSH keys
+and GPG signing credentials are separate restoration steps, not supplied by a
+GUI agent. Enabling logout-persistent personal services later may require an
+administrator to enable user lingering; it is not required for this basic
+interactive setup.
+
+**Validation status:** the locked CLI's version command runs successfully, and
+offline preflight has automated coverage. A fresh foreign-Linux installation
+through first activation and a subsequent `make home` still needs a
+disposable-machine smoke test; this guide does not yet claim clean-install
+validation or general distro support.
+
+#### Existing standalone NixOS output
+
+`zekus@nixos` manages the existing workstation's home, **not** a headless server
+or NixOS installation. Do not select it on a foreign server or alternate it
+with integrated Home Manager without deciding which owns that home. To
+bootstrap it intentionally, use the same locked invocation with
+`.#zekus@nixos`; later use `make home HOST=nixos`.
+
+Foreign desktops are outside this server bootstrap. They additionally require
+the distro to provide sessions, display manager, portals, and drivers. Generic
+Linux GPU integration defaults off; graphical hosts must deliberately enable
+it (and run `sudo non-nixos-gpu`) or use appropriate nixGL wrappers. Darwin's
 platform includes GUI packages even without the `graphical` profile.
 
 ## Adding a New Host
@@ -226,9 +302,9 @@ Do this before the shared credential and activation phases above. Never replace
    boot test. Return to [phase 3](#3-restore-credentials-and-service-prerequisites),
    then use the appropriate target's activation command with the new output name.
 
-Minimal working host examples and complete standalone Linux bootstrap are
-separate follow-ups; the steps here document today's wiring and prerequisites,
-not a claim that an empty host module boots.
+Minimal working system-host examples remain a separate follow-up; the steps
+here document today's wiring and prerequisites, not a claim that an empty
+system module boots. Standalone headless activation is covered above.
 
 ## 5. Accounts, login, and readiness
 

@@ -36,7 +36,7 @@ class DoctorTest(unittest.TestCase):
         self.stub("uname", 'if [ "$1" = -m ]; then echo x86_64; else echo Linux; fi')
         self.stub("hostname", "echo fixture")
         self.stub("whoami", "echo tester")
-        for tool in ("home-manager", "sudo", "xcode-select"):
+        for tool in ("home-manager", "sudo", "xcode-select", "systemctl"):
             self.stub(tool, "exit 0")
         self.key = self.home / "key.txt"
         self.key.write_text(self.command("age-keygen").stdout)
@@ -70,7 +70,7 @@ class DoctorTest(unittest.TestCase):
 
     def run_doctor(self, *args, code=0):
         result = subprocess.run([shutil.which("bash"), str(ROOT / "scripts/doctor"),
-                                 "--flake", str(self.repo), *args],
+                                 "--flake", str(self.repo), "--target", "home", *args],
                                 env=self.env, cwd=self.base, text=True, capture_output=True)
         self.assertEqual(result.returncode, code, result.stdout + result.stderr)
         self.assertNotIn(SECRET, result.stdout + result.stderr)
@@ -122,7 +122,27 @@ class DoctorTest(unittest.TestCase):
 
     def test_disabled_flakes(self):
         self.env["NIX_CONFIG"] = "experimental-features = nix-command"
-        self.assertIn("Enable flakes", self.run_doctor(code=1))
+        # Determinate provides stable flakes even with this setting absent.
+        if "Determinate Nix" in self.command("nix", "--version").stdout:
+            self.assertIn("Nix flakes available", self.run_doctor())
+        else:
+            self.assertIn("Enable flakes", self.run_doctor(code=1))
+
+    def test_home_bootstrap_without_home_manager(self):
+        # Bound PATH even when the developer already has home-manager installed.
+        (self.bin / "home-manager").unlink()
+        for tool in ("bash", "dirname", "cat", "stat", "env", "nix", "git", "make", "sops"):
+            (self.bin / tool).symlink_to(shutil.which(tool))
+        self.env["PATH"] = str(self.bin)
+        out = self.run_doctor()
+        self.assertIn("WARN  home-manager absent: use the locked first-activation command", out)
+        self.assertIn("Systemd user manager reachable", out)
+        (self.bin / "systemctl").unlink()
+        self.assertIn("Missing systemctl", self.run_doctor(code=1))
+
+    def test_home_requires_reachable_user_manager(self):
+        self.stub("systemctl", "exit 1")
+        self.assertIn("No reachable systemd user manager", self.run_doctor(code=1))
 
     def test_missing_sops_is_unverified_not_ready(self):
         for tool in ("bash", "dirname", "cat", "stat", "env", "nix", "git", "make"):

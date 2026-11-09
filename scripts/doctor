@@ -93,7 +93,14 @@ elif [[ "$target" == nixos ]]; then
 else
   [[ "$os" == Linux ]] || error 'This repository supports standalone Home Manager on Linux only.'
   if ! command -v home-manager >/dev/null 2>&1; then
-    error 'Missing home-manager: make home cannot bootstrap it; see Standalone Linux in nix/README.md.'
+    warn 'home-manager absent: use the locked first-activation command in Standalone Linux (nix/README.md), then make home.'
+  fi
+  if ! command -v systemctl >/dev/null 2>&1; then
+    error 'Missing systemctl: standalone Linux requires systemd with a user session for sops-nix (see guide phase 1).'
+  elif ! systemctl --user show-environment >/dev/null 2>&1; then
+    error 'No reachable systemd user manager: log in directly as the managed account (not su/sudo); see Standalone Linux.'
+  else
+    ok 'Systemd user manager reachable'
   fi
 fi
 if [[ "$target" != home ]]; then
@@ -109,9 +116,19 @@ if ! command -v nix >/dev/null 2>&1; then
   error 'Output/user/architecture/path and secrets cannot be verified until Nix is available.'
   finish
 fi
+# Keep Determinate's version query offline/read-only too: crash reporting can
+# otherwise initialize files in XDG_CACHE_HOME even for `nix --version`.
+# https://docs.determinate.systems/guides/telemetry
+export NIX_SENTRY_ENDPOINT='' DETSYS_IDS_TELEMETRY=disabled
 if features=$(nix config show --store dummy:// experimental-features 2>/dev/null); then
+  # Determinate stabilizes flakes, so its experimental-features may be empty.
   case " $features " in *' flakes '*) ok 'Nix flakes enabled' ;;
-    *) error 'Enable flakes in Nix configuration (guide phase 1).' ;;
+    *)
+      if [[ "$(nix --version)" == *'Determinate Nix'* ]]; then
+        ok 'Nix flakes available (Determinate Nix)'
+      else
+        error 'Enable flakes in Nix configuration (guide phase 1).'
+      fi ;;
   esac
 else
   error 'Cannot read Nix configuration; enable nix-command and verify nix works (guide phase 1).'
