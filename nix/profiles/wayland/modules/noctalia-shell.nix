@@ -20,6 +20,18 @@
     theme = "noctalia";
   };
 
+  # Ghostty validates before the first desktop login. Seed a writable theme
+  # only when absent; Noctalia replaces it and owns all subsequent updates.
+  home.activation.bootstrapGhosttyTheme = lib.mkIf config.programs.ghostty.enable (
+    lib.hm.dag.entryBetween ["onFilesChange"] ["writeBoundary"] ''
+      theme=${lib.escapeShellArg "${config.xdg.configHome}/ghostty/themes/noctalia"}
+      if [ ! -e "$theme" ]; then
+        run mkdir -p "$(dirname "$theme")"
+        run install -m 644 ${config.programs.ghostty.package}/share/ghostty/themes/Kanagawabones "$theme"
+      fi
+    ''
+  );
+
   # v5 loads config by merging every *.toml in $XDG_CONFIG_HOME/noctalia, then
   # layering $XDG_STATE_HOME/noctalia/settings.toml (the app-managed file the
   # settings UI writes) on top. We track that state file in the dotfiles repo

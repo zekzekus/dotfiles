@@ -4,14 +4,15 @@ set -uo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: make doctor [HOST=name] [TARGET=darwin|nixos|home] [FLAKE=path]
-       bash scripts/doctor [--host name] [--target target] [--user name] [--flake path]
+Usage: make doctor [HOST=name] [TARGET=darwin|nixos|home] [FLAKE=path] [RUNTIME=1]
+       bash scripts/doctor [--host name] [--target target] [--user name] [--flake path] [--runtime]
 
 Defaults: current short hostname/account, local checkout, Darwin on macOS,
 NixOS on NixOS, otherwise standalone Home Manager. TARGET selects a management
 output, not an OS installation. New hosts must be defined/exported first.
 Exit 0: required checks passed (warnings may remain); 1: blocked or unverified;
 2: invalid invocation. Offline: never fetches, builds, switches, or signs in.
+--runtime adds local post-activation checks; logins/signing still need manual tests.
 EOF
 }
 
@@ -20,9 +21,11 @@ repo=$script_root
 host=$(hostname -s)
 selected_user=$(id -un)
 target=
+runtime=false
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --help|-h) usage; exit 0 ;;
+    --runtime) runtime=true; shift ;;
     --host|--target|--user|--flake)
       if [[ $# -lt 2 || -z "$2" ]]; then usage >&2; exit 2; fi
       case "$1" in
@@ -57,13 +60,21 @@ finish() {
     printf 'Not ready: resolve errors and rerun.\n'
     exit 1
   fi
-  printf 'Required preflight checks passed; review warnings before activation.\n'
+  if $runtime; then
+    printf 'Automated readiness checks passed; review warnings and complete manual login/signing/session tests.\n'
+  else
+    printf 'Required preflight checks passed; review warnings before activation.\n'
+  fi
   exit 0
 }
 
 printf 'Dotfiles setup preflight (read-only, offline)\nTarget: %s\nOutput: %s\nMachine: %s / %s, account %s\n' \
   "$target" "$output" "$os" "$arch" "$(id -un)"
-printf 'Guide: nix/README.md (no activation or runtime-health checks are performed)\n\n'
+if $runtime; then
+  printf 'Mode: runtime readiness (local observations, no activation or authentication)\n\n'
+else
+  printf 'Guide: nix/README.md (no activation or runtime-health checks are performed)\n\n'
+fi
 if [[ ! -d "$repo" ]]; then error "Checkout does not exist: $repo"; finish; fi
 repo=$(cd "$repo" && pwd -P)
 if [[ ! -f "$repo/flake.nix" || ! -f "$repo/flake.lock" ]]; then
@@ -146,6 +157,9 @@ fi
 
 age_key=
 configured_home=
+configured_host=
+graphical=false
+wayland=false
 while IFS=$'\t' read -r kind value path format; do
   case "$kind" in
     system)
@@ -169,7 +183,10 @@ while IFS=$'\t' read -r kind value path format; do
       else error "Wrong checkout path: keep this checkout at $value before activation."
       fi ;;
     age) age_key=$value ;;
+    profile)
+      case "$value" in graphical) graphical=true ;; wayland) wayland=true ;; esac ;;
     host)
+      configured_host=$value
       [[ -f "$repo/nix/hosts/$value/default.nix" ]] || error "Missing host Home Manager module: nix/hosts/$value/default.nix"
       if [[ "$target" != home && ! -f "$repo/nix/hosts/$value/configuration.nix" ]]; then
         error "Missing system module: nix/hosts/$value/configuration.nix"
@@ -203,6 +220,85 @@ check_secret() {
   fi
 }
 check_secret ssh-hosts "$repo/secrets/ssh-config" binary error
+
+if $runtime; then
+  # Read only: never invoke GPG (may initialize keyrings/start an agent), SSH,
+  # op, or a runner CLI (may authenticate, prompt or refresh credentials).
+  private_file() {
+    local label=$1 file=$2 severity=$3 mode
+    if [[ ! -r "$file" || ! -s "$file" ]]; then
+      "$severity" "$label: missing, unreadable or empty."
+      return
+    fi
+    if [[ "$os" == Darwin ]]; then mode=$(stat -L -f '%Lp' "$file")
+    else mode=$(stat -L -c '%a' "$file")
+    fi
+    case "$mode" in 400|600) ok "$label: present with private permissions" ;;
+      *) "$severity" "$label: expected mode 0400 or 0600." ;;
+    esac
+  }
+  running_service() {
+    local name=$1 severity=$2 state
+    if [[ "$os" == Darwin ]]; then
+      # launchctl print may include environment secrets: capture, never echo it.
+      if state=$(launchctl print "gui/$(id -u)/org.nix-community.home.$name" 2>/dev/null) &&
+        [[ "$state" == *'state = running'* ]]; then ok "Service $name: running"
+      else "$severity" "Service $name: not running in this login's launchd domain."
+      fi
+    elif command -v systemctl >/dev/null 2>&1 && systemctl --user is-active --quiet "$name.service"; then
+      ok "Service $name: active"
+    else "$severity" "Service $name: inactive/unavailable (inspect locally; doctor never restarts services)."
+    fi
+  }
+  if [[ "$(hostname -s)" != "$configured_host" ]]; then
+    error 'Runtime hostname does not match selected host; run on that machine after activation/login.'
+  fi
+  for tool in nu nvim; do
+    if command -v "$tool" >/dev/null 2>&1; then ok "Managed command on PATH: $tool"
+    else error "Managed command missing from login PATH: $tool (open a fresh login after activation)."
+    fi
+  done
+  # sops-nix is a successful, inactive oneshot on Linux. Check its actual
+  # output rather than demanding a running daemon or printing its contents.
+  private_file 'Rendered SSH hosts' "$configured_home/.ssh/config.d/hosts" error
+  if $graphical; then
+    if [[ -S "$configured_home/.1password/agent.sock" && "${SSH_AUTH_SOCK:-}" == "$configured_home/.1password/agent.sock" ]]; then
+      ok '1Password SSH socket and login environment present (unlock/authentication untested)'
+    else warn '1Password SSH socket/environment unavailable; enable the agent and open a fresh login.'
+    fi
+  fi
+  # These two existing personal hosts enable runners. New-host examples do not;
+  # this is not inferred from optional ciphertext being present in the repo.
+  if [[ "$configured_host" == nixos || "$configured_host" == mac-machine ]]; then
+    for name in personal work; do
+      running_service "amp-runner-$name" warn
+      if [[ "$os" == Darwin ]]; then secret_root="$configured_home/.cache/sops-nix/secrets"
+      else secret_root="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/secrets"
+      fi
+      private_file "Runner $name credential" "$secret_root/amp-runner-$name" warn
+    done
+    for relative in devel/projects/personal devel/projects/playground devel/tools devel/projects/work Documents/dev.zeko.miracle; do
+      if [[ -d "$configured_home/$relative" ]]; then ok "Runner directory exists: $relative"
+      else warn "Runner directory missing: $relative (restore vault data separately; discovery roots are created at activation)."
+      fi
+    done
+  fi
+  if $wayland; then
+    case "${XDG_CURRENT_DESKTOP:-}" in
+      niri|Hyprland) running_service noctalia error ;;
+      *) warn 'Wayland readiness unverified: run from a fresh Niri/Hyprland session, not a console/SSH/Plasma session.' ;;
+    esac
+    if [[ -r "${XDG_CONFIG_HOME:-$configured_home/.config}/niri/noctalia.kdl" ]]; then
+      ok 'Generated Noctalia Niri include present (not a first-login guarantee)'
+    else warn 'Generated niri/noctalia.kdl absent; complete the clean-session checklist before relying on Niri startup.'
+    fi
+  fi
+  if [[ "$configured_host" == nixos && ! -x "$configured_home/.local/share/pnpm/bin/qmd" ]]; then
+    warn 'Optional qmd backend absent: the installed shim alone is not qmd.'
+  fi
+  warn 'Manual checks remain: GPG signing/ownertrust, SSH and account authentication, runner account/discovery, restored data, desktop assets/plugins and macOS privacy permissions. See guide phase 5.'
+  finish
+fi
 # These are optional personal-service prerequisites from guide phase 3, not an
 # assertion that a new host enables runners. Do not inspect running services.
 for name in personal work; do

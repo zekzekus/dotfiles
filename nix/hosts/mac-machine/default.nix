@@ -61,6 +61,12 @@
         ]);
     };
 in {
+  # launchd needs WorkingDirectory to exist before loading the jobs. Restore
+  # explicit --dir project/vault contents separately; never fabricate that data.
+  home.activation.createRunnerDirectories = lib.hm.dag.entryBetween ["setupLaunchAgents"] ["writeBoundary"] ''
+    run mkdir -p ${lib.escapeShellArgs (lib.concatMap (runner: runner.discoverDirs) (lib.attrValues runners))}
+  '';
+
   sops = {
     age.keyFile = "${common.homeDir}/.config/sops/age/keys.txt";
     secrets = lib.genAttrs (map (name: "amp-runner-${name}") (builtins.attrNames runners)) (name: {

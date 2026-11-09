@@ -57,15 +57,18 @@ class DoctorTest(unittest.TestCase):
         path.write_text(f"#!{shutil.which('bash')}\n" + body + "\n")
         path.chmod(0o755)
 
-    def metadata(self, system="x86_64-linux", user="tester", checkout=None):
+    def metadata(self, system="x86_64-linux", user="tester", checkout=None,
+                 hostname="fixture", profiles=()):
         q = json.dumps
         (self.repo / "flake.nix").write_text(f"""{{ outputs = {{...}}: {{ lib.setup = {{
-          hosts.fixture = {{ hostname = "fixture"; system = {q(system)}; profiles = [];
+          hosts.{hostname} = {{ hostname = {q(hostname)}; system = {q(system)};
+            profiles = [{" ".join(q(p) for p in profiles)}];
             common = {{ username = {q(user)}; homeDir = {q(str(self.home))};
               dotfilesDir = {q(str(checkout or self.repo))};
               sessionVariables.SOPS_AGE_KEY_FILE = {q(str(self.key))}; }}; }};
-          outputs = {{ home = ["tester@fixture"]; darwin = ["fixture"]; nixos = ["fixture"]; }};
-          profiles = [];
+          outputs = {{ home = [{q(f"tester@{hostname}")}];
+            darwin = [{q(hostname)}]; nixos = [{q(hostname)}]; }};
+          profiles = ["graphical" "wayland"];
         }}; }}; }}""")
 
     def run_doctor(self, *args, code=0):
@@ -77,18 +80,85 @@ class DoctorTest(unittest.TestCase):
         self.assertNotIn("AGE-SECRET-KEY-", result.stdout + result.stderr)
         return result.stdout
 
+    def snapshot(self):
+        return {str(p): (p.read_bytes() if p.is_file() else None,
+                        p.stat().st_mtime_ns, p.stat().st_mode)
+                for p in self.base.rglob("*")}
+
     def test_ready_with_optional_gaps_and_no_writes(self):
-        def snapshot():
-            return {str(p): (p.read_bytes() if p.is_file() else None,
-                            p.stat().st_mtime_ns, p.stat().st_mode)
-                    for p in self.base.rglob("*")}
-        before = snapshot()
+        before = self.snapshot()
         out = self.run_doctor()
         self.assertIn("Output: tester@fixture", out)
         self.assertIn("Secret ssh-hosts: decrypts", out)
         self.assertIn("WARN  Secret amp-runner-work", out)
         self.assertIn("0 error(s)", out)
-        self.assertEqual(before, snapshot())
+        self.assertEqual(before, self.snapshot())
+
+    def runtime_fixture(self, hostname="fixture", system="x86_64-linux", profiles=()):
+        self.metadata(hostname=hostname, system=system, profiles=profiles)
+        host = self.repo / "nix/hosts" / hostname
+        host.mkdir(exist_ok=True)
+        (host / "default.nix").write_text("{}")
+        (host / "configuration.nix").write_text("{}")
+        self.stub("hostname", f"echo {hostname}")
+        for tool in ("nu", "nvim"):
+            self.stub(tool, "exit 0")
+        # Readiness must never try to authenticate, sign or start a process.
+        for tool in ("gpg", "ssh", "ssh-add", "op", "amp"):
+            self.stub(tool, 'echo "unexpected stateful command" > stateful-command-attempt; exit 99')
+        rendered = self.home / ".ssh/config.d/hosts"
+        rendered.parent.mkdir(parents=True)
+        rendered.write_text(SECRET)
+        rendered.chmod(0o400)
+        return rendered
+
+    def test_runtime_headless_is_read_only_and_requires_rendered_secret(self):
+        rendered = self.runtime_fixture()
+        before = self.snapshot()
+        out = self.run_doctor("--runtime")
+        self.assertIn("Rendered SSH hosts: present with private permissions", out)
+        self.assertNotIn("1Password SSH", out)
+        self.assertNotIn("amp-runner-", out)
+        self.assertNotIn("unexpected stateful command", out)
+        self.assertEqual(before, self.snapshot())
+        rendered.chmod(0o644)
+        self.assertIn("Rendered SSH hosts: expected mode", self.run_doctor("--runtime", code=1))
+        rendered.unlink()
+        self.assertIn("Rendered SSH hosts: missing", self.run_doctor("--runtime", code=1))
+
+    def test_runtime_linux_distinguishes_desktop_and_optional_runners(self):
+        self.runtime_fixture(hostname="nixos", profiles=("graphical", "wayland"))
+        self.env["XDG_CURRENT_DESKTOP"] = "niri"
+        self.env["XDG_RUNTIME_DIR"] = str(self.home / "runtime")
+        # One runner is up, one is down; a successful inactive sops oneshot
+        # must not be mistaken for a failed secret service.
+        self.stub("systemctl", '''case "$*" in
+          "--user show-environment"|"--user is-active --quiet amp-runner-personal.service") exit 0;;
+          *) exit 1;; esac''')
+        out = self.run_doctor("--runtime", code=1)
+        self.assertIn("OK    Service amp-runner-personal: active", out)
+        self.assertIn("WARN  Service amp-runner-work: inactive", out)
+        self.assertIn("ERROR Service noctalia: inactive", out)
+        self.assertIn("WARN  Runner work credential: missing", out)
+        self.env["XDG_CURRENT_DESKTOP"] = "plasma"
+        self.assertIn("Wayland readiness unverified", self.run_doctor("--runtime"))
+        self.stub("hostname", "echo different")
+        self.assertIn("Runtime hostname does not match",
+                      self.run_doctor("--runtime", "--host", "nixos", code=1))
+
+    def test_runtime_mac_reports_jobs_without_leaking_launchctl_environment(self):
+        self.runtime_fixture(hostname="mac-machine", system="aarch64-darwin",
+                             profiles=("graphical",))
+        self.stub("uname", 'if [ "$1" = -m ]; then echo arm64; else echo Darwin; fi')
+        self.stub("stat", "echo 600")
+        self.stub("launchctl", f'''case "$*" in
+          "print gui/1000/org.nix-community.home.amp-runner-personal")
+            echo "state = running"; echo "AMP_API_KEY={SECRET}";;
+          *) exit 1;; esac''')
+        out = self.run_doctor("--runtime", "--target", "darwin")
+        self.assertIn("OK    Service amp-runner-personal: running", out)
+        self.assertIn("WARN  Service amp-runner-work: not running", out)
+        self.assertIn("1Password SSH socket/environment unavailable", out)
 
     def test_wrong_output_lists_choices(self):
         out = self.run_doctor("--host", "not-defined", code=1)

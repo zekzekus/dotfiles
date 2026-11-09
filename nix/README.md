@@ -127,18 +127,13 @@ generate a distinct key and have an already-authorized machine add its public
 recipient and rewrap all applicable ciphertext. Generating a key alone cannot
 recover existing secrets. Confirm decryption without displaying plaintext.
 
-The existing hosts start personal/work Amp runners automatically. Before
-activation, create the empty working/discovery roots if missing:
-
-```nu
-mkdir ~/devel/projects/personal ~/devel/projects/playground ~/devel/projects/work
-```
-
+The existing hosts start personal/work Amp runners automatically. Their Home
+Manager activation creates empty personal/playground/work discovery roots under
+`~/devel/projects` and ensures `~/devel/tools` exists **before** loading services.
 Restore project checkouts and `~/Documents/dev.zeko.miracle` from their actual
 sources/backups if using the work runner; do not substitute an empty vault for
-data recovery. The dotfiles clone supplies `~/devel/tools`. These directories
-are not currently created declaratively. Runners are optional personal services,
-but their configuration is enabled on both existing hosts; missing directories
+data recovery. The dotfiles clone supplies `~/devel/tools`. Runners are optional
+personal services, but their configuration is enabled on both existing hosts; missing directories
 or tokens can leave services failed/retrying even if activation succeeds.
 See [runner credentials and verification](docs/sops-setup.md#nixos-amp-runners).
 
@@ -382,6 +377,35 @@ automatic disk provisioning. Existing host hardware remains untouched.
 
 ## 5. Accounts, login, and readiness
 
+After activation and a fresh login, run the local, read-only runtime checks:
+
+```nu
+make doctor HOST=nixos TARGET=nixos RUNTIME=1
+# On the Mac:
+make doctor HOST=mac-machine TARGET=darwin RUNTIME=1
+# On a declared headless server:
+make doctor HOST=server-name TARGET=home RUNTIME=1
+```
+
+Direct invocation also accepts `bash scripts/doctor --runtime`. This adds checks
+for the live hostname, managed commands on PATH, and the nonempty rendered SSH
+snippet with private permissions. For graphical profiles it checks the agent
+socket/environment; for the two existing personal hosts it checks runner service
+state, rendered credential presence/permissions and directory existence. For
+Wayland it checks Noctalia's service in a Niri/Hyprland session and the generated
+Niri include. Optional runner/account/tool gaps are warnings; missing rendered
+SSH configuration or a stopped shell in an active Wayland session are errors.
+An inactive successful `sops-nix` oneshot is normal: the rendered file, not a
+permanently running secret daemon, is the runtime contract.
+
+The command does not start/restart services, sign, invoke account CLIs, contact
+SSH hosts, unlock accounts, or show credentials/service environments. Exit 0
+means only that automated required checks passed. File presence is not valid
+authentication or restored data; an active runner is not proof of its account
+or discovery results. Checks use the registry profiles and current personal-host
+service names, not full evaluation of arbitrary module overrides. Complete the
+applicable checklist below before calling a machine ready.
+
 ### Required for the workflows you use
 
 - Log out/in (and reboot NixOS after system installation). Verify the expected
@@ -397,12 +421,66 @@ automatic disk provisioning. Existing host hardware remains untouched.
   they do not get a running 1Password GUI agent.
 - Confirm [age decryption](docs/sops-setup.md#verify-decryption-without-printing-secrets)
   and the rendered `~/.ssh/config.d/hosts` path without printing its contents.
+  Keep key directories private (`0700`) and restored key files `0600`/`0400`.
+  Keep a second working login/recovery path until a new SSH login succeeds;
+  on a headless server, test a second incoming session from your trusted client.
 - On desktops, test a fresh login, terminal, launcher, browser, audio, and
   monitor layout. Noctalia references an external wallpaper and `HDMI-A-2` in
   `noctalia/settings.toml`; restore the asset or adjust those personal settings.
   `niri/config.kdl` includes untracked `noctalia.kdl`, and Noctalia enables an
-  audio-switcher plugin. Clean-session generation/plugin recovery is not yet
-  verified; inspect first-launch errors instead of assuming Git restores them.
+  audio-switcher plugin. The disposable-session findings below distinguish
+  automatic recovery from the remaining manual readiness checks.
+
+### Clean Wayland session acceptance check
+
+Use a disposable NixOS install/test account with the supported configuration,
+not deletion of state in the daily desktop account. This is an interactive
+acceptance test, **not** something doctor performs. Do not reset real state or
+restart the current desktop to simulate a clean install.
+
+1. Start with no generated `~/.config/niri/noctalia.kdl`, plugin cache or restored
+   wallpaper. Record whether the first Niri login starts or fails before
+   Noctalia can generate the include; inspect `niri validate` and the local
+   Noctalia service journal. A failed first login is a failed acceptance test,
+   even if a later login works. Keep logs private.
+2. Establish whether Noctalia generates the include automatically, when it does
+   so, and whether it writes beside the installed config or the live symlink
+   target. Log in again and confirm `niri validate` succeeds without manually
+   copying a generated file. If generation needs a prerequisite session/action,
+   record it in this guide before claiming a working first-login path.
+3. Confirm the enabled `blackbartblues/audio-switcher` plugin is actually
+   available after first launch (not merely listed in settings): open it with
+   Mod+Shift+A, select an output/input, and verify the controls work. Record any
+   required install/account/network step; plugin enablement alone is not recovery.
+4. Restore the wallpaper or deliberately choose a new one; verify monitors,
+   terminal, launcher, browser and sound, then log out/in and rerun runtime doctor.
+
+**Validation status (locked configuration, disposable NixOS VM):** first login
+starts Niri with its default configuration and a missing-include warning.
+Noctalia then generates `~/.config/niri/noctalia.kdl` beside the installed config,
+not beside its checkout symlink target; Niri automatically reloads the intended
+configuration and `niri validate` succeeds. With network access, Noctalia clones
+its official/community plugin sources and materializes/loads the enabled
+audio-switcher plugin without a restored cache. Initial "no loaded plugin"
+warnings can precede this asynchronous download. Its panel opens and lists the
+guest's emulated audio devices.
+
+The Wayland profile seeds a writable Ghostty `noctalia` theme from its bundled
+`Kanagawabones` theme **only when absent**, before first-activation validation.
+Noctalia replaces that seed with its generated theme and owns future updates;
+the file is not Nix-managed. The VM verifies successful first activation,
+Ghostty validation/rendering, and an unchanged generated-theme checksum after
+another activation. A second boot/login verifies successful activation, both
+config validators, plugin recovery, and Ghostty rendering with persisted state.
+
+**Limits:** the VM needed a synced virtual hardware reset because orderly GPU
+session teardown stalled; orderly logout/login is not certified. Slow virtual
+rendering also exceeded Noctalia's normal two-second CLI timeout, so plugin IPC
+was probed with a longer timeout. Device switching, real audio devices, monitor
+layout, restored wallpaper, and account/key restoration still require the
+applicable checks above. The bootstrap/recovery checks pass, not the entire
+interactive checklist; neither doctor nor evaluation certifies a fully ready
+desktop.
 
 ### Optional personal services and data
 
@@ -421,10 +499,11 @@ automatic disk provisioning. Existing host hardware remains untouched.
   recovery material and password-manager recovery access backed up off-machine.
 
 `make check` checks Nix code/evaluation, not credentials, services, bootability,
-or a working desktop. `make doctor` checks setup prerequisites, not live service
-health, signing, account enrollment, network/disk capacity, desktop assets, or
-privacy permissions. Runtime directory creation and clean-session asset tests
-remain separate follow-ups, not guarantees made by these checks.
+or a working desktop. Plain `make doctor` remains a setup preflight; `RUNTIME=1`
+adds the local observations above. Neither verifies signing, account enrollment,
+network/disk capacity, actual project/vault contents, desktop assets/plugins or
+privacy permissions. The manual checks and clean-session acceptance remain
+necessary; no automatic check here certifies a fully restored machine.
 
 ## Edit and apply ownership
 
@@ -489,7 +568,7 @@ The flake includes automated checks run via `make check` (or `nix flake check --
 | `formatting` | alejandra | Nix code formatting |
 | `deadnix` | deadnix | Unused code detection |
 | `statix` | statix | Nix anti-pattern linting |
-| `doctor` | ShellCheck + Python CLI tests | Offline preflight, disposable age decryption, error/warning behavior, no-write check |
+| `doctor` | ShellCheck + Python CLI tests | Offline preflight/runtime checks, disposable age decryption, error/warning behavior, no-write and no-secret-output checks |
 | `eval-*` | instantiation | Darwin system, standalone HM, Linux fixtures, and every copyable host example (including Darwin on Linux) |
 
 Format all Nix files: `make fmt`

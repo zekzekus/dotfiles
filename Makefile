@@ -12,7 +12,7 @@ help:
 	@echo "Detected: $(USER)@$(HOST)"
 	@echo ""
 	@echo "Available commands:"
-	@echo "  make doctor        - Read-only setup preflight (HOST=... TARGET=darwin|nixos|home)"
+	@echo "  make doctor        - Read-only preflight (RUNTIME=1 adds post-login readiness checks)"
 	@echo "  make home          - Switch standalone home-manager (Linux; not used on Darwin)"
 	@echo "  make home-build    - Plan standalone home-manager (dry-run, does not build)"
 	@echo "  make darwin        - Rebuild nix-darwin system (macOS; includes Home Manager)"
@@ -31,7 +31,7 @@ help:
 	@echo ""
 
 doctor:
-	@bash scripts/doctor --host "$(HOST)" --user "$(USER)" --flake "$(FLAKE)" $(if $(TARGET),--target "$(TARGET)")
+	@bash scripts/doctor --host "$(HOST)" --user "$(USER)" --flake "$(FLAKE)" $(if $(TARGET),--target "$(TARGET)") $(if $(filter 1,$(RUNTIME)),--runtime)
 
 home:
 	@if [ "$(UNAME)" = "Darwin" ]; then \

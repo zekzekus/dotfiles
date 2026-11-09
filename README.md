@@ -104,6 +104,7 @@ not exist yet. Review the Homebrew cleanup warning before applying to a Mac.
 ```bash
 make help          # Show all commands with detected host
 make doctor        # Read-only setup preflight; HOST=... TARGET=darwin|nixos|home
+make doctor RUNTIME=1 # Post-login local readiness; manual authentication/session checks still required
 make home          # Switch standalone Home Manager (Linux; not used on Darwin)
 make home-build    # Plan standalone Home Manager (dry-run, does not build)
 make darwin        # Rebuild nix-darwin + integrated Home Manager (macOS only)

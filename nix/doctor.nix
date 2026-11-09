@@ -23,12 +23,13 @@
   line = fields: builtins.concatStringsSep "\t" fields;
 in
   assert missingProfiles == [] || throw "Unknown profiles: ${builtins.concatStringsSep ", " missingProfiles}";
-    builtins.concatStringsSep "\n" [
-      (line ["system" host.system])
-      (line ["user" common.username])
-      (line ["home" common.homeDir])
-      (line ["checkout" common.dotfilesDir])
-      (line ["age" common.sessionVariables.SOPS_AGE_KEY_FILE])
-      (line ["host" host.hostname])
-    ]
+    builtins.concatStringsSep "\n" ([
+        (line ["system" host.system])
+        (line ["user" common.username])
+        (line ["home" common.homeDir])
+        (line ["checkout" common.dotfilesDir])
+        (line ["age" common.sessionVariables.SOPS_AGE_KEY_FILE])
+        (line ["host" host.hostname])
+      ]
+      ++ map (profile: line ["profile" profile]) host.profiles)
     + "\n"

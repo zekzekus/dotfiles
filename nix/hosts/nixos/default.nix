@@ -54,6 +54,11 @@
 in {
   imports = [./qmd.nix];
 
+  # Create empty discovery roots before services reload, not project/vault data.
+  home.activation.createRunnerDirectories = lib.hm.dag.entryBetween ["reloadSystemd"] ["writeBoundary"] ''
+    run mkdir -p ${lib.escapeShellArgs (lib.concatMap (runner: runner.discoverDirs) (lib.attrValues runners))}
+  '';
+
   # The NixOS account already has linger enabled, so this personal server starts
   # at boot and survives logout. Only its enrolling Tailscale owner may connect.
   services.rex = {
