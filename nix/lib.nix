@@ -91,6 +91,7 @@
     homeModules ? [],
     homeSpecialArgs ? {},
   }: let
+    validWayland = !(builtins.elem "wayland" profiles) || (isLinux system && builtins.elem "graphical" profiles);
     inherit (common) username;
     common =
       (mkCommon system)
@@ -107,14 +108,15 @@
       ++ nixpkgs.lib.optional (isLinux system) ./platforms/linux
       ++ profileHomeModules resolvedProfiles
       ++ [./hosts/${hostname}];
-  in {
-    inherit hostname system resolvedProfiles;
-    home = {
-      modules = allHomeModules;
-      specialArgs = {inherit common;} // extraHomeSpecialArgs // profileHomeSpecialArgs resolvedProfiles // homeSpecialArgs;
-      inherit username;
+  in
+    assert validWayland || throw "Host ${hostname}: wayland requires Linux and the graphical profile."; {
+      inherit hostname system resolvedProfiles;
+      home = {
+        modules = allHomeModules;
+        specialArgs = {inherit common;} // extraHomeSpecialArgs // profileHomeSpecialArgs resolvedProfiles // homeSpecialArgs;
+        inherit username;
+      };
     };
-  };
 
   mkHmModule = host: {
     nixpkgs.overlays = overlays;

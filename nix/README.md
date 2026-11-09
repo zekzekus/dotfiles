@@ -275,36 +275,110 @@ Do this before the shared credential and activation phases above. Never replace
 `hosts/nixos/hardware-configuration.nix` to add a second machine.
 
 1. Choose a unique hostname, supported architecture, and management target.
-   The real configurations/check systems cover `x86_64-linux` and
-   `aarch64-darwin`; helper recognition of other architectures is not evidence
-   that their packages or desktop launchers have been validated.
-2. Create `nix/hosts/<hostname>/default.nix` for host HM overrides (an empty
-   `_: {}` is sufficient). For NixOS/Darwin also create `configuration.nix`.
-   A blank system module is **not a usable NixOS configuration**: start from the
-   installer-generated boot/storage/hardware, users, networking, and state
-   version, kept under the new host directory. Do not copy the existing
-   workstation's accounts, devices, or 500-line system policy wholesale.
-   Darwin already imports the shared platform system module; review its
-   Homebrew ownership and supply only appropriate host overrides.
-3. Add one entry to `hosts` in `flake.nix`, then explicitly export it through
-   `mkNixosSystem`, `mkDarwinSystem`, or `mkHomeConfiguration`. Use existing
-   wiring as the contract, not evaluation fixtures as ready-made hosts.
-   System builders accept the host entry directly. HM accepts `hostname`,
-   `system`, `profiles`, `homeModules`, and `homeSpecialArgs`; forward applicable
-   home fields, not system-only fields. Set `target = "nixos"` only for
-   standalone HM on NixOS; foreign Linux defaults to `generic-linux`.
-4. Select profiles intentionally. `[]` is the Linux headless base; `graphical`
-   adds GUI apps. `wayland` expects `graphical` and supplies HM-side session
-   configuration, not all system compositor/login/portal prerequisites.
-5. Make new files visible to the Git-backed flake (`git add` only the new files
-   after checking they contain no plaintext secrets). Review/evaluate the new
-   output on its own architecture before first activation; evaluation is not a
-   boot test. Return to [phase 3](#3-restore-credentials-and-service-prerequisites),
-   then use the appropriate target's activation command with the new output name.
+   Copy the matching example directory (replace `new-desktop` with your name):
 
-Minimal working system-host examples remain a separate follow-up; the steps
-here document today's wiring and prerequisites, not a claim that an empty
-system module boots. Standalone headless activation is covered above.
+   | Target | Directory to copy | Architecture | Profiles |
+   | --- | --- | --- | --- |
+   | NixOS Wayland desktop | `nix/hosts/example-nixos` | `x86_64-linux` | `["graphical" "wayland"]` |
+   | Apple Silicon Mac | `nix/hosts/example-darwin` | `aarch64-darwin` | `["graphical"]` |
+   | Foreign Linux headless server | `nix/hosts/example-headless` | `x86_64-linux` | `[]` |
+
+   ```nu
+   cp -r nix/hosts/example-nixos nix/hosts/new-desktop
+   ```
+
+   Other architectures are not covered by these examples. All retain the
+   `zekus` account and fixed checkout path. Examples enable no personal runners.
+2. **NixOS:** replace the copied hardware fixture with the **new machine's**
+   generated file, not the existing workstation's hardware file:
+
+   ```nu
+   cp /etc/nixos/hardware-configuration.nix nix/hosts/new-desktop/hardware-configuration.nix
+   ```
+
+   Edit `configuration.nix`: change `networking.hostName`, use the installer's
+   original `system.stateVersion`, and retain its working boot loader and any
+   additional storage/encryption/driver settings. The sample uses UEFI with
+   systemd-boot; BIOS, NVIDIA, disk encryption and unusual layouts need their
+   installer-specific configuration. Keep the installer-created `zekus`
+   administrator account/password and recovery access; no password is supplied
+   by the example. Preserve the installer's working generation until boot-tested.
+   Never format disks to match the example labels: those are build fixtures.
+
+   **Darwin:** edit the three machine names in `configuration.nix`. The shared
+   platform supplies state version, primary user, Homebrew and system defaults.
+   Start with the existing `zekus` administrator account, Command Line Tools,
+   and Determinate Nix. Review the Homebrew migration/`zap` warning in phase 1.
+
+   **Headless Linux:** only `default.nix` is needed. The distro must supply the
+   account, boot/storage, networking, SSH access, systemd user session and Nix
+   prerequisites in phase 1. HM does not replace system provisioning.
+3. Copy the corresponding `exampleHosts` entry in `flake.nix` into `hosts`.
+   Rename its key and `hostname` to the new directory name; retain the Darwin
+   `systemModules` tap wiring. Leave the original examples intact for checks.
+   Export the new host in the matching output attrset, for example:
+
+   ```nix
+   # In nixosConfigurations:
+   new-desktop = mkNixosSystem hosts.new-desktop;
+   # Or in darwinConfigurations, for a new Mac:
+   new-mac = mkDarwinSystem hosts.new-mac;
+   # Or in homeConfigurations, for a foreign headless server:
+   "zekus@new-server" = mkHomeConfiguration hosts.new-server;
+   ```
+
+   System builders accept the complete host entry. A standalone HM-only entry
+   accepts `hostname`, `system`, `profiles`, `homeModules`, and `homeSpecialArgs`.
+   If reusing a system-host entry, forward those home fields explicitly with
+   `inherit (hosts.<name>) ...`, not system-only fields. Foreign Linux defaults
+   to `generic-linux`; `target = "nixos"` is only for standalone HM on NixOS.
+4. `wayland` requires Linux **and** `graphical` (enforced by the builders).
+   For NixOS, it now supplies Niri/Hyprland, SDDM with Niri as the default,
+   portals, graphics, PipeWire, polkit/PAM and session storage/power services.
+   It does not copy Plasma, family accounts, keyboard devices, gaming, VPNs or
+   personal services from `nixos`. Foreign Linux gets only HM-side configuration;
+   foreign desktops remain outside the supported onboarding path.
+5. Review new files for plaintext secrets. In this jj checkout, `jj status`
+   tracks new files automatically and makes them visible to the flake; do not
+   create a bookmark or commit just to evaluate. In a Git-only clone, stage
+   only the new files so the Git-backed flake sees them. Then run:
+
+   ```nu
+   make check
+   make doctor HOST=new-desktop TARGET=nixos
+   nix build --impure --no-link .#nixosConfigurations.new-desktop.config.system.build.toplevel
+   # Mac equivalent, on the Mac:
+   nix build --impure --no-link .#darwinConfigurations.new-mac.system
+   # Server equivalent, on supported Linux:
+   nix build --impure --no-link '.#homeConfigurations."zekus@new-server".activationPackage'
+   ```
+
+   Use only your target's build command. These build without switching; doctor
+   may report credential errors until phase 3. Return to
+   [phase 3](#3-restore-credentials-and-service-prerequisites), then activate
+   using the appropriate phase-4 command with the **new** output name.
+
+### Example checks versus installation testing
+
+`make check` instantiates **all three examples on either check platform**, so
+Linux checks also catch Darwin evaluation failures. It forces the complete
+system/activation derivations and their module assertions; it does not build
+their closures, activate them, validate real hardware, or test desktop startup.
+The examples are build-only `packages`, deliberately absent from installable
+system/HM outputs and doctor's inventory. To build the unchanged examples:
+
+```nu
+# On x86_64 Linux (no activation):
+nix build --impure --no-link .#example-nixos .#example-headless
+# On Apple Silicon macOS (no activation):
+nix build --impure --no-link .#example-darwin
+```
+
+The NixOS and headless examples have completed real builds on Linux. Darwin
+has full derivation-evaluation coverage; its closure still needs a native Mac
+build. No example has a fresh-install/boot/runtime guarantee. The NixOS sample
+hardware is a generic QEMU UEFI/ext4 fixture, replaced during onboarding, not
+automatic disk provisioning. Existing host hardware remains untouched.
 
 ## 5. Accounts, login, and readiness
 
@@ -390,7 +464,7 @@ The builder functions in `lib.nix` automatically:
 | Profile | Contents |
 |---------|----------|
 | `profiles/graphical/` | GUI apps: ghostty, obsidian, localsend, 1Password SSH agent (cross-platform); `linux/` adds chromium, zed, OBS, media viewers, helium (x86_64), emacs-pgtk, 1Password GUI |
-| `profiles/wayland/` | Hyprland/Niri/Noctalia session (HM side), stylix, rofi, hyprlock, hypridle, tray services |
+| `profiles/wayland/` | Hyprland/Niri/Noctalia HM session and NixOS system prerequisites (`system.nix`), stylix, rofi, hyprlock, hypridle, tray services |
 
 ### Platform Modules (OS family)
 
@@ -416,7 +490,7 @@ The flake includes automated checks run via `make check` (or `nix flake check --
 | `deadnix` | deadnix | Unused code detection |
 | `statix` | statix | Nix anti-pattern linting |
 | `doctor` | ShellCheck + Python CLI tests | Offline preflight, disposable age decryption, error/warning behavior, no-write check |
-| `eval-*` | instantiation | Darwin system, standalone HM, plus headless and graphical-only Linux fixtures |
+| `eval-*` | instantiation | Darwin system, standalone HM, Linux fixtures, and every copyable host example (including Darwin on Linux) |
 
 Format all Nix files: `make fmt`
 

@@ -1,11 +1,11 @@
 # Wayland desktop profile: the home-manager side of the Hyprland/Niri/Noctalia
-# session. Opt-in via `profiles = ["wayland"]` (normally together with
-# "graphical"). Reusable across any Wayland host; not NixOS-specific.
+# session. Opt-in via `profiles = ["graphical" "wayland"]` on Linux.
+# This home module is not NixOS-specific.
 #
 # Requires these HM modules + specialArgs (provided by the registry entry in
 # flake.nix): stylix, the Hyprland HM module, and the `hyprland` flake input.
-# Noctalia's HM module is provided by nixpkgs. This is an HM-side session
-# bundle, not a complete desktop: Niri itself is installed by the host.
+# Noctalia's HM module is provided by nixpkgs. The registry also bundles
+# system.nix for NixOS; foreign distros must supply the OS prerequisites.
 {
   pkgs,
   common,

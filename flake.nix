@@ -96,9 +96,8 @@
       # Any host with a display. Cross-platform GUI apps; Linux-only GUI gated inside.
       graphical.homeModules = [./nix/profiles/graphical];
 
-      # Hyprland/Niri/Noctalia Wayland session (home-manager side). Bundles the
-      # external Hyprland module and inputs it needs; Noctalia's module is
-      # provided by nixpkgs. Expects "graphical" for Ghostty/Helium launchers.
+      # Hyprland/Niri/Noctalia home configuration plus NixOS session prerequisites.
+      # Requires Linux + "graphical"; foreign distros must supply the OS side.
       wayland = {
         homeModules = [
           stylix.homeModules.stylix
@@ -106,6 +105,8 @@
           ./nix/profiles/wayland
         ];
         homeSpecialArgs = {inherit hyprland;};
+        systemModules = [hyprland.nixosModules.default ./nix/profiles/wayland/system.nix];
+        systemSpecialArgs = {inherit hyprland;};
       };
     };
 
@@ -142,10 +143,8 @@
         homeModules = [rex.homeManagerModules.default];
         systemModules = [
           determinate.nixosModules.default
-          hyprland.nixosModules.default
           nix-flatpak.nixosModules.nix-flatpak
         ];
-        systemSpecialArgs = {inherit hyprland;};
       };
 
       mac-machine = {
@@ -160,6 +159,35 @@
           }
         ];
       };
+    };
+
+    # Copy the matching directory and entry into `hosts` for a real machine.
+    # Kept separate so doctor/activation cannot select fixture hardware.
+    exampleHosts = {
+      example-nixos = {
+        hostname = "example-nixos";
+        system = "x86_64-linux";
+        profiles = ["graphical" "wayland"];
+      };
+      example-darwin = {
+        hostname = "example-darwin";
+        system = "aarch64-darwin";
+        profiles = ["graphical"];
+        systemModules = [
+          {nix-homebrew.taps."d12frosted/homebrew-emacs-plus" = homebrew-emacs-plus;}
+        ];
+      };
+      example-headless = {
+        hostname = "example-headless";
+        system = "x86_64-linux";
+        profiles = [];
+      };
+    };
+
+    examplePackages = {
+      example-nixos = (mkNixosSystem exampleHosts.example-nixos).config.system.build.toplevel;
+      example-darwin = (mkDarwinSystem exampleHosts.example-darwin).system;
+      example-headless = (mkHomeConfiguration exampleHosts.example-headless).activationPackage;
     };
 
     nixosConfigurations = {
@@ -232,7 +260,19 @@
       profiles = builtins.attrNames profileRegistry;
     };
 
-    checks = nixpkgs.lib.recursiveUpdate ci.checks evalChecks;
+    # Evaluate EVERY copyable example on either supported check platform,
+    # including Darwin on Linux. drvPath forces system assertions and package
+    # instantiation, but does not build the target closure or run activation.
+    checks = nixpkgs.lib.genAttrs ["x86_64-linux" "aarch64-darwin"] (system:
+      ci.checks.${system}
+      // evalChecks.${system}
+      // nixpkgs.lib.mapAttrs' (name: drv:
+        nixpkgs.lib.nameValuePair "eval-${name}" (mkEvalCheck system name drv))
+      examplePackages);
+    packages = {
+      x86_64-linux = {inherit (examplePackages) example-nixos example-headless;};
+      aarch64-darwin = {inherit (examplePackages) example-darwin;};
+    };
     inherit (ci) formatter devShells;
   };
 }

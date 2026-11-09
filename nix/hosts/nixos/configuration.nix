@@ -1,10 +1,8 @@
 {
   pkgs,
-  hyprland,
   common,
   ...
 }: let
-  hyprPkgs = hyprland.packages.${pkgs.stdenv.hostPlatform.system};
   geforceNowWaylandDesktop = pkgs.writeTextFile {
     name = "geforcenow-wayland.desktop";
     executable = true;
@@ -183,32 +181,16 @@ in {
         variant = "alt";
       };
     };
-    displayManager.sddm = {
-      enable = true;
-      wayland = {
-        enable = true;
-        compositor = "kwin";
-      };
-    };
     # Keep Niri as the host-wide fallback for SDDM. SDDM does not provide a
     # declarative per-user default session; Asya and Mehmet can select Plasma
     # (Wayland) in the session chooser when they first log in.
     displayManager.defaultSession = "niri";
     desktopManager.plasma6.enable = true;
     power-profiles-daemon.enable = true;
-    upower.enable = true;
     printing.enable = true;
-    pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
+    pipewire.alsa.support32Bit = true;
     blueman.enable = true;
     pcscd.enable = true;
-    udisks2.enable = true;
-    gvfs.enable = true;
   };
 
   hardware = {
@@ -230,35 +212,14 @@ in {
   };
 
   xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = [
-      hyprPkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.kdePackages.xdg-desktop-portal-kde
-    ];
+    extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["hyprland" "gtk"];
-      start-hyprland.default = ["hyprland" "gtk"];
-      niri.default = ["gnome" "gtk"];
-      start-niri.default = ["gnome" "gtk"];
       kde.default = ["kde" "gtk"];
       plasma.default = ["kde" "gtk"];
     };
   };
 
   programs = {
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      package = hyprPkgs.hyprland;
-      portalPackage = hyprPkgs.xdg-desktop-portal-hyprland;
-    };
-    niri = {
-      enable = true;
-    };
     gpu-screen-recorder.enable = true;
     nix-ld.enable = true;
     steam = {
@@ -270,18 +231,12 @@ in {
     };
     gamescope.enable = true;
     gamemode.enable = true;
-    dconf.enable = true;
     ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
     _1password.enable = true;
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = [common.username];
     };
-  };
-
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
   };
 
   # Increase file descriptor limits to prevent "Too many open files" during Nix builds

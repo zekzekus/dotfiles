@@ -232,8 +232,9 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 - Ghostty terminal, Obsidian (cross-platform)
 - Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
 
-**`wayland` profile** *(opt-in -- Wayland desktop, normally paired with `graphical`)*
+**`wayland` profile** *(opt-in -- Linux desktop, requires `graphical`)*
 - Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock
+- NixOS session prerequisites: SDDM, portals, graphics, audio, polkit and storage services
 - Stylix CLI theming (Kanagawa, dark polarity); Plasma owns shared Qt/GTK appearance
 - rofi launcher, Hyprland polkit agent
 - Tray/session services: clipboard history (cliphist), automount (udiskie), network + Tailscale applets
@@ -277,7 +278,7 @@ The centralized `common` attrset (user info, paths, env vars, `isLinux`/`isDarwi
 
 ## Documentation
 
-- [Installation and Recovery](./nix/README.md) -- Canonical setup sequence, adding hosts, readiness, troubleshooting
+- [Installation and Recovery](./nix/README.md) -- Canonical setup sequence, checked copyable host examples, readiness, troubleshooting
 - [1Password Setup](./nix/docs/1password-setup.md) -- SSH agent & GPG key management
 - [sops Setup](./nix/docs/sops-setup.md) -- Encrypted secrets bootstrap & workflow (sops-nix, age)
 - [Rex Setup](./nix/docs/rex-setup.md) -- Remote access to NixOS from the Mac
