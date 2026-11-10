@@ -146,11 +146,12 @@ class DoctorTest(unittest.TestCase):
         self.assertIn("Runtime hostname does not match",
                       self.run_doctor("--runtime", "--host", "nixos", code=1))
 
+    @unittest.skipUnless(os.uname().sysname == "Darwin", "requires macOS stat")
     def test_runtime_mac_reports_jobs_without_leaking_launchctl_environment(self):
-        self.runtime_fixture(hostname="mac-machine", system="aarch64-darwin",
-                             profiles=("graphical",))
+        rendered = self.runtime_fixture(hostname="mac-machine", system="aarch64-darwin",
+                                        profiles=("graphical",))
         self.stub("uname", 'if [ "$1" = -m ]; then echo arm64; else echo Darwin; fi')
-        self.stub("stat", "echo 600")
+        self.stub("stat", "exit 99")  # An incompatible PATH stat must not be used.
         self.stub("launchctl", f'''case "$*" in
           "print gui/1000/org.nix-community.home.amp-runner-personal")
             echo "state = running"; echo "AMP_API_KEY={SECRET}";;
@@ -159,6 +160,12 @@ class DoctorTest(unittest.TestCase):
         self.assertIn("OK    Service amp-runner-personal: running", out)
         self.assertIn("WARN  Service amp-runner-work: not running", out)
         self.assertIn("1Password SSH socket/environment unavailable", out)
+        self.assertIn("Rendered SSH hosts: present with private permissions", out)
+        rendered.chmod(0o644)
+        self.key.chmod(0o644)
+        out = self.run_doctor("--runtime", "--target", "darwin", code=1)
+        self.assertIn("Age key permissions must be private", out)
+        self.assertIn("Rendered SSH hosts: expected mode", out)
 
     def test_wrong_output_lists_choices(self):
         out = self.run_doctor("--host", "not-defined", code=1)
@@ -228,9 +235,10 @@ class DoctorTest(unittest.TestCase):
         self.assertIn("WARN  Secret amp-runner-work: cannot decrypt", out)
         self.assertIn("0 error(s)", out)
 
+    @unittest.skipUnless(os.uname().sysname == "Darwin", "requires macOS stat")
     def test_mac_bootstrap_does_not_require_darwin_rebuild(self):
         self.stub("uname", 'if [ "$1" = -m ]; then echo arm64; else echo Darwin; fi')
-        self.stub("stat", "echo 600")
+        self.stub("stat", "exit 99")
         self.metadata(system="aarch64-darwin")
         out = self.run_doctor("--target", "darwin")
         self.assertIn("Output: fixture", out)

@@ -197,7 +197,8 @@ done <<< "$facts"
 if [[ ! -r "$age_key" ]]; then
   error 'Configured age key is missing/unreadable. Restore its backup or enroll this host from an authorized machine (guide phase 3).'
 else
-  if [[ "$os" == Darwin ]]; then mode=$(stat -f '%Lp' "$age_key")
+  # Nix coreutils may shadow macOS stat on PATH; BSD flags need the OS tool.
+  if [[ "$os" == Darwin ]]; then mode=$(/usr/bin/stat -f '%Lp' "$age_key")
   else mode=$(stat -c '%a' "$age_key")
   fi
   case "$mode" in 400|600) ok 'Configured age key is readable with private permissions' ;;
@@ -230,7 +231,7 @@ if $runtime; then
       "$severity" "$label: missing, unreadable or empty."
       return
     fi
-    if [[ "$os" == Darwin ]]; then mode=$(stat -L -f '%Lp' "$file")
+    if [[ "$os" == Darwin ]]; then mode=$(/usr/bin/stat -L -f '%Lp' "$file")
     else mode=$(stat -L -c '%a' "$file")
     fi
     case "$mode" in 400|600) ok "$label: present with private permissions" ;;
