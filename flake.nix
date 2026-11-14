@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Encrypted secrets (age-backed). Provides the home-manager `sops` module,
     # wired into the base layer in nix/lib.nix so every host can decrypt secrets.
     sops-nix = {
@@ -73,6 +78,7 @@
     rex,
     hey-cli,
     basecamp-cli,
+    llm-agents,
     sops-nix,
     determinate,
     nix-darwin,
@@ -86,6 +92,7 @@
   }: let
     overlays = [
       (import ./nix/temporary-overlays.nix)
+      llm-agents.overlays.shared-nixpkgs
     ];
 
     # Profile registry: named, opt-in role bundles selected per-host via

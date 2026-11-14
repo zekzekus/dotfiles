@@ -128,4 +128,5 @@ The source of truth is [`flake.nix`](../../flake.nix); exact revisions live in
 | `rex` | Preview-channel personal server on the NixOS host |
 | `hey-cli` | HEY CLI package |
 | `basecamp-cli` | Basecamp CLI package |
+| `llm-agents` | Amp Linux desktop packaging; other tools retain their existing sources |
 | `practicalli-clojure-cli-config` | Clojure CLI user config (`deps.edn` aliases) |

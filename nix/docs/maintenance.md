@@ -86,6 +86,31 @@ Review `nix/temporary-overlays.nix` during nixpkgs updates: remove a workaround
 only after a successful affected-platform build with upstream checks restored,
 not merely an evaluation. The picosvg override's comment specifies its recheck.
 
+### Amp desktop on Linux
+
+The graphical profile installs `amp-desktop` from
+[llm-agents.nix](https://github.com/numtide/llm-agents.nix), which repackages
+Amp's official Debian release for NixOS. The lock file pins the package;
+`make update` refreshes it with the other flake inputs. To update only its input:
+
+```nu
+nix flake update llm-agents
+make nixos
+```
+
+Use `make home` instead on standalone Home Manager hosts. Launch **Amp** from
+the application launcher or run `amp-desktop`; `amp-desktop --new-thread` and
+`amp-desktop --puck` open those views directly. The package includes the icon
+and sign-in URL handler. Sign in through the browser on first launch.
+Updates are applied through Nix, not inside the app. `make update-amp` remains
+the separate CLI updater.
+
+The existing personal/work runner services remain independently managed.
+Leave the app's built-in runner disabled unless you want an additional runner;
+**App Settings → General → Open at Login** is optional. See the
+[Linux app documentation](https://ampcode.com/docs/apps/linux) for tray and
+notification behavior.
+
 ### Grok Bot
 
 Linux uses a version-pinned x64 AppImage, desktop launcher, and `grok-bot`

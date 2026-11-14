@@ -163,7 +163,7 @@ builder details, inputs, and where a change belongs.
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
 - SSH via the 1Password agent
-- Linux adds: Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
+- Linux adds: Amp desktop, Chromium, Zed, Emacs (pgtk), OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
 
 **`wayland` profile** *(opt-in -- Linux desktop, requires `graphical`)*
 - Hyprland and Niri compositors with Noctalia shell, hypridle, hyprlock

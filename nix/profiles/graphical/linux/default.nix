@@ -26,6 +26,7 @@
 
   home.packages = with pkgs;
     [
+      llm-agents.amp-desktop
       appimage-run
       showmethekey
       droidcam
