@@ -24,21 +24,16 @@ local Mode        = p.create_part(require('hardline.parts.mode').get_item, 'mode
 local Git         = p.create_part(require('hardline.parts.git').get_item, 'high')
 
 local Dirname     = p.create_part(p.get_dirname, 'med')
-local LspError    = p.create_part(p.get_lsp_errors, 'warning')
-local LspWarning  = p.create_part(p.get_lsp_warnings, 'warning')
 local Whitespace  = p.create_part(require('hardline.parts.whitespace').get_item, 'warning')
 local Filetype    = p.create_part(require('hardline.parts.filetype').get_item, 'high')
 local Lines       = p.create_part(require('hardline.parts.line').get_item, 'warning')
 local ListInfos   = p.create_part(listinfos, 'warning')
-local Context     = p.create_part(require('nvim-navic').get_location, 'file')
 
 local Statusline = {
   Mode,
   Git,
   Dirname,
   Align,
-  LspError,
-  LspWarning,
   Whitespace,
   Filetype,
   Lines,
@@ -47,8 +42,6 @@ local Statusline = {
 
 local Winbar = {
   Filename,
-  Align,
-  Context,
 }
 
 local TablineFileName = {

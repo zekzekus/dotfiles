@@ -57,21 +57,13 @@ local search = {
   { '/', options = { silent = false }, [[:Zgrep<space>]] },
   { '*',  [[:Zgrep<space><c-r><c-w><cr>]] },
   { 'ss', [[<cmd>Telescope ctags_outline outline<cr>]] },
-  { 'sS', [[<cmd>Telescope lsp_document_symbols<cr>]] },
   { 'sl', [[<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>]] },
-}
-
-local lsp = {
-  name = 'LSP',
-  { 'gd', [[<cmd>Telescope lsp_definitions<cr>]]},
 }
 
 local others = {
   name = 'Others',
   prefix = '<leader>',
   { '<space>', [[<cmd>Telescope find_files theme=dropdown previewer=false<cr>]] },
-  { 'dd',      [[<cmd>Telescope diagnostics bufnr=0 previewer=false<cr>]]},
-  { 'dD',      [[<cmd>Telescope diagnostics<cr>]]},
   { 'qq',      [[<cmd>SmartClose<cr>]] },
   { 'V',       'V`]' },
 }
@@ -101,7 +93,6 @@ for _, group in ipairs({
   floatings,
   buffers,
   search,
-  lsp,
   others,
   misc,
 }) do

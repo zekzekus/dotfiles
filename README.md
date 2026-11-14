@@ -151,7 +151,8 @@ builder details, inputs, and where a change belongs.
 ## What's Included
 
 **Base** *(all hosts -- headless-safe)*
-- Neovim (nixpkgs unstable) with Treesitter grammars, LSPs for Lua, Nix, Go, Rust, Python, TypeScript, Ruby, Clojure, Haskell
+- Neovim (nixpkgs unstable) with a curated set of Treesitter grammars and no LSPs; Zed covers language-server work
+- Clojure CLI (Practicalli aliases) and clojure-lsp
 - Fish & Nushell with Starship prompt, Carapace completions
 - tmux with tmuxinator
 - Git with delta, difftastic, lazygit, jujutsu (jj), lazyjj, jjui
