@@ -44,7 +44,7 @@ it does not garbage-collect the Nix store.
 | Source | How changes take effect |
 | --- | --- |
 | Nix settings, Ghostty, tmux | Rebuild the chosen system/HM output |
-| Live-linked Neovim, Niri, Noctalia, agents, tmuxinator, Doom | Edit in the fixed checkout; reload/restart the application as needed |
+| Live-linked Neovim, Niri, Noctalia, agents, tmuxinator | Edit in the fixed checkout; reload/restart the application as needed |
 | Repo-relative script snapshots and Git templates | Rebuild; editing the source does not update the installed snapshot |
 | Age/SSH/GPG keys, tokens, accounts, project data, generated assets | Restore/enroll separately; reapply/restart consumers where required |
 

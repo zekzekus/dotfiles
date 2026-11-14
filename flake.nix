@@ -52,10 +52,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    homebrew-emacs-plus = {
-      url = "github:d12frosted/homebrew-emacs-plus";
-      flake = false;
-    };
 
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -83,7 +79,6 @@
     determinate,
     nix-darwin,
     nix-homebrew,
-    homebrew-emacs-plus,
     stylix,
     hyprland,
     practicalli-clojure-cli-config,
@@ -158,13 +153,6 @@
         hostname = "mac-machine";
         system = "aarch64-darwin";
         profiles = ["graphical"];
-        systemModules = [
-          {
-            nix-homebrew.taps = {
-              "d12frosted/homebrew-emacs-plus" = homebrew-emacs-plus;
-            };
-          }
-        ];
       };
     };
 
@@ -180,9 +168,6 @@
         hostname = "example-darwin";
         system = "aarch64-darwin";
         profiles = ["graphical"];
-        systemModules = [
-          {nix-homebrew.taps."d12frosted/homebrew-emacs-plus" = homebrew-emacs-plus;}
-        ];
       };
       example-headless = {
         hostname = "example-headless";

@@ -454,22 +454,6 @@
         "type": "github"
       }
     },
-    "homebrew-emacs-plus": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1794626915,
-        "narHash": "sha256-La18cqznxYpvIJq84jXTDaIu/5eGLXIJL/dMvl+7oiY=",
-        "owner": "d12frosted",
-        "repo": "homebrew-emacs-plus",
-        "rev": "95c548cc40be6b34db81e7a15b4218b1ec6aaa48",
-        "type": "github"
-      },
-      "original": {
-        "owner": "d12frosted",
-        "repo": "homebrew-emacs-plus",
-        "type": "github"
-      }
-    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -1064,7 +1048,6 @@
         "determinate": "determinate",
         "hey-cli": "hey-cli",
         "home-manager": "home-manager",
-        "homebrew-emacs-plus": "homebrew-emacs-plus",
         "hyprland": "hyprland",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",

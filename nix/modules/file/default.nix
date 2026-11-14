@@ -32,7 +32,6 @@ in {
 
       ".ctags".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/ctags/ctags";
       ".tmuxinator".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/tmuxinator";
-      ".config/doom".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/misc/emacs/doom";
 
       # Store snapshots of the evaluated tree (not live links). Repo-relative
       # so evaluation does not depend on common.dotfilesDir existing.

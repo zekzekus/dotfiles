@@ -74,9 +74,6 @@
     enableRosetta = true;
     user = common.username;
     autoMigrate = true;
-    trust.formulae = [
-      "d12frosted/emacs-plus/emacs-plus@30"
-    ];
   };
 
   homebrew = {
@@ -85,12 +82,6 @@
       autoUpdate = false;
       cleanup = "zap";
     };
-    taps = [
-      "d12frosted/emacs-plus"
-    ];
-    brews = [
-      "emacs-plus@30"
-    ];
     casks = [
       "1password"
       "1password-cli"

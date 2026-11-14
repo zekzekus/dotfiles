@@ -97,16 +97,16 @@ bootstrap covers headless x86_64 Linux, not desktop integration.
 
 ## Files outside Nix
 
-Neovim, Niri, Noctalia, agent guidance, tmuxinator, and Doom are live-linked
+Neovim, Niri, Noctalia, agent guidance, and tmuxinator are live-linked
 from the checkout using `mkOutOfStoreSymlink`. Ghostty and tmux settings are
 Nix-managed. Utility scripts and Git templates are store snapshots.
 See [edit/apply ownership](maintenance.md#edit-and-apply-ownership) before
 assuming that an edit is already installed.
 
-`misc/emacs/doom` is active and linked to `~/.config/doom`; the other `misc/`
-material is historical, not an onboarding prerequisite. There are no tracked
-submodules to initialize. [Agent configuration](../../agents/README.md)
-documents the separate guidance/skill consumption model.
+`misc/` material, including the Emacs and Doom configs, is historical and not
+installed on any host. There are no tracked submodules to initialize.
+[Agent configuration](../../agents/README.md) documents the separate
+guidance/skill consumption model.
 
 ## Flake inputs
 
@@ -119,7 +119,6 @@ The source of truth is [`flake.nix`](../../flake.nix); exact revisions live in
 | `home-manager` | User environment management |
 | `nix-darwin` | macOS system management |
 | `nix-homebrew` | Declarative Homebrew integration |
-| `homebrew-emacs-plus` | macOS emacs-plus tap |
 | `sops-nix` | Age-backed encrypted secrets in the shared home layer |
 | `hyprland` | Wayland compositor and modules |
 | `stylix` | CLI/application theming in the Wayland profile |

@@ -49,7 +49,6 @@
 
     sessionPath = [
       "${homeDir}/bin"
-      "${homeDir}/.config/emacs/bin"
       "${homeDir}/.local/share/pnpm/bin"
       "${homeDir}/.local/share/coursier/bin"
     ];
