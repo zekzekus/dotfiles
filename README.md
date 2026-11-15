@@ -152,7 +152,7 @@ builder details, inputs, and where a change belongs.
 
 **Base** *(all hosts -- headless-safe)*
 - Neovim (nixpkgs unstable) with a curated set of Treesitter grammars; LSP clients are configured, but each project's flake devShell provides the servers
-- Clojure CLI (Practicalli aliases) and clojure-lsp
+- Clojure CLI (Practicalli aliases)
 - Fish & Nushell with Starship prompt, Carapace completions
 - tmux with tmuxinator
 - Git with delta, difftastic, lazygit, jujutsu (jj), lazyjj, jjui
