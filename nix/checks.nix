@@ -91,6 +91,7 @@ in {
         statix
         nixd
         nil
+        lua-language-server
         # entroly (https://github.com/juyterman1000/entroly):
         # `uv tool install entroly` then `entroly go`
         python3

@@ -22,6 +22,10 @@
         p.git_rebase
         p.gitcommit
         p.gitignore
+        p.go
+        p.gomod
+        p.haskell
+        p.javascript
         p.jjdescription
         p.json
         p.kdl
@@ -29,7 +33,11 @@
         p.nix
         p.nu
         p.python
+        p.ruby
+        p.rust
         p.toml
+        p.tsx
+        p.typescript
         p.yaml
       ]))
     ];

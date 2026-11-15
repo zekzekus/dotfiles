@@ -22,6 +22,7 @@ return {
   { 'lewis6991/gitsigns.nvim',        config = true, },
   { 'ellisonleao/glow.nvim',          config = true, },
   { 'radenling/vim-dispatch-neovim',  dependencies = 'tpope/vim-dispatch', },
+  { 'SmiteshP/nvim-navic',            dependencies = 'neovim/nvim-lspconfig', },
 
   {
     'folke/zen-mode.nvim',
@@ -105,7 +106,7 @@ return {
       end,
 
       sources = {
-        default = { 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
 
       fuzzy = { implementation = "prefer_rust_with_warning" }

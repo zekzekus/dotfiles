@@ -16,6 +16,8 @@
     ' $out
   '';
 in {
+  # Language servers live with their toolchain: Clojure's toolchain is global,
+  # so its server is too. Other languages get theirs from project devShells.
   home.packages = with pkgs; [
     clojure
     clojure-lsp
