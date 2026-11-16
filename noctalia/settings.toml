@@ -1,4 +1,4 @@
-config_version = 16
+config_version = 20
 
 [bar.default]
 capsule = true
