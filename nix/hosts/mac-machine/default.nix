@@ -48,7 +48,6 @@
     // {
       HOME = common.homeDir;
       AMP_API_KEY = "";
-      inherit (config.home.sessionVariables) SSH_AUTH_SOCK;
       PATH = lib.concatStringsSep ":" (config.home.sessionPath
         ++ [
           "/etc/profiles/per-user/${common.username}/bin"

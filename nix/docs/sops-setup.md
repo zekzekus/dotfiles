@@ -138,12 +138,10 @@ Host myhost
   User ubuntu
   IdentityFile ~/.ssh/keys/myhost.pem
   IdentitiesOnly yes
-  IdentityAgent none
 ```
 
-`IdentitiesOnly yes` + `IdentityAgent none` matter: on graphical hosts the
-global `Host *` block routes auth through the 1Password agent, which will not
-hold a manually-placed PEM, so these two lines make SSH use the file instead.
+`IdentitiesOnly yes` makes SSH offer only this file, not every key the agent
+holds, which avoids "Too many authentication failures" on strict servers.
 
 ## Apply
 
@@ -310,7 +308,7 @@ retry failed SOPS decryption.
 
 The agents run at login and restart on exit. Unlike NixOS user lingering, they
 do not run before login or after logout, and the Mac must remain awake to serve
-threads. They inherit the configured user tools and 1Password SSH socket, but
+threads. They inherit the configured user tools and the macOS SSH agent, but
 not the Linux Podman socket; Docker uses the Mac's selected Docker context.
 Both accounts still run as the same macOS user, and subprocesses may inherit
 their runner's account token.

@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+# Copy the SSH and GPG signing keys out of 1Password once per machine. After
+# this, the OpenSSH agent and gpg-agent serve them; 1Password is not involved.
+# Run after first activation (git's signing key comes from the managed config).
+# Existing keys are never overwritten. Bash 3.2 compatible for macOS.
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: make keys [SSH_ITEM=<1Password item title or ID>]
+       bash scripts/restore-keys [--ssh-item <title or ID>]
+
+SSH: copies the 1Password "SSH Key" item to ~/.ssh/id_<type> and requires a
+passphrase on it. SSH_ITEM may be omitted when exactly one SSH Key item exists.
+GPG: imports the "GPG Private Key" and "GPG Ownertrust" Documents (override
+with GPG_KEY_DOCUMENT / GPG_TRUST_DOCUMENT) for git's configured signing key.
+EOF
+}
+
+ssh_item=
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --help|-h) usage; exit 0 ;;
+    --ssh-item)
+      if [[ $# -lt 2 || -z "$2" ]]; then usage >&2; exit 2; fi
+      ssh_item=$2; shift 2 ;;
+    *) usage >&2; exit 2 ;;
+  esac
+done
+gpg_key_document=${GPG_KEY_DOCUMENT:-GPG Private Key}
+gpg_trust_document=${GPG_TRUST_DOCUMENT:-GPG Ownertrust}
+
+tmp=
+die() { printf 'error: %s\n' "$*" >&2; exit 1; }
+for tool in op ssh-keygen gpg git; do
+  command -v "$tool" >/dev/null 2>&1 || die "$tool is not on PATH."
+done
+
+if ! op whoami >/dev/null 2>&1; then
+  # Without desktop app integration this prompts in the terminal and prints
+  # an OP_SESSION export for this process only.
+  eval "$(op signin)"
+  op whoami >/dev/null || die "1Password CLI sign-in failed."
+fi
+
+restore_ssh() {
+  if [[ -z "$ssh_item" ]]; then
+    local items
+    items=$(op item list --categories "SSH Key" | tail -n +2)
+    if [[ -z "$items" ]]; then die "No SSH Key items in 1Password."; fi
+    if [[ $(printf '%s\n' "$items" | wc -l) -ne 1 ]]; then
+      printf '%s\n' "$items" >&2
+      die "Several SSH Key items; pass SSH_ITEM=<ID> (first column above)."
+    fi
+    ssh_item=${items%% *}
+  fi
+
+  local public type file reference
+  public=$(op item get "$ssh_item" --fields "label=public key")
+  case "$public" in
+    ssh-ed25519\ *) type=ed25519 ;;
+    ssh-rsa\ *) type=rsa ;;
+    ecdsa-sha2-*) type=ecdsa ;;
+    *) die "Unsupported public key type in item '$ssh_item'." ;;
+  esac
+  file="$HOME/.ssh/id_$type"
+  if [[ -e "$file" ]]; then
+    if [[ -f "$file.pub" && "$(cut -d' ' -f1-2 "$file.pub")" == "$(printf '%s\n' "$public" | cut -d' ' -f1-2)" ]]; then
+      echo "SSH: $file already holds this key; skipping."
+      return
+    fi
+    die "$file exists and is not this key; move it aside first."
+  fi
+
+  # The field's secret reference lets `op read` export OpenSSH format.
+  reference=$(op item get "$ssh_item" --fields "label=private key" --format json |
+    sed -n 's/.*"reference": *"\(op:\/\/[^"]*\)".*/\1/p' | head -n 1)
+  [[ -n "$reference" ]] || die "Could not resolve the private key reference of '$ssh_item'."
+
+  mkdir -p "$HOME/.ssh"
+  chmod 700 "$HOME/.ssh"
+  tmp=$(umask 077; mktemp "$HOME/.ssh/.restore-keys.XXXXXX")
+  # Remove the partially restored key on any failure, including Ctrl-C.
+  trap 'rm -f "$tmp"' EXIT
+  op read --force --out-file "$tmp" "$reference?ssh-format=openssh" >/dev/null
+  chmod 600 "$tmp"
+  if ssh-keygen -y -P '' -f "$tmp" >/dev/null 2>&1; then
+    echo "SSH: choose a passphrase for this machine's copy of the key."
+    ssh-keygen -p -f "$tmp"
+    if ssh-keygen -y -P '' -f "$tmp" >/dev/null 2>&1; then
+      die "The key must have a passphrase; nothing was installed."
+    fi
+  fi
+  printf '%s\n' "$public" > "$file.pub"
+  mv "$tmp" "$file"
+  trap - EXIT
+  echo "SSH: installed $file (the first ssh use per login asks for its passphrase)."
+}
+
+restore_gpg() {
+  local key
+  key=$(git config --global --get user.signingkey) ||
+    die "git has no user.signingkey; activate this machine's configuration first."
+  if gpg --list-secret-keys "$key" >/dev/null 2>&1; then
+    echo "GPG: secret key $key already present; skipping."
+    return
+  fi
+  # Stream straight into gpg so no plaintext export touches the disk.
+  op document get "$gpg_key_document" | gpg --batch --import
+  op document get "$gpg_trust_document" | gpg --import-ownertrust
+  gpg --list-secret-keys "$key" >/dev/null 2>&1 ||
+    die "Import finished but secret key $key is missing; check '$gpg_key_document'."
+  echo "GPG: imported $key and its ownertrust."
+}
+
+restore_ssh
+restore_gpg

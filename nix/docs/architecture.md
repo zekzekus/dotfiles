@@ -72,8 +72,8 @@ Conditional `imports` must branch on a special argument such as
 
 ## Profiles and management targets
 
-- **`graphical`** adds cross-platform GUI apps and the 1Password SSH-agent
-  environment; Linux adds its GUI packages and 1Password autostart.
+- **`graphical`** adds cross-platform GUI apps; Linux adds its GUI packages and
+  1Password autostart.
 - **`wayland`** requires Linux **and** `graphical` (enforced by the builders).
   It contributes Hyprland/Niri/Noctalia home settings, Stylix, and NixOS session
   prerequisites: SDDM, portals, graphics, PipeWire, polkit/PAM, storage/power

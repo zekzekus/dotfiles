@@ -186,7 +186,7 @@ remain necessary.
 | Missing bootstrap command | Use the target's [first activation](../README.md#4-first-activation), not a channel/latest CLI |
 | File collision or existing `.hm-backup` | Identify the owner and back up the file; do not blindly delete backups |
 | Age decryption fails | [Restore/enroll the authorized key](sops-setup.md#restore-or-enroll-an-age-key); a new key cannot decrypt old ciphertext |
-| Agent or signing fails | [1Password/GPG troubleshooting](1password-setup.md#troubleshooting); SSH and GPG are separate |
+| Agent or signing fails | [SSH/GPG troubleshooting](keys-setup.md#troubleshooting); SSH and GPG are separate |
 | Activation succeeds but session/services are incomplete | Fresh login, runtime doctor, then the [readiness checklist](../README.md#5-accounts-login-and-readiness) |
 | Updated config seems unchanged | Check [edit/apply ownership](#edit-and-apply-ownership): live link, store snapshot, or external state? |
 

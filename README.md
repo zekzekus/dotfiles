@@ -158,12 +158,11 @@ builder details, inputs, and where a change belongs.
 - Git with delta, difftastic, lazygit, jujutsu (jj), lazyjj, jjui
 - direnv, atuin (shell history), zoxide, yazi
 - ripgrep, fd, bat, btop, fastfetch
-- GPG signing and an encrypted SSH host list (sops-nix)
+- SSH via the OpenSSH agent, GPG signing, and an encrypted SSH host list (sops-nix)
 - devenv
 
 **`graphical` profile** *(opt-in -- any host with a display)*
 - Ghostty terminal, Obsidian (cross-platform)
-- SSH via the 1Password agent
 - Linux adds: Amp desktop, Chromium, Zed, OBS Studio (PipeWire capture), Radicle, media viewers, helium and Grok Bot (x86_64), 1Password GUI autostart
 
 **`wayland` profile** *(opt-in -- Linux desktop, requires `graphical`)*
@@ -206,7 +205,7 @@ Hyprland, Stylix, and the other integrations locked in `flake.lock`. See the
 - [Adding a Host](./nix/docs/adding-hosts.md) -- Copyable examples, hardware ownership, and output wiring
 - [Architecture and Extension](./nix/docs/architecture.md) -- Layers, module ownership, builders, and inputs
 - [Maintenance](./nix/docs/maintenance.md) -- Apply changes, update dependencies, run checks, troubleshoot
-- [1Password Setup](./nix/docs/1password-setup.md) -- SSH agent & GPG key management
+- [SSH and GPG Keys](./nix/docs/keys-setup.md) -- One-time key restore from 1Password, agents, signing
 - [sops Setup](./nix/docs/sops-setup.md) -- Encrypted secrets bootstrap & workflow (sops-nix, age)
 - [Rex Setup](./nix/docs/rex-setup.md) -- Remote access to NixOS from the Mac
 

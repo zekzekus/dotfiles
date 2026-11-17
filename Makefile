@@ -1,4 +1,4 @@
-.PHONY: help doctor home home-build darwin darwin-build nixos nixos-build update update-amp update-amp-acp update-grokbot update-helium update-pinned check fmt clean
+.PHONY: help doctor keys home home-build darwin darwin-build nixos nixos-build update update-amp update-amp-acp update-grokbot update-helium update-pinned check fmt clean
 
 USER := $(shell whoami)
 HOST := $(shell hostname -s)
@@ -13,6 +13,7 @@ help:
 	@echo ""
 	@echo "Available commands:"
 	@echo "  make doctor        - Read-only preflight (RUNTIME=1 adds post-login readiness checks)"
+	@echo "  make keys          - Restore SSH + GPG signing keys from 1Password (once per machine)"
 	@echo "  make home          - Switch standalone home-manager (Linux; not used on Darwin)"
 	@echo "  make home-build    - Plan standalone home-manager (dry-run, does not build)"
 	@echo "  make darwin        - Rebuild nix-darwin system (macOS; includes Home Manager)"
@@ -32,6 +33,9 @@ help:
 
 doctor:
 	@bash scripts/doctor --host "$(HOST)" --user "$(USER)" --flake "$(FLAKE)" $(if $(TARGET),--target "$(TARGET)") $(if $(filter 1,$(RUNTIME)),--runtime)
+
+keys:
+	@bash scripts/restore-keys $(if $(SSH_ITEM),--ssh-item "$(SSH_ITEM)")
 
 home:
 	@if [ "$(UNAME)" = "Darwin" ]; then \

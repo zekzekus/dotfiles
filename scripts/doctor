@@ -158,7 +158,6 @@ fi
 age_key=
 configured_home=
 configured_host=
-graphical=false
 wayland=false
 while IFS=$'\t' read -r kind value path format; do
   case "$kind" in
@@ -184,7 +183,7 @@ while IFS=$'\t' read -r kind value path format; do
       fi ;;
     age) age_key=$value ;;
     profile)
-      case "$value" in graphical) graphical=true ;; wayland) wayland=true ;; esac ;;
+      [[ "$value" != wayland ]] || wayland=true ;;
     host)
       configured_host=$value
       [[ -f "$repo/nix/hosts/$value/default.nix" ]] || error "Missing host Home Manager module: nix/hosts/$value/default.nix"
@@ -262,12 +261,8 @@ if $runtime; then
   # sops-nix is a successful, inactive oneshot on Linux. Check its actual
   # output rather than demanding a running daemon or printing its contents.
   private_file 'Rendered SSH hosts' "$configured_home/.ssh/config.d/hosts" error
-  if $graphical; then
-    if [[ -S "$configured_home/.1password/agent.sock" && "${SSH_AUTH_SOCK:-}" == "$configured_home/.1password/agent.sock" ]]; then
-      ok '1Password SSH socket and login environment present (unlock/authentication untested)'
-    else warn '1Password SSH socket/environment unavailable; enable the agent and open a fresh login.'
-    fi
-  fi
+  # macOS uses its built-in launchd agent; Linux runs the managed OpenSSH one.
+  [[ "$os" == Darwin ]] || running_service ssh-agent warn
   # These two existing personal hosts enable runners. New-host examples do not;
   # this is not inferred from optional ciphertext being present in the repo.
   if [[ "$configured_host" == nixos || "$configured_host" == mac-machine ]]; then

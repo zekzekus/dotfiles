@@ -28,6 +28,9 @@ in {
     };
     udisks2.enable = true;
     gvfs.enable = true;
+    # Niri pulls in gnome-keyring, which would also start GCR's SSH agent and
+    # compete for SSH_AUTH_SOCK. Home Manager's OpenSSH agent owns SSH.
+    gnome.gcr-ssh-agent.enable = false;
   };
   programs = {
     niri.enable = true;

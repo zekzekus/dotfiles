@@ -143,8 +143,8 @@ See [runner credentials and verification](docs/sops-setup.md#nixos-amp-runners).
 
 Have password-manager account recovery/2FA available independently of this
 machine. Use another trusted device or the password-manager app to retrieve the
-age backup before managed 1Password is installed; do not depend on the future
-SSH agent to obtain the checkout or the decryption key.
+age backup before managed 1Password is installed; do not depend on the SSH key
+that `make keys` restores later to obtain the checkout or the decryption key.
 
 ## 4. First activation
 
@@ -306,13 +306,11 @@ the applicable checklist below before calling a machine ready.
   shell, editor, checkout-backed configs, and environment in a fresh terminal.
   Nushell's managed session loader handles HM variables; an old initialized
   session is not a reliable check of new environment settings.
-- Follow [1Password SSH and GPG restoration](docs/1password-setup.md#account-and-key-restoration):
-  sign in, enable the agent, restore GPG private key/ownertrust, and test signing.
-  Git signs by default with `6716516470AD2D7A`; a successful switch does not
-  supply the private key. Restore file-based SSH keys referenced by the encrypted
-  host list separately with private permissions (`~/.ssh/keys`, mode `0700`;
-  key files mode `0600`). Headless machines need their own SSH authentication;
-  they do not get a running 1Password GUI agent.
+- Run `make keys` to [restore the SSH and GPG keys](docs/keys-setup.md#restore-keys-on-a-new-machine)
+  from 1Password once, then test SSH and signing. Git signs by default with
+  `6716516470AD2D7A`; a successful switch does not supply either private key.
+  Restore file-based SSH keys referenced by the encrypted host list separately
+  with private permissions (`~/.ssh/keys`, mode `0700`; key files mode `0600`).
 - Confirm [age decryption](docs/sops-setup.md#verify-decryption-without-printing-secrets)
   and the rendered `~/.ssh/config.d/hosts` path without printing its contents.
   Keep key directories private (`0700`) and restored key files `0600`/`0400`.

@@ -19,6 +19,7 @@ in {
           ./doctor.nix
           ../Makefile
           ../scripts/doctor
+          ../scripts/restore-keys
           ../scripts/tests/test_doctor.py
         ];
       };
@@ -58,7 +59,7 @@ in {
           export HOME=$TMPDIR/home
           mkdir -p "$HOME"
           cd ${doctorSource}
-          shellcheck scripts/doctor
+          shellcheck scripts/doctor scripts/restore-keys
           python3 -B -m unittest discover -s scripts/tests -v
           touch $out
         '';
