@@ -36,7 +36,7 @@ Shared modules are imported explicitly, not discovered by scanning directories:
 | --- | --- |
 | `modules/programs/` | CLI configuration: Neovim, Git, Fish, Nushell, tmux, Starship |
 | `modules/packages/` | CLI packages, development tools, and pinned applications |
-| `modules/file/` | File links, utility-script snapshots, ctags, tmuxinator |
+| `modules/file/` | File links, utility-script snapshots, ctags, tmuxinator, Rex config |
 | `modules/sessionpath/` | PATH entries: `~/bin`, pnpm, coursier |
 | `modules/sessionvariables/` | Editor, project paths, and age-key environment |
 
@@ -97,7 +97,7 @@ bootstrap covers headless x86_64 Linux, not desktop integration.
 
 ## Files outside Nix
 
-Neovim, Niri, Noctalia, agent guidance, and tmuxinator are live-linked
+Neovim, Niri, Noctalia, agent guidance, Rex, and tmuxinator are live-linked
 from the checkout using `mkOutOfStoreSymlink`. Ghostty and tmux settings are
 Nix-managed. Utility scripts and Git templates are store snapshots.
 See [edit/apply ownership](maintenance.md#edit-and-apply-ownership) before

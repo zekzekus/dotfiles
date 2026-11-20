@@ -33,6 +33,9 @@ in {
       ".ctags".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/ctags/ctags";
       ".tmuxinator".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/tmuxinator";
 
+      # Read by whichever Rex server runs here: the Mac app's or services.rex.
+      ".config/rex/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${common.dotfilesDir}/rex/init.lua";
+
       # Store snapshots of the evaluated tree (not live links). Repo-relative
       # so evaluation does not depend on common.dotfilesDir existing.
       "bin/gg".source = ../../../scripts/tmuxproject.sh;

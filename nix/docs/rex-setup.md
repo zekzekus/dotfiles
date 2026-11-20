@@ -12,6 +12,11 @@ tailnet. On the Mac, connect Tailscale with the same account and use Rex's
 access. See the [upstream remote-access guide](https://www.superlogical.com/rex/docs/linux/remote-access)
 for details and troubleshooting.
 
+Both hosts link `~/.config/rex/init.lua` to [`rex/init.lua`](../../rex/init.lua),
+which defines the `gg`, `gk`, and `gp` project actions for the command palette.
+Each server reads its own copy, so run `rex config reload` on the host whose
+server should pick up an edit.
+
 `make update` includes Rex; `nix flake update rex` updates only its preview pin.
 After applying an update or hostname change with `make nixos`, run
 `systemctl --user restart rex` when ready: activation preserves the running

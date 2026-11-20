@@ -54,6 +54,7 @@ this is not a drop-in installer for someone else's machine. Start with the
 │
 ├── nvim/                      # Neovim configuration (Lua, live-linked via HM)
 ├── tmuxinator/                # tmuxinator project templates (live-linked via HM)
+├── rex/                       # Rex init.lua: gg/gk/gp project actions (live-linked via HM)
 ├── git/                       # Git ignore + template (store snapshots via HM)
 ├── niri/                      # Niri compositor config (live-linked via HM)
 ├── noctalia/                  # Noctalia settings.toml (live-linked into XDG state)
@@ -141,7 +142,7 @@ platform, profiles, and host overrides. The Linux base is **headless-safe**:
 no GUI apps or desktop services, but a full CLI/development environment rather
 than a minimal server closure. Darwin itself includes GUI apps and preferences.
 
-Live-edited configs (Neovim, Niri, Noctalia, agents) point back into this checkout.
+Live-edited configs (Neovim, Niri, Noctalia, agents, Rex) point back into this checkout.
 Ghostty and tmux are Nix-managed; helper scripts are store snapshots. See
 [Architecture and Extension](./nix/docs/architecture.md) for module boundaries,
 builder details, inputs, and where a change belongs.
