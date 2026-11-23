@@ -11,12 +11,20 @@
         name = "GeForceNOW";
         location = "https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo";
       }
+      {
+        name = "ladybird";
+        location = "https://flatpak.ladybird.org/ladybird.flatpakrepo";
+      }
     ];
 
     packages = [
       {
         appId = "com.nvidia.geforcenow";
         origin = "GeForceNOW";
+      }
+      {
+        appId = "org.ladybird.Ladybird";
+        origin = "ladybird";
       }
     ];
 

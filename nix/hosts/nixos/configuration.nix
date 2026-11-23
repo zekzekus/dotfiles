@@ -116,6 +116,9 @@ in {
   console.useXkbConfig = true;
 
   services = {
+    # NetworkManager hands DNS to resolved, so /etc/resolv.conf stays a fixed
+    # 127.0.0.53 stub instead of being rewritten by resolvconf on every update.
+    resolved.enable = true;
     kanata = {
       enable = true;
       keyboards = {
