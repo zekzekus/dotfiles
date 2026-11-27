@@ -103,11 +103,10 @@
       wayland = {
         homeModules = [
           stylix.homeModules.stylix
-          hyprland.homeManagerModules.default
           ./nix/profiles/wayland
         ];
         homeSpecialArgs = {inherit hyprland;};
-        systemModules = [hyprland.nixosModules.default ./nix/profiles/wayland/system.nix];
+        systemModules = [./nix/profiles/wayland/system.nix];
         systemSpecialArgs = {inherit hyprland;};
       };
     };
