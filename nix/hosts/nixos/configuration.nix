@@ -75,6 +75,9 @@ in {
     };
   };
 
+  # amd-pstate-epp: the performance governor also sets EPP to performance.
+  powerManagement.cpuFreqGovernor = "performance";
+
   time.timeZone = "Europe/Istanbul";
 
   i18n = {
@@ -189,7 +192,10 @@ in {
     # (Wayland) in the session chooser when they first log in.
     displayManager.defaultSession = "niri";
     desktopManager.plasma6.enable = true;
-    power-profiles-daemon.enable = true;
+    # Always-on-AC desktop: no power profiles. Plasma enables the daemon by
+    # default, and its power-saver profile disables CPU boost, which starves
+    # software video encoding in browser calls.
+    power-profiles-daemon.enable = false;
     printing.enable = true;
     pipewire.alsa.support32Bit = true;
     blueman.enable = true;
